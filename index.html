@@ -224,9 +224,15 @@ h1{font-size:clamp(38px,5.4vw,62px);line-height:1.02;margin:0 0 18px;letter-spac
    the current palette (petrol-ink / amber) so it stays correct across
    every theme, low-light and high-contrast mode without extra rules. ---------- */
 .brand-treeby,.brand-sound{font-family:ui-rounded,"SF Pro Rounded","Avenir Next Rounded","Avenir Next",Avenir,"Century Gothic",Futura,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-.brand-treeby{color:var(--petrol-ink);font-weight:800}
-.brand-sound{color:var(--amber);font-weight:600;font-style:italic}
+.brand-treeby{color:var(--petrol-ink);font-weight:800;letter-spacing:-.015em}
+.brand-sound{color:var(--amber);font-weight:600;font-style:italic;margin-left:.01em}
 h1.brandmark{font-size:clamp(40px,7.2vw,66px);letter-spacing:-.01em}
+h1.brandmark .brand-treeby::first-letter,h1.brandmark .brand-sound::first-letter{font-size:1.1em}
+h1.brandmark .brand-sound{position:relative;isolation:isolate}
+h1.brandmark .brand-sound::after{
+  content:'';position:absolute;left:-3%;right:-5%;bottom:.08em;height:.1em;
+  background:var(--amber);opacity:.3;border-radius:99px;transform:rotate(-1.3deg);z-index:-1;
+}
 .brand.brandmark,.appbar-brand.brandmark{letter-spacing:0}
 .standfirst{font-size:19.5px;line-height:1.55;color:var(--ink-2);margin:0 0 26px;max-width:60ch}
 .meterbar{display:flex;gap:2px;margin:30px 0 0;height:9px;max-width:420px}
