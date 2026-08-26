@@ -189,7 +189,7 @@ main:focus{outline:none}
 .searchbox input::placeholder{color:var(--ink-3)}
 .searchbox .sk{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:10px;color:var(--ink-3);pointer-events:none}
 .hits{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin:7px 2px 0;min-height:14px;letter-spacing:.02em}
-.rail-library{display:flex;align-items:center;justify-content:space-between;padding:11px 17px 5px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}.rail-library a{color:var(--petrol);font-size:9.5px;text-decoration:none;letter-spacing:.04em}.rail-routes{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:0 16px 10px}.rail-routes a{text-decoration:none;border:1px solid var(--rule);border-radius:6px;padding:6px 8px;color:var(--ink-2);background:var(--card);font-family:var(--display);font-size:11.5px;line-height:1.25}.rail-routes a:hover{border-color:var(--petrol);background:var(--petrol-soft);color:var(--petrol-ink)}
+.rail-library{display:flex;align-items:center;justify-content:space-between;padding:11px 17px 5px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}.rail-library a{color:var(--petrol);font-size:9.5px;text-decoration:none;letter-spacing:.04em}.rail-routes{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:0 16px 10px}.rail-routes a{text-decoration:none;border:1px solid var(--rule);border-radius:6px;padding:6px 8px;color:var(--ink-2);background:var(--card);font-family:var(--display);font-size:11.5px;line-height:1.25}.rail-routes a:hover{border-color:var(--petrol);background:var(--petrol-soft);color:var(--petrol-ink)}.rail-routes-label{grid-column:1/-1;font-family:var(--mono);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:8px 2px 2px;margin-top:3px;border-top:1px solid var(--rule)}.rail-routes-label:first-child{border-top:0;margin-top:0;padding-top:0}
 .toc{overflow-y:auto;padding:0 10px 28px;flex:1;scrollbar-width:thin}
 .toc details{margin-bottom:4px;border:1px solid transparent;border-radius:8px}
 .toc details.toc-ping{animation:tocPing 1.1s ease-out}
@@ -806,10 +806,15 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
   </nav>
   <div class="rail-library"><span>Library</span><a href="#library">All parts →</a></div>
   <nav class="rail-routes" aria-label="Library routes">
+    <div class="rail-routes-label">Learning</div>
     <a href="#p1" data-nav="p1">Learn the job</a>
     <a href="#p2" data-nav="p2">Learn core audio</a>
     <a href="#p5" data-nav="p5">Learn systems &amp; skills</a>
+    <a href="#p9" data-nav="p9">Working with other teams</a>
+    <a href="#p10" data-nav="p10">Learn event landscape</a>
     <a href="#p11" data-nav="p11">Check &amp; fix</a>
+    <a href="#p14" data-nav="p14">Develop your craft</a>
+    <div class="rail-routes-label">Career</div>
     <a href="#p17" data-nav="p17">Career development</a>
   </nav>
   <div class="toc" id="toc"></div>
@@ -4877,7 +4882,8 @@ var TOC_GROUPS = {
   'p1':'Learn the job',
   'p2':'Learn core audio',
   'p5':'Systems & specialist skills',
-  'p9':'Working across events',
+  'p9':'Working with other teams',
+  'p10':'Learn event landscape',
   'p11':'Check, fix & work safe',
   'p14':'Operate & develop your craft',
   'p17':'Career, learning & reference',
@@ -5367,9 +5373,9 @@ if(partNavNext){ partNavNext.addEventListener('click', function(){
 var NAV_FOR_SCREEN = {
   p1:'p1',
   p2:'p2', p3:'p2', p4:'p2',
-  p5:'p5', p6:'p5', p7:'p5', p8:'p5', p9:'p5', p10:'p5',
+  p5:'p5', p6:'p5', p7:'p5', p8:'p5', p9:'p9', p10:'p10',
   p11:'p11', p12:'p11', p13:'p11',
-  p14:'p5', p15:'p5', p16:'p5',
+  p14:'p14', p15:'p14', p16:'p14',
   p17:'p17', p18:'p17'
 };
 /* Two independent runs of navigation share one [data-nav] attribute: the four
