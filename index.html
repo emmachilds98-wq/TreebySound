@@ -144,6 +144,9 @@ a:hover{text-decoration-thickness:2px}
 /* When the app-view appbar is also on screen (desktop, app layout) it already
    occupies the top strip, so drop these below it rather than overlapping. */
 @media screen and (min-width:821px){ [data-layout="app"] .cog-btn{top:68px} }
+.refresh-btn{right:58px;border-color:var(--amber);color:var(--amber);background:var(--amber-soft)}
+.refresh-btn:hover{background:var(--amber);color:var(--card)}
+.refresh-btn[hidden]{display:none}
 .skip-link:focus{top:0;outline:2px solid #fff;outline-offset:-4px}
 main:focus{outline:none}
 
@@ -784,6 +787,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 <a class="skip-link" href="#main">Skip to content</a>
 
 <button class="cog-btn" id="cogAppearance" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Appearance &amp; accessibility settings">⚙</button>
+<button class="cog-btn refresh-btn" id="updateBtn" type="button" hidden aria-label="An update is ready — tap to refresh TreebySound">↻</button>
 
 <div class="wrap">
 <nav class="rail" id="rail">
@@ -6493,6 +6497,54 @@ if(quickfabBtn && quickfabMenu){
 
 })();
 </script>
-<script>if('serviceWorker' in navigator){window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(){});});}</script>
+<script>
+(function(){
+  if(!('serviceWorker' in navigator)) return;
+  var updateBtn = document.getElementById('updateBtn');
+  /* The service worker already skips waiting and claims every open tab the
+     moment a new version activates (see sw.js) — no message-passing needed
+     here, just a reload so this tab's already-loaded HTML/JS catches up.
+     hadController starts true only on a repeat visit, so the very first
+     install (nothing to refresh into) doesn't reload the page it just opened. */
+  var hadController = !!navigator.serviceWorker.controller;
+  var reloading = false;
+
+  function reloadNow(){
+    if(reloading) return;
+    reloading = true;
+    /* Everything that matters (checklist ticks, appearance, job data) lives in
+       localStorage, which a reload never touches — nothing is lost here. */
+    location.reload();
+  }
+
+  navigator.serviceWorker.addEventListener('controllerchange', function(){
+    if(!hadController){ hadController = true; return; }
+    /* A backgrounded tab can update itself with nobody watching. One that's
+       on screen right now gets the button instead — reloading out from under
+       someone mid-read or mid-tap would be worse than asking for one press. */
+    if(document.hidden){
+      reloadNow();
+    } else if(updateBtn){
+      updateBtn.hidden = false;
+    }
+  });
+
+  document.addEventListener('visibilitychange', function(){
+    if(document.hidden && updateBtn && !updateBtn.hidden) reloadNow();
+  });
+
+  if(updateBtn) updateBtn.addEventListener('click', reloadNow);
+
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('./sw.js').then(function(reg){
+      /* Browsers only recheck sw.js for changes on a fresh navigation, which a
+         long-lived open tab may never do — so ask again whenever it's looked at. */
+      document.addEventListener('visibilitychange', function(){
+        if(!document.hidden) reg.update().catch(function(){});
+      });
+    }).catch(function(){});
+  });
+})();
+</script>
 </body>
 </html>
