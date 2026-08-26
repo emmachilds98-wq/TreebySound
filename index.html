@@ -141,7 +141,6 @@ a:hover{text-decoration-thickness:2px}
   background:var(--card);color:var(--ink-2);border:1px solid var(--rule-2);box-shadow:var(--shadow);cursor:pointer;
 }
 .cog-btn:hover{border-color:var(--petrol);color:var(--petrol-ink);background:var(--petrol-soft)}
-.home-btn{right:60px;text-decoration:none}
 /* When the app-view appbar is also on screen (desktop, app layout) it already
    occupies the top strip, so drop these below it rather than overlapping. */
 @media screen and (min-width:821px){ [data-layout="app"] .cog-btn{top:68px} }
@@ -614,7 +613,6 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
 
 <a class="skip-link" href="#main">Skip to content</a>
 
-<a class="cog-btn home-btn" id="homeBtn" href="#hub" aria-label="Home">⌂</a>
 <button class="cog-btn" id="cogAppearance" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Appearance &amp; accessibility settings">⚙</button>
 
 <div class="wrap">
@@ -632,6 +630,7 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
   </div>
   <div class="rail-library"><span>Library</span><a href="#s19-1">Checklists →</a></div>
   <nav class="rail-routes" aria-label="Library routes">
+    <a href="#hub" data-nav="hub">Home</a>
     <a href="#p1" data-nav="p1">Run a job</a>
     <a href="#p2" data-nav="p2">Learn core audio</a>
     <a href="#p5" data-nav="p5">Learn systems &amp; skills</a>
@@ -4774,8 +4773,6 @@ if(bbAppearance) bbAppearance.addEventListener('click', openAppearance);
 if(appearanceClose) appearanceClose.addEventListener('click', closeAllPanels);
 var cogAppearance = document.getElementById('cogAppearance');
 if(cogAppearance) cogAppearance.addEventListener('click', openAppearance);
-var homeBtn = document.getElementById('homeBtn');
-if(homeBtn) homeBtn.addEventListener('click', closeAllPanels);
 
 /* palette swatches */
 var paletteRow = document.getElementById('paletteRow');
