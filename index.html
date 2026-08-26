@@ -135,6 +135,15 @@ a{color:var(--petrol);text-underline-offset:2px;text-decoration-thickness:1px}
 a:hover{text-decoration-thickness:2px}
 :focus-visible{outline:2px solid var(--petrol);outline-offset:3px;border-radius:2px}
 .skip-link{position:fixed;top:-60px;left:12px;z-index:100;background:var(--petrol);color:var(--paper);font-family:var(--display);font-size:14px;padding:10px 16px;border-radius:0 0 10px 10px;text-decoration:none;transition:top .15s ease}
+.cog-btn{
+  position:fixed;top:14px;right:14px;z-index:26;width:38px;height:38px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:17px;line-height:1;
+  background:var(--card);color:var(--ink-2);border:1px solid var(--rule-2);box-shadow:var(--shadow);cursor:pointer;
+}
+.cog-btn:hover{border-color:var(--petrol);color:var(--petrol-ink);background:var(--petrol-soft)}
+/* When the app-view appbar is also on screen (desktop, app layout) it already
+   occupies the top strip, so drop the cog below it rather than overlapping. */
+@media screen and (min-width:821px){ [data-layout="app"] .cog-btn{top:68px} }
 .skip-link:focus{top:0;outline:2px solid #fff;outline-offset:-4px}
 main:focus{outline:none}
 
@@ -605,6 +614,8 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
 
 <a class="skip-link" href="#main">Skip to content</a>
 
+<button class="cog-btn" id="cogAppearance" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Appearance &amp; accessibility settings">⚙</button>
+
 <div class="wrap">
 <nav class="rail" id="rail">
   <div class="rail-head">
@@ -671,11 +682,6 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
 </header>
 
 <section class="hub" id="hub" aria-label="Your audio development hub">
-  <div class="hub-intro">
-    <p class="eyebrow">Your audio path · home</p>
-    <h2>Your next step</h2>
-    <p>Use this before a shift, when something goes wrong, or for one small step forward. Open the Library for full guides and training.</p><p style="margin-top:14px"><button class="hub-button" id="hubOpenLibrary" type="button">Open the Library →</button> <button class="hub-button" id="hubAppearance" type="button" style="margin-left:8px">Appearance &amp; accessibility</button></p>
-  </div>
   <nav class="hub-nav" aria-label="Development hub">
     <a href="#hub-today">Today</a><a href="#hub-job">On a job</a><a href="#hub-workspace">Job workspace</a><a href="#hub-learn">Learn</a><a href="#hub-people">People</a><a href="#hub-me">Me</a><a href="#hub-conservation">Outside work</a><a href="#hub-guides">Quick guides</a>
   </nav>
@@ -818,7 +824,7 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
 <section class="s" id="s0-2"><h3><span class="n">0.2</span> Navigating</h3>
 <p>There's no one correct way to find something in here — if one route doesn't work, another will.</p>
 <ul>
-<li><strong>Search</strong> — press <code>/</code> anywhere (or tap <em>Find</em>) to open the search box; it filters the contents list live as you type, and <code>Esc</code> clears it. This searches every part of the book at once — including the parts you're not currently looking at — so use it rather than your browser's own <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>F</kbd>, which only sees the page you're on.</li>
+<li><strong>Search</strong> — press <code>/</code> anywhere (or tap <em>Library</em>) to open the search box; it filters the contents list live as you type, and <code>Esc</code> clears it. This searches every part of the book at once — including the parts you're not currently looking at — so use it rather than your browser's own <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>F</kbd>, which only sees the page you're on.</li>
 <li><strong>Section numbers</strong> — every heading has one. They're stable, so notes to yourself like "look at 12.3 before Friday" will still work in a year.</li>
 <li><strong>On a job now</strong> — the button bottom-right is the fastest route in when you're mid-job and know roughly what kind of thing you need rather than where it lives: setup, fault-finding, checklists, the how-to index, the glossary, or a calculator.</li>
 <li><strong>Checklists</strong> — <a href="#p19">Part 19</a> has printable ones. Ticks save in your browser, so a half-done prep list is still half-done tomorrow.</li>
@@ -1204,7 +1210,7 @@ EARS            the only part of the system that actually matters</div>
 <dt>Sample rate</dt><dd>How many snapshots per second. 48 kHz is the live/video standard; 44.1 kHz is the CD/music standard; 96 kHz exists and is rarely worth the I/O cost live. <strong>Everything on one network must agree.</strong></dd>
 <dt>Bit depth</dt><dd>How precisely each snapshot is measured. 24-bit is standard and gives you a huge dynamic range. This is why digital headroom is generous — but clipping is still absolute and ugly.</dd>
 <dt>Latency</dt><dd>The delay caused by converting, processing and transporting. A few milliseconds is invisible; stack up enough conversions and processors and musicians start to notice, especially on in-ears.</dd>
-<dt>Clock</dt><dd>Every digital device must agree on exactly when a sample happens. One device is the <strong>master</strong> and the rest follow. Get this wrong and you get clicks, pops, or dropouts.</dd>
+<dt>Clock (word clock)</dt><dd>Every digital device must agree on exactly when a sample happens. One device is the <strong>master</strong> and the rest follow. "Word clock" is the actual term printed on converters and consoles for this — a dedicated clock signal, or a setting, telling a device whose timing to follow. Get this wrong and you get clicks, pops, or dropouts.</dd>
 </div>
 <div class="note warn"><span class="lab">Watch it</span><p>Two clock masters on one network is a classic and infuriating fault — intermittent ticking that comes and goes. When you build a digital system, decide what the clock master is (usually the console, or a dedicated clock source) and check every other device is set to follow. See <a href="#s8-2">§8.2</a> for how this looks in Dante Controller.</p></div>
 </section>
@@ -1359,6 +1365,7 @@ EARS            the only part of the system that actually matters</div>
 <tr><td><strong>Optocore / SoundGrid / A-Net</strong></td><td>Various</td><td>Fibre / Ethernet</td><td>Manufacturer-specific. You'll meet them on specific rigs and read specific manuals.</td></tr>
 </tbody></table></div>
 <div class="note deep"><span class="lab">Go deeper</span><p>Audinate run free online Dante certification (Levels 1–3). Level 1 takes an afternoon and is genuinely the best-value qualification in live audio right now — it's free, it's recognised, and it directly makes you more employable. Do it. Link in <a href="#s18-3">§18.3</a>.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p><strong>PoE (Power over Ethernet)</strong> carries power down the same cable as the network data, so a switch or an inline injector can run a device — a small stagebox, an access point, a networked speaker or a control panel — without a separate mains lead. Convenient for small, remote or awkward-to-power devices; not something you'd rely on for anything drawing serious current. Check a device's PoE class before assuming a given switch port can actually supply enough of it.</p></div>
 </section>
 
 <section class="s" id="s3-8"><h3><span class="n">3.8</span> Power</h3>
@@ -1762,6 +1769,7 @@ EARS            the only part of the system that actually matters</div>
 <tr><td><strong>Install / discreet</strong></td><td>Bose, Tannoy, Community, K-array, d&amp;b xS series</td></tr>
 </tbody></table></div>
 <div class="note std"><span class="lab">Standard</span><p>Learn <em>your company's</em> stock properly rather than trying to learn all of it. Know for each box: is it active or passive, what amp preset it needs, what it weighs, how it flies, what it draws, and what its dispersion is. That's the knowledge that makes you useful on site.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>Two more numbers on a loudspeaker's datasheet, alongside dispersion: <strong>sensitivity</strong> (the SPL it produces at 1 W of input, measured at 1 m — how efficiently it turns power into level) and <strong>maximum SPL</strong> (the loudest it can go before distortion or damage, at a stated distance). Neither is something you'll need to calculate as a junior, but recognise them for what they are when comparing two boxes or reading a spec sheet — a box with lower sensitivity just needs more amplifier power to reach the same level as one with higher sensitivity.</p></div>
 </section>
 
 <section class="s" id="s6-4"><h3><span class="n">6.4</span> Amplifiers &amp; processing</h3>
@@ -2154,6 +2162,7 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s9-1"><h3><span class="n">9.1</span> Why this gets its own part</h3>
 <p>Everything so far has been your chain: mic to speaker. But you build that chain in a room where two or three other departments are building theirs at the same time, often through the same doorway, up the same truss, and off the same distro. Most of what goes wrong between departments isn't technical — it's someone not knowing what someone else needed, or two cable runs fighting for the same route. The technical bits (this part covers three real ones: electrical interference, timecode, and DMX) are the minority of the problem. The majority is just talking to people early.</p>
+<p>One more thing sits at the end of this part (<a href="#s9-8">§9.8–9.11</a>): a proper look at Avolites Titan, the lighting-control software. That's not "working with other teams" content in the same sense as the rest of this part — it's here because it's a genuine, marketable skill on top of your audio work if you've got the licence to use it. Skip straight to <a href="#s9-12">§9.12</a> if lighting desks aren't your interest.</p>
 <div class="note std"><span class="lab">Standard</span><p>On any multi-department build, find out in the first hour: who's the LX/video/staging equivalent of your crew chief, where their cable is planning to run, and whether anyone's sharing your power. Five minutes of that conversation saves an afternoon of re-routing.</p></div>
 </section>
 
@@ -2213,7 +2222,7 @@ EARS            the only part of the system that actually matters</div>
 <p>You don't need to operate lighting, but DMX turns up often enough at the edges of your world — shared connectors, shared trunking, the occasional "can you just patch this through your snake" — that it's worth knowing what it actually is.</p>
 <div class="kv">
 <dt>What it is</dt><dd>DMX512 is a one-way digital control protocol carrying up to 512 channels of control data (dimmer levels, moving-light positions, colour, whatever) down one line, refreshed dozens of times a second. It's control data, not audio — there is nothing to listen to.</dd>
-<dt>The cable</dt><dd>Electrically it's RS-485, a balanced differential signal, run on cable rated at 110 Ω. That's the number to remember: it's why DMX cable and mic cable, though both often on 3-pin XLR, aren't really interchangeable for anything but the shortest, least critical run (<a href="#s3-1">§3.1</a>).</dd>
+<dt>The cable</dt><dd>Electrically it's RS-485, a balanced differential signal, run on cable rated at 120 Ω. That's the number to remember: it's why DMX cable and mic cable, though both often on 3-pin XLR, aren't really interchangeable for anything but the shortest, least critical run (<a href="#s3-1">§3.1</a>).</dd>
 <dt>The connector confusion</dt><dd>The DMX spec calls for 5-pin XLR; a huge amount of fixture-level gear ships with 3-pin instead, because it's cheaper and 3-pin XLR is everywhere. You'll meet turnaround adaptors (5-pin to 3-pin) constantly. It's not your fault when it doesn't just work — it's a known mess in the industry.</dd>
 <dt>Daisy chain &amp; termination</dt><dd>DMX devices link in a chain, in to out, not a star like a Dante network. The last fixture in the chain needs a 120 Ω terminator (a resistor across the data pins) or the signal reflects back down the line and things flicker or misbehave, especially over longer runs.</dd>
 <dt>Universes</dt><dd>One DMX line carries one "universe" of 512 channels. A big rig with hundreds of fixtures needs several universes, usually distributed over the lighting network (often Art-Net or sACN over standard Ethernet) rather than run as physical DMX the whole way.</dd>
@@ -2305,7 +2314,7 @@ EARS            the only part of the system that actually matters</div>
 </section>
 
 <section class="s" id="s10-3"><h3><span class="n">10.3</span> Live music &amp; touring</h3>
-<p>Bands, festivals, club shows. The audience is there specifically for the sound and the performance — expectations for impact and quality are high, and so is the pace.</p>
+<p>Bands and club shows. The audience is there specifically for the sound and the performance — expectations for impact and quality are high, and so is the pace. Festivals share everything here but add enough of their own (multiple stages, multiple contractors, hard licensing curfews) to get their own section — see <a href="#s10-10">§10.10</a>.</p>
 <div class="kv">
 <dt>Priorities</dt><dd>Energy, impact, and a mix that serves the music. Perfect isn't always the goal — the right amount of excitement is.</dd>
 <dt>Typical sources</dt><dd>Full band inputs — drums, bass, guitars, backline, multiple vocals — often changing completely between acts on a multi-band bill.</dd>
@@ -2381,6 +2390,18 @@ EARS            the only part of the system that actually matters</div>
 <div class="note std"><span class="lab">Standard</span><p>Agree who has authority to change the plan — timings, volume, what's played — before the event starts, and get it in writing if you can (an email is enough). Without a producer in the room, "the client" can mean four different family members with four different opinions by 9pm.</p></div>
 </section>
 
+<section class="s" id="s10-10"><h3><span class="n">10.10</span> Festivals</h3>
+<p>Touring and festival work share a lot of DNA — fast changeovers, visiting engineers, physical builds — but a festival adds problems a single-stage tour date doesn't have: several stages running near-simultaneously, several different companies and crews sharing one site, and an audience moving freely between all of it.</p>
+<div class="kv">
+<dt>Stage bleed</dt><dd>Two or more stages close enough that one's low end or monitor wash carries into another's mix position or FOH. Rarely fixable by you alone — staggered set times and physical layout are decided long before you arrive — but worth knowing about before you troubleshoot a "muddy" mix that's actually the next stage's bass bleeding in.</dd>
+<dt>Changeover choreography</dt><dd>Multiple acts, often with their own techs and riders, moving through one stage on a tight schedule — sometimes minutes, not the hour-plus of a single touring show (<a href="#s10-3">§10.3</a>). A pre-built patch that doesn't need reworking for each act, and a clear runner/changeover system, matters more here than almost anywhere else.</dd>
+<dt>Multiple contractors, one site</dt><dd>Audio, lighting, staging, security, welfare and site power are usually different companies entirely, coordinated by a production manager rather than any one of them. Shared cable routes, shared generators and shared load-in windows mean the department coordination habits in <a href="#p9">Part 9</a> matter constantly, not occasionally.</dd>
+<dt>Weather &amp; site conditions</dt><dd>Often fully or partially outdoors for the whole run, with mud, rain covers and generator-only power (<a href="#s6-14">§6.14</a> · <a href="#s9-6">§9.6</a>) as the default rather than the exception.</dd>
+<dt>Noise &amp; curfew conditions</dt><dd>Frequently governed by a licence with noise monitored at specific off-site points, not just an on-site SPL target — see the Safety Advisory Group and noise-condition material in <a href="#s6-10">§6.10</a>. A festival curfew is very often a hard legal deadline, not a guideline.</dd>
+</div>
+<div class="note std"><span class="lab">Standard</span><p>On your first festival, spend the first hour learning the site as much as the stage: where your stage sits relative to others, where the generator and fuel point are, where the nearest production office and medical point are, and who your stage manager and production manager actually are. You'll need all of it before the day is out.</p></div>
+</section>
+
 </div></div>
 
 <div class="part" id="p11">
@@ -2449,6 +2470,7 @@ EARS            the only part of the system that actually matters</div>
 <li><strong>Re-check anything that was touched after</strong> — a mic repositioned, a cable re-routed, a connector reseated. If it moved, it needs proving again.</li>
 </ol>
 <div class="note warn"><span class="lab">Watch it</span><p>A channel that was fine an hour ago isn't guaranteed to still be fine now — cables get kicked, connectors get knocked during other work, gain gets bumped by an elbow. A line check the moment before doors, even a quick one, catches the handful of things that changed since the real check.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>None of this replaces a proper mix soundcheck with the band on stage, but on a job where the band's own multitrack already exists — a returning tour, a rehearsal recording — some engineers set gain and rough EQ against a <strong>virtual soundcheck</strong> (<a href="#s14-3">§14.3</a>) played back through the desk first, so less of that work has to happen live with the performers standing there.</p></div>
 </section>
 
 <section class="s" id="s11-4"><h3><span class="n">11.4</span> Line checking without talkback</h3>
@@ -2711,6 +2733,8 @@ EARS            the only part of the system that actually matters</div>
 <tr><td><strong>Control of Noise at Work Regs 2005</strong></td><td>Protecting workers' hearing</td><td>Your own ears, over a career, <a href="#s13-5">§13.5</a></td></tr>
 <tr><td><strong>CDM 2015</strong></td><td>Construction project safety management</td><td>Event builds and de-rigs are legally "construction" — <a href="#s13-6">§13.6</a></td></tr>
 <tr><td><strong>Working at Height Regs 2005</strong></td><td>Any work where a fall could cause injury</td><td>Ladders, MEWPs, truss and rigging above head height — <a href="#s13-3">§13.3</a></td></tr>
+<tr><td><strong>RIDDOR 2013</strong></td><td>Reporting injuries, diseases &amp; dangerous occurrences</td><td>Knowing an accident or near-miss needs recording — <a href="#s13-13">§13.13</a></td></tr>
+<tr><td><strong>COSHH 2002</strong></td><td>Substances hazardous to health</td><td>Haze/fog fluid, cleaning solvents, confetti debris — <a href="#s13-14">§13.14</a></td></tr>
 </tbody></table></div>
 <p>None of these are yours to interpret alone on a job — that's what a competent person, a Production Manager or a company's health and safety lead is for. What follows is enough to understand what's being asked of you and why, not enough to sign anything off yourself.</p>
 <div class="note deep"><span class="lab">Go deeper</span><p>The legislation above sets the legal duties; it doesn't tell you how to actually run a safe event day to day. <strong>The Purple Guide</strong> — the HSE-endorsed, industry-written reference for health, safety and welfare at music and other events — is the document that translates all of this into practical guidance, and it's genuinely worth knowing exists even if you never read it cover to cover. See <a href="#s18-8">§18.8</a>.</p></div>
@@ -2815,6 +2839,25 @@ EARS            the only part of the system that actually matters</div>
 <li><strong>Don't take on a task alone that genuinely needs two people</strong> — a heavy lift, anything at height — just because nobody else is around. Wait, or ask, rather than improvise it solo.</li>
 <li><strong>Know how you'd actually get help</strong> if something went wrong — is the venue occupied by anyone else, is there a landline, does your phone have signal in that building.</li>
 </ul>
+</section>
+
+<section class="s" id="s13-13"><h3><span class="n">13.13</span> RIDDOR — reporting accidents and near-misses</h3>
+<p>The Reporting of Injuries, Diseases and Dangerous Occurrences Regulations 2013 is the law behind why an accident or a near-miss on site gets written down and, sometimes, reported to the HSE. The duty to actually report sits with the employer or the venue's "responsible person," not with you — but you're often the one who saw it happen, so knowing it matters is your part of the job.</p>
+<div class="kv">
+<dt>What's reportable</dt><dd>Broadly: deaths, specified serious injuries, any injury that puts someone off normal work for more than seven days, and "dangerous occurrences" — incidents that could easily have caused serious harm even if nobody was actually hurt (a dropped case from height, a partial rig failure, an electric shock). Deciding exactly what qualifies is not your call to make.</dd>
+<dt>Your actual job</dt><dd>Make the area safe, get help if needed, and tell your supervisor or the venue's responsible person what happened — including near-misses, not just injuries. A "nothing happened in the end" near-miss (a case that nearly fell, a cable that nearly got someone) is exactly the kind of thing this system exists to catch before it happens again with worse luck.</dd>
+<dt>Write it down</dt><dd>Time, what happened, what you saw, what was done immediately after. Your own factual note protects you as much as anyone else if it's ever followed up later.</dd>
+</div>
+<div class="note warn"><span class="lab">Watch it</span><p>Never decide for yourself that something "wasn't serious enough to mention." Report it up and let the people whose job it is to judge reportability make that call — it costs you nothing, and staying quiet about a near-miss is how the same thing happens again to someone less lucky.</p></div>
+</section>
+
+<section class="s" id="s13-14"><h3><span class="n">13.14</span> COSHH — hazardous substances on site</h3>
+<p>The Control of Substances Hazardous to Health Regulations 2002 cover anything that could harm you through breathing it in, touching it or swallowing it — which, on an event site, includes things you might not immediately think of as chemicals: haze and fog fluid, cleaning solvents, battery contents, and confetti or pyrotechnic residue.</p>
+<div class="kv">
+<dt>The employer's duty</dt><dd>Assess the risk of any hazardous substance in use and control it — proper ventilation for haze, the right PPE, safe storage. Again, not a decision you're expected to make alone.</dd>
+<dt>Your actual job</dt><dd>Before handling anything you don't recognise — a cleaning product, a fluid, a canister — check it has a safety data sheet and that you know what it is. Never mix cleaning products (some combinations release genuinely dangerous gases). Ventilate a haze/fog-filled space properly before extended time working in it, and treat spent pyro/confetti debris as something to clear up with gloves, not bare hands.</dd>
+</div>
+<div class="note alt"><span class="lab">Also seen</span><p>Haze and fog machines are covered by COSHH like anything else, but the specific competence and risk-assessment requirements for who's allowed to fire pyro or confetti sit separately with the licensed operator (<a href="#s9-12">§9.12</a>) — COSHH is about the substance itself, not who's authorised to deploy it.</p></div>
 </section>
 
 </div></div>
@@ -3005,7 +3048,7 @@ EARS            the only part of the system that actually matters</div>
 <li>Repeat for the next frequency that emerges, but stop once you've caught 2–3 problem points — over-notching a wedge starts to audibly thin it out and makes it sound worse, not better, for genuinely more headroom.</li>
 </ol>
 <div class="note alt"><span class="lab">Also seen</span><p>Some engineers do this with pink noise and an RTA (<a href="#s8-3">§8.3</a>) rather than purely by ear — faster and more precise on a big rig with many wedges, but the by-ear version above is the one you can do anywhere with nothing but a console, and it's worth being genuinely good at it.</p></div>
-<div class="note alt"><span class="lab">Also seen</span><p>[2026] A newer generation of AI-assisted feedback suppression products (AlphaLabs De-Feedback among them) claim to detect and notch ringing frequencies automatically, faster than a human can react. Where they're used, they're a safety net layered on top of good gain structure and sensible speaker/mic placement — not a replacement for either. Treat any claim that a product removes the need to understand feedback with healthy scepticism; ringing out a wedge by ear remains the skill that gets you hired.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>Automatic feedback suppression — dedicated units and, increasingly, AI-assisted software that detects and notches ringing frequencies faster than a human can react — has existed in various forms for years and keeps getting better. Where it's used, it's a safety net layered on top of good gain structure and sensible speaker/mic placement — not a replacement for either. Treat any claim that a product removes the need to understand feedback with healthy scepticism; ringing out a wedge by ear remains the skill that gets you hired.</p></div>
 </section>
 
 <section class="s" id="s15-9"><h3><span class="n">15.9</span> Who's actually on the monitor desk</h3>
@@ -3147,6 +3190,16 @@ EARS            the only part of the system that actually matters</div>
 <div class="note warn"><span class="lab">Watch it</span><p>Over-de-essed vocals develop a noticeable lisp — the "s" sounds vanish rather than just soften. If it's audibly changing the words, back the amount off; a slightly sibilant vocal is far less distracting than one that sounds like it's had a stroke.</p></div>
 </section>
 
+<section class="s" id="s16-10"><h3><span class="n">16.10</span> Processing order, busses &amp; sidechains</h3>
+<p>Everything above happens in a specific order on a channel strip, and that order matters — gate before EQ, or EQ before gate, gives a genuinely different result, not just a different-sounding one.</p>
+<div class="kv">
+<dt>A typical order</dt><dd>Gate/expander → EQ → compressor → de-esser, then the fader and pan. Gate first so it's triggered by the raw signal rather than one already reshaped by EQ; de-esser last so it reacts to the tone you've actually settled on. Some engineers put compression before EQ instead, so the compressor reacts to the untouched signal — both are legitimate, and which order a desk uses by default usually isn't something you get to freely rearrange.</dd>
+<dt>Insert point</dt><dd>A patch point in that chain — physical on an analogue channel, a menu option on a digital one — where an external processor (an outboard unit, or a plugin on a digital console that offers them) can be dropped in instead of, or alongside, the built-in EQ and dynamics. With nothing plugged into it, the signal just passes straight through.</dd>
+<dt>Bus / mix bus</dt><dd>A shared signal path that more than one channel is summed into — an aux bus (<a href="#s16-5">§16.5</a>'s effects sends), a group or DCA and the matrix (<a href="#s7-3">§7.3</a>), and the main mix bus itself that everything ultimately reaches. Routing a channel "to a bus" just means adding its signal into that shared path rather than sending it straight to the main mix.</dd>
+<dt>Sidechain</dt><dd>Using one signal's level to control processing applied to a different signal, rather than to itself. The live example is a gate on a talkback mic keyed from the console's own output, so it only opens when there's genuinely something to duck for; the studio example is "ducking" a music bed under a voiceover. You won't build these often as a junior tech, but recognising the word — and that it means "controlled by something other than itself" — saves confusion the first time you meet it on a desk.</dd>
+</div>
+</section>
+
 </div></div>
 
 <div class="part" id="p17">
@@ -3166,6 +3219,7 @@ EARS            the only part of the system that actually matters</div>
 <dt>Being your own admin</dt><dd>Diary management, tax (in the UK, registering as self-employed with HMRC if you're trading as a sole trader), and keeping basic records of income and expenses. Unglamorous, but getting caught out at tax time is avoidable with an hour a month.</dd>
 </div>
 <div class="note deep"><span class="lab">Go deeper</span><p>This book won't make you an accountant, and it shouldn't try to. Talk to other freelancers in the industry about what they actually do for insurance and tax — the details change and local practice varies. See <a href="#p18">Part 18</a>.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>A job that crosses into the EU brings its own paperwork — carnets, work permits, visas — on top of all this. See <a href="#s17-8">§17.8</a>.</p></div>
 </section>
 
 <section class="s" id="s17-3"><h3><span class="n">17.3</span> Building a network</h3>
@@ -3211,6 +3265,17 @@ EARS            the only part of the system that actually matters</div>
 <dt>What not to record</dt><dd>Client-confidential details, other people's rates, or anything from a show you weren't supposed to discuss. A factual record of your own work never needs any of that.</dd>
 </div>
 <div class="note alt"><span class="lab">Also seen</span><p>This is the freelance version of the <a href="#hub-guide-log">learning log</a> described earlier in this book — same habit, later purpose. Keep doing it once you're being paid, not just while you're learning.</p></div>
+</section>
+
+<section class="s" id="s17-8"><h3><span class="n">17.8</span> Touring outside the UK</h3>
+<p>Since Brexit, taking a job into the EU means more than packing a passport. None of this is something you'll arrange yourself as a junior on someone else's tour — it's the tour manager's or production company's job — but not recognising the words when they come up makes you look like you don't understand the gig, so it's worth knowing what they mean.</p>
+<div class="kv">
+<dt>ATA Carnet</dt><dd>An international customs document that lets professional equipment cross a border temporarily without paying import duty, on the promise it leaves again within the carnet's validity. Every case on the truck typically needs to be listed against it, matched at each border — which is why an accurate kit list matters even more on an international run.</dd>
+<dt>Work permits &amp; visas</dt><dd>UK crew working in the EU (and vice versa) may need a specific work permit or visa depending on the country and how long the job runs — this varies country by country and changes over time, so it's genuinely not something to assume from a previous job.</dd>
+<dt>The 90/180-day rule</dt><dd>UK passport holders can generally spend up to 90 days in any rolling 180-day period across the Schengen area without a visa — a touring crew member working multiple EU dates across a year needs to actually track this, not estimate it.</dd>
+<dt>Cabotage</dt><dd>EU rules restricting how much a UK-registered truck can move goods between EU countries on one trip — relevant to how a touring truck's route gets planned, not something you'll plan yourself, but a word worth recognising when a tour manager mentions routing headaches.</dd>
+</div>
+<div class="note warn"><span class="lab">Watch it</span><p>All of this changes with government policy and isn't something to work from memory of a previous tour. If an international job is genuinely yours to help plan rather than just crew, get current, specific advice — a carnet agent or a production company with recent experience of the actual route — rather than relying on what applied last time or what worked for someone else's tour.</p></div>
 </section>
 
 </div></div>
@@ -3705,6 +3770,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>AFL</dt><dd>After-Fade Listen — solo mode that reflects the channel's fader position. <a href="#s7-6">§7.6</a></dd></div>
 <div><dt>AI-assisted tools (automixing / feedback suppression)</dt><dd>Emerging products that automatically gain-share open mics or detect and notch ringing frequencies. Worth knowing about, not a substitute for understanding gain structure or ringing out a wedge yourself. <a href="#s7-3">§7.3</a> · <a href="#s15-8">§15.8</a></dd></div>
 <div><dt>Ambient mic</dt><dd>A mic used to blend a sense of the room into a sealed IEM mix. <a href="#s15-4">§15.4</a></dd></div>
+<div><dt>ATA Carnet</dt><dd>An international customs document letting professional equipment cross a border temporarily without import duty, on the promise it leaves again. <a href="#s17-8">§17.8</a></dd></div>
 <div><dt>Audio description</dt><dd>A live spoken narration of a show's visual action for blind and partially-sighted audience members, delivered by a describer over a dedicated feed. <a href="#s6-13">§6.13</a></dd></div>
 <div><dt>Audio lead / A1</dt><dd>The person responsible for the audio system or show mix on that job. Their exact title varies; establish who has authority before changing a live system. <a href="#hub-people">People</a> · <a href="#s1-3">§1.3</a></dd></div>
 <div><dt>AudioMoth</dt><dd>A low-cost, open-source acoustic recorder used for passive acoustic monitoring; full-spectrum versions record ultrasound, so they cover bats as well as birds. <a href="#s18-15">§18.15</a></dd></div>
@@ -3720,6 +3786,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Blacks</dt><dd>Plain black working clothes worn on stage from soundcheck onwards, and always in theatre, so crew don’t catch the audience’s eye. <a href="#s1-6">§1.6</a></dd></div>
 <div><dt>Broadcast submix (TX mix)</dt><dd>A separate, drier mix built for a broadcast or stream feed rather than for the room. <a href="#s14-5">§14.5</a> · <a href="#s14-8">§14.8</a></dd></div>
 <div><dt>BS 7909</dt><dd>The industry code of practice for temporary electrical systems at events. <a href="#s3-8">§3.8</a> · <a href="#s13-2">§13.2</a> · <a href="#s18-8">§18.8</a></dd></div>
+<div><dt>Bus / mix bus</dt><dd>A shared signal path that more than one channel is summed into — an aux, group/DCA, the matrix, or the main mix itself. <a href="#s16-10">§16.10</a> · <a href="#s7-3">§7.3</a></dd></div>
 <div><dt>Call sheet</dt><dd>A personalised day-of document — your own call time, site address, parking and contacts — distinct from the show's overall timing schedule. <a href="#s17-2">§17.2</a></dd></div>
 <div><dt>Call time</dt><dd>The time you are required to be on site and ready to work — not the time you set off. <a href="#s1-7">§1.7</a> · <a href="#s1-4">§1.4</a></dd></div>
 <div><dt>CDM 2015</dt><dd>UK construction safety regulations that apply to event builds and de-rigs. <a href="#s13-1">§13.1</a> · <a href="#s13-6">§13.6</a></dd></div>
@@ -3727,9 +3794,10 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Changeover</dt><dd>The gap between acts where one band's setup is struck and the next built. <a href="#s10-3">§10.3</a></dd></div>
 <div><dt>CIEEM / Chartered Ecologist (CEcol)</dt><dd>The Chartered Institute of Ecology and Environmental Management — the UK professional body for ecologists, and the chartered status that shows continued professional practice. <a href="#s18-15">§18.15</a></dd></div>
 <div><dt>Click track</dt><dd>A metronome feed, usually to the drummer's IEMs, that the band plays to. <a href="#s15-10">§15.10</a></dd></div>
-<div><dt>Clock (digital)</dt><dd>The shared timing reference every device on a digital audio network must agree on. <a href="#s2-9">§2.9</a> · <a href="#s8-2">§8.2</a> · <a href="#s12-14">§12.14</a></dd></div>
+<div><dt>Clock / word clock</dt><dd>The shared timing reference every device on a digital audio network must agree on — "word clock" is the term actually printed on converters and consoles for it. <a href="#s2-9">§2.9</a> · <a href="#s8-2">§8.2</a> · <a href="#s12-14">§12.14</a></dd></div>
 <div><dt>Compressor</dt><dd>Reduces dynamic range by turning down anything above a threshold. <a href="#s16-4">§16.4</a> · <a href="#s7-5">§7.5</a></dd></div>
 <div><dt>Console redundancy / hot-spare</dt><dd>A second console mirroring or ready to take over from the primary if it fails — full real-time redundancy on bigger shows, a manually-loaded spare on smaller ones. <a href="#s7-4">§7.4</a></dd></div>
+<div><dt>COSHH</dt><dd>Control of Substances Hazardous to Health Regulations 2002 — covers anything on site that could harm you if inhaled, touched or swallowed, from haze fluid to cleaning solvents. <a href="#s13-14">§13.14</a></dd></div>
 <div><dt>Crew Chief</dt><dd>Runs the audio crew on site day to day — your boss for the day. <a href="#s1-3">§1.3</a></dd></div>
 <div><dt>Critical distance</dt><dd>The distance from a loudspeaker at which the reverberant field is as loud as the direct sound; beyond it, intelligibility falls away however loud you go. <a href="#s6-15">§6.15</a></dd></div>
 <div><dt>Cue list (lighting)</dt><dd>A sequence of recorded lighting cues triggered in order from a playback fader — Titan's equivalent of a console scene sequence. <a href="#s9-10">§9.10</a></dd></div>
@@ -3766,13 +3834,11 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Feedback</dt><dd>A runaway audio loop between a microphone and a loudspeaker it can hear, heard as a rising howl or ring; fixed by reducing gain first and cutting the ringing frequency second. <a href="#s12-18">§12.18</a> · <a href="#s15-8">§15.8</a></dd></div>
 <div><dt>Fixture personality</dt><dd>The definition file that tells Titan what a lighting fixture's DMX channels actually do. <a href="#s9-10">§9.10</a></dd></div>
 <div><dt>Flexi Channel (DiGiCo)</dt><dd>DiGiCo's reconfigurable channel-strip architecture, letting the order of gate, EQ and dynamics be changed per channel rather than fixed as on most desks. <a href="#s7-1">§7.1</a></dd></div>
-<div><dt>FOH</dt><dd>Front of House — both the mix position in the room and the engineer who works there. <a href="#s1-3">§1.3</a> · <a href="#s15-1">§15.1</a></dd></div>
-<div><dt>FOH (front of house)</dt><dd>Both the mix position out in the room and the engineer working there — what the audience hears, as opposed to monitor world. <a href="#s1-3">§1.3</a> · <a href="#s15-1">§15.1</a></dd></div>
+<div><dt>FOH (front of house)</dt><dd>Front of House — both the mix position out in the room and the engineer who works there, mixing what the audience hears, as opposed to monitor world. <a href="#s1-3">§1.3</a> · <a href="#s15-1">§15.1</a></dd></div>
 <div><dt>Gain / trim</dt><dd>The input control that sets how much the preamp amplifies an incoming signal. <a href="#s2-4">§2.4</a> · <a href="#s12-9">§12.9</a> · <a href="#s12-12">§12.12</a></dd></div>
 <div><dt>Gain compensation</dt><dd>A feature on split digital console systems that automatically applies an equal, opposite digital trim on the other console when one engineer changes the shared analogue preamp gain, so neither console's level jumps unexpectedly. <a href="#s7-3">§7.3</a></dd></div>
 <div><dt>Gate</dt><dd>Mutes a channel below a set threshold, commonly used to control drum bleed. <a href="#s16-3">§16.3</a></dd></div>
-<div><dt>Get-in</dt><dd>The start of load-in on site. <a href="#s19-4">§19.4</a></dd></div>
-<div><dt>Get-in / get-out</dt><dd>Theatre’s words for load-in and derig — the same jobs as <a href="#s1-2">§1.2</a>, different vocabulary depending on the building you’re in. <a href="#s10-4">§10.4</a></dd></div>
+<div><dt>Get-in / get-out</dt><dd>The start and end of load-in and derig on site — theatre's words for the same jobs covered in <a href="#s1-2">§1.2</a>, different vocabulary depending on the building you're in. <a href="#s19-4">§19.4</a> · <a href="#s10-4">§10.4</a></dd></div>
 <div><dt>Grand Master (lighting)</dt><dd>The Titan fader controlling overall output intensity for the whole lighting rig — distinct from a console's audio master. <a href="#s9-10">§9.10</a></dd></div>
 <div><dt>Graphic EQ (GEQ)</dt><dd>Fixed-band EQ, usually 31 bands, adjusted with sliders — fast and visual. Traditional on monitor wedges and system outputs. <a href="#s7-5">§7.5</a> · <a href="#s6-9">§6.9</a></dd></div>
 <div><dt>Ground lift</dt><dd>A switch on a DI box (or an isolation transformer) that disconnects the audio shield to break a ground loop, while leaving the mains safety earth fully intact. Off by default; only switched on to fix a hum. <a href="#s3-9">§3.9</a> · <a href="#s12-3">§12.3</a> · <a href="#s12-10">§12.10</a></dd></div>
@@ -3790,6 +3856,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Immersive audio (object-based)</dt><dd>Systems like L-Acoustics L-ISA or d&amp;b Soundscape that place and move sound precisely across many individually-controlled boxes. <a href="#s6-6">§6.6</a></dd></div>
 <div><dt>Impedance</dt><dd>Resistance to an AC signal, measured in ohms — governs how sources and inputs should be matched. <a href="#s2-7">§2.7</a> · <a href="#s3-9">§3.9</a></dd></div>
 <div><dt>Input list</dt><dd>The numbered list of every audio source on a show, with mic type and power needs. <a href="#s1-5">§1.5</a> · <a href="#s11-2">§11.2</a></dd></div>
+<div><dt>Insert (point)</dt><dd>A patch point in a channel's processing chain — physical on an analogue console, a menu option on a digital one — where an external processor can be dropped in instead of, or alongside, the built-in EQ and dynamics. <a href="#s16-10">§16.10</a></dd></div>
 <div><dt>Intermodulation (intermod)</dt><dd>Unwanted frequencies produced when two or more transmitters mix in a receiver’s front end, which can land on a channel you’re using. Why coordinated frequency groups exist. <a href="#s5-5">§5.5</a></dd></div>
 <div><dt>Interpretation system</dt><dd>Simultaneous-translation equipment — booths, wireless IR/RF receivers — usually fed a clean feed of the source language by audio. <a href="#s6-12">§6.12</a></dd></div>
 <div><dt>IP rating</dt><dd>The two-digit Ingress Protection code (IP54, IP55, IP65…) on outdoor-rated gear, describing resistance to dust and water. <a href="#s6-14">§6.14</a></dd></div>
@@ -3802,6 +3869,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Licensing Act 2003</dt><dd>The UK legislation under which premises licences and Temporary Event Notices are granted — noise limits and curfews are usually attached to these as legal conditions. <a href="#s6-10">§6.10</a></dd></div>
 <div><dt>Limited company</dt><dd>A separate legal business structure some freelancers move to once turnover justifies it, distinct from trading as a sole trader. <a href="#s17-2">§17.2</a></dd></div>
 <div><dt>Limiter</dt><dd>A compressor with a very high ratio, used to stop a signal exceeding a hard ceiling — protective on outputs, essential on IEMs. <a href="#s7-5">§7.5</a> · <a href="#s5-7">§5.7</a></dd></div>
+<div><dt>Line array</dt><dd>A vertical column of matched loudspeaker elements flown together, designed to control vertical coverage over long throw distances. <a href="#s6-2">§6.2</a></dd></div>
 <div><dt>Line check</dt><dd>Proving every individual input works correctly before a show. <a href="#p11">Part 11</a> · <a href="#s19-5">§19.5</a></dd></div>
 <div><dt>Load-in / load-out</dt><dd>Getting the kit into the venue at the start, and back onto the truck at the end — steps 3 and 7 of the hire lifecycle. <a href="#s1-2">§1.2</a> · <a href="#s19-3">§19.3</a></dd></div>
 <div><dt>LOLER</dt><dd>UK regulations governing the inspection of lifting equipment. <a href="#s13-3">§13.3</a></dd></div>
@@ -3854,6 +3922,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Regulatory Reform (Fire Safety) Order 2005</dt><dd>The fire safety law for non-domestic premises in England and Wales — Scotland and Northern Ireland use separate legislation. <a href="#s13-10">§13.10</a></dd></div>
 <div><dt>Reverberation time (RT60)</dt><dd>How long sound takes to decay by 60 dB after the source stops — the single most useful number for how live or dead a room is. <a href="#s6-15">§6.15</a></dd></div>
 <div><dt>RF</dt><dd>Radio frequency — the world of wireless mics and IEM transmission. <a href="#p5">Part 5</a> · <a href="#s12-11">§12.11</a> · <a href="#s18-5">§18.5</a></dd></div>
+<div><dt>RIDDOR</dt><dd>Reporting of Injuries, Diseases and Dangerous Occurrences Regulations 2013 — the law behind reporting accidents and near-misses. <a href="#s13-13">§13.13</a></dd></div>
 <div><dt>Rider</dt><dd>An artist's or client's requested technical needs — aspirational rather than contractual. <a href="#s1-5">§1.5</a></dd></div>
 <div><dt>Ringing out</dt><dd>Deliberately finding and cutting a monitor's feedback-prone frequencies before a mic is anywhere near it. <a href="#s6-9">§6.9</a> · <a href="#s15-8">§15.8</a></dd></div>
 <div><dt>Room mode (standing wave)</dt><dd>A low-frequency resonance set by a room’s dimensions, making bass strong in some positions and absent in others with nothing wrong with the system. <a href="#s6-15">§6.15</a></dd></div>
@@ -3862,6 +3931,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Sample rate</dt><dd>How many times per second a digital audio signal is measured — 48 kHz is the live standard. <a href="#s2-9">§2.9</a> · <a href="#s14-4">§14.4</a> · <a href="#s12-14">§12.14</a></dd></div>
 <div><dt>Scene / snapshot</dt><dd>A stored state of the console that can be recalled — essential in theatre and corporate, used sparingly in live music. <a href="#s7-3">§7.3</a> · <a href="#s7-4">§7.4</a></dd></div>
 <div><dt>Show file</dt><dd>A saved snapshot of every setting on a digital console. <a href="#s7-4">§7.4</a></dd></div>
+<div><dt>Sidechain</dt><dd>Using one signal's level to control processing applied to a different signal — a gate keyed from another input, or a music bed "ducked" under a voiceover. <a href="#s16-10">§16.10</a></dd></div>
 <div><dt>SM</dt><dd>Stage Manager — runs what happens on stage during a show, calls cues in theatre. <a href="#s1-3">§1.3</a></dd></div>
 <div><dt>Smaart</dt><dd>Rational Acoustics' dual-channel FFT software — the industry standard for live system measurement and tuning. Paid, with widely respected training. <a href="#s8-3">§8.3</a> · <a href="#s6-8">§6.8</a> · <a href="#s18-6">§18.6</a></dd></div>
 <div><dt>Soundscape ecology</dt><dd>The study of sound in an environment, including biological sounds, weather and human activity. It is a possible later bridge between audio skills and conservation, not a replacement for live-audio foundations. <a href="#hub-conservation">Outside work</a></dd></div>
@@ -3886,6 +3956,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Virtual soundcheck</dt><dd>Building a mix from a recorded multitrack instead of a live band on stage. <a href="#s14-3">§14.3</a></dd></div>
 <div><dt>VocalEyes</dt><dd>A UK charity providing audio description and other access services to arts venues. <a href="#s6-13">§6.13</a></dd></div>
 <div><dt>Wedge</dt><dd>A floor monitor speaker angled up at a performer. <a href="#s15-2">§15.2</a> · <a href="#s15-6">§15.6</a></dd></div>
+<div><dt>Wireless Workbench</dt><dd>Shure's free RF coordination and monitoring software — plan frequencies, then watch a live system for interference during a show. <a href="#s5-5">§5.5</a> · <a href="#s18-14">§18.14</a></dd></div>
 <div><dt>Working at Height Regulations 2005</dt><dd>The duty covering anywhere a fall could cause injury — ladders, MEWPs, rigging above head height. <a href="#s13-1">§13.1</a> · <a href="#s13-3">§13.3</a></dd></div>
 <div><dt>XLR</dt><dd>The three-pin locking connector carrying almost all mic and line-level audio in live sound. <a href="#s3-1">§3.1</a> · <a href="#s12-2">§12.2</a> · <a href="#s9-7">§9.7</a></dd></div>
 </div>
@@ -3937,7 +4008,7 @@ EARS            the only part of the system that actually matters</div>
   <button type="button" data-hub-target="hub-today"><span class="ic">◉</span>Today</button>
   <button type="button" id="bbJob" aria-haspopup="dialog" aria-expanded="false"><span class="ic">⚡</span>Help</button>
   <button type="button" data-hub-target="hub-learn"><span class="ic">↗</span>Learn</button>
-  <button type="button" id="bbSearch" aria-haspopup="dialog" aria-expanded="false"><span class="ic">⌕</span>Find</button>
+  <button type="button" id="bbSearch" aria-haspopup="dialog" aria-expanded="false"><span class="ic">⌕</span>Library</button>
 </nav>
 
 <div class="sheet-overlay" id="sheetOverlay"></div>
@@ -4661,7 +4732,7 @@ function closeAllPanels(){
   var bbJ = document.getElementById('bbJob'); if(bbJ) bbJ.classList.remove('on');
   setExpanded('bbContents', false); setExpanded('bbSearch', false);
   setExpanded('bbAppearance', false); setExpanded('bbJob', false);
-  setExpanded('appearanceBtn', false); setExpanded('hubAppearance', false);
+  setExpanded('appearanceBtn', false); setExpanded('cogAppearance', false);
   if(typeof syncRailToggleUi === 'function') syncRailToggleUi();
   clearModal();
   /* hand focus back to whatever opened the sheet */
@@ -4694,7 +4765,7 @@ function openAppearance(){
   openOverlay();
   var bbA = document.getElementById('bbAppearance'); if(bbA) bbA.classList.add('on');
   setExpanded('bbAppearance', true);
-  setExpanded('appearanceBtn', true); setExpanded('hubAppearance', true);
+  setExpanded('appearanceBtn', true); setExpanded('cogAppearance', true);
   setModal(appearancePanel, 'Appearance settings');
   var close = document.getElementById('appearanceClose');
   if(close) setTimeout(function(){ close.focus(); }, 30);
@@ -4705,10 +4776,8 @@ var appearanceClose = document.getElementById('appearanceClose');
 if(appearanceBtn) appearanceBtn.addEventListener('click', openAppearance);
 if(bbAppearance) bbAppearance.addEventListener('click', openAppearance);
 if(appearanceClose) appearanceClose.addEventListener('click', closeAllPanels);
-var hubAppearance = document.getElementById('hubAppearance');
-if(hubAppearance) hubAppearance.addEventListener('click', openAppearance);
-var hubOpenLibrary = document.getElementById('hubOpenLibrary');
-if(hubOpenLibrary) hubOpenLibrary.addEventListener('click', function(){ openContentsSheet(false); });
+var cogAppearance = document.getElementById('cogAppearance');
+if(cogAppearance) cogAppearance.addEventListener('click', openAppearance);
 
 /* palette swatches */
 var paletteRow = document.getElementById('paletteRow');
