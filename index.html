@@ -610,6 +610,153 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
   .tw th,.tw td{padding:7px 6px;white-space:normal;overflow-wrap:anywhere;word-break:normal;-webkit-hyphens:auto;hyphens:auto}
   .tw th{font-size:clamp(9.5px,2.7vw,11.5px);letter-spacing:.035em}
 }
+/* ================= app screens: Home, Job Hub, Support, Learning pathway =========
+   Each of the four is a `.hub.screen` container, so it inherits the existing hub
+   card/grid/shelf styling and the one-screen-at-a-time router below. Only the
+   pieces that are new to these screens are defined here. */
+.screen-head{margin:0 0 8px}
+.screen-head .eyebrow{color:var(--petrol);font-weight:700;margin-bottom:6px}
+.screen-head h2{font-size:clamp(26px,4vw,38px);line-height:1.05;margin:0 0 10px;letter-spacing:-.01em}
+.screen-head .screen-lead{color:var(--ink-2);max-width:70ch;margin:0 0 6px;font-size:16.5px}
+.screen-head .hub-nav{margin:16px 0 6px}
+
+/* ---------- home: welcome, continue, destinations ---------- */
+.home-intro h2{max-width:22ch}
+.home-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+.home-intro .home-actions .hub-button{background:transparent;border-color:rgba(255,255,255,.75);color:#fff;cursor:pointer;text-decoration:none}
+.home-intro .home-actions .hub-button:hover{background:#fff;color:#0F3033;border-color:#fff}
+
+.home-continue{display:flex;align-items:center;gap:12px;margin:14px 0 0;padding:14px 18px;border:1px solid var(--rule-2);border-left:4px solid var(--amber);border-radius:12px;background:var(--card);text-decoration:none;color:var(--ink);box-shadow:var(--shadow)}
+.home-continue:hover{border-color:var(--petrol);border-left-color:var(--amber);background:var(--petrol-soft)}
+.home-continue-lab{font-family:var(--mono);font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);flex:0 0 auto}
+.home-continue strong{font-family:var(--display);font-size:16px;font-weight:600;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.home-continue .arrow{color:var(--petrol);font-size:18px;flex:0 0 auto}
+.home-continue[hidden]{display:none}
+
+.dest-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.dest-card{display:grid;grid-template-columns:auto 1fr;grid-template-areas:"icon title" "icon sub" "body body" "links links";column-gap:14px;align-items:start;
+  text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:20px;box-shadow:var(--shadow);
+  border-top:4px solid var(--petrol);transition:border-color .12s,transform .12s}
+.dest-card:hover{border-color:var(--petrol);border-top-color:var(--petrol);transform:translateY(-1px)}
+.dest-icon{grid-area:icon;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:12px;background:var(--petrol-soft);color:var(--petrol-ink);font-size:20px;line-height:1}
+.dest-title{grid-area:title;font-family:var(--display);font-size:22px;font-weight:600;color:var(--petrol-ink);line-height:1.15}
+.dest-sub{grid-area:sub;font-family:var(--mono);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-top:3px}
+.dest-body{grid-area:body;font-size:15px;line-height:1.45;color:var(--ink-2);margin-top:14px}
+.dest-links{grid-area:links;display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.dest-links em{font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;color:var(--ink-2);border:1px solid var(--rule-2);border-radius:20px;padding:4px 9px;background:var(--paper)}
+.dest-support{border-top-color:var(--fault)}.dest-support .dest-icon{background:var(--fault-soft);color:var(--fault)}
+.dest-path{border-top-color:var(--amber)}.dest-path .dest-icon{background:var(--amber-soft);color:var(--amber)}
+.dest-lib{border-top-color:var(--ink-3)}.dest-lib .dest-icon{background:var(--paper-2);color:var(--ink-2)}
+
+/* ---------- job hub: the nine stages of a job ---------- */
+.stage-line{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.stage-line .stage a{display:block;height:100%;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
+.stage-line .stage a:hover{border-color:var(--petrol);background:var(--petrol-soft)}
+.stage-n{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--petrol);color:#fff;font-family:var(--mono);font-size:12px;font-weight:700;margin-bottom:8px}
+.stage-t{display:block;font-family:var(--display);font-size:17px;font-weight:600;color:var(--petrol-ink);margin-bottom:5px}
+.stage-d{display:block;font-size:14.5px;line-height:1.4;color:var(--ink-2)}
+.stage-c{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-top:9px;padding-top:8px;border-top:1px solid var(--rule)}
+#job-stages h4{margin:26px 0 4px;font-size:15px}
+
+/* ---------- support: make it safe ---------- */
+.emergency{border:1px solid var(--fault);border-left:5px solid var(--fault);border-radius:14px;background:var(--fault-soft);padding:20px 22px;box-shadow:var(--shadow)}
+.emergency-lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--fault);font-weight:700;margin:0 0 12px}
+.emergency-steps{list-style:none;counter-reset:em;margin:0;padding:0}
+.emergency-steps li{counter-increment:em;position:relative;padding:0 0 14px 40px;font-size:15.5px;line-height:1.45}
+.emergency-steps li:last-child{padding-bottom:0}
+.emergency-steps li::before{content:counter(em);position:absolute;left:0;top:-1px;width:26px;height:26px;border-radius:50%;background:var(--fault);color:#fff;font-family:var(--mono);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.emergency-steps strong{color:var(--fault)}
+.emergency-grid{margin-top:14px}
+.hub-card.alert{border-left-color:var(--fault)}
+.hub-card.alert .kicker{color:var(--fault)}
+.hub-card.alert a{color:var(--fault)}
+
+.fault-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:6px}
+.fault-grid a{display:block;text-decoration:none;color:var(--ink-2);background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 13px;font-size:13px;line-height:1.35}
+.fault-grid a:hover{border-color:var(--petrol);background:var(--petrol-soft);color:var(--petrol-ink)}
+.fault-grid a strong{display:block;font-family:var(--display);font-size:14.5px;color:var(--petrol-ink);margin-bottom:3px}
+
+/* ---------- support: calculators ---------- */
+.calc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:start}
+.calc-grid .calc{margin:0;border-radius:14px;padding:18px 20px;box-shadow:var(--shadow)}
+.calc-grid .calc h4{font-size:15px}
+.calc-intro{font-size:14.5px;line-height:1.45;color:var(--ink-2);margin:0 0 12px}
+.calc-note{font-size:13px;line-height:1.45;color:var(--ink-3);margin:12px 0 0;padding-top:10px;border-top:1px solid var(--rule)}
+.calc-out{display:block}
+.calc-pointer{border:1px solid var(--rule-2);border-left:4px solid var(--petrol);border-radius:8px;background:var(--paper-2);padding:11px 14px;margin:18px 0;font-size:14.5px}
+.calc-pointer a{font-family:var(--display);font-weight:600;color:var(--petrol-ink);text-decoration:none}
+.calc-pointer a:hover{text-decoration:underline}
+.calc-pointer span{color:var(--ink-2);display:block;font-size:13.5px;margin-top:2px}
+
+/* ---------- support: what to say ---------- */
+p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petrol-ink);background:var(--petrol-soft);border-left:3px solid var(--petrol);border-radius:0 8px 8px 0;padding:11px 14px;margin:0 0 11px}
+.support-guides{margin-top:16px}
+
+/* ---------- pathway: stage cards ---------- */
+.stage-card{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:22px;margin:0 0 14px;box-shadow:var(--shadow)}
+.stage-card>header{border-bottom:1px solid var(--rule);padding-bottom:16px;margin-bottom:16px}
+.stage-badge{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#fff;background:var(--petrol);border-radius:20px;padding:5px 11px;margin-bottom:10px}
+.stage-card>header h4{font-family:var(--display);font-size:24px;font-weight:600;color:var(--petrol-ink);margin:0 0 7px;line-height:1.1}
+.stage-card>header p{margin:0;color:var(--ink-2);font-size:15.5px;max-width:72ch}
+.stage-cols{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:26px}
+.stage-col .kicker{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--petrol);font-weight:700;margin:0 0 9px}
+.stage-col .kicker+.kicker,.stage-col .stage-do+.kicker{margin-top:20px}
+.stage-col ul.check{margin:0}
+.stage-col ul.check li{font-size:14.5px}
+.stage-do{list-style:none;margin:0;padding:0}
+.stage-do li{position:relative;padding:0 0 9px 20px;font-size:14.5px;line-height:1.4;color:var(--ink-2)}
+.stage-do li::before{content:"";position:absolute;left:0;top:.55em;width:7px;height:7px;border-radius:50%;background:var(--amber)}
+.stage-train{font-size:14.5px;line-height:1.45;color:var(--ink-2);background:var(--amber-soft);border-radius:10px;padding:12px 14px;margin:0}
+.stage-card .reset-link{font-size:13px}
+#path-stage-2 .stage-badge,#path-stage-2 .stage-card>header h4{}
+.free-block{margin:0 0 20px}
+.free-block .kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--petrol);font-weight:700;margin:0 0 9px}
+
+/* ---------- sidebar: the four screens above the library ---------- */
+.rail-dest{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0 18px 12px}
+.rail-dest a{display:flex;align-items:center;gap:8px;text-decoration:none;border:1px solid var(--rule-2);border-radius:10px;padding:9px 10px;background:var(--card);font-family:var(--display);font-size:13.5px;color:var(--ink-2)}
+.rail-dest a .ic{font-size:14px;line-height:1;color:var(--petrol)}
+.rail-dest a:hover{border-color:var(--petrol);color:var(--petrol-ink);background:var(--petrol-soft)}
+.rail-dest a.on{border-color:var(--petrol);background:var(--petrol-soft);color:var(--petrol-ink);font-weight:600}
+
+/* a three-across action card has no room for a link beside the text */
+.hub-grid:not(.two) .hub-action{flex-direction:column;align-items:flex-start;gap:11px}
+.stage-card>header h4{text-transform:none;letter-spacing:0}
+/* Home leads with its own welcome panel, so the masthead above it stays short */
+.hero.tb-active{padding:40px 0 30px}
+.hero .handbook-logo{width:66px;height:66px;border-radius:19px;margin-bottom:14px}
+.hero .meterbar{margin-top:22px}
+@media (max-width:820px){
+  .hero.tb-active{padding:24px 0 22px}
+  .hero .handbook-logo{width:54px;height:54px;border-radius:16px;margin-bottom:11px}
+  .hero .standfirst{font-size:16.5px}
+  .hero .meterbar{margin-top:16px}
+}
+
+@media (max-width:1000px){
+  .dest-grid{grid-template-columns:1fr}
+  .stage-line{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fault-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .calc-grid{grid-template-columns:1fr}
+  .stage-cols{grid-template-columns:1fr;gap:20px}
+}
+@media (max-width:820px){
+  .screen-head h2{font-size:27px}
+  .screen-head .screen-lead{font-size:16px}
+  .stage-line{grid-template-columns:1fr}
+  .fault-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .dest-card{padding:17px}
+  .dest-title{font-size:20px}
+  .stage-card{padding:18px}
+  .stage-card>header h4{font-size:21px}
+  .emergency{padding:17px 18px}
+  .home-continue{padding:12px 14px;flex-wrap:wrap;gap:4px 10px}
+  .home-continue strong{flex:1 0 100%;white-space:normal}
+  .calc-grid .calc{padding:16px}
+}
+@media (max-width:400px){
+  .fault-grid{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
@@ -631,9 +778,14 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
     </div>
     <p class="hits" id="hits" role="status" aria-live="polite"></p>
   </div>
+  <nav class="rail-dest" aria-label="Main screens">
+    <a href="#hub" data-nav="hub"><span class="ic" aria-hidden="true">&#8962;</span>Home</a>
+    <a href="#job" data-nav="job"><span class="ic" aria-hidden="true">&#9673;</span>Job Hub</a>
+    <a href="#support" data-nav="support"><span class="ic" aria-hidden="true">&#9889;</span>Support</a>
+    <a href="#path" data-nav="path"><span class="ic" aria-hidden="true">&#8599;</span>Pathway</a>
+  </nav>
   <div class="rail-library"><span>Library</span><a href="#s19-1">Checklists →</a></div>
   <nav class="rail-routes" aria-label="Library routes">
-    <a href="#hub" data-nav="hub">Home</a>
     <a href="#p1" data-nav="p1">Learn the job</a>
     <a href="#p2" data-nav="p2">Learn core audio</a>
     <a href="#p5" data-nav="p5">Learn systems &amp; skills</a>
@@ -651,11 +803,9 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
   <a class="appbar-brand brandmark" href="#hub"><span class="brand-treeby">Treeby</span><span class="brand-sound">Sound</span> <small>audio workday companion</small></a>
   <nav class="appbar-nav" id="appbarNav" aria-label="Main sections">
     <a class="appbar-link" href="#hub" data-nav="hub">Home</a>
-    <a class="appbar-link" href="#p1" data-nav="p1">Learn the job</a>
-    <a class="appbar-link" href="#p2" data-nav="p2"><span class="nav-long">Learn core audio</span><span class="nav-short">Core audio</span></a>
-    <a class="appbar-link" href="#p5" data-nav="p5"><span class="nav-long">Learn systems &amp; skills</span><span class="nav-short">Systems</span></a>
-    <a class="appbar-link" href="#p11" data-nav="p11">Check &amp; fix</a>
-    <a class="appbar-link" href="#p17" data-nav="p17"><span class="nav-long">Career development</span><span class="nav-short">Career</span></a>
+    <a class="appbar-link" href="#job" data-nav="job">Job Hub</a>
+    <a class="appbar-link" href="#support" data-nav="support">Support</a>
+    <a class="appbar-link" href="#path" data-nav="path"><span class="nav-long">Learning pathway</span><span class="nav-short">Pathway</span></a>
   </nav>
   <button class="appbar-library" id="appbarLibrary" type="button" aria-expanded="false" aria-label="Open the library and search">Library ⌕</button>
 </header>
@@ -679,17 +829,117 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
   </div>
 </header>
 
-<section class="hub" id="hub" aria-label="Your audio development hub">
-  <nav class="hub-nav" aria-label="Development hub">
-    <a href="#hub-today">Next job</a><a href="#hub-job">On a job</a><a href="#hub-workspace">Job workspace</a><a href="#hub-learn">Learn</a><a href="#hub-people">People</a><a href="#hub-me">Me</a><a href="#hub-conservation">Outside work</a><a href="#hub-guides">Quick guides</a>
-  </nav>
+<section class="hub screen" id="hub" aria-label="Home">
 
-  <div class="hub-intro">
-    <p class="eyebrow">What's in this pack</p>
+  <div class="hub-intro home-intro">
+    <p class="eyebrow" id="homeEyebrow">Your workday companion</p>
     <h2>Everything from your first shift to specialist skills</h2>
-    <p>Running a job and the people around you, core audio fundamentals, RF, PA and networked systems, working across different departments and event types, fault-finding and working safely, recording and mixing craft, and career, learning and field reference — checklists, glossary and calculators, all in one place.</p>
-    <p style="margin-top:16px"><button class="hub-button" id="hubOpenLibrary" type="button">Open the Library →</button></p>
-    <p style="margin-top:10px;font-size:13px">Or open it any time from <strong>Library</strong> in the bottom bar.</p>
+    <p>The job itself, the fix when something breaks, the route through the learning, and the whole handbook underneath it — in one place, on this device, offline.</p>
+    <div class="home-actions">
+      <button class="hub-button" id="hubOpenLibrary" type="button">Search the library</button>
+      <a class="hub-button" href="#p0">How to use this app</a>
+    </div>
+  </div>
+
+  <a class="home-continue" id="homeContinue" href="#p0" hidden>
+    <span class="home-continue-lab">Pick up where you left off</span>
+    <strong id="homeContinueTitle">Part 0 — How to use this thing</strong>
+    <span class="arrow" aria-hidden="true">→</span>
+  </a>
+
+  <section class="hub-section" id="home-go">
+    <h3>Four places, four jobs</h3>
+    <p class="hub-lead">Everything in TreebySound lives in one of these. Pick the one that matches what you are doing right now — the navigation bar holds the same four, plus the library.</p>
+    <div class="dest-grid">
+
+      <a class="dest-card dest-job" href="#job">
+        <span class="dest-icon" aria-hidden="true">◉</span>
+        <span class="dest-title">Job Hub</span>
+        <span class="dest-sub">Before, during and after a job</span>
+        <span class="dest-body">Prep and pack lists, the shape of a build, the people around you and who owns what, and a private job workspace for documents, contacts and unfamiliar kit.</span>
+        <span class="dest-links"><em>Next job</em><em>On a job</em><em>Job workspace</em><em>People</em></span>
+      </a>
+
+      <a class="dest-card dest-support" href="#support">
+        <span class="dest-icon" aria-hidden="true">⚡</span>
+        <span class="dest-title">Support</span>
+        <span class="dest-sub">On the spot, right now</span>
+        <span class="dest-body">Make it safe, the first sixty seconds, fault-finding by subsystem, six working calculators, the pocket reference and the words to use when you need help.</span>
+        <span class="dest-links"><em>Emergency</em><em>Faults</em><em>Calculators</em><em>Look it up</em></span>
+      </a>
+
+      <a class="dest-card dest-path" href="#path">
+        <span class="dest-icon" aria-hidden="true">↗</span>
+        <span class="dest-title">Learning pathway</span>
+        <span class="dest-sub">What to read, in what order</span>
+        <span class="dest-body">Five stages from safe hands to a chosen specialism — each one telling you exactly which sections to read, what to practise on a real job, and which free training fits at that point.</span>
+        <span class="dest-links"><em>Stages 1–5</em><em>Free training</em><em>Career</em><em>Outside work</em></span>
+      </a>
+
+      <a class="dest-card dest-lib" href="#p0">
+        <span class="dest-icon" aria-hidden="true">▤</span>
+        <span class="dest-title">Library</span>
+        <span class="dest-sub">The whole handbook, 21 parts</span>
+        <span class="dest-body">The reference underneath all of the above: audio essentials, cables, mics, RF, PA, consoles, networks, safety, mixing, checklists and a full glossary. Search reaches every word of it.</span>
+        <span class="dest-links"><em>Search</em><em>Checklists</em><em>Glossary</em><em>How-to index</em></span>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="hub-section" id="home-now">
+    <h3>Straight to it</h3>
+    <p class="hub-lead">The handful of pages that get opened most, without going through a menu first.</p>
+    <div class="hub-shelf">
+      <a href="#support-now"><strong>Make it safe</strong>Stop, mute, isolate — then tell the right person.</a>
+      <a href="#s12-8"><strong>First sixty seconds</strong>The fault script, not a feeling.</a>
+      <a href="#s19-5"><strong>Line check sheet</strong>Prove every input, one at a time.</a>
+      <a href="#s19-13"><strong>Pocket reference</strong>Numbers and scripts, one page.</a>
+      <a href="#support-calc"><strong>Calculators</strong>Level, delay, cable, SPL, RF.</a>
+      <a href="#s19-1"><strong>All checklists</strong>Every stage of a job, tickable.</a>
+      <a href="#s20-1"><strong>Glossary</strong>Every term, A–Z and by area.</a>
+      <a href="#hub-workspace"><strong>Job workspace</strong>This job's pack, saved on this device.</a>
+    </div>
+  </section>
+
+  <section class="hub-section" id="home-progress">
+    <h3>Where you are</h3>
+    <p class="hub-lead">Jobs come up now and then rather than every week, so this counts what you have actually done — not how long it has taken.</p>
+    <div class="hub-card progress-summary" id="progressSummary">
+      <p class="kicker">Development markers</p>
+      <div class="progress-summary-row">
+        <div class="progress-meter" role="img" aria-labelledby="progressSummaryText"><span id="progressMeterFill"></span></div>
+        <p class="progress-summary-text" id="progressSummaryText" aria-live="polite"></p>
+      </div>
+      <p class="progress-summary-note">Counted from the getting-started and building-on-it lists in <a href="#hub-today">Job Hub</a> and the quarterly review in the <a href="#hub-me">learning pathway</a>. Nothing here is a deadline — it is just a way of seeing progress that is otherwise easy to forget you have made.</p>
+    </div>
+    <div class="hub-grid two" style="margin-top:14px">
+      <article class="hub-card hub-action"><div><p class="kicker">Next job coming up</p><h4>Run the prep, then arrive ready</h4><p>Kit list, schedule, input list, stage plan — and one question written down before you leave the house.</p></div><a href="#hub-today">Open Job Hub →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Nothing booked</p><h4>Move one stage forward</h4><p>The pathway tells you what to read next and what to ask for on the job after this one.</p></div><a href="#path-stages">Open the pathway →</a></article>
+    </div>
+  </section>
+
+  <section class="hub-section" id="home-about">
+    <h3>How this app is put together</h3>
+    <p class="hub-lead">Same material as ever, arranged so the navigation actually means something.</p>
+    <div class="hub-grid">
+      <article class="hub-card"><p class="kicker">The four screens</p><h4>Task first, not chapter first</h4><p><strong>Job Hub</strong> is the run-up to a job and the job itself. <strong>Support</strong> is for the moment something is wrong or you need a number. The <strong>pathway</strong> is the long game. The <strong>library</strong> is everything, in order, underneath.</p></article>
+      <article class="hub-card"><p class="kicker">Everything is searchable</p><h4>One index, all 21 parts</h4><p>Search reaches every word of the handbook and every one of these screens. Open it from <strong>Library</strong> in the bottom bar, or press <kbd>/</kbd> on a keyboard.</p></article>
+      <article class="hub-card"><p class="kicker">It is yours</p><h4>Notes, ticks and themes stay on this device</h4><p>Section notes, checklists, the job workspace and your chosen colours are saved only in this browser and never sent anywhere. Export a backup now and then from <strong>Appearance</strong>.</p></article>
+    </div>
+    <article class="hub-card" style="margin-top:14px"><p class="kicker">What's in this pack</p><h4>The full contents, in one sentence</h4><p>Running a job and the people around you, core audio fundamentals, RF, PA and networked systems, working across different departments and event types, fault-finding and working safely, recording and mixing craft, and career, learning and field reference — checklists, glossary and calculators, all in one place.</p></article>
+  </section>
+
+</section>
+
+<section class="hub screen" id="job" aria-label="Job Hub">
+  <div class="screen-head">
+    <p class="eyebrow">Job Hub</p>
+    <h2>Before, during and after a job</h2>
+    <p class="screen-lead">Everything tied to an actual booking: what to do in the run-up, the order a job runs in and the checklist for each stage, the people around you and what they need, and a private workspace for this job's documents, contacts and unfamiliar kit.</p>
+    <nav class="hub-nav" aria-label="Job Hub sections">
+      <a href="#hub-today">Before the job</a><a href="#job-stages">Shape of a job</a><a href="#hub-job">On a job</a><a href="#hub-workspace">Job workspace</a><a href="#hub-people">People</a><a href="#hub-guides">Quick guides</a>
+    </nav>
   </div>
 
   <section class="hub-section" id="hub-today">
@@ -705,6 +955,34 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
       <div class="progress-deck-nav"><button class="progress-deck-btn" type="button" data-progress-prev hidden>← Back</button><span class="progress-deck-count" aria-live="polite"></span><button class="progress-deck-btn" type="button" data-progress-next>Next →</button></div>
     </div>
   </section>
+  <section class="hub-section" id="job-stages">
+    <h3>The shape of a job</h3>
+    <p class="hub-lead">Most jobs run through the same nine stages whatever the event is. Each one has a checklist in the library — this is the map, and the checklists are the detail. Tap a stage to open its list.</p>
+    <ol class="stage-line">
+      <li class="stage"><a href="#s19-9"><span class="stage-n">1</span><span class="stage-t">Advance</span><span class="stage-d">Read the brief, kit list, schedule, input list and stage plan. Write down the one question nobody has answered.</span><span class="stage-c">19.9 Advancing checklist</span></a></li>
+      <li class="stage"><a href="#s19-2"><span class="stage-n">2</span><span class="stage-t">Warehouse prep</span><span class="stage-d">Pull, test and label. Anything unfamiliar gets identified and read about here, not on site.</span><span class="stage-c">19.2 Warehouse prep checklist</span></a></li>
+      <li class="stage"><a href="#s19-3"><span class="stage-n">3</span><span class="stage-t">Load-out</span><span class="stage-d">Count it onto the truck against the list. What is missing here is missing on site.</span><span class="stage-c">19.3 Load-out checklist</span></a></li>
+      <li class="stage"><a href="#s19-4"><span class="stage-n">4</span><span class="stage-t">Load-in &amp; build</span><span class="stage-d">Power, cable routes, comms and patch — agreed with the people who own them before anything is run.</span><span class="stage-c">19.4 Load-in &amp; build checklist</span></a></li>
+      <li class="stage"><a href="#s19-5"><span class="stage-n">5</span><span class="stage-t">Line check</span><span class="stage-d">Prove one input at a time, in order, against the input list. No assumptions.</span><span class="stage-c">19.5 Line check sheet</span></a></li>
+      <li class="stage"><a href="#s19-6"><span class="stage-n">6</span><span class="stage-t">Before doors</span><span class="stage-d">The last calm check: levels, mutes, spares, batteries, comms, walkways clear.</span><span class="stage-c">19.6 Show-day checklist</span></a></li>
+      <li class="stage"><a href="#p16"><span class="stage-n">7</span><span class="stage-t">Show</span><span class="stage-d">Watch, listen, stay ahead. Faults go through the script, not through guessing.</span><span class="stage-c">Part 16 · Make it sound good</span></a></li>
+      <li class="stage"><a href="#s19-7"><span class="stage-n">8</span><span class="stage-t">Derig &amp; return</span><span class="stage-d">Finish accurately even when tired. Faulty kit is labelled and quarantined, never quietly returned to stock.</span><span class="stage-c">19.7 Derig &amp; return checklist</span></a></li>
+      <li class="stage"><a href="#hub-guide-log"><span class="stage-n">9</span><span class="stage-t">After</span><span class="stage-d">Three minutes of learning log turns one shift into something you can build on.</span><span class="stage-c">End-of-shift log guide</span></a></li>
+    </ol>
+    <h4>When the job is a particular kind of job</h4>
+    <p class="hub-lead">Extra lists that sit on top of the nine stages above, not instead of them.</p>
+    <div class="hub-shelf">
+      <a href="#s19-8"><strong>RF day</strong>Batteries, scan, antennas, spares, coordination.</a>
+      <a href="#s19-10"><strong>Monitor world &amp; IEM</strong>Wedges, packs, mixes and safe levels on stage.</a>
+      <a href="#s19-11"><strong>Recording</strong>Capture, levels, backups and getting the files off.</a>
+      <a href="#s19-18"><strong>Corporate / conference</strong>Presenters, laptops, comfort monitors, timings.</a>
+      <a href="#s19-19"><strong>Theatre show day</strong>Cues, show control, calls and rehearsal etiquette.</a>
+      <a href="#s19-14"><strong>Outdoor &amp; weather</strong>Wet, wind, temperature, power and cable protection.</a>
+      <a href="#s19-15"><strong>Access services</strong>Hearing loops, captions and assisted listening.</a>
+      <a href="#s19-17"><strong>Your own bag</strong>What to carry, before you leave home.</a>
+    </div>
+    <p class="hub-disclaimer">Every list above is in <a href="#p19">Part 19 · On-site checklists &amp; quick reference</a>, and every tick you make there is saved on this device.</p>
+  </section>
 
   <section class="hub-section" id="hub-job">
     <h3>On a job</h3><p class="hub-lead">Use the smallest safe next action. Never guess with power, flying, safety-critical equipment or a system you have not been authorised to alter. <a href="#hub-workspace">Open Job workspace →</a></p>
@@ -714,7 +992,6 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
     </div>
     <div class="hub-shelf" style="margin-top:14px"><a href="#s19-5"><strong>Line check</strong>Prove one input at a time.</a><a href="#s19-6"><strong>Before doors</strong>Last calm check before the room opens.</a><a href="#s12-2"><strong>Fault kit</strong>What to carry and why.</a><a href="#s19-7"><strong>Derig &amp; return</strong>Finish accurately, even when tired.</a></div>
   </section>
-
   <section class="hub-section" id="hub-workspace">
     <h3>Job workspace</h3><p class="hub-lead">A private, reusable pocket job pack for the move from Bespoke Events London’s Medway warehouse into varied event work. Keep documents in Bespoke’s approved systems; record where they are and what matters here. This page saves only in this browser.</p>
     <div class="workspace" id="jobWorkspace">
@@ -748,20 +1025,6 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
       </div>
     </div>
   </section>
-
-  <section class="hub-section" id="hub-learn">
-    <h3>Learn</h3><p class="hub-lead">Learn the job in layers: safe hands first, then signal flow, then systems and operating. A focused session whenever you've got twenty minutes is enough — there's no clock running.</p>
-    <div class="hub-grid">
-      <article class="hub-card"><p class="kicker">Stage 1</p><h4>Safe, dependable foundations</h4><p>Cables, connectors, cases, labels, manual handling, signal flow and asking before acting.</p><p><a href="#p2">Signal basics</a> · <a href="#p3">Cables</a> · <a href="#p13">Safety</a></p></article>
-      <article class="hub-card"><p class="kicker">Stage 2</p><h4>Assistant to capable tech</h4><p>Builds, patching, line checks, microphones, desks and simple faults under supervision.</p><p><a href="#p4">Mics</a> · <a href="#p7">Consoles</a> · <a href="#p11">Line check</a></p></article>
-      <article class="hub-card"><p class="kicker">Stage 3</p><h4>Choose depth carefully</h4><p>RF, Dante, monitors, corporate AV, recording, systems or live music—follow real work opportunities rather than collecting random courses.</p><p><a href="#p5">RF</a> · <a href="#p8">Networking</a> · <a href="#p15">Monitors</a></p></article>
-    </div>
-    <div class="hub-grid two" style="margin-top:14px"><article class="hub-card"><p class="kicker">The learning loop</p><h4>Use real work as the syllabus</h4><ol class="hub-steps"><li><strong>Early on:</strong> make the physical layer automatic—common stock, cable care, labels and safe lifting.</li><li><strong>Once that's solid:</strong> trace signal paths and support a line check; log fault patterns as you meet them.</li><li><strong>When you're ready:</strong> ask for one supervised desk, patch or wireless task; explain the result back in plain language.</li></ol></article><article class="hub-card"><p class="kicker">One job, one learning loop</p><h4>Turn experience into progress</h4><ol class="hub-steps"><li>Before: choose one thing to notice or practise.</li><li>During: ask one well-timed question and write down the answer.</li><li>After: add one useful line to the learning log.</li><li>Next time: use that note on a real task before studying something new.</li></ol><p><a class="hub-button" href="#hub-guide-log">Open learning log guide</a></p></article></div>
-    <h4>Free, current learning routes</h4>
-    <div class="hub-shelf"><a href="https://www.getdante.com/resources/training/dante-certification-3rd-edition/" target="_blank" rel="noopener"><strong>Dante Certification</strong>Free Levels 1–3 from Audinate; do Level 1 when basic signal flow is familiar.</a><a href="https://www.shure.com/en-ASIA/shure-academy/online-training" target="_blank" rel="noopener"><strong>Shure Academy</strong>Free, self-paced audio, wireless and AV/networking training.</a><a href="https://www.shure.com/en-US/docs/quickstart/Wireless-Workbench" target="_blank" rel="noopener"><strong>Wireless Workbench</strong>Free professional RF software and an official starter guide.</a><a href="https://www.avolites.com/support/titan-pc-suite/" target="_blank" rel="noopener"><strong>Titan PC Suite</strong>Official download and manual path; only practise on a version supported by the workplace.</a></div>
-    <p class="hub-disclaimer">Free does not mean “do it all now.” Start with the equipment the company actually uses. External sites change; use the official links here rather than old video tutorials.</p>
-  </section>
-
   <section class="hub-section" id="hub-people">
     <h3>People</h3><p class="hub-lead">Being easy to work with is a technical skill. These cards explain who owns what, how to help, and when to stop and ask.</p>
     <div class="hub-grid">
@@ -773,19 +1036,454 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
       <article class="hub-card role-card"><h4>Rigging, power &amp; safety leads</h4><dl><dt>They need</dt><dd>You to respect exclusion zones, stop instructions and authorisation limits.</dd><dt>You need</dt><dd>Safe access, approved positions and clear ownership.</dd><dt>Say</dt><dd>“I’m not authorised to change that. Who owns this system?”</dd></dl></article>
     </div>
   </section>
+  <section class="hub-section" id="hub-guides" aria-label="Quick guides">
+    <h3>Quick guides for the job itself</h3><p class="hub-lead">Open these when the job is familiar enough to need a prompt, not a textbook.</p>
+    <details class="hub-guide" id="hub-guide-log"><summary>End-of-shift learning log — three minutes</summary><ol class="seq"><li>Write the job type and your role, with no confidential client detail.</li><li>Record one item you handled and what it does.</li><li>Record one issue: symptom, what changed, checks made, who resolved it.</li><li>Write one question to ask the right person on the next shift.</li><li>Choose one five-to-ten-minute topic in this handbook before the next job.</li></ol></details>
+    
+    <details class="hub-guide"><summary>How to learn an unfamiliar piece of kit at work</summary><ol class="seq"><li>Ask whether you may explore it and when—not during a pressured build.</li><li>Find the exact model and open its official manual.</li><li>Identify inputs, outputs, power, network/control and normal status lights.</li><li>Follow one safe, reversible task with an experienced person nearby.</li><li>Write a small “what this box does here” note; never save over a live show file.</li></ol></details>
+    <details class="hub-guide" id="hub-guide-equipment"><summary>How to ask for the equipment-system information</summary><p>Ask the person who owns warehouse systems rather than exporting data yourself:</p><ol class="seq"><li>“I’m building a private learning app for my audio development. May I have a read-only list or screenshots of the labels and categories I am allowed to use?”</li><li>Ask specifically for the fields TreebySound needs: stock name, manufacturer/model, internal label/barcode, category, case or shelf location, connector/cable type, prep notes, service status and hire-in flag.</li><li>Confirm what must <strong>not</strong> be copied: client data, supplier prices, serial numbers, access credentials, job contacts or live availability.</li><li>Start with one small category—microphones, DIs or common cable types—and compare the export against physical labels with a supervisor.</li><li>Only then decide whether to import a cleaned reference list or simply link out to the company system. Keeping one source of truth is more important than copying everything.</li></ol></details>
+  </section>
+</section>
+
+<section class="hub screen" id="support" aria-label="Support">
+  <div class="screen-head">
+    <p class="eyebrow">Support</p>
+    <h2>On the spot</h2>
+    <p class="screen-lead">For the moment something is wrong, or you need a number, a script or a page you can read in twenty seconds. Nothing here needs you to remember where it lives in the book.</p>
+    <nav class="hub-nav" aria-label="Support sections">
+      <a href="#support-now">Make it safe</a><a href="#support-fault">Something's wrong</a><a href="#support-calc">Calculators</a><a href="#support-ref">Look it up</a><a href="#support-say">What to say</a>
+    </nav>
+  </div>
+
+  <section class="hub-section" id="support-now">
+    <h3>Make it safe first</h3>
+    <p class="hub-lead">Before diagnosing anything: stop the harm. Nothing on a show is worth an injury, and nobody has ever been criticised for muting something.</p>
+    <div class="emergency">
+      <p class="emergency-lab">The order, every time</p>
+      <ol class="emergency-steps">
+        <li><strong>Stop or mute.</strong> Kill the output, stop the movement, clear the area. A silent show for thirty seconds is a recoverable problem.</li>
+        <li><strong>Make it safe.</strong> Isolate power at the source if it is electrical. Do not re-energise anything you did not isolate yourself.</li>
+        <li><strong>Get the right person.</strong> Say what happened, where, and whether anyone is hurt — before you say anything technical.</li>
+        <li><strong>Do not tidy it away.</strong> Leave the scene as it is if anyone is hurt or nearly was. It has to be reported accurately.</li>
+        <li><strong>Write it down</strong> while it is fresh: time, what changed, what you saw, who you told.</li>
+      </ol>
+    </div>
+    <div class="hub-grid emergency-grid">
+      <article class="hub-card hub-action alert"><div><p class="kicker">Someone is hurt, or nearly was</p><h4>Accident &amp; near-miss</h4><p>What has to be reported, by whom, and why a near-miss counts even when nothing broke.</p></div><a href="#s13-13">13.13 RIDDOR →</a></article>
+      <article class="hub-card hub-action alert"><div><p class="kicker">Fire, evacuation, unfamiliar venue</p><h4>Emergency basics on site</h4><p>Alarms, exits, muster points and what the induction should have told you before you started.</p></div><a href="#s13-10">13.10 Site &amp; fire basics →</a></article>
+      <article class="hub-card hub-action alert"><div><p class="kicker">Something electrical</p><h4>Power faults — what is yours to touch</h4><p>The line between a check you may make and a system only a qualified person may open.</p></div><a href="#s12-15">12.15 Power faults →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Sudden loud noise or feedback</p><h4>Protect ears first</h4><p>The immediate response to feedback, and why your own hearing is the one bit of kit with no spare.</p></div><a href="#s12-18">12.18 Feedback →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">You are out of your depth</p><h4>When to stop and ask</h4><p>The point at which continuing is the risky option — and how to hand it over without drama.</p></div><a href="#s12-7">12.7 Stop and ask →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Alone, early or late</p><h4>Working alone</h4><p>What to agree before you are on site by yourself, and what not to attempt without a second person.</p></div><a href="#s13-12">13.12 Working alone →</a></article>
+    </div>
+    <p class="hub-disclaimer">Legal and safety detail lives in <a href="#p13">Part 13 · Work safe &amp; meet the standard</a> — electricity at work, LOLER and PUWER, manual handling, noise, CDM, RAMS, PAT, PPE and COSHH. Read it when you are calm, not when you need it.</p>
+  </section>
+
+  <section class="hub-section" id="support-fault">
+    <h3>Something's wrong</h3>
+    <p class="hub-lead">A script beats a hunch. Work the sixty seconds first, then go to the subsystem that matches what you found.</p>
+    <div class="hub-grid two">
+      <article class="hub-card"><p class="kicker">The first sixty seconds</p><h4>Say these out loud, in order</h4><ol class="hub-steps"><li>Is it safe? Mute or stop if not.</li><li>One thing, or everything? That halves the search immediately.</li><li>What changed? Nothing fails for no reason.</li><li>Check the cheap, obvious points first — cable, connector, phantom, mute, gain, patch.</li><li>Trace one direction through the signal path, and only change one thing at a time.</li><li>Escalate early, with a clear update.</li></ol><p><a class="hub-button" href="#s12-8">Full script — 12.8</a></p></article>
+      <article class="hub-card"><p class="kicker">While you work</p><h4>The rules that stop you making it worse</h4><ol class="hub-steps"><li><strong>One change at a time</strong>, and put it back if it did not help.</li><li><strong>Substitute, do not rewire</strong> — swap a known-good cable in rather than re-terminating live.</li><li><strong>Never alter a system you are not authorised to alter.</strong> Ask.</li><li><strong>Label anything you take out of service</strong> instead of returning it to stock.</li><li><strong>Log it</strong> — intermittent faults are only ever solved by notes.</li></ol><p><a class="hub-button" href="#s12-1">The method — 12.1</a></p></article>
+    </div>
+    <h4>Go to the subsystem</h4>
+    <div class="fault-grid">
+      <a href="#s12-9"><strong>Mics &amp; cables</strong>No signal, crackle, intermittent</a>
+      <a href="#s12-10"><strong>DI &amp; instruments</strong>Hum, level, ground lift</a>
+      <a href="#s12-11"><strong>Wireless &amp; RF</strong>Dropouts, hits, range</a>
+      <a href="#s12-12"><strong>Consoles</strong>Routing, mutes, show files</a>
+      <a href="#s12-13"><strong>Speakers &amp; amps</strong>Silence, distortion, protect</a>
+      <a href="#s12-14"><strong>Dante &amp; networks</strong>Clocking, subscriptions, glitching</a>
+      <a href="#s12-15"><strong>Power</strong>Trips, phases, what is yours</a>
+      <a href="#s12-16"><strong>DMX &amp; lighting-adjacent</strong>The faults you get blamed for</a>
+      <a href="#s12-3"><strong>Hum &amp; buzz</strong>Ground loops, the practical fix</a>
+      <a href="#s12-5"><strong>Intermittent</strong>The ones that hide when you look</a>
+      <a href="#s12-6"><strong>Common patterns</strong>Symptom → likely cause</a>
+      <a href="#s12-2"><strong>Fault kit</strong>What to carry and why</a>
+    </div>
+    <p class="hub-disclaimer">All of this is <a href="#p12">Part 12 · Diagnose &amp; fix faults</a> in full, including keeping a fault log (12.17) that makes the next one faster.</p>
+  </section>
+
+  <section class="hub-section" id="support-calc">
+    <h3>Calculators</h3>
+    <p class="hub-lead">Six working tools for the questions that come up on site. They are sanity checks, not design software — each one says what it does not tell you.</p>
+
+    <div class="calc-grid">
+<div class="calc" id="calcLevel">
+<h4>Level converter</h4>
+<p class="calc-intro">Move between the three ways the same voltage gets written down. Mic, line and speaker level are explained in <a href="#s2-2">2.2</a>.</p>
+<div class="calc-row">
+<div class="calc-field"><label for="calcLevelValue">Value</label><input type="number" id="calcLevelValue" value="0" step="any"></div>
+<div class="calc-field"><label for="calcLevelUnit">Unit</label>
+<select id="calcLevelUnit">
+<option value="dbu">dBu</option>
+<option value="dbv">dBV</option>
+<option value="v">Volts (RMS)</option>
+</select>
+</div>
+</div>
+<div class="calc-out" id="calcLevelOut">0 dBu = 0.775 V = −2.2 dBV</div>
+<p class="calc-note">Voltages are RMS. 0 dBu is 0.775 V, 0 dBV is 1 V — which is why the same signal reads differently on two meters.</p>
+</div>
+<div class="calc" id="calcDelay">
+<h4>Distance &amp; delay time</h4>
+<p class="calc-intro">How long sound takes to cover a distance — for delay stacks, time-aligning a fill, or knowing why the back of the room is late. Air temperature genuinely changes the answer over a long throw.</p>
+<div class="calc-row">
+<div class="calc-field"><label for="calcDelayValue">Value</label><input type="number" id="calcDelayValue" value="30" step="any"></div>
+<div class="calc-field"><label for="calcDelayUnit">Unit</label>
+<select id="calcDelayUnit">
+<option value="m">Metres</option>
+<option value="ft">Feet</option>
+<option value="ms">Milliseconds</option>
+</select>
+</div>
+<div class="calc-field"><label for="calcDelayTemp">Air temp (°C)</label><input type="number" id="calcDelayTemp" value="20" step="any"></div>
+</div>
+<div class="calc-out" id="calcDelayOut">—</div>
+<p class="calc-note">Does not include any delay the system itself adds — converters, networks and processing all cost time. Always confirm a delay setting by ear and with the person who owns the system.</p>
+</div>
+<div class="calc" id="calcSpl">
+<h4>SPL over distance</h4>
+<p class="calc-intro">The inverse-square rule: in free air, every doubling of distance costs about 6 dB. Useful for sanity-checking coverage, delay-fill level and how loud the front row is compared with the mix position.</p>
+<div class="calc-row">
+<div class="calc-field"><label for="calcSplRef">SPL (dB)</label><input type="number" id="calcSplRef" value="100" step="any"></div>
+<div class="calc-field"><label for="calcSplFrom">Measured at (m)</label><input type="number" id="calcSplFrom" value="1" min="0" step="any"></div>
+<div class="calc-field"><label for="calcSplTo">Listener at (m)</label><input type="number" id="calcSplTo" value="20" min="0" step="any"></div>
+</div>
+<div class="calc-out" id="calcSplOut">—</div>
+<p class="calc-note">Free-field only. Indoors, a reflective room falls off far less than this; a line array is designed not to. Treat it as the worst case, not a measurement — and never as a substitute for a real meter when noise limits apply.</p>
+</div>
+<div class="calc" id="calcDb">
+<h4>Decibels &amp; ratios</h4>
+<p class="calc-intro">Translate between a change in dB and what it actually does to the signal — and to how loud it sounds. The two ratios differ because voltage and power are not the same quantity.</p>
+<div class="calc-row">
+<div class="calc-field"><label for="calcDbValue">Value</label><input type="number" id="calcDbValue" value="6" step="any"></div>
+<div class="calc-field"><label for="calcDbMode">Is</label>
+<select id="calcDbMode">
+<option value="db">A change in dB</option>
+<option value="vratio">A voltage ratio (×)</option>
+<option value="pratio">A power ratio (×)</option>
+</select>
+</div>
+</div>
+<div class="calc-out" id="calcDbOut">—</div>
+<p class="calc-note">The rules of thumb worth carrying: +6 dB doubles voltage, +3 dB doubles power, and about +10 dB is what most people call "twice as loud". Perceived loudness depends on the material and the room, so the last one is a guide, not physics.</p>
+</div>
+<div class="calc" id="calcRf">
+<h4>RF wavelength &amp; antenna spacing</h4>
+<p class="calc-intro">From a frequency, the wavelength and the antenna lengths and spacings that follow from it. Answers the two questions that come up on every wireless build: how far apart do these need to be, and is that whip the right one?</p>
+<div class="calc-row">
+<div class="calc-field"><label for="calcRfFreq">Frequency (MHz)</label><input type="number" id="calcRfFreq" value="606" min="1" step="any"></div>
+</div>
+<div class="calc-out" id="calcRfOut">—</div>
+<p class="calc-note">Spacing is a starting point, not a guarantee — antenna type, height, sightline, cable loss and everything metal in the room matter more than the numbers. Always scan and coordinate properly; see <a href="#p5">Part 5</a> and the <a href="#s19-8">RF day checklist</a>.</p>
+</div>
+<div class="calc" id="calcCableLoss">
+<h4>Speaker cable loss estimator</h4>
+<p class="calc-intro">A rough, practical check for "is this cable thin enough over this distance to actually matter" — not a design tool, just enough to sanity-check a long run before you commit to it.</p>
+<div class="calc-row">
+<div class="calc-field"><label for="calcCableLen">Run length (m, one-way)</label><input type="number" id="calcCableLen" value="30" min="0" step="any"></div>
+<div class="calc-field"><label for="calcCableGauge">Cable gauge</label>
+<select id="calcCableGauge">
+<option value="1.5">1.5 mm²</option>
+<option value="2.5" selected>2.5 mm²</option>
+<option value="4">4 mm²</option>
+<option value="6">6 mm²</option>
+</select>
+</div>
+<div class="calc-field"><label for="calcCableLoad">Speaker load</label>
+<select id="calcCableLoad">
+<option value="4">4 Ω</option>
+<option value="8" selected>8 Ω</option>
+<option value="16">16 Ω</option>
+</select>
+</div>
+</div>
+<div class="calc-out" id="calcCableOut">—</div>
+<p class="calc-note">Copper, round-trip resistance, nominal load. Real speakers are not a fixed impedance, so treat this as "does this matter at all", not as a specification.</p>
+</div>
+    </div>
+    <p class="hub-disclaimer">The numbers behind these are explained where they belong in the library: levels in <a href="#s2-2">2.2</a>, speaker cable in <a href="#s3-3">3.3</a>, and the field figures in the <a href="#s19-13">pocket reference</a>.</p>
+  </section>
+
+  <section class="hub-section" id="support-ref">
+    <h3>Look it up</h3>
+    <p class="hub-lead">The reference pages worth having open, rather than remembering.</p>
+    <div class="hub-grid">
+      <article class="hub-card hub-action"><div><p class="kicker">One page, everything numeric</p><h4>Pocket reference</h4><p>Levels, gain staging, common frequencies, connector pinouts, the fault script. Printable on its own.</p></div><a href="#s19-13">19.13 →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Every step-by-step guide</p><h4>How-to index</h4><p>By area, and again as a full A–Z, so you can find the procedure without knowing the part number.</p></div><a href="#s19-12">19.12 →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Every term</p><h4>Glossary</h4><p>Full A–Z plus a by-area view for when you half-know the word but not the spelling.</p></div><a href="#s20-1">20.1 →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Symptom → likely cause</p><h4>Common fault patterns</h4><p>The short table that solves a surprising share of what actually goes wrong.</p></div><a href="#s12-6">12.6 →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Every list, tickable</p><h4>All checklists</h4><p>Advance, prep, load-in, line check, doors, derig, plus the job-type specific ones.</p></div><a href="#s19-1">19.1 →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Prove one input at a time</p><h4>Line check sheet</h4><p>The single most useful page on a build day.</p></div><a href="#s19-5">19.5 →</a></article>
+    </div>
+  </section>
+
+  <section class="hub-section" id="support-say">
+    <h3>What to say</h3>
+    <p class="hub-lead">Half of support is wording. These are the sentences that get you help quickly and keep you credible.</p>
+    <div class="hub-grid two">
+      <article class="hub-card"><p class="kicker">Reporting a fault</p><h4>Symptom, change, checks, ask</h4><p class="say">"Channel 12 has no signal at the desk. It worked at line check. I've swapped the cable and tried a different input — the fault follows the mic. Do you want me to swap the mic, or leave it and flag it?"</p><p>Four parts, in that order: what is wrong, what changed, what you have already eliminated, and the specific permission you are asking for.</p></article>
+      <article class="hub-card"><p class="kicker">Stopping safely</p><h4>Refusing without a row</h4><p class="say">"I'm not authorised to change that. Who owns this system?"</p><p class="say">"I need to stop this until someone qualified looks at it. Where can I find them?"</p><p>Neither sentence is an argument, and neither needs you to know the answer — only who does.</p></article>
+      <article class="hub-card"><p class="kicker">Under time pressure</p><h4>Offer a decision, not a problem</h4><p class="say">"This needs a decision before doors: we can do A now, or B if we get another twenty minutes."</p><p>Production can act on that. "It's not working" gives them nothing to act on.</p></article>
+      <article class="hub-card"><p class="kicker">To an artist or presenter</p><h4>Calm, short, and then go</h4><p class="say">"I'm going to check that with the audio lead and come straight back to you."</p><p>No technical monologue when someone is about to walk on. Fix it, then explain if they ask.</p></article>
+    </div>
+    <p class="hub-lead" style="margin-top:16px">Who owns what, and what each of them needs from you, is in <a href="#hub-people">People</a> in the Job Hub.</p>
+    <div class="support-guides">
+      <details class="hub-guide" id="support-guide-help"><summary>How to ask for help without freezing</summary><ol class="seq"><li>Make the situation safe: mute, stop or keep clear where appropriate.</li><li>State the symptom in one line: “Channel 12 has no signal at the desk.”</li><li>State what changed and what you checked.</li><li>Ask for the next authorised action, not a vague rescue.</li><li>Watch the fix and note the reason, not only the button pressed.</li></ol></details>
+    </div>
+  </section>
+</section>
+
+<section class="hub screen" id="path" aria-label="Learning pathway">
+  <div class="screen-head">
+    <p class="eyebrow">Learning pathway</p>
+    <h2>What to read, in what order, and what to do with it</h2>
+    <p class="screen-lead">The library is 21 parts and several hundred sections. This is the route through it — five stages, each one telling you exactly which sections to read in order, what to practise on a real job before moving on, and which free training is worth doing at that point and not before.</p>
+    <nav class="hub-nav" aria-label="Pathway sections">
+      <a href="#path-stages">The five stages</a><a href="#hub-learn">How to learn it</a><a href="#path-free">Free training</a><a href="#hub-me">Your own pace</a><a href="#path-career">Career</a><a href="#hub-conservation">Outside work</a>
+    </nav>
+  </div>
+
+  <section class="hub-section" id="path-intro">
+    <h3>How the pathway works</h3>
+    <div class="hub-grid">
+      <article class="hub-card"><p class="kicker">Order matters</p><h4>Each stage assumes the one before</h4><p>Nothing here is arbitrary. The reading in stage three only makes sense once the signal path in stage two is automatic. Skipping ahead is how people end up with certificates and no hands.</p></article>
+      <article class="hub-card"><p class="kicker">Real work is the syllabus</p><h4>Reading unlocks doing, not the other way round</h4><p>Every stage has one practical thing to have done before you move on. If the jobs are not coming up yet, read anyway — but count the stage as open until you have done it for real.</p></article>
+      <article class="hub-card"><p class="kicker">No clock</p><h4>Stages, not months</h4><p>Jobs come up now and then rather than every week. A stage takes as long as it takes; the ticks below are the only progress measure that means anything.</p></article>
+    </div>
+    <p class="hub-disclaimer">Every tick on this page is saved on this device only. Tick a line when you have actually read it — the point is to know where you got to, not to complete a list.</p>
+  </section>
+
+  <section class="hub-section" id="path-stages">
+    <h3>The five stages</h3>
+    <p class="hub-lead">Read top to bottom. Each list is in the order to read it in, and every line opens the section itself.</p>
+
+    <article class="stage-card" id="path-stage-1">
+      <header><span class="stage-badge">Stage 1</span><h4>Safe hands</h4><p>Be useful and safe on a job before you are technical on one. This stage is about not being a liability: knowing what things are called, how the day runs, and what you are not allowed to touch.</p></header>
+      <div class="stage-cols">
+        <div class="stage-col">
+          <p class="kicker">Read in this order</p>
+          <ul class="check" id="chk-path-1">
+            <li><label><input type="checkbox"><span><a href="#p0">Part 0 — How to use this thing</a></span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p1">Part 1 — How a job runs &amp; who owns what</a>, all of it</span></label></li>
+            <li><label><input type="checkbox"><span><a href="#s13-1">13.1 The regulations that actually apply to you</a></span></label></li>
+            <li><label><input type="checkbox"><span><a href="#s13-4">13.4 Manual handling</a> and <a href="#s13-11">13.11 PPE</a></span></label></li>
+            <li><label><input type="checkbox"><span><a href="#s13-5">13.5 Noise at work — protecting your own hearing</a></span></label></li>
+            <li><label><input type="checkbox"><span><a href="#s2-1">2.1–2.4</a> — what a signal is, levels, balanced vs unbalanced</span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p3">Part 3 — Connections, cables &amp; power</a>, all of it</span></label></li>
+            <li><label><input type="checkbox"><span><a href="#s19-2">19.2 Warehouse prep checklist</a> and <a href="#s19-17">19.17 Your own bag</a></span></label></li>
+          </ul>
+          <p><a href="#" class="reset-link" data-target="chk-path-1">Reset this stage</a></p>
+        </div>
+        <div class="stage-col">
+          <p class="kicker">Do this on a real job</p>
+          <ul class="stage-do">
+            <li>Identify and return common stock without rushing or guessing.</li>
+            <li>Coil, label and route a cable so someone else can use it.</li>
+            <li>Assist a build and a patch while taking direction.</li>
+            <li>Ask for feedback at the end of a shift, and write down the answer.</li>
+          </ul>
+          <p class="kicker">Free training that fits now</p>
+          <p class="stage-train">None yet — and that is deliberate. At this stage the company's own kit is the syllabus. The one exception: if you are handed radio mics, do the free <a href="https://www.shure.com/en-ASIA/shure-academy/online-training" target="_blank" rel="noopener">Shure Academy</a> microphone basics.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="stage-card" id="path-stage-2">
+      <header><span class="stage-badge">Stage 2</span><h4>Signal flow</h4><p>Understand what you are plugging together, well enough to trace a whole path out loud from the mic to the box. This is the stage that makes everything after it possible.</p></header>
+      <div class="stage-cols">
+        <div class="stage-col">
+          <p class="kicker">Read in this order</p>
+          <ul class="check" id="chk-path-2">
+            <li><label><input type="checkbox"><span><a href="#p2">Part 2 — Audio essentials</a>, all of it this time</span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p4">Part 4 — Microphones &amp; stage capture</a></span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p6">Part 6 — PA &amp; sound systems</a>, the first half</span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p11">Part 11 — Test before doors</a>, all of it</span></label></li>
+            <li><label><input type="checkbox"><span><a href="#s19-5">19.5 Line check sheet</a> — then use it</span></label></li>
+            <li><label><input type="checkbox"><span><a href="#s12-8">12.8 The first sixty seconds</a> and <a href="#s12-1">12.1 The method</a></span></label></li>
+            <li><label><input type="checkbox"><span><a href="#s19-4">19.4 Load-in &amp; build checklist</a></span></label></li>
+          </ul>
+          <p><a href="#" class="reset-link" data-target="chk-path-2">Reset this stage</a></p>
+        </div>
+        <div class="stage-col">
+          <p class="kicker">Do this on a real job</p>
+          <ul class="stage-do">
+            <li>Follow the current input list and patch without relying on memory.</li>
+            <li>Support a line check, then run one with someone watching.</li>
+            <li>Prepare an assigned mic, DI or radio-mic task to the agreed standard.</li>
+            <li>Describe one fault properly: symptom, what changed, what you checked.</li>
+          </ul>
+          <p class="kicker">Free training that fits now</p>
+          <p class="stage-train"><a href="https://www.shure.com/en-ASIA/shure-academy/online-training" target="_blank" rel="noopener">Shure Academy</a> — microphones, wireless basics and audio fundamentals, self-paced and free. Read <a href="#s18-4">18.4 Gain staging &amp; signal flow</a> for what else is worth your time here.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="stage-card" id="path-stage-3">
+      <header><span class="stage-badge">Stage 3</span><h4>Operating</h4><p>Own a real task on a real job. Desk fluency, fault-finding you can do under pressure, and working alongside other departments without stepping on them.</p></header>
+      <div class="stage-cols">
+        <div class="stage-col">
+          <p class="kicker">Read in this order</p>
+          <ul class="check" id="chk-path-3">
+            <li><label><input type="checkbox"><span><a href="#p7">Part 7 — Mixing desks &amp; show files</a></span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p12">Part 12 — Diagnose &amp; fix faults</a>, all of it</span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p9">Part 9 — Working with other teams</a></span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p10">Part 10 — Types of event &amp; what changes</a></span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p13">Part 13 — Work safe &amp; meet the standard</a>, now in full</span></label></li>
+            <li><label><input type="checkbox"><span><a href="#s19-6">19.6 Show-day — before doors</a> and <a href="#s19-7">19.7 Derig &amp; return</a></span></label></li>
+          </ul>
+          <p><a href="#" class="reset-link" data-target="chk-path-3">Reset this stage</a></p>
+        </div>
+        <div class="stage-col">
+          <p class="kicker">Do this on a real job</p>
+          <ul class="stage-do">
+            <li>Own the line check for a job, start to finish.</li>
+            <li>Complete one supervised console, patch or show-file task and explain it back.</li>
+            <li>Find and fix one fault using the method, not a hunch — and log it.</li>
+            <li>Hand something over to another department cleanly, in advance.</li>
+          </ul>
+          <p class="kicker">Free training that fits now</p>
+          <p class="stage-train">Download the offline editor for the console you actually use and build a show file at home — see <a href="#s18-2">18.2 Console &amp; offline editors</a>. Then <a href="https://www.getdante.com/resources/training/dante-certification-3rd-edition/" target="_blank" rel="noopener">Dante Certification Level 1</a>: free, and the point at which basic signal flow is familiar enough for it to stick.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="stage-card" id="path-stage-4">
+      <header><span class="stage-badge">Stage 4</span><h4>Systems</h4><p>The layers underneath a bigger show: wireless, networked audio, monitors and capture. This is where free training starts to earn its keep, because the manufacturers give away the good material.</p></header>
+      <div class="stage-cols">
+        <div class="stage-col">
+          <p class="kicker">Read in this order</p>
+          <ul class="check" id="chk-path-4">
+            <li><label><input type="checkbox"><span><a href="#p5">Part 5 — Wireless &amp; RF</a>, all of it</span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p8">Part 8 — Software, Dante &amp; networks</a></span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p6">Part 6 — PA &amp; sound systems</a>, now the whole part</span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p15">Part 15 — Monitor mixes &amp; IEMs</a></span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p14">Part 14 — Capture, stream &amp; hand over audio</a></span></label></li>
+            <li><label><input type="checkbox"><span><a href="#s19-8">19.8 RF day checklist</a>, <a href="#s19-10">19.10 Monitor world</a>, <a href="#s19-11">19.11 Recording</a></span></label></li>
+          </ul>
+          <p><a href="#" class="reset-link" data-target="chk-path-4">Reset this stage</a></p>
+        </div>
+        <div class="stage-col">
+          <p class="kicker">Do this on a real job</p>
+          <ul class="stage-do">
+            <li>Run a scan and build a coordinated frequency plan with supervision.</li>
+            <li>Patch and clock a Dante network, and explain what would break it.</li>
+            <li>Build and look after a monitor mix, safely, for one act or session.</li>
+            <li>Capture a job cleanly and hand the files over with usable notes.</li>
+          </ul>
+          <p class="kicker">Free training that fits now</p>
+          <p class="stage-train"><a href="https://www.getdante.com/resources/training/dante-certification-3rd-edition/" target="_blank" rel="noopener">Dante Levels 2 and 3</a>; <a href="https://www.shure.com/en-US/docs/quickstart/Wireless-Workbench" target="_blank" rel="noopener">Wireless Workbench</a> with the official quick-start; and <a href="#s18-6">18.6 System tuning &amp; measurement</a> for what is free and what is genuinely worth paying for. Check <a href="#s18-5">18.5</a> for UK licensing before you coordinate anything for real.</p>
+        </div>
+      </div>
+    </article>
+
+    <article class="stage-card" id="path-stage-5">
+      <header><span class="stage-badge">Stage 5</span><h4>Choose a direction</h4><p>Depth in one area rather than a collection of certificates. Follow the work that is actually available to you, then get properly good at it.</p></header>
+      <div class="stage-cols">
+        <div class="stage-col">
+          <p class="kicker">Read in this order</p>
+          <ul class="check" id="chk-path-5">
+            <li><label><input type="checkbox"><span><a href="#p16">Part 16 — Make it sound good</a></span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p17">Part 17 — Career path &amp; next steps</a>, all of it</span></label></li>
+            <li><label><input type="checkbox"><span><a href="#p18">Part 18 — Free learning &amp; trusted sources</a>, then pick two</span></label></li>
+            <li><label><input type="checkbox"><span><a href="#s20-2">20.2 Glossary by area</a> — as an honest self-test</span></label></li>
+            <li><label><input type="checkbox"><span>Re-read the part covering your chosen specialism, properly</span></label></li>
+          </ul>
+          <p><a href="#" class="reset-link" data-target="chk-path-5">Reset this stage</a></p>
+        </div>
+        <div class="stage-col">
+          <p class="kicker">Do this on a real job</p>
+          <ul class="stage-do">
+            <li>Advance and run a small job end to end, and hand it over cleanly.</li>
+            <li>Support a newer starter through their first build.</li>
+            <li>Choose one primary direction and say it out loud to your audio lead.</li>
+            <li>Keep client-safe evidence of what you have done — see <a href="#s17-7">17.7</a>.</li>
+          </ul>
+          <p class="kicker">Free training that fits now</p>
+          <p class="stage-train">Now it depends on the direction: theatre show control (<a href="#s18-13">18.13</a>), lighting control (<a href="#s18-10">18.10</a>), broadcast loudness (<a href="#s18-17">18.17</a>), monitor world (<a href="#s18-18">18.18</a>), assistive listening (<a href="#s18-11">18.11</a>). Join something — see <a href="#s18-12">18.12 Professional &amp; training bodies</a>.</p>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section class="hub-section" id="hub-learn">
+    <h3>Learn it in layers</h3><p class="hub-lead">Learn the job in layers: safe hands first, then signal flow, then systems and operating. A focused session whenever you've got twenty minutes is enough — there's no clock running.</p>
+    <div class="hub-grid">
+      <article class="hub-card"><p class="kicker">Stage 1</p><h4>Safe, dependable foundations</h4><p>Cables, connectors, cases, labels, manual handling, signal flow and asking before acting.</p><p><a href="#p2">Signal basics</a> · <a href="#p3">Cables</a> · <a href="#p13">Safety</a></p></article>
+      <article class="hub-card"><p class="kicker">Stage 2</p><h4>Assistant to capable tech</h4><p>Builds, patching, line checks, microphones, desks and simple faults under supervision.</p><p><a href="#p4">Mics</a> · <a href="#p7">Consoles</a> · <a href="#p11">Line check</a></p></article>
+      <article class="hub-card"><p class="kicker">Stage 3</p><h4>Choose depth carefully</h4><p>RF, Dante, monitors, corporate AV, recording, systems or live music—follow real work opportunities rather than collecting random courses.</p><p><a href="#p5">RF</a> · <a href="#p8">Networking</a> · <a href="#p15">Monitors</a></p></article>
+    </div>
+    <div class="hub-grid two" style="margin-top:14px"><article class="hub-card"><p class="kicker">The learning loop</p><h4>Use real work as the syllabus</h4><ol class="hub-steps"><li><strong>Early on:</strong> make the physical layer automatic—common stock, cable care, labels and safe lifting.</li><li><strong>Once that's solid:</strong> trace signal paths and support a line check; log fault patterns as you meet them.</li><li><strong>When you're ready:</strong> ask for one supervised desk, patch or wireless task; explain the result back in plain language.</li></ol></article><article class="hub-card"><p class="kicker">One job, one learning loop</p><h4>Turn experience into progress</h4><ol class="hub-steps"><li>Before: choose one thing to notice or practise.</li><li>During: ask one well-timed question and write down the answer.</li><li>After: add one useful line to the learning log.</li><li>Next time: use that note on a real task before studying something new.</li></ol><p><a class="hub-button" href="#hub-guide-log">Open learning log guide</a></p></article></div>
+    <h4>The four free routes that matter most</h4>
+    <p class="hub-lead">The full list, sorted by when each one is worth doing, is in <a href="#path-free">Free training</a> below.</p>
+    <div class="hub-shelf"><a href="https://www.getdante.com/resources/training/dante-certification-3rd-edition/" target="_blank" rel="noopener"><strong>Dante Certification</strong>Free Levels 1–3 from Audinate; do Level 1 when basic signal flow is familiar.</a><a href="https://www.shure.com/en-ASIA/shure-academy/online-training" target="_blank" rel="noopener"><strong>Shure Academy</strong>Free, self-paced audio, wireless and AV/networking training.</a><a href="https://www.shure.com/en-US/docs/quickstart/Wireless-Workbench" target="_blank" rel="noopener"><strong>Wireless Workbench</strong>Free professional RF software and an official starter guide.</a><a href="https://www.avolites.com/support/titan-pc-suite/" target="_blank" rel="noopener"><strong>Titan PC Suite</strong>Official download and manual path; only practise on a version supported by the workplace.</a></div>
+    <p class="hub-disclaimer">Free does not mean “do it all now.” Start with the equipment the company actually uses. External sites change; use the official links here rather than old video tutorials.</p>
+  </section>
+  <section class="hub-section" id="path-free">
+    <h3>Free training, in the order it is worth doing</h3>
+    <p class="hub-lead">There is a lot of genuinely good free training in this industry, and doing it in the wrong order wastes it. This is the same material as <a href="#p18">Part 18</a>, sorted by when it will actually stick.</p>
+
+    <div class="free-block">
+      <p class="kicker">Do these first — they cost nothing and they are official</p>
+      <div class="hub-shelf">
+        <a href="https://www.shure.com/en-ASIA/shure-academy/online-training" target="_blank" rel="noopener"><strong>Shure Academy</strong>Free, self-paced audio, wireless and AV/networking training. The best starting point that exists.</a>
+        <a href="https://www.getdante.com/resources/training/dante-certification-3rd-edition/" target="_blank" rel="noopener"><strong>Dante Certification 1–3</strong>Free from Audinate. Level 1 once signal flow is familiar; 2 and 3 when you are on networked systems.</a>
+        <a href="#s18-2"><strong>Console offline editors</strong>Free downloads from every major desk manufacturer. Build show files at home on the desk you actually use.</a>
+        <a href="https://www.shure.com/en-US/docs/quickstart/Wireless-Workbench" target="_blank" rel="noopener"><strong>Wireless Workbench</strong>Free professional RF coordination software, with an official starter guide.</a>
+        <a href="https://www.avolites.com/support/titan-pc-suite/" target="_blank" rel="noopener"><strong>Titan PC Suite</strong>Official download and manual path — only practise on a version the workplace supports.</a>
+      </div>
+    </div>
+
+    <div class="free-block">
+      <p class="kicker">Read these — free, current, and written by people who do the job</p>
+      <div class="hub-shelf">
+        <a href="#s18-7"><strong>Essential reading</strong>The books actually worth owning, and what each one is for.</a>
+        <a href="https://www.soundonsound.com/techniques" target="_blank" rel="noopener"><strong>Sound On Sound — Techniques</strong>A deep free archive of recording and live technique. See <a href="#s18-16">18.16</a>.</a>
+        <a href="#s18-8"><strong>Safety &amp; regulation</strong>HSE entertainment pages, the Purple Guide and the standards that apply to you.</a>
+        <a href="https://www.ofcom.org.uk/spectrum/radio-equipment/pmse-licence-info" target="_blank" rel="noopener"><strong>Ofcom PMSE</strong>The actual UK rules on wireless licensing — read before you coordinate anything.</a>
+        <a href="#s18-9"><strong>Communities &amp; forums</strong>Where to ask, and how to ask so that experienced people answer.</a>
+      </div>
+    </div>
+
+    <div class="free-block">
+      <p class="kicker">When you have chosen a direction</p>
+      <div class="hub-shelf">
+        <a href="#s18-6"><strong>System tuning &amp; measurement</strong>What is free, what is paid, and what a course actually gets you.</a>
+        <a href="#s18-18"><strong>Monitor world &amp; IEM</strong>The specialist reading for stage mixing.</a>
+        <a href="#s18-13"><strong>Theatre cueing &amp; show control</strong>QLab and the theatre-side workflow.</a>
+        <a href="#s18-17"><strong>Broadcast loudness</strong>EBU R128 and streaming standards.</a>
+        <a href="#s18-11"><strong>Assistive listening</strong>Hearing loops and access services.</a>
+        <a href="#s18-10"><strong>Lighting control</strong>Avolites Titan, for when you cross over.</a>
+        <a href="#s18-12"><strong>Professional bodies</strong>PLASA, ABTT, AVIXA, PSA, Bectu — membership, training and standing.</a>
+      </div>
+    </div>
+
+    <div class="hub-grid two" style="margin-top:16px">
+      <article class="hub-card hub-action"><div><p class="kicker">The practical problem</p><h4>Free development without taking time off</h4><p>How to fit real learning around a working week, and which of the above can be done in twenty-minute pieces.</p></div><a href="#s18-14">18.14 →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Paid, and worth it</p><h4>Training &amp; certifications worth having</h4><p>The short list that changes what you are allowed to do, rather than what your CV says.</p></div><a href="#s17-4">17.4 →</a></article>
+    </div>
+    <p class="hub-disclaimer">Free does not mean "do it all now." Start with the equipment the company actually uses. External sites change; use the official links here rather than old video tutorials, and check <a href="#s18-1">18.1</a> for how to judge a source.</p>
+  </section>
 
   <section class="hub-section" id="hub-me">
     <h3>Me: growing at your own pace</h3><p class="hub-lead">This is a guide, not a race. Opportunities at work should lead — and with jobs coming up now and then rather than every week, that's stages you grow through, not a calendar you're behind on.</p>
     <div class="hub-grid two"><article class="hub-card"><div class="timeline"><article><h4>Trusted foundations</h4><p>Reliable warehouse habits, safe cable work, kit recognition and one complete signal path.</p></article><article><h4>Audio assistant</h4><p>Support builds, patch and line checks; make useful fault notes; own small repeatable tasks.</p></article><article><h4>Competent live tech</h4><p>Basic console fluency, gain structure, mic choices, simple show files and supervised responsibility.</p></article></div></article><article class="hub-card"><div class="timeline"><article><h4>Systems awareness</h4><p>Wireless workflow, Dante basics, stageboxes, network hygiene and documentation.</p></article><article><h4>Try a direction</h4><p>Seek exposure to monitors, corporate AV, music, recording or systems—then record what fits.</p></article><article><h4>Dependable contributor</h4><p>Advance a simple job, hand over clearly, support a newer starter and choose a primary development route.</p></article></div></article></div>
     <div class="hub-card hub-progress" style="margin-top:14px"><p class="kicker">Quarterly review</p><ul class="check" id="chk-quarterly"><li><label><input type="checkbox"><span>I wrote three things I can now do without prompting.</span></label></li><li><label><input type="checkbox"><span>I identified two skills I need real-job exposure to.</span></label></li><li><label><input type="checkbox"><span>I chose one communication or safety habit to improve.</span></label></li><li><label><input type="checkbox"><span>I saved one client-safe example of learning or positive feedback.</span></label></li></ul><p><a href="#" class="reset-link" data-target="chk-quarterly">Reset this review</a></p></div>
-    <div class="hub-card progress-summary" id="progressSummary" style="margin-top:14px">
-      <p class="kicker">Where you are</p>
-      <div class="progress-summary-row">
-        <div class="progress-meter" role="img" aria-labelledby="progressSummaryText"><span id="progressMeterFill"></span></div>
-        <p class="progress-summary-text" id="progressSummaryText" aria-live="polite"></p>
-      </div>
-      <p class="progress-summary-note">Counted from the three lists above and in <a href="#hub-today">Next job</a>. Nothing here is a deadline — it is just a way of seeing progress that is otherwise easy to forget you have made.</p>
+    <p class="hub-disclaimer" style="margin-top:14px">The running count of everything ticked here and in the Job Hub is on the <a href="#home-progress">home screen</a>.</p>
+  </section>
+  <section class="hub-section" id="path-career">
+    <h3>Career: where this actually goes</h3>
+    <p class="hub-lead">Stage five onwards is a career rather than a syllabus. <a href="#p17">Part 17</a> covers it properly — these are the sections people come back to.</p>
+    <div class="hub-grid">
+      <article class="hub-card hub-action"><div><p class="kicker">The map</p><h4>Where people actually go from here</h4><p>The real routes out of a warehouse-and-crew start, and what each one asks of you.</p></div><a href="#s17-1">17.1 →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Going self-employed</p><h4>Freelancing basics</h4><p>Rates, invoicing, insurance, tax and the admin nobody warns you about.</p></div><a href="#s17-2">17.2 →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">How work actually arrives</p><h4>Building a network</h4><p>It is not networking events. It is being reliable in front of the right people, repeatedly.</p></div><a href="#s17-3">17.3 →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Spending your own money</p><h4>Kit of your own — what to buy first</h4><p>The short list that makes you more useful, and the expensive things to resist.</p></div><a href="#s17-5">17.5 →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Getting more to do</p><h4>Asking for responsibility without overstepping</h4><p>How to ask for the next real task in a way that gets a yes.</p></div><a href="#s17-6">17.6 →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Proof</p><h4>Keeping evidence of your work</h4><p>What is safe to record, and what turns a shift into something you can show someone.</p></div><a href="#s17-7">17.7 →</a></article>
     </div>
+    <p class="hub-disclaimer">Touring outside the UK — carnets, visas and what changes — is <a href="#s17-8">17.8</a>.</p>
   </section>
 
   <section class="hub-section" id="hub-conservation">
@@ -804,14 +1502,6 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
       <article class="hub-card"><p class="kicker">A realistic rhythm</p><h4>Small, consistent, evidenced</h4><ol class="hub-steps"><li>One structured survey visit or recorder deployment whenever the calendar allows it.</li><li>One analysis or verification session — process recordings, confirm IDs, submit records.</li><li>Log it. A running note of effort, method and findings becomes your portfolio with no extra work.</li></ol><p><a class="hub-button" href="#s18-15">Conservation &amp; bioacoustics resources</a></p></article>
     </div>
     <p class="hub-disclaimer">Genuine crossover, not a side hobby: mic technique, recording discipline, reliable metadata, RF and battery management in the field, and reading a spectrogram are all things the audio job builds daily and acoustic monitoring needs directly. Respect welfare, land access, licensing (some bat and protected-bird work is licensable) and data-sharing permissions first — you already know this, but it’s worth stating plainly for any protected-species or overseas work.</p>
-  </section>
-
-  <section class="hub-section" id="hub-guides" aria-label="Quick guides">
-    <h3>Quick guides</h3><p class="hub-lead">Open these when the job is familiar enough to need a prompt, not a textbook.</p>
-    <details class="hub-guide" id="hub-guide-log"><summary>End-of-shift learning log — three minutes</summary><ol class="seq"><li>Write the job type and your role, with no confidential client detail.</li><li>Record one item you handled and what it does.</li><li>Record one issue: symptom, what changed, checks made, who resolved it.</li><li>Write one question to ask the right person on the next shift.</li><li>Choose one five-to-ten-minute topic in this handbook before the next job.</li></ol></details>
-    <details class="hub-guide"><summary>How to ask for help without freezing</summary><ol class="seq"><li>Make the situation safe: mute, stop or keep clear where appropriate.</li><li>State the symptom in one line: “Channel 12 has no signal at the desk.”</li><li>State what changed and what you checked.</li><li>Ask for the next authorised action, not a vague rescue.</li><li>Watch the fix and note the reason, not only the button pressed.</li></ol></details>
-    <details class="hub-guide"><summary>How to learn an unfamiliar piece of kit at work</summary><ol class="seq"><li>Ask whether you may explore it and when—not during a pressured build.</li><li>Find the exact model and open its official manual.</li><li>Identify inputs, outputs, power, network/control and normal status lights.</li><li>Follow one safe, reversible task with an experienced person nearby.</li><li>Write a small “what this box does here” note; never save over a live show file.</li></ol></details>
-    <details class="hub-guide" id="hub-guide-equipment"><summary>How to ask for the equipment-system information</summary><p>Ask the person who owns warehouse systems rather than exporting data yourself:</p><ol class="seq"><li>“I’m building a private learning app for my audio development. May I have a read-only list or screenshots of the labels and categories I am allowed to use?”</li><li>Ask specifically for the fields TreebySound needs: stock name, manufacturer/model, internal label/barcode, category, case or shelf location, connector/cable type, prep notes, service status and hire-in flag.</li><li>Confirm what must <strong>not</strong> be copied: client data, supplier prices, serial numbers, access credentials, job contacts or live availability.</li><li>Start with one small category—microphones, DIs or common cable types—and compare the export against physical labels with a supervisor.</li><li>Only then decide whether to import a cleaned reference list or simply link out to the company system. Keeping one source of truth is more important than copying everything.</li></ol></details>
   </section>
 </section>
 
@@ -1088,20 +1778,8 @@ EARS            the only part of the system that actually matters</div>
 </tbody></table></div>
 <div class="note warn"><span class="lab">Watch it</span><p>Plugging a <strong>speaker output into an input</strong> destroys the input. This is why speaker connections are speakON and not jack — the connector shape is a safety feature. If you find a passive speaker wired with a jack, treat it as a fault to be fixed, not a quirk.</p></div>
 <div class="note alt"><span class="lab">Also seen</span><p>Older passive wedges and some backline still use 1/4" jack for speaker connections, and some cheap install gear uses bare-wire terminals. They exist, they work, they're just easier to get wrong. If you're handed one, label it clearly.</p></div>
-<div class="calc" id="calcLevel">
-<h4>Quick level converter</h4>
-<div class="calc-row">
-<div class="calc-field"><label for="calcLevelValue">Value</label><input type="number" id="calcLevelValue" value="0" step="any"></div>
-<div class="calc-field"><label for="calcLevelUnit">Unit</label>
-<select id="calcLevelUnit">
-<option value="dbu">dBu</option>
-<option value="dbv">dBV</option>
-<option value="v">Volts (RMS)</option>
-</select>
-</div>
-</div>
-<div class="calc-out" id="calcLevelOut">0 dBu = 0.775 V = −2.2 dBV</div>
-</div>
+<p class="calc-pointer"><a href="#calcLevel">Open the level converter →</a> <span>dBu, dBV and volts, in Support with the rest of the calculators.</span></p>
+
 </section>
 
 <section class="s" id="s2-3"><h3><span class="n">2.3</span> Balanced vs unbalanced, and why XLR won</h3>
@@ -1298,30 +1976,9 @@ EARS            the only part of the system that actually matters</div>
 <dt>NL8</dt><dd>Eight poles. Multi-way, mostly on line array and larger systems.</dd>
 </div>
 <p><strong>Speaker cable is not signal cable.</strong> It's unshielded, heavy-gauge (typically 2.5 mm² or 4 mm² for long runs) because it's carrying real current. Using thin cable on a long run loses power and damping — the bass goes soft. Using signal cable will, at best, sound bad; at worst it melts.</p>
+<p class="calc-pointer"><a href="#calcCableLoss">Open the speaker cable loss estimator →</a> <span>Is this run thin enough over this distance to matter.</span></p>
 <div class="note warn"><span class="lab">Watch it</span><p>An NL4 will physically plug into an NL8 socket and vice versa in some combinations, and a two-pole cable in a four-pole socket may give you nothing, or may give you the wrong driver. If a top is silent but the sub works, check you haven't got a cable wired on 2+/2− going into a box expecting 1+/1−. Label your speaker cables by pinout, not just length.</p></div>
-<div class="calc" id="calcCableLoss">
-<h4>Speaker cable loss estimator</h4>
-<p style="margin-bottom:12px;font-size:14.5px;color:var(--ink-2)">A rough, practical check for "is this cable thin enough over this distance to actually matter" — not a design tool, just enough to sanity-check a long run before you commit to it.</p>
-<div class="calc-row">
-<div class="calc-field"><label for="calcCableLen">Run length (m, one-way)</label><input type="number" id="calcCableLen" value="30" min="0" step="any"></div>
-<div class="calc-field"><label for="calcCableGauge">Cable gauge</label>
-<select id="calcCableGauge">
-<option value="1.5">1.5 mm²</option>
-<option value="2.5" selected>2.5 mm²</option>
-<option value="4">4 mm²</option>
-<option value="6">6 mm²</option>
-</select>
-</div>
-<div class="calc-field"><label for="calcCableLoad">Speaker load</label>
-<select id="calcCableLoad">
-<option value="4">4 Ω</option>
-<option value="8" selected>8 Ω</option>
-<option value="16">16 Ω</option>
-</select>
-</div>
-</div>
-<div class="calc-out" id="calcCableOut">—</div>
-</div>
+
 </section>
 
 <section class="s" id="s3-4"><h3><span class="n">3.4</span> The consumer connectors you'll be handed</h3>
@@ -3997,10 +4654,12 @@ EARS            the only part of the system that actually matters</div>
     <a href="#s20-1"><strong>Glossary</strong><small>Every term, by area &amp; A–Z</small></a>
     <a href="#s19-13"><strong>Pocket reference</strong><small>Numbers &amp; scripts, one page</small></a>
     <div class="quickfab-label">Calculators</div>
-    <a href="#calcLevel"><strong>Level converter</strong><small>dBu / dBV / Volts</small></a>
-    <a href="#calcCableLoss"><strong>Speaker cable loss</strong><small>Is this run thin enough to matter</small></a>
+    <a href="#support-calc"><strong>All six calculators</strong><small>Level, delay, SPL, dB, RF, cable</small></a>
+    <a href="#calcDelay"><strong>Distance &amp; delay</strong><small>Metres, feet and milliseconds</small></a>
+    <a href="#calcRf"><strong>RF wavelength</strong><small>Antenna length and spacing</small></a>
     <div class="quickfab-label">Your job right now</div>
-    <a href="#hub-job"><strong>On a job</strong><small>Safe next steps, then the right checklist</small></a>
+    <a href="#support-now"><strong>Make it safe</strong><small>Stop, isolate, tell the right person</small></a>
+    <a href="#job-stages"><strong>Shape of a job</strong><small>Nine stages, each with its checklist</small></a>
     <a href="#hub-people"><strong>People &amp; handovers</strong><small>Who owns what, and what to say</small></a>
     <a href="#hub-workspace"><strong>Job workspace</strong><small>Job pack, contacts, hired-in kit notes</small></a>
   </div>
@@ -4010,10 +4669,10 @@ EARS            the only part of the system that actually matters</div>
 <button class="top" id="top" type="button" aria-label="Back to top">↑ Top</button>
 
 <nav class="bottombar" id="bottombar">
-  <button type="button" data-hub-target="hub"><span class="ic">⌂</span>Home</button>
-  <button type="button" data-hub-target="hub-today"><span class="ic">◉</span>Next job</button>
-  <button type="button" id="bbJob" aria-haspopup="dialog" aria-expanded="false"><span class="ic">⚡</span>Support</button>
-  <button type="button" data-hub-target="hub-learn"><span class="ic">↗</span>Learn</button>
+  <button type="button" data-hub-target="hub" data-nav="hub"><span class="ic">⌂</span>Home</button>
+  <button type="button" data-hub-target="job" data-nav="job"><span class="ic">◉</span>Job</button>
+  <button type="button" data-hub-target="support" data-nav="support"><span class="ic">⚡</span>Support</button>
+  <button type="button" data-hub-target="path" data-nav="path"><span class="ic">↗</span>Pathway</button>
   <button type="button" id="bbSearch" aria-haspopup="dialog" aria-expanded="false"><span class="ic">⌕</span>Library</button>
 </nav>
 
@@ -4166,56 +4825,70 @@ var TOC_GROUPS = {
 };
 var TOC_BADGES = { 'p11': 'before doors', 'p12': 'when it breaks', 'p19': 'use on site' };
 
-/* ---------- the home hub is part of the book, so index it too ----------
-   Everything in the hub — the job workspace, the quarterly review, the
-   conservation section — was previously invisible to search, even though the
-   book tells you search reaches every word. This puts the hub at the top of
-   the contents and into the same search index as the library. */
-(function indexHub(){
-  var hub = document.getElementById('hub');
-  if(!hub) return;
-  var hubSections = Array.prototype.slice.call(hub.querySelectorAll('section.hub-section'));
-  if(!hubSections.length) return;
+/* ---------- the four app screens are part of the book, so index them too ----------
+   Home, Job Hub, Support and the learning pathway hold real material — the job
+   workspace, the calculators, the reading plan, the quarterly review — and all of
+   it has to be reachable from the contents tree and from search, exactly like a
+   library part. Each screen becomes one branch of the tree, with its own sections
+   underneath. */
+var APP_SCREENS = [
+  {id:'hub',     group:'Inside each screen', label:'Home',        glyph:'\u2302'},
+  {id:'job',     group:null,            label:'Job Hub',          glyph:'\u25C9'},
+  {id:'support', group:null,            label:'Support',          glyph:'\u26A1'},
+  {id:'path',    group:null,            label:'Learning pathway', glyph:'\u2197'}
+];
+var SCREEN_IDS = [];
+(function indexScreens(){
+  APP_SCREENS.forEach(function(screen){
+    var el = document.getElementById(screen.id);
+    if(!el) return;
+    SCREEN_IDS.push(screen.id);
+    if(!toc) return;
+    var screenSections = Array.prototype.slice.call(el.querySelectorAll('section.hub-section'));
+    if(!screenSections.length) return;
 
-  var groupHeader = document.createElement('div');
-  groupHeader.className = 'toc-group';
-  groupHeader.textContent = 'Home';
-  toc.appendChild(groupHeader);
+    if(screen.group){
+      var groupHeader = document.createElement('div');
+      groupHeader.className = 'toc-group';
+      groupHeader.textContent = screen.group;
+      toc.appendChild(groupHeader);
+    }
 
-  var details = document.createElement('details');
-  details.open = true;
-  details.dataset.part = 'hub';
-  var summary = document.createElement('summary');
-  var numSpan = document.createElement('span');
-  numSpan.className = 'n';
-  numSpan.textContent = '\u2302';
-  summary.appendChild(numSpan);
-  summary.appendChild(document.createTextNode('Your hub'));
-  details.appendChild(summary);
+    var details = document.createElement('details');
+    details.open = screen.id === 'hub';
+    details.dataset.part = screen.id;
+    var summary = document.createElement('summary');
+    var numSpan = document.createElement('span');
+    numSpan.className = 'n';
+    numSpan.textContent = screen.glyph;
+    summary.appendChild(numSpan);
+    summary.appendChild(document.createTextNode(screen.label));
+    details.appendChild(summary);
 
-  var ul = document.createElement('ul');
-  hubSections.forEach(function(sec){
-    if(!sec.id) return;
-    var h3 = sec.querySelector('h3');
-    if(!h3) return;
-    var title = h3.textContent.trim();
-    var li = document.createElement('li');
-    var a = document.createElement('a');
-    a.href = '#' + sec.id;
-    a.textContent = title;
-    li.appendChild(a);
-    ul.appendChild(li);
-    sectionIndex.push({
-      id: sec.id,
-      title: title.toLowerCase(),
-      body: (sec.textContent || '').toLowerCase(),
-      norm: normText(title + ' ' + (sec.textContent || '')),
-      li: li,
-      details: details
+    var ul = document.createElement('ul');
+    screenSections.forEach(function(sec){
+      if(!sec.id) return;
+      var h3 = sec.querySelector('h3');
+      if(!h3) return;
+      var title = h3.textContent.trim();
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#' + sec.id;
+      a.textContent = title;
+      li.appendChild(a);
+      ul.appendChild(li);
+      sectionIndex.push({
+        id: sec.id,
+        title: title.toLowerCase(),
+        body: (sec.textContent || '').toLowerCase(),
+        norm: normText(title + ' ' + (sec.textContent || '')),
+        li: li,
+        details: details
+      });
     });
+    details.appendChild(ul);
+    toc.appendChild(details);
   });
-  details.appendChild(ul);
-  toc.appendChild(details);
 })();
 
 parts.forEach(function(part){
@@ -4509,8 +5182,7 @@ parts.forEach(function(part, i){
    screen is currently on view. Printing (see @media print) shows everything
    at once, same as before. */
 var heroEl = document.querySelector('.hero');
-var hubEl = document.getElementById('hub');
-var homeScreenEls = [heroEl, hubEl].filter(Boolean);
+var screenEls = SCREEN_IDS.map(function(id){ return document.getElementById(id); }).filter(Boolean);
 var partIds = parts.map(function(p){ return p.id; });
 var partNav = document.getElementById('partNav');
 var partNavAll = document.getElementById('partNavAll');
@@ -4519,6 +5191,30 @@ var partNavNext = document.getElementById('partNavNext');
 var partNavNum = document.getElementById('partNavNum');
 var partNavTitle = document.getElementById('partNavTitle');
 var currentScreen = null;
+
+/* ---------- pick up where you left off ----------
+   Home offers the last library part that was actually opened, so the app has a
+   way back into the book that does not need you to remember where you were. */
+var LAST_PART_KEY = 'treebysound-last-part';
+function rememberLastPart(id){
+  if(partIds.indexOf(id) === -1) return;
+  storeSet(LAST_PART_KEY, id);
+}
+function refreshContinueCard(){
+  var card = document.getElementById('homeContinue');
+  var label = document.getElementById('homeContinueTitle');
+  if(!card || !label) return;
+  var id = storeGet(LAST_PART_KEY);
+  var part = id ? document.getElementById(id) : null;
+  if(!part || partIds.indexOf(id) === -1){ card.hidden = true; return; }
+  var num = part.querySelector('.part-num');
+  var title = part.querySelector('.part-head h2');
+  if(!title){ card.hidden = true; return; }
+  var prefix = num ? num.textContent.replace('PART', 'Part').trim() + ' \u2014 ' : '';
+  label.textContent = prefix + title.textContent;
+  card.setAttribute('href', '#' + id);
+  card.hidden = false;
+}
 
 function goTo(id){
   var h = '#' + id;
@@ -4539,7 +5235,7 @@ if(partNavNext){ partNavNext.addEventListener('click', function(){
    uses. Parts with no nav home (field tools, glossary) simply highlight
    nothing rather than mislabelling where you are. */
 var NAV_FOR_SCREEN = {
-  hub:'hub', p0:'hub',
+  p0:'p1',
   p1:'p1',
   p2:'p2', p3:'p2', p4:'p2',
   p5:'p5', p6:'p5', p7:'p5', p8:'p5', p9:'p5', p10:'p5',
@@ -4547,10 +5243,15 @@ var NAV_FOR_SCREEN = {
   p14:'p5', p15:'p5', p16:'p5',
   p17:'p17', p18:'p17'
 };
+/* Two independent runs of navigation share one [data-nav] attribute: the four
+   app screens (bottom bar, app bar, sidebar) and the library route chips. A part
+   lights a route chip; a screen lights its own destination. */
 function syncNavActive(screenId){
-  var want = NAV_FOR_SCREEN[screenId] || null;
+  var dest = SCREEN_IDS.indexOf(screenId) > -1 ? screenId : null;
+  var route = NAV_FOR_SCREEN[screenId] || null;
   Array.prototype.forEach.call(document.querySelectorAll('[data-nav]'), function(el){
-    var on = !!want && el.getAttribute('data-nav') === want;
+    var v = el.getAttribute('data-nav');
+    var on = (!!dest && v === dest) || (!!route && v === route);
     el.classList.toggle('on', on);
     if(on) el.setAttribute('aria-current', 'page');
     else el.removeAttribute('aria-current');
@@ -4558,15 +5259,21 @@ function syncNavActive(screenId){
 }
 
 function activateScreen(id){
-  if(!id || (id !== 'hub' && partIds.indexOf(id) === -1)) id = 'hub';
+  if(!id || (SCREEN_IDS.indexOf(id) === -1 && partIds.indexOf(id) === -1)) id = 'hub';
   if(id === currentScreen) return currentScreen;
   currentScreen = id;
-  homeScreenEls.forEach(function(el){ el.classList.remove('tb-active'); });
+  if(heroEl) heroEl.classList.remove('tb-active');
+  screenEls.forEach(function(el){ el.classList.remove('tb-active'); });
   parts.forEach(function(p){ p.classList.remove('tb-active'); });
-  if(id === 'hub'){
-    homeScreenEls.forEach(function(el){ el.classList.add('tb-active'); });
+  if(SCREEN_IDS.indexOf(id) > -1){
+    var screen = document.getElementById(id);
+    if(screen) screen.classList.add('tb-active');
+    /* the masthead belongs to Home alone; the other screens carry their own head */
+    if(id === 'hub' && heroEl) heroEl.classList.add('tb-active');
     if(partNav) partNav.classList.remove('on');
+    if(id === 'hub') refreshContinueCard();
   } else {
+    rememberLastPart(id);
     var part = document.getElementById(id);
     if(part) part.classList.add('tb-active');
     var idx = partIds.indexOf(id);
@@ -4607,8 +5314,8 @@ function navigateTo(hash, opts){
   var target = id ? document.getElementById(id) : null;
   var screenId = 'hub';
   if(target){
-    var part = target.closest('.part');
-    if(part) screenId = part.id;
+    var host = target.closest('.part, .hub');
+    if(host && host.id) screenId = host.id;
   }
   var wasScreen = currentScreen;
   activateScreen(screenId);
@@ -4804,7 +5511,7 @@ if(appearanceClose) appearanceClose.addEventListener('click', closeAllPanels);
 var cogAppearance = document.getElementById('cogAppearance');
 if(cogAppearance) cogAppearance.addEventListener('click', openAppearance);
 var hubOpenLibrary = document.getElementById('hubOpenLibrary');
-if(hubOpenLibrary) hubOpenLibrary.addEventListener('click', function(){ openContentsSheet(false); });
+if(hubOpenLibrary) hubOpenLibrary.addEventListener('click', function(){ openContentsSheet(true); });
 
 /* palette swatches */
 var paletteRow = document.getElementById('paletteRow');
@@ -5296,6 +6003,8 @@ if(skipLink && mainEl){
 if(toc){ toc.addEventListener('click', function(e){ if(e.target.closest && e.target.closest('a')) closeAllPanels(); }); }
 var railRoutes = document.querySelector('.rail-routes');
 if(railRoutes){ railRoutes.addEventListener('click', function(e){ if(e.target.closest && e.target.closest('a')) closeAllPanels(); }); }
+var railDest = document.querySelector('.rail-dest');
+if(railDest){ railDest.addEventListener('click', function(e){ if(e.target.closest && e.target.closest('a')) closeAllPanels(); }); }
 var railLibraryLink = document.querySelector('.rail-library a');
 if(railLibraryLink){ railLibraryLink.addEventListener('click', closeAllPanels); }
 
@@ -5518,6 +6227,120 @@ if(quickfabBtn && quickfabMenu){
   lenEl.addEventListener('input', compute);
   gaugeEl.addEventListener('change', compute);
   loadEl.addEventListener('change', compute);
+  compute();
+})();
+
+/* ---------- distance & delay time ----------
+   Speed of sound in dry air, from temperature: c = 331.3 + 0.606 T (m/s). Over a
+   long throw on a cold night that is a genuinely different answer from the 343
+   everyone quotes, which is why the temperature field is there. */
+(function(){
+  var val = document.getElementById('calcDelayValue');
+  var unit = document.getElementById('calcDelayUnit');
+  var temp = document.getElementById('calcDelayTemp');
+  var out = document.getElementById('calcDelayOut');
+  if(!val || !unit || !temp || !out) return;
+  function fmt(n, dp){ var f = Math.pow(10, dp === undefined ? 1 : dp); return (Math.round(n * f) / f).toString(); }
+  function compute(){
+    var n = parseFloat(val.value);
+    var t = parseFloat(temp.value);
+    if(isNaN(n)){ out.textContent = 'Enter a number'; return; }
+    if(isNaN(t)) t = 20;
+    if(t < -40 || t > 60){ out.textContent = 'Air temperature looks wrong'; return; }
+    var c = 331.3 + 0.606 * t;
+    var metres;
+    if(unit.value === 'm')       metres = n;
+    else if(unit.value === 'ft') metres = n * 0.3048;
+    else                         metres = c * (n / 1000);
+    if(metres < 0){ out.textContent = 'Distance cannot be negative'; return; }
+    var ms = (metres / c) * 1000;
+    out.textContent = fmt(metres, 2) + ' m = ' + fmt(metres / 0.3048, 1) + ' ft = ' +
+      fmt(ms, 1) + ' ms \u00B7 speed of sound ' + fmt(c, 1) + ' m/s at ' + fmt(t, 1) + ' \u00B0C';
+  }
+  val.addEventListener('input', compute);
+  temp.addEventListener('input', compute);
+  unit.addEventListener('change', compute);
+  compute();
+})();
+
+/* ---------- SPL over distance (inverse square, free field) ---------- */
+(function(){
+  var ref = document.getElementById('calcSplRef');
+  var from = document.getElementById('calcSplFrom');
+  var to = document.getElementById('calcSplTo');
+  var out = document.getElementById('calcSplOut');
+  if(!ref || !from || !to || !out) return;
+  function fmt(n, dp){ var f = Math.pow(10, dp === undefined ? 1 : dp); return (Math.round(n * f) / f).toString(); }
+  function compute(){
+    var spl = parseFloat(ref.value), d1 = parseFloat(from.value), d2 = parseFloat(to.value);
+    if(isNaN(spl) || isNaN(d1) || isNaN(d2)){ out.textContent = 'Enter all three values'; return; }
+    if(d1 <= 0 || d2 <= 0){ out.textContent = 'Distances must be greater than 0'; return; }
+    var change = -20 * Math.log10(d2 / d1);
+    var result = spl + change;
+    var word = change < -0.05 ? fmt(Math.abs(change)) + ' dB quieter' :
+               change > 0.05 ? fmt(change) + ' dB louder' : 'the same level';
+    var doublings = Math.abs(Math.log(d2 / d1) / Math.log(2));
+    var word2 = (Math.round(doublings * 10) / 10) === 1 ? 'ing' : 'ings';
+    var extra = doublings >= 0.5 ?
+      ' \u00B7 ' + fmt(doublings) + (d2 > d1 ? ' doubl' : ' halv') + word2 + ' of distance' : '';
+    out.textContent = '\u2248 ' + fmt(result) + ' dB at ' + fmt(d2, 2) + ' m \u2014 ' + word + extra;
+  }
+  [ref, from, to].forEach(function(el){ el.addEventListener('input', compute); });
+  compute();
+})();
+
+/* ---------- decibels & ratios ----------
+   Voltage is 20 log, power is 10 log. Getting these two the wrong way round is
+   one of the most common mistakes in the whole subject. */
+(function(){
+  var val = document.getElementById('calcDbValue');
+  var mode = document.getElementById('calcDbMode');
+  var out = document.getElementById('calcDbOut');
+  if(!val || !mode || !out) return;
+  function fmt(n, dp){ var f = Math.pow(10, dp === undefined ? 2 : dp); return (Math.round(n * f) / f).toString(); }
+  function sense(db){
+    var a = Math.abs(db);
+    if(a < 0.5) return 'no audible difference';
+    if(a < 1.5) return 'just about audible on a good day';
+    if(a < 4)   return 'clearly audible';
+    if(a < 8)   return 'obvious; voltage roughly doubled or halved';
+    if(a < 14)  return 'about what most people call twice (or half) as loud';
+    return 'a very large change';
+  }
+  function compute(){
+    var n = parseFloat(val.value);
+    if(isNaN(n)){ out.textContent = 'Enter a number'; return; }
+    var db;
+    if(mode.value === 'db') db = n;
+    else if(n <= 0){ out.textContent = 'A ratio must be greater than 0'; return; }
+    else db = (mode.value === 'vratio' ? 20 : 10) * Math.log10(n);
+    var v = Math.pow(10, db / 20);
+    var p = Math.pow(10, db / 10);
+    out.textContent = (db >= 0 ? '+' : '') + fmt(db, 2) + ' dB = \u00D7' + fmt(v) +
+      ' in voltage = \u00D7' + fmt(p) + ' in power \u2014 ' + sense(db);
+  }
+  val.addEventListener('input', compute);
+  mode.addEventListener('change', compute);
+  compute();
+})();
+
+/* ---------- RF wavelength & antenna spacing ---------- */
+(function(){
+  var freq = document.getElementById('calcRfFreq');
+  var out = document.getElementById('calcRfOut');
+  if(!freq || !out) return;
+  function mm(m){ return Math.round(m * 1000) + ' mm'; }
+  function compute(){
+    var f = parseFloat(freq.value);
+    if(isNaN(f) || f <= 0){ out.textContent = 'Enter a frequency in MHz'; return; }
+    if(f > 30000){ out.textContent = 'That is well outside anything you will meet on a job'; return; }
+    var lambda = 299.792458 / f;
+    out.textContent = '\u03BB ' + mm(lambda) + ' \u00B7 \u00BD\u03BB ' + mm(lambda / 2) +
+      ' \u00B7 \u00BC\u03BB ' + mm(lambda / 4) +
+      ' \u2014 keep diversity antennas at least \u00BC\u03BB (' + mm(lambda / 4) + ') apart, ' +
+      '\u2248 1\u03BB (' + mm(lambda) + ') is better';
+  }
+  freq.addEventListener('input', compute);
   compute();
 })();
 
