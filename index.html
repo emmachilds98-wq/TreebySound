@@ -141,8 +141,9 @@ a:hover{text-decoration-thickness:2px}
   background:var(--card);color:var(--ink-2);border:1px solid var(--rule-2);box-shadow:var(--shadow);cursor:pointer;
 }
 .cog-btn:hover{border-color:var(--petrol);color:var(--petrol-ink);background:var(--petrol-soft)}
+.home-btn{right:60px;text-decoration:none}
 /* When the app-view appbar is also on screen (desktop, app layout) it already
-   occupies the top strip, so drop the cog below it rather than overlapping. */
+   occupies the top strip, so drop these below it rather than overlapping. */
 @media screen and (min-width:821px){ [data-layout="app"] .cog-btn{top:68px} }
 .skip-link:focus{top:0;outline:2px solid #fff;outline-offset:-4px}
 main:focus{outline:none}
@@ -175,7 +176,6 @@ main:focus{outline:none}
   .appbar-brand small{display:none}
 }
 .rail-routes a.on{border-color:var(--petrol);background:var(--petrol-soft);color:var(--petrol-ink);font-weight:600}
-.rail-routes a.on small,.rail-routes a:hover small,.rail-quick a:hover small{color:var(--ink-2)}
 @media (min-width:821px){.part,section.s,.hub,.hub-section{scroll-margin-top:max(96px,28vh)}}
 .rail-head{padding:19px 16px 14px;border-bottom:1px solid var(--rule);background:var(--card)}
 .brand{font-family:var(--display);font-size:22px;line-height:1;margin:0;letter-spacing:.04em;color:var(--petrol-ink);padding-right:64px}
@@ -190,7 +190,7 @@ main:focus{outline:none}
 .searchbox input::placeholder{color:var(--ink-3)}
 .searchbox .sk{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:10px;color:var(--ink-3);pointer-events:none}
 .hits{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin:7px 2px 0;min-height:14px;letter-spacing:.02em}
-.rail-library{display:flex;align-items:center;justify-content:space-between;padding:13px 17px 7px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}.rail-library a{color:var(--petrol);font-size:9.5px;text-decoration:none;letter-spacing:.04em}.rail-routes{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0 16px 12px}.rail-routes a{text-decoration:none;border:1px solid var(--rule);border-radius:7px;padding:7px 8px;color:var(--ink-2);background:var(--card);font-family:var(--display);font-size:12px}.rail-routes a:hover{border-color:var(--petrol);background:var(--petrol-soft);color:var(--petrol-ink)}.rail-routes small{display:block;font-family:var(--body);font-size:10.5px;color:var(--ink-3);margin-top:2px}
+.rail-library{display:flex;align-items:center;justify-content:space-between;padding:11px 17px 5px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}.rail-library a{color:var(--petrol);font-size:9.5px;text-decoration:none;letter-spacing:.04em}.rail-routes{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:0 16px 10px}.rail-routes a{text-decoration:none;border:1px solid var(--rule);border-radius:6px;padding:6px 8px;color:var(--ink-2);background:var(--card);font-family:var(--display);font-size:11.5px;line-height:1.25}.rail-routes a:hover{border-color:var(--petrol);background:var(--petrol-soft);color:var(--petrol-ink)}
 .toc{overflow-y:auto;padding:0 10px 28px;flex:1;scrollbar-width:thin}
 .toc details{margin-bottom:4px;border:1px solid transparent;border-radius:8px}
 .toc summary{
@@ -614,6 +614,7 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
 
 <a class="skip-link" href="#main">Skip to content</a>
 
+<a class="cog-btn home-btn" id="homeBtn" href="#hub" aria-label="Home">⌂</a>
 <button class="cog-btn" id="cogAppearance" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Appearance &amp; accessibility settings">⚙</button>
 
 <div class="wrap">
@@ -622,11 +623,6 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
     <button class="ap-close" id="railClose" type="button" aria-label="Close contents" style="display:none">✕</button>
     <button class="rail-collapse" id="railCollapse" type="button" aria-label="Hide the contents sidebar">‹ Hide</button>
     <p class="brand brandmark"><span class="brand-treeby">Treeby</span><span class="brand-sound">Sound</span><small>Your workday companion · library &amp; learning</small></p>
-    <nav class="rail-quick" aria-label="TreebySound shortcuts">
-      <a href="#hub"><strong>Home</strong><small>Today, progress &amp; your workspace</small></a>
-      <a href="#hub-job"><strong>On a job</strong><small>Safe next steps</small></a>
-      <a href="#hub-workspace"><strong>Job workspace</strong><small>Docs, contacts &amp; kit</small></a>
-    </nav>
     <div class="rail-find-label"><span>Find in library</span><span>/</span></div>
     <div class="searchbox">
       <input id="q" type="search" placeholder="Search topics, faults, kit…" autocomplete="off" aria-label="Search the TreebySound library">
@@ -636,11 +632,11 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
   </div>
   <div class="rail-library"><span>Library</span><a href="#s19-1">Checklists →</a></div>
   <nav class="rail-routes" aria-label="Library routes">
-    <a href="#p1" data-nav="p1">Run a job<small>People, paperwork, rhythm</small></a>
-    <a href="#p2" data-nav="p2">Learn core audio<small>Signal, cables, mics, desks</small></a>
-    <a href="#p5" data-nav="p5">Learn systems &amp; skills<small>RF, PA, networks, monitors</small></a>
-    <a href="#p11" data-nav="p11">Check &amp; fix<small>Before doors, faults, safety</small></a>
-    <a href="#p17" data-nav="p17">Career development<small>Career, free learning, glossary</small></a>
+    <a href="#p1" data-nav="p1">Run a job</a>
+    <a href="#p2" data-nav="p2">Learn core audio</a>
+    <a href="#p5" data-nav="p5">Learn systems &amp; skills</a>
+    <a href="#p11" data-nav="p11">Check &amp; fix</a>
+    <a href="#p17" data-nav="p17">Career development</a>
   </nav>
   <div class="toc" id="toc"></div>
   <div class="rail-foot">
@@ -4778,6 +4774,8 @@ if(bbAppearance) bbAppearance.addEventListener('click', openAppearance);
 if(appearanceClose) appearanceClose.addEventListener('click', closeAllPanels);
 var cogAppearance = document.getElementById('cogAppearance');
 if(cogAppearance) cogAppearance.addEventListener('click', openAppearance);
+var homeBtn = document.getElementById('homeBtn');
+if(homeBtn) homeBtn.addEventListener('click', closeAllPanels);
 
 /* palette swatches */
 var paletteRow = document.getElementById('paletteRow');
@@ -5268,8 +5266,6 @@ if(skipLink && mainEl){
 
 /* a link tapped inside the contents sheet or job menu should close the sheet behind it */
 if(toc){ toc.addEventListener('click', function(e){ if(e.target.closest && e.target.closest('a')) closeAllPanels(); }); }
-var railShortcuts = document.querySelector('.rail-quick');
-if(railShortcuts){ railShortcuts.addEventListener('click', function(e){ if(e.target.closest && e.target.closest('a')) closeAllPanels(); }); }
 var railRoutes = document.querySelector('.rail-routes');
 if(railRoutes){ railRoutes.addEventListener('click', function(e){ if(e.target.closest && e.target.closest('a')) closeAllPanels(); }); }
 var railLibraryLink = document.querySelector('.rail-library a');
