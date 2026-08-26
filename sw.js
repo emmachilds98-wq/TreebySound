@@ -1,4 +1,4 @@
-const CACHE = 'treebysound-v2';
+const CACHE = 'treebysound-v3';
 const ASSETS = ['./', './index.html', './treebysound-icon.png', './manifest.webmanifest'];
 
 self.addEventListener('install', event => {
