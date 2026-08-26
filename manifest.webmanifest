@@ -1,0 +1,9 @@
+{
+  "name": "TreebySound",
+  "short_name": "TreebySound",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FBF7EE",
+  "theme_color": "#0F5257",
+  "icons": [{"src":"treebysound-icon.png","sizes":"1024x1024","type":"image/png","purpose":"any maskable"}]
+}
