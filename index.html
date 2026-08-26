@@ -468,6 +468,7 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
 .appearance-panel{position:fixed}
 .ap-reset{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);background:none;border:1px solid var(--rule-2);border-radius:20px;padding:7px 13px;cursor:pointer;margin-top:2px}
 .ap-backup-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.ap-backup-btns button{border:1px solid var(--petrol);border-radius:8px;background:var(--petrol-soft);color:var(--petrol-ink);font-family:var(--display);font-size:13px;padding:9px 8px;cursor:pointer}.ap-backup-btns button:hover{background:var(--petrol);color:#fff}.ap-backup-status{font-family:var(--mono);font-size:10.5px;color:var(--pass);min-height:14px;margin:8px 0 0}.ap-backup-status.warn{color:var(--fault)}
+.ap-rollback-btn{width:100%;margin-top:10px;border:1px solid var(--amber);border-radius:8px;background:var(--amber-soft);color:var(--amber);font-family:var(--display);font-size:13px;padding:9px 8px;cursor:pointer}.ap-rollback-btn:hover{background:var(--amber);color:#fff}.ap-rollback-btn[aria-pressed="true"]{background:var(--amber);color:#fff}
 
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
 @media print{
@@ -4825,6 +4826,13 @@ EARS            the only part of the system that actually matters</div>
     <p class="ap-backup-status" id="dataBackupStatus" aria-live="polite"></p>
   </div>
 
+  <div class="ap-row ap-rollback">
+    <span class="ap-label">Had a bad update?</span>
+    <p class="ap-intro">TreebySound keeps the version from before your last update on this device. If something looks wrong after one, switch back here — you can swap forward again any time, and it never touches your saved notes or checklists either way.</p>
+    <button class="ap-rollback-btn" id="usePreviousToggle" type="button" aria-pressed="false">Use previous version</button>
+    <p class="ap-backup-status" id="usePreviousStatus" aria-live="polite"></p>
+  </div>
+
   <button class="ap-reset" id="appearanceReset" type="button">Reset to default look</button>
 </div>
 
@@ -5881,6 +5889,62 @@ if(appearanceReset){
     };
     reader.onerror = function(){ setStatus('Could not read that file.', true); importInput.value=''; };
     reader.readAsText(file);
+  });
+})();
+
+/* ---------- revert to the version before the last update, or back again ----------
+   The service worker keeps exactly one snapshot: whatever was current right
+   before the last update. This just asks it to switch which one it serves,
+   then reloads. Saved notes, checklists and appearance are untouched either
+   way — they live in localStorage, not in the cached page itself. */
+(function(){
+  var toggleBtn = document.getElementById('usePreviousToggle');
+  var statusEl = document.getElementById('usePreviousStatus');
+  if(!toggleBtn) return;
+  var USE_PREVIOUS_KEY = 'treebysound-use-previous';
+
+  function setStatus(msg, isWarn){
+    if(!statusEl) return;
+    statusEl.textContent = msg;
+    statusEl.classList.toggle('warn', !!isWarn);
+  }
+  function sync(){
+    var on = storeGet(USE_PREVIOUS_KEY) === '1';
+    toggleBtn.textContent = on ? 'Back to the latest version' : 'Use previous version';
+    toggleBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+  }
+  sync();
+
+  function askServiceWorker(flag){
+    return new Promise(function(resolve){
+      if(!('serviceWorker' in navigator) || !navigator.serviceWorker.controller){
+        resolve({ok:false}); return;
+      }
+      var settled = false;
+      var channel = new MessageChannel();
+      channel.port1.onmessage = function(e){ settled = true; resolve(e.data || {ok:false}); };
+      navigator.serviceWorker.controller.postMessage({type:'USE_PREVIOUS', value: flag}, [channel.port2]);
+      setTimeout(function(){ if(!settled) resolve({ok:false, timeout:true}); }, 1500);
+    });
+  }
+
+  toggleBtn.addEventListener('click', function(){
+    var next = storeGet(USE_PREVIOUS_KEY) !== '1';
+    toggleBtn.disabled = true;
+    setStatus('');
+    askServiceWorker(next).then(function(result){
+      toggleBtn.disabled = false;
+      if(!result || !result.ok){
+        setStatus('Could not switch versions here — try again once you’re online.', true);
+        return;
+      }
+      if(next && !result.hasPrevious){
+        setStatus('No earlier version saved on this device yet — this appears after your next update.', true);
+        return;
+      }
+      storeSet(USE_PREVIOUS_KEY, next ? '1' : '0');
+      location.reload();
+    });
   });
 })();
 
