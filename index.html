@@ -217,6 +217,17 @@ main{padding:0 0 140px;min-width:0}
 .hero .col{max-width:78ch}
 .eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--petrol);margin:0 0 16px}
 h1{font-size:clamp(38px,5.4vw,62px);line-height:1.02;margin:0 0 18px;letter-spacing:-.005em}
+/* ---------- brandmark: "Treeby" (his name) in bold petrol + "Sound" in
+   amber italic — two real brand colours, not just a weight change, echoing
+   the icon's dark-teal-and-gold palette. A rounded, friendly face used
+   nowhere else so it reads as a wordmark, not a label. Colour comes from
+   the current palette (petrol-ink / amber) so it stays correct across
+   every theme, low-light and high-contrast mode without extra rules. ---------- */
+.brand-treeby,.brand-sound{font-family:ui-rounded,"SF Pro Rounded","Avenir Next Rounded","Avenir Next",Avenir,"Century Gothic",Futura,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
+.brand-treeby{color:var(--petrol-ink);font-weight:800}
+.brand-sound{color:var(--amber);font-weight:600;font-style:italic}
+h1.brandmark{font-size:clamp(40px,7.2vw,66px);letter-spacing:-.01em}
+.brand.brandmark,.appbar-brand.brandmark{letter-spacing:0}
 .standfirst{font-size:19.5px;line-height:1.55;color:var(--ink-2);margin:0 0 26px;max-width:60ch}
 .meterbar{display:flex;gap:2px;margin:30px 0 0;height:9px;max-width:420px}
 .meterbar i{flex:1;border-radius:1px;background:var(--pass);opacity:.85}
@@ -593,7 +604,7 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
   <div class="rail-head">
     <button class="ap-close" id="railClose" type="button" aria-label="Close contents" style="display:none">✕</button>
     <button class="rail-collapse" id="railCollapse" type="button" aria-label="Hide the contents sidebar">‹ Hide</button>
-    <p class="brand">TREEBYSOUND<small>Your workday companion · library &amp; learning</small></p>
+    <p class="brand brandmark"><span class="brand-treeby">Treeby</span><span class="brand-sound">Sound</span><small>Your workday companion · library &amp; learning</small></p>
     <nav class="rail-quick" aria-label="TreebySound shortcuts">
       <a href="#hub"><strong>Home</strong><small>Today, progress &amp; your workspace</small></a>
       <a href="#hub-job"><strong>On a job</strong><small>Safe next steps</small></a>
@@ -622,7 +633,7 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
 </nav>
 
 <header class="appbar">
-  <a class="appbar-brand" href="#hub">TREEBYSOUND <small>audio workday companion</small></a>
+  <a class="appbar-brand brandmark" href="#hub"><span class="brand-treeby">Treeby</span><span class="brand-sound">Sound</span> <small>audio workday companion</small></a>
   <nav class="appbar-nav" id="appbarNav" aria-label="Main sections">
     <a class="appbar-link" href="#hub" data-nav="hub">Home</a>
     <a class="appbar-link" href="#p1" data-nav="p1">Run a job</a>
@@ -647,7 +658,7 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
   <div class="col">
     <img class="handbook-logo" src="treebysound-icon.png" alt="">
     <p class="eyebrow" id="heroEyebrow">Field handbook &middot; edition one</p>
-    <h1>TreebySound</h1>
+    <h1 class="brandmark"><span class="brand-treeby">Treeby</span><span class="brand-sound">Sound</span></h1>
     <p class="standfirst">Your live-audio working home: practical support at work, one clear next step at home, and a trusted technical library when you need the detail.</p>
     <p>You already have the bit most people skip: you know the stock. You know what a 4066 looks like in its case, which flightcase the DIs live in, what weighs a ton and what gets damaged if you stack it wrong. That's a genuinely good place to start from — plenty of engineers can mix a band but couldn't tell you what's actually in the warehouse.</p>
     <p><strong>TreebySound</strong> is built to be <em>used</em>, not read once: every section is numbered, search reaches every word, and checklists remember where you got to. Start with the hub below; use the library whenever the job needs detail.</p>
