@@ -4919,7 +4919,6 @@ var SCREEN_IDS = [];
     }
 
     var details = document.createElement('details');
-    details.open = screen.id === 'hub';
     details.dataset.part = screen.id;
     var summary = document.createElement('summary');
     var numSpan = document.createElement('span');
@@ -5430,9 +5429,23 @@ function pingToc(id){
   var target = toc.querySelector('details[data-part="' + id + '"]');
   if(!target) return;
   target.open = true;
-  if(typeof target.scrollIntoView === 'function' && toc.scrollHeight > toc.clientHeight){
-    target.scrollIntoView({block:'nearest', behavior:'smooth'});
-  }
+  /* Scroll the branch's own heading to the top of the tree, not just the
+     branch's nearest edge — a long branch (a big part, or one sitting below
+     another that's open) can otherwise land with its heading scrolled past,
+     leaving you looking at an unlabelled middle of someone else's section
+     list with no clue whose branch it is. A smooth scroll fired before the
+     very first paint (a page loaded straight onto a deep link) is silently
+     dropped by some browsers, so the first call jumps instantly and only
+     later ones animate — and either way, wait a frame so the tree has
+     actually taken its layout height before measuring where to scroll it. */
+  var behavior = pingToc.hasRun ? 'smooth' : 'auto';
+  pingToc.hasRun = true;
+  requestAnimationFrame(function(){
+    var heading = target.querySelector('summary') || target;
+    if(typeof heading.scrollIntoView === 'function' && toc.scrollHeight > toc.clientHeight){
+      heading.scrollIntoView({block:'start', behavior: behavior});
+    }
+  });
   target.classList.remove('toc-ping');
   void target.offsetWidth;
   target.classList.add('toc-ping');
