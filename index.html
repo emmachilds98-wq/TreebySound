@@ -665,9 +665,7 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
     <img class="handbook-logo" src="treebysound-icon.png" alt="">
     <p class="eyebrow" id="heroEyebrow">Field handbook &middot; edition one</p>
     <h1 class="brandmark"><span class="brand-treeby">Treeby</span><span class="brand-sound">Sound</span></h1>
-    <p class="standfirst">Your live-audio working home: practical support at work, one clear next step at home, and a trusted technical library when you need the detail.</p>
-    <p>You already have the bit most people skip: you know the stock. You know what a 4066 looks like in its case, which flightcase the DIs live in, what weighs a ton and what gets damaged if you stack it wrong. That's a genuinely good place to start from — plenty of engineers can mix a band but couldn't tell you what's actually in the warehouse.</p>
-    <p><strong>TreebySound</strong> is built to be <em>used</em>, not read once: every section is numbered, search reaches every word, and checklists remember where you got to. Start with the hub below; use the library whenever the job needs detail.</p>
+    <p class="standfirst">Everything for the job, in one place — search it, tick things off, dip in whenever you need the detail.</p>
     <div class="meterbar" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
   </div>
 </header>
@@ -1090,7 +1088,7 @@ EARS            the only part of the system that actually matters</div>
 </select>
 </div>
 </div>
-<div class="calc-out" id="calcLevelOut">0 dBu = 0.775 V = +2.2 dBV</div>
+<div class="calc-out" id="calcLevelOut">0 dBu = 0.775 V = −2.2 dBV</div>
 </div>
 </section>
 
@@ -1265,7 +1263,7 @@ EARS            the only part of the system that actually matters</div>
 <p>Brands you'll handle: <strong>Neutrik</strong> (the good stuff — the X-series with the coloured ring, and the chunky NC3 range), <strong>Amphenol</strong>, <strong>Switchcraft</strong>, and various no-brand ones that are why the cable failed. Neutrik connectors are worth learning to strip and solder; it's the single most useful practical skill you can pick up in a warehouse.</p>
 <div class="note std"><span class="lab">Standard</span><p>Cable lengths in most UK hire stock are colour-coded or ring-coded by length — commonly 1 m, 3 m, 5 m, 10 m, 20 m, 30 m. Learn your company's system on day one; grabbing the right length first time is a superpower on a build.</p></div>
 <div class="note alt"><span class="lab">Also seen</span><p>Five-pin XLR is used for DMX lighting control (<a href="#s9-7">§9.7</a>) and for some dual-channel headset/intercom applications. Four-pin XLR is standard for single-ear intercom headsets. Three-pin DMX exists on cheap fixtures and is a constant source of "why won't this talk to that" — you'll need turnarounds.</p></div>
-<div class="note warn"><span class="lab">Watch it</span><p>Never use a mic cable for DMX or DMX cable for audio as a matter of habit. They have different impedance (110 Ω for DMX, ~45–75 Ω for mic) and while it usually works over short runs, it causes flickering fixtures and intermittent faults over long ones. The fact that the connector fits doesn't mean the cable is right.</p></div>
+<div class="note warn"><span class="lab">Watch it</span><p>Never use a mic cable for DMX or DMX cable for audio as a matter of habit. DMX is impedance-matched at 120 Ω; mic cable isn't built as a matched transmission line at all, and while swapping them usually works over short runs, it causes flickering fixtures and intermittent faults over long ones. The fact that the connector fits doesn't mean the cable is right.</p></div>
 </section>
 
 <section class="s" id="s3-2"><h3><span class="n">3.2</span> Jacks — TS, TRS, TRRS</h3>
@@ -4594,7 +4592,7 @@ var savedLowlight = storeGet(LOWLIGHT_KEY) === '1';
 var savedHighContrast = storeGet(CONTRAST_KEY) === '1';
 var savedBright = parseInt(storeGet(BRIGHT_KEY), 10); if(isNaN(savedBright)) savedBright = 100;
 var savedName = storeGet(NAME_KEY) || '';
-var savedLayout = storeGet(LAYOUT_KEY) || 'book';
+var savedLayout = storeGet(LAYOUT_KEY) || 'app';
 applyPalette(savedPalette);
 applyLowlight(savedLowlight);
 applyHighContrast(savedHighContrast);
@@ -4854,7 +4852,7 @@ if(appearanceReset){
     savedBright = 100; storeSet(BRIGHT_KEY,'100'); applyBright(100);
     if(brightSlider) brightSlider.value = 100; if(brightVal) brightVal.textContent = '100%';
     syncBrightnessPresets();
-    savedLayout = 'book'; storeSet(LAYOUT_KEY,'book'); applyLayout('book'); markLayoutOn();
+    savedLayout = 'app'; storeSet(LAYOUT_KEY,'app'); applyLayout('app'); markLayoutOn();
     if(typeof syncRailToggleUi === 'function') syncRailToggleUi();
     updateThemeColor();
   });
