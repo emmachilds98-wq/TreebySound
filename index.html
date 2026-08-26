@@ -757,6 +757,26 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 @media (max-width:400px){
   .fault-grid{grid-template-columns:1fr}
 }
+/* ---------- the Library browse screen ---------- */
+.library-band{display:grid;grid-template-columns:172px minmax(0,1fr);gap:20px;padding:18px 0;border-top:1px solid var(--rule)}
+.library-band:first-child{border-top:0;padding-top:0}
+.library-group{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--petrol);font-weight:700;margin:4px 0 0;line-height:1.5}
+.library-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:12px}
+.library-card{display:flex;flex-direction:column;text-decoration:none;color:var(--ink);background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:15px 17px;box-shadow:var(--shadow)}
+.library-card:hover{border-color:var(--petrol);background:var(--petrol-soft)}
+.library-card:hover strong{color:var(--petrol-ink)}
+.library-card-top{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.library-num{display:inline-flex;align-items:center;justify-content:center;min-width:26px;height:22px;padding:0 6px;border-radius:6px;background:var(--petrol-soft);color:var(--petrol-ink);font-family:var(--mono);font-size:12px;font-weight:700}
+.library-badge{font-family:var(--mono);font-size:9px;letter-spacing:.07em;text-transform:uppercase;color:var(--amber);background:var(--amber-soft);border-radius:20px;padding:3px 8px}
+.library-card strong{font-family:var(--display);font-size:16.5px;font-weight:600;line-height:1.2;margin-bottom:6px}
+.library-lead{font-size:14px;line-height:1.4;color:var(--ink-2);flex:1}
+.library-meta{font-family:var(--mono);font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);margin-top:11px;padding-top:9px;border-top:1px solid var(--rule)}
+.library-search-note{font-size:13.5px;color:var(--ink-2);margin:14px 0 0}
+@media (max-width:900px){
+  .library-band{grid-template-columns:1fr;gap:10px}
+  .library-group{margin-bottom:2px}
+}
+@media (max-width:560px){ .library-grid{grid-template-columns:1fr} }
 </style>
 </head>
 <body>
@@ -784,7 +804,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
     <a href="#support" data-nav="support"><span class="ic" aria-hidden="true">&#9889;</span>Support</a>
     <a href="#path" data-nav="path"><span class="ic" aria-hidden="true">&#8599;</span>Pathway</a>
   </nav>
-  <div class="rail-library"><span>Library</span><a href="#s19-1">Checklists →</a></div>
+  <div class="rail-library"><span>Library</span><a href="#library">All parts →</a></div>
   <nav class="rail-routes" aria-label="Library routes">
     <a href="#p1" data-nav="p1">Learn the job</a>
     <a href="#p2" data-nav="p2">Learn core audio</a>
@@ -812,7 +832,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 
 <main id="main" tabindex="-1">
 <div class="part-nav" id="partNav" aria-label="Part navigation">
-  <button class="part-nav-all" id="partNavAll" type="button" title="Open the library index">☰ <span>All parts</span></button>
+  <button class="part-nav-all" id="partNavAll" type="button" title="Browse every part of the library">☰ <span>All parts</span></button>
   <div class="part-nav-current"><span class="part-nav-num" id="partNavNum"></span><span class="part-nav-title" id="partNavTitle"></span></div>
   <div class="part-nav-btns">
     <button class="part-nav-btn" id="partNavPrev" type="button">‹ <span>Prev</span></button>
@@ -876,7 +896,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
         <span class="dest-links"><em>Stages 1–5</em><em>Free training</em><em>Career</em><em>Outside work</em></span>
       </a>
 
-      <a class="dest-card dest-lib" href="#p0">
+      <a class="dest-card dest-lib" href="#library">
         <span class="dest-icon" aria-hidden="true">▤</span>
         <span class="dest-title">Library</span>
         <span class="dest-sub">The whole handbook, 21 parts</span>
@@ -1505,6 +1525,32 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
   </section>
 </section>
 
+<section class="hub screen" id="library" aria-label="Library">
+  <div class="screen-head">
+    <p class="eyebrow">Library</p>
+    <h2>The whole handbook, twenty-one parts</h2>
+    <p class="screen-lead">The reference underneath the other four screens. Every part is here with what it is actually for — browse it when you want to see the shape of the thing, and search it when you already know what you are after.</p>
+  </div>
+
+  <section class="hub-section" id="library-tools">
+    <h3>Field tools first</h3>
+    <p class="hub-lead">The four parts of the library that get used on site rather than read at home.</p>
+    <div class="hub-shelf">
+      <a href="#s19-1"><strong>All checklists</strong>Every stage of a job, tickable and saved on this device.</a>
+      <a href="#s19-13"><strong>Pocket reference</strong>Numbers and scripts on one printable page.</a>
+      <a href="#s19-12"><strong>How-to index</strong>Every step-by-step guide, by area and A–Z.</a>
+      <a href="#s20-1"><strong>Glossary</strong>Every term, alphabetically or grouped by area.</a>
+    </div>
+    <p class="library-search-note">Looking for something specific? Open <strong>Library</strong> in the navigation bar to search every word of every part, or press <kbd>/</kbd> on a keyboard.</p>
+  </section>
+
+  <section class="hub-section" id="library-parts">
+    <h3>All parts</h3>
+    <p class="hub-lead">Grouped by the question you are answering, not by textbook order. Each card opens that part.</p>
+    <div id="libraryIndex"></div>
+  </section>
+</section>
+
 <div class="part" id="p0">
 <div class="part-head"><div class="col"><span class="part-num">PART 0</span><div><h2>How to use this thing</h2><p>Two minutes here saves you a lot of scrolling later.</p></div></div></div>
 <div class="col">
@@ -1518,11 +1564,24 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 </section>
 
 <section class="s" id="s0-2"><h3><span class="n">0.2</span> Navigating</h3>
+<p>The app is five places, and everything lives in one of them. The navigation bar — along the top on a computer, along the bottom on a phone — holds all five.</p>
+<div class="tw"><table>
+<thead><tr><th>Screen</th><th>What it is for</th><th>Go there when</th></tr></thead>
+<tbody>
+<tr><td><strong><a href="#hub">Home</a></strong></td><td>The way in: where you got to, where everything is, and the pages that get opened most.</td><td class="mono">you are not sure</td></tr>
+<tr><td><strong><a href="#job">Job Hub</a></strong></td><td>Anything tied to an actual booking — the run-up, the nine stages of a job, the people, and a private workspace for this job's documents and unfamiliar kit.</td><td class="mono">a job is booked</td></tr>
+<tr><td><strong><a href="#support">Support</a></strong></td><td>On the spot: make it safe, the fault script, fault-finding by subsystem, six calculators, and the words to use when you need help.</td><td class="mono">something is wrong</td></tr>
+<tr><td><strong><a href="#path">Learning pathway</a></strong></td><td>What to read, in what order, what to practise on a real job, and which free training fits at each stage.</td><td class="mono">nothing is booked</td></tr>
+<tr><td><strong><a href="#library">Library</a></strong></td><td>This handbook — all twenty-one parts, plus the checklists, how-to index and glossary.</td><td class="mono">you want the detail</td></tr>
+</tbody></table></div>
+<p>Nothing is buried: every screen carries links straight into the library, and the library links back out. You do not have to remember which screen something is on — search reaches all of it.</p>
+<h4>Finding things</h4>
 <p>There's no one correct way to find something in here — if one route doesn't work, another will.</p>
 <ul>
-<li><strong>Search</strong> — press <code>/</code> anywhere (or tap <em>Library</em>) to open the search box; it filters the contents list live as you type, and <code>Esc</code> clears it. This searches every part of the book at once — including the parts you're not currently looking at — so use it rather than your browser's own <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>F</kbd>, which only sees the page you're on.</li>
+<li><strong>Search</strong> — press <code>/</code> anywhere (or tap <em>Library</em> in the navigation bar) to open the search box; it filters the contents list live as you type, and <code>Esc</code> clears it. This searches every part of the book <em>and</em> every one of the five screens at once — including the ones you're not currently looking at — so use it rather than your browser's own <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>F</kbd>, which only sees what's on screen.</li>
+<li><strong>Browse</strong> — <a href="#library">All parts</a> lays out the whole library as cards, grouped by the question you're answering, with what each part is actually for. It's the one to use when you don't yet know what you're looking for.</li>
 <li><strong>Section numbers</strong> — every heading has one. They're stable, so notes to yourself like "look at 12.3 before Friday" will still work in a year.</li>
-<li><strong>On a job now</strong> — the button bottom-right is the fastest route in when you're mid-job and know roughly what kind of thing you need rather than where it lives: setup, fault-finding, checklists, the how-to index, the glossary, or a calculator.</li>
+<li><strong>Support</strong> — the fastest route in when you're mid-job and know roughly what kind of thing you need rather than where it lives: making it safe, fault-finding, the calculators, the pocket reference and the glossary are all one tap away there. On a computer the <em>On a job now</em> button, bottom-right, opens the same shortcuts as a menu without leaving the page you're reading.</li>
 <li><strong>Checklists</strong> — <a href="#p19">Part 19</a> has printable ones. Ticks save in your browser, so a half-done prep list is still half-done tomorrow.</li>
 <li><strong>How-to guides</strong> — every start-to-finish, step-by-step procedure in the book, grouped by area at <a href="#s19-12">§19.12</a> and as one flat alphabetical list at <a href="#s19-16">§19.16</a>.</li>
 <li><strong>Glossary</strong> — every piece of jargon, alphabetically at <a href="#s20-1">§20.1</a> or grouped by area at <a href="#s20-2">§20.2</a>. Each entry links straight back to where it's properly explained.</li>
@@ -1543,6 +1602,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 <p><strong>What it gives you:</strong> you already know what the kit <em>is</em> — what a stagebox looks like, roughly what lives in which flightcase, what a DI box does even if you've never wired one into a show yourself. That's the vocabulary most beginners spend their first month just acquiring. You skipped that month.</p>
 <p><strong>What it doesn't give you yet:</strong> the muscle memory of doing it under a bit of pressure, with someone waiting, without someone more experienced quietly fixing your mistakes before you notice them. That only comes from reps — and you haven't had many yet. That's completely normal at six months, whatever it might feel like watching someone who's done it for years make it look easy.</p>
 <div class="note std"><span class="lab">Standard</span><p>Read this book in the order it's written the first time through, even the bits that feel basic — the basics are exactly where "I sort of know this" quietly turns into a real gap under pressure. After that, use it as a reference: search for what you need, when you need it.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>If "in the order it's written" is too blunt an instruction, the <a href="#path-stages">learning pathway</a> breaks it into five stages and tells you exactly which sections to read at each one, what to practise on a real job before moving on, and which free training is worth doing at that point rather than later.</p></div>
 <p>Two parts are worth flagging specifically for where you are right now. <a href="#p12">Part 12</a> (Fault-finding) is written to be usable even before you have deep intuition for this stuff — it gives you an actual procedure to follow, not just "get a feel for it", because a script beats a feeling every time when someone's looking at you expectantly. And <a href="#s9-8">§9.8 onwards</a> covers Avolites Titan in real depth, because you've already got a head start there that's worth building on properly rather than leaving half-used.</p>
 <div class="note alt"><span class="lab">Also seen</span><p>Nobody who's good at this job was born knowing it. Every engineer whose fault-finding looks like a magic trick got there by fixing the same handful of problems dozens of times each until the pattern-matching became automatic. You're not behind — you're at the very start of building exactly that.</p></div>
 </section>
@@ -4673,7 +4733,7 @@ EARS            the only part of the system that actually matters</div>
   <button type="button" data-hub-target="job" data-nav="job"><span class="ic">◉</span>Job</button>
   <button type="button" data-hub-target="support" data-nav="support"><span class="ic">⚡</span>Support</button>
   <button type="button" data-hub-target="path" data-nav="path"><span class="ic">↗</span>Pathway</button>
-  <button type="button" id="bbSearch" aria-haspopup="dialog" aria-expanded="false"><span class="ic">⌕</span>Library</button>
+  <button type="button" id="bbSearch" data-nav="library" aria-haspopup="dialog" aria-expanded="false"><span class="ic">⌕</span>Library</button>
 </nav>
 
 <div class="sheet-overlay" id="sheetOverlay"></div>
@@ -4835,7 +4895,8 @@ var APP_SCREENS = [
   {id:'hub',     group:'Inside each screen', label:'Home',        glyph:'\u2302'},
   {id:'job',     group:null,            label:'Job Hub',          glyph:'\u25C9'},
   {id:'support', group:null,            label:'Support',          glyph:'\u26A1'},
-  {id:'path',    group:null,            label:'Learning pathway', glyph:'\u2197'}
+  {id:'path',    group:null,            label:'Learning pathway', glyph:'\u2197'},
+  {id:'library', group:null,            label:'Library',          glyph:'\u25A4', toc:false}
 ];
 var SCREEN_IDS = [];
 (function indexScreens(){
@@ -4843,7 +4904,10 @@ var SCREEN_IDS = [];
     var el = document.getElementById(screen.id);
     if(!el) return;
     SCREEN_IDS.push(screen.id);
-    if(!toc) return;
+    /* The Library screen is a browsable index of the parts, and the contents
+       tree immediately below it lists those same parts already — giving it its
+       own branch would just say everything twice. */
+    if(!toc || screen.toc === false) return;
     var screenSections = Array.prototype.slice.call(el.querySelectorAll('section.hub-section'));
     if(!screenSections.length) return;
 
@@ -4982,6 +5046,73 @@ parts.forEach(function(part){
   details.appendChild(ul);
   toc.appendChild(details);
 });
+
+/* ---------- the Library browse screen ----------
+   Built from the parts in the document rather than written out by hand: every
+   card takes its number, title and standfirst from the part itself, and its
+   group heading and badge from the same tables the contents tree uses. Add a
+   part to the book and it appears here with no second copy to keep in step. */
+(function buildLibraryIndex(){
+  var host = document.getElementById('libraryIndex');
+  if(!host) return;
+  var grid = null;
+  parts.forEach(function(part){
+    var num = part.querySelector('.part-num');
+    var title = part.querySelector('.part-head h2');
+    if(!num || !title) return;
+    var lead = part.querySelector('.part-head p');
+    var count = part.querySelectorAll('section.s').length;
+
+    if(TOC_GROUPS[part.id] || !grid){
+      var band = document.createElement('section');
+      band.className = 'library-band';
+      var h = document.createElement('h4');
+      h.className = 'library-group';
+      h.textContent = TOC_GROUPS[part.id] || 'More';
+      band.appendChild(h);
+      grid = document.createElement('div');
+      grid.className = 'library-grid';
+      band.appendChild(grid);
+      host.appendChild(band);
+    }
+
+    var card = document.createElement('a');
+    card.className = 'library-card';
+    card.href = '#' + part.id;
+
+    var top = document.createElement('span');
+    top.className = 'library-card-top';
+    var n = document.createElement('span');
+    n.className = 'library-num';
+    n.textContent = num.textContent.replace('PART', '').trim();
+    top.appendChild(n);
+    if(TOC_BADGES[part.id]){
+      var badge = document.createElement('span');
+      badge.className = 'library-badge';
+      badge.textContent = TOC_BADGES[part.id];
+      top.appendChild(badge);
+    }
+    card.appendChild(top);
+
+    var t = document.createElement('strong');
+    t.textContent = title.textContent;
+    card.appendChild(t);
+
+    if(lead){
+      var p = document.createElement('span');
+      p.className = 'library-lead';
+      p.textContent = lead.textContent;
+      card.appendChild(p);
+    }
+
+    var meta = document.createElement('span');
+    meta.className = 'library-meta';
+    meta.textContent = count ? count + (count === 1 ? ' section' : ' sections') : 'Reference';
+    card.appendChild(meta);
+
+    grid.appendChild(card);
+  });
+})();
 
 /* ---------- search ---------- */
 var searchBox = document.getElementById('q');
@@ -5220,7 +5351,7 @@ function goTo(id){
   var h = '#' + id;
   if(location.hash === h){ navigateTo(h); } else { location.hash = h; }
 }
-if(partNavAll){ partNavAll.addEventListener('click', function(){ openContentsSheet(false); }); }
+if(partNavAll){ partNavAll.addEventListener('click', function(){ closeAllPanels(); goTo('library'); }); }
 if(partNavPrev){ partNavPrev.addEventListener('click', function(){
   var idx = partIds.indexOf(currentScreen);
   if(idx > 0) goTo(partIds[idx - 1]);
@@ -5235,7 +5366,6 @@ if(partNavNext){ partNavNext.addEventListener('click', function(){
    uses. Parts with no nav home (field tools, glossary) simply highlight
    nothing rather than mislabelling where you are. */
 var NAV_FOR_SCREEN = {
-  p0:'p1',
   p1:'p1',
   p2:'p2', p3:'p2', p4:'p2',
   p5:'p5', p6:'p5', p7:'p5', p8:'p5', p9:'p5', p10:'p5',
@@ -5247,7 +5377,7 @@ var NAV_FOR_SCREEN = {
    app screens (bottom bar, app bar, sidebar) and the library route chips. A part
    lights a route chip; a screen lights its own destination. */
 function syncNavActive(screenId){
-  var dest = SCREEN_IDS.indexOf(screenId) > -1 ? screenId : null;
+  var dest = SCREEN_IDS.indexOf(screenId) > -1 ? screenId : 'library';
   var route = NAV_FOR_SCREEN[screenId] || null;
   Array.prototype.forEach.call(document.querySelectorAll('[data-nav]'), function(el){
     var v = el.getAttribute('data-nav');
