@@ -3982,6 +3982,15 @@ EARS            the only part of the system that actually matters</div>
     <button class="ap-switch" id="contrastSwitch" type="button" role="switch" aria-checked="false" aria-label="High contrast"></button>
   </div>
 
+  <div class="ap-row ap-view">
+    <span class="ap-label">Desktop layout</span>
+    <p class="ap-intro">On a bigger screen you can read TreebySound as one continuous book, or switch to the focused app view with a docked contents sidebar, search and quick links. Phones always use the app view.</p>
+    <div class="ap-view-choice" id="apViewChoice">
+      <button type="button" data-view="book">Reading book</button>
+      <button type="button" data-view="app">App view</button>
+    </div>
+  </div>
+
   <div class="ap-row ap-name">
     <span class="ap-label">Your name (optional)</span>
     <input type="text" id="ownerName" placeholder="e.g. Emma" maxlength="30" autocomplete="off" aria-label="Your name (optional)">
@@ -4529,6 +4538,7 @@ var LOWLIGHT_KEY = 'treebysound-lowlight';
 var CONTRAST_KEY = 'treebysound-high-contrast';
 var BRIGHT_KEY = 'treebysound-bright';
 var NAME_KEY = 'treebysound-name';
+var LAYOUT_KEY = 'treebysound-layout';
 var FORCEDESK_KEY = 'treebysound-forcedesktop';
 var root = document.documentElement;
 
@@ -4558,16 +4568,21 @@ function applyBright(v){
   root.style.setProperty('--bright', (v/100).toString());
   root.classList.toggle('tb-dimmed', Number(v) !== 100);
 }
+function applyLayout(v){
+  root.setAttribute('data-layout', v === 'app' ? 'app' : 'book');
+}
 
 var savedPalette = storeGet(PALETTE_KEY) || 'classic';
 var savedLowlight = storeGet(LOWLIGHT_KEY) === '1';
 var savedHighContrast = storeGet(CONTRAST_KEY) === '1';
 var savedBright = parseInt(storeGet(BRIGHT_KEY), 10); if(isNaN(savedBright)) savedBright = 100;
 var savedName = storeGet(NAME_KEY) || '';
+var savedLayout = storeGet(LAYOUT_KEY) || 'book';
 applyPalette(savedPalette);
 applyLowlight(savedLowlight);
 applyHighContrast(savedHighContrast);
 applyBright(savedBright);
+applyLayout(savedLayout);
 updateThemeColor();
 
 var heroEyebrow = document.getElementById('heroEyebrow');
@@ -4773,6 +4788,29 @@ if(contrastSwitch){
   });
 }
 
+/* desktop layout: book (whole page) vs app (docked sidebar + search) */
+var apViewChoice = document.getElementById('apViewChoice');
+function markLayoutOn(){
+  if(!apViewChoice) return;
+  Array.prototype.forEach.call(apViewChoice.querySelectorAll('button'), function(btn){
+    btn.classList.toggle('on', btn.getAttribute('data-view') === savedLayout);
+  });
+}
+markLayoutOn();
+if(apViewChoice){
+  apViewChoice.addEventListener('click', function(e){
+    var btn = e.target.closest ? e.target.closest('button[data-view]') : null;
+    if(!btn) return;
+    savedLayout = btn.getAttribute('data-view');
+    storeSet(LAYOUT_KEY, savedLayout);
+    applyLayout(savedLayout);
+    markLayoutOn();
+    /* switching layout changes whether the sidebar is docked or a sheet;
+       leave this settings panel open and just refresh the sidebar's own UI */
+    if(typeof syncRailToggleUi === 'function') syncRailToggleUi();
+  });
+}
+
 /* owner name */
 var ownerNameInput = document.getElementById('ownerName');
 if(ownerNameInput){
@@ -4799,6 +4837,8 @@ if(appearanceReset){
     savedBright = 100; storeSet(BRIGHT_KEY,'100'); applyBright(100);
     if(brightSlider) brightSlider.value = 100; if(brightVal) brightVal.textContent = '100%';
     syncBrightnessPresets();
+    savedLayout = 'book'; storeSet(LAYOUT_KEY,'book'); applyLayout('book'); markLayoutOn();
+    if(typeof syncRailToggleUi === 'function') syncRailToggleUi();
     updateThemeColor();
   });
 }
