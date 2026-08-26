@@ -192,6 +192,9 @@ main:focus{outline:none}
 .rail-library{display:flex;align-items:center;justify-content:space-between;padding:11px 17px 5px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}.rail-library a{color:var(--petrol);font-size:9.5px;text-decoration:none;letter-spacing:.04em}.rail-routes{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:0 16px 10px}.rail-routes a{text-decoration:none;border:1px solid var(--rule);border-radius:6px;padding:6px 8px;color:var(--ink-2);background:var(--card);font-family:var(--display);font-size:11.5px;line-height:1.25}.rail-routes a:hover{border-color:var(--petrol);background:var(--petrol-soft);color:var(--petrol-ink)}
 .toc{overflow-y:auto;padding:0 10px 28px;flex:1;scrollbar-width:thin}
 .toc details{margin-bottom:4px;border:1px solid transparent;border-radius:8px}
+.toc details.toc-ping{animation:tocPing 1.1s ease-out}
+@keyframes tocPing{0%{background:var(--petrol-soft);border-color:var(--petrol)}100%{background:transparent;border-color:transparent}}
+@media (prefers-reduced-motion:reduce){.toc details.toc-ping{animation:none}}
 .toc summary{
   cursor:pointer;list-style:none;padding:9px 9px;border-radius:8px;
   font-family:var(--display);font-size:14px;letter-spacing:.02em;color:var(--ink-2);
@@ -678,19 +681,19 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
 
 <section class="hub" id="hub" aria-label="Your audio development hub">
   <nav class="hub-nav" aria-label="Development hub">
-    <a href="#hub-today">Today</a><a href="#hub-job">On a job</a><a href="#hub-workspace">Job workspace</a><a href="#hub-learn">Learn</a><a href="#hub-people">People</a><a href="#hub-me">Me</a><a href="#hub-conservation">Outside work</a><a href="#hub-guides">Quick guides</a>
+    <a href="#hub-today">Next job</a><a href="#hub-job">On a job</a><a href="#hub-workspace">Job workspace</a><a href="#hub-learn">Learn</a><a href="#hub-people">People</a><a href="#hub-me">Me</a><a href="#hub-conservation">Outside work</a><a href="#hub-guides">Quick guides</a>
   </nav>
 
   <section class="hub-section" id="hub-today">
-    <h3>Today</h3><p class="hub-lead">Do one useful thing. Steady competence is built shift by shift, not in one enormous study session.</p>
+    <h3>Before your next job</h3><p class="hub-lead">Jobs come up now and then, not every day — this is for the run-up to one, not a daily habit. Skip straight to whichever card actually helps right now.</p>
     <div class="hub-grid">
-      <article class="hub-card hub-action"><div><p class="kicker">Before your next shift</p><h4>Know the job, then arrive ready</h4><p>Read the kit list, schedule, input list and stage plan. Write down one question before leaving the warehouse.</p></div><a href="#s19-2">Prep list →</a></article>
-      <article class="hub-card hub-action"><div><p class="kicker">Ten-minute learning task</p><h4>Trace one signal path</h4><p>Pick a microphone, a DI, a radio mic or a playback source. Say its route out loud from source to speaker.</p></div><a href="#s2-1">Start →</a></article>
-      <article class="hub-card hub-action"><div><p class="kicker">After your shift</p><h4>Make the next job easier</h4><p>Log one thing you used, one thing that confused you, and one question to ask. Keep it factual and client-safe.</p></div><a href="#hub-guide-log">Use guide →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Before you leave the house</p><h4>Know the job, then arrive ready</h4><p>Read the kit list, schedule, input list and stage plan. Write down one question before leaving.</p></div><a href="#s19-2">Prep list →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Been a while?</p><h4>Refresh the essentials fast</h4><p>One page of the numbers and scripts that fade fastest between jobs — levels, gain staging, the first-sixty-seconds fault script.</p></div><a href="#s19-13">Pocket reference →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">After the job</p><h4>Make the next one easier</h4><p>Log one thing you used, one thing that confused you, and one question to ask. Keep it factual and client-safe.</p></div><a href="#hub-guide-log">Use guide →</a></article>
     </div>
     <div class="hub-card hub-progress progress-deck" id="firstThirtyDeck" style="margin-top:14px">
-      <div class="progress-page" data-progress-page="0"><p class="kicker">First 30 shifts</p><h4>Build confidence through evidence, not guesswork</h4><ul class="check" id="chk-first30"><li><label><input type="checkbox"><span>I can identify and return the common audio stock without rushing.</span></label></li><li><label><input type="checkbox"><span>I can coil, label and route a cable safely and neatly.</span></label></li><li><label><input type="checkbox"><span>I have assisted a build, patch and line check while taking direction.</span></label></li><li><label><input type="checkbox"><span>I can describe a fault, what changed, and what I have checked.</span></label></li><li><label><input type="checkbox"><span>I have asked for feedback after a shift and acted on it.</span></label></li></ul><p><a href="#" class="reset-link" data-target="chk-first30">Reset this list</a></p></div>
-      <div class="progress-page" data-progress-page="1" hidden><p class="kicker">Next 30 shifts</p><h4>Turn reliable support into audio confidence</h4><ul class="check" id="chk-next30"><li><label><input type="checkbox"><span>I can follow the current input list and patch without relying on memory.</span></label></li><li><label><input type="checkbox"><span>I have prepared an assigned microphone, DI or radio-mic task to the agreed standard.</span></label></li><li><label><input type="checkbox"><span>I have completed one supervised patch, console, RF or line-check task and explained it back.</span></label></li><li><label><input type="checkbox"><span>I can give a concise fault update: symptom, change, checks and escalation.</span></label></li><li><label><input type="checkbox"><span>I have asked the audio lead which one real task to own next.</span></label></li></ul><p><a href="#" class="reset-link" data-target="chk-next30">Reset this list</a></p></div>
+      <div class="progress-page" data-progress-page="0"><p class="kicker">Getting started</p><h4>Build confidence through evidence, not guesswork</h4><ul class="check" id="chk-first30"><li><label><input type="checkbox"><span>I can identify and return the common audio stock without rushing.</span></label></li><li><label><input type="checkbox"><span>I can coil, label and route a cable safely and neatly.</span></label></li><li><label><input type="checkbox"><span>I have assisted a build, patch and line check while taking direction.</span></label></li><li><label><input type="checkbox"><span>I can describe a fault, what changed, and what I have checked.</span></label></li><li><label><input type="checkbox"><span>I have asked for feedback after a job and acted on it.</span></label></li></ul><p><a href="#" class="reset-link" data-target="chk-first30">Reset this list</a></p></div>
+      <div class="progress-page" data-progress-page="1" hidden><p class="kicker">Building on it</p><h4>Turn reliable support into audio confidence</h4><ul class="check" id="chk-next30"><li><label><input type="checkbox"><span>I can follow the current input list and patch without relying on memory.</span></label></li><li><label><input type="checkbox"><span>I have prepared an assigned microphone, DI or radio-mic task to the agreed standard.</span></label></li><li><label><input type="checkbox"><span>I have completed one supervised patch, console, RF or line-check task and explained it back.</span></label></li><li><label><input type="checkbox"><span>I can give a concise fault update: symptom, change, checks and escalation.</span></label></li><li><label><input type="checkbox"><span>I have asked the audio lead which one real task to own next.</span></label></li></ul><p><a href="#" class="reset-link" data-target="chk-next30">Reset this list</a></p></div>
       <div class="progress-deck-nav"><button class="progress-deck-btn" type="button" data-progress-prev hidden>← Back</button><span class="progress-deck-count" aria-live="polite"></span><button class="progress-deck-btn" type="button" data-progress-next>Next →</button></div>
     </div>
   </section>
@@ -773,7 +776,7 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
         <div class="progress-meter" role="img" aria-labelledby="progressSummaryText"><span id="progressMeterFill"></span></div>
         <p class="progress-summary-text" id="progressSummaryText" aria-live="polite"></p>
       </div>
-      <p class="progress-summary-note">Counted from the three lists above and in <a href="#hub-today">Today</a>. Nothing here is a deadline — it is just a way of seeing progress that is otherwise easy to forget you have made.</p>
+      <p class="progress-summary-note">Counted from the three lists above and in <a href="#hub-today">Next job</a>. Nothing here is a deadline — it is just a way of seeing progress that is otherwise easy to forget you have made.</p>
     </div>
   </section>
 
@@ -3970,21 +3973,17 @@ EARS            the only part of the system that actually matters</div>
 
 <div class="quickfab-wrap">
   <div class="quickfab-menu" id="quickfabMenu">
-    <div class="quickfab-label">TreebySound</div>
-    <a href="#hub-job"><strong>On a job</strong><small>Safe next steps, then the right checklist</small></a>
-    <a href="#hub-people"><strong>People &amp; handovers</strong><small>Who owns what, and what to say</small></a>
-    <a href="#hub-workspace"><strong>Job workspace</strong><small>Job pack, contacts, hired-in kit notes</small></a>
-    <div class="quickfab-label">Get set up</div>
-    <a href="#s19-4"><strong>Load-in &amp; build checklist</strong><small>Power, cable routes, comms, patch</small></a>
-    <a href="#s19-5"><strong>Line check sheet</strong><small>Prove every input, channel by channel</small></a>
-    <div class="quickfab-label">Fault-finding</div>
+    <div class="quickfab-label">Something's wrong</div>
     <a href="#s12-8"><strong>First sixty seconds</strong><small>The script, not a feeling</small></a>
     <a href="#p12"><strong>Full fault-finding toolkit</strong><small>Every subsystem, step by step</small></a>
+    <a href="#s13-13"><strong>Accident or near-miss</strong><small>Make it safe, then tell the right person</small></a>
     <div class="quickfab-label">Checklists</div>
     <a href="#s19-1"><strong>All checklists</strong><small>Every stage of a job, tickable</small></a>
-    <a href="#s19-17"><strong>Your own bag</strong><small>What to carry, before you leave home</small></a>
+    <a href="#s19-4"><strong>Load-in &amp; build</strong><small>Power, cable routes, comms, patch</small></a>
+    <a href="#s19-5"><strong>Line check sheet</strong><small>Prove every input, channel by channel</small></a>
     <a href="#s19-6"><strong>Show-day — before doors</strong><small>The last check before doors open</small></a>
     <a href="#s19-8"><strong>RF day checklist</strong><small>Batteries, scan, antennas, spares</small></a>
+    <a href="#s19-17"><strong>Your own bag</strong><small>What to carry, before you leave home</small></a>
     <div class="quickfab-label">Find anything</div>
     <a href="#s19-12"><strong>How-to index</strong><small>Every step-by-step guide, by area &amp; A–Z</small></a>
     <a href="#s20-1"><strong>Glossary</strong><small>Every term, by area &amp; A–Z</small></a>
@@ -3992,6 +3991,10 @@ EARS            the only part of the system that actually matters</div>
     <div class="quickfab-label">Calculators</div>
     <a href="#calcLevel"><strong>Level converter</strong><small>dBu / dBV / Volts</small></a>
     <a href="#calcCableLoss"><strong>Speaker cable loss</strong><small>Is this run thin enough to matter</small></a>
+    <div class="quickfab-label">Your job right now</div>
+    <a href="#hub-job"><strong>On a job</strong><small>Safe next steps, then the right checklist</small></a>
+    <a href="#hub-people"><strong>People &amp; handovers</strong><small>Who owns what, and what to say</small></a>
+    <a href="#hub-workspace"><strong>Job workspace</strong><small>Job pack, contacts, hired-in kit notes</small></a>
   </div>
   <button class="quickfab" id="quickfabBtn" type="button" aria-haspopup="true" aria-expanded="false">On a job now ▾</button>
 </div>
@@ -4000,8 +4003,8 @@ EARS            the only part of the system that actually matters</div>
 
 <nav class="bottombar" id="bottombar">
   <button type="button" data-hub-target="hub"><span class="ic">⌂</span>Home</button>
-  <button type="button" data-hub-target="hub-today"><span class="ic">◉</span>Today</button>
-  <button type="button" id="bbJob" aria-haspopup="dialog" aria-expanded="false"><span class="ic">⚡</span>Help</button>
+  <button type="button" data-hub-target="hub-today"><span class="ic">◉</span>Next job</button>
+  <button type="button" id="bbJob" aria-haspopup="dialog" aria-expanded="false"><span class="ic">⚡</span>Support</button>
   <button type="button" data-hub-target="hub-learn"><span class="ic">↗</span>Learn</button>
   <button type="button" id="bbSearch" aria-haspopup="dialog" aria-expanded="false"><span class="ic">⌕</span>Library</button>
 </nav>
@@ -4173,6 +4176,7 @@ var TOC_BADGES = { 'p11': 'before doors', 'p12': 'when it breaks', 'p19': 'use o
 
   var details = document.createElement('details');
   details.open = true;
+  details.dataset.part = 'hub';
   var summary = document.createElement('summary');
   var numSpan = document.createElement('span');
   numSpan.className = 'n';
@@ -4219,6 +4223,7 @@ parts.forEach(function(part){
   }
 
   var details = document.createElement('details');
+  details.dataset.part = part.id;
   var summary = document.createElement('summary');
   var numSpan = document.createElement('span');
   numSpan.className = 'n';
@@ -4568,7 +4573,24 @@ function activateScreen(id){
     }
   }
   syncNavActive(id);
+  pingToc(id);
   return currentScreen;
+}
+
+/* When a quick-access button (or any link) jumps to a part, open and flash
+   that part's own branch in the contents tree, so it's obvious what's
+   underneath where you just landed, without hunting for it by hand. */
+function pingToc(id){
+  if(!toc) return;
+  var target = toc.querySelector('details[data-part="' + id + '"]');
+  if(!target) return;
+  target.open = true;
+  if(typeof target.scrollIntoView === 'function' && toc.scrollHeight > toc.clientHeight){
+    target.scrollIntoView({block:'nearest', behavior:'smooth'});
+  }
+  target.classList.remove('toc-ping');
+  void target.offsetWidth;
+  target.classList.add('toc-ping');
 }
 
 function navigateTo(hash, opts){
@@ -5299,7 +5321,7 @@ function updateProgressSummary(){
   if(fillEl) fillEl.style.width = pct + '%';
   var msg;
   if(!total)      msg = 'Development markers will appear here.';
-  else if(!done)  msg = 'Nothing ticked yet — start with one thing from Today.';
+  else if(!done)  msg = 'Nothing ticked yet — start with one thing from Before your next job.';
   else if(done === total) msg = 'All ' + total + ' development markers ticked. Time to agree the next ones with your audio lead.';
   else            msg = done + ' of ' + total + ' development markers ticked.';
   textEl.textContent = msg;
