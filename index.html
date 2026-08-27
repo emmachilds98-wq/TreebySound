@@ -179,20 +179,19 @@ main:focus{outline:none}
 }
 .rail-routes a.on{border-color:var(--petrol);background:var(--petrol-soft);color:var(--petrol-ink);font-weight:600}
 @media (min-width:821px){.part,section.s,.hub,.hub-section{scroll-margin-top:max(96px,28vh)}}
-.rail-head{padding:19px 16px 14px;border-bottom:1px solid var(--rule);background:var(--card)}
-.brand{font-family:var(--display);font-size:22px;line-height:1;margin:0;letter-spacing:.04em;color:var(--petrol-ink);padding-right:64px}
-.brand small{display:block;font-family:var(--mono);font-style:normal;font-size:10px;letter-spacing:.04em;color:var(--ink-3);margin-top:7px;font-weight:400;line-height:1.35}
-.rail-quick{display:grid;grid-template-columns:1.35fr 1fr;gap:7px;margin-top:15px}.rail-quick a{min-width:0;text-decoration:none;border:1px solid var(--rule);background:var(--paper);border-radius:9px;padding:8px 9px;color:var(--ink-2);font-family:var(--display);font-size:12.5px;line-height:1.1}.rail-quick a:first-child{grid-row:span 2;background:var(--petrol);border-color:var(--petrol);color:var(--paper);display:flex;flex-direction:column;justify-content:center;font-size:15px}.rail-quick a strong{display:block;font-size:inherit}.rail-quick a small{display:block;margin-top:4px;font-family:var(--body);font-size:11px;line-height:1.2;color:var(--ink-3)}.rail-quick a:first-child small{color:var(--paper);opacity:.88}.rail-quick a:hover{border-color:var(--petrol);background:var(--petrol-soft);color:var(--petrol-ink)}.rail-quick a:first-child:hover{background:var(--petrol-ink);color:var(--paper)}
-.rail-find-label{display:flex;align-items:center;justify-content:space-between;margin-top:16px;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
-.searchbox{position:relative;margin-top:6px}
+.rail-head{padding:13px 16px 9px;border-bottom:1px solid var(--rule);background:var(--card)}
+.brand{font-family:var(--display);font-size:18px;line-height:1;margin:0;letter-spacing:.04em;color:var(--petrol-ink);padding-right:64px}
+.brand small{display:block;font-family:var(--mono);font-style:normal;font-size:9.5px;letter-spacing:.04em;color:var(--ink-3);margin-top:4px;font-weight:400;line-height:1.3}
+.rail-find-label{display:flex;align-items:center;justify-content:space-between;margin-top:9px;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.searchbox{position:relative;margin-top:5px}
 .searchbox input{
-  width:100%;padding:10px 32px 10px 11px;border:1px solid var(--rule-2);border-radius:8px;
+  width:100%;padding:8px 32px 8px 10px;border:1px solid var(--rule-2);border-radius:8px;
   background:var(--paper);color:var(--ink);font-family:var(--body);font-size:14px;
 }
 .searchbox input::placeholder{color:var(--ink-3)}
 .searchbox .sk{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:10px;color:var(--ink-3);pointer-events:none}
-.hits{font-family:var(--mono);font-size:10.5px;color:var(--ink-3);margin:7px 2px 0;min-height:14px;letter-spacing:.02em}
-.rail-library{display:flex;align-items:center;justify-content:space-between;padding:11px 17px 5px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}.rail-library a{color:var(--petrol);font-size:9.5px;text-decoration:none;letter-spacing:.04em}.rail-routes{display:grid;grid-template-columns:1fr 1fr;gap:5px;padding:0 16px 10px}.rail-routes a{text-decoration:none;border:1px solid var(--rule);border-radius:6px;padding:6px 8px;color:var(--ink-2);background:var(--card);font-family:var(--display);font-size:11.5px;line-height:1.25}.rail-routes a:hover{border-color:var(--petrol);background:var(--petrol-soft);color:var(--petrol-ink)}
+.hits{font-family:var(--mono);font-size:10px;color:var(--ink-3);margin:4px 2px 0;min-height:12px;letter-spacing:.02em}
+.rail-library{display:flex;align-items:center;justify-content:space-between;padding:7px 17px 3px;font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}.rail-library a{color:var(--petrol);font-size:9.5px;text-decoration:none;letter-spacing:.04em}.rail-routes{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:0 16px 7px}.rail-routes a{text-decoration:none;border:1px solid var(--rule);border-radius:6px;padding:5px 7px;color:var(--ink-2);background:var(--card);font-family:var(--display);font-size:11px;line-height:1.2}.rail-routes a:hover{border-color:var(--petrol);background:var(--petrol-soft);color:var(--petrol-ink)}
 .toc{overflow-y:auto;padding:0 10px 28px;flex:1;scrollbar-width:thin}
 .toc details{margin-bottom:4px;border:1px solid transparent;border-radius:8px}
 .toc details.toc-ping{animation:tocPing 1.1s ease-out}
@@ -716,9 +715,9 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 .free-block .kicker{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--petrol);font-weight:700;margin:0 0 9px}
 
 /* ---------- sidebar: the four screens above the library ---------- */
-.rail-dest{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:0 18px 12px}
-.rail-dest a{display:flex;align-items:center;gap:8px;text-decoration:none;border:1px solid var(--rule-2);border-radius:10px;padding:9px 10px;background:var(--card);font-family:var(--display);font-size:13.5px;color:var(--ink-2)}
-.rail-dest a .ic{font-size:14px;line-height:1;color:var(--petrol)}
+.rail-dest{display:grid;grid-template-columns:1fr 1fr;gap:4px;padding:0 18px 6px}
+.rail-dest a{display:flex;align-items:center;gap:6px;text-decoration:none;border:1px solid var(--rule-2);border-radius:8px;padding:6px 8px;background:var(--card);font-family:var(--display);font-size:12px;color:var(--ink-2)}
+.rail-dest a .ic{font-size:12px;line-height:1;color:var(--petrol)}
 .rail-dest a:hover{border-color:var(--petrol);color:var(--petrol-ink);background:var(--petrol-soft)}
 .rail-dest a.on{border-color:var(--petrol);background:var(--petrol-soft);color:var(--petrol-ink);font-weight:600}
 
@@ -975,6 +974,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
       <article class="hub-card hub-action"><div><p class="kicker">Before you leave the house</p><h4>Know the job, then arrive ready</h4><p>Read the kit list, schedule, input list and stage plan. Write down one question before leaving.</p></div><a href="#s19-2">Prep list →</a></article>
       <article class="hub-card hub-action"><div><p class="kicker">Been a while?</p><h4>Refresh the essentials fast</h4><p>One page of the numbers and scripts that fade fastest between jobs — levels, gain staging, the first-sixty-seconds fault script.</p></div><a href="#s19-13">Pocket reference →</a></article>
       <article class="hub-card hub-action"><div><p class="kicker">After the job</p><h4>Make the next one easier</h4><p>Log one thing you used, one thing that confused you, and one question to ask. Keep it factual and client-safe.</p></div><a href="#hub-guide-log">Use guide →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Feeling out of your depth?</p><h4>The part nobody puts in a manual</h4><p>Nerves, comparison and mistakes — why this job makes them louder than most, and what actually helps.</p></div><a href="#s1-10">1.10 →</a></article>
     </div>
     <div class="hub-card hub-progress progress-deck" id="firstThirtyDeck" style="margin-top:14px">
       <div class="progress-page" data-progress-page="0"><p class="kicker">Getting started</p><h4>Build confidence through evidence, not guesswork</h4><ul class="check" id="chk-first30"><li><label><input type="checkbox"><span>I can identify and return the common audio stock without rushing.</span></label></li><li><label><input type="checkbox"><span>I can coil, label and route a cable safely and neatly.</span></label></li><li><label><input type="checkbox"><span>I have assisted a build, patch and line check while taking direction.</span></label></li><li><label><input type="checkbox"><span>I can describe a fault, what changed, and what I have checked.</span></label></li><li><label><input type="checkbox"><span>I have asked for feedback after a job and acted on it.</span></label></li></ul><p><a href="#" class="reset-link" data-target="chk-first30">Reset this list</a></p></div>
@@ -1509,6 +1509,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
       <article class="hub-card hub-action"><div><p class="kicker">Spending your own money</p><h4>Kit of your own — what to buy first</h4><p>The short list that makes you more useful, and the expensive things to resist.</p></div><a href="#s17-5">17.5 →</a></article>
       <article class="hub-card hub-action"><div><p class="kicker">Getting more to do</p><h4>Asking for responsibility without overstepping</h4><p>How to ask for the next real task in a way that gets a yes.</p></div><a href="#s17-6">17.6 →</a></article>
       <article class="hub-card hub-action"><div><p class="kicker">Proof</p><h4>Keeping evidence of your work</h4><p>What is safe to record, and what turns a shift into something you can show someone.</p></div><a href="#s17-7">17.7 →</a></article>
+      <article class="hub-card hub-action" style="border-left:4px solid var(--petrol)"><div><p class="kicker">Curious what else this opens up?</p><h4>Beyond live audio</h4><p>Broadcast, AV install, studio work, a second discipline, production management and more — plus how to try one gradually.</p></div><a href="#s21-1">21.1 →</a></article>
     </div>
     <p class="hub-disclaimer">Touring outside the UK — carnets, visas and what changes — is <a href="#s17-8">17.8</a>.</p>
   </section>
@@ -1783,6 +1784,19 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 <dt>Private parties &amp; weddings</dt><dd>Often your first paid solo booking. No producer, no crew hierarchy — you're frequently the only production person on site. See <a href="#s10-9">§10.9</a> for what's different.</dd>
 </div>
 <div class="note std"><span class="lab">Standard</span><p>Ask which of these a job sits in before you leave the warehouse — it changes what to wear, how much paperwork to expect, and how much slack there is if the build runs late.</p></div>
+</section>
+
+<section class="s" id="s1-10"><h3><span class="n">1.10</span> The part nobody puts in a manual</h3>
+<p>Every technical manual, including this one, can make it sound like the job is only ever a sequence of correct actions. It isn't. Some of it is standing next to someone who's done this for fifteen years, understanding about a third of what they just said on the radio, and trying not to let it show. That feeling is completely normal — it happens to nearly everyone at some point, however experienced they look now — and it's worth a page of its own rather than pretending it away.</p>
+<div class="note std"><span class="lab">Standard</span><p>Everyone currently confident on a stagebox once didn't know what a stagebox was. The gap you can see between yourself and an experienced tech is real, but it's a gap of reps, not of ability — and it closes faster than it feels like it will.</p></div>
+<div class="kv">
+<dt>Why this job makes it louder than most</dt><dd>The mistakes are audible, the audience is real, and jargon flies past on the radio fast enough that you can't always ask what something meant in the moment. That combination makes ordinary new-job nerves feel bigger here than in a quieter job where a slow week goes unnoticed.</dd>
+<dt>The comparison that isn't fair</dt><dd>Measuring your month three against someone else's year ten is a rigged comparison — they've had the ten years of reps you haven't had yet. A fairer one is your month three against your own month one.</dd>
+<dt>In the moment</dt><dd>Narrow the job down to the next physical action, not the evaluation. "Coil this cable" is manageable; "am I good enough to be here" isn't a question you can usefully answer mid-show. <a href="#s12-7">§12.7</a>'s approach to asking for help works the same way — one small, specific action beats one large, vague worry.</dd>
+<dt>After a mistake</dt><dd>What almost always actually happens: someone notices, it gets quietly fixed, and within a day nobody but you remembers it. What it feels like happens: everyone clocked it and is silently judging you. The second one is very rarely true. Own it briefly, fix what's yours to fix, and let the moment end — dwelling on it on site costs you the next task's attention, which is the thing actually in your control.</dd>
+<dt>Write it down instead of carrying it</dt><dd>The <a href="#hub-guide-log">learning log</a> exists partly for this. A specific, three-minute note turns a vague bad feeling about a shift into a concrete, fixable thing — and concrete things are much easier to stop worrying about than vague ones.</dd>
+</div>
+<div class="note warn"><span class="lab">Watch it</span><p>Normal nerves settle with reps. If a job is leaving you dreading it, not sleeping, or feeling genuinely low well beyond the shift itself, that's no longer just new-job nerves, and it's worth talking to someone about — a GP, or the <a href="https://www.bapam.org.uk/" target="_blank" rel="noopener">British Association for Performing Arts Medicine (BAPAM)</a>, a UK charity supporting the health of people working in live events and performance, crew included, not just performers. Pushing through in silence isn't the professional option; asking for help is — the same standard <a href="#s17-6">§17.6</a> already sets for asking for more responsibility applies just as well to asking for support.</p></div>
 </section>
 
 </div></div>
@@ -2884,6 +2898,15 @@ EARS            the only part of the system that actually matters</div>
 <div class="note std"><span class="lab">Standard</span><p>The thing that makes warehouse staff indispensable is <strong>data integrity</strong> — the system saying what's actually on the shelf. Scanning honestly, flagging discrepancies, and quarantining faulty kit in the system as well as physically is unglamorous and enormously valuable. It also means when you say "we haven't got four of those", people believe you.</p></div>
 </section>
 
+<section class="s" id="s8-8"><h3><span class="n">8.8</span> Reading &amp; producing system drawings</h3>
+<p>The stage plan and input list (<a href="#s1-5">§1.5</a>) are the documents you'll use daily; this is the software behind the more formal drawings — a full sound or lighting system design — that a system tech, designer or production manager works from.</p>
+<div class="kv">
+<dt>Vectorworks</dt><dd>The industry-standard CAD package for live events specifically — stage plans, rigging plots, lighting plots and full system drawings, with a plugin ecosystem (Spotlight) built around exactly this kind of work.</dd>
+<dt>AutoCAD</dt><dd>The general-purpose CAD standard, more common on the venue-architecture and permanent-install side (<a href="#s10-6">§10.6</a>) than on touring production drawings.</dd>
+<dt>What's actually yours to do early on</dt><dd>Reading a drawing accurately — knowing your position on the stage plan, checking a rigging plot against what's actually flown, spotting when the drawing and the room disagree — matters far more day to day than producing one. Producing them is a specialism worth picking up later if system design or production management (<a href="#s17-1">§17.1</a>, <a href="#s21-7">§21.7</a>) is a direction that appeals.</dd>
+</div>
+</section>
+
 </div></div>
 
 <div class="part" id="p9">
@@ -2892,7 +2915,7 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s9-1"><h3><span class="n">9.1</span> Why this gets its own part</h3>
 <p>Everything so far has been your chain: mic to speaker. But you build that chain in a room where two or three other departments are building theirs at the same time, often through the same doorway, up the same truss, and off the same distro. Most of what goes wrong between departments isn't technical — it's someone not knowing what someone else needed, or two cable runs fighting for the same route. The technical bits (this part covers three real ones: electrical interference, timecode, and DMX) are the minority of the problem. The majority is just talking to people early.</p>
-<p>One more thing sits at the end of this part (<a href="#s9-8">§9.8–9.11</a>): a proper look at Avolites Titan, the lighting-control software. That's not "working with other teams" content in the same sense as the rest of this part — it's here because it's a genuine, marketable skill on top of your audio work if you've got the licence to use it. Skip straight to <a href="#s9-12">§9.12</a> if lighting desks aren't your interest.</p>
+<p>Two more things sit at the end of this part, and neither is "working with other teams" content in the same sense as the rest of it — they're here because they're genuine, marketable skills on top of your audio work. <a href="#s9-8">§9.8–9.11</a> is a proper look at Avolites Titan, the lighting-control software, if you've got the licence to use it. <a href="#s9-13">§9.13–9.16</a> does the same for video — signal routing, vision mixing and LED walls — for whenever that side of the job pulls at you (<a href="#s21-6">§21.6</a> covers taking either further as a second discipline).</p>
 <div class="note std"><span class="lab">Standard</span><p>On any multi-department build, find out in the first hour: who's the LX/video/staging equivalent of your crew chief, where their cable is planning to run, and whether anyone's sharing your power. Five minutes of that conversation saves an afternoon of re-routing.</p></div>
 </section>
 
@@ -3019,6 +3042,44 @@ EARS            the only part of the system that actually matters</div>
 <dt>Cueing</dt><dd>Pyro and confetti cues are usually fired from a dedicated, separate firing system, not your console — but the cue to fire it often comes from the same show-control chain as your own cues (<a href="#s8-4">§8.4</a>), so know where in the running order it happens even though you're not the one pressing the button.</dd>
 </div>
 <div class="note warn"><span class="lab">Watch it</span><p>Never agree to fire, rig, or "just hold" a pyrotechnic device, however informally you're asked, and however confident the person asking sounds. It's licensed, regulated work with its own legal competence requirements — exactly the same boundary as <a href="#s13-2">§13.2</a> draws around electrical work.</p></div>
+</section>
+
+<section class="s" id="s9-13"><h3><span class="n">9.13</span> Video signals &amp; routing — the basics</h3>
+<p>Like Titan (<a href="#s9-8">§9.8</a>), this is real hands-on video knowledge rather than just "what to expect from the video department" — a second marketable skill built on signal-flow thinking you already have from audio.</p>
+<div class="kv">
+<dt>HDMI vs SDI</dt><dd>HDMI is the consumer/laptop connector — cheap, but the connector isn't locking and the reliable cable run is short (a few metres before signal integrity gets shaky). <strong>SDI</strong> (Serial Digital Interface) is the professional standard for a reason: a locking BNC connector, a single coax that runs hundreds of feet reliably, and — like Dante for audio — it's the one actually worth learning first if you're going to do this seriously.</dd>
+<dt>NDI</dt><dd>Video carried over a standard network switch instead of dedicated cable, the video equivalent of Dante (<a href="#s8-2">§8.2</a>) — same appeal (one network, many signals, no dedicated cable run per source), same caveat (it needs bandwidth and a network that's actually built for it, not just "plugged into the venue WiFi").</dd>
+<dt>Genlock &amp; sync</dt><dd>Multiple cameras or sources need to change frames at exactly the same instant, or switching between them produces a visible glitch — the video equivalent of word clock keeping digital audio devices sample-locked (<a href="#s2-9">§2.9</a>). A genlock generator (or one source acting as the sync reference) is what keeps everything switching cleanly.</dd>
+<dt>A video router / matrix</dt><dd>The video equivalent of a patch bay (<a href="#s3-9">§3.9</a>'s DI-box patching logic, scaled up) — any input can be routed to any output, so a camera feed can land on a screen, a recording device and a streaming encoder simultaneously without re-cabling.</dd>
+</div>
+</section>
+
+<section class="s" id="s9-14"><h3><span class="n">9.14</span> Vision mixing &amp; switching</h3>
+<p>A vision mixer (switcher) is the video department's console — it takes several sources in and decides what the audience actually sees, live.</p>
+<div class="kv">
+<dt>PGM &amp; PVW</dt><dd>Program (PGM) is what's live, on screen, right now. Preview (PVW) is what's queued up to go next. Everything on a switcher exists to move a source from preview into program cleanly.</dd>
+<dt>Cut, mix &amp; wipe</dt><dd>A <strong>cut</strong> is instant, no transition. A <strong>mix</strong> (dissolve) crossfades between two sources over a set time — the video equivalent of a crossfader. A <strong>wipe</strong> reveals the new source with a moving edge. Live events lean heavily on cuts and simple mixes; elaborate wipes read as dated.</dd>
+<dt>Keying</dt><dd>Compositing one source over another — a <strong>chroma key</strong> (green screen) removes a specific colour to reveal what's behind it; a <strong>luma key</strong> uses brightness instead, common for overlaying titles or a presenter's slides.</dd>
+<dt>What to actually learn on</dt><dd>Blackmagic's ATEM range is the accessible, widely-used starting point in events and streaming — inexpensive, well documented, and common enough that fluency on it is a genuinely transferable skill, the video equivalent of learning Dante Certification before a specific desk brand.</dd>
+</div>
+<div class="note deep"><span class="lab">Go deeper</span><p><strong>IMAG</strong> (image magnification) — a camera feed of the stage projected onto screens so a back-of-room or large-venue audience can actually see the performer — is the video job you'll meet most often at a live event. You're unlikely to be the camera operator, but knowing the basics of framing (headroom, not centring a face awkwardly, avoiding the top of a mic stand clipping a shot) means you can competently step in for a static, single-camera IMAG shot if you're ever asked to.</p></div>
+</section>
+
+<section class="s" id="s9-15"><h3><span class="n">9.15</span> LED walls &amp; image processing</h3>
+<p>The video screens now on almost every corporate and touring stage are their own small technical world, built on the same "source, process, output" logic as an audio system.</p>
+<div class="kv">
+<dt>Pixel pitch</dt><dd>The distance between individual LEDs, in millimetres — a smaller number means a sharper image at close range but costs more. The right pitch depends entirely on how close the nearest viewer will actually be, exactly like speaker coverage depends on room size (<a href="#s6-6">§6.6</a>).</dd>
+<dt>The processor</dt><dd>The video equivalent of a lighting desk driving fixtures (<a href="#s9-10">§9.10</a>) — it takes an input source and maps it correctly onto however the physical panels are actually arranged, including oddly-shaped or curved walls, and handles brightness calibration between panels so the wall doesn't look patchy.</dd>
+<dt>Content gotchas</dt><dd>Content built at the wrong resolution or aspect ratio for the actual wall is a constant, avoidable problem — the video version of a mix built quiet and played loud (<a href="#s16-7">§16.7</a>). Confirm the wall's real dimensions before content is finalised, not on the day.</dd>
+</div>
+</section>
+
+<section class="s" id="s9-16"><h3><span class="n">9.16</span> Streaming &amp; recording — tools worth knowing</h3>
+<p><a href="#s14-6">§14.6</a> covers what changes about your audio job when a show streams. This is the software actually doing the streaming and recording on the video side.</p>
+<div class="kv">
+<dt>OBS Studio</dt><dd>Free, open-source, and the default starting point for streaming and screen/webinar-style recording — genuinely capable enough that plenty of small-to-mid events run on it rather than anything paid.</dd>
+<dt>vMix</dt><dd>Paid, more capable, more common on higher-end streaming and broadcast-adjacent events — a step up once a job's requirements outgrow OBS.</dd>
+</div>
 </section>
 
 </div></div>
@@ -3465,6 +3526,7 @@ EARS            the only part of the system that actually matters</div>
 <tr><td><strong>Working at Height Regs 2005</strong></td><td>Any work where a fall could cause injury</td><td>Ladders, MEWPs, truss and rigging above head height — <a href="#s13-3">§13.3</a></td></tr>
 <tr><td><strong>RIDDOR 2013</strong></td><td>Reporting injuries, diseases &amp; dangerous occurrences</td><td>Knowing an accident or near-miss needs recording — <a href="#s13-13">§13.13</a></td></tr>
 <tr><td><strong>COSHH 2002</strong></td><td>Substances hazardous to health</td><td>Haze/fog fluid, cleaning solvents, confetti debris — <a href="#s13-14">§13.14</a></td></tr>
+<tr><td><strong>Working Time Regulations 1998</strong></td><td>Maximum hours, rest breaks &amp; rest periods</td><td>Long build days and back-to-back shifts — <a href="#s13-15">§13.15</a></td></tr>
 </tbody></table></div>
 <p>None of these are yours to interpret alone on a job — that's what a competent person, a Production Manager or a company's health and safety lead is for. What follows is enough to understand what's being asked of you and why, not enough to sign anything off yourself.</p>
 <div class="note deep"><span class="lab">Go deeper</span><p>The legislation above sets the legal duties; it doesn't tell you how to actually run a safe event day to day. <strong>The Purple Guide</strong> — the HSE-endorsed, industry-written reference for health, safety and welfare at music and other events — is the document that translates all of this into practical guidance, and it's genuinely worth knowing exists even if you never read it cover to cover. See <a href="#s18-8">§18.8</a>.</p></div>
@@ -3529,7 +3591,7 @@ EARS            the only part of the system that actually matters</div>
 </section>
 
 <section class="s" id="s13-9"><h3><span class="n">13.9</span> Long days — working in a way you can keep doing</h3>
-<p>Everything else in this part protects you from the kit. This one protects you from the schedule. Twelve- and fourteen-hour days, early starts after late finishes, irregular weeks and a culture that quietly rewards never complaining are ordinary in this industry, and they cause far more harm across a career than any single piece of equipment. <a href="#s13-5">§13.5</a> is about not losing your hearing by 55; this is about still wanting to do the job at 55.</p>
+<p>Everything else in this part protects you from the kit. This one protects you from the schedule. Twelve- and fourteen-hour days, early starts after late finishes, irregular weeks and a culture that quietly rewards never complaining are ordinary in this industry, and they cause far more harm across a career than any single piece of equipment. <a href="#s13-5">§13.5</a> is about not losing your hearing by 55; this is about still wanting to do the job at 55. <a href="#s13-15">§13.15</a> covers what the law actually entitles you to underneath all of this, if you want the detail.</p>
 <div class="kv">
 <dt>Fatigue</dt><dd>It is a safety issue, not a character issue. Tired people misjudge lifts, mis-patch outputs and walk under loads. If you are too tired to do something safely — a lift, a ladder, a long drive — saying so is the professional response, not the weak one. Nobody sensible has ever been sacked for that; people have been badly hurt for not saying it.</dd>
 <dt>The drive home</dt><dd>Usually the most dangerous part of the day. The genuinely serious risk in live events is not the show, it's a 1am motorway drive after a fourteen-hour day. Plan the journey home as part of the job: share driving, take the break, or say up front that you need accommodation rather than discovering at midnight that you can't safely drive. Microsleeps do not announce themselves.</dd>
@@ -3589,6 +3651,17 @@ EARS            the only part of the system that actually matters</div>
 <dt>Your actual job</dt><dd>Before handling anything you don't recognise — a cleaning product, a fluid, a canister — check it has a safety data sheet and that you know what it is. Never mix cleaning products (some combinations release genuinely dangerous gases). Ventilate a haze/fog-filled space properly before extended time working in it, and treat spent pyro/confetti debris as something to clear up with gloves, not bare hands.</dd>
 </div>
 <div class="note alt"><span class="lab">Also seen</span><p>Haze and fog machines are covered by COSHH like anything else, but the specific competence and risk-assessment requirements for who's allowed to fire pyro or confetti sit separately with the licensed operator (<a href="#s9-12">§9.12</a>) — COSHH is about the substance itself, not who's authorised to deploy it.</p></div>
+</section>
+
+<section class="s" id="s13-15"><h3><span class="n">13.15</span> Working Time Regulations — your legal hours entitlement</h3>
+<p><a href="#s13-9">§13.9</a> covers handling long days as they come at you; this is what the law actually entitles you to underneath that, whether or not any single job feels like it.</p>
+<div class="kv">
+<dt>The 48-hour week</dt><dd>The baseline limit is an average of 48 hours a week, averaged over 17 weeks — not a hard cap on any single week, which is exactly why a run of 14-hour build days is legal provided it evens out.</dd>
+<dt>The opt-out</dt><dd>Almost every event and entertainment employer asks new starters to sign a voluntary opt-out from the 48-hour limit, precisely because show days routinely exceed it. Signing it is normal in this industry and not, on its own, something to worry about — but know that it must be voluntary, in writing, and separate from your main contract, and that you can cancel it with notice (usually up to 3 months) if it's ever genuinely a problem.</dd>
+<dt>Daily &amp; weekly rest</dt><dd>Separately from the 48-hour limit: you're entitled to 11 consecutive hours' rest in any 24-hour period, and 24 hours' uninterrupted rest in any 7 days (or 48 hours in any 14). A very early get-in after a very late derig is exactly the situation where this gets squeezed — worth knowing it's there, even on a job where asking for it isn't realistic.</dd>
+<dt>Rest breaks</dt><dd>A 20-minute uninterrupted break if you work more than 6 hours in a day. In practice this usually means "eat something properly," not a formal announced break — but it's a legal entitlement, not a favour.</dd>
+</div>
+<div class="note alt"><span class="lab">Also seen</span><p>None of this is about refusing a long day — the industry runs on them, and <a href="#s13-9">§13.9</a>'s advice on managing that stands. This section exists so you know the actual floor underneath the culture, not to suggest you should be citing regulations on a get-in.</p></div>
 </section>
 
 </div></div>
@@ -3939,6 +4012,7 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s17-1"><h3><span class="n">17.1</span> Where people actually go from here</h3>
 <p>There's no single ladder, but common paths from where you are now: staying in-house and moving warehouse → crew → tech → operator over a year or two; going freelance and building a client list across several companies; specialising hard into one discipline (RF, systems/tuning, monitor world, install/DSP); or moving sideways into production management once you understand how a show actually gets built. None of these are better than the others — they suit different temperaments.</p>
+<p>All of that is still inside live audio. If you're curious what the same experience opens up further afield — broadcast, AV install, studio work, a second discipline in lighting or video, production management, venue leadership and more — <a href="#p21">Part 21</a> maps them out, including how to test one gradually without leaving the job you've got.</p>
 </section>
 
 <section class="s" id="s17-2"><h3><span class="n">17.2</span> Freelancing basics</h3>
@@ -4511,6 +4585,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>AvoKey</dt><dd>The USB licence dongle that unlocks full Avolites Titan software. <a href="#s9-8">§9.8</a> · <a href="#s9-9">§9.9</a> · <a href="#s18-10">§18.10</a></dd></div>
 <div><dt>Backline</dt><dd>A band's own amps, drums and instrument rigs. <a href="#s9-4">§9.4</a></dd></div>
 <div><dt>Balanced</dt><dd>A connection carrying the signal twice (normal and inverted) plus a shield, cancelling picked-up interference. <a href="#s2-3">§2.3</a> · <a href="#s3-1">§3.1</a></dd></div>
+<div><dt>BAPAM</dt><dd>The British Association for Performing Arts Medicine — a UK charity supporting the health of people working in live events and performance, crew included. <a href="#s1-10">§1.10</a></dd></div>
 <div><dt>Bectu</dt><dd>The UK entertainment and broadcast trade union (a sector of Prospect). <a href="#s17-4">§17.4</a></dd></div>
 <div><dt>Bioacoustics</dt><dd>The study of sound produced by and affecting living organisms — the field where live-audio recording skills transfer directly into ecology. <a href="#hub-conservation">Outside work</a> · <a href="#s18-15">§18.15</a></dd></div>
 <div><dt>BirdNET</dt><dd>A free machine-learning classifier from the Cornell Lab that identifies species from recordings; commonly paired with Raven Pro for spectrogram analysis. <a href="#s18-15">§18.15</a></dd></div>
@@ -4524,6 +4599,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>CDM 2015</dt><dd>UK construction safety regulations that apply to event builds and de-rigs. <a href="#s13-1">§13.1</a> · <a href="#s13-6">§13.6</a></dd></div>
 <div><dt>ceeform</dt><dd>The round industrial power connector family used across UK events — blue 16 A and 32 A for single-phase, red for three-phase. <a href="#s3-8">§3.8</a></dd></div>
 <div><dt>Changeover</dt><dd>The gap between acts where one band's setup is struck and the next built. <a href="#s10-3">§10.3</a></dd></div>
+<div><dt>Chroma key</dt><dd>Compositing one video source over another by removing a specific colour (usually green) to reveal what's behind it. <a href="#s9-14">§9.14</a></dd></div>
 <div><dt>CIEEM / Chartered Ecologist (CEcol)</dt><dd>The Chartered Institute of Ecology and Environmental Management — the UK professional body for ecologists, and the chartered status that shows continued professional practice. <a href="#s18-15">§18.15</a></dd></div>
 <div><dt>Click track</dt><dd>A metronome feed, usually to the drummer's IEMs, that the band plays to. <a href="#s15-10">§15.10</a></dd></div>
 <div><dt>Clock / word clock</dt><dd>The shared timing reference every device on a digital audio network must agree on — "word clock" is the term actually printed on converters and consoles for it. <a href="#s2-9">§2.9</a> · <a href="#s8-2">§8.2</a> · <a href="#s12-14">§12.14</a></dd></div>
@@ -4566,9 +4642,11 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Feedback</dt><dd>A runaway audio loop between a microphone and a loudspeaker it can hear, heard as a rising howl or ring; fixed by reducing gain first and cutting the ringing frequency second. <a href="#s12-18">§12.18</a> · <a href="#s15-8">§15.8</a></dd></div>
 <div><dt>Fixture personality</dt><dd>The definition file that tells Titan what a lighting fixture's DMX channels actually do. <a href="#s9-10">§9.10</a></dd></div>
 <div><dt>Flexi Channel (DiGiCo)</dt><dd>DiGiCo's reconfigurable channel-strip architecture, letting the order of gate, EQ and dynamics be changed per channel rather than fixed as on most desks. <a href="#s7-1">§7.1</a></dd></div>
+<div><dt>FMOD</dt><dd>Firelight Technologies' game-audio middleware — connects sound assets to a game engine's logic. Runs its own free learning courses. <a href="#s21-5">§21.5</a></dd></div>
 <div><dt>FOH (front of house)</dt><dd>Front of House — both the mix position out in the room and the engineer who works there, mixing what the audience hears, as opposed to monitor world. <a href="#s1-3">§1.3</a> · <a href="#s15-1">§15.1</a></dd></div>
 <div><dt>Gain / trim</dt><dd>The input control that sets how much the preamp amplifies an incoming signal. <a href="#s2-4">§2.4</a> · <a href="#s12-9">§12.9</a> · <a href="#s12-12">§12.12</a></dd></div>
 <div><dt>Gain compensation</dt><dd>A feature on split digital console systems that automatically applies an equal, opposite digital trim on the other console when one engineer changes the shared analogue preamp gain, so neither console's level jumps unexpectedly. <a href="#s7-3">§7.3</a></dd></div>
+<div><dt>Genlock</dt><dd>A sync signal keeping multiple video sources changing frames at the same instant, so switching between them doesn't glitch — the video equivalent of word clock. <a href="#s9-13">§9.13</a></dd></div>
 <div><dt>Gate</dt><dd>Mutes a channel below a set threshold, commonly used to control drum bleed. <a href="#s16-3">§16.3</a></dd></div>
 <div><dt>Get-in / get-out</dt><dd>The start and end of load-in and derig on site — theatre's words for the same jobs covered in <a href="#s1-2">§1.2</a>, different vocabulary depending on the building you're in. <a href="#s19-4">§19.4</a> · <a href="#s10-4">§10.4</a></dd></div>
 <div><dt>Grand Master (lighting)</dt><dd>The Titan fader controlling overall output intensity for the whole lighting rig — distinct from a console's audio master. <a href="#s9-10">§9.10</a></dd></div>
@@ -4589,6 +4667,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Impedance</dt><dd>Resistance to an AC signal, measured in ohms — governs how sources and inputs should be matched. <a href="#s2-7">§2.7</a> · <a href="#s3-9">§3.9</a></dd></div>
 <div><dt>Input list</dt><dd>The numbered list of every audio source on a show, with mic type and power needs. <a href="#s1-5">§1.5</a> · <a href="#s11-2">§11.2</a></dd></div>
 <div><dt>Insert (point)</dt><dd>A patch point in a channel's processing chain — physical on an analogue console, a menu option on a digital one — where an external processor can be dropped in instead of, or alongside, the built-in EQ and dynamics. <a href="#s16-10">§16.10</a></dd></div>
+<div><dt>Institute of Acoustics (IOA)</dt><dd>The UK professional body for acoustics. Its part-time Diploma in Acoustics and Noise Control is a work-alongside route into acoustics consultancy that doesn't require a full degree restart. <a href="#s21-10">§21.10</a></dd></div>
 <div><dt>Intermodulation (intermod)</dt><dd>Unwanted frequencies produced when two or more transmitters mix in a receiver’s front end, which can land on a channel you’re using. Why coordinated frequency groups exist. <a href="#s5-5">§5.5</a></dd></div>
 <div><dt>Interpretation system</dt><dd>Simultaneous-translation equipment — booths, wireless IR/RF receivers — usually fed a clean feed of the source language by audio. <a href="#s6-12">§6.12</a></dd></div>
 <div><dt>IP rating</dt><dd>The two-digit Ingress Protection code (IP54, IP55, IP65…) on outdoor-rated gear, describing resistance to dust and water. <a href="#s6-14">§6.14</a></dd></div>
@@ -4618,6 +4697,9 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>MTC</dt><dd>MIDI timecode — a data-based sync signal video systems can send to lock playback, distinct from the audio-rate LTC. <a href="#s9-3">§9.3</a></dd></div>
 <div><dt>Multicore</dt><dd>A single cable bundling many audio channels together — also called a snake. <a href="#s3-5">§3.5</a> · <a href="#s9-5">§9.5</a></dd></div>
 <div><dt>Multipath</dt><dd>The same RF signal arriving by two different paths and cancelling itself at one point in space — the usual cause of a wireless dropout at one specific spot on stage. True diversity defeats it. <a href="#s5-3">§5.3</a> · <a href="#s5-9">§5.9</a></dd></div>
+<div><dt>Music Producers Guild (MPG)</dt><dd>The UK trade body for studio and record-production engineers. <a href="#s21-4">§21.4</a></dd></div>
+<div><dt>NDI</dt><dd>Video carried over a standard network switch instead of dedicated cable — the video equivalent of Dante. <a href="#s9-13">§9.13</a></dd></div>
+<div><dt>NEBOSH General Certificate</dt><dd>A widely-recognised health and safety qualification, the usual next step up from IOSH Working Safely. <a href="#s21-10">§21.10</a></dd></div>
 <div><dt>Network isolation</dt><dd>Keeping a production audio network physically or logically separate from a venue's guest WiFi or public internet, so it can't be seen or interfered with from outside. <a href="#s8-6">§8.6</a></dd></div>
 <div><dt>Noise at Work (exposure action values)</dt><dd>The UK regulations protecting your own hearing over a career — 80/85/87 dB(A). <a href="#s13-5">§13.5</a></dd></div>
 <div><dt>OSC (Open Sound Control)</dt><dd>A lightweight open protocol for sending cues and control messages over IP between different systems — lighting, show control, consoles. Not an audio-transport protocol. <a href="#s8-6">§8.6</a> · <a href="#s10-4">§10.4</a> · <a href="#s9-8">§9.8</a></dd></div>
@@ -4632,6 +4714,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>PFL</dt><dd>Pre-Fade Listen — solo mode that ignores the channel's fader position. <a href="#s7-6">§7.6</a></dd></div>
 <div><dt>Phantom power</dt><dd>The +48 V DC supply sent up a mic cable to power condenser mics and active DIs. <a href="#s2-6">§2.6</a> · <a href="#s12-9">§12.9</a></dd></div>
 <div><dt>Phase</dt><dd>A frequency-dependent time relationship between two signals, distinct from polarity. <a href="#s2-8">§2.8</a> · <a href="#s12-6">§12.6</a></dd></div>
+<div><dt>Pixel pitch</dt><dd>The distance between individual LEDs on a video wall, in millimetres — a smaller number gives a sharper image at close range. <a href="#s9-15">§9.15</a></dd></div>
 <div><dt>PLASA (NELT)</dt><dd>The UK entertainment technology trade body; National Event Lifting Training is its accessible entry point into rigging. <a href="#s17-4">§17.4</a> · <a href="#s18-12">§18.12</a></dd></div>
 <div><dt>PLI</dt><dd>Public Liability Insurance — covers a freelancer if their work injures someone or damages property. <a href="#s17-2">§17.2</a></dd></div>
 <div><dt>PMR446</dt><dd>The licence-exempt short-range walkie-talkie band around 446 MHz — a common uncoordinated RF neighbour on site. <a href="#s5-9">§5.9</a></dd></div>
@@ -4662,6 +4745,8 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Safety Advisory Group (SAG)</dt><dd>The local authority, police, fire and other agencies who jointly review a bigger or higher-risk event and can set or tighten licence conditions such as noise limits. <a href="#s6-10">§6.10</a></dd></div>
 <div><dt>Sample rate</dt><dd>How many times per second a digital audio signal is measured — 48 kHz is the live standard. <a href="#s2-9">§2.9</a> · <a href="#s14-4">§14.4</a> · <a href="#s12-14">§12.14</a></dd></div>
 <div><dt>Scene / snapshot</dt><dd>A stored state of the console that can be recalled — essential in theatre and corporate, used sparingly in live music. <a href="#s7-3">§7.3</a> · <a href="#s7-4">§7.4</a></dd></div>
+<div><dt>ScreenSkills</dt><dd>The UK skills body for film, TV and games — runs bursaries and short courses relevant to broadcast and post-production sound. <a href="#s21-2">§21.2</a></dd></div>
+<div><dt>SDI</dt><dd>Serial Digital Interface — the professional video connector standard: a locking BNC connector on a single coax that runs reliably over long distances, unlike HDMI. <a href="#s9-13">§9.13</a></dd></div>
 <div><dt>Show file</dt><dd>A saved snapshot of every setting on a digital console. <a href="#s7-4">§7.4</a></dd></div>
 <div><dt>Sidechain</dt><dd>Using one signal's level to control processing applied to a different signal — a gate keyed from another input, or a music bed "ducked" under a voiceover. <a href="#s16-10">§16.10</a></dd></div>
 <div><dt>SM</dt><dd>Stage Manager — runs what happens on stage during a show, calls cues in theatre. <a href="#s1-3">§1.3</a></dd></div>
@@ -4685,11 +4770,15 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Touch tour</dt><dd>A pre-show session letting blind and partially-sighted patrons handle set pieces and props to build a mental picture before the performance. <a href="#s6-13">§6.13</a></dd></div>
 <div><dt>TRS / TS / TRRS (jack)</dt><dd>Quarter-inch/mini jack connector types by contact count: TS carries one unbalanced signal, TRS either one balanced signal or two unbalanced, TRRS a stereo-plus-mic headset signal. The same connector can mean different things depending on the socket. <a href="#s3-2">§3.2</a></dd></div>
 <div><dt>Universe (DMX)</dt><dd>One DMX line's worth of 512 control channels. <a href="#s9-7">§9.7</a> · <a href="#s9-10">§9.10</a></dd></div>
+<div><dt>Vectorworks</dt><dd>The industry-standard CAD package for live events — stage plans, rigging plots and full system drawings. <a href="#s8-8">§8.8</a></dd></div>
 <div><dt>Virtual soundcheck</dt><dd>Building a mix from a recorded multitrack instead of a live band on stage. <a href="#s14-3">§14.3</a></dd></div>
+<div><dt>Vision mixer (switcher)</dt><dd>The video department's console — takes several sources in and decides what's live (PGM) versus queued up next (PVW). <a href="#s9-14">§9.14</a></dd></div>
 <div><dt>VocalEyes</dt><dd>A UK charity providing audio description and other access services to arts venues. <a href="#s6-13">§6.13</a></dd></div>
 <div><dt>Wedge</dt><dd>A floor monitor speaker angled up at a performer. <a href="#s15-2">§15.2</a> · <a href="#s15-6">§15.6</a></dd></div>
 <div><dt>Wireless Workbench</dt><dd>Shure's free RF coordination and monitoring software — plan frequencies, then watch a live system for interference during a show. <a href="#s5-5">§5.5</a> · <a href="#s18-14">§18.14</a></dd></div>
 <div><dt>Working at Height Regulations 2005</dt><dd>The duty covering anywhere a fall could cause injury — ladders, MEWPs, rigging above head height. <a href="#s13-1">§13.1</a> · <a href="#s13-3">§13.3</a></dd></div>
+<div><dt>Working Time Regulations 1998</dt><dd>UK employment law setting the 48-hour average working week (commonly opted out of in events), plus statutory rest breaks and rest periods. <a href="#s13-15">§13.15</a></dd></div>
+<div><dt>Wwise</dt><dd>Audiokinetic's game-audio middleware, roughly FMOD's main alternative. Its free 101/201/301 courses are a genuinely respected way into game audio without a games degree. <a href="#s21-5">§21.5</a></dd></div>
 <div><dt>XLR</dt><dd>The three-pin locking connector carrying almost all mic and line-level audio in live sound. <a href="#s3-1">§3.1</a> · <a href="#s12-2">§12.2</a> · <a href="#s9-7">§9.7</a></dd></div>
 </div>
 </section>
@@ -4699,9 +4788,130 @@ EARS            the only part of the system that actually matters</div>
 <div id="glossaryByArea"></div>
 </section>
 
-<p class="site-credit">Made for Dave by Emma <span class="gift-heart" aria-label="with love">♥</span></p>
+</div></div>
+
+<div class="part" id="p21">
+<div class="part-head"><div class="col"><span class="part-num">PART 21</span><div><h2>Beyond live audio</h2><p>Real side-steps this experience opens up, and how to explore one gradually without leaving the job you've got.</p></div></div></div>
+<div class="col">
+
+<section class="s" id="s21-1"><h3><span class="n">21.1</span> Why this experience travels further than it feels like</h3>
+<p>From inside a warehouse or a Tuesday-night club show, the job can feel like one narrow lane. It isn't. Live audio and events work builds a specific, transferable set of habits: reading a signal chain under pressure, working calmly when something breaks in front of an audience, being trusted with expensive kit and other people's schedules, and functioning as a reliable stranger on a new site every few weeks. Almost every field in this part is short of exactly that combination, more than it's short of people who already know their specific software.</p>
+<p>None of what follows means live audio isn't a real career on its own — <a href="#p17">Part 17</a> is that career, properly. This part is for a different question: not "how do I get better at this," but "what else does being good at this actually open up." Some of these are a short step sideways you could make next year; some are a slow multi-year pivot; a couple are things worth just knowing exist. <a href="#s21-10">§21.10</a> is the part that matters most if any of this is more than curiosity — how to actually test one of these without quitting anything.</p>
+</section>
+
+<section class="s" id="s21-2"><h3><span class="n">21.2</span> Broadcast &amp; outside broadcast (OB)</h3>
+<p>Sound for television and radio, live or recorded: studio-based broadcast, and outside broadcast (OB) — the trucks and crews that cover sport, awards shows and outside events. <a href="#s10-5">§10.5</a> already covers what changes technically when a broadcast split joins your show; this is about doing that job full-time rather than feeding one.</p>
+<div class="kv">
+<dt>What the job actually is</dt><dd>Broadcast sound assistant/A2 through to sound supervisor — rigging and de-rigging radio mics and comms on presenters and contributors, running a broadcast desk, or building and striking an OB truck's audio chain on location.</dd>
+<dt>Where the audio background helps</dt><dd>RF and radio mic handling (<a href="#p5">Part 5</a>) transfers almost directly — broadcast uses the same wireless discipline, often at higher channel counts. Comms and split-feed experience from <a href="#s10-5">§10.5</a> is the exact skill a truck needs.</dd>
+<dt>The usual way in</dt><dd>Less often straight into a broadcaster, more often via a facilities or OB hire company — the businesses that supply trucks, kit and freelance crew to the broadcasters. They hire from live/events backgrounds regularly, because the on-site instincts are the same.</dd>
+<dt>Worth knowing about</dt><dd><strong>ScreenSkills</strong> is the UK skills body for film, TV and games, and runs bursaries and short courses relevant to broadcast sound. The <strong>National Film and Television School (NFTS)</strong> runs postgraduate sound courses if you wanted to go deeper academically later.</dd>
+</div>
+</section>
+
+<section class="s" id="s21-3"><h3><span class="n">21.3</span> AV systems integration &amp; install</h3>
+<p><a href="#s10-6">§10.6</a> covers what it's like operating an installed system — this is building and programming them for a living, for the systems integrators who fit out boardrooms, campuses, stadiums and control rooms.</p>
+<div class="kv">
+<dt>What the job actually is</dt><dd>Installing and commissioning fixed AV — speakers, DSPs, control systems and video — then programming how it all behaves: what a single "Start Meeting" button on a touch panel actually does behind the scenes.</dd>
+<dt>Where the audio background helps</dt><dd>DSP routing and gain-structure thinking from <a href="#s10-6">§10.6</a> and Dante/AV-over-IP from <a href="#p8">Part 8</a> are most of the technical core. What install companies usually can't get elsewhere is someone who's already calm fault-finding a live system in front of a client.</dd>
+<dt>The usual way in</dt><dd>Many installers started as riggers or commissioning-day extra hands on a live crew's quieter weeks, then moved across once a company saw they could be trusted alone with a client's boardroom.</dd>
+<dt>Worth knowing about</dt><dd><strong>AVIXA's CTS</strong> (<a href="#s17-4">§17.4</a>) is the entry-level credential the whole install industry recognises. <strong>Crestron</strong>, <strong>QSC Q-SYS</strong> and <strong>Extron</strong> — the three control/DSP platforms you'll meet most — each run their own free or low-cost certification tracks once you're pointed at a specific one; most installers end up fluent in whichever platform their employer standardises on.</dd>
+</div>
+</section>
+
+<section class="s" id="s21-4"><h3><span class="n">21.4</span> Studio, post-production &amp; music technology</h3>
+<p>Recording and mixing music, or sound for picture — dialogue editing, ADR, foley and sound design for film and TV. A quieter, more solitary discipline than live work, built around getting one thing exactly right rather than reacting to a room in real time.</p>
+<div class="kv">
+<dt>Where the audio background helps</dt><dd>Signal flow, mic technique and critical listening (<a href="#p2">Part 2</a>, <a href="#p4">Part 4</a>) are the same skills pointed at a recording rather than a PA. What's genuinely different is the pace and the editing/DAW-based workflow, which live work doesn't teach.</dd>
+<dt>The usual way in</dt><dd>Assistant engineer roles at a studio, or — more realistically for most people — building a portfolio on your own kit at home first (<a href="#s14-3">§14.3</a> already covers multitrack recording basics) and using that to get a foot in somewhere.</dd>
+<dt>Worth knowing about</dt><dd>The <strong>Music Producers Guild (MPG)</strong> is the UK trade body for studio and production engineers. <strong>ScreenSkills</strong> (<a href="#s21-2">§21.2</a>) also covers the post-production side specifically.</dd>
+</div>
+<div class="note alt"><span class="lab">Also seen</span><p>This is usually the slowest of the paths here to earn a living from directly — studio and post work is competitive and often starts unpaid or low-paid. It's a genuinely good direction to build on the side for years before it needs to pay the bills, not one to jump into cold.</p></div>
+</section>
+
+<section class="s" id="s21-5"><h3><span class="n">21.5</span> Game audio &amp; esports production</h3>
+<p>Two different things that both sit near live audio. Game audio is sound design and implementation for video games — a studio-based, technical-audio discipline. Esports production is running the live event around competitive gaming — arena shows, broadcast overlay, comms for casters and players — and is functionally a live-events job with a gaming audience, a genuinely fast-growing part of the UK events calendar.</p>
+<div class="kv">
+<dt>Game audio</dt><dd>Built around middleware that connects sound assets to game engines — <strong>Wwise</strong> (Audiokinetic) and <strong>FMOD</strong> (Firelight Technologies) are the two you'll meet. Both run their own free, structured online certification courses (Wwise 101/201/301; FMOD's own learning courses) that are a genuinely respected way in without a games-specific degree.</dd>
+<dt>Esports production</dt><dd>Close to <a href="#s10-3">§10.3</a> and <a href="#s10-5">§10.5</a> combined — a broadcast feed, a live room, comms, and a fast, high-pressure build. Crews are very often drawn straight from live music and corporate AV backgrounds; there isn't a separate esports-specific training route worth chasing, the transferable event skills already covered in this book are the actual qualification.</dd>
+</div>
+</section>
+
+<section class="s" id="s21-6"><h3><span class="n">21.6</span> A second discipline: lighting, video &amp; LED</h3>
+<p><a href="#p9">Part 9</a> already builds real Titan fluency for lighting, mostly so it helps your audio job. Taken further, it's also a genuine second discipline in its own right — and video/LED-wall work is one of the fastest-growing, most kit-hungry corners of live production right now.</p>
+<div class="kv">
+<dt>Lighting</dt><dd>You already have a real head start from <a href="#s9-8">§9.8</a> onwards. Going further means building actual programming speed and a design eye, not just operational familiarity — best built by programming real shows, not just the simulator.</dd>
+<dt>Video &amp; LED</dt><dd>Vision mixing, camera operation, and — increasingly in demand — LED wall technicians who build, calibrate and run the video screens that now appear on almost every corporate and touring stage. Signal and networking knowledge from <a href="#p8">Part 8</a> transfers directly; video-specific skills (colour, resolution, processing) are the new part to learn.</dd>
+<dt>A genuine advantage of a second discipline</dt><dd>Crew who can competently cover a second department are rarer and more bookable than deep specialists in one — <a href="#s17-4">§17.4</a> already flags this about Titan specifically; it's true more broadly.</dd>
+</div>
+</section>
+
+<section class="s" id="s21-7"><h3><span class="n">21.7</span> Moving into production or technical management</h3>
+<p><a href="#s17-1">§17.1</a> mentions this as one of the main routes out of a crew start — this is the detail. Production management is planning and running the event rather than operating one part of it: budgets, schedules, crew, suppliers and the client relationship, for a company or freelance.</p>
+<div class="kv">
+<dt>Where the audio background helps</dt><dd>You already know what a realistic build schedule looks like, what a crew actually needs on site, and where things typically go wrong — all of which is most of what a technical production manager does, just from a desk instead of a stage.</dd>
+<dt>The usual way in</dt><dd>Rarely a direct application — almost always an internal step up within a company that already trusts you, once you've shown you can see the whole job and not just your own patch of it (<a href="#s17-6">§17.6</a> covers asking for that kind of responsibility).</dd>
+<dt>Worth knowing about</dt><dd>The <strong>Production Services Association (PSA)</strong> already covers the crew end (<a href="#s17-4">§17.4</a>); its more senior membership tiers and events also connect you to the production-management side of the same industry.</dd>
+</div>
+</section>
+
+<section class="s" id="s21-8"><h3><span class="n">21.8</span> Venue &amp; festival technical management</h3>
+<p>Running the technical side of one place rather than following the work around — head of sound or technical manager at a venue, or technical/site coordinator for a festival. A natural place to land after some years of touring or freelance life, when a settled base starts to matter more than variety.</p>
+<div class="kv">
+<dt>What changes</dt><dd>You become the person other visiting crews and touring engineers rely on for local knowledge — exactly the "advancing and supporting" role <a href="#s10-3">§10.3</a> describes touring companies valuing, but as your day-to-day rather than an occasional mode.</dd>
+<dt>The usual way in</dt><dd>Building a relationship with one venue or festival over repeat bookings until they'd rather have you permanently than keep re-briefing someone new each time.</dd>
+</div>
+</section>
+
+<section class="s" id="s21-9"><h3><span class="n">21.9</span> Training, technical sales &amp; warehouse/ops leadership</h3>
+<p>Three different desk-based routes that all lean on the same thing: knowing the kit properly, from the inside, the way someone who's only ever sold or taught it usually doesn't.</p>
+<div class="kv">
+<dt>Manufacturer application/training roles</dt><dd>Manufacturers and distributors employ application engineers and trainers to run the free courses you've already used (<a href="#s17-4">§17.4</a>) and to support customers using their kit. They hire from users of the product, not from a separate teaching pipeline.</dd>
+<dt>Technical sales</dt><dd>Pro-audio dealers, rental companies and manufacturers all need sales staff who can actually answer a technical question — genuinely different from, and better paid than, generic sales, precisely because real product knowledge is rare in that role.</dd>
+<dt>Warehouse &amp; operations leadership</dt><dd>The most direct route of all, since it's where you're already standing — warehouse manager, stock controller or operations lead at a hire company, running the systems (<a href="#hub-guide-equipment">§0.2</a>-adjacent record-keeping, prep scheduling, fleet maintenance) that everyone else's job depends on.</dd>
+</div>
+</section>
+
+<section class="s" id="s21-10"><h3><span class="n">21.10</span> Acoustics consultancy &amp; compliance</h3>
+<p>Two more technical, more office-based directions — worth knowing about even though both usually need further study.</p>
+<div class="kv">
+<dt>Acoustics consultancy</dt><dd>Room design, noise assessment and building acoustics — a genuinely different career, usually reached via further study rather than a direct step. The <strong>Institute of Acoustics (IOA)</strong> is the UK professional body; its <strong>Diploma in Acoustics and Noise Control</strong> is a part-time, work-alongside route into the profession that doesn't require starting a full degree from scratch, and your practical hearing and measurement experience (<a href="#s13-5">§13.5</a>, <a href="#s6-8">§6.8</a>) is a genuine head start on it.</dd>
+<dt>Health, safety &amp; compliance</dt><dd>A senior step up from the IOSH course already covered in <a href="#s17-4">§17.4</a> — <strong>NEBOSH's General Certificate</strong> is the next recognised level up, and event/production companies increasingly employ a dedicated safety or compliance officer drawn from people who already understand how a site actually runs, not generic HR/safety staff.</dd>
+</div>
+</section>
+
+<section class="s" id="s21-11"><h3><span class="n">21.11</span> How to try a direction without leaving your day job</h3>
+<p>Everything above is easier to explore than it looks, and none of it requires quitting anything first. A realistic, low-risk way to test whether one of these actually suits you:</p>
+<ol class="seq">
+<li><strong>Name the one you're actually curious about.</strong> Not "something else eventually" — pick one section above and be specific, even privately.</li>
+<li><strong>Say so, to the right people.</strong> <a href="#s17-3">§17.3</a> already covers how work arrives here — the same applies to a new direction. Mentioning you're interested in video, or install, or training, to people already working in it is usually all it takes to get the first small opportunity offered rather than having to chase one.</li>
+<li><strong>Take one small, real dose of it before committing further.</strong> Shadow someone for a day, take the one free course that direction offers (most of the credentials in this part have a free or cheap entry-level option), or say yes to a single job in that world alongside your normal work.</li>
+<li><strong>Give it a defined trial, not an open-ended maybe.</strong> "I'll say yes to anything in this direction for the next six months, then decide" is far easier to actually act on than an unbounded someday.</li>
+<li><strong>Log it, the same way as everything else.</strong> <a href="#s17-7">§17.7</a>'s evidence habit applies here too — a small, specific record of what you tried and how it felt is what turns "I think I might like install work" into an actual decision.</li>
+<li><strong>Treat it as reversible.</strong> None of this is a one-way door. Trying a direction and deciding live audio is what you actually wanted all along is not a wasted step — it's the same kind of useful information as the opposite result.</li>
+</ol>
+<div class="note std"><span class="lab">Standard</span><p>The people who successfully move sideways almost never do it in one leap. It's a small dose, repeated a few times over a year or two, next to the job that's already paying — not a decision made once and acted on cold.</p></div>
+</section>
+
+<section class="s" id="s21-12"><h3><span class="n">21.12</span> Matching a direction to what actually suits you</h3>
+<p>A short, honest set of questions worth asking yourself before spending real time on any one direction — what you actually enjoy tends to matter more than what looks impressive from outside:</p>
+<div class="tw"><table>
+<thead><tr><th>If you find yourself enjoying most…</th><th>Worth a closer look at</th></tr></thead>
+<tbody>
+<tr><td>The technical puzzle of a broken system</td><td>AV install (<a href="#s21-3">§21.3</a>), broadcast (<a href="#s21-2">§21.2</a>)</td></tr>
+<tr><td>A calm, repeatable, precisely-right result</td><td>Studio/post-production (<a href="#s21-4">§21.4</a>), acoustics (<a href="#s21-10">§21.10</a>)</td></tr>
+<tr><td>The live-show adrenaline itself, just not forever on the road</td><td>Venue/festival management (<a href="#s21-8">§21.8</a>)</td></tr>
+<tr><td>Explaining things and watching people improve</td><td>Training roles (<a href="#s21-9">§21.9</a>)</td></tr>
+<tr><td>Seeing the whole job, not just your patch of it</td><td>Production management (<a href="#s21-7">§21.7</a>)</td></tr>
+<tr><td>Being the reliable one everyone else's plan depends on</td><td>Warehouse/ops leadership (<a href="#s21-9">§21.9</a>)</td></tr>
+</tbody></table></div>
+<p class="hub-disclaimer">None of this is a test with a right answer — it's a starting point for a conversation with yourself, worth revisiting every year or two rather than deciding once for good.</p>
+</section>
 
 </div></div>
+
+<p class="site-credit col">Made for David by Emma <span class="gift-heart" aria-label="with love">♥</span></p>
+
 </main>
 </div>
 
@@ -4898,7 +5108,8 @@ var TOC_GROUPS = {
   'p11':'Check, fix & work safe',
   'p14':'Operate & develop your craft',
   'p17':'Career, learning & reference',
-  'p19':'Field tools'
+  'p19':'Field tools',
+  'p21':'Beyond live audio'
 };
 var TOC_BADGES = { 'p11': 'before doors', 'p12': 'when it breaks', 'p19': 'use on site' };
 
@@ -5213,7 +5424,7 @@ if(searchBox){
     '8':'Software & networking', '9':'Other departments & Titan', '10':'Different worlds',
     '11':'Line check & system check', '12':'Fault-finding', '13':'Safety, regulations & paperwork',
     '14':'Recording & broadcast', '15':'Monitor world & IEMs', '16':'Mixing craft',
-    '17':'Career & freelancing'
+    '17':'Career & freelancing', '21':'Beyond live audio'
   };
   var CONSERVATION = 'Conservation & bioacoustics';
   /* a few terms belong to a topic rather than to the part they happen to sit in */
@@ -5223,7 +5434,7 @@ if(searchBox){
     'Wireless & RF','Loudspeakers & systems','Mixing consoles','Software & networking',
     'Other departments & Titan','Different worlds','Line check & system check','Fault-finding',
     'Safety, regulations & paperwork','Recording & broadcast','Monitor world & IEMs','Mixing craft',
-    'Career & freelancing', CONSERVATION, CATCH_ALL];
+    'Career & freelancing', 'Beyond live audio', CONSERVATION, CATCH_ALL];
 
   var entries = document.querySelectorAll('#s20-1 .glossary > div');
   var groups = {};
