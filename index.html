@@ -5618,11 +5618,7 @@ function closeAllPanels(){
   if(sheetOverlay) sheetOverlay.classList.remove('open');
   var qb = document.getElementById('quickfabBtn');
   if(qb) qb.setAttribute('aria-expanded','false');
-  var bbC = document.getElementById('bbContents'); if(bbC) bbC.classList.remove('on');
-  var bbA = document.getElementById('bbAppearance'); if(bbA) bbA.classList.remove('on');
-  var bbJ = document.getElementById('bbJob'); if(bbJ) bbJ.classList.remove('on');
-  setExpanded('bbContents', false); setExpanded('bbSearch', false);
-  setExpanded('bbAppearance', false); setExpanded('bbJob', false);
+  setExpanded('bbSearch', false);
   setExpanded('appearanceBtn', false); setExpanded('cogAppearance', false);
   if(typeof syncRailToggleUi === 'function') syncRailToggleUi();
   clearModal();
@@ -5654,18 +5650,14 @@ function openAppearance(){
   modalOpener = opener;
   if(appearancePanel) appearancePanel.classList.add('open');
   openOverlay();
-  var bbA = document.getElementById('bbAppearance'); if(bbA) bbA.classList.add('on');
-  setExpanded('bbAppearance', true);
   setExpanded('appearanceBtn', true); setExpanded('cogAppearance', true);
   setModal(appearancePanel, 'Appearance settings');
   var close = document.getElementById('appearanceClose');
   if(close) setTimeout(function(){ close.focus(); }, 30);
 }
 var appearanceBtn = document.getElementById('appearanceBtn');
-var bbAppearance = document.getElementById('bbAppearance');
 var appearanceClose = document.getElementById('appearanceClose');
 if(appearanceBtn) appearanceBtn.addEventListener('click', openAppearance);
-if(bbAppearance) bbAppearance.addEventListener('click', openAppearance);
 if(appearanceClose) appearanceClose.addEventListener('click', closeAllPanels);
 var cogAppearance = document.getElementById('cogAppearance');
 if(cogAppearance) cogAppearance.addEventListener('click', openAppearance);
@@ -5963,9 +5955,7 @@ if(pocketPrintBtn){
 
 /* ---------- bottom app bar: contents sheet, search, on-the-job, appearance ---------- */
 var railClose = document.getElementById('railClose');
-var bbContents = document.getElementById('bbContents');
 var bbSearch = document.getElementById('bbSearch');
-var bbJob = document.getElementById('bbJob');
 var qInput = document.getElementById('q');
 
 /* TreebySound's phone bar points to the useful starting places, while the
@@ -6138,8 +6128,6 @@ function openContentsSheet(focusSearch){
   if(railEl) railEl.classList.add('sheet-open');
   if(railClose) railClose.style.display = 'block';
   openOverlay();
-  if(bbContents) bbContents.classList.add('on');
-  setExpanded('bbContents', true);
   if(focusSearch) setExpanded('bbSearch', true);
   setModal(railEl, 'Contents and search');
   /* focus the search box when asked, otherwise the sheet's own close button */
@@ -6148,7 +6136,6 @@ function openContentsSheet(focusSearch){
     else if(railClose){ railClose.focus(); }
   }, 60);
 }
-if(bbContents){ bbContents.addEventListener('click', function(){ openContentsSheet(false); }); }
 if(bbSearch){ bbSearch.addEventListener('click', function(){ openContentsSheet(true); }); }
 var appbarLibrary = document.getElementById('appbarLibrary');
 if(appbarLibrary){
@@ -6173,19 +6160,6 @@ if(window.matchMedia){
   var onMq = function(){ syncRailToggleUi(); };
   if(mqPersist.addEventListener){ mqPersist.addEventListener('change', onMq); }
   else if(mqPersist.addListener){ mqPersist.addListener(onMq); }
-}
-
-if(bbJob && quickfabMenuEl){
-  bbJob.addEventListener('click', function(e){
-    e.stopPropagation();
-    var willOpen = !quickfabMenuEl.classList.contains('open');
-    closeAllPanels();
-    if(willOpen){
-      quickfabMenuEl.classList.add('open');
-      bbJob.classList.add('on');
-      setExpanded('bbJob', true);
-    }
-  });
 }
 
 /* One Escape policy for the whole app: if you're typing in search and there's
