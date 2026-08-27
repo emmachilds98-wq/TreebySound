@@ -2899,6 +2899,15 @@ EARS            the only part of the system that actually matters</div>
 <div class="note std"><span class="lab">Standard</span><p>The thing that makes warehouse staff indispensable is <strong>data integrity</strong> — the system saying what's actually on the shelf. Scanning honestly, flagging discrepancies, and quarantining faulty kit in the system as well as physically is unglamorous and enormously valuable. It also means when you say "we haven't got four of those", people believe you.</p></div>
 </section>
 
+<section class="s" id="s8-8"><h3><span class="n">8.8</span> Reading &amp; producing system drawings</h3>
+<p>The stage plan and input list (<a href="#s1-5">§1.5</a>) are the documents you'll use daily; this is the software behind the more formal drawings — a full sound or lighting system design — that a system tech, designer or production manager works from.</p>
+<div class="kv">
+<dt>Vectorworks</dt><dd>The industry-standard CAD package for live events specifically — stage plans, rigging plots, lighting plots and full system drawings, with a plugin ecosystem (Spotlight) built around exactly this kind of work.</dd>
+<dt>AutoCAD</dt><dd>The general-purpose CAD standard, more common on the venue-architecture and permanent-install side (<a href="#s10-6">§10.6</a>) than on touring production drawings.</dd>
+<dt>What's actually yours to do early on</dt><dd>Reading a drawing accurately — knowing your position on the stage plan, checking a rigging plot against what's actually flown, spotting when the drawing and the room disagree — matters far more day to day than producing one. Producing them is a specialism worth picking up later if system design or production management (<a href="#s17-1">§17.1</a>, <a href="#s21-7">§21.7</a>) is a direction that appeals.</dd>
+</div>
+</section>
+
 </div></div>
 
 <div class="part" id="p9">
@@ -2907,7 +2916,7 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s9-1"><h3><span class="n">9.1</span> Why this gets its own part</h3>
 <p>Everything so far has been your chain: mic to speaker. But you build that chain in a room where two or three other departments are building theirs at the same time, often through the same doorway, up the same truss, and off the same distro. Most of what goes wrong between departments isn't technical — it's someone not knowing what someone else needed, or two cable runs fighting for the same route. The technical bits (this part covers three real ones: electrical interference, timecode, and DMX) are the minority of the problem. The majority is just talking to people early.</p>
-<p>One more thing sits at the end of this part (<a href="#s9-8">§9.8–9.11</a>): a proper look at Avolites Titan, the lighting-control software. That's not "working with other teams" content in the same sense as the rest of this part — it's here because it's a genuine, marketable skill on top of your audio work if you've got the licence to use it. Skip straight to <a href="#s9-12">§9.12</a> if lighting desks aren't your interest.</p>
+<p>Two more things sit at the end of this part, and neither is "working with other teams" content in the same sense as the rest of it — they're here because they're genuine, marketable skills on top of your audio work. <a href="#s9-8">§9.8–9.11</a> is a proper look at Avolites Titan, the lighting-control software, if you've got the licence to use it. <a href="#s9-13">§9.13–9.16</a> does the same for video — signal routing, vision mixing and LED walls — for whenever that side of the job pulls at you (<a href="#s21-6">§21.6</a> covers taking either further as a second discipline).</p>
 <div class="note std"><span class="lab">Standard</span><p>On any multi-department build, find out in the first hour: who's the LX/video/staging equivalent of your crew chief, where their cable is planning to run, and whether anyone's sharing your power. Five minutes of that conversation saves an afternoon of re-routing.</p></div>
 </section>
 
@@ -3034,6 +3043,44 @@ EARS            the only part of the system that actually matters</div>
 <dt>Cueing</dt><dd>Pyro and confetti cues are usually fired from a dedicated, separate firing system, not your console — but the cue to fire it often comes from the same show-control chain as your own cues (<a href="#s8-4">§8.4</a>), so know where in the running order it happens even though you're not the one pressing the button.</dd>
 </div>
 <div class="note warn"><span class="lab">Watch it</span><p>Never agree to fire, rig, or "just hold" a pyrotechnic device, however informally you're asked, and however confident the person asking sounds. It's licensed, regulated work with its own legal competence requirements — exactly the same boundary as <a href="#s13-2">§13.2</a> draws around electrical work.</p></div>
+</section>
+
+<section class="s" id="s9-13"><h3><span class="n">9.13</span> Video signals &amp; routing — the basics</h3>
+<p>Like Titan (<a href="#s9-8">§9.8</a>), this is real hands-on video knowledge rather than just "what to expect from the video department" — a second marketable skill built on signal-flow thinking you already have from audio.</p>
+<div class="kv">
+<dt>HDMI vs SDI</dt><dd>HDMI is the consumer/laptop connector — cheap, but the connector isn't locking and the reliable cable run is short (a few metres before signal integrity gets shaky). <strong>SDI</strong> (Serial Digital Interface) is the professional standard for a reason: a locking BNC connector, a single coax that runs hundreds of feet reliably, and — like Dante for audio — it's the one actually worth learning first if you're going to do this seriously.</dd>
+<dt>NDI</dt><dd>Video carried over a standard network switch instead of dedicated cable, the video equivalent of Dante (<a href="#s8-2">§8.2</a>) — same appeal (one network, many signals, no dedicated cable run per source), same caveat (it needs bandwidth and a network that's actually built for it, not just "plugged into the venue WiFi").</dd>
+<dt>Genlock &amp; sync</dt><dd>Multiple cameras or sources need to change frames at exactly the same instant, or switching between them produces a visible glitch — the video equivalent of word clock keeping digital audio devices sample-locked (<a href="#s2-9">§2.9</a>). A genlock generator (or one source acting as the sync reference) is what keeps everything switching cleanly.</dd>
+<dt>A video router / matrix</dt><dd>The video equivalent of a patch bay (<a href="#s3-9">§3.9</a>'s DI-box patching logic, scaled up) — any input can be routed to any output, so a camera feed can land on a screen, a recording device and a streaming encoder simultaneously without re-cabling.</dd>
+</div>
+</section>
+
+<section class="s" id="s9-14"><h3><span class="n">9.14</span> Vision mixing &amp; switching</h3>
+<p>A vision mixer (switcher) is the video department's console — it takes several sources in and decides what the audience actually sees, live.</p>
+<div class="kv">
+<dt>PGM &amp; PVW</dt><dd>Program (PGM) is what's live, on screen, right now. Preview (PVW) is what's queued up to go next. Everything on a switcher exists to move a source from preview into program cleanly.</dd>
+<dt>Cut, mix &amp; wipe</dt><dd>A <strong>cut</strong> is instant, no transition. A <strong>mix</strong> (dissolve) crossfades between two sources over a set time — the video equivalent of a crossfader. A <strong>wipe</strong> reveals the new source with a moving edge. Live events lean heavily on cuts and simple mixes; elaborate wipes read as dated.</dd>
+<dt>Keying</dt><dd>Compositing one source over another — a <strong>chroma key</strong> (green screen) removes a specific colour to reveal what's behind it; a <strong>luma key</strong> uses brightness instead, common for overlaying titles or a presenter's slides.</dd>
+<dt>What to actually learn on</dt><dd>Blackmagic's ATEM range is the accessible, widely-used starting point in events and streaming — inexpensive, well documented, and common enough that fluency on it is a genuinely transferable skill, the video equivalent of learning Dante Certification before a specific desk brand.</dd>
+</div>
+<div class="note deep"><span class="lab">Go deeper</span><p><strong>IMAG</strong> (image magnification) — a camera feed of the stage projected onto screens so a back-of-room or large-venue audience can actually see the performer — is the video job you'll meet most often at a live event. You're unlikely to be the camera operator, but knowing the basics of framing (headroom, not centring a face awkwardly, avoiding the top of a mic stand clipping a shot) means you can competently step in for a static, single-camera IMAG shot if you're ever asked to.</p></div>
+</section>
+
+<section class="s" id="s9-15"><h3><span class="n">9.15</span> LED walls &amp; image processing</h3>
+<p>The video screens now on almost every corporate and touring stage are their own small technical world, built on the same "source, process, output" logic as an audio system.</p>
+<div class="kv">
+<dt>Pixel pitch</dt><dd>The distance between individual LEDs, in millimetres — a smaller number means a sharper image at close range but costs more. The right pitch depends entirely on how close the nearest viewer will actually be, exactly like speaker coverage depends on room size (<a href="#s6-6">§6.6</a>).</dd>
+<dt>The processor</dt><dd>The video equivalent of a lighting desk driving fixtures (<a href="#s9-10">§9.10</a>) — it takes an input source and maps it correctly onto however the physical panels are actually arranged, including oddly-shaped or curved walls, and handles brightness calibration between panels so the wall doesn't look patchy.</dd>
+<dt>Content gotchas</dt><dd>Content built at the wrong resolution or aspect ratio for the actual wall is a constant, avoidable problem — the video version of a mix built quiet and played loud (<a href="#s16-7">§16.7</a>). Confirm the wall's real dimensions before content is finalised, not on the day.</dd>
+</div>
+</section>
+
+<section class="s" id="s9-16"><h3><span class="n">9.16</span> Streaming &amp; recording — tools worth knowing</h3>
+<p><a href="#s14-6">§14.6</a> covers what changes about your audio job when a show streams. This is the software actually doing the streaming and recording on the video side.</p>
+<div class="kv">
+<dt>OBS Studio</dt><dd>Free, open-source, and the default starting point for streaming and screen/webinar-style recording — genuinely capable enough that plenty of small-to-mid events run on it rather than anything paid.</dd>
+<dt>vMix</dt><dd>Paid, more capable, more common on higher-end streaming and broadcast-adjacent events — a step up once a job's requirements outgrow OBS.</dd>
+</div>
 </section>
 
 </div></div>
@@ -3480,6 +3527,7 @@ EARS            the only part of the system that actually matters</div>
 <tr><td><strong>Working at Height Regs 2005</strong></td><td>Any work where a fall could cause injury</td><td>Ladders, MEWPs, truss and rigging above head height — <a href="#s13-3">§13.3</a></td></tr>
 <tr><td><strong>RIDDOR 2013</strong></td><td>Reporting injuries, diseases &amp; dangerous occurrences</td><td>Knowing an accident or near-miss needs recording — <a href="#s13-13">§13.13</a></td></tr>
 <tr><td><strong>COSHH 2002</strong></td><td>Substances hazardous to health</td><td>Haze/fog fluid, cleaning solvents, confetti debris — <a href="#s13-14">§13.14</a></td></tr>
+<tr><td><strong>Working Time Regulations 1998</strong></td><td>Maximum hours, rest breaks &amp; rest periods</td><td>Long build days and back-to-back shifts — <a href="#s13-15">§13.15</a></td></tr>
 </tbody></table></div>
 <p>None of these are yours to interpret alone on a job — that's what a competent person, a Production Manager or a company's health and safety lead is for. What follows is enough to understand what's being asked of you and why, not enough to sign anything off yourself.</p>
 <div class="note deep"><span class="lab">Go deeper</span><p>The legislation above sets the legal duties; it doesn't tell you how to actually run a safe event day to day. <strong>The Purple Guide</strong> — the HSE-endorsed, industry-written reference for health, safety and welfare at music and other events — is the document that translates all of this into practical guidance, and it's genuinely worth knowing exists even if you never read it cover to cover. See <a href="#s18-8">§18.8</a>.</p></div>
@@ -3543,7 +3591,7 @@ EARS            the only part of the system that actually matters</div>
 </section>
 
 <section class="s" id="s13-9"><h3><span class="n">13.9</span> Long days — working in a way you can keep doing</h3>
-<p>Everything else in this part protects you from the kit. This one protects you from the schedule. Twelve- and fourteen-hour days, early starts after late finishes, irregular weeks and a culture that quietly rewards never complaining are ordinary in this industry, and they cause far more harm across a career than any single piece of equipment. <a href="#s13-5">§13.5</a> is about not losing your hearing by 55; this is about still wanting to do the job at 55.</p>
+<p>Everything else in this part protects you from the kit. This one protects you from the schedule. Twelve- and fourteen-hour days, early starts after late finishes, irregular weeks and a culture that quietly rewards never complaining are ordinary in this industry, and they cause far more harm across a career than any single piece of equipment. <a href="#s13-5">§13.5</a> is about not losing your hearing by 55; this is about still wanting to do the job at 55. <a href="#s13-15">§13.15</a> covers what the law actually entitles you to underneath all of this, if you want the detail.</p>
 <div class="kv">
 <dt>Fatigue</dt><dd>It is a safety issue, not a character issue. Tired people misjudge lifts, mis-patch outputs and walk under loads. If you are too tired to do something safely — a lift, a ladder, a long drive — saying so is the professional response, not the weak one. Nobody sensible has ever been sacked for that; people have been badly hurt for not saying it.</dd>
 <dt>The drive home</dt><dd>Usually the most dangerous part of the day. The genuinely serious risk in live events is not the show, it's a 1am motorway drive after a fourteen-hour day. Plan the journey home as part of the job: share driving, take the break, or say up front that you need accommodation rather than discovering at midnight that you can't safely drive. Microsleeps do not announce themselves.</dd>
@@ -3603,6 +3651,17 @@ EARS            the only part of the system that actually matters</div>
 <dt>Your actual job</dt><dd>Before handling anything you don't recognise — a cleaning product, a fluid, a canister — check it has a safety data sheet and that you know what it is. Never mix cleaning products (some combinations release genuinely dangerous gases). Ventilate a haze/fog-filled space properly before extended time working in it, and treat spent pyro/confetti debris as something to clear up with gloves, not bare hands.</dd>
 </div>
 <div class="note alt"><span class="lab">Also seen</span><p>Haze and fog machines are covered by COSHH like anything else, but the specific competence and risk-assessment requirements for who's allowed to fire pyro or confetti sit separately with the licensed operator (<a href="#s9-12">§9.12</a>) — COSHH is about the substance itself, not who's authorised to deploy it.</p></div>
+</section>
+
+<section class="s" id="s13-15"><h3><span class="n">13.15</span> Working Time Regulations — your legal hours entitlement</h3>
+<p><a href="#s13-9">§13.9</a> covers handling long days as they come at you; this is what the law actually entitles you to underneath that, whether or not any single job feels like it.</p>
+<div class="kv">
+<dt>The 48-hour week</dt><dd>The baseline limit is an average of 48 hours a week, averaged over 17 weeks — not a hard cap on any single week, which is exactly why a run of 14-hour build days is legal provided it evens out.</dd>
+<dt>The opt-out</dt><dd>Almost every event and entertainment employer asks new starters to sign a voluntary opt-out from the 48-hour limit, precisely because show days routinely exceed it. Signing it is normal in this industry and not, on its own, something to worry about — but know that it must be voluntary, in writing, and separate from your main contract, and that you can cancel it with notice (usually up to 3 months) if it's ever genuinely a problem.</dd>
+<dt>Daily &amp; weekly rest</dt><dd>Separately from the 48-hour limit: you're entitled to 11 consecutive hours' rest in any 24-hour period, and 24 hours' uninterrupted rest in any 7 days (or 48 hours in any 14). A very early get-in after a very late derig is exactly the situation where this gets squeezed — worth knowing it's there, even on a job where asking for it isn't realistic.</dd>
+<dt>Rest breaks</dt><dd>A 20-minute uninterrupted break if you work more than 6 hours in a day. In practice this usually means "eat something properly," not a formal announced break — but it's a legal entitlement, not a favour.</dd>
+</div>
+<div class="note alt"><span class="lab">Also seen</span><p>None of this is about refusing a long day — the industry runs on them, and <a href="#s13-9">§13.9</a>'s advice on managing that stands. This section exists so you know the actual floor underneath the culture, not to suggest you should be citing regulations on a get-in.</p></div>
 </section>
 
 </div></div>
@@ -4539,6 +4598,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>CDM 2015</dt><dd>UK construction safety regulations that apply to event builds and de-rigs. <a href="#s13-1">§13.1</a> · <a href="#s13-6">§13.6</a></dd></div>
 <div><dt>ceeform</dt><dd>The round industrial power connector family used across UK events — blue 16 A and 32 A for single-phase, red for three-phase. <a href="#s3-8">§3.8</a></dd></div>
 <div><dt>Changeover</dt><dd>The gap between acts where one band's setup is struck and the next built. <a href="#s10-3">§10.3</a></dd></div>
+<div><dt>Chroma key</dt><dd>Compositing one video source over another by removing a specific colour (usually green) to reveal what's behind it. <a href="#s9-14">§9.14</a></dd></div>
 <div><dt>CIEEM / Chartered Ecologist (CEcol)</dt><dd>The Chartered Institute of Ecology and Environmental Management — the UK professional body for ecologists, and the chartered status that shows continued professional practice. <a href="#s18-15">§18.15</a></dd></div>
 <div><dt>Click track</dt><dd>A metronome feed, usually to the drummer's IEMs, that the band plays to. <a href="#s15-10">§15.10</a></dd></div>
 <div><dt>Clock / word clock</dt><dd>The shared timing reference every device on a digital audio network must agree on — "word clock" is the term actually printed on converters and consoles for it. <a href="#s2-9">§2.9</a> · <a href="#s8-2">§8.2</a> · <a href="#s12-14">§12.14</a></dd></div>
@@ -4585,6 +4645,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>FOH (front of house)</dt><dd>Front of House — both the mix position out in the room and the engineer who works there, mixing what the audience hears, as opposed to monitor world. <a href="#s1-3">§1.3</a> · <a href="#s15-1">§15.1</a></dd></div>
 <div><dt>Gain / trim</dt><dd>The input control that sets how much the preamp amplifies an incoming signal. <a href="#s2-4">§2.4</a> · <a href="#s12-9">§12.9</a> · <a href="#s12-12">§12.12</a></dd></div>
 <div><dt>Gain compensation</dt><dd>A feature on split digital console systems that automatically applies an equal, opposite digital trim on the other console when one engineer changes the shared analogue preamp gain, so neither console's level jumps unexpectedly. <a href="#s7-3">§7.3</a></dd></div>
+<div><dt>Genlock</dt><dd>A sync signal keeping multiple video sources changing frames at the same instant, so switching between them doesn't glitch — the video equivalent of word clock. <a href="#s9-13">§9.13</a></dd></div>
 <div><dt>Gate</dt><dd>Mutes a channel below a set threshold, commonly used to control drum bleed. <a href="#s16-3">§16.3</a></dd></div>
 <div><dt>Get-in / get-out</dt><dd>The start and end of load-in and derig on site — theatre's words for the same jobs covered in <a href="#s1-2">§1.2</a>, different vocabulary depending on the building you're in. <a href="#s19-4">§19.4</a> · <a href="#s10-4">§10.4</a></dd></div>
 <div><dt>Grand Master (lighting)</dt><dd>The Titan fader controlling overall output intensity for the whole lighting rig — distinct from a console's audio master. <a href="#s9-10">§9.10</a></dd></div>
@@ -4636,6 +4697,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Multicore</dt><dd>A single cable bundling many audio channels together — also called a snake. <a href="#s3-5">§3.5</a> · <a href="#s9-5">§9.5</a></dd></div>
 <div><dt>Multipath</dt><dd>The same RF signal arriving by two different paths and cancelling itself at one point in space — the usual cause of a wireless dropout at one specific spot on stage. True diversity defeats it. <a href="#s5-3">§5.3</a> · <a href="#s5-9">§5.9</a></dd></div>
 <div><dt>Music Producers Guild (MPG)</dt><dd>The UK trade body for studio and record-production engineers. <a href="#s21-4">§21.4</a></dd></div>
+<div><dt>NDI</dt><dd>Video carried over a standard network switch instead of dedicated cable — the video equivalent of Dante. <a href="#s9-13">§9.13</a></dd></div>
 <div><dt>NEBOSH General Certificate</dt><dd>A widely-recognised health and safety qualification, the usual next step up from IOSH Working Safely. <a href="#s21-10">§21.10</a></dd></div>
 <div><dt>Network isolation</dt><dd>Keeping a production audio network physically or logically separate from a venue's guest WiFi or public internet, so it can't be seen or interfered with from outside. <a href="#s8-6">§8.6</a></dd></div>
 <div><dt>Noise at Work (exposure action values)</dt><dd>The UK regulations protecting your own hearing over a career — 80/85/87 dB(A). <a href="#s13-5">§13.5</a></dd></div>
@@ -4651,6 +4713,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>PFL</dt><dd>Pre-Fade Listen — solo mode that ignores the channel's fader position. <a href="#s7-6">§7.6</a></dd></div>
 <div><dt>Phantom power</dt><dd>The +48 V DC supply sent up a mic cable to power condenser mics and active DIs. <a href="#s2-6">§2.6</a> · <a href="#s12-9">§12.9</a></dd></div>
 <div><dt>Phase</dt><dd>A frequency-dependent time relationship between two signals, distinct from polarity. <a href="#s2-8">§2.8</a> · <a href="#s12-6">§12.6</a></dd></div>
+<div><dt>Pixel pitch</dt><dd>The distance between individual LEDs on a video wall, in millimetres — a smaller number gives a sharper image at close range. <a href="#s9-15">§9.15</a></dd></div>
 <div><dt>PLASA (NELT)</dt><dd>The UK entertainment technology trade body; National Event Lifting Training is its accessible entry point into rigging. <a href="#s17-4">§17.4</a> · <a href="#s18-12">§18.12</a></dd></div>
 <div><dt>PLI</dt><dd>Public Liability Insurance — covers a freelancer if their work injures someone or damages property. <a href="#s17-2">§17.2</a></dd></div>
 <div><dt>PMR446</dt><dd>The licence-exempt short-range walkie-talkie band around 446 MHz — a common uncoordinated RF neighbour on site. <a href="#s5-9">§5.9</a></dd></div>
@@ -4682,6 +4745,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Sample rate</dt><dd>How many times per second a digital audio signal is measured — 48 kHz is the live standard. <a href="#s2-9">§2.9</a> · <a href="#s14-4">§14.4</a> · <a href="#s12-14">§12.14</a></dd></div>
 <div><dt>Scene / snapshot</dt><dd>A stored state of the console that can be recalled — essential in theatre and corporate, used sparingly in live music. <a href="#s7-3">§7.3</a> · <a href="#s7-4">§7.4</a></dd></div>
 <div><dt>ScreenSkills</dt><dd>The UK skills body for film, TV and games — runs bursaries and short courses relevant to broadcast and post-production sound. <a href="#s21-2">§21.2</a></dd></div>
+<div><dt>SDI</dt><dd>Serial Digital Interface — the professional video connector standard: a locking BNC connector on a single coax that runs reliably over long distances, unlike HDMI. <a href="#s9-13">§9.13</a></dd></div>
 <div><dt>Show file</dt><dd>A saved snapshot of every setting on a digital console. <a href="#s7-4">§7.4</a></dd></div>
 <div><dt>Sidechain</dt><dd>Using one signal's level to control processing applied to a different signal — a gate keyed from another input, or a music bed "ducked" under a voiceover. <a href="#s16-10">§16.10</a></dd></div>
 <div><dt>SM</dt><dd>Stage Manager — runs what happens on stage during a show, calls cues in theatre. <a href="#s1-3">§1.3</a></dd></div>
@@ -4705,11 +4769,14 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Touch tour</dt><dd>A pre-show session letting blind and partially-sighted patrons handle set pieces and props to build a mental picture before the performance. <a href="#s6-13">§6.13</a></dd></div>
 <div><dt>TRS / TS / TRRS (jack)</dt><dd>Quarter-inch/mini jack connector types by contact count: TS carries one unbalanced signal, TRS either one balanced signal or two unbalanced, TRRS a stereo-plus-mic headset signal. The same connector can mean different things depending on the socket. <a href="#s3-2">§3.2</a></dd></div>
 <div><dt>Universe (DMX)</dt><dd>One DMX line's worth of 512 control channels. <a href="#s9-7">§9.7</a> · <a href="#s9-10">§9.10</a></dd></div>
+<div><dt>Vectorworks</dt><dd>The industry-standard CAD package for live events — stage plans, rigging plots and full system drawings. <a href="#s8-8">§8.8</a></dd></div>
 <div><dt>Virtual soundcheck</dt><dd>Building a mix from a recorded multitrack instead of a live band on stage. <a href="#s14-3">§14.3</a></dd></div>
+<div><dt>Vision mixer (switcher)</dt><dd>The video department's console — takes several sources in and decides what's live (PGM) versus queued up next (PVW). <a href="#s9-14">§9.14</a></dd></div>
 <div><dt>VocalEyes</dt><dd>A UK charity providing audio description and other access services to arts venues. <a href="#s6-13">§6.13</a></dd></div>
 <div><dt>Wedge</dt><dd>A floor monitor speaker angled up at a performer. <a href="#s15-2">§15.2</a> · <a href="#s15-6">§15.6</a></dd></div>
 <div><dt>Wireless Workbench</dt><dd>Shure's free RF coordination and monitoring software — plan frequencies, then watch a live system for interference during a show. <a href="#s5-5">§5.5</a> · <a href="#s18-14">§18.14</a></dd></div>
 <div><dt>Working at Height Regulations 2005</dt><dd>The duty covering anywhere a fall could cause injury — ladders, MEWPs, rigging above head height. <a href="#s13-1">§13.1</a> · <a href="#s13-3">§13.3</a></dd></div>
+<div><dt>Working Time Regulations 1998</dt><dd>UK employment law setting the 48-hour average working week (commonly opted out of in events), plus statutory rest breaks and rest periods. <a href="#s13-15">§13.15</a></dd></div>
 <div><dt>Wwise</dt><dd>Audiokinetic's game-audio middleware, roughly FMOD's main alternative. Its free 101/201/301 courses are a genuinely respected way into game audio without a games degree. <a href="#s21-5">§21.5</a></dd></div>
 <div><dt>XLR</dt><dd>The three-pin locking connector carrying almost all mic and line-level audio in live sound. <a href="#s3-1">§3.1</a> · <a href="#s12-2">§12.2</a> · <a href="#s9-7">§9.7</a></dd></div>
 </div>
