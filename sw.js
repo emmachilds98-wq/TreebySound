@@ -84,6 +84,11 @@ self.addEventListener('fetch', event => {
     );
     return;
   }
+  /* Only this site's own files are cached. Anything else — the optional AI
+     assistant's calls to the Anthropic API (POSTs that can't be cached, and
+     streamed replies that must not be) and the SDK it loads — goes straight to
+     the network untouched. */
+  if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
   event.respondWith(
     caches.match(event.request).then(hit => hit || fetch(event.request).then(response => {
       const copy = response.clone();

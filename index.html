@@ -793,6 +793,55 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
   .library-group{margin-bottom:2px}
 }
 @media (max-width:560px){ .library-grid{grid-template-columns:1fr} }
+/* ---------- fault finder chat (Support → Talk it through) ---------- */
+.chat{background:var(--card);border:1px solid var(--rule);border-radius:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden}
+.chat-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-bottom:1px solid var(--rule);background:var(--paper-2);flex-wrap:wrap}
+.chat-modes{display:flex;gap:6px;flex-wrap:wrap}
+.chat-mode{font-family:var(--display);font-size:13.5px;font-weight:600;color:var(--ink-2);background:var(--card);border:1px solid var(--rule-2);border-radius:999px;padding:6px 12px;cursor:pointer;line-height:1.15;text-align:left}
+.chat-mode span{display:block;font-family:var(--mono);font-size:9.5px;font-weight:400;letter-spacing:.04em;color:var(--ink-3)}
+.chat-mode.on{background:var(--petrol);border-color:var(--petrol);color:#fff}
+.chat-mode.on span{color:rgba(255,255,255,.85)}
+:root[data-theme="dark"] .chat-mode.on{color:var(--paper)} :root[data-theme="dark"] .chat-mode.on span{color:var(--paper)}
+.chat-reset{font-family:var(--display);font-size:13px;color:var(--petrol-ink);background:none;border:1px solid var(--rule-2);border-radius:8px;padding:6px 10px;cursor:pointer}
+.chat-log{min-height:220px;max-height:min(62vh,560px);overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.chat-msg{max-width:88%;padding:10px 13px;border-radius:14px;font-size:15px;line-height:1.45;overflow-wrap:anywhere}
+.chat-msg p{margin:0 0 8px}.chat-msg p:last-child{margin-bottom:0}
+.chat-msg ul,.chat-msg ol{margin:4px 0 8px;padding-left:20px}.chat-msg li{margin:2px 0}
+.chat-msg.bot{align-self:flex-start;background:var(--paper-2);border:1px solid var(--rule);border-bottom-left-radius:4px;color:var(--ink)}
+.chat-msg.me{align-self:flex-end;background:var(--petrol-soft);color:var(--petrol-ink);border-bottom-right-radius:4px}
+.chat-msg.warn{border-left:4px solid var(--fault)}
+.chat-msg.note{align-self:center;background:none;border:none;font-family:var(--mono);font-size:11.5px;color:var(--ink-3);padding:2px 6px;text-align:center}
+.chat-msg img{display:block;max-width:180px;max-height:180px;border-radius:8px;margin-top:6px}
+.chat-msg .chat-links{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chat-msg .chat-links a{font-family:var(--display);font-size:13px;font-weight:600;color:var(--petrol-ink);background:var(--card);border:1px solid var(--petrol);border-radius:7px;padding:4px 8px;text-decoration:none}
+.chat-msg .say{font-style:italic}
+.chat-msg.typing::after{content:"▍";animation:chatblink 1s steps(2) infinite;color:var(--petrol)}
+@keyframes chatblink{50%{opacity:0}}
+.chat-report{font-family:var(--body);font-size:14.5px;white-space:pre-wrap;background:var(--card);border:1px dashed var(--rule-2);border-radius:8px;padding:9px 11px;margin:6px 0}
+.chat-chips{display:flex;flex-wrap:wrap;gap:7px;padding:0 12px 10px}
+.chat-chips:empty{display:none}
+.chat-chip{font-family:var(--display);font-size:14px;font-weight:600;color:var(--petrol-ink);background:var(--petrol-soft);border:1px solid var(--petrol);border-radius:999px;padding:7px 13px;cursor:pointer;line-height:1.2;text-align:left}
+.chat-chip:hover{background:var(--petrol);color:#fff}
+.chat-chip.quiet{background:var(--card);border-color:var(--rule-2);color:var(--ink-2)}
+.chat-form{display:flex;align-items:flex-end;gap:8px;padding:10px 12px;border-top:1px solid var(--rule);background:var(--paper)}
+.chat-form textarea{flex:1;resize:none;min-height:42px;max-height:140px;font:inherit;font-size:16px;line-height:1.35;color:var(--ink);background:var(--card);border:1px solid var(--rule-2);border-radius:10px;padding:9px 11px}
+.chat-form textarea:focus{outline:2px solid var(--petrol);outline-offset:1px}
+.chat-send{font-family:var(--display);font-size:15px;font-weight:600;color:#fff;background:var(--petrol);border:none;border-radius:10px;padding:0 16px;height:42px;cursor:pointer}
+:root[data-theme="dark"] .chat-send{color:var(--paper)}
+.chat-send[disabled]{opacity:.55;cursor:default}
+.chat-photo{font-size:19px;height:42px;width:42px;border:1px solid var(--rule-2);border-radius:10px;background:var(--card);cursor:pointer}
+.chat-attach{display:flex;align-items:center;gap:8px;padding:0 12px 10px;font-family:var(--mono);font-size:12px;color:var(--ink-3);background:var(--paper)}
+.chat-attach img{height:42px;border-radius:6px}
+.chat-attach button{font:inherit;background:none;border:1px solid var(--rule-2);border-radius:6px;padding:3px 8px;cursor:pointer;color:var(--ink-2)}
+.chat-settings{border-top:1px solid var(--rule);padding:10px 14px 4px;font-size:14.5px}
+.chat-settings summary{font-family:var(--display);font-size:14px;font-weight:600;color:var(--petrol-ink);cursor:pointer;padding:4px 0}
+.chat-key{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
+.chat-key label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);width:100%}
+.chat-key input{flex:1;min-width:180px;font-family:var(--mono);font-size:14px;padding:8px 10px;border:1px solid var(--rule-2);border-radius:8px;background:var(--card);color:var(--ink)}
+.chat-key .hub-button{cursor:pointer}
+.chat-key-status{font-family:var(--mono);font-size:12px;color:var(--ink-3);min-height:1em}
+@media (max-width:820px){.chat-msg{max-width:94%}.chat-log{max-height:58vh}}
+@media print{.chat{display:none}}
 </style>
 </head>
 <body>
@@ -967,7 +1016,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
       <article class="hub-card"><p class="kicker">Everything is searchable</p><h4>One index, all 21 parts</h4><p>Search reaches every word of the handbook and every one of these screens. Open it from <strong>Library</strong> in the bottom bar, or press <kbd>/</kbd> on a keyboard.</p></article>
       <article class="hub-card"><p class="kicker">It is yours</p><h4>Notes, ticks and themes stay on this device</h4><p>Section notes, checklists, the job workspace and your chosen colours are saved only in this browser and never sent anywhere. Export a backup now and then from <strong>Appearance</strong>.</p></article>
     </div>
-    <article class="hub-card" style="margin-top:14px"><p class="kicker">What's in this pack</p><h4>The full contents, in one sentence</h4><p>Running a job and the people around you, core audio fundamentals, RF, PA and networked systems, working across different departments and event types, fault-finding and working safely, recording and mixing craft, and career, learning and field reference — checklists, glossary and calculators, all in one place.</p></article>
+    <article class="hub-card" style="margin-top:14px"><p class="kicker">What's in this pack</p><h4>The full contents, in one sentence</h4><p>Running a job and the people around you, core audio fundamentals, RF, PA and networked systems, working across different departments and event types, d&amp;b systems and speakON cabling, fault-finding and working safely, recording and mixing craft, and career, learning and field reference — checklists, glossary and calculators, all in one place.</p></article>
   </section>
 
 </section>
@@ -1092,7 +1141,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
     <h2>On the spot</h2>
     <p class="screen-lead">For the moment something is wrong, or you need a number, a script or a page you can read in twenty seconds. Nothing here needs you to remember where it lives in the book.</p>
     <nav class="hub-nav" aria-label="Support sections">
-      <a href="#support-now">Make it safe</a><a href="#support-fault">Something's wrong</a><a href="#support-calc">Calculators</a><a href="#support-ref">Look it up</a><a href="#support-say">What to say</a>
+      <a href="#support-now">Make it safe</a><a href="#support-fault">Something's wrong</a><a href="#support-chat">Talk it through</a><a href="#support-calc">Calculators</a><a href="#support-ref">Look it up</a><a href="#support-say">What to say</a>
     </nav>
   </div>
 
@@ -1129,6 +1178,8 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
     </div>
     <h4>Go to the subsystem</h4>
     <div class="fault-grid">
+      <a href="#support-chat"><strong>Talk it through</strong>Describe it, get the next check</a>
+      <a href="#s6-19"><strong>d&amp;b &amp; speakON</strong>Modes, NL4 pins, amp lights</a>
       <a href="#s12-9"><strong>Mics &amp; cables</strong>No signal, crackle, intermittent</a>
       <a href="#s12-10"><strong>DI &amp; instruments</strong>Hum, level, ground lift</a>
       <a href="#s12-11"><strong>Wireless &amp; RF</strong>Dropouts, hits, range</a>
@@ -1143,6 +1194,47 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
       <a href="#s12-2"><strong>Fault kit</strong>What to carry and why</a>
     </div>
     <p class="hub-disclaimer">All of this is <a href="#p12">Part 12 · Diagnose &amp; fix faults</a> in full, including keeping a fault log (12.17) that makes the next one faster.</p>
+  </section>
+
+  <section class="hub-section" id="support-chat">
+    <h3>Talk it through</h3>
+    <p class="hub-lead">Tell the fault finder what's happening, in your own words — "sub's silent on the d&amp;b", "crackle from one speaker", "amp not showing in R1". It asks the next question, points you at the check, and when you're done writes the message to send your lead.</p>
+    <div class="chat" id="faultChat">
+      <div class="chat-bar">
+        <div class="chat-modes" role="radiogroup" aria-label="Fault finder mode">
+          <button type="button" class="chat-mode on" data-mode="guided" role="radio" aria-checked="true">Guided <span>works offline</span></button>
+          <button type="button" class="chat-mode" data-mode="ai" role="radio" aria-checked="false">AI assistant <span>needs signal + key</span></button>
+        </div>
+        <button type="button" class="chat-reset" id="chatReset">Start over</button>
+      </div>
+      <div class="chat-log" id="chatLog" role="log" aria-live="polite" aria-label="Fault finder conversation"></div>
+      <div class="chat-chips" id="chatChips"></div>
+      <form class="chat-form" id="chatForm" autocomplete="off">
+        <button type="button" class="chat-photo" id="chatPhotoBtn" title="Attach a photo (AI assistant only)" aria-label="Attach a photo" hidden>&#128247;</button>
+        <input type="file" id="chatPhoto" accept="image/*" capture="environment" hidden>
+        <label class="sr-only" for="chatInput">Describe the problem</label>
+        <textarea id="chatInput" rows="1" placeholder="What's going on?"></textarea>
+        <button type="submit" class="chat-send" id="chatSend">Send</button>
+      </form>
+      <div class="chat-attach" id="chatAttach" hidden></div>
+      <details class="chat-settings" id="chatSettings">
+        <summary>AI assistant setup</summary>
+        <p>The guided mode is built into this page and never needs a connection. The <strong>AI assistant</strong> is optional: it sends your question, any photo you attach and the relevant handbook pages to Anthropic's Claude, using <em>your own</em> API key. Nothing else from this app — notes, job details, checklists — is ever sent.</p>
+        <ol class="seq">
+          <li>Create an API key at <strong>console.anthropic.com</strong> (Settings → API keys). It's pay-as-you-go — set a monthly spend limit there so it can never surprise you.</li>
+          <li>Paste it below. It's saved only in this browser on this device, and only ever sent to Anthropic.</li>
+          <li>Switch to <em>AI assistant</em> above. You need a signal; with none, it falls back to the guided mode.</li>
+        </ol>
+        <div class="chat-key">
+          <label for="chatKey">Anthropic API key</label>
+          <input type="password" id="chatKey" placeholder="sk-ant-…" autocomplete="off" spellcheck="false">
+          <button type="button" class="hub-button" id="chatKeySave">Save key</button>
+          <button type="button" class="hub-button" id="chatKeyForget">Forget key</button>
+        </div>
+        <p class="chat-key-status" id="chatKeyStatus"></p>
+        <p class="hub-disclaimer">The assistant is a second opinion, not an authority. It can be wrong. Anything electrical, rigged or on someone else's system still goes to the person responsible — and safety always comes first (<a href="#support-now">Make it safe</a>).</p>
+      </details>
+    </div>
   </section>
 
   <section class="hub-section" id="support-calc">
@@ -1603,13 +1695,13 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 <li><strong>Search</strong> — press <code>/</code> anywhere (or tap <em>Library</em> in the navigation bar) to open the search box; it filters the contents list live as you type, and <code>Esc</code> clears it. This searches every part of the book <em>and</em> every one of the five screens at once — including the ones you're not currently looking at — so use it rather than your browser's own <kbd>Ctrl</kbd>/<kbd>⌘</kbd>+<kbd>F</kbd>, which only sees what's on screen.</li>
 <li><strong>Browse</strong> — <a href="#library">All parts</a> lays out the whole library as cards, grouped by the question you're answering, with what each part is actually for. It's the one to use when you don't yet know what you're looking for.</li>
 <li><strong>Section numbers</strong> — every heading has one. They're stable, so notes to yourself like "look at 12.3 before Friday" will still work in a year.</li>
-<li><strong>Support</strong> — the fastest route in when you're mid-job and know roughly what kind of thing you need rather than where it lives: making it safe, fault-finding, the calculators, the pocket reference and the glossary are all one tap away there. On a computer the <em>On a job now</em> button, bottom-right, opens the same shortcuts as a menu without leaving the page you're reading.</li>
+<li><strong>Support</strong> — the fastest route in when you're mid-job and know roughly what kind of thing you need rather than where it lives: making it safe, fault-finding — including a fault finder you can talk to, which also walks you through setups and looks things up — the calculators, the pocket reference and the glossary are all one tap away there. On a computer the <em>On a job now</em> button, bottom-right, opens the same shortcuts as a menu without leaving the page you're reading.</li>
 <li><strong>Checklists</strong> — <a href="#p19">Part 19</a> has printable ones. Ticks save in your browser, so a half-done prep list is still half-done tomorrow.</li>
 <li><strong>How-to guides</strong> — every start-to-finish, step-by-step procedure in the book, grouped by area at <a href="#s19-12">§19.12</a> and as one flat alphabetical list at <a href="#s19-16">§19.16</a>.</li>
 <li><strong>Glossary</strong> — every piece of jargon, alphabetically at <a href="#s20-1">§20.1</a> or grouped by area at <a href="#s20-2">§20.2</a>. Each entry links straight back to where it's properly explained.</li>
 <li><strong>Pocket reference</strong> — a condensed, one-page cheat sheet of the numbers and steps you'll want mid-job, at <a href="#s19-13">§19.13</a>, with its own print button.</li>
 <li><strong>Print</strong> — the Print button lays it out for paper properly. A printed line-check sheet in your back pocket beats a phone in the rain.</li>
-<li><strong>Works with no signal</strong> — this whole book is one self-contained file with nothing pulled in from the internet, so once it's saved to your phone, laptop or a USB stick it works exactly the same in a basement venue with no signal as it does at home. Keep a copy on your phone specifically — that's the one device you'll always have with you. To pin it like an app: open the file in your phone's browser, then <em>Share → Add to Home Screen</em> (iPhone/Safari) or the <em>⋮</em> menu → <em>Add to Home screen</em> (Android/Chrome).</li>
+<li><strong>Works with no signal</strong> — this whole book is one self-contained file with nothing pulled in from the internet (the one optional exception is the AI mode of the fault finder in Support, which only connects when you switch it on and give it your own key), so once it's saved to your phone, laptop or a USB stick it works exactly the same in a basement venue with no signal as it does at home. Keep a copy on your phone specifically — that's the one device you'll always have with you. To pin it like an app: open the file in your phone's browser, then <em>Share → Add to Home Screen</em> (iPhone/Safari) or the <em>⋮</em> menu → <em>Add to Home screen</em> (Android/Chrome).</li>
 <li><strong>Back up your notes</strong> — the private notes, ticked checklists, progress and job workspace you build up are saved <em>only</em> in this browser. Now and then, open <em>Appearance</em> and use <strong>Export backup</strong> to save them to a file; <strong>Restore backup</strong> reads one back on a new phone or after clearing your browser. Nothing is ever sent anywhere.</li>
 </ul>
 </section>
@@ -2067,7 +2159,7 @@ EARS            the only part of the system that actually matters</div>
 <p>Neutrik speakON is the standard for connecting amplifiers to passive speakers. It twists to lock, the contacts are shrouded so you can't touch live terminals, and it handles serious current.</p>
 <div class="kv">
 <dt>NL2</dt><dd>Two poles (+1/−1). One channel.</dd>
-<dt>NL4</dt><dd>Four poles (+1/−1/+2/−2). Two channels down one cable — used for bi-amped boxes, or for a top and a sub, or to link through.</dd>
+<dt>NL4</dt><dd>Four poles (+1/−1/+2/−2). Two channels down one cable — used for bi-amped boxes, or for a top and a sub, or to link through. Part numbers, NLT4 (STX), testing and faults: <a href="#s3-12">§3.12</a>.</dd>
 <dt>NL8</dt><dd>Eight poles. Multi-way, mostly on line array and larger systems.</dd>
 </div>
 <p><strong>Speaker cable is not signal cable.</strong> It's unshielded, heavy-gauge (typically 2.5 mm² or 4 mm² for long runs) because it's carrying real current. Using thin cable on a long run loses power and damping — the bass goes soft. Using signal cable will, at best, sound bad; at worst it melts.</p>
@@ -2182,6 +2274,60 @@ EARS            the only part of the system that actually matters</div>
 <tr><td>Crackling when moved</td><td>Dirty or loose contacts</td><td>Contact cleaner, or bin it</td></tr>
 </tbody></table></div>
 <div class="note std"><span class="lab">Standard</span><p>A cable tester (Behringer CT100, Rolls, Whirlwind Tester) is cheap and pays for itself in one avoided show. But the <strong>wiggle test</strong> catches things a static tester misses — plug it in, pass signal, and flex the cable hard at both connectors. Intermittents live in that last 50 mm.</p></div>
+</section>
+
+<section class="s" id="s3-12"><h3><span class="n">3.12</span> NL4 &amp; NLT4 speaker cables — the full picture</h3>
+<p>On the shelf, "an NL4" and "an NLT4" usually mean the same thing: a <strong>four-pole speakON speaker cable</strong>. The letters are Neutrik part numbers for the connector on the end, and once you can read them you know what a cable will and won't do before you've uncoiled it.</p>
+<h4>Reading the part numbers</h4>
+<div class="tw"><table>
+<thead><tr><th>Part</th><th>What it is</th><th>Where you'll see it</th></tr></thead>
+<tbody>
+<tr><td class="mono">NL4MP / NL4MPR</td><td>Chassis socket — the square-flanged one fixed to a panel</td><td>Amp outputs, speaker input and link sockets</td></tr>
+<tr><td class="mono">NL4FX / NL4FC</td><td>Standard cable connector, plastic body. Plugs into a chassis socket</td><td>The end of most install and older hire cables</td></tr>
+<tr><td class="mono">NLT4FX / NLT4FXX-BAG</td><td>The <strong>STX</strong> heavy-duty, all-metal version of the same cable connector. Same four pins, same socket, tougher and higher-rated</td><td>Touring and rental stock — this is what "NLT4" on a label means</td></tr>
+<tr><td class="mono">NLT4MX / NLT4MXX</td><td>STX <em>male</em> cable connector. Lets one cable plug straight into another</td><td>Extension cables (NLT4 female one end, NLT4 male the other)</td></tr>
+<tr><td class="mono">NL4MMX</td><td>Inline coupler — joins two ordinary NL4FX cable ends</td><td>Fault kit, for lengthening a run</td></tr>
+<tr><td class="mono">NL2FX</td><td>Two-pole cable connector. Fits a four-pole socket but only connects pins 1+/1−</td><td>Older cables — and a classic trap</td></tr>
+</tbody></table></div>
+<h4>What the four poles carry</h4>
+<div class="tw"><table>
+<thead><tr><th>Pins</th><th>General use</th><th>On d&amp;b systems (see <a href="#s6-17">§6.17</a>)</th></tr></thead>
+<tbody>
+<tr><td class="mono">1+ / 1−</td><td>The first (or only) channel</td><td>Tops and full-range boxes · the LF in 2-way active · channel A or C</td></tr>
+<tr><td class="mono">2+ / 2−</td><td>A second channel, or a link through to the next box</td><td>Subs in Mix TOP/SUB · the HF in 2-way active · channel B or D</td></tr>
+</tbody></table></div>
+<p>So a four-core NL4 can carry <strong>two separate amp channels</strong> down one cable — which is exactly how a d&amp;b amp feeds a top and a sub, or the two halves of an actively driven box, from one connector. A two-core cable on NL4 ends carries only pins 1, and anything that needed pins 2 goes silent.</p>
+<h4>How to connect and release one</h4>
+<ol class="seq">
+<li><strong>Mute first.</strong> Mute the amp channel (or have it in standby) before you plug or unplug. Speaker level is real voltage and current — breaking it under load arcs across the contacts and pits them, and can pop a driver.</li>
+<li><strong>Line up the key</strong> — the connector only goes in one way. Push it fully home; don't force it.</li>
+<li><strong>Twist clockwise</strong> about a quarter turn until it latches with a click. If there was no click, it isn't locked.</li>
+<li><strong>Tug-test gently</strong> on the connector body, not the cable. A locked speakON doesn't move.</li>
+<li><strong>To release:</strong> pull back the latch (the sliding tab on the connector), twist anticlockwise, then pull the body straight out. Never yank the cable.</li>
+</ol>
+<h4>Checking and testing</h4>
+<ul>
+<li><strong>Look before every job:</strong> strain relief (the chuck at the back) tight, no copper or inner insulation showing, latch springs back, body not cracked, pins straight, nothing rattling inside.</li>
+<li><strong>Test, don't trust:</strong> put every speaker cable through a speakON-capable cable tester at prep. You want all four poles continuous end to end and <em>no</em> shorts between any of them — a short across a speaker line is a dead short on the amp.</li>
+<li><strong>With only a meter:</strong> each core end-to-end should read a fraction of an ohm on a normal-length cable; between any two different cores it should read open (no continuity).</li>
+<li><strong>Label by type, not just length:</strong> "4-core 2.5 mm² 20 m" tells the next person whether this cable will carry a sub on pins 2. Many companies colour-code 2-core vs 4-core — learn yours.</li>
+</ul>
+<div class="kv">
+<dt>4 × 2.5 mm²</dt><dd>The everyday four-core speaker cable.</dd>
+<dt>4 × 4 mm²</dt><dd>For longer runs, where thin cable would lose level and control of the bass (the <a href="#calcCableLoss">cable loss estimator</a> shows when it starts to matter).</dd>
+<dt>8-core + NL8</dt><dd>Multicore runs to arrays — four channels on one cable, broken out to NL4s at the far end with a breakout box or fan.</dd>
+</div>
+<div class="tw"><table>
+<thead><tr><th>Symptom</th><th>Likely cause</th><th>Test</th></tr></thead>
+<tbody>
+<tr><td>Box dead silent</td><td>Connector not latched, broken core, or a 2-core cable where pins 2 were needed</td><td>Re-seat and lock, then swap for a known-good 4-core</td></tr>
+<tr><td>Cuts in and out, crackles when moved</td><td>Connector a quarter-turn short of locked, worn contacts, conductor broken at the strain relief</td><td>Lock it; wiggle the cable at each end with low-level signal; swap</td></tr>
+<tr><td>Sub silent, top fine (or the reverse)</td><td>Cable only carries pins 1, or the box is on the wrong amp connector for the mode</td><td>Check the cable is 4-core and on the right output — <a href="#s6-19">§6.19</a></td></tr>
+<tr><td>Amp channel trips or protects as soon as signal arrives</td><td>Short circuit in cable or connector</td><td>Unplug the cable at the box; if the fault stays, it's the cable — quarantine it</td></tr>
+<tr><td>Contacts look burnt or blackened</td><td>Plugged or unplugged under load, or a loose connection running hot</td><td>Take it out of service (<a href="#s11-5">§11.5</a>)</td></tr>
+</tbody></table></div>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Don't re-terminate speakON on site</strong> unless you're trained, authorised and have the right parts. A wrongly wired NL4 — pins 1 and 2 swapped, or a core shorted — can send a sub feed into a top's HF section, or put a dead short across an amp channel. Swap in a known-good cable, label the bad one, and repair it properly back at base.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>Older German and touring stock sometimes uses <strong>EP5</strong> (or EP4/EP6) connectors instead of speakON, and some d&amp;b amps came in EP5 versions. They aren't interchangeable with NL4 without an adapter, and the pin numbering is different — check the amp's label before using one.</p></div>
 </section>
 
 </div></div>
@@ -2533,7 +2679,7 @@ EARS            the only part of the system that actually matters</div>
 <section class="s" id="s6-4"><h3><span class="n">6.4</span> Amplifiers &amp; processing</h3>
 <p>For passive systems, the amplifier is not a generic box — it's part of the loudspeaker system. Modern touring amps are really <strong>amplified DSP controllers</strong>: they contain the crossover, EQ, limiting and delay that make a specific box model behave correctly.</p>
 <div class="kv">
-<dt>d&amp;b D20 / D40 / D80</dt><dd>Amps for d&amp;b systems. You <em>must</em> select the correct loudspeaker preset for the boxes connected.</dd>
+<dt>d&amp;b D20 / D40 / D80</dt><dd>Amps for d&amp;b systems. You <em>must</em> select the correct loudspeaker preset (d&amp;b call it the <em>setup</em>) for the boxes connected. The whole d&amp;b system — amps, output modes, setup and faults — is in <a href="#s6-16">§6.16–6.19</a>.</dd>
 <dt>L-Acoustics LA4X / LA12X</dt><dd>Same principle for L-Acoustics.</dd>
 <dt>Lab.gruppen, Powersoft, Camco, Crown, QSC</dt><dd>General-purpose touring amplification, usually with configurable DSP.</dd>
 <dt>Outboard processor</dt><dd>Where DSP isn't in the amp: BSS Soundweb / Blu, dbx DriveRack, Xilica, Symetrix. Sits between console and amps.</dd>
@@ -2683,6 +2829,129 @@ EARS            the only part of the system that actually matters</div>
 <div class="note alt"><span class="lab">Also seen</span><p>You'll hear people talk about the <strong>critical distance</strong> — the point where the reverberant field is as loud as the direct sound. Closer than that and intelligibility is mostly fine; further away and it drops off fast however loud you go. It's a useful mental model for why a delay speaker halfway back fixes a problem that another 3&nbsp;dB at the front never will.</p></div>
 <div class="note warn"><span class="lab">Watch it</span><p>Acoustic treatment is not your call to make. Hanging drapes, moving absorbers or altering a listed building's surfaces belongs to the venue and the production designer. What you can reasonably do is <em>point out</em> that a hard, reflective room will limit what the system can achieve, early enough for someone to decide about drapes — and that conversation lands far better at the advance stage (<a href="#s1-7">§1.7</a>) than at soundcheck.</p></div>
 <div class="note deep"><span class="lab">Go deeper</span><p>Room acoustics is a full discipline and this is deliberately only the working tech's share of it. If it grabs you, it's the natural companion to system tuning (<a href="#s6-8">§6.8</a>) — the Bob McCarthy book in <a href="#s18-7">§18.7</a> covers the interaction between systems and rooms properly, and modelling a familiar room in EASE Focus (<a href="#s6-7">§6.7</a>) makes the effect visible rather than theoretical.</p></div>
+</section>
+
+<section class="s" id="s6-16"><h3><span class="n">6.16</span> d&amp;b audiotechnik — how the system fits together</h3>
+<p>d&amp;b is one of the brands you're most likely to meet on UK touring, theatre and corporate work, and it works differently from a rack of generic amps and passive boxes. The thing to understand first: <strong>d&amp;b sell a system, not separate parts.</strong> Almost every d&amp;b loudspeaker is passive, and is designed to be driven only by a d&amp;b amplifier running the matching <em>loudspeaker setup</em> for that exact box. The setup holds the crossover, EQ and — most importantly — the protection that keeps that model's drivers alive.</p>
+<div class="kv">
+<dt>Loudspeaker</dt><dd>The box. Passive, with NL4 input and link sockets (some older or install models differ). Its model name is the setup you'll need.</dd>
+<dt>Amplifier</dt><dd>A d&amp;b amp, four channels on current models, with DSP inside. Each channel is told which box it's driving.</dd>
+<dt>Setup</dt><dd>The loudspeaker preset — d&amp;b's word for it. Chosen per channel. Wrong setup, wrong sound at best, damaged drivers at worst.</dd>
+<dt>Cable</dt><dd>NL4 (or NL8 multicore). Part of the system — the amp can even correct for its length (LoadMatch, below).</dd>
+<dt>Software</dt><dd>ArrayCalc to design it, R1 to control and monitor it.</dd>
+</div>
+<h4>The amplifiers you'll meet</h4>
+<div class="tw"><table>
+<thead><tr><th>Amp</th><th>What to know</th></tr></thead>
+<tbody>
+<tr><td><strong>D6 / D12</strong></td><td>Older two-channel amps, still in plenty of hire stock. Small LCD and buttons; remote control over CAN bus rather than Ethernet. Pinouts differ slightly from the current amps — read the label above the outputs.</td></tr>
+<tr><td><strong>D20</strong></td><td>Four-channel, 2U, touchscreen. The everyday workhorse for E, Y, V, T, A and xS boxes. Four analogue (XLR) and two AES digital inputs, four individual NL4 outputs, two centre NL4s for paired modes, and an NL8. Not for J-Series, M2 or SL-Series.</td></tr>
+<tr><td><strong>D80</strong></td><td>Four-channel high-power touring amp — runs the larger systems the D20 can't. Same touchscreen logic, outputs as NL4 (or EP5 on some versions) plus NL8.</td></tr>
+<tr><td><strong>D40 / D90</strong></td><td>The newer generation. Milan (AVB) networking built in alongside analogue and AES, plus a built-in web interface as well as R1 control. The D90 drives the highest-power systems.</td></tr>
+<tr><td><strong>5D / 10D / 30D / 40D</strong></td><td>Installation amps. You'll find them in venues rather than in hire stock — usually somebody else's system, so look but don't change.</td></tr>
+</tbody></table></div>
+<h4>The loudspeaker ranges</h4>
+<div class="tw"><table>
+<thead><tr><th>Range</th><th>Typical use</th></tr></thead>
+<tbody>
+<tr><td><strong>E-Series</strong> (E6, E8, E12…), <strong>Q-Series</strong></td><td>Older but very common: small point source, fills, delays, corporate. Q is a compact line/point system still in many stocks.</td></tr>
+<tr><td><strong>xS-Series</strong> (5S, 8S, 10S…), <strong>A-Series</strong></td><td>Current point source and augmented arrays — fills, small rooms, theatre, corporate.</td></tr>
+<tr><td><strong>T-Series</strong></td><td>Compact box that switches between line-array and point-source use. Small arrays, theatres, corporate.</td></tr>
+<tr><td><strong>Y-Series</strong>, <strong>V-Series</strong></td><td>Mid-to-large line arrays with matching point-source boxes and subs. Touring and festivals.</td></tr>
+<tr><td><strong>J-Series</strong>, <strong>SL-Series</strong> (KSL, GSL)</td><td>Large-format touring arrays. SL boxes are cardioid by design — they control their own low end behind the array.</td></tr>
+<tr><td><strong>M-Series</strong> (M4, M2…)</td><td>Stage monitors / wedges.</td></tr>
+<tr><td><strong>…-SUB</strong> and <strong>B-Series</strong></td><td>Subwoofers. Several are designed to be run in cardioid arrangements (<a href="#s6-6">§6.6</a>).</td></tr>
+</tbody></table></div>
+<h4>The software around it</h4>
+<div class="kv">
+<dt>ArrayCalc</dt><dd>d&amp;b's free design software (<a href="#s6-7">§6.7</a>). The system tech models the room and the boxes, and ArrayCalc works out angles, rigging loads, delays — and which amp channel drives which box with which setup. It exports a project for R1.</dd>
+<dt>ArrayProcessing</dt><dd>An ArrayCalc option that calculates individual filters for every box in a line array to shape its coverage and tonal balance front to back. Applied through the amps; never "tweak it" by hand.</dd>
+<dt>R1 Remote control</dt><dd>The laptop software that shows and controls every amp on the network: setups, levels, mutes, delays, EQ, and live meters. Current amps connect over Ethernet (OCA / AES70); D6/D12-era amps need a CAN interface.</dd>
+<dt>LoadMatch</dt><dd>On current amps, compensates electrically for the speaker cable — so a box at the end of a long run sounds like one on a short run (d&amp;b quote up to 70 m). It needs the real cable length and cross-section entered, so note them as you run cable.</dd>
+<dt>System check</dt><dd>On current amps, measures each connected loudspeaker against a reference taken when the system was known to be good, and flags a missing box, a dead driver or a bad cable. Most useful when the reference was taken at prep.</dd>
+</div>
+<div class="note std"><span class="lab">Standard</span><p>Every d&amp;b job has a <strong>plan</strong>: an ArrayCalc file, an R1 project, or at minimum a patch sheet from the system tech — box, amp, channel, mode, setup. Work from it, and if you're handed a d&amp;b system with no plan, ask for one before you configure anything.</p></div>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Never drive a d&amp;b box from a generic amp</strong>, or from a d&amp;b amp in "linear" mode, unless the system owner has specifically said to. Without its setup the box has no protection at all — the HF driver is the first thing to go.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>d&amp;b run free training — online videos for each amp (overview, input modes, output modes, channel setup) and in-person "d&amp;b Education" courses on systems and software. ArrayCalc and R1 are both free downloads, and R1 can open a project offline, so you can learn the screens on your own laptop before you're ever near a live rack.</p></div>
+</section>
+
+<section class="s" id="s6-17"><h3><span class="n">6.17</span> d&amp;b amps — output modes, connectors and the front panel</h3>
+<p>The single most important thing on a d&amp;b amp is the <strong>output mode</strong>, because it decides which socket a speaker cable goes into and which pins carry what. Get the mode and the socket to agree and almost everything else follows. The table below is how the current four-channel amps (D20, D80 and their successors) work: channels pair up as A/B and C/D, and each pair has its own mode.</p>
+<div class="tw"><table>
+<thead><tr><th>Output mode</th><th>Used for</th><th>Plug into</th><th>NL4 pins</th></tr></thead>
+<tbody>
+<tr><td><strong>Dual Channel</strong></td><td>Passive full-range boxes and subs, one channel each. Each channel's setup chosen independently (top or sub).</td><td>The individual outputs <strong>A, B, C, D</strong></td><td>1± and 2± both carry that one channel (wired in parallel) — any box will work on any 2- or 4-core cable</td></tr>
+<tr><td><strong>Mix TOP/SUB</strong></td><td>A passive top and a sub on one cable. Channel A (C) runs the top setup, channel B (D) the sub setup.</td><td>The centre <strong>A/B</strong> (or <strong>C/D</strong>) output</td><td>1± = top (A or C) · 2± = sub (B or D). Needs a <strong>4-core</strong> cable</td></tr>
+<tr><td><strong>2-Way Active</strong></td><td>d&amp;b boxes driven actively — a separate amp channel for low and high frequencies.</td><td>The centre <strong>A/B</strong> (or <strong>C/D</strong>) output</td><td>1± = LF (A or C) · 2± = MF/HF (B or D). Needs a <strong>4-core</strong> cable</td></tr>
+<tr><td><strong>NL8 output</strong></td><td>Four channels down one 8-core multicore</td><td>The NL8</td><td>1± = A · 2± = B · 3± = C · 4± = D</td></tr>
+</tbody></table></div>
+<p>That's why d&amp;b boxes are built the way they are: on d&amp;b's usual convention a <strong>top listens on pins 1</strong> and a <strong>sub listens on pins 2</strong>, and the link socket on each box passes all four poles through. So a single 4-core cable from the centre A/B output can go to a sub and link on to a top, and each hears only its own channel. Every d&amp;b cabinet has its pin use printed beside its connectors — read it when you're unsure.</p>
+<div class="note warn"><span class="lab">Watch it</span><p>Older amps (D6, D12) and EP5-fitted amps don't follow exactly this layout. <strong>Always read the label above the outputs</strong> — it states the mode and pins for each socket — and check the amp's manual if anything doesn't match the table.</p></div>
+<h4>Inputs</h4>
+<div class="kv">
+<dt>Analogue</dt><dd>XLR inputs (A1–A4 on a D20), with XLR link outputs to feed the next amp.</dd>
+<dt>Digital (AES3)</dt><dd>XLR inputs carrying two channels each (D1/2, D3/4), with a digital link out. The amp must lock to the sample rate (48 or 96 kHz).</dd>
+<dt>Network</dt><dd>D40/D90: Milan (AVB) built in. D20/D80: Dante arrives through a bridge (such as d&amp;b's DS10) converting to AES.</dd>
+<dt>Input mode / routing</dt><dd>Each amp has an input mode (analogue, digital, network), and each channel is routed from one or more inputs. Current amps can also <em>fall back</em> to a second input if the first one is lost — handy, and also a reason a channel can be playing from somewhere unexpected.</dd>
+</div>
+<h4>Reading the front panel</h4>
+<div class="tw"><table>
+<thead><tr><th>Indicator</th><th>Means</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><strong>Green — ISP / OSP</strong></td><td>Input Signal Present (and, on touchscreen amps, Output Signal Present in brighter green). Signal is reaching the channel.</td><td>No green with the source playing → the problem is upstream of the amp, or in its input routing.</td></tr>
+<tr><td><strong>Yellow — GR</strong></td><td>Gain Reduction: the channel's limiter is working (more than about 3 dB). Not a fault — the box has reached its limits.</td><td>Ease off at the console. If it lights at modest level, check the setup is right for the box.</td></tr>
+<tr><td><strong>Red — OVL / mute</strong></td><td>On D6/D12, overload: input too hot or heavy limiting. On the touchscreen amps the channel strip also shows red when a channel is muted. The screen says which.</td><td>Reduce the input level, or find out who muted it and why before you unmute.</td></tr>
+<tr><td><strong>Error / warning text</strong></td><td>Over-temperature, mains, output or hardware faults, reported on the screen and in R1.</td><td>Write the exact text down, tell the system owner. Don't keep power-cycling it.</td></tr>
+</tbody></table></div>
+<h4>The channel settings you'll see</h4>
+<p>On each channel: <strong>setup</strong> (the box), <strong>level</strong>, <strong>delay</strong>, <strong>mute</strong>, user EQ, and a handful of switchable functions that depend on the box — for example <strong>CUT</strong> (a high-pass that takes the low end out of a top when it's running with subs), <strong>HFA</strong> (gentle high-frequency roll-off for nearby listeners), <strong>CPL</strong> (compensates for boxes coupling together at low frequencies) and cardioid or <strong>INFRA</strong> options on some subs. Which ones are switched on is a design decision: copy them from the plan, don't improvise.</p>
+<div class="note std"><span class="lab">Standard</span><p>Current d&amp;b amps have a built-in pink-noise and sine generator per channel. Combined with mutes it's the quickest way to prove one box at a time without needing anyone at the console — but agree it with the system tech first, and start with the level down.</p></div>
+</section>
+
+<section class="s" id="s6-18"><h3><span class="n">6.18</span> Setting up a d&amp;b system, start to finish</h3>
+<p>The sequence for a typical ground-stacked or simple flown d&amp;b system, as the person doing the physical work and the first checks. On a big system a system tech drives the software — this is so you can do your part properly and know what comes next. Rigging stays with the people qualified for it (<a href="#s6-5">§6.5</a>).</p>
+<ol class="seq">
+<li><strong>Get the plan.</strong> ArrayCalc file, R1 project or patch sheet: which box, which amp and channel, which output mode, which setup, which functions (CUT etc.), delays and levels. No plan, ask.</li>
+<li><strong>Prep it in the warehouse.</strong> Count boxes, amps, speaker cables (4-core where the plan uses Mix TOP/SUB or 2-Way Active), NL8 multicores and breakouts, plus spares. Test every speaker cable (<a href="#s3-12">§3.12</a>). Power each amp up, check it boots without errors and has the setups needed. If the amps support System check, this is the moment to take a known-good reference.</li>
+<li><strong>Position amps close to the boxes they drive</strong> — short speaker runs are better than long ones. Mains in through powerCON from the agreed distro, locked. Leave racks room to breathe front and back.</li>
+<li><strong>Run the speaker cables.</strong> Right connector for the mode (individual outputs for Dual Channel, centre A/B or C/D for paired modes). Lock every speakON at both ends, label both ends with amp and channel, and note the length if LoadMatch is in use.</li>
+<li><strong>Run signal to the amps</strong> — analogue, AES or network — and feed the link outputs on to the next amp as the plan says.</li>
+<li><strong>Power up in order:</strong> console and processing first, amps last — with amp channels muted. (Power down in reverse: amps first.)</li>
+<li><strong>Configure each amp,</strong> either by loading the R1 project or at the front panel: input mode and routing, output mode per channel pair, setup per channel, functions, level, delay, EQ, LoadMatch cable data. Check each channel against the plan. Lock the front panels if that's the house rule.</li>
+<li><strong>Connect R1.</strong> Laptop on the control network; every amp has a unique Remote ID / address; match the devices to the project and go online. Every amp should appear with no warnings.</li>
+<li><strong>Run System check</strong> if the amps support it, and look into anything it flags before going further.</li>
+<li><strong>Prove it box by box.</strong> Low-level pink noise or a known track to one channel at a time; everything else muted. Walk to each box: right box answering, every driver working, nothing rattling, sub and top on the right channels. Then check polarity with the system tech's method.</li>
+<li><strong>Then the whole system</strong> — level balance between sections, sub-to-top alignment, delays, tuning (<a href="#s6-8">§6.8</a>). This is the system tech's call; your job is to be useful and keep the area clear.</li>
+<li><strong>Save and write it down.</strong> Save the R1 project with the date, and note anything that changed from the plan and why. That note is what makes the derig and the next job easy.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p>Two things to never skip, however short the turnaround: <strong>check the setup on every channel</strong> against the box it's actually driving (it's the most expensive mistake on a d&amp;b rig), and <strong>mute before you plug or unplug</strong> any speaker cable.</p></div>
+<div class="note std"><span class="lab">Standard</span><p>Derig is the same list backwards: mute, power amps down, unplug and coil speaker cables (checking each for damage as you go), then signal and mains. Anything that misbehaved on the job gets labelled and reported, not packed (<a href="#s11-5">§11.5</a>).</p></div>
+</section>
+
+<section class="s" id="s6-19"><h3><span class="n">6.19</span> d&amp;b &amp; speakON fault-finding</h3>
+<p>Start with the general method (<a href="#s12-1">§12.1</a>) and the first sixty seconds (<a href="#s12-8">§12.8</a>), then use this table. Work left to right through the checks, one change at a time, and read the amp's channel indicators first — they tell you which half of the system the fault is in.</p>
+<div class="tw"><table>
+<thead><tr><th>Symptom</th><th>Check, in order</th></tr></thead>
+<tbody>
+<tr><td>One box silent, its amp channel shows green (signal present)</td><td>Channel muted? → speakON locked at both ends? → cable on the right output for the mode? → 4-core if the box needs pins 2? → swap in a known-good cable → try the box on a known-good channel. If the fault follows the box, quarantine it.</td></tr>
+<tr><td>Channel shows no input signal</td><td>Source actually playing and unmuted at the console? → amp input mode (analogue vs digital vs network) → that channel's input routing → the signal cable or AES link → digital lock / sample rate → Dante bridge or Milan stream.</td></tr>
+<tr><td>Sub silent, tops fine (Mix TOP/SUB)</td><td>Cable only 2-core, or an NL2 somewhere in the run → cable in an individual output instead of the centre A/B → channel B (D) not running a sub setup, or muted.</td></tr>
+<tr><td>Top silent, sub fine</td><td>Channel A (C) muted or wrong setup → link cable between sub and top faulty or not locked → top plugged into a socket the mode doesn't feed.</td></tr>
+<tr><td>Box sounds dull / no top end</td><td>2-Way Active run with a cable missing pins 2 → HFA switched on where the plan doesn't want it → wrong setup → damaged HF driver (listen close at low level; quarantine if confirmed).</td></tr>
+<tr><td>Thin / no bass from a top that should have it</td><td>CUT switched on with no subs running → wrong setup.</td></tr>
+<tr><td>Yellow GR on constantly</td><td>Not a fault: the box is at its limit. Turn down at the console. If it happens at modest level, check the setup matches the box and that the input isn't hugely over-driven.</td></tr>
+<tr><td>Red on a channel</td><td>Read the screen: muted (find out who and why) or overloaded (reduce the level feeding the amp).</td></tr>
+<tr><td>Crackle, cutting out, worse when the cable moves</td><td>speakON a quarter-turn short of locked → worn connector → damaged cable. Swap the cable to isolate it (<a href="#s3-12">§3.12</a>).</td></tr>
+<tr><td>Amp protects or mutes the moment signal arrives</td><td>Short in the cable or connector — unplug at the box end and test the cable → a damaged box → too many boxes on one channel (load too low).</td></tr>
+<tr><td>Amp shows over-temperature</td><td>Blocked ventilation (rack doors, cases, sun) → reduce level → tell the system owner. Don't keep restarting it.</td></tr>
+<tr><td>Amp won't power on, or keeps rebooting</td><td>powerCON locked? → mains present at the distro (ask an electrician — <a href="#s12-15">§12.15</a>) → try one known-good amp on the same feed → swap the amp.</td></tr>
+<tr><td>Amp not showing in R1</td><td>Ethernet cable and switch → laptop on the right network adapter and address range → duplicate Remote ID or IP → firewall on the laptop → for D6/D12, the CAN interface. D40/D90 Milan streams are a separate network from Dante (<a href="#s8-2">§8.2</a>).</td></tr>
+<tr><td>Wrong box answers when you solo a channel</td><td>Patch doesn't match the labels. Stop, trace each cable, fix the labels before anything else.</td></tr>
+<tr><td>System check flags a box</td><td>Cable first (lock, swap) → then the box. A missing box, a dead driver or a damaged cable all look like an impedance change.</td></tr>
+<tr><td>Rattle or buzz at certain notes only</td><td>Usually mechanical: loose grille, rigging hardware, a stand or something resting on the box. Not an amp fault.</td></tr>
+</tbody></table></div>
+<div class="note warn"><span class="lab">Watch it</span><p>Don't change a setup, an output mode or an ArrayProcessing setting to "see if it helps" — on someone else's system that's not your call, and the wrong change can damage drivers. Gather the facts above and hand them over. Don't open amps or boxes; that's for the service department.</p></div>
+<div class="note std"><span class="lab">Standard</span><p>The <a href="#support-chat">fault finder in Support</a> walks through these same checks as a conversation, and builds the "symptom, what changed, what I've checked, what I need" message for you at the end.</p></div>
 </section>
 
 </div></div>
@@ -3470,6 +3739,7 @@ EARS            the only part of the system that actually matters</div>
 <tr><td>Amp showing a fault light / limiting constantly</td><td>Overheating, overloaded (too low an impedance load, <a href="#s2-7">§2.7</a>), or a genuine fault — reduce load/level first, and don't just keep pushing through a limiter light</td></tr>
 <tr><td>Uneven coverage — loud in one area, dead in another</td><td>Not usually a fault at all — check aiming and coverage first (<a href="#s6-6">§6.6</a>) before assuming a box has failed</td></tr>
 </tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>On a d&amp;b system, the amp's output mode and the speaker cable's pins decide which box hears what — see <a href="#s6-19">§6.19</a> for the d&amp;b-specific checks, and <a href="#s3-12">§3.12</a> for NL4 / NLT4 cables. Or describe it to the <a href="#support-chat">fault finder</a>.</p></div>
 </section>
 
 <section class="s" id="s12-14"><h3><span class="n">12.14</span> Digital audio &amp; Dante network faults</h3>
@@ -4411,6 +4681,8 @@ EARS            the only part of the system that actually matters</div>
 <h4 id="howto-pa">Loudspeakers &amp; systems</h4>
 <ul class="links">
 <li><a href="#s6-8">§6.8 System tuning — what's actually happening</a><span class="d">What a system tech does and why, even if you're not driving the software.</span></li>
+<li><a href="#s6-18">§6.18 Setting up a d&amp;b system, start to finish</a><span class="d">Plan, cables, amps, setups, R1, System check and proving it box by box.</span></li>
+<li><a href="#s3-12">§3.12 NL4 &amp; NLT4 speaker cables — the full picture</a><span class="d">Connecting, releasing and testing a speakON cable, and reading the part numbers.</span></li>
 </ul>
 <h4 id="howto-consoles">Consoles &amp; Titan</h4>
 <ul class="links">
@@ -4431,6 +4703,7 @@ EARS            the only part of the system that actually matters</div>
 <li><a href="#s12-11">§12.11 Wireless &amp; RF faults</a><span class="d">Full walkthrough for dropouts, noise and interference.</span></li>
 <li><a href="#s12-12">§12.12 Console faults</a><span class="d">Full walkthrough for desk-side problems.</span></li>
 <li><a href="#s12-14">§12.14 Digital audio &amp; Dante network faults</a><span class="d">Full walkthrough for networked-audio problems.</span></li>
+<li><a href="#s6-19">§6.19 d&amp;b &amp; speakON fault-finding</a><span class="d">Silent boxes, subs and tops, amp lights, R1 — symptom by symptom.</span></li>
 </ul>
 <h4 id="howto-recording">Recording &amp; broadcast</h4>
 <ul class="links">
@@ -4456,6 +4729,8 @@ EARS            the only part of the system that actually matters</div>
 <div class="pocket-ref-box">
 <h4>XLR pinout</h4>
 <p>Pin 1 = screen/earth, pin 2 = hot (+), pin 3 = cold (−). "One is ground, two is hot." (<a href="#s2-3">§2.3</a>)</p>
+<h4>speakON NL4 / NLT4</h4>
+<p>Pins 1± = first channel (d&amp;b: top, or LF). Pins 2± = second channel (d&amp;b: sub, or HF). A 2-core cable carries pins 1 only. Mute, push in, twist until it clicks. (<a href="#s3-12">§3.12</a> · <a href="#s6-17">§6.17</a>)</p>
 <h4>Signal levels</h4>
 <p>Mic level ≈ 1–10 mV. Line level ≈ 0.3–1.5 V (+4 dBu pro / −10 dBV consumer). (<a href="#s2-2">§2.2</a>)</p>
 <h4>Gain staging target (digital desk)</h4>
@@ -4588,6 +4863,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>AFL</dt><dd>After-Fade Listen — solo mode that reflects the channel's fader position. <a href="#s7-6">§7.6</a></dd></div>
 <div><dt>AI-assisted tools (automixing / feedback suppression)</dt><dd>Emerging products that automatically gain-share open mics or detect and notch ringing frequencies. Worth knowing about, not a substitute for understanding gain structure or ringing out a wedge yourself. <a href="#s7-3">§7.3</a> · <a href="#s15-8">§15.8</a></dd></div>
 <div><dt>Ambient mic</dt><dd>A mic used to blend a sense of the room into a sealed IEM mix. <a href="#s15-4">§15.4</a></dd></div>
+<div><dt>ArrayCalc</dt><dd>d&amp;b's free system design software: models the room and the boxes, works out angles, rigging loads and delays, and produces the amp setups and an R1 project. <a href="#s6-7">§6.7</a> · <a href="#s6-16">§6.16</a></dd></div>
 <div><dt>ATA Carnet</dt><dd>An international customs document letting professional equipment cross a border temporarily without import duty, on the promise it leaves again. <a href="#s17-8">§17.8</a></dd></div>
 <div><dt>Audio description</dt><dd>A live spoken narration of a show's visual action for blind and partially-sighted audience members, delivered by a describer over a dedicated feed. <a href="#s6-13">§6.13</a></dd></div>
 <div><dt>Audio lead / A1</dt><dd>The person responsible for the audio system or show mix on that job. Their exact title varies; establish who has authority before changing a live system. <a href="#hub-people">People</a> · <a href="#s1-3">§1.3</a></dd></div>
@@ -4625,6 +4901,9 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Curfew</dt><dd>The legally binding time by which sound must stop, usually a condition of the premises or event licence rather than a courtesy. <a href="#s1-5">§1.5</a> · <a href="#s6-10">§6.10</a></dd></div>
 <div><dt>Custom-moulded IEM</dt><dd>An earpiece cast from an impression of the performer's own ear canal, for a better seal and more consistent low end than a universal-fit tip. <a href="#s15-12">§15.12</a></dd></div>
 <div><dt>Dante</dt><dd>A protocol for moving multichannel digital audio over standard Ethernet networks. <a href="#s8-2">§8.2</a> · <a href="#s12-14">§12.14</a> · <a href="#s18-3">§18.3</a></dd></div>
+<div><dt>d&amp;b (d&amp;b audiotechnik)</dt><dd>German loudspeaker and amplifier maker common on UK touring, theatre and corporate work. A d&amp;b system is the box, a d&amp;b amp and the matching loudspeaker setup, used together. <a href="#s6-16">§6.16</a> · <a href="#s6-18">§6.18</a></dd></div>
+<div><dt>d&amp;b loudspeaker setup</dt><dd>The preset chosen on each d&amp;b amp channel for the exact box it drives — crossover, EQ and the protection that keeps the drivers alive. The wrong one is the most expensive mistake on a d&amp;b rig. <a href="#s6-16">§6.16</a> · <a href="#s6-17">§6.17</a></dd></div>
+<div><dt>d&amp;b output mode</dt><dd>How a d&amp;b amp pairs its channels — Dual Channel, Mix TOP/SUB or 2-Way Active — which decides which output socket to use and which NL4 pins carry what. <a href="#s6-17">§6.17</a></dd></div>
 <div><dt>dB SPL</dt><dd>Decibels of actual sound pressure in the air — what a sound level meter reads. <a href="#s2-10">§2.10</a> · <a href="#s13-5">§13.5</a></dd></div>
 <div><dt>dBA / dBC</dt><dd>Weighted sound-pressure measurements: A-weighting discounts bass heavily and is what most noise conditions and hearing-exposure limits are written in; C-weighting is much flatter and better reflects what actually annoys neighbours. <a href="#s2-10">§2.10</a> · <a href="#s6-10">§6.10</a></dd></div>
 <div><dt>dBFS</dt><dd>Decibels relative to digital full scale — 0 dBFS is the absolute digital ceiling. <a href="#s2-10">§2.10</a> · <a href="#s2-5">§2.5</a></dd></div>
@@ -4684,6 +4963,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Interpretation system</dt><dd>Simultaneous-translation equipment — booths, wireless IR/RF receivers — usually fed a clean feed of the source language by audio. <a href="#s6-12">§6.12</a></dd></div>
 <div><dt>IP rating</dt><dd>The two-digit Ingress Protection code (IP54, IP55, IP65…) on outdoor-rated gear, describing resistance to dust and water. <a href="#s6-14">§6.14</a></dd></div>
 <div><dt>iRecord / NBN Atlas</dt><dd>The UK route for submitting verifiable biological records and the national dataset they feed, making an observation usable evidence rather than a private note. <a href="#s18-15">§18.15</a></dd></div>
+<div><dt>ISP / GR / OVL</dt><dd>The channel indicators on a d&amp;b amp: ISP (green) input signal present; GR (yellow) gain reduction — the limiter is working; OVL (red) overload, or on touchscreen amps a muted channel. <a href="#s6-17">§6.17</a> · <a href="#s6-19">§6.19</a></dd></div>
 <div><dt>Job pack</dt><dd>The collection of approved documents for a job: usually schedule, kit list, input list, stage plan, contacts and RAMS where applicable. Treat the latest company-held version as the source of truth. <a href="#hub-workspace">Job workspace</a> · <a href="#s1-5">§1.5</a></dd></div>
 <div><dt>Kit list</dt><dd>What's actually going on the job — the warehouse-facing document. <a href="#s1-5">§1.5</a> · <a href="#s19-2">§19.2</a></dd></div>
 <div><dt>Latency</dt><dd>The delay introduced by converting, processing and transporting a signal. <a href="#s2-9">§2.9</a> · <a href="#s8-2">§8.2</a></dd></div>
@@ -4695,6 +4975,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Line array</dt><dd>A vertical column of matched loudspeaker elements flown together, designed to control vertical coverage over long throw distances. <a href="#s6-2">§6.2</a></dd></div>
 <div><dt>Line check</dt><dd>Proving every individual input works correctly before a show. <a href="#p11">Part 11</a> · <a href="#s19-5">§19.5</a></dd></div>
 <div><dt>Load-in / load-out</dt><dd>Getting the kit into the venue at the start, and back onto the truck at the end — steps 3 and 7 of the hire lifecycle. <a href="#s1-2">§1.2</a> · <a href="#s19-3">§19.3</a></dd></div>
+<div><dt>LoadMatch</dt><dd>A feature of current d&amp;b amps that electrically compensates for the speaker cable, so a box at the end of a long run sounds like one on a short run. Needs the real cable length and size entered. <a href="#s6-16">§6.16</a></dd></div>
 <div><dt>LOLER</dt><dd>UK regulations governing the inspection of lifting equipment. <a href="#s13-3">§13.3</a></dd></div>
 <div><dt>Lone working</dt><dd>Doing a task without anyone else present or nearby — changes what counts as a safe way to do it. <a href="#s13-12">§13.12</a></dd></div>
 <div><dt>LTC</dt><dd>Linear timecode — an audio-rate sync signal used to lock playback to video. <a href="#s9-3">§9.3</a></dd></div>
@@ -4706,6 +4987,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>MEWP</dt><dd>Mobile Elevating Work Platform — a "cherry picker" or scissor lift used to fly PA or work at height. A trained, ticketed role; not something to have a go at unsupervised. <a href="#s13-1">§13.1</a> · <a href="#s13-3">§13.3</a></dd></div>
 <div><dt>Mic level</dt><dd>The very small voltage produced directly by a microphone, needing a preamp. <a href="#s2-2">§2.2</a></dd></div>
 <div><dt>Milan (AVB)</dt><dd>An open network audio standard used natively by d&amp;b, L-Acoustics and Meyer — a separate ecosystem from Dante, not a variant of it. <a href="#s8-2">§8.2</a></dd></div>
+<div><dt>Mix TOP/SUB</dt><dd>A d&amp;b output mode that sends a top (pins 1±) and a sub (pins 2±) down one 4-core NL4 cable from the centre A/B or C/D output. <a href="#s6-17">§6.17</a> · <a href="#s6-19">§6.19</a></dd></div>
 <div><dt>MTC</dt><dd>MIDI timecode — a data-based sync signal video systems can send to lock playback, distinct from the audio-rate LTC. <a href="#s9-3">§9.3</a></dd></div>
 <div><dt>Multicore</dt><dd>A single cable bundling many audio channels together — also called a snake. <a href="#s3-5">§3.5</a> · <a href="#s9-5">§9.5</a></dd></div>
 <div><dt>Multipath</dt><dd>The same RF signal arriving by two different paths and cancelling itself at one point in space — the usual cause of a wireless dropout at one specific spot on stage. True diversity defeats it. <a href="#s5-3">§5.3</a> · <a href="#s5-9">§5.9</a></dd></div>
@@ -4713,6 +4995,8 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>NDI</dt><dd>Video carried over a standard network switch instead of dedicated cable — the video equivalent of Dante. <a href="#s9-13">§9.13</a></dd></div>
 <div><dt>NEBOSH General Certificate</dt><dd>A widely-recognised health and safety qualification, the usual next step up from IOSH Working Safely. <a href="#s21-10">§21.10</a></dd></div>
 <div><dt>Network isolation</dt><dd>Keeping a production audio network physically or logically separate from a venue's guest WiFi or public internet, so it can't be seen or interfered with from outside. <a href="#s8-6">§8.6</a></dd></div>
+<div><dt>NL4</dt><dd>Four-pole speakON: pins 1+/1− and 2+/2−, so two amp channels can share one cable. The everyday speaker connector on d&amp;b and most passive systems. <a href="#s3-3">§3.3</a> · <a href="#s3-12">§3.12</a></dd></div>
+<div><dt>NLT4 (STX)</dt><dd>Neutrik's heavy-duty, all-metal STX version of the NL4 cable connector — same pins and socket, tougher and higher-rated. What "NLT4" means on a touring cable label. <a href="#s3-12">§3.12</a></dd></div>
 <div><dt>Noise at Work (exposure action values)</dt><dd>The UK regulations protecting your own hearing over a career — 80/85/87 dB(A). <a href="#s13-5">§13.5</a></dd></div>
 <div><dt>OSC (Open Sound Control)</dt><dd>A lightweight open protocol for sending cues and control messages over IP between different systems — lighting, show control, consoles. Not an audio-transport protocol. <a href="#s8-6">§8.6</a> · <a href="#s10-4">§10.4</a> · <a href="#s9-8">§9.8</a></dd></div>
 <div><dt>PA</dt><dd>Public Address — the loudspeaker system delivering sound to the audience. <a href="#p6">Part 6</a> · <a href="#s11-1">§11.1</a> · <a href="#s12-13">§12.13</a></dd></div>
@@ -4742,6 +5026,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>QLab</dt><dd>Mac cue-based playback and show-control software — the theatre and events standard for firing audio, video and lighting cues in sequence from a spacebar. Free to use; paid licences unlock more simultaneous output channels. <a href="#s8-4">§8.4</a> · <a href="#s10-4">§10.4</a> · <a href="#s18-13">§18.13</a></dd></div>
 <div><dt>QoS (Quality of Service)</dt><dd>Switch-level priority tagging that lets urgent traffic — Dante's clock and audio packets — jump the queue ahead of everything else sharing the same network. <a href="#s8-2">§8.2</a></dd></div>
 <div><dt>Quarantine (equipment)</dt><dd>Clearly separating faulty or suspect kit from working stock so it cannot return to a job by accident. Label the symptom and report it through the company process. <a href="#hub-people">People</a> · <a href="#s11-5">§11.5</a></dd></div>
+<div><dt>R1 (d&amp;b Remote)</dt><dd>d&amp;b's control software: shows and controls every amp on the network — setups, levels, mutes, delays and live meters. Control only; the amps pass audio without it. <a href="#s6-16">§6.16</a> · <a href="#s6-19">§6.19</a></dd></div>
 <div><dt>RAMS</dt><dd>Risk Assessment &amp; Method Statement — the standard safety paperwork for a task with meaningful risk. <a href="#s13-7">§13.7</a> · <a href="#s1-5">§1.5</a></dd></div>
 <div><dt>RCD</dt><dd>Residual Current Device — trips on an earth leakage imbalance to protect against electric shock, a different failure mode from an overcurrent breaker or fuse. <a href="#s3-8">§3.8</a> · <a href="#s12-15">§12.15</a></dd></div>
 <div><dt>RDM (Remote Device Management)</dt><dd>A bidirectional extension of DMX512 that lets a compatible console discover, monitor and remotely address fixtures over the same cable. <a href="#s9-7">§9.7</a></dd></div>
@@ -4773,6 +5058,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Stock label</dt><dd>The company’s own identifier on an item, case or cable—often a barcode, asset number or label scheme. Record it exactly when logging a fault or matching an equipment-system export to physical stock. <a href="#hub-guide-equipment">Equipment-system handover</a></dd></div>
 <div><dt>SWL / WLL</dt><dd>Safe Working Load / Working Load Limit — the rated maximum for a piece of lifting equipment. Never exceeded, never guessed. <a href="#s6-5">§6.5</a> · <a href="#s13-3">§13.3</a></dd></div>
 <div><dt>System check</dt><dd>Proving the PA itself works before any input is checked. <a href="#s11-1">§11.1</a> · <a href="#s19-6">§19.6</a></dd></div>
+<div><dt>System check (d&amp;b)</dt><dd>A d&amp;b amp test that compares each connected loudspeaker against a known-good reference, flagging a missing box, dead driver or bad cable. <a href="#s6-16">§6.16</a> · <a href="#s6-18">§6.18</a></dd></div>
 <div><dt>T-coil</dt><dd>The coil inside a hearing aid that picks up a hearing loop's magnetic field directly, bypassing room noise. <a href="#s6-11">§6.11</a></dd></div>
 <div><dt>Talkback</dt><dd>A mic at the console routed to monitors, comms or the stage. <a href="#s7-6">§7.6</a></dd></div>
 <div><dt>Tech spec</dt><dd>The client's or artist's contractual technical requirements. <a href="#s1-5">§1.5</a></dd></div>
@@ -6755,6 +7041,813 @@ if(quickfabBtn && quickfabMenu){
   }
   freq.addEventListener('input', compute);
   compute();
+})();
+
+
+/* ---------- fault finder chat (Support → Talk it through) ----------
+   Two modes behind one conversation window.
+   Guided: a set of symptom flows written into this page. It matches what the
+   person types against each flow's words, then asks one question at a time and
+   points at the check and the section. No network, ever — it works in a
+   basement with no signal, like the rest of the book.
+   AI assistant: optional, off until the person pastes their own Anthropic API
+   key. Their question, any photo they attach and the handbook sections that
+   match it go to Claude; nothing else from the app does. The key lives only in
+   this browser's localStorage. With no signal it falls back to Guided. */
+(function(){
+  var box = document.getElementById('faultChat');
+  if(!box) return;
+  var log = document.getElementById('chatLog');
+  var chips = document.getElementById('chatChips');
+  var form = document.getElementById('chatForm');
+  var input = document.getElementById('chatInput');
+  var sendBtn = document.getElementById('chatSend');
+  var resetBtn = document.getElementById('chatReset');
+  var photoBtn = document.getElementById('chatPhotoBtn');
+  var photoInput = document.getElementById('chatPhoto');
+  var attachBar = document.getElementById('chatAttach');
+  var settings = document.getElementById('chatSettings');
+  var keyInput = document.getElementById('chatKey');
+  var keySave = document.getElementById('chatKeySave');
+  var keyForget = document.getElementById('chatKeyForget');
+  var keyStatus = document.getElementById('chatKeyStatus');
+  var modeBtns = Array.prototype.slice.call(box.querySelectorAll('.chat-mode'));
+
+  var KEY_STORE = 'treebysound-anthropic-key';
+  var MODE_STORE = 'treebysound-chat-mode';
+  var MODEL = 'claude-opus-5-5';
+  var mode = storeGet(MODE_STORE) === 'ai' ? 'ai' : 'guided';
+
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function plain(html){ var d = document.createElement('div'); d.innerHTML = html; return (d.textContent || '').replace(/\s+/g, ' ').trim(); }
+
+  /* ---- the guided flows ----
+     Each node: q (what the fault finder says — trusted HTML), k (a short label
+     for the report), opts ([label, next]), links ([href, label]), end (a
+     resolution: offer "fixed" / "still stuck"). A next of "flow:node" jumps
+     into another flow, so shared checks are only written once. */
+  var LOCK = 'Mute first, then at <em>both</em> ends: push the speakON fully in and twist clockwise until it clicks. A tug on the connector body shouldn\'t move it.';
+  var FLOWS = [
+    {id:'box', title:'One speaker silent', words:['silent','no sound','dead','nothing from','not working','one box','one speaker','one top','quiet','no output','not coming out'],
+     ask:'Can you take a look, or shall I swap in a spare and quarantine the faulty part?',
+     nodes:{
+      start:{q:'Let\'s find which half of the system it\'s in. On the amp driving that box, does its channel show <strong>green</strong> (signal present) — on the front panel or in R1?', k:'Amp channel shows signal', opts:[['Yes, green','out'],['No green','in'],['Not a d&b amp / can\'t see it','generic']]},
+      out:{q:'Signal is reaching the amp, so the fault is between the amp output and the box. Is that channel <strong>muted</strong> (red, or MUTE lit) on the amp or in R1?', k:'Channel muted', opts:[['Yes, muted','muted'],['Not muted','lock']]},
+      muted:{q:'Find out <strong>who muted it and why</strong> before you unmute — it may be deliberate (a box out of service, a quiet area). If nobody knows, ask the system tech, then unmute with the level down.', k:'Result', end:true, links:[['#s6-17','6.17 Front panel']]},
+      lock:{q:LOCK + ' Was one loose?', k:'speakON locked both ends', opts:[['Yes — now locked','retest'],['Both were locked','mode']]},
+      retest:{q:'Unmute and play something at low level. Working now?', k:'Works after re-locking', opts:[['Yes','fixedlock'],['No','mode']]},
+      fixedlock:{q:'A connector a quarter-turn short of locked is the classic. Worth a quick tug-test on every other speakON in the system while you\'re at it.', k:'Result', end:true, fixed:true},
+      mode:{q:'Check the <strong>output mode</strong> for that channel pair (amp screen or R1). Which is it?', k:'Output mode', opts:[['Dual Channel','dual'],['Mix TOP/SUB','mix'],['2-Way Active','mix'],['Don\'t know','modeunknown']]},
+      dual:{q:'In Dual Channel each box goes into its <strong>own individual output</strong> (A, B, C or D). Is the cable in the individual output for that channel?', k:'In individual output', opts:[['Yes','swap'],['No — it\'s in a centre one','wrongsock']]},
+      mix:{q:'In paired modes the cable goes into the <strong>centre A/B or C/D</strong> output; pins 1 carry the top (or LF), pins 2 the sub (or HF). Is it a <strong>4-core</strong> cable in the centre output?', k:'4-core in centre output', opts:[['Yes','swap'],['It\'s 2-core / not sure','core'],['It\'s in an individual output','wrongsock']]},
+      modeunknown:{q:'Find the plan or ask the system tech which mode that pair is in — and don\'t change the mode yourself. The label above the amp outputs says which socket and pins each mode uses.', k:'Result', end:true, links:[['#s6-17','6.17 Output modes']]},
+      wrongsock:{q:'Mute, move the cable to the socket the mode actually feeds, lock it, and retest at low level. The table in 6.17 shows which is which.', k:'Result', end:true, links:[['#s6-17','6.17 Output modes']]},
+      core:{q:'Swap for a cable you <em>know</em> is 4-core. A 2-core cable — or an NL2 plug or a 2-pole adapter anywhere in the run — only carries pins 1, so whatever listens on pins 2 gets nothing.', k:'Result', end:true, links:[['#s3-12','3.12 NL4 &amp; NLT4 cables']]},
+      swap:{q:'Swap the speaker cable for a known-good one. Does the box work now?', k:'Works with a different cable', opts:[['Yes','badcable'],['No','boxtest']]},
+      badcable:{q:'The cable\'s the fault. Label it with what it did and take it out of service — don\'t coil it back into stock.', k:'Result', end:true, fixed:true, links:[['#s11-5','11.5 Quarantining kit']]},
+      boxtest:{q:'Try the box on a known-good amp channel that\'s running the right setup for it (ask before re-patching on someone else\'s system). Does it work there?', k:'Box works on another channel', opts:[['Works there','ampch'],['Still silent','badbox']]},
+      ampch:{q:'The fault follows the <strong>amp channel</strong>. Note any message on its screen, hand it to the system tech, and use a spare channel if they agree.', k:'Result', end:true, links:[['#s6-19','6.19 d&amp;b faults']]},
+      badbox:{q:'The fault follows the <strong>box</strong>. Quarantine it — label and report — and don\'t open it.', k:'Result', end:true, links:[['#s11-5','11.5 Quarantining kit'],['#s6-19','6.19 d&amp;b faults']]},
+      'in':{q:'No signal at the amp, so look upstream. Is the source playing and the console output unmuted, with its meters moving?', k:'Console sending', opts:[['Console isn\'t sending','console'],['Console is sending','routing']]},
+      console:{q:'It\'s on the console side: mute, fader, output patch or matrix. Work through console faults.', k:'Result', end:true, links:[['#s12-12','12.12 Console faults']]},
+      routing:{q:'Check the amp\'s <strong>input mode</strong> (analogue / digital / network) and that channel\'s <strong>input routing</strong>. Do they match what\'s actually plugged in?', k:'Input mode & routing match', opts:[['Found a mismatch','routfix'],['They match','sigcable']]},
+      routfix:{q:'If it\'s not your system, don\'t change it — tell the system tech exactly what you found. If it is yours, correct it and retest at low level.', k:'Result', end:true, links:[['#s6-17','6.17 Inputs']]},
+      sigcable:{q:'Swap the signal cable into the amp. For AES, check the amp shows digital lock at the right sample rate. For a network feed, check the stream or subscription.', k:'Result', end:true, links:[['#s12-14','12.14 Network faults']]},
+      generic:{q:'Treat it as a general speaker fault: power to the box or amp, speakON locked at both ends, the output patch actually routed to it — then swap the cable to isolate.', k:'Result', end:true, links:[['#s12-13','12.13 Speaker &amp; amp faults']]}
+     }},
+    {id:'sub', title:'Sub silent, tops fine (or the reverse)', words:['subwoofer','subwoofers','no sub','no subs','no bass','no low end','no bottom','sub silent','subs silent','sub is silent','subs are silent','sub quiet','sub not','subs not','sub dead','sub missing','sub isn','subs aren','tops fine','tops are fine','top is fine','top silent','tops silent','top is silent','tops are silent','no tops','top not working','tops not working','sub works','subs work','sub fine','subs fine','sub is fine','subs are fine'],
+     ask:'Do you want to check the amp settings, or shall I keep swapping cables to isolate it?',
+     nodes:{
+      start:{q:'Is a d&amp;b amp feeding the top and the sub down <strong>one cable</strong> (Mix TOP/SUB — from the centre A/B or C/D output)?', k:'Top and sub on one cable', opts:[['Yes, one cable','core'],['No, separate channels','sep'],['Not sure','unsure']]},
+      core:{q:'Is that cable <strong>4-core all the way</strong> — no 2-core section, no NL2 plug, no adapter in the run?', k:'4-core all the way', opts:[['Found a 2-core / NL2','box:core'],['All 4-core','chb']]},
+      chb:{q:'On the amp, is the silent half\'s channel (B or D for the sub, A or C for the top) running the right setup, and unmuted?', k:'Channel setup and mute correct', opts:[['Wrong setup or muted','setup'],['Looks right','link']]},
+      setup:{q:'Don\'t change setups on someone else\'s system. Report it: "Channel B on amp 2 shows [setup / mute], the plan says sub." Let the system tech correct it.', k:'Result', end:true, links:[['#s6-17','6.17 Output modes']]},
+      link:{q:'Check the link cable between the sub and the top — locked at both ends, 4-core — then swap cables one at a time to isolate.', k:'Result', end:true, links:[['#s6-19','6.19 d&amp;b faults']]},
+      sep:{q:'Then it\'s a single silent box. Does its amp channel show green (signal present)?', k:'Amp channel shows signal', opts:[['Yes','box:out'],['No','box:in']]},
+      unsure:{q:'Look at the amp: the screen shows the output mode, and the label above the outputs says which socket feeds what. Then come back and pick again.', k:'Result', end:true, links:[['#s6-17','6.17 Output modes']]}
+     }},
+    {id:'crackle', title:'Crackle or cutting out', words:['crackle','crackling','crackly','intermittent','cutting out','cuts out','cutting','drops out','dropping out','comes and goes','scratchy','popping','pops','on and off'],
+     ask:'Can you have a listen, or shall I carry on isolating it?',
+     nodes:{
+      start:{q:'Does it get worse when someone moves or touches the cable?', k:'Worse when cable moves', opts:[['Yes','lock'],['No','loud']]},
+      lock:{q:LOCK + ' Was one loose?', k:'Connector was loose', opts:[['Yes — now locked','box:retest'],['No','swap']]},
+      swap:{q:'Swap that cable for a known-good one. Gone?', k:'Gone after cable swap', opts:[['Yes','box:badcable'],['No','follow']]},
+      follow:{q:'Move the box to another amp channel (or another box onto this channel). The fault follows the box, the channel, or neither?', k:'Fault follows', opts:[['The box','box:badbox'],['The channel','box:ampch'],['Neither — it\'s everywhere','source']]},
+      loud:{q:'Does it only happen when it\'s loud?', k:'Only when loud', opts:[['Yes','loudres'],['No, any level','source']]},
+      loudres:{q:'That sounds like overdrive or a damaged driver, not a cable. Turn down at the console: if it clears, it was being pushed too hard (look for yellow GR or red on the amp). If it\'s still there at low level, the driver may be damaged — quarantine the box.', k:'Result', end:true, links:[['#s6-17','6.17 Front panel']]},
+      source:{q:'If it\'s on every box, it\'s upstream: a crackly input, the console, or a digital clock problem. If it\'s one box only, intermittent faults hide — keep a note of when it happens.', k:'Result', end:true, links:[['#s12-5','12.5 Intermittent faults'],['#s12-14','12.14 Digital clocking']]}
+     }},
+    {id:'limit', title:'Amp lights: yellow, red, distortion', words:['limit','limiting','limiter','gr','yellow','red','overload','ovl','distortion','distorted','harsh','clipping','clip','protect','protection','error','warning','temperature','overheat','hot'],
+     ask:'Do you want me to bring the level down, or leave it with you?',
+     nodes:{
+      start:{q:'What does the amp show?', k:'Amp shows', opts:[['Yellow GR','gr'],['Red','red'],['An error message','err'],['Nothing — it just sounds distorted','box:start']]},
+      gr:{q:'Yellow <strong>GR</strong> is gain reduction: the channel\'s limiter is working, because the box is at its limit. It isn\'t a fault. Turn down at the console. If it\'s lighting at a modest level, check that channel\'s setup actually matches the box.', k:'Result', end:true, links:[['#s6-17','6.17 Front panel']]},
+      red:{q:'Read the screen: does it say the channel is <strong>muted</strong>, or <strong>overloaded</strong>?', k:'Red means', opts:[['Muted','box:muted'],['Overload','ovl']]},
+      ovl:{q:'The signal feeding the amp is too hot. Bring the level down at the console output (or the amp input, if that\'s how the system is set up) until the red clears.', k:'Result', end:true, links:[['#s2-3','2.3 Gain structure']]},
+      err:{q:'Write the exact text down. Over-temperature: check nothing is blocking the rack\'s ventilation front and back (doors, cases, sun) and reduce level. Anything else: tell the system owner. Don\'t keep power-cycling it.', k:'Result', end:true, links:[['#s6-19','6.19 d&amp;b faults']]}
+     }},
+    {id:'r1', title:'Amp not showing in R1', words:['r1','remote','network','ethernet','offline','not showing','cant see','can\'t see','laptop','ip address','oca','control','not online','remote id'],
+     ask:'Can you help me get the control network up?',
+     nodes:{
+      start:{q:'First: R1 is control only — the amps still pass audio without it. Is the laptop actually on the amp control network: cable in, link light on, the right network adapter chosen in R1?', k:'Laptop on control network', opts:[['No / not sure','nic'],['Yes','some']]},
+      nic:{q:'Plug in, choose the right adapter, and turn Wi-Fi off if the laptop is sending traffic the wrong way. Check the switch has power and link lights.', k:'Result', end:true},
+      some:{q:'Can R1 see <strong>no</strong> amps, or just one or two missing?', k:'R1 sees', opts:[['None','none'],['Just some missing','missing']]},
+      none:{q:'Usually the laptop\'s address or firewall. Check its IP is in the same range as the amps, allow R1 through the firewall, and confirm the amps are Ethernet ones — D6 and D12 need a CAN interface.', k:'Result', end:true, links:[['#s6-16','6.16 R1 &amp; software']]},
+      missing:{q:'Check that amp\'s network cable and switch port, then look for a <strong>duplicate Remote ID or IP address</strong> — two amps with the same one fight, and one disappears.', k:'Result', end:true, links:[['#s6-19','6.19 d&amp;b faults']]}
+     }},
+    {id:'all', title:'Whole system silent', words:['whole system','everything','all speakers','whole pa','entire','nothing at all','no pa','all silent','total'],
+     ask:'Where do you want me to look next?',
+     nodes:{
+      start:{q:'Is the console showing signal on its main outputs?', k:'Console outputs show signal', opts:[['No','box:console'],['Yes','amps']]},
+      amps:{q:'Do the amps show green signal present?', k:'Amps show signal', opts:[['No','feed'],['Yes','mutes']]},
+      feed:{q:'The break is between the console and the amps: output patch, stage box or network, AES/Dante routing, a processor in between. Trace the signal path one hop at a time.', k:'Result', end:true, links:[['#s2-1','2.1 Signal flow'],['#s12-14','12.14 Network faults']]},
+      mutes:{q:'Amps have signal but nothing comes out: look for mutes in R1 (all amps or a group), amps in standby, or every channel muted at the front panel.', k:'Result', end:true, links:[['#s6-17','6.17 Front panel']]}
+     }},
+    {id:'nl4', title:'Check or test an NL4 / NLT4 cable', words:['nl4','nlt4','nl8','nl2','speakon','speak on','cable test','tester','pinout','pin out','2-core','4-core','two core','four core','stx','coupler'],
+     ask:'Is this cable OK to go out, or shall I quarantine it?',
+     nodes:{
+      start:{q:'Mute anything it\'s plugged into first. Then: (1) look — strain relief tight, no copper showing, latch springs back, body not cracked; (2) put it through a speakON cable tester — all four poles continuous, no shorts between any of them; (3) check the label says whether it\'s 2-core or 4-core. Pins 1± carry the first channel, pins 2± the second.', k:'Result', end:true, links:[['#s3-12','3.12 NL4 &amp; NLT4 cables'],['#s6-17','6.17 Which pins carry what']]}
+     }},
+    {id:'setup', kind:'setup', title:'Set up a d&b system', words:['d&b','d20','d80','d40','d90','d6','d12','amp rack','amps','amp','speakers','speaker','pa','line array','preset','arraycalc','output mode','loadmatch','system check','r1','speakon','nl4','nlt4','sub','subs','tops'],
+     entries:{r1:['r1','remote','laptop'], cabling:['cable','cables','cabling','nl4','nlt4','speakon','sub cables'], lm:['loadmatch','system check'], modes:['output mode','mode','socket','which output'], prove:['prove','proving','test the boxes','check the boxes'], channel:['channel','preset','setup on','configure the amp'], lights:['light','lights','led','indicator'], seq:['whole','from scratch','start to finish','everything']},
+     ask:'Can you check my setup before we go live?',
+     nodes:{
+      start:{q:'Which part of the d&amp;b setup are you on?', k:'Setup stage', opts:[['The whole sequence','seq'],['Which socket / output mode','modes'],['Running the speaker cables','cabling'],['Setting up a channel','channel'],['Connecting R1','r1'],['LoadMatch & System check','lm'],['Proving it box by box','prove'],['What the lights mean','lights']]},
+      seq:{q:'Plan → prep and test cables → amps near the boxes → run and lock speaker cables → signal → power up with channels muted → configure (mode, setup, functions, level, delay) → R1 → System check → prove box by box at low level → whole system → save and write it down. The full twelve steps:', k:'Result', end:true, links:[['#s6-18','6.18 Setting up a d&amp;b system']]},
+      modes:{q:'<strong>Dual Channel</strong>: individual outputs A–D, one channel per box, any cable. <strong>Mix TOP/SUB</strong>: centre A/B or C/D, top on pins 1, sub on pins 2 — 4-core cable. <strong>2-Way Active</strong>: centre output, LF on pins 1, HF on pins 2 — 4-core. <strong>NL8</strong>: all four channels on one multicore. Read the label above the outputs on older amps.', k:'Result', end:true, links:[['#s6-17','6.17 Output modes']]},
+      cabling:{q:'<ol><li>Use 4-core NL4/NLT4 wherever the plan uses Mix TOP/SUB or 2-Way Active.</li><li>Into the socket the mode feeds — individual outputs for Dual Channel, centre for paired modes.</li><li>Push in and twist until it clicks, both ends; tug-test.</li><li>Label both ends with amp and channel.</li><li>Note the length and cable size if LoadMatch is used.</li></ol>', k:'Result', end:true, links:[['#s3-12','3.12 NL4 &amp; NLT4 cables'],['#s6-18','6.18 Step 4']]},
+      channel:{q:'Per channel, from the plan: <strong>setup</strong> for the exact box → functions (CUT when tops run with subs, HFA, CPL… only as the plan says) → level → delay → EQ → input routing. Check each against the box it\'s actually driving. On someone else\'s system, the system tech does this; you check and report.', k:'Result', end:true, links:[['#s6-17','6.17 Channel settings']]},
+      r1:{q:'<ol><li>Laptop on the control network (cable, right adapter, Wi-Fi off if it gets in the way).</li><li>Laptop address in the same range as the amps.</li><li>Every amp has a unique Remote ID / address.</li><li>Open the project, match devices, go online.</li><li>Every amp should show, with no warnings.</li></ol>', k:'Result', end:true, links:[['#s6-16','6.16 R1 &amp; software'],['#s6-19','6.19 If an amp is missing']]},
+      lm:{q:'<strong>LoadMatch</strong> corrects for the speaker cable — enter the real length and cross-section for that channel. <strong>System check</strong> compares each box against a known-good reference; take the reference at prep, run the check after building, and look into anything it flags (cable first, then the box).', k:'Result', end:true, links:[['#s6-16','6.16 LoadMatch &amp; System check']]},
+      prove:{q:'<ol><li>Everything muted except one channel.</li><li>Low-level pink noise (the amp\'s generator) or a known track.</li><li>Walk to the box: right box answering, every driver working, nothing rattling.</li><li>Next channel. Subs and tops on the right channels.</li><li>Then polarity, with the system tech\'s method.</li></ol>', k:'Result', end:true, links:[['#s6-18','6.18 Step 10']]},
+      lights:{q:'Green: signal present. Yellow GR: limiter working — the box is at its limit. Red: overload, or the channel is muted — the screen says which.', k:'Result', end:true, links:[['#s6-17','6.17 Front panel']]}
+     }},
+    {id:'setupother', kind:'setup', title:'Set something else up', words:['line check','linecheck','ring out','ringing out','wedge','wedges','multitrack','recording','record','iem','iems','in-ear','in ear','wireless','radio mic','radio mics','radios','broadcast','stream','streaming','show file','showfile'],
+     entries:{lc:['line check','linecheck'], rf:['wireless','radio','radios'], ring:['ring out','ringing','wedge'], iem:['iem','in-ear','in ear'], mt:['multitrack','recording','record'], bc:['broadcast','stream'], sf:['show file','showfile']},
+     ask:'Can you check it before we go live?',
+     nodes:{
+      start:{q:'What are you setting up?', k:'Setting up', opts:[['A line check','lc'],['Radio mics','rf'],['Ringing out a wedge','ring'],['An IEM mix','iem'],['A multitrack recording','mt'],['A broadcast / stream feed','bc'],['A console show file','sf']]},
+      lc:{q:'Patch order, one input at a time: speak or play it, see it on the right channel, hear it, label it, tick it. Anything odd gets fixed or flagged before the next.', k:'Result', end:true, links:[['#s11-3','11.3 Running a line check'],['#s19-5','19.5 Line check sheet']]},
+      rf:{q:'Scan → coordinate → set frequencies → antennas and distribution → fresh batteries → walk test the whole space → prove each pack. Then don\'t change anything without re-checking.', k:'Result', end:true, links:[['#s5-8','5.8 Setting up wireless']]},
+      ring:{q:'Level up slowly with the mic where the performer will be, find the first ring, notch it narrowly, carry on — two or three cuts, not twenty.', k:'Result', end:true, links:[['#s15-8','15.8 Ringing out a wedge']]},
+      iem:{q:'Start with the performer\'s own source, then what they need to play in time and in tune, then the rest. Low and safe first; ask, don\'t guess.', k:'Result', end:true, links:[['#s15-7','15.7 Building an IEM mix']]},
+      mt:{q:'Storage space and format agreed, track names, a test recording played back <em>before</em> doors, and someone owning the record button.', k:'Result', end:true, links:[['#s14-7','14.7 Multitrack recording']]},
+      bc:{q:'A separate, isolated mix built for the feed, tested with the receiving end, with its own level checks — never just a copy of the room mix.', k:'Result', end:true, links:[['#s14-8','14.8 Broadcast submix']]},
+      sf:{q:'Save early and often, name it with date and venue, keep a backup off the console, and never overwrite someone else\'s file.', k:'Result', end:true, links:[['#s7-4','7.4 Show file discipline']]}
+     }},
+    {id:'hum', title:'Hum or buzz', words:['hum','humming','buzz','buzzing','ground loop','earth','mains hum','hiss','noise floor'],
+     ask:'Can I try a ground lift on the DI, or do you want to look?',
+     nodes:{
+      start:{q:'Mute channels one at a time. Does the hum go away when one particular source is muted?', k:'Hum follows one source', opts:[['Yes, one source','one'],['No — it\'s on the PA itself','pa']]},
+      one:{q:'Most likely a ground loop or an unbalanced source — a laptop on its charger, a DI, an instrument. Try the DI\'s ground lift, or run the laptop on battery.', k:'Result', end:true, links:[['#s12-3','12.3 Ground loops'],['#s12-10','12.10 DI faults']]},
+      pa:{q:'With every input muted, hum on the PA is in the system itself: amp and processor feeds, mains to the racks, or a damaged signal cable. Don\'t lift mains earths — ever. Report it to the system owner.', k:'Result', end:true, links:[['#s12-3','12.3 Ground loops'],['#s12-15','12.15 Power faults']]}
+     }},
+    {id:'mic', title:'Mic or input has no signal', words:['mic','microphone','input','channel','no signal','phantom','di box','stage box','vocal','no meter'],
+     ask:'Do you want me to swap the mic, or leave it and flag it?',
+     nodes:{
+      start:{q:'Work it from the source towards the desk: mic switched on, phantom on if it\'s a condenser, cable swapped for a known-good one, then a different stage-box input. The fault follows whatever you\'ve just swapped.', k:'Result', end:true, links:[['#s12-9','12.9 Mic &amp; cable faults'],['#s12-10','12.10 DI faults']]}
+     }},
+    {id:'feedback', title:'Feedback', words:['feedback','howl','howling','squeal','ringing','screech'],
+     ask:'Can you take over the ring-out?',
+     nodes:{
+      start:{q:'Pull the level down <strong>now</strong> — the open mic, or the master. Protect ears first, then work out which mic and which speaker are feeding each other.', k:'Result', end:true, links:[['#s12-18','12.18 Feedback'],['#s15-8','15.8 Ringing out']]}
+     }},
+    {id:'rf', title:'Radio mic dropouts', words:['radio','wireless','rf','dropout','dropouts','drop out','transmitter','receiver','beltpack','iem'],
+     ask:'Can we look at the RF together before doors?',
+     nodes:{
+      start:{q:'Check the transmitter battery first, then the receiver\'s RF meters while someone walks the space. Antennas connected, line of sight, nothing new nearby transmitting. Then frequencies.', k:'Result', end:true, links:[['#s12-11','12.11 Wireless &amp; RF faults']]}
+     }},
+    {id:'dante', title:'Dante or network audio problems', words:['dante','aes67','milan','avb','clock','clocking','subscription','glitch','glitching','clicks','dropouts on network'],
+     ask:'Can you check the network with me?',
+     nodes:{
+      start:{q:'One clock leader, subscriptions all green, switches you trust, and nothing else sharing the network. Remember d&amp;b D40/D90 use Milan, which Dante Controller won\'t show.', k:'Result', end:true, links:[['#s12-14','12.14 Network faults'],['#s8-2','8.2 Networks']]}
+     }},
+    {id:'power', title:'Power: tripping or amp won\'t switch on', words:['power','trip','tripped','tripping','rcd','breaker','won\'t turn on','wont turn on','dead amp','mains','powercon','no power','distro'],
+     ask:'Can you get the electrician to look at this feed?',
+     nodes:{
+      start:{q:'Anything electrical: <strong>don\'t open or reset distribution yourself</strong> unless that\'s explicitly your job. You can check the powerCON is locked, and try a known-good amp on the same feed. If a breaker or RCD has tripped, tell the person responsible — it tripped for a reason.', k:'Result', end:true, links:[['#s12-15','12.15 Power faults'],['#support-now','Make it safe']]}
+     }}
+  ];
+  var FLOW_BY_ID = {};
+  FLOWS.forEach(function(f){ FLOW_BY_ID[f.id] = f; });
+  var FIX_STARTERS = ['box','sub','crackle','limit','r1','all','hum','mic','feedback','rf','dante','power'];
+  var SETUP_STARTERS = ['setup','setupother','nl4'];
+  var INFO_HINTS = ['What is Mix TOP/SUB?','What does GR mean?','NL4 vs NLT4','What is LoadMatch?','What does a DI do?'];
+  var INFO_INTENT = /^(what|whats|what's|which|who|why|when|where|explain|define|definition|meaning|tell me|difference|is there|does|do i need|can i|should i)\b|\b(mean|means|stand for|stands for|difference between|vs|versus)\b|\?$/i;
+  var SETUP_INTENT = /\b(set ?up|setting up|configure|configuring|install|connect(ing)?|how (do|to|should) i|how to|walk me through|step by step|get .* working|patch)\b/i;
+  var DANGER = /\b(smoke|smoking|burning|burnt smell|fire|flames?|sparks?|sparking|shock(ed)?|electrocut\w*|injur\w*|hurt|bleeding|falling|fell|collapsed?|swaying)\b/i;
+
+  /* ---- conversation window ---- */
+  function scrollDown(){ log.scrollTop = log.scrollHeight; }
+  function addMsg(who, html, cls){
+    var m = document.createElement('div');
+    m.className = 'chat-msg ' + who + (cls ? ' ' + cls : '');
+    m.innerHTML = html;
+    log.appendChild(m);
+    scrollDown();
+    return m;
+  }
+  function addLinks(m, links){
+    if(!links || !links.length) return;
+    var row = document.createElement('div');
+    row.className = 'chat-links';
+    links.forEach(function(l){
+      var a = document.createElement('a');
+      a.href = l[0];
+      a.innerHTML = l[1] + ' →';
+      row.appendChild(a);
+    });
+    m.appendChild(row);
+    scrollDown();
+  }
+  function setChips(list){
+    chips.innerHTML = '';
+    list.forEach(function(c){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'chat-chip' + (c.quiet ? ' quiet' : '');
+      b.textContent = c.label;
+      b.addEventListener('click', function(){ setChips([]); c.go(); });
+      chips.appendChild(b);
+    });
+  }
+
+  /* ---- guided mode state ---- */
+  var g = {flow:null, node:null, steps:[], symptom:''};
+
+  function starterChips(ids){
+    return ids.map(function(id){
+      var f = FLOW_BY_ID[id];
+      return {label: f.title, go: function(){ addMsg('me', esc(f.title)); if(!g.symptom) g.symptom = f.title; startFlow(f); }};
+    });
+  }
+  var BACK = {label:'← Back', quiet:true, go: function(){ menu(); }};
+  function menu(){
+    setChips([
+      {label:'Set something up', go:function(){ addMsg('me', 'Set something up'); addMsg('bot', '<p>What are you setting up? Pick one, or type it — "connect R1", "run the sub cables", "line check".</p>'); setChips(starterChips(SETUP_STARTERS).concat([BACK])); }},
+      {label:'Something\'s wrong', go:function(){ addMsg('me', 'Something\'s wrong'); addMsg('bot', '<p>Which is closest? Or describe it — "sub silent on amp 2", "crackle from stage left".</p>'); setChips(starterChips(FIX_STARTERS).concat([BACK])); }},
+      {label:'Look something up', go:function(){ addMsg('me', 'Look something up'); addMsg('bot', '<p>Type a word or a question — a term, a connector, a setting, a light. A few to try:</p>'); setChips(INFO_HINTS.map(function(h){ return {label:h, quiet:true, go:function(){ addMsg('me', esc(h)); answerInfo(h); }}; }).concat([BACK])); }}
+    ]);
+  }
+  function greet(){
+    if(mode === 'ai'){
+      addMsg('bot', '<p>Ask anything: how to set something up, what\'s wrong and how to fix it, or what a term, setting or light means. You can attach a photo of an amp screen, a connector or a patch with the camera button.</p><p>Short answers, one step at a time; say "write it up" when you want the message for your lead.</p>');
+      if(!storeGet(KEY_STORE)){
+        addMsg('bot', '<p>No API key saved on this device yet — open <strong>AI assistant setup</strong> below. Until then, the guided mode works with no key and no signal.</p>', 'warn');
+        settings.open = true;
+      }
+      setChips([]);
+      return;
+    }
+    addMsg('bot', '<p>I can help you <strong>set something up</strong>, <strong>find and fix a problem</strong>, or <strong>look something up</strong>. Type it in your own words, or pick one:</p>');
+    menu();
+  }
+
+  function entryNode(f, text){
+    if(!f.entries || !text) return 'start';
+    var t = ' ' + text.toLowerCase().replace(/[^a-z0-9&'+\- ]+/g, ' ') + ' ';
+    var hit = 'start';
+    Object.keys(f.entries).some(function(id){
+      return f.entries[id].some(function(w){
+        var ok = w.length <= 3 ? t.indexOf(' ' + w + ' ') > -1 : t.indexOf(w) > -1;
+        if(ok) hit = id;
+        return ok;
+      });
+    });
+    return hit;
+  }
+  function startFlow(f, text){
+    g.flow = f;
+    g.steps = [];
+    addMsg('bot', f.kind === 'setup'
+      ? '<p><strong>' + esc(f.title) + '</strong> — one step at a time.</p>'
+      : '<p>Sounds like <strong>' + esc(f.title.toLowerCase()) + '</strong>. One check at a time — and if anything is unsafe, stop and <a href="#support-now">make it safe</a> first.</p>', 'note');
+    showNode(f, entryNode(f, text));
+  }
+  function resolve(ref, f){
+    if(ref.indexOf(':') > -1){
+      var p = ref.split(':');
+      return {flow: FLOW_BY_ID[p[0]], id: p[1]};
+    }
+    return {flow: f, id: ref};
+  }
+  function showNode(f, id){
+    var node = f.nodes[id];
+    if(!node) return;
+    g.node = node;
+    var m = addMsg('bot', /^<(ol|ul)/.test(node.q) ? node.q : '<p>' + node.q + '</p>');
+    addLinks(m, node.links);
+    if(node.end){
+      g.steps.push({k: node.k || 'Result', a: plain(node.q)});
+      if(f.kind === 'setup'){
+        setChips([
+          {label:'Next part', go: function(){ addMsg('me', 'Next part'); showNode(f, 'start'); }},
+          {label:'Hit a problem', go: function(){ addMsg('me', 'Hit a problem'); addMsg('bot', '<p>What\'s happening? Describe it, or pick the closest:</p>'); setChips(starterChips(FIX_STARTERS).concat([BACK])); }},
+          {label:'All done', quiet:true, go: function(){ addMsg('me', 'All done'); addMsg('bot', '<p>Good. Save and write down anything that changed from the plan — it makes the derig and the next job easier.</p>'); menu(); }}
+        ]);
+        return;
+      }
+      setChips([
+        {label:'That fixed it', go: function(){ addMsg('me', 'That fixed it'); finish(true); }},
+        {label:'Still not right', go: function(){ addMsg('me', 'Still not right'); finish(false); }},
+        {label:'Start again', quiet:true, go: reset}
+      ]);
+      return;
+    }
+    setChips(node.opts.map(function(o){
+      return {label:o[0], go:function(){
+        addMsg('me', esc(o[0]));
+        g.steps.push({k: node.k, a: o[0]});
+        var next = resolve(o[1], f);
+        if(next.flow !== f) g.flow = next.flow;
+        showNode(next.flow, next.id);
+      }};
+    }).concat([{label:'Start again', quiet:true, go: reset}]));
+  }
+
+  function buildReport(fixed){
+    var f = g.flow || {title:'', ask:''};
+    var lines = [];
+    lines.push('Fault: ' + (g.symptom || f.title) + '.');
+    var checks = g.steps.filter(function(s){ return s.k !== 'Result'; });
+    if(checks.length){
+      lines.push('Checked: ' + checks.map(function(s){ return s.k + ' — ' + s.a.toLowerCase(); }).join('; ') + '.');
+    }
+    var last = g.steps.filter(function(s){ return s.k === 'Result'; }).pop();
+    if(last) lines.push((fixed ? 'Fixed: ' : 'Where it\'s got to: ') + last.a);
+    if(!fixed) lines.push(f.ask || 'What would you like me to do next?');
+    return lines.join('\n');
+  }
+  function finish(fixed){
+    var report = buildReport(fixed);
+    var m = addMsg('bot', fixed
+      ? '<p>Good. Log it so the next person knows — here\'s a note you can keep or send:</p>'
+      : '<p>Time to hand it over with the facts. Here\'s the message — symptom, what\'s been checked, what you need:</p>');
+    var pre = document.createElement('div');
+    pre.className = 'chat-report';
+    pre.textContent = report;
+    m.appendChild(pre);
+    var row = [];
+    if(navigator.clipboard){
+      row.push({label:'Copy message', go:function(){
+        navigator.clipboard.writeText(report).then(function(){ addMsg('bot', 'Copied.', 'note'); }, function(){ addMsg('bot', 'Couldn\'t copy — press and hold the text to select it.', 'note'); });
+        setChips(row);
+      }});
+    }
+    if(!fixed && storeGet(KEY_STORE)){
+      row.push({label:'Ask the AI assistant', go:function(){ setMode('ai', true); sendAi('I worked through the guided fault finder and I\'m still stuck. Here\'s where I am:\n\n' + report + '\n\nWhat should I check next?'); }});
+    }
+    row.push({label:'Another problem', quiet:true, go: reset});
+    setChips(row);
+  }
+
+  /* match free text against the flows; fall back to the book's own index */
+  function scoreFlows(text, kind){
+    var t = ' ' + text.toLowerCase().replace(/[^a-z0-9&'+\- ]+/g, ' ') + ' ';
+    var best = null, bestScore = 0;
+    FLOWS.forEach(function(f){
+      if(kind && (f.kind || 'fix') !== kind) return;
+      var s = 0;
+      f.words.forEach(function(w){
+        if(w.length <= 3 ? t.indexOf(' ' + w + ' ') > -1 : t.indexOf(w) > -1) s += w.indexOf(' ') > -1 ? 2 : 1;
+      });
+      if(s > bestScore){ bestScore = s; best = f; }
+    });
+    return best;
+  }
+  function searchBook(text, limit, skip){
+    var STOP = ['the','and','not','but','for','with','from','its','has','have','one','what','whats','why','how','does','doesn','isn','won','there','this','that','when','just','mean','means','meaning','is','a','an','of','to','in','on','it','do','i','my','me','can','you','are','was','difference','between','vs','versus','explain','tell','about','which','should','need','get','set','up','help','please'];
+    var words = text.toLowerCase().split(/[^a-z0-9&]+/).filter(function(w){ return w.length > 1 && STOP.indexOf(w) < 0; });
+    if(!words.length) return [];
+    var scored = [];
+    sectionIndex.forEach(function(e){
+      if(!/^s\d/.test(e.id) || /^s(19-1[26]|20-)/.test(e.id) || (skip && skip[e.id])) return;
+      var s = 0;
+      words.forEach(function(w){
+        if(w.length <= 3){
+          var re = new RegExp('(^|[^a-z0-9])' + w.replace(/[&]/g, '\\&') + '(?![a-z0-9])', 'g');
+          if(re.test(e.title)) s += 4;
+          var m = e.body.match(re);
+          s += m ? Math.min(m.length, 6) : 0;
+          return;
+        }
+        if(e.title.indexOf(w) > -1) s += 4;
+        var i = 0, n = 0;
+        while((i = e.body.indexOf(w, i)) > -1 && n < 6){ n++; i += w.length; }
+        s += n;
+      });
+      if(s > 0) scored.push({e:e, s:s});
+    });
+    scored.sort(function(a, b){ return b.s - a.s; });
+    return scored.slice(0, limit).map(function(x){ return x.e; });
+  }
+  function sectionLabel(id){
+    var sec = document.getElementById(id);
+    var h = sec && sec.querySelector('h3');
+    return h ? h.textContent.trim() : id;
+  }
+
+  /* "Look something up": answer from the book itself — the glossary first
+     (a definition is usually what's wanted), then the sentence in the best
+     matching sections that actually contains the words asked about. */
+  function spaced(s){ return ' ' + String(s).toLowerCase().replace(/[^a-z0-9&+]+/g, ' ').trim() + ' '; }
+  var glossary = null;
+  function glossaryEntries(){
+    if(glossary) return glossary;
+    glossary = Array.prototype.map.call(document.querySelectorAll('#s20-1 .glossary > div'), function(div){
+      var dt = div.querySelector('dt'), dd = div.querySelector('dd');
+      var name = dt ? dt.textContent.trim() : '';
+      var alts = [];
+      name.split(/\s*\/\s*/).forEach(function(part){
+        var bare = part.replace(/\s*\(.*?\)\s*/g, ' ').trim();
+        if(bare) alts.push(spaced(bare));
+        var inside = /\(([^)]+)\)/.exec(part);
+        if(inside) alts.push(spaced(inside[1]));
+      });
+      return {name:name, alts:alts, dd:dd};
+    });
+    return glossary;
+  }
+  function findGlossary(text){
+    var q = spaced(text);
+    var hits = [];
+    glossaryEntries().forEach(function(e){
+      var best = 0;
+      e.alts.forEach(function(a){ if(a.trim().length >= 2 && q.indexOf(a) > -1) best = Math.max(best, a.length); });
+      if(best) hits.push({e:e, s:best});
+    });
+    hits.sort(function(a, b){ return b.s - a.s; });
+    return hits.slice(0, 2).map(function(h){ return h.e; });
+  }
+  function snippet(id, text){
+    var sec = document.getElementById(id);
+    if(!sec) return '';
+    var words = text.toLowerCase().split(/[^a-z0-9&]+/).filter(function(w){ return w.length > 2; });
+    var best = '', bestScore = 0;
+    Array.prototype.forEach.call(sec.querySelectorAll('p, li, dd, td'), function(el){
+      if(el.closest('.notefield')) return;
+      var t = (el.textContent || '').replace(/\s+/g, ' ').trim();
+      var lt = t.toLowerCase(), s = 0;
+      words.forEach(function(w){ if(lt.indexOf(w) > -1) s++; });
+      if(s > bestScore && t.length > 30){ bestScore = s; best = t; }
+    });
+    return best.length > 320 ? best.slice(0, 317).replace(/\s+\S*$/, '') + '…' : best;
+  }
+  function answerInfo(text){
+    var defs = findGlossary(text);
+    var found = searchBook(text, 3);
+    if(!defs.length && !found.length){
+      addMsg('bot', '<p>I couldn\'t find that in the book. Try a different word for it — or, with a key and a signal, ask the AI assistant.</p>');
+      menu();
+      return;
+    }
+    defs.forEach(function(d){
+      var m = addMsg('bot', '<p><strong>' + esc(d.name) + '</strong> — ' + (d.dd ? d.dd.innerHTML : '') + '</p>');
+      m.classList.add('def');
+    });
+    if(found.length){
+      var top = found[0];
+      var snip = defs.length ? '' : snippet(top.id, text);
+      var m2 = addMsg('bot', snip
+        ? '<p>From <strong>' + esc(sectionLabel(top.id)) + '</strong>:</p><p>' + esc(snip) + '</p><p>More on this in:</p>'
+        : '<p>' + (defs.length ? 'Read more in:' : 'These sections cover it:') + '</p>');
+      addLinks(m2, found.map(function(e){ return ['#' + e.id, esc(sectionLabel(e.id))]; }));
+    }
+    var f = scoreFlows(text);
+    var next = [];
+    if(f) next.push({label: (f.kind === 'setup' ? 'Walk me through: ' : 'Troubleshoot: ') + f.title, go: function(){ addMsg('me', esc(f.title)); startFlow(f, text); }});
+    next.push({label:'Ask something else', quiet:true, go: function(){ input.focus(); }});
+    next.push(BACK);
+    setChips(next);
+  }
+
+  function guidedText(text){
+    if(!g.symptom) g.symptom = text;
+    var setupAsk = SETUP_INTENT.test(text);
+    var f = setupAsk ? (scoreFlows(text, 'setup') || scoreFlows(text)) : (scoreFlows(text, 'fix') || scoreFlows(text));
+    var info = INFO_INTENT.test(text.trim()) && !setupAsk;
+    if(f && !info){ startFlow(f, text); return; }
+    if(!f && setupAsk){
+      var found = searchBook(text, 3);
+      var m = addMsg('bot', found.length ? '<p>I don\'t have a step-by-step for that one in here, but these sections cover it:</p>' : '<p>What are you setting up? Pick the closest:</p>');
+      addLinks(m, found.map(function(e){ return ['#' + e.id, esc(sectionLabel(e.id))]; }));
+      setChips(starterChips(SETUP_STARTERS).concat([BACK]));
+      return;
+    }
+    answerInfo(text);
+  }
+
+  /* ---- AI assistant ---- */
+  var ai = {history:[], busy:false, system:null, refIds:{}};
+  var pendingImage = null;
+  var sdkPromise = null;
+  var REF_IDS = ['s3-3','s3-12','s6-1','s6-4','s6-16','s6-17','s6-18','s6-19','s12-1','s12-8','s12-13','s12-15'];
+
+  function sectionText(id, max){
+    var sec = document.getElementById(id);
+    if(!sec) return '';
+    var clone = sec.cloneNode(true);
+    Array.prototype.forEach.call(clone.querySelectorAll('.notefield, script, button'), function(n){ n.remove(); });
+    Array.prototype.forEach.call(clone.querySelectorAll('tr'), function(tr){ tr.appendChild(document.createTextNode(' \n')); });
+    Array.prototype.forEach.call(clone.querySelectorAll('td, th, dt'), function(td){ td.appendChild(document.createTextNode(' | ')); });
+    Array.prototype.forEach.call(clone.querySelectorAll('p, li, dd, h4, div.note'), function(p){ p.appendChild(document.createTextNode('\n')); });
+    var txt = (clone.textContent || '').replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n').trim();
+    return max && txt.length > max ? txt.slice(0, max) + ' …' : txt;
+  }
+  /* Built once from the page and never changed afterwards, so the whole system
+     prompt is a stable prefix the API can cache across every turn. */
+  function systemPrompt(){
+    if(ai.system) return ai.system;
+    var contents = Array.prototype.map.call(document.querySelectorAll('main > .part section.s h3'), function(h){ return h.textContent.trim(); }).join('\n');
+    var ref = REF_IDS.map(function(id){ ai.refIds[id] = true; return '<section>\n' + sectionText(id) + '\n</section>'; }).join('\n');
+    ai.system = [
+      'You are the on-site assistant inside TreebySound, a UK live-audio field handbook. The person talking to you is usually a junior or developing audio technician, often mid-job, on a phone, under time pressure.',
+      '',
+      'You help with three kinds of request, and should recognise which one you have:',
+      '- Setting something up: walk them through it in order, a few steps at a time, checking where they are before moving on (for example a d&b amp rack, speaker cabling, R1, a line check, radio mics).',
+      '- Finding and fixing a problem: narrow down where the fault is, then how to resolve it or who to hand it to.',
+      '- General information: explain a term, a setting, a light, a connector or a piece of kit clearly and briefly, with the practical "so what" for their job.',
+      '',
+      'How to help:',
+      '- Safety first. If anything suggests smoke, burning, electric shock, injury, a rigging or suspended-load problem, or a mains or distribution fault, tell them to stop or mute, make it safe and get the responsible or qualified person before giving any technical advice. Never advise opening amplifiers, loudspeakers or mains equipment, re-terminating cables on a live system, or touching rigging.',
+      '- Work like a calm crew chief: the most likely and cheapest checks first, one change at a time, substitution (swap in a known-good part) rather than rewiring. If the symptom is ambiguous, ask one short question first — which box, which amp, which output mode, what the indicators show.',
+      '- Keep replies short and scannable on a phone: one sentence on what it probably is, then at most five numbered checks. No preamble, no essays.',
+      '- Respect authority: on a system they do not own, tell them what to report rather than changing amp setups, output modes, ArrayProcessing, console show files or network settings.',
+      '- Be specific about d&b audiotechnik amplifiers (D6, D12, D20, D40, D80, D90 and the install amps), d&b loudspeakers, R1, ArrayCalc and Neutrik speakON NL2/NL4/NLT4/NL8, using the reference below. Where a detail depends on a model, version or firmware you are not sure of, say so and point them to the label above the amp outputs or the manual. Never invent pinouts, menu names or specifications.',
+      '- If they attach a photo, say what you can actually see (screen text, indicator colours, connector type) before drawing conclusions, and say if the photo is too unclear to read.',
+      '- Refer to handbook sections as §x.y (for example §6.19) when one helps; the app turns them into links. Only cite sections that appear in the contents list.',
+      '- When they have found the fault, are stuck, or ask you to "write it up", give a short message for their lead in this order: the symptom, what changed, what has been checked, what they need.',
+      '- UK English. Plain words; explain any jargon you use.',
+      '',
+      '<handbook_contents>',
+      contents,
+      '</handbook_contents>',
+      '',
+      '<reference_sections>',
+      ref,
+      '</reference_sections>'
+    ].join('\n');
+    return ai.system;
+  }
+
+  function loadSdk(){
+    if(!sdkPromise){
+      sdkPromise = import('https://esm.sh/@anthropic-ai/sdk').then(function(m){ return m.default || m.Anthropic; });
+      sdkPromise.catch(function(){ sdkPromise = null; });
+    }
+    return sdkPromise;
+  }
+
+  /* Minimal, safe formatting: escape everything, then allow bold, inline code,
+     bullet and numbered lists, and turn §x.y into links to the book. */
+  function formatAi(text){
+    var out = [], list = null;
+    function inline(s){
+      s = esc(s)
+        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>');
+      return s.replace(/§\s?(\d{1,2})\.(\d{1,2})/g, function(all, a, b){
+        var id = 's' + a + '-' + b;
+        return document.getElementById(id) ? '<a href="#' + id + '">§' + a + '.' + b + '</a>' : all;
+      });
+    }
+    function close(){ if(list){ out.push('</' + list + '>'); list = null; } }
+    text.split(/\n/).forEach(function(line){
+      var t = line.trim();
+      var ul = /^[-*•]\s+(.*)/.exec(t), ol = /^\d+[.)]\s+(.*)/.exec(t);
+      if(ul || ol){
+        var want = ul ? 'ul' : 'ol';
+        if(list !== want){ close(); out.push('<' + want + '>'); list = want; }
+        out.push('<li>' + inline((ul || ol)[1]) + '</li>');
+      } else if(!t){
+        close();
+      } else {
+        close();
+        out.push('<p>' + inline(t.replace(/^#+\s*/, '')) + '</p>');
+      }
+    });
+    close();
+    return out.join('');
+  }
+
+  function setBusy(on){
+    ai.busy = on;
+    sendBtn.disabled = on;
+    sendBtn.textContent = on ? '…' : 'Send';
+  }
+
+  function sendAi(text){
+    if(ai.busy) return;
+    var key = storeGet(KEY_STORE);
+    if(!key){
+      addMsg('bot', '<p>Add your API key in <strong>AI assistant setup</strong> first — or switch to Guided, which needs nothing.</p>', 'warn');
+      settings.open = true;
+      return;
+    }
+    if(!navigator.onLine){
+      addMsg('bot', '<p>No signal, so the AI assistant can\'t be reached. Switching to the guided fault finder, which works offline.</p>', 'warn');
+      setMode('guided', true);
+      guidedText(text);
+      return;
+    }
+    var shown = esc(text).replace(/\n/g, '<br>');
+    if(pendingImage) shown += '<img alt="Attached photo" src="' + pendingImage.url + '">';
+    addMsg('me', shown);
+    if(DANGER.test(text)) safetyNote();
+
+    var system = systemPrompt();
+    var excerpts = searchBook(text, 3, ai.refIds).map(function(e){
+      return '<section>\n' + sectionText(e.id, 3500) + '\n</section>';
+    }).join('\n');
+    var content = [];
+    if(pendingImage) content.push({type:'image', source:{type:'base64', media_type:'image/jpeg', data: pendingImage.data}});
+    if(excerpts) content.push({type:'text', text:'<handbook_excerpts>\n' + excerpts + '\n</handbook_excerpts>'});
+    content.push({type:'text', text: text});
+    ai.history.push({role:'user', content: content});
+    clearImage();
+
+    var reply = addMsg('bot', '', 'typing');
+    var acc = '';
+    setBusy(true);
+    loadSdk().then(function(Anthropic){
+      var client = new Anthropic({apiKey: key, dangerouslyAllowBrowser: true});
+      var stream = client.beta.messages.stream({
+        model: MODEL,
+        max_tokens: 64000,
+        betas: ['server-side-fallback-2026-07-01'],
+        fallbacks: 'default',
+        output_config: {effort: 'medium'},
+        system: [{type:'text', text: system, cache_control:{type:'ephemeral'}}],
+        messages: ai.history
+      });
+      return (async function(){
+        for await (var event of stream){
+          if(event.type === 'content_block_delta' && event.delta.type === 'text_delta'){
+            acc += event.delta.text;
+            reply.innerHTML = formatAi(acc);
+            scrollDown();
+          }
+        }
+        return stream.finalMessage();
+      })().then(function(final){
+        reply.classList.remove('typing');
+        if(final.stop_reason === 'refusal'){
+          ai.history.pop();
+          reply.innerHTML = '<p>The assistant couldn\'t answer that one. Try rephrasing it, or use the guided mode.</p>';
+          reply.classList.add('warn');
+          return;
+        }
+        ai.history.push({role:'assistant', content: final.content});
+        if(!acc) reply.innerHTML = '<p>(No answer came back — try again.)</p>';
+        if(final.stop_reason === 'max_tokens') addMsg('bot', 'That answer was cut off — ask it to carry on.', 'note');
+      }, function(err){ failed(err, Anthropic); });
+    }, function(){
+      failed(null, null);
+    }).then(function(){ setBusy(false); }, function(){ setBusy(false); });
+
+    function failed(err, Anthropic){
+      ai.history.pop();
+      reply.classList.remove('typing');
+      reply.classList.add('warn');
+      var msg;
+      if(!Anthropic){
+        msg = 'Couldn\'t load the assistant — no signal, or the connection is blocked. The guided mode works offline.';
+      } else if(err instanceof Anthropic.AuthenticationError || err instanceof Anthropic.PermissionDeniedError){
+        msg = 'Your API key wasn\'t accepted. Check it in AI assistant setup, or create a new one at console.anthropic.com.';
+      } else if(err instanceof Anthropic.RateLimitError){
+        msg = 'Too many requests, or the key has hit its spend limit. Wait a minute and try again, or check your limits at console.anthropic.com.';
+      } else if(err instanceof Anthropic.APIConnectionError){
+        msg = 'Lost the connection. The guided mode works with no signal.';
+      } else if(err instanceof Anthropic.APIError){
+        msg = 'The assistant returned an error (' + (err.status || 'unknown') + '). Try again, or use the guided mode.';
+      } else {
+        msg = 'Something went wrong reaching the assistant. Try again, or use the guided mode.';
+      }
+      reply.innerHTML = (acc ? formatAi(acc) : '') + '<p>' + esc(msg) + '</p>';
+      setChips([{label:'Use guided mode', go:function(){ setMode('guided', true); guidedText(text); }}]);
+    }
+  }
+
+  /* ---- photos (AI mode): shrink on the phone before sending ---- */
+  function clearImage(){
+    pendingImage = null;
+    attachBar.hidden = true;
+    attachBar.innerHTML = '';
+    photoInput.value = '';
+  }
+  photoBtn.addEventListener('click', function(){ photoInput.click(); });
+  photoInput.addEventListener('change', function(){
+    var file = photoInput.files && photoInput.files[0];
+    if(!file) return;
+    var url = URL.createObjectURL(file);
+    var img = new Image();
+    img.onload = function(){
+      var max = 1400, w = img.naturalWidth, h = img.naturalHeight;
+      var scale = Math.min(1, max / Math.max(w, h));
+      var c = document.createElement('canvas');
+      c.width = Math.round(w * scale); c.height = Math.round(h * scale);
+      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
+      URL.revokeObjectURL(url);
+      var dataUrl = c.toDataURL('image/jpeg', 0.85);
+      pendingImage = {url: dataUrl, data: dataUrl.split(',')[1]};
+      attachBar.innerHTML = '';
+      var thumb = document.createElement('img');
+      thumb.src = dataUrl; thumb.alt = 'Photo to send';
+      var lab = document.createElement('span');
+      lab.textContent = 'Photo attached';
+      var rm = document.createElement('button');
+      rm.type = 'button'; rm.textContent = 'Remove';
+      rm.addEventListener('click', clearImage);
+      attachBar.appendChild(thumb); attachBar.appendChild(lab); attachBar.appendChild(rm);
+      attachBar.hidden = false;
+      input.focus();
+    };
+    img.onerror = function(){ URL.revokeObjectURL(url); addMsg('bot', 'Couldn\'t read that photo.', 'note'); };
+    img.src = url;
+  });
+
+  /* ---- shared plumbing ---- */
+  function safetyNote(){
+    var m = addMsg('bot', '<p><strong>Stop and make it safe first.</strong> Mute or stop, keep people clear, isolate power at the source only if that\'s yours to do, and get the responsible person. Then come back to the fault.</p>', 'warn');
+    addLinks(m, [['#support-now','Make it safe']]);
+  }
+  function reset(){
+    log.innerHTML = '';
+    g = {flow:null, node:null, steps:[], symptom:''};
+    ai.history = [];
+    clearImage();
+    greet();
+  }
+  function setMode(m, quiet){
+    mode = m;
+    storeSet(MODE_STORE, m);
+    modeBtns.forEach(function(b){
+      var on = b.getAttribute('data-mode') === m;
+      b.classList.toggle('on', on);
+      b.setAttribute('aria-checked', on ? 'true' : 'false');
+    });
+    photoBtn.hidden = m !== 'ai';
+    if(m !== 'ai') clearImage();
+    input.placeholder = m === 'ai' ? 'Ask, or describe what you see…' : 'What\'s going on?';
+    if(!quiet) reset();
+  }
+  modeBtns.forEach(function(b){
+    b.addEventListener('click', function(){
+      var m = b.getAttribute('data-mode');
+      if(m !== mode) setMode(m);
+    });
+  });
+  resetBtn.addEventListener('click', reset);
+
+  form.addEventListener('submit', function(ev){
+    ev.preventDefault();
+    var text = input.value.trim();
+    if(!text && !(mode === 'ai' && pendingImage)) return;
+    if(!text) text = 'What can you see in this photo, and is anything wrong?';
+    input.value = '';
+    input.style.height = '';
+    if(mode === 'ai'){ setChips([]); sendAi(text); return; }
+    addMsg('me', esc(text));
+    setChips([]);
+    if(DANGER.test(text)){
+      safetyNote();
+      addMsg('bot', '<p>Once it\'s safe and the right person knows, tell me what you found — or pick:</p>');
+      setChips(starterChips(['power','limit']).concat([BACK]));
+      return;
+    }
+    guidedText(text);
+  });
+  input.addEventListener('keydown', function(ev){
+    if(ev.key === 'Enter' && !ev.shiftKey && !ev.isComposing){ ev.preventDefault(); form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit', {cancelable:true})); }
+  });
+  input.addEventListener('input', function(){
+    input.style.height = '';
+    input.style.height = Math.min(input.scrollHeight, 140) + 'px';
+  });
+
+  /* ---- key management ---- */
+  function syncKeyStatus(){
+    var k = storeGet(KEY_STORE);
+    keyStatus.textContent = k ? 'Key saved on this device (ending …' + k.slice(-4) + ').' : 'No key saved.';
+    keyInput.value = '';
+  }
+  keySave.addEventListener('click', function(){
+    var k = keyInput.value.trim();
+    if(!k){ keyStatus.textContent = 'Paste a key first.'; return; }
+    if(!/^sk-ant-/.test(k)){ keyStatus.textContent = 'That doesn\'t look like an Anthropic API key (they start sk-ant-).'; return; }
+    storeSet(KEY_STORE, k);
+    syncKeyStatus();
+    if(mode !== 'ai') setMode('ai'); else reset();
+  });
+  keyForget.addEventListener('click', function(){
+    storeRemove(KEY_STORE);
+    syncKeyStatus();
+    if(mode === 'ai') reset();
+  });
+
+  syncKeyStatus();
+  setMode(mode, true);
+  greet();
 })();
 
 })();
