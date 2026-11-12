@@ -150,6 +150,6 @@ additions was *function and placement*, so targeted changes:
 ### Still open after round 2
 
 - Product-specific guides once the kit list arrives; confirm "techniks".
-- Part 13 line-by-line re-audit; Meyer/other PA brands if in stock.
+- [x] Part 13 re-audited (Nov 2026): peak noise values, PPE for workers (2022), opt-out notice, holiday (12.07%), SSP from day one (Apr 2026), zero-hours rights (Apr 2027), under-18 limits. Meyer/other PA brands still wait on stock list.
 - Library reading bar is still tight on narrow phones next to the floating
   buttons — consider moving refresh/settings into the bar when reading.
