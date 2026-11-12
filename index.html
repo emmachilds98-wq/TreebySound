@@ -845,6 +845,15 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 .ask-screen .chat-log{max-height:none;flex:1 1 auto;min-height:0}
 .ask-open{display:inline-block;text-decoration:none}
 [data-screen="ask"] .quickfab-wrap{display:none!important}
+/* Reading a part on a phone: the floating buttons give way to a settings
+   button inside the reading bar, so the part title has the room. */
+.part-nav-cog{display:none}
+@media (max-width:820px){
+  body[data-reading] .cog-btn{display:none}
+  body[data-reading] .part-nav.on{padding-right:12px}
+  .part-nav-cog{display:inline-block;font-size:15px;padding:6px 9px}
+  .part-nav{gap:7px}
+}
 .bb-ask .ic{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--petrol);color:var(--paper)!important;font-family:var(--display);font-weight:700;font-size:16px!important}
 .bottombar button.bb-ask.on{color:var(--petrol)}
 @media (max-width:820px){
@@ -991,6 +1000,7 @@ tr.in-kit td{background:var(--pass-soft)}
   <div class="part-nav-btns">
     <button class="part-nav-btn" id="partNavPrev" type="button">‹ <span>Prev</span></button>
     <button class="part-nav-btn" id="partNavNext" type="button"><span>Next</span> ›</button>
+    <button class="part-nav-btn part-nav-cog" id="partNavCog" type="button" aria-label="Appearance &amp; accessibility settings">⚙</button>
   </div>
 </div>
 <header class="hero">
@@ -4345,7 +4355,7 @@ EARS            the only part of the system that actually matters</div>
 <dt>85 dB(A) — upper exposure action value</dt><dd>Employer must provide hearing protection and mark out hearing protection zones.</dd>
 <dt>87 dB(A) — exposure limit value</dt><dd>The absolute ceiling, accounting for any protection worn. Must never be exceeded.</dd>
 </div>
-<p>These are averaged exposure values over a working day, not instantaneous levels — a loud band soundcheck plus a loud show plus loud monitors easily adds up to a daily average well past 85 dB(A), even if no single moment felt dangerous.</p>
+<p>The regulations also set <strong>peak</strong> sound-pressure values for sudden loud bangs: 135 dB(C) lower action, 137 dB(C) upper action, 140 dB(C) limit. These daily figures are averaged exposure values over a working day, not instantaneous levels — a loud band soundcheck plus a loud show plus loud monitors easily adds up to a daily average well past 85 dB(A), even if no single moment felt dangerous.</p>
 <div class="note std"><span class="lab">Standard</span><p>Wear hearing protection during system tuning, soundcheck and load-in tool use as a matter of routine — musicians' earplugs (flat attenuation, doesn't dull the tone) are cheap and worth having a set of in your bag permanently. Protecting your hearing at 22 is what lets you still do this job at 55. Mixing loud all afternoon also drifts your judgement, not just your hearing — <a href="#s16-7">§16.7</a>.</p></div>
 <div class="note deep"><span class="lab">Current source</span><p>The figures above are from the UK Control of Noise at Work Regulations. The official <a href="https://www.hse.gov.uk/noise/regulations.htm" target="_blank" rel="noopener">HSE noise guidance</a> confirms the 80 dB(A) lower action value, 85 dB(A) upper action value and 87 dB(A) exposure limit. If your regular work is loud, ask the employer about risk assessment, protection and hearing checks rather than trying to judge exposure by ear.</p></div>
 </section>
@@ -4400,6 +4410,8 @@ EARS            the only part of the system that actually matters</div>
 <dt>Gloves</dt><dd>Worth having for cable and case handling — protects against splinters, pinch points and sharp rack ears, and gives you a better grip on a wet loading bay ramp. Not usually mandatory, but cheap insurance.</dd>
 </div>
 <div class="note std"><span class="lab">Standard</span><p>If a site tells you PPE is required for a task, that's not a suggestion. If you don't have something a site requires, say so before you start rather than working without it.</p></div>
+<div class="note std"><span class="lab">Your rights</span><p>Since 6 April 2022 the PPE at Work Regulations cover <strong>workers</strong> as well as employees — so if you're casual crew rather than genuinely self-employed, PPE the job requires (boots for a site that demands them, hearing protection in a loud zone) must be provided free by whoever engages you, not bought by you. Genuinely self-employed freelancers provide their own.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>HSE, Personal Protective Equipment at Work (Amendment) Regulations 2022 guidance.</p></div>
 </section>
 
 <section class="s" id="s13-12"><h3><span class="n">13.12</span> Working alone — early starts and late finishes</h3>
@@ -4435,11 +4447,18 @@ EARS            the only part of the system that actually matters</div>
 <p><a href="#s13-9">§13.9</a> covers handling long days as they come at you; this is what the law actually entitles you to underneath that, whether or not any single job feels like it.</p>
 <div class="kv">
 <dt>The 48-hour week</dt><dd>The baseline limit is an average of 48 hours a week, averaged over 17 weeks — not a hard cap on any single week, which is exactly why a run of 14-hour build days is legal provided it evens out.</dd>
-<dt>The opt-out</dt><dd>Almost every event and entertainment employer asks new starters to sign a voluntary opt-out from the 48-hour limit, precisely because show days routinely exceed it. Signing it is normal in this industry and not, on its own, something to worry about — but know that it must be voluntary, in writing, and separate from your main contract, and that you can cancel it with notice (usually up to 3 months) if it's ever genuinely a problem.</dd>
+<dt>The opt-out</dt><dd>Almost every event and entertainment employer asks new starters to sign a voluntary opt-out from the 48-hour limit, precisely because show days routinely exceed it. Signing it is normal in this industry and not, on its own, something to worry about — but know that it must be voluntary and in writing (best kept separate from your main contract), and that you can cancel it — with 7 days' notice, or longer if your opt-out says so, up to a maximum of 3 months.</dd>
 <dt>Daily &amp; weekly rest</dt><dd>Separately from the 48-hour limit: you're entitled to 11 consecutive hours' rest in any 24-hour period, and 24 hours' uninterrupted rest in any 7 days (or 48 hours in any 14). A very early get-in after a very late derig is exactly the situation where this gets squeezed — worth knowing it's there, even on a job where asking for it isn't realistic.</dd>
 <dt>Rest breaks</dt><dd>A 20-minute uninterrupted break if you work more than 6 hours in a day. In practice this usually means "eat something properly," not a formal announced break — but it's a legal entitlement, not a favour.</dd>
 </div>
 <div class="note alt"><span class="lab">Also seen</span><p>None of this is about refusing a long day — the industry runs on them, and <a href="#s13-9">§13.9</a>'s advice on managing that stands. This section exists so you know the actual floor underneath the culture, not to suggest you should be citing regulations on a get-in.</p></div>
+<dl class="glossary">
+<div><dt>Holiday</dt><dd>5.6 weeks' paid holiday a year (28 days for a five-day week), pro rata. Casual and irregular-hours crew build it up at <strong>12.07% of hours worked</strong>; employers may instead pay it "rolled up" as an extra 12.07% on each payslip, which should be shown separately.</dd></div>
+<div><dt>Sick pay</dt><dd>Since 6 April 2026, Statutory Sick Pay is paid from the <strong>first day</strong> off sick (no more three waiting days) and there's no minimum earnings to qualify. For 2026/27 it's £123.25 a week or 80% of your average weekly earnings, whichever is lower. It applies to employees — genuinely self-employed freelancers don't get SSP, which is one reason to keep some savings.</dd></div>
+<div><dt>Zero-hours work</dt><dd>From April 2027 (Employment Rights Act 2025), zero- and low-hours workers get the right to be offered guaranteed hours that reflect what they regularly work, reasonable notice of shifts, and compensation when a shift is cancelled or cut short at late notice. Details are still being set — check ACAS nearer the time.</dd></div>
+<div><dt>Under 18</dt><dd>Young workers have tighter limits: normally no more than 8 hours a day and 40 a week, longer rest and a 30-minute break after 4.5 hours — and no opt-out.</dd></div>
+</dl>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>ACAS, Employment Rights Act 2025 (Oct 2026); GOV.UK / business.gov.uk statutory sick pay changes (April 2026); GOV.UK holiday pay and entitlement reforms (irregular-hours workers, from April 2024); GOV.UK working time limits. Employment law changes often — check ACAS or GOV.UK for anything that affects a decision.</p></div>
 </section>
 
 <section class="s" id="s13-16"><h3><span class="n">13.16</span> Martyn's Law and event security</h3>
@@ -6489,6 +6508,7 @@ function activateScreen(id){
   syncNavActive(id);
   pingToc(id);
   document.body.setAttribute('data-screen', id);
+  document.body.toggleAttribute('data-reading', SCREEN_IDS.indexOf(id) === -1);
   if(id === 'ask'){ window.scrollTo(0, 0); setTimeout(function(){ if(window.tbSizeAsk) window.tbSizeAsk(); var l = document.getElementById('chatLog'); if(l) l.scrollTop = l.scrollHeight; }, 60); }
   return currentScreen;
 }
@@ -7794,6 +7814,13 @@ if(quickfabBtn && quickfabMenu){
   compute();
 })();
 
+
+
+/* The reading bar's own settings button opens the same Appearance sheet. */
+(function(){
+  var b = document.getElementById('partNavCog'), cog = document.getElementById('cogAppearance');
+  if(b && cog) b.addEventListener('click', function(){ cog.click(); });
+})();
 
 /* ---------- floating tools tuck away while reading (phone) ----------
    Scrolling down hides the refresh and Appearance buttons so they stop sitting
@@ -9340,7 +9367,53 @@ if(quickfabBtn && quickfabMenu){
     ["r1 system check|d&b system check|check every box r1", "<p><strong>System check</strong> measures each box against a stored reference to catch a dead driver or a wrong cable. The system tech sets the reference; you can run the check and report what it flags.</p>", "s6-22 s11-9"],
     ["update amp firmware|should i update the amps|firmware show day", "<p>Not on a show day. Firmware updates can change behaviour and occasionally fail part-way — leave them to the system owner, planned in the warehouse, not on site.</p>", "s6-22"],
     ["how to set up comms|clearcom setup|intercom setup|partyline", "<p>Get the channel plan from whoever owns comms, power the main station, run the lines and daisy-chain the packs (wired), or charge and register the packs (wireless). Then check every pack: talk, listen and call light on each channel. Label comms cable so it isn't borrowed for a mic.</p>", "s8-12 s11-8"],
-    ["laptop playback setup|reliable playback|stop laptop notifications|playback checklist", "<p>Mains in; Wi-Fi, Bluetooth, notifications, sleep and updates off; out through a proper interface or DI; files local and in order; levels set at the desk; a backup source ready on another channel; every cue rehearsed.</p>", "s8-13 s8-4"]
+    ["laptop playback setup|reliable playback|stop laptop notifications|playback checklist", "<p>Mains in; Wi-Fi, Bluetooth, notifications, sleep and updates off; out through a proper interface or DI; files local and in order; levels set at the desk; a backup source ready on another channel; every cue rehearsed.</p>", "s8-13 s8-4"],
+    ["do i get sick pay|statutory sick pay|ssp|sick pay freelance|off sick", "<p>Since 6 April 2026 <strong>Statutory Sick Pay</strong> is paid from the first day off sick, with no minimum earnings to qualify: £123.25 a week (2026/27) or 80% of average weekly earnings, whichever is lower. It's for employees — genuinely self-employed freelancers don't get it.</p>", "s13-15"],
+    ["holiday pay|how much holiday|holiday for casual work|rolled up holiday pay|12.07", "<p>Everyone gets 5.6 weeks' paid holiday a year, pro rata. Casual and irregular-hours crew build it up at <strong>12.07% of hours worked</strong>, or the employer pays it \"rolled up\" as an extra 12.07% shown separately on each payslip.</p>", "s13-15"],
+    ["zero hours contract|zero hours rights|guaranteed hours|shift cancelled pay", "<p>From <strong>April 2027</strong> zero- and low-hours workers get the right to be offered guaranteed hours matching what they regularly work, reasonable notice of shifts, and compensation for late-cancelled or shortened shifts (Employment Rights Act 2025). Details are still being finalised — check ACAS.</p>", "s13-15"],
+    ["who pays for ppe|do i have to buy my own boots|free ppe|ppe for casual workers", "<p>If you're a <strong>worker</strong> (casual crew, not genuinely self-employed), PPE the job requires must be provided free — that's been the law since April 2022. Genuinely self-employed freelancers provide their own.</p>", "s13-11"],
+    ["peak noise limit|137 db|140 db peak|impulse noise", "<p>Besides the daily averages (80/85/87 dB(A)), the Noise at Work Regulations set <strong>peak</strong> values for sudden bangs: 135 dB(C) lower action, 137 dB(C) upper action, 140 dB(C) limit.</p>", "s13-5"],
+    ["opt out notice|cancel the 48 hour opt out|withdraw opt out", "<p>You can cancel a 48-hour opt-out with 7 days' notice, or longer if the opt-out agreement says so — never more than 3 months. It must have been voluntary and in writing in the first place.</p>", "s13-15"],
+    /* coverage of the rest of the book */
+    ["what do the markers mean|standard also seen watch it go deeper|what does standard mean in the book", "<p>Everything in the book is tagged: <strong>Standard</strong> — the normal way, your default; <strong>Also seen</strong> — a common alternative, not wrong; <strong>Watch it</strong> — where things go wrong or get dangerous; <strong>Go deeper</strong> — where to learn more.</p>", "s0-1"],
+    ["how do i use this app|how does treebysound work|where do i find things|navigating the app", "<p><strong>Ask</strong> answers questions and walks you through faults and set-ups. <strong>Job</strong> is for an actual booking (checklists, system test, workspace). <strong>Support</strong> is for the moment something's wrong (make it safe, calculators, what to say). <strong>Pathway</strong> is your learning route. <strong>Library</strong> is the whole handbook, searchable.</p>", "s0-2"],
+    ["lifecycle of a hire|how does a hire work|what happens to kit between jobs", "<p>Every job loops: enquiry and kit list → prep (pull, test, pack) → load out → load in and build → test → show → derig → return, check-in and repair. Knowing where you are on the loop tells you what your job is right now.</p>", "s1-2"],
+    ["signal chain|signal flow|how does sound get from the mic to the speaker", "<p>Every system is the same chain: <strong>source</strong> → <strong>transducer</strong> (mic or DI) → <strong>preamp</strong> → <strong>processing and mixing</strong> → <strong>amplifier</strong> → <strong>loudspeaker</strong> → ears. Fault-finding is just following that chain until the signal stops.</p>", "s2-1 s12-1"],
+    ["mic stands|which mic stand|tall boom short boom|round base or tripod", "<p><strong>Tall booms</strong> for vocals and overheads, <strong>short booms</strong> for snare, toms, kick and guitar cabs (pack more than you think), <strong>straight stands</strong> for speech, <strong>desk stands</strong> for panels. Round bases are tidier and safer on stage; tripods are lighter but trip people.</p>", "s4-7"],
+    ["how does a speaker work|what is a horn|passive vs active speaker|what is a crossover", "<p>A speaker has <strong>drivers</strong> (cones for lows, a compression driver on a horn for highs) and a <strong>crossover</strong> that splits the frequencies between them. <strong>Passive</strong> boxes have the crossover inside and need an external amp; <strong>active</strong> boxes have amps and processing built in; d&amp;b-style systems put the processing in the amp instead.</p>", "s6-1 s6-4"],
+    ["speaker brands|which brands will i meet|pa brands", "<p>On UK hire and touring work: d&amp;b audiotechnik, L-Acoustics, Martin Audio, Meyer Sound, and on smaller jobs RCF, QSC, Electro-Voice and others. The ideas are the same everywhere — amps, presets/setups, prediction software, remote control — with different names.</p>", "s6-3 s6-21"],
+    ["interpretation system|simultaneous interpretation|translation booth|ir receivers", "<p>Interpreters in booths listen on headphones and speak the translation into a mic, which goes out on IR or RF to delegates' receivers. Your part is usually the feeds: a clean floor feed to the booths, the booth outputs to the transmitters, and checking every channel and receiver before doors.</p>", "s6-12"],
+    ["audio description|describer|blind audience headsets", "<p><strong>Audio description</strong> narrates the visual action between dialogue for blind and partially-sighted audience members on headsets. Specialist describers run it; your job is making sure the infrastructure works — the describer's mic, the transmitter and every headset — and checking it before each show.</p>", "s6-13"],
+    ["consoles i will meet|which mixing desks|common desks", "<p>Most often: Yamaha (DM7, CL/QL, TF, RIVAGE), Allen &amp; Heath (SQ, dLive, Avantis), DiGiCo (SD and Quantum), Midas/Behringer (M32, X32, Wing, HD96). Learn the one your company uses on its free offline editor, then the channel strip carries over to the rest.</p>", "s7-2 s7-10"],
+    ["rental management software|rentman|current rms|hirehop|what is an rms", "<p>Hire companies run on <strong>rental management software</strong> — Rentman, Current RMS, HireHop and others — for kit lists, availability, crew and quotes. Scanning kit in and out properly and flagging faults in it is what keeps stock accurate and makes you visible to the people who book crew.</p>", "s8-7"],
+    ["backline|band's own amps|working with backline techs|stage volume", "<p><strong>Backline</strong> is the instruments themselves — amps, drums, keys. If it's yours to mic, see §4.5; if the band has a backline tech, your role is patching their DIs and mics and agreeing stage volume with them — loud backline is the enemy of a clean FOH mix.</p>", "s9-4 s4-5"],
+    ["avolites titan|what is titan|avokey|titan pc suite|lighting software", "<p><strong>Titan</strong> is Avolites' lighting control software: it runs their consoles (Tiger Touch, Arena, Sapphire, Quartz) and, with an <strong>AvoKey</strong> licence, on a PC as Titan PC Suite and the Simulator. Download it from avolites.com, plug the AvoKey in, and simulate the desk your company uses.</p>", "s9-8 s9-9"],
+    ["titan basics|how to start with titan|patch fixtures titan|titan concepts", "<p>Start in the Simulator: patch a few fixtures (choose the right personality and mode), make palettes for colour and position, build a cue list, and play it back. Those concepts — patch, palettes, cues, playbacks — carry across every lighting desk.</p>", "s9-10 s9-9"],
+    ["why learn lighting|lighting as a second skill|does titan help audio", "<p>Lighting skills make you more useful on small jobs where one person covers both, turn DMX faults from a mystery into a checklist, and are a genuine second specialism. It's a real, marketable skill on top of audio.</p>", "s9-11 s21-6"],
+    ["streaming tools|obs|streaming software|vmix", "<p>Common streaming and recording tools: <strong>OBS</strong> (free), <strong>vMix</strong> and hardware like the Blackmagic ATEM switchers. Your audio job is a clean, separate stream mix at the right loudness, delivered to whatever the video team uses.</p>", "s9-16 s14-6"],
+    ["why does context matter|different types of event|corporate vs gig", "<p>The same kit does different jobs: a gig wants impact and energy, corporate wants every word clear and invisible sound, theatre wants exact repeatability, broadcast wants a clean feed. Work out which world you're in on arrival — it changes what “good” means.</p>", "s10-1 s10-7"],
+    ["live music touring|band show|club gig|what is touring like", "<p>Band and club shows are fast and loud: full band inputs, monitors that matter as much as FOH, quick changeovers and a mix that serves the energy of the music. Touring adds the same show night after night in different rooms — routine and labelling are everything.</p>", "s10-3"],
+    ["broadcast work|outside broadcast|tv sound|a2 job", "<p>Broadcast sound runs from A2 (rigging radio mics and comms on presenters and contributors) up to sound supervisor. It's precise, deadline-driven and comms-heavy, with loudness and feeds held to a standard. §21.2 covers it as a career.</p>", "s10-5 s21-2"],
+    ["reading the room|how formal should i be|what kind of job is this", "<p>Read the signals on arrival: a running order timed to the minute means formal, cued discipline; “we'll sort set times later” means stay flexible and quick. Match your energy and formality to the job — not a different person, just the right register.</p>", "s10-7"],
+    ["signing off a line check|when is line check done|line check complete", "<p>“Done” means every input individually proved — not a song played that sounded fine. Tell whoever's running the show explicitly that line check is complete, and name anything still outstanding: “all good except channel 22, waiting on a replacement cable”.</p>", "s11-7"],
+    ["common faults quick reference|fault patterns|most likely cause", "<p>The quick patterns: total silence on one channel → mute, fader, gain, patch, cable; crackle when touched → a connector; steady hum → ground loop; whine that follows a dimmer or screen → interference; distorted at low fader → input gain too hot. §12.6 has the full table.</p>", "s12-6"],
+    ["mic faults|cable faults|mic sounds wrong|bad mic", "<p>Work from the source: mic switched on, phantom if it's a condenser, swap the cable for a known-good one, then a different stage-box input. The fault follows whatever you just swapped. A mic that sounds dull or thin may be damaged — try a spare of the same model.</p>", "s12-9 s3-11"],
+    ["podcast recording|small recording|record an interview|simple recording", "<p>Small jobs don't need the full multitrack setup: a small interface (a Focusrite Scarlett or similar) into a laptop, one mic per voice, headphones to check, levels peaking well below the top, and a test recording played back before you start.</p>", "s14-9"],
+    ["one ear silent iem|iem one side|monitor world faults", "<p>One ear silent on IEMs: a cable or connector fault at the belt pack, or a panned mix with nothing on that side. “I can't hear myself” mid-song: usually a level request, sometimes a channel actually dropped — check the meter, not just the fader.</p>", "s15-6 s15-3"],
+    ["build a wedge mix|wedge mix start to finish|monitor mix wedge", "<p>Start with the performer's own source at a comfortable level, add only what they ask for, ring the wedge out first, keep the sends pre-fade, and turn down what masks them before turning them up. Check in between songs — it's a conversation.</p>", "s15-11 s15-8"],
+    ["delay effect|slapback|tempo delay|echo effect", "<p>A <strong>delay</strong> repeats the signal as distinct echoes: a <strong>slapback</strong> (one short repeat) thickens a vocal; a <strong>tempo-synced</strong> delay (quarter or dotted-eighth) is an obvious effect. Route it like reverb: a post-fade aux send to a shared return.</p>", "s16-8"],
+    ["conservation|bioacoustics|ecology work|my other career|wildlife sound", "<p>Part 18.15 is for keeping a conservation and field-survey career active alongside audio — and building <strong>bioacoustics</strong> (recording and analysing wildlife sound), where audio skills are a genuine advantage. It points to the bodies, tools and recording schemes worth knowing.</p>", "s18-15"],
+    ["essential reading|books about live sound|what should i read", "<p>Part 18.7 lists the books and references worth your time, and §18.16 the trade press (Sound On Sound and others). Read a little often — one article or chapter a week adds up fast.</p>", "s18-7 s18-16"],
+    ["theatre show control|qlab cues|show control|cueing", "<p>Theatre runs on cues: QLab (or similar) fires sound cues, often triggered by the stage manager's calls or by show control messages from other departments. §18.13 lists where to learn it properly.</p>", "s18-13 s8-4"],
+    ["other careers|where can audio take me|career options|change direction", "<p>Live audio leads to broadcast and OB, AV integration and install, studio and post-production, game audio and esports, lighting and video, production and technical management, venue and festival management, training and technical sales, and acoustics consultancy. Part 21 covers each.</p>", "s21-1 s21-12"],
+    ["av installation career|systems integration job|install work", "<p>AV integration means installing and commissioning fixed systems — speakers, DSPs, control and video — and programming what one “Start meeting” button actually does. Your live audio background helps with DSP, signal flow and fault-finding; programming (Q-SYS, Crestron and similar) is the skill to add.</p>", "s21-3"],
+    ["studio work|post production career|music technology", "<p>Studio and post-production are quieter, deadline-driven work on recording, editing and mixing. Live skills transfer (gain, EQ, signal flow); the extra is DAW speed and critical listening. §21.4 covers the routes in.</p>", "s21-4"],
+    ["esports|game audio career|gaming events", "<p><strong>Esports production</strong> is a live-events job with a gaming audience — arena shows, caster and player comms, broadcast feeds — and it's growing fast in the UK. <strong>Game audio</strong> is studio sound design and implementation for games. §21.5 covers both.</p>", "s21-5"],
+    ["production manager career|technical manager|move into management", "<p>Production and technical management is planning, budgets, people and safety rather than hands-on kit — it suits organised people who like seeing the whole show. Start by advancing jobs well and running small crews.</p>", "s21-7 s21-8"],
+    ["acoustics career|institute of acoustics|noise consultant", "<p>Acoustics consultancy (room design, noise assessment) usually needs further study; the Institute of Acoustics' Diploma in Acoustics and Noise Control is a part-time route alongside work. Compliance work (noise management at events) is a closer step from live sound.</p>", "s21-10"],
+    ["try a new direction|test a career change|explore without quitting", "<p>Pick one direction and be specific, tell the right people you're curious, take one small job or shadow day in it, and log what you learned. None of it needs quitting anything first.</p>", "s21-11"],
+    ["sales job audio|technical sales|warehouse manager|training role", "<p>Technical sales, training and warehouse or operations leadership all value people who know kit from the field. They suit people who explain things well or like running systems and teams. §21.9 covers them.</p>", "s21-9"],
+    ["regulations list|which laws apply|safety law overview", "<p>The main ones: Electricity at Work 1989, PUWER 1998, LOLER 1998, Manual Handling 1992, Noise at Work 2005, CDM 2015, Work at Height 2005, RIDDOR 2013, COSHH 2002 and the Working Time Regulations 1998 — plus Martyn's Law from 2027. §13.1 has what each means for you.</p>", "s13-1 s13-16"]
   ];
   var bank = null;
   function bankIndex(){
@@ -9384,9 +9457,17 @@ if(quickfabBtn && quickfabMenu){
     best.others = all.slice(1, 3).filter(function(o){ return o.score >= 0.55; });
     return best;
   }
+  /* "§6.17" in an answer becomes a link that opens the section in the chat. */
+  function linkSections(html){
+    return html.replace(/§(\d{1,2})\.(\d{1,2})/g, function(all, a, b, at, str){
+      if(str.charAt(at - 1) === '>') return all;
+      var id = 's' + a + '-' + b;
+      return document.getElementById(id) ? '<a href="#' + id + '">' + all + '</a>' : all;
+    });
+  }
   function showAnswer(hit, text){
     var e = hit.e;
-    var m = addMsg('bot', e.a);
+    var m = addMsg('bot', linkSections(e.a));
     if(e.see.length) addLinks(m, e.see.filter(function(id){ return document.getElementById(id); }).map(function(id){ return ['#' + id, esc(sectionLabel(id))]; }));
     var next = [];
     var rf = rankFlows(text), f = rf.length && rf[0].s >= 2 ? rf[0].f : null;
