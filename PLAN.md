@@ -110,3 +110,46 @@ Add a line per pushed chunk of work: date — what changed — what's next.
 - Grow the answer bank towards several hundred entries; re-audit Part 13
   line by line.
 - Phase 4 only if real questions are still being missed.
+
+## Round 2 — design review and "more everything" (2026-11-12)
+
+**Design decision: no full redesign.** The visual system (warm paper palette,
+type, cards, notes) and content structure hold up. What didn't fit the new
+additions was *function and placement*, so targeted changes:
+
+- [x] Chat gets its own **Ask** screen and bottom-bar tab (centre, accented):
+      full-height, input pinned above the bar and above the keyboard
+      (`sizeAsk()`), no "top" button over it. Support keeps a link to it;
+      every old `#support-chat` link now points to `#ask`.
+- [x] Home: the ask box is the first thing in the Home card; the masthead's
+      standfirst is hidden on phones so the box sits above the fold.
+- [x] Screen headings reserve room for the floating refresh/settings buttons.
+- [x] Chat chrome compacted (one-line status bar, short disclaimer).
+- [x] Chat remembers the conversation across app restarts (iOS kills
+      backgrounded PWAs).
+- [x] Chat does the maths: delay/distance, SPL over distance, dB ratios,
+      dBu/volts, antenna lengths — typed as questions.
+- [x] Chat offers related answers and "tell me more".
+- [x] More guided routes: one side of the PA missing, input distortion,
+      comms down, playback/laptop problems, hearing loop, recording/stream
+      with no audio, wedge feedback.
+- [x] Answer bank: 250 entries (target 300+ as the product list arrives).
+- [x] More researched content: §6.22 d&b R1 step by step, §8.12 comms, §8.13 reliable laptop playback.
+
+### Round 2 log
+
+- 2026-11-12 — Ask screen; Home ask-first; headings clear of floating buttons;
+  chat memory (12 h), plain-words calculators, related answers, "tell me more";
+  7 new routes (side missing, clipping, can't hear themselves, comms, playback,
+  hearing loop, recording/stream); answer bank 142 → 256; routing fixes
+  ("X not working" follows the thing named, strong answers beat weak route
+  matches, "set up" kept as one term); §6.22 R1, §8.12 comms, §8.13 playback;
+  `tests/check-chat.js` (53 cases, all passing). Checked at iPhone size, desktop
+  and low-light.
+
+### Still open after round 2
+
+- Product-specific guides once the kit list arrives; confirm "techniks".
+- Part 13 line-by-line re-audit; Meyer/other PA brands if in stock.
+- Library reading bar is still tight on narrow phones next to the floating
+  buttons — consider moving refresh/settings into the bar when reading.
