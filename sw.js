@@ -14,9 +14,7 @@ self.addEventListener('install', event => {
          first-ever install there's nothing cached yet, so nothing to snapshot. */
       try {
         const freshPage = await fetch(PAGE_URL, { cache: 'reload' });
-        const oldPage = await cache.match(PAGE_URL);
-        if (oldPage) await cache.put(PREV_URL, oldPage);
-        await cache.put(PAGE_URL, freshPage.clone());
+        if (freshPage.ok) await storePage(cache, freshPage.clone());
       } catch (e) { /* offline install — keep whatever is already cached */ }
       self.skipWaiting();
     })
@@ -52,14 +50,29 @@ self.addEventListener('message', event => {
   );
 });
 
+/* Store a freshly downloaded copy of the page. The copy it replaces becomes
+   the "previous version" — but only when the page has actually changed.
+   Snapshotting on every load meant the second visit after an update put the
+   new page into the snapshot too, so the rollback served the same version. */
+async function storePage(cache, response) {
+  const old = await cache.match(PAGE_URL);
+  if (old) {
+    const [oldText, newText] = await Promise.all([old.clone().text(), response.clone().text()]);
+    if (oldText === newText) return;
+    await cache.put(PREV_URL, old);
+  }
+  await cache.put(PAGE_URL, response);
+}
+
+/* Only a successful response is kept: a 404 or 500 from a hosting hiccup
+   must never replace the good copy the phone relies on offline. */
 function networkFirst(cache, request) {
   return fetch(request)
     .then(response => {
-      const copy = response.clone();
-      return cache.match(PAGE_URL).then(old => {
-        const keepOld = old ? cache.put(PREV_URL, old) : Promise.resolve();
-        return keepOld.then(() => cache.put(PAGE_URL, copy)).then(() => response);
-      });
+      if (!response.ok) {
+        return cache.match(PAGE_URL).then(hit => hit || response);
+      }
+      return storePage(cache, response.clone()).catch(() => {}).then(() => response);
     })
     .catch(() => cache.match(request).then(hit => hit || cache.match(PAGE_URL)));
 }
@@ -84,15 +97,15 @@ self.addEventListener('fetch', event => {
     );
     return;
   }
-  /* Only this site's own files are cached. Anything else — the optional AI
-     assistant's calls to the Anthropic API (POSTs that can't be cached, and
-     streamed replies that must not be) and the SDK it loads — goes straight to
+  /* Only this site's own files are cached; anything else goes straight to
      the network untouched. */
   if (event.request.method !== 'GET' || new URL(event.request.url).origin !== self.location.origin) return;
   event.respondWith(
     caches.match(event.request).then(hit => hit || fetch(event.request).then(response => {
-      const copy = response.clone();
-      caches.open(CACHE).then(cache => cache.put(event.request, copy));
+      if (response.ok) {
+        const copy = response.clone();
+        caches.open(CACHE).then(cache => cache.put(event.request, copy));
+      }
       return response;
     }))
   );

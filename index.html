@@ -796,12 +796,19 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 /* ---------- fault finder chat (Support → Talk it through) ---------- */
 .chat{background:var(--card);border:1px solid var(--rule);border-radius:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden}
 .chat-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-bottom:1px solid var(--rule);background:var(--paper-2);flex-wrap:wrap}
-.chat-modes{display:flex;gap:6px;flex-wrap:wrap}
-.chat-mode{font-family:var(--display);font-size:13.5px;font-weight:600;color:var(--ink-2);background:var(--card);border:1px solid var(--rule-2);border-radius:999px;padding:6px 12px;cursor:pointer;line-height:1.15;text-align:left}
-.chat-mode span{display:block;font-family:var(--mono);font-size:9.5px;font-weight:400;letter-spacing:.04em;color:var(--ink-3)}
-.chat-mode.on{background:var(--petrol);border-color:var(--petrol);color:#fff}
-.chat-mode.on span{color:rgba(255,255,255,.85)}
-:root[data-theme="dark"] .chat-mode.on{color:var(--paper)} :root[data-theme="dark"] .chat-mode.on span{color:var(--paper)}
+.chat-title{margin:0;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--ink-3)}
+.chat-foot{margin:0;padding:8px 14px 10px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);background:var(--paper)}
+.chat-msg.peek{max-width:100%;width:100%;background:var(--card);border:1px solid var(--rule-2);border-left:4px solid var(--petrol);padding:10px 13px 8px}
+.chat-peek-body{position:relative;max-height:260px;overflow:hidden;font-size:14.5px}
+.chat-peek-body.open{max-height:none}
+.chat-peek-body:not(.open)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:56px;background:linear-gradient(to bottom,transparent,var(--card))}
+.chat-peek-body h3{font-size:16px;margin:0 0 6px}
+.chat-peek-body h4{font-size:15px;margin:10px 0 4px}
+.chat-peek-body table{font-size:13px;display:block;overflow-x:auto;max-width:100%}
+.chat-peek-body .note{margin:8px 0}
+.chat-peek-tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chat-peek-tools button,.chat-peek-tools a{font-family:var(--display);font-size:13px;font-weight:600;color:var(--petrol-ink);background:var(--card);border:1px solid var(--rule-2);border-radius:7px;padding:5px 9px;cursor:pointer;text-decoration:none}
+.chat-answer-src{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:6px}
 .chat-reset{font-family:var(--display);font-size:13px;color:var(--petrol-ink);background:none;border:1px solid var(--rule-2);border-radius:8px;padding:6px 10px;cursor:pointer}
 .chat-log{min-height:220px;max-height:min(62vh,560px);overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
 .chat-msg{max-width:88%;padding:10px 13px;border-radius:14px;font-size:15px;line-height:1.45;overflow-wrap:anywhere}
@@ -829,17 +836,6 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 .chat-send{font-family:var(--display);font-size:15px;font-weight:600;color:#fff;background:var(--petrol);border:none;border-radius:10px;padding:0 16px;height:42px;cursor:pointer}
 :root[data-theme="dark"] .chat-send{color:var(--paper)}
 .chat-send[disabled]{opacity:.55;cursor:default}
-.chat-photo{font-size:19px;height:42px;width:42px;border:1px solid var(--rule-2);border-radius:10px;background:var(--card);cursor:pointer}
-.chat-attach{display:flex;align-items:center;gap:8px;padding:0 12px 10px;font-family:var(--mono);font-size:12px;color:var(--ink-3);background:var(--paper)}
-.chat-attach img{height:42px;border-radius:6px}
-.chat-attach button{font:inherit;background:none;border:1px solid var(--rule-2);border-radius:6px;padding:3px 8px;cursor:pointer;color:var(--ink-2)}
-.chat-settings{border-top:1px solid var(--rule);padding:10px 14px 4px;font-size:14.5px}
-.chat-settings summary{font-family:var(--display);font-size:14px;font-weight:600;color:var(--petrol-ink);cursor:pointer;padding:4px 0}
-.chat-key{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
-.chat-key label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);width:100%}
-.chat-key input{flex:1;min-width:180px;font-family:var(--mono);font-size:14px;padding:8px 10px;border:1px solid var(--rule-2);border-radius:8px;background:var(--card);color:var(--ink)}
-.chat-key .hub-button{cursor:pointer}
-.chat-key-status{font-family:var(--mono);font-size:12px;color:var(--ink-3);min-height:1em}
 @media (max-width:820px){.chat-msg{max-width:94%}.chat-log{max-height:58vh}}
 @media print{.chat{display:none}}
 /* ---------- floating tools stay out of the way of what you're reading ----------
@@ -1281,39 +1277,17 @@ tr.in-kit td{background:var(--pass-soft)}
     <p class="hub-lead">Tell the fault finder what's happening, in your own words — "sub's silent on the d&amp;b", "crackle from one speaker", "amp not showing in R1". It asks the next question, points you at the check, and when you're done writes the message to send your lead.</p>
     <div class="chat" id="faultChat">
       <div class="chat-bar">
-        <div class="chat-modes" role="radiogroup" aria-label="Fault finder mode">
-          <button type="button" class="chat-mode on" data-mode="guided" role="radio" aria-checked="true">Guided <span>works offline</span></button>
-          <button type="button" class="chat-mode" data-mode="ai" role="radio" aria-checked="false">AI assistant <span>needs signal + key</span></button>
-        </div>
+        <p class="chat-title">Works offline · nothing leaves your phone</p>
         <button type="button" class="chat-reset" id="chatReset">Start over</button>
       </div>
       <div class="chat-log" id="chatLog" role="log" aria-live="polite" aria-label="Fault finder conversation"></div>
       <div class="chat-chips" id="chatChips"></div>
       <form class="chat-form" id="chatForm" autocomplete="off">
-        <button type="button" class="chat-photo" id="chatPhotoBtn" title="Attach a photo (AI assistant only)" aria-label="Attach a photo" hidden>&#128247;</button>
-        <input type="file" id="chatPhoto" accept="image/*" capture="environment" hidden>
         <label class="sr-only" for="chatInput">Describe the problem</label>
         <textarea id="chatInput" rows="1" placeholder="What's going on?"></textarea>
         <button type="submit" class="chat-send" id="chatSend">Send</button>
       </form>
-      <div class="chat-attach" id="chatAttach" hidden></div>
-      <details class="chat-settings" id="chatSettings">
-        <summary>AI assistant setup</summary>
-        <p>The guided mode is built into this page and never needs a connection. The <strong>AI assistant</strong> is optional: it sends your question, any photo you attach and the relevant handbook pages to Anthropic's Claude, using <em>your own</em> API key. Nothing else from this app — notes, job details, checklists — is ever sent.</p>
-        <ol class="seq">
-          <li>Create an API key at <strong>console.anthropic.com</strong> (Settings → API keys). It's pay-as-you-go — set a monthly spend limit there so it can never surprise you.</li>
-          <li>Paste it below. It's saved only in this browser on this device, and only ever sent to Anthropic.</li>
-          <li>Switch to <em>AI assistant</em> above. You need a signal; with none, it falls back to the guided mode.</li>
-        </ol>
-        <div class="chat-key">
-          <label for="chatKey">Anthropic API key</label>
-          <input type="password" id="chatKey" placeholder="sk-ant-…" autocomplete="off" spellcheck="false">
-          <button type="button" class="hub-button" id="chatKeySave">Save key</button>
-          <button type="button" class="hub-button" id="chatKeyForget">Forget key</button>
-        </div>
-        <p class="chat-key-status" id="chatKeyStatus"></p>
-        <p class="hub-disclaimer">The assistant is a second opinion, not an authority. It can be wrong. Anything electrical, rigged or on someone else's system still goes to the person responsible — and safety always comes first (<a href="#support-now">Make it safe</a>).</p>
-      </details>
+      <p class="chat-foot">A second opinion, not an authority. Anything electrical, rigged or on someone else's system still goes to the person responsible — and safety always comes first (<a href="#support-now">Make it safe</a>).</p>
     </div>
   </section>
 
@@ -1851,7 +1825,7 @@ tr.in-kit td{background:var(--pass-soft)}
 <li><strong>Glossary</strong> — every piece of jargon, alphabetically at <a href="#s20-1">§20.1</a> or grouped by area at <a href="#s20-2">§20.2</a>. Each entry links straight back to where it's properly explained.</li>
 <li><strong>Pocket reference</strong> — a condensed, one-page cheat sheet of the numbers and steps you'll want mid-job, at <a href="#s19-13">§19.13</a>, with its own print button.</li>
 <li><strong>Print</strong> — the Print button lays it out for paper properly. A printed line-check sheet in your back pocket beats a phone in the rain.</li>
-<li><strong>Works with no signal</strong> — this whole book is one self-contained file with nothing pulled in from the internet (the one optional exception is the AI mode of the fault finder in Support, which only connects when you switch it on and give it your own key), so once it's saved to your phone, laptop or a USB stick it works exactly the same in a basement venue with no signal as it does at home. Keep a copy on your phone specifically — that's the one device you'll always have with you. To pin it like an app: open the file in your phone's browser, then <em>Share → Add to Home Screen</em> (iPhone/Safari) or the <em>⋮</em> menu → <em>Add to Home screen</em> (Android/Chrome).</li>
+<li><strong>Works with no signal</strong> — this whole book is one self-contained file with nothing pulled in from the internet, so once it's saved to your phone, laptop or a USB stick it works exactly the same in a basement venue with no signal as it does at home. Keep a copy on your phone specifically — that's the one device you'll always have with you. To pin it like an app: open the file in your phone's browser, then <em>Share → Add to Home Screen</em> (iPhone/Safari) or the <em>⋮</em> menu → <em>Add to Home screen</em> (Android/Chrome).</li>
 <li><strong>Back up your notes</strong> — the private notes, ticked checklists, progress and job workspace you build up are saved <em>only</em> in this browser. Now and then, open <em>Appearance</em> and use <strong>Export backup</strong> to save them to a file; <strong>Restore backup</strong> reads one back on a new phone or after clearing your browser. Nothing is ever sent anywhere.</li>
 </ul>
 </section>
@@ -2778,6 +2752,35 @@ EARS            the only part of the system that actually matters</div>
 <div class="note alt"><span class="lab">Also seen</span><p>You are far more likely to be asked about this by a venue's own health and safety officer doing due diligence than to encounter an actual problem. Being able to say "our transmit power and distances are well within manufacturer guidance" is the correct answer, not a shrug.</p></div>
 </section>
 
+<section class="s" id="s5-11"><h3><span class="n">5.11</span> Shure and Sennheiser systems — step by step</h3>
+<p>Most premium hire stock is Shure (Axient Digital, ULX-D, SLX-D) or Sennheiser (Digital 6000, EW-DX). The steps are the same shape on every system.</p>
+<ol class="seq">
+<li><strong>Antennas on, receivers powered,</strong> outputs into the desk or stage box. With several receivers, use an antenna distribution system and remote paddles, not a forest of whips.</li>
+<li><strong>Turn on everything that will be on during the show</strong> — LED walls, video, other radio — then scan.</li>
+<li><strong>Coordinate.</strong> Shure: <em>Wireless Workbench</em> (free) — scan, add your devices' frequencies from the inventory, Analyze, Calculate, then Assign and Deploy to the networked receivers. Sennheiser: <em>Wireless Systems Manager</em> or <em>Sennheiser Control Cockpit</em> do the same job. On a single small system, the receiver's own group scan is fine.</li>
+<li><strong>Stay inside your licence</strong> — Channel 38, Channel 70, or the frequencies on your site licence (§5.12).</li>
+<li><strong>Batteries in</strong> (fresh AAs or the system's rechargeable packs, e.g. Shure SB900-series), transmitter on.</li>
+<li><strong>Sync</strong> each transmitter to its receiver channel (IR sync — hold the pack's window to the receiver's sync window).</li>
+<li><strong>Set transmitter gain/sensitivity</strong> so the loudest talker or singer doesn't clip, then label the pack and receiver channel with the person's name.</li>
+<li><strong>Walk test</strong> every mic (§11.6) and keep backups: spare mics already coordinated and synced.</li>
+</ol>
+<div class="note alt"><span class="lab">Also seen</span><p>Sennheiser <strong>Spectera</strong> and other new "wideband" (WMAS) systems carry many mics and IEMs in one wide channel. They're coordinated differently — follow the system owner's setup rather than the steps above.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Shure Wireless Workbench quick start and ULX-D user guide (v6.8, 2026); Sennheiser product documentation. Menu names vary by model and firmware.</p></div>
+</section>
+
+<section class="s" id="s5-12"><h3><span class="n">5.12</span> UK licences in practice — what to buy and when</h3>
+<div class="tw"><table>
+<thead><tr><th>Route</th><th>Frequencies</th><th>Cost (Nov 2026)</th><th>Use it for</th></tr></thead>
+<tbody>
+<tr><td>Licence-exempt</td><td>UHF Channel 70: 863.1–864.9 MHz · VHF 173.7–175.1 MHz · 2.4 GHz below 10 mW</td><td>Free</td><td>A handful of low-power mics; crowded, so expect to share</td></tr>
+<tr><td>UK Wireless Microphone Licence (shared)</td><td>UHF Channel 38: 606.5–613.5 MHz (about 10–12 mics) · or 15 VHF spot frequencies</td><td>£75 a year or £135 for two years bought on Ofcom's website (£85 / £155 otherwise)</td><td>Everyday hire stock. Shared and unprotected — still scan</td></tr>
+<tr><td>Coordinated (standard) licence</td><td>Ofcom assigns frequencies for a site and date</td><td>Varies with how many and how long</td><td>Bigger shows, more channels, protected frequencies. Apply well in advance</td></tr>
+</tbody></table></div>
+<p>Whoever owns the radio kit usually holds the licence — the hire company or the production. Your job is to know <strong>which licence the job is using</strong> and keep every transmitter (mics <em>and</em> IEMs) inside it. Using frequencies you aren't licensed for is a criminal offence under the Wireless Telegraphy Act 2006, and on mobile-network frequencies it interferes with phones.</p>
+<div class="note warn"><span class="lab">Watch it</span><p>Cheap imported radio mics often transmit on frequencies that are illegal in the UK. If a client or band brings their own, check the frequency range before it goes on.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Ofcom, PMSE licence information (fees and frequencies, checked Nov 2026); Ofcom PMSE sector review call for input (2026). Ofcom fees and bands change — check ofcom.org.uk before buying.</p></div>
+</section>
+
 </div></div>
 
 <div class="part" id="p6">
@@ -3161,6 +3164,29 @@ EARS            the only part of the system that actually matters</div>
 <div class="note deep"><span class="lab">Go deeper</span><p>Each product page on dbaudio.com has the manual and datasheet, and the amp firmware release notes carry the full list of setups each amp supports. When this table and a current d&amp;b document disagree, the d&amp;b document wins — and tell whoever looks after this pack.</p></div>
 </section>
 
+<section class="s" id="s6-21"><h3><span class="n">6.21</span> L-Acoustics — the same ideas, different names</h3>
+<p>If you know d&amp;b, you already understand L-Acoustics: amps with built-in processing, loudspeaker-specific settings, prediction software and a remote-control app. The names change.</p>
+<div class="tw"><table>
+<thead><tr><th>Job</th><th>d&amp;b</th><th>L-Acoustics</th></tr></thead>
+<tbody>
+<tr><td>Amps with processing</td><td>D20, D40, D80, D90</td><td>Amplified controllers: LA4X, LA12X, LA7.16, LA2Xi</td></tr>
+<tr><td>Speaker-specific settings</td><td>Setup (per channel)</td><td>Preset — loaded from the amp's preset library</td></tr>
+<tr><td>Remote control &amp; monitoring</td><td>R1</td><td>LA Network Manager</td></tr>
+<tr><td>Prediction</td><td>ArrayCalc</td><td>Soundvision</td></tr>
+<tr><td>Network audio</td><td>Milan (D40/D90), Dante via card on some</td><td>Milan / AVB on current controllers, plus AES and analogue</td></tr>
+<tr><td>Speaker cable</td><td>NL4 / NL8</td><td>NL4 / NL8 (check the pin use for each enclosure)</td></tr>
+</tbody></table></div>
+<h4>Reading a preset name</h4>
+<ul>
+<li>The plain name (e.g. <em>KARA II 90</em>) is the main FOH preset — the number is the horizontal coverage set by the box's adjustable fins.</li>
+<li><strong>_FI</strong> — the box used as a fill (with a high-pass filter).</li>
+<li><strong>_MO</strong> — the box used as a stage monitor (low latency).</li>
+<li>Other suffixes adapt a box to sit with a particular main system — use what the Soundvision file specifies.</li>
+</ul>
+<div class="note warn"><span class="lab">Watch it</span><p>As on d&amp;b: <strong>never change a preset, fin setting or controller group on someone else's system</strong> to "see if it helps", and match each box to the preset the design specifies. A wrong preset can sound fine at low level and damage drivers at show level.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>L-Acoustics amplified controller manuals and preset library guides; LA Network Manager product pages. Model names and preset lists change with firmware — the preset guide for the controller's firmware is the reference.</p></div>
+</section>
+
 
 </div></div>
 
@@ -3274,6 +3300,79 @@ EARS            the only part of the system that actually matters</div>
 <tr><td>One side of the PA missing</td><td>Pan, output patch, or a cable — check the meters to see whether it's the desk or downstream</td></tr>
 </tbody></table></div>
 <div class="note std"><span class="lab">Standard</span><p>Work the chain in order and check the meters at each stage — that tells you instantly whether the problem is upstream or downstream of where you're looking. See <a href="#p12">Part 12</a>.</p></div>
+</section>
+
+<section class="s" id="s7-8"><h3><span class="n">7.8</span> Yamaha DM7 — the desk, the layout, the words</h3>
+<p>The <strong>DM7</strong> is Yamaha's current mid-size touring and install console, and the one you're most likely to meet on premium hire jobs alongside CL/QL and RIVAGE. If you've used a CL or QL, most of it will feel familiar; it's faster, has more touch screens, and runs at 96 kHz.</p>
+<div class="tw"><table>
+<thead><tr><th></th><th>DM7</th><th>DM7 Compact</th></tr></thead>
+<tbody>
+<tr><td>Input channels</td><td>120</td><td>72</td></tr>
+<tr><td>Mixes</td><td>48 mix + 12 matrix + 2 stereo</td><td>Same bus structure, fewer inputs</td></tr>
+<tr><td>Local I/O</td><td>32 mic/line in, 16 out</td><td>16 in, 16 out</td></tr>
+<tr><td>Dante</td><td colspan="2">Built in, 144 in / 144 out, primary + secondary ports, up to 96 kHz</td></tr>
+<tr><td>Surface</td><td>Two bays, 28 motorised touch-sensitive faders, two 12.1" touch screens + one 7"</td><td>One bay, one 12.1" screen + one 7"</td></tr>
+<tr><td>Expansion</td><td colspan="2">One PY card slot (Dante with sample-rate conversion, MADI, Waves SoundGrid, AES/EBU and more); optional CTL-DM7 extra control surface</td></tr>
+<tr><td>Scenes</td><td colspan="2">500, with Recall Safe, Focus Recall and selective load/save</td></tr>
+<tr><td>Power</td><td colspan="2">Internal dual (redundant) power supplies on the DM7</td></tr>
+</tbody></table></div>
+<h4>The words you'll hear on a DM7</h4>
+<dl class="glossary">
+<div><dt>Rio / Tio stage boxes</dt><dd>Yamaha's Dante stage boxes. The DM7 works with first- and second-generation R-series Rio boxes and controls their preamps (<em>HA remote</em>) over Dante. Other Dante devices can be "mounted" so their inputs show up for patching.</dd></div>
+<div><dt>HA</dt><dd>Head amp — the preamp gain. On a Rio it's the stage box's gain, controlled from the desk.</dd></div>
+<div><dt>Selected channel</dt><dd>Press a channel's SEL key and its whole strip opens on the screen above that bay. On the full DM7 each bay can have its own selected channel (unlink the SEL keys in Setup → User Setup → Surface) — most engineers prefer that.</dd></div>
+<div><dt>Sends on Fader (SoF)</dt><dd>Flips the faders to show every channel's send to one mix — the quickest way to build a monitor mix.</dd></div>
+<div><dt>User Defined Keys (UDK)</dt><dd>Four banks of twelve touch keys on the 7" screen, set up for whatever the engineer wants one press away: talkback, mute groups, a mix, a scene.</dd></div>
+<div><dt>Recall Safe / Focus Recall</dt><dd>Recall Safe protects chosen channels or parameters from <em>every</em> scene recall. Focus Recall sets, per scene, what that scene is allowed to change. Both explain most "a scene changed my channel" surprises.</dd></div>
+<div><dt>Assist</dt><dd>Built-in helpers that suggest head-amp gains, channel names and a starting fader balance from what they hear. A starting point — the engineer still decides.</dd></div>
+<div><dt>Split mode</dt><dd>Splits the full DM7 into two independent consoles (for example FOH and monitors, or two rooms) in one frame.</dd></div>
+<div><dt>Dugan automixer</dt><dd>Built-in automatic mixing for speech mics — invaluable on panels and conferences (§10.11).</dd></div>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p>On a shared Dante network a DM7 can see and control other people's Rio preamps. <strong>Never change HA gain, phantom or patching on a stage box you don't own</strong> — on a shared FOH/monitor system, one person's gain change moves everyone's levels. Ask who owns the preamps before the job.</p></div>
+<div class="note std"><span class="lab">Standard</span><p>Keep the console on current firmware (Yamaha publishes updates and release notes on its DM7 support pages), and check the show file was made on the same or older firmware before you load it. Learn it for free on the <strong>DM7 Editor</strong> (§8.1) and Yamaha's DM7 training videos.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Yamaha DM7 specifications and DM7 Series training videos (Yamaha); FOH magazine DM7 road test (2025); TPi and Light Sound Journal DM7 features. Firmware-dependent details (menu names, feature lists) change between versions — check the manual for the version on the desk.</p></div>
+</section>
+
+<section class="s" id="s7-9"><h3><span class="n">7.9</span> DM7 — setting up a show, start to finish</h3>
+<p>The order below works whether you're building a show from scratch or loading an engineer's file. If the engineer is bringing their own file, your job is steps 1–4 and 9–11; theirs is the mix.</p>
+<ol class="seq">
+<li><strong>Power and network first.</strong> Desk and stage boxes powered; Dante primary cables connected (secondary only to a separate secondary network, never to the primary switch — §8.9).</li>
+<li><strong>Save what's on the desk before you touch anything.</strong> Store the current show file to USB with the date and job in its name.</li>
+<li><strong>Load or initialise.</strong> Load the show file for this job (check firmware compatibility), or start from the initial data if you're building from scratch.</li>
+<li><strong>Check Dante.</strong> In the Dante setup screen, confirm the desk sees every Rio or Dante device it should, the sample rate matches (48 or 96 kHz everywhere), and the clock leader is the one the design expects.</li>
+<li><strong>Patch inputs.</strong> Input patch from the Rio (or local) inputs to channels, following the patch list. Name and colour each channel as you go.</li>
+<li><strong>Patch outputs.</strong> Mixes, matrices and stereo to the right Dante or local outputs — PA feeds, sub feed, fills, monitors, recording, broadcast.</li>
+<li><strong>Set up mixes.</strong> Monitor mixes pre-fade; effects sends post-fade (§7.1). Use Sends on Fader to build them quickly.</li>
+<li><strong>Protect what must not change.</strong> Recall Safe on anything a scene must never touch (talkback, PA feeds, broadcast feed); Focus Recall on scenes that should only change some things.</li>
+<li><strong>Line check</strong> every input (§11.3) and send tone or pink noise to every output at low level to prove the patch.</li>
+<li><strong>Store a scene</strong> once the line check is clean, and save the show file to USB again.</li>
+<li><strong>Write down</strong> anything that differs from the plan, for the engineer and for the derig.</li>
+</ol>
+<div class="tw"><table>
+<thead><tr><th>DM7 symptom</th><th>Check first</th></tr></thead>
+<tbody>
+<tr><td>Channel meters move, nothing out</td><td>Channel on and assigned to the mix/stereo bus · DCA or mute group · output patch · output muted or in a mute group</td></tr>
+<tr><td>No input at all from a Rio</td><td>Dante device present and synced · sample rate matches · input patch · HA gain and phantom (if it's yours to set)</td></tr>
+<tr><td>"Scene changed my channel"</td><td>Recall Safe and Focus Recall for that channel and scene</td></tr>
+<tr><td>Can't edit two channels at once on the two screens</td><td>SEL keys are linked — unlink in User Setup → Surface</td></tr>
+<tr><td>Dante errors or clicks</td><td>Two clock leaders, mismatched sample rate, or EEE/Green Ethernet on a switch (§12.14)</td></tr>
+<tr><td>Recording only gets 18 channels</td><td>USB is 18×18 — use Dante Virtual Soundcard for multitrack (up to 64 channels at 48 kHz)</td></tr>
+</tbody></table></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Yamaha DM7 user guide and training videos (Dante setup, preferences, recording); engineer reports from first use of the DM7. Always follow the job's own patch list and the engineer's instructions over a generic order.</p></div>
+</section>
+
+<section class="s" id="s7-10"><h3><span class="n">7.10</span> Other premium desks — what's different about each</h3>
+<p>The channel strip (§7.1) is the same everywhere; what changes is the words, where things live, and how scenes work. Learn each one on its free offline editor before the job.</p>
+<div class="tw"><table>
+<thead><tr><th>Family</th><th>You'll meet</th><th>The words</th><th>Watch for</th></tr></thead>
+<tbody>
+<tr><td>Yamaha</td><td>DM7, CL/QL, RIVAGE PM</td><td>Scene, Recall Safe, Focus, Rio, HA, Selected Channel</td><td>Shared Rio preamps between FOH and monitors (gain compensation on CL/RIVAGE)</td></tr>
+<tr><td>DiGiCo</td><td>SD9/10/12, Quantum 225/338/7</td><td>Session, snapshot, recall scope, macros, engine</td><td>Snapshot recall scope — a snapshot only changes what's in its scope; check the session was made on a compatible software version</td></tr>
+<tr><td>Allen &amp; Heath</td><td>dLive, Avantis, SQ</td><td>Show, scene, recall filter, safes, MixRack, I/O port</td><td>dLive's processing is in the MixRack, not the surface; scene recall filters and global safes</td></tr>
+<tr><td>Midas / Behringer</td><td>HD96, PRO series, M32/X32, Wing</td><td>Show, scene, safes, AES50 / stage box</td><td>AES50 links are point-to-point — a stage box goes into a specific port</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>On any desk you don't know: save the show file first, find the solo-clear and the main mute, find where scenes live and what protects channels from them, and ask the engineer before changing anything you didn't build.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Manufacturer offline editors and user guides (Yamaha, DiGiCo, Allen &amp; Heath, Midas). Model ranges change — check what's actually in the hire stock.</p></div>
 </section>
 
 </div></div>
@@ -3396,6 +3495,51 @@ EARS            the only part of the system that actually matters</div>
 <dt>AutoCAD</dt><dd>The general-purpose CAD standard, more common on the venue-architecture and permanent-install side (<a href="#s10-6">§10.6</a>) than on touring production drawings.</dd>
 <dt>What's actually yours to do early on</dt><dd>Reading a drawing accurately — knowing your position on the stage plan, checking a rigging plot against what's actually flown, spotting when the drawing and the room disagree — matters far more day to day than producing one. Producing them is a specialism worth picking up later if system design or production management (<a href="#s17-1">§17.1</a>, <a href="#s21-7">§21.7</a>) is a direction that appeals.</dd>
 </div>
+</section>
+
+<section class="s" id="s8-9"><h3><span class="n">8.9</span> Dante Controller — step by step</h3>
+<ol class="seq">
+<li><strong>Join the right network.</strong> Laptop on the audio network by cable, Wi-Fi off. Open Dante Controller and choose the network interface you're plugged into.</li>
+<li><strong>Check every device appears</strong> in the Routing view. A missing device is a cable, switch port, wrong network or IP problem (§12.14).</li>
+<li><strong>Clock.</strong> In Clock Status, exactly one device is Leader and the rest Follower. It should be the device the design names (often the desk). Set "Preferred Leader" on that one device only.</li>
+<li><strong>Sample rate</strong> matches on every device (Device Info). A device on the wrong rate shows but won't pass audio to the others.</li>
+<li><strong>Route.</strong> Transmitters along the top, receivers down the side: expand both, click where a transmit channel meets a receive channel. A green tick means subscribed and working.</li>
+<li><strong>Name things.</strong> Rename devices and channels to what they are (FOH-DM7, Rio-SR) — renaming a device breaks its existing subscriptions, so do it before routing.</li>
+<li><strong>Check for warnings</strong> — red or amber symbols, errors in the Network view, latency warnings.</li>
+<li><strong>Save a preset</strong> of the routing (File → Save Preset) with the job name, so it can be reloaded in seconds.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Redundancy:</strong> primary ports go to the primary switch; secondary ports go to a completely separate secondary switch, never linked to the primary. No secondary network? Leave secondary ports empty. Linking the two can take the whole system down.</p></div>
+<div class="note std"><span class="lab">Standard</span><p>Switch rules for Dante: gigabit managed switches, <strong>EEE / Green Ethernet off</strong>, QoS set for Dante (clock highest), and no other traffic you don't control. Audinate's free Level 1–3 certification covers all of this properly (§18.3).</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Audinate Dante Controller user guide and Dante certification material; Yamaha DM7 Dante setup training. Menu names vary slightly between Dante Controller versions.</p></div>
+</section>
+
+<section class="s" id="s8-10"><h3><span class="n">8.10</span> Milan and AVB — how it differs from Dante</h3>
+<p><strong>Milan</strong> is network audio built on AVB, an IEEE standard where the <em>switches themselves</em> keep time and reserve bandwidth for each audio stream. d&amp;b (D40 and D90 amps), L-Acoustics and Meyer Sound support it, so you'll meet it on premium PA systems.</p>
+<div class="tw"><table>
+<thead><tr><th></th><th>Dante</th><th>Milan / AVB</th></tr></thead>
+<tbody>
+<tr><td>Switches</td><td>Ordinary managed switches, set up correctly (QoS, EEE off)</td><td>Must be AVB/Milan-capable (ideally Avnu-certified) — an ordinary switch won't pass it</td></tr>
+<tr><td>Switch setup</td><td>QoS, IGMP, VLANs matter</td><td>No QoS or IGMP setup — the switches reserve bandwidth automatically</td></tr>
+<tr><td>Clock</td><td>One Dante leader on the network</td><td>gPTP timing run by the switches; all devices exchanging audio share one media clock domain</td></tr>
+<tr><td>Redundancy</td><td>Primary and secondary networks</td><td>Two physically separate networks (separate VLANs on one switch don't count)</td></tr>
+<tr><td>Software</td><td>Dante Controller</td><td>A Milan controller (e.g. Hive, or d&amp;b's Milan Manager) and R1</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>Don't mix a Milan network and a Dante network on the same switches unless the system design says so. If the PA is Milan and the desk is Dante, there will be a defined bridge (a converter or a device that speaks both) — find out where it is during the advance.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>d&amp;b audiotechnik TI 370 (Milan) and Milan Manager announcement (2025); AVB Academy user guides; L-Acoustics AVB paper (2023).</p></div>
+</section>
+
+<section class="s" id="s8-11"><h3><span class="n">8.11</span> Open Sound Meter — measure a system for free</h3>
+<p><strong>Open Sound Meter</strong> is free, cross-platform measurement software built to be simple for younger engineers. It does the same core job as Smaart: comparing what goes into the system with what a measurement mic hears.</p>
+<ol class="seq">
+<li><strong>Kit:</strong> laptop, an audio interface with at least two inputs, a measurement mic (omni, needs phantom), a mic stand.</li>
+<li><strong>Two inputs:</strong> input 1 is the <em>measurement</em> (the mic); input 2 is the <em>reference</em> — the pink noise you're sending, looped straight back into the interface.</li>
+<li><strong>Send pink noise</strong> to the system at a sensible level (warn people first).</li>
+<li><strong>Find the delay.</strong> Use the delay finder to line up the reference with the mic — it estimates the time it takes sound to reach the mic.</li>
+<li><strong>Read the transfer function:</strong> magnitude (the tonal balance), phase, and coherence (how trustworthy the reading is — low coherence means reflections or noise).</li>
+<li><strong>Store a trace</strong> before you change anything, so you can compare.</li>
+</ol>
+<div class="note std"><span class="lab">Standard</span><p>Measuring is a great way to learn; <strong>changing</strong> a system's EQ or delays is the system tech's call. Use it to understand and to show them what you found.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Open Sound Meter manual (v1.1) and release notes; Open Sound Meter fundamentals tutorials.</p></div>
 </section>
 
 </div></div>
@@ -3682,6 +3826,22 @@ EARS            the only part of the system that actually matters</div>
 <dt>Noise &amp; curfew conditions</dt><dd>Frequently governed by a licence with noise monitored at specific off-site points, not just an on-site SPL target — see the Safety Advisory Group and noise-condition material in <a href="#s6-10">§6.10</a>. A festival curfew is very often a hard legal deadline, not a guideline.</dd>
 </div>
 <div class="note std"><span class="lab">Standard</span><p>On your first festival, spend the first hour learning the site as much as the stage: where your stage sits relative to others, where the generator and fuel point are, where the nearest production office and medical point are, and who your stage manager and production manager actually are. You'll need all of it before the day is out.</p></div>
+</section>
+
+<section class="s" id="s10-11"><h3><span class="n">10.11</span> Corporate &amp; conference audio — step by step</h3>
+<p>Corporate audio is judged on one thing: <strong>every word heard, first time, with no squeal.</strong> Clients rarely notice good sound; they always notice bad.</p>
+<ol class="seq">
+<li><strong>Advance the running order:</strong> who speaks, when, with which mic (lectern, handheld, headset, lavalier), any videos with sound, any remote presenters.</li>
+<li><strong>One channel per person</strong> where you can, labelled with their name; spares already on and synced.</li>
+<li><strong>Ring out</strong> every mic at its real position with the room PA before the audience arrives (§15.8 — same method as a wedge).</li>
+<li><strong>Automixer for panels.</strong> On a desk with one (the DM7's Dugan, for example), put the panel mics in it: it keeps the overall gain steady however many people talk, and cuts the room noise from open mics.</li>
+<li><strong>Playback and video</strong> through a DI or proper interface; check the levels match the speech.</li>
+<li><strong>Hybrid:</strong> build a mix-minus for the remote call — everything except the call's own return — and test both directions with a real call (§10.8).</li>
+<li><strong>Before each speaker:</strong> radio pack on, muted until they walk on, battery fresh, a quick word check if there's time.</li>
+<li><strong>Keep it comfortable</strong> — speech clear, not loud. Watch the presenter, not the screen.</li>
+</ol>
+<div class="note alt"><span class="lab">Also seen</span><p>Lavalier mics clip to the sternum (about a hand's width below the chin), on the side the presenter turns towards; headsets for anyone who moves a lot or speaks quietly; handhelds for Q&amp;A, with a runner.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Handbook §10.2, §10.8 and §19.18; Yamaha DM7 Dugan automixer documentation.</p></div>
 </section>
 
 </div></div>
@@ -4193,6 +4353,33 @@ EARS            the only part of the system that actually matters</div>
 <dt>Rest breaks</dt><dd>A 20-minute uninterrupted break if you work more than 6 hours in a day. In practice this usually means "eat something properly," not a formal announced break — but it's a legal entitlement, not a favour.</dd>
 </div>
 <div class="note alt"><span class="lab">Also seen</span><p>None of this is about refusing a long day — the industry runs on them, and <a href="#s13-9">§13.9</a>'s advice on managing that stands. This section exists so you know the actual floor underneath the culture, not to suggest you should be citing regulations on a get-in.</p></div>
+</section>
+
+<section class="s" id="s13-16"><h3><span class="n">13.16</span> Martyn's Law and event security</h3>
+<p>The <strong>Terrorism (Protection of Premises) Act 2025</strong>, known as Martyn's Law, makes venues and events prepare for a terrorist attack. It's expected to come into force in <strong>spring 2027</strong>, regulated by the Security Industry Authority (SIA).</p>
+<ul>
+<li><strong>Standard tier</strong> — premises or events expecting 200–799 people at once: they must notify the SIA and have public protection <em>procedures</em> (evacuation, invacuation, lockdown, communication), so far as reasonably practicable.</li>
+<li><strong>Enhanced tier</strong> — 800 or more: they must also put protective <em>measures</em> in place, document them and name a senior responsible person.</li>
+</ul>
+<p>It's the venue or organiser's duty, not yours — but you'll be part of it:</p>
+<ul>
+<li>Expect security briefings in inductions, and know the <strong>evacuation, invacuation and lockdown</strong> signals for that venue.</li>
+<li>Your PA and radio mics may be part of the communication plan — the show-stop or announcement mic must work, and you must know who can use it.</li>
+<li>Don't leave cases, bags or kit unattended in public areas; report anything suspicious to security, not on social media.</li>
+</ul>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>GOV.UK (Home Office / SIA), New tools to support preparation for Martyn's Law (Nov 2026); ProtectUK Martyn's Law overview; Home Office statutory guidance (2026). Commencement dates can move — check GOV.UK.</p></div>
+</section>
+
+<section class="s" id="s13-17"><h3><span class="n">13.17</span> Temporary power at events — BS 7909 in brief</h3>
+<p>Temporary power for events is designed, installed and certified under <strong>BS 7909</strong> (the current edition is BS 7909:2023+A1:2024), alongside the wiring regulations (BS 7671) and HSE guidance GS50. It's the power technician's or electrician's job — knowing the basics tells you what to expect and what not to touch.</p>
+<ul>
+<li>Every temporary system is <strong>inspected and tested before it's switched on</strong>, and certified. On a multi-day event it's re-inspected, and the certificate reissued.</li>
+<li>Socket circuits you plug into should have <strong>30 mA RCD protection</strong>.</li>
+<li>Generators create their own earth on site — that's why earth rods and bonding appear, and why you never disturb them.</li>
+<li>Cables are fully unwound (coiled cable heats up), protected where people walk, and not daisy-chained from extension to extension.</li>
+</ul>
+<div class="note warn"><span class="lab">Watch it</span><p>If the distro trips, <strong>tell the power tech</strong> — don't reset breakers on someone else's distribution, and never swap fuses or bypass an RCD. See §12.15.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>BS 7909:2023+A1:2024 (BSI); HSE GS50; event electrical safety guides (2026). Read the standard itself or ask the power tech for anything beyond these basics.</p></div>
 </section>
 
 </div></div>
@@ -7543,15 +7730,12 @@ if(quickfabBtn && quickfabMenu){
 })();
 
 /* ---------- fault finder chat (Support → Talk it through) ----------
-   Two modes behind one conversation window.
-   Guided: a set of symptom flows written into this page. It matches what the
+   A set of symptom flows written into this page. It matches what the
    person types against each flow's words, then asks one question at a time and
    points at the check and the section. No network, ever — it works in a
    basement with no signal, like the rest of the book.
-   AI assistant: optional, off until the person pastes their own Anthropic API
-   key. Their question, any photo they attach and the handbook sections that
-   match it go to Claude; nothing else from the app does. The key lives only in
-   this browser's localStorage. With no signal it falls back to Guided. */
+   An offline answer bank and the book's own search cover questions that
+   aren't faults. There is no online mode: nothing typed here leaves the phone. */
 (function(){
   var box = document.getElementById('faultChat');
   if(!box) return;
@@ -7561,20 +7745,11 @@ if(quickfabBtn && quickfabMenu){
   var input = document.getElementById('chatInput');
   var sendBtn = document.getElementById('chatSend');
   var resetBtn = document.getElementById('chatReset');
-  var photoBtn = document.getElementById('chatPhotoBtn');
-  var photoInput = document.getElementById('chatPhoto');
-  var attachBar = document.getElementById('chatAttach');
-  var settings = document.getElementById('chatSettings');
-  var keyInput = document.getElementById('chatKey');
-  var keySave = document.getElementById('chatKeySave');
-  var keyForget = document.getElementById('chatKeyForget');
-  var keyStatus = document.getElementById('chatKeyStatus');
-  var modeBtns = Array.prototype.slice.call(box.querySelectorAll('.chat-mode'));
 
-  var KEY_STORE = 'treebysound-anthropic-key';
-  var MODE_STORE = 'treebysound-chat-mode';
-  var MODEL = 'claude-opus-5-5';
-  var mode = storeGet(MODE_STORE) === 'ai' ? 'ai' : 'guided';
+  /* The online AI mode (and the API key it needed) has been removed. Clear
+     anything it left on this device so a backup never carries an old key. */
+  storeRemove('treebysound-anthropic-key');
+  storeRemove('treebysound-chat-mode');
 
   function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function plain(html){ var d = document.createElement('div'); d.innerHTML = html; return (d.textContent || '').replace(/\s+/g, ' ').trim(); }
@@ -7624,7 +7799,7 @@ if(quickfabBtn && quickfabMenu){
       sep:{q:'Then it\'s a single silent box. Does its amp channel show green (signal present)?', k:'Amp channel shows signal', opts:[['Yes','box:out'],['No','box:in']]},
       unsure:{q:'Look at the amp: the screen shows the output mode, and the label above the outputs says which socket feeds what. Then come back and pick again.', k:'Result', end:true, links:[['#s6-17','6.17 Output modes']]}
      }},
-    {id:'crackle', title:'Crackle or cutting out', words:['crackle','crackling','crackly','intermittent','cutting out','cuts out','cutting','drops out','dropping out','comes and goes','scratchy','popping','pops','on and off'],
+    {id:'crackle', title:'Crackle or cutting out', words:['crackle','crackling','crackly','crackle from','crackle on','crackling from','crackling on','intermittent','cutting out','cuts out','cutting','drops out','dropping out','comes and goes','scratchy','popping','pops','on and off'],
      ask:'Can you have a listen, or shall I carry on isolating it?',
      nodes:{
       start:{q:'Does it get worse when someone moves or touches the cable?', k:'Worse when cable moves', opts:[['Yes','lock'],['No','loud']]},
@@ -7746,7 +7921,7 @@ if(quickfabBtn && quickfabMenu){
       upstream:{q:'It\'s coming in with the signal. Work back towards the console: an open channel with too much gain, a noisy source or DI, a long unbalanced run, or a digital clock problem (clicks and whines). Gain structure is usually the answer to steady hiss.', k:'Result', end:true, links:[['#s2-5','2.5 Gain staging'],['#s12-14','12.14 Clocking']]},
       amp:{q:'Noise with the input muted is in the amp, the speaker cable or the box. Swap the speaker cable, then move the box to another channel. If it stays with one amp channel, report the amp with any screen message — don\'t open it.', k:'Result', end:true, links:[['#s6-19','6.19 d&amp;b faults']]}
      }},
-    {id:'hum', title:'Hum or buzz', words:['hum','humming','buzz','buzzing','ground loop','earth','mains hum'],
+    {id:'hum', title:'Hum or buzz', words:['hum','humming','buzz','buzzing','ground loop','earth','mains hum','hum from','buzz from','hum on','buzz on','hum when','laptop hum','hum laptop'],
      ask:'Can I try a ground lift on the DI, or do you want to look?',
      nodes:{
       start:{q:'Mute channels one at a time. Does the hum go away when one particular source is muted?', k:'Hum follows one source', opts:[['Yes, one source','one'],['No — it\'s on the PA itself','pa']]},
@@ -7758,6 +7933,45 @@ if(quickfabBtn && quickfabMenu){
      nodes:{
       start:{q:'Work it from the source towards the desk: mic switched on, phantom on if it\'s a condenser, cable swapped for a known-good one, then a different stage-box input. The fault follows whatever you\'ve just swapped.', k:'Result', end:true, links:[['#s12-9','12.9 Mic &amp; cable faults'],['#s12-10','12.10 DI faults']]}
      }},
+    {id:'desk', title:'Desk shows signal, nothing coming out', words:['desk','console','mixer','dm7','meter','meters','no output','nothing out','main','master','bus','mix','output patch','solo','pfl','headphones only','scene'],
+     entries:{solo:['headphones only','only in headphones','solo','pfl'], scene:['scene','recalled','changed']},
+     ask:'Can you check the desk with me, or tell me how it should be patched?',
+     nodes:{
+      start:{q:'Look at the meters. Is the <strong>channel</strong> meter moving, and does the <strong>main (stereo) meter</strong> move too?', k:'Desk meters', opts:[['Channel yes, main no','route'],['Both move, nothing in the room','outpatch'],['I only hear it in headphones','solo'],['It all changed suddenly','scene']]},
+      route:{q:'The channel isn\'t reaching the main mix. Check: channel <strong>on</strong> (not muted), fader up, the channel <strong>assigned to the stereo/main bus</strong>, its <strong>DCA</strong> up, and no <strong>mute group</strong> active. Found it?', k:'Channel to main', opts:[['Yes','fixedroute'],['All fine','outpatch']]},
+      fixedroute:{q:'Good. If a mute group or DCA caught you out, tell the engineer — it may be set that way for a reason (a scene for walk-in, say).', k:'Result', end:true, fixed:true, links:[['#s7-7','7.7 Console gotchas']]},
+      outpatch:{q:'The desk is mixing, so it\'s after the main bus. Check the <strong>output patch</strong> (main to the right local or Dante outputs), the <strong>output isn\'t muted</strong>, and then the far end: Dante route green (§8.9), amp input present, amps unmuted. Where does the signal stop?', k:'Output path', opts:[['At the desk output patch','fixpatch'],['On the network / Dante','dante:start'],['At the amps','box:start'],['Can\'t tell','splitter']]},
+      fixpatch:{q:'Patch the main (and sub/fill feeds) to the outputs the system expects — the patch list or the system tech will say which — and retest at low level.', k:'Result', end:true, links:[['#s7-9','7.9 DM7 show setup']]},
+      splitter:{q:'Send tone or pink noise from the desk\'s oscillator to the PA output at low level, then follow it: desk output meter, the Dante subscription, the amp\'s input indicator. The first place it disappears is the fault.', k:'Result', end:true, links:[['#s12-12','12.12 Console faults'],['#s12-1','12.1 The method']]},
+      solo:{q:'Something is soloed (PFL/AFL) — that only changes what you hear in the headphones. Find the <strong>clear solo</strong> key and press it, then listen again.', k:'Result', end:true, links:[['#s7-6','7.6 Talkback, tone and solo']]},
+      scene:{q:'A scene probably recalled. Don\'t recall another one to "fix" it — tell the engineer. Then check that scene\'s <strong>Recall Safe / Focus</strong> settings so it can\'t happen again.', k:'Result', end:true, links:[['#s7-8','7.8 Yamaha DM7'],['#s7-4','7.4 Show file discipline']]}
+     }},
+    {id:'iem', title:'In-ear monitors: no sound, noise or dropouts', words:['iem','iems','in ear','in-ears','in ears','ears','earpiece','monitor pack','bodypack','iem pack'],
+     ask:'Can the monitor engineer take a look at the IEM transmitter?',
+     nodes:{
+      start:{q:'What\'s the performer hearing?', k:'IEM symptom', opts:[['Nothing at all','none'],['Hiss, noise or dropouts','noise'],['Mix is wrong or too quiet','mix']]},
+      none:{q:'<ol><li>Pack switched on, volume up, earpieces plugged in fully.</li><li>Pack on the same frequency/channel as its transmitter (resync it).</li><li>Transmitter on, RF on (not muted), and getting audio from the desk — check its input meter.</li><li>Fresh batteries.</li></ol>Sound now?', k:'Basic checks', opts:[['Yes','fixediem'],['Still nothing','mix']]},
+      noise:{q:'Usually RF. Check the transmitter antenna (and its cable), line of sight to the stage, and whether a new device is near that frequency — rescan and move to a clean coordinated frequency. Batteries too.', k:'Result', end:true, links:[['#s5-7','5.7 IEMs'],['#s12-11','12.11 Wireless faults']]},
+      mix:{q:'Check the mix itself on the desk: the right channels sent to that IEM mix, sends pre-fade, mix master up, the mix patched to the right transmitter input. Then ask the performer what they want more of — one change at a time.', k:'Result', end:true, links:[['#s15-3','15.3 Building IEM mixes'],['#s15-6','15.6 Monitor world faults']]},
+      fixediem:{q:'Good. Label the pack and its transmitter with the performer\'s name so the pair stays together.', k:'Result', end:true, fixed:true}
+     }},
+    {id:'dm7', kind:'setup', title:'Set up a Yamaha DM7', words:['dm7','dm 7','dm7 compact','yamaha','yamaha desk','rio','scene','recall safe','focus recall','dante desk','show file'],
+     entries:{dante:['dante','rio','network','stage box','stagebox'], scenes:['scene','recall safe','focus','show file'], rec:['record','recording','multitrack','dvs']},
+     nodes:{
+      start:{q:'Which part of the DM7 setup are you on?', k:'DM7 stage', opts:[['The whole sequence','seq'],['Dante and Rio stage boxes','dante'],['Scenes and protecting settings','scenes'],['Recording','rec']]},
+      seq:{q:'<ol><li>Power and Dante cables (secondary only to a separate network).</li><li>Save the current show file to USB first.</li><li>Load the job\'s show file, or initialise.</li><li>Check Dante: every device seen, sample rate matches, right clock leader.</li><li>Patch inputs, name and colour channels.</li><li>Patch outputs: PA, subs, fills, monitors, recording.</li><li>Mixes: monitors pre-fade, effects post-fade.</li><li>Recall Safe what must never change.</li><li>Line check, send tone to every output.</li><li>Store a scene and save to USB again.</li></ol>', k:'Result', end:true, links:[['#s7-9','7.9 DM7 show setup'],['#s7-8','7.8 Yamaha DM7']]},
+      dante:{q:'In the DM7\'s Dante setup: every Rio or Dante device listed and synced, 48 or 96 kHz everywhere, one clock leader as designed. Rio gains and phantom are set from the desk (HA) — only touch them if the preamps are yours. Then patch Rio inputs to channels.', k:'Result', end:true, links:[['#s7-8','7.8 Yamaha DM7'],['#s8-9','8.9 Dante Controller']]},
+      scenes:{q:'Store a scene once the line check is clean. Put <strong>Recall Safe</strong> on anything no scene should change (talkback, PA feeds, broadcast feed), and use <strong>Focus Recall</strong> so each scene only changes what it should. Save the show file to USB with the date in its name.', k:'Result', end:true, links:[['#s7-8','7.8 Yamaha DM7'],['#s7-4','7.4 Show file discipline']]},
+      rec:{q:'USB gives 18 channels in and out — fine for a stereo or small recording. For a full multitrack, record over Dante with Dante Virtual Soundcard (up to 64 channels at 48 kHz), and record pre-fader. Check drive space first.', k:'Result', end:true, links:[['#s7-9','7.9 DM7 show setup'],['#s14-7','14.7 Multitrack recording']]}
+     }},
+    {id:'presenter', kind:'setup', title:'Check presenter mics before a corporate event', words:['presenter','presenters','speaker mic','lectern','lavalier','lav','lapel','headset','conference','corporate','panel','speech','speeches','awards'],
+     nodes:{
+      start:{q:'Which are you checking?', k:'Presenter setup', opts:[['The whole check','seq'],['Lectern mic','lectern'],['Radio lavalier or headset','lav'],['A panel of speakers','panel']]},
+      seq:{q:'<ol><li>Running order: who, when, which mic.</li><li>One labelled channel per person; spares synced and on.</li><li>Ring out every mic at its real position with the room PA.</li><li>Playback and video levels matched to speech.</li><li>Hybrid: mix-minus to the call, tested both ways.</li><li>Before each speaker: fresh battery, muted until they walk on.</li></ol>', k:'Result', end:true, links:[['#s10-11','10.11 Corporate audio, step by step'],['#s19-18','19.18 Corporate AV checklist']]},
+      lectern:{q:'Gooseneck aimed at the mouth from 20–40 cm, high-pass on, rung out with the PA at show level. Ask the presenter to stay at the lectern, or give them a radio mic too.', k:'Result', end:true, links:[['#s4-4','4.4 The stock'],['#s15-8','15.8 Ringing out']]},
+      lav:{q:'Lavalier on the sternum (about a hand\'s width below the chin), on the side they turn to; cable taped so it can\'t rustle. Headset for movers and quiet talkers. Fresh battery, gain set so they don\'t clip, pack labelled, muted until they\'re on.', k:'Result', end:true, links:[['#s10-11','10.11 Corporate audio, step by step'],['#s5-11','5.11 Shure and Sennheiser systems']]},
+      panel:{q:'One mic per panellist, all into the desk\'s automixer if it has one (the Dugan on a DM7) so open mics don\'t add up to feedback and room noise. Ring them out with all of them open.', k:'Result', end:true, links:[['#s10-11','10.11 Corporate audio, step by step'],['#s7-8','7.8 Yamaha DM7']]}
+     }},
     {id:'feedback', title:'Feedback', words:['feedback','howl','howling','squeal','ringing','screech'],
      ask:'Can you take over the ring-out?',
      nodes:{
@@ -7768,7 +7982,7 @@ if(quickfabBtn && quickfabMenu){
      nodes:{
       start:{q:'Check the transmitter battery first, then the receiver\'s RF meters while someone walks the space. Antennas connected, line of sight, nothing new nearby transmitting. Then frequencies.', k:'Result', end:true, links:[['#s12-11','12.11 Wireless &amp; RF faults']]}
      }},
-    {id:'dante', title:'Dante or network audio problems', words:['dante','aes67','milan','avb','clock','clocking','subscription','glitch','glitching','clicks','dropouts on network'],
+    {id:'dante', title:'Dante or network audio problems', words:['dante','dante drop','dante click','network drop','network click','dante dropout','dante dropouts','aes67','milan','avb','clock','clocking','subscription','glitch','glitching','clicks','dropouts on network'],
      ask:'Can you check the network with me?',
      nodes:{
       start:{q:'One clock leader, subscriptions all green, switches you trust, and nothing else sharing the network. Remember d&amp;b D40/D90 use Milan, which Dante Controller won\'t show.', k:'Result', end:true, links:[['#s12-14','12.14 Network faults'],['#s8-2','8.2 Networks']]}
@@ -7781,11 +7995,11 @@ if(quickfabBtn && quickfabMenu){
   ];
   var FLOW_BY_ID = {};
   FLOWS.forEach(function(f){ FLOW_BY_ID[f.id] = f; });
-  var FIX_STARTERS = ['box','sub','crackle','limit','r1','all','hum','mic','feedback','rf','dante','power'];
+  var FIX_STARTERS = ['box','sub','crackle','limit','r1','all','desk','hum','mic','feedback','rf','iem','dante','power'];
   var ADV_STARTERS = ['array','cardioid','phasey','digital','loading','noise'];
-  var SETUP_STARTERS = ['setup','setupother','nl4'];
+  var SETUP_STARTERS = ['setup','dm7','presenter','nl4','setupother'];
   var INFO_HINTS = ['What amp does a V8 need?','Can a D20 run KSL?','D40 vs D80','What is Mix TOP/SUB?','What does GR mean?','NL4 vs NLT4'];
-  var INFO_INTENT = /^(what|whats|what's|which|who|why|when|where|explain|define|definition|meaning|tell me|difference|is there|does|do i need|can i|should i)\b|\b(mean|means|stand for|stands for|difference between|vs|versus)\b|\?$/i;
+  var INFO_INTENT = /^(what|whats|what's|which|who|why|when|where|explain|define|definition|meaning|tell me|difference|is there|is it|are|does|do i need|can i|should i|how much|how many|how long|how loud)\b|\b(mean|means|stand for|stands for|difference between|vs|versus|cost|price|fee|legal)\b|\?$/i;
   var SETUP_INTENT = /\b(set ?up|setting up|configure|configuring|install|connect(ing)?|how (do|to|should) i|how to|walk me through|step by step|get .* working|patch)\b/i;
   var DANGER = /\b(smoke|smoking|burning|burnt smell|fire|flames?|sparks?|sparking|shock(ed)?|electrocut\w*|injur\w*|hurt|bleeding|falling|fell|collapsed?|swaying)\b/i;
 
@@ -7830,6 +8044,56 @@ if(quickfabBtn && quickfabMenu){
       chips.appendChild(b);
     });
   }
+
+
+  /* ---- peek: read a section without leaving the conversation ----
+     A link to a book section from inside the chat opens that section here,
+     in the conversation, instead of switching screens — he reads it and
+     carries on where he was. "Open in the library" still goes to the page. */
+  var SECTION_LINK = /^#s\d+-\d+$/;
+  function peek(id){
+    var sec = document.getElementById(id);
+    if(!sec) return false;
+    var clone = sec.cloneNode(true);
+    Array.prototype.forEach.call(clone.querySelectorAll('.notefield, script, .next-part'), function(n){ n.remove(); });
+    Array.prototype.forEach.call(clone.querySelectorAll('[id]'), function(n){ n.removeAttribute('id'); });
+    clone.removeAttribute('id');
+    Array.prototype.forEach.call(clone.querySelectorAll('input, select, textarea, button'), function(n){ n.disabled = true; });
+    var m = addMsg('bot', '', 'peek');
+    var body = document.createElement('div');
+    body.className = 'chat-peek-body';
+    while(clone.firstChild) body.appendChild(clone.firstChild);
+    m.appendChild(body);
+    var tools = document.createElement('div');
+    tools.className = 'chat-peek-tools';
+    var more = document.createElement('button');
+    more.type = 'button';
+    more.textContent = 'Show the whole section';
+    more.addEventListener('click', function(){
+      var open = body.classList.toggle('open');
+      more.textContent = open ? 'Show less' : 'Show the whole section';
+      if(!open) m.scrollIntoView({block:'nearest'});
+    });
+    var go = document.createElement('a');
+    go.href = '#' + id;
+    go.setAttribute('data-nopeek', '');
+    go.textContent = 'Open in the library →';
+    tools.appendChild(more); tools.appendChild(go);
+    m.appendChild(tools);
+    requestAnimationFrame(function(){
+      if(body.scrollHeight <= body.clientHeight + 4){ body.classList.add('open'); more.remove(); }
+      m.scrollIntoView({block:'start', behavior:'smooth'});
+    });
+    return true;
+  }
+  log.addEventListener('click', function(ev){
+    var a = ev.target.closest && ev.target.closest('a[href^="#"]');
+    if(!a || !log.contains(a) || a.hasAttribute('data-nopeek')) return;
+    var href = a.getAttribute('href');
+    if(!SECTION_LINK.test(href)) return;
+    if(ev.metaKey || ev.ctrlKey || ev.shiftKey) return;
+    if(peek(href.slice(1))) ev.preventDefault();
+  });
 
   /* ---- guided mode state ---- */
   var g = {flow:null, node:null, steps:[], symptom:'', slots:{}, trail:[], models:[], queue:[], lastQ:'', test:null};
@@ -8258,7 +8522,6 @@ if(quickfabBtn && quickfabMenu){
   window.tbChatStartTest = function(){
     location.hash = '#support-chat';
     setTimeout(function(){
-      if(mode !== 'guided') setMode('guided', true);
       reset();
       startTest();
     }, 120);
@@ -8327,15 +8590,6 @@ if(quickfabBtn && quickfabMenu){
     try{ return myKit().map(function(e){ return e.name; }).join(', '); }catch(e){ return ''; }
   }
   function greet(){
-    if(mode === 'ai'){
-      addMsg('bot', '<p>Ask anything: how to set something up, what\'s wrong and how to fix it, or what a term, setting or light means. You can attach a photo of an amp screen, a connector or a patch with the camera button.</p><p>Short answers, one step at a time; say "write it up" when you want the message for your lead.</p>');
-      if(!storeGet(KEY_STORE)){
-        addMsg('bot', '<p>No API key saved on this device yet — open <strong>AI assistant setup</strong> below. Until then, the guided mode works with no key and no signal.</p>', 'warn');
-        settings.open = true;
-      }
-      setChips([]);
-      return;
-    }
     var kitNames = myKitSafe();
     addMsg('bot', '<p>I can help you <strong>set something up</strong>, <strong>test it before doors</strong>, <strong>find and fix a problem</strong>, or <strong>look something up</strong>. Type it in your own words, or pick one:</p>' + (kitNames ? '<p class="chat-kitline">Your kit: ' + esc(kitNames) + '</p>' : ''));
     menu();
@@ -8459,9 +8713,6 @@ if(quickfabBtn && quickfabMenu){
         setChips(row);
       }});
     }
-    if(!fixed && storeGet(KEY_STORE)){
-      row.push({label:'Ask the AI assistant', go:function(){ setMode('ai', true); sendAi('I worked through the guided fault finder and I\'m still stuck. Here\'s where I am:\n\n' + report + '\n\nWhat should I check next?'); }});
-    }
     if(g.queue.length){
       var nextF = g.queue.shift();
       row.unshift({label:'Now: ' + nextF.title, go:function(){ addMsg('me', esc(nextF.title)); g.symptom = nextF.title; startFlow(nextF); }});
@@ -8508,32 +8759,306 @@ if(quickfabBtn && quickfabMenu){
     });
     return best;
   }
-  function searchBook(text, limit, skip){
-    var STOP = ['the','and','not','but','for','with','from','its','has','have','one','what','whats','why','how','does','doesn','isn','won','there','this','that','when','just','mean','means','meaning','is','a','an','of','to','in','on','it','do','i','my','me','can','you','are','was','difference','between','vs','versus','explain','tell','about','which','should','need','get','set','up','help','please'];
-    var words = text.toLowerCase().split(/[^a-z0-9&]+/).filter(function(w){ return w.length > 1 && STOP.indexOf(w) < 0; });
-    if(!words.length) return [];
-    var scored = [];
+  /* ---- searching the book ----
+     Every word is folded the same way the routes fold what's typed (synonyms:
+     "cab" → speaker, "dead" → silent) and cut back to its stem ("crackling",
+     "crackles" → crackl), so the book and the question meet in the middle.
+     Sections are ranked with BM25 — rare, specific words count for more than
+     common ones, and a long section doesn't win just by being long. Titles
+     count three times. The index is built once, the first time it's needed
+     (or when the phone is idle after start-up). */
+  var STOP = {};
+  'the and not but for with from its has have one what whats why how does doesn isn won there this that when just mean means meaning is a an of to in on it do i my me can you are was difference between vs versus explain tell about which should need get set up help please be or if at by as so we our your they them then than into out any all some will would could also very really much more most only own same too s t'.split(' ').forEach(function(w){ STOP[w] = true; });
+  function stem(w){
+    if(w.length <= 3 || /\d/.test(w) || w.indexOf('&') > -1) return w;
+    return w
+      .replace(/(ies)$/, 'y')
+      .replace(/(ing|ings|ed|er|ers|es|ly|ness|ment|ments)$/, '')
+      .replace(/([^s])s$/, '$1')
+      .replace(/e$/, '')
+      .replace(/(.)\1$/, '$1');
+  }
+  function terms(text, raw){
+    return norm(text, raw).replace(/'/g, '').split(' ').filter(function(w){ return w && !STOP[w] && (w.length > 1 || /\d/.test(w)); }).map(stem);
+  }
+  var bm = null;
+  function buildBookIndex(){
+    if(bm) return bm;
+    var docs = [], df = {}, total = 0;
     sectionIndex.forEach(function(e){
-      if(!/^s\d/.test(e.id) || /^s(19-1[26]|20-)/.test(e.id) || (skip && skip[e.id])) return;
-      var s = 0;
-      words.forEach(function(w){
-        if(w.length <= 3){
-          var re = new RegExp('(^|[^a-z0-9])' + w.replace(/[&]/g, '\\&') + '(?![a-z0-9])', 'g');
-          if(re.test(e.title)) s += 4;
-          var m = e.body.match(re);
-          s += m ? Math.min(m.length, 6) : 0;
-          return;
-        }
-        if(e.title.indexOf(w) > -1) s += 4;
-        var i = 0, n = 0;
-        while((i = e.body.indexOf(w, i)) > -1 && n < 6){ n++; i += w.length; }
-        s += n;
+      if(!/^s\d/.test(e.id) || /^s(19-1[26]|20-)/.test(e.id)) return;
+      var title = terms(e.title, true), body = terms(e.body, true);
+      var tf = {}, len = 0;
+      function add(t, w){ tf[t] = (tf[t] || 0) + w; len += w; }
+      title.forEach(function(t){ add(t, 3); });
+      body.forEach(function(t){ add(t, 1); });
+      Object.keys(tf).forEach(function(t){ df[t] = (df[t] || 0) + 1; });
+      docs.push({e:e, tf:tf, len:len});
+      total += len;
+    });
+    bm = {docs:docs, df:df, n:docs.length, avg: total / Math.max(1, docs.length)};
+    return bm;
+  }
+  function idf(t, index){ var d = index.df[t] || 0; return Math.log(1 + (index.n - d + 0.5) / (d + 0.5)); }
+  function searchBook(text, limit, skip){
+    var index = buildBookIndex();
+    var q = terms(text).filter(function(t, i, all){ return all.indexOf(t) === i; });
+    if(!q.length) return [];
+    var k1 = 1.2, b = 0.75, scored = [];
+    var qIdf = q.reduce(function(sum, t){ return sum + idf(t, index); }, 0);
+    index.docs.forEach(function(d){
+      if(skip && skip[d.e.id]) return;
+      var s = 0, hits = 0, got = 0;
+      q.forEach(function(t){
+        var f = d.tf[t];
+        if(!f) return;
+        hits++;
+        got += idf(t, index);
+        s += idf(t, index) * (f * (k1 + 1)) / (f + k1 * (1 - b + b * d.len / index.avg));
       });
-      if(s > 0) scored.push({e:e, s:s});
+      if(s > 0 && got / qIdf >= 0.4) scored.push({e:d.e, s:s * (1 + hits / q.length)});
     });
     scored.sort(function(a, b){ return b.s - a.s; });
     return scored.slice(0, limit).map(function(x){ return x.e; });
   }
+  (window.requestIdleCallback || function(fn){ setTimeout(fn, 3000); })(function(){ try{ buildBookIndex(); }catch(e){} });
+
+
+  /* ---- the answer bank ----
+     Direct answers to the questions people actually ask, written in advance
+     from this book (and checked against the sources it cites), so the chat
+     can answer straight away with no signal. Each entry: the ways it gets
+     asked (separated by |), the answer (trusted HTML), and the sections it
+     comes from. Matching is by meaning-bearing words: rare words count for
+     more, and most of what was asked has to be covered by one phrasing. */
+  var ANSWERS = [
+    /* core audio */
+    ["what is gain|gain vs volume|difference between gain and fader|what does the gain knob do|trim vs gain", "<p><strong>Gain</strong> (or trim) sets how hard the signal hits the desk's input — it's about getting a healthy, clean level in, not about loudness. The <strong>fader</strong> then decides how much of that channel goes into the mix.</p><p>Set gain first with the source playing at show level, then mix on faders. Turning gain up to make something louder in the mix is the classic beginner mistake — it eats headroom and brings feedback closer.</p>", "s2-4 s2-5"],
+    ["what is gain structure|how do i set gain structure|gain staging|what is headroom|how much headroom", "<p><strong>Gain structure</strong> is keeping the signal at a sensible level at every stage of the chain, so nothing clips and nothing sits down in the noise.</p><ol><li>Set each input's gain so normal peaks land around the desk's nominal level, with room above for the loud moments.</li><li>Faders near their marked 0 (unity) point for the loudest sources.</li><li>Master at or near 0.</li><li>System (amps, processor) set by the system tech so the desk's full output doesn't drive the PA past its limits.</li></ol><p><strong>Headroom</strong> is the gap between where you normally run and where it clips — on a digital desk, leave a generous margin (often 15–20 dB) for surprises.</p>", "s2-5 s18-4"],
+    ["mic level vs line level|what is line level|what are signal levels|speaker level|instrument level|dbu vs dbv", "<p>There are four worlds of signal level:</p><ul><li><strong>Mic level</strong> — tiny, needs lots of preamp gain.</li><li><strong>Instrument level</strong> — guitars and basses; high impedance, needs a DI.</li><li><strong>Line level</strong> — desks, players, processors. Pro gear runs around +4 dBu, consumer gear around −10 dBV.</li><li><strong>Speaker level</strong> — the amp output: real voltage and current. Never plug it into anything else.</li></ul><p>Mixing worlds up gives you either distortion (too hot) or noise (too quiet).</p>", "s2-2"],
+    ["balanced vs unbalanced|what is a balanced cable|why are xlr cables balanced|why does balanced reject noise", "<p>A <strong>balanced</strong> line carries the signal twice — once normal, once polarity-flipped — plus a screen. At the far end one copy is flipped back and the two are added: the signal doubles and any interference picked up equally on both wires cancels out.</p><p>That's why XLR and TRS runs can go long distances quietly, while unbalanced (TS jack, RCA phono) should be kept short.</p>", "s2-3"],
+    ["what is phantom power|what is 48v|do dynamic mics need phantom|can phantom damage a mic|ribbon mic phantom", "<p><strong>Phantom power</strong> is +48 V DC sent up a balanced mic cable (on pins 2 and 3) to power condenser mics and active DI boxes.</p><ul><li>Dynamic mics don't need it and a correctly wired balanced dynamic isn't harmed by it.</li><li>Mute the channel (or the PA) before switching it on or off, and before plugging — the pop can be huge.</li><li>Be careful with ribbon mics and anything unbalanced or faulty: ask before applying it.</li></ul>", "s2-6"],
+    ["what is impedance|does impedance matter|ohms speaker impedance|what does 8 ohm mean", "<p><strong>Impedance</strong> is how much a device resists the signal flowing into it. For mics and line gear you mostly don't need to think about it — pro gear is designed to match.</p><p>Where it bites: instrument pickups (high impedance — use a DI), and loudspeakers, where too many boxes in parallel on one amp channel drops the load too low and the amp complains. On d&amp;b systems, check the boxes-per-channel limits in §6.20.</p>", "s2-7 s6-20"],
+    ["polarity vs phase|what is polarity|what is phase|polarity flip|phase button", "<p><strong>Polarity</strong> is simply which way up the waveform is — the desk's Ø button flips it, instantly, at every frequency. <strong>Phase</strong> is about timing: a delay shifts different frequencies by different amounts.</p><p>Two mics on one source, or two speakers covering one seat, that are out of polarity or misaligned in time will cancel — thin, hollow sound. Flip polarity to check; fix timing with delay.</p>", "s2-8"],
+    ["what is word clock|what is clocking|why does digital audio need a clock|sample rate mismatch|clicks digital", "<p>Every digital device samples audio at a fixed rate (usually 48 or 96 kHz). When devices pass digital audio between them, they must all agree on exactly when each sample happens — one is the <strong>clock leader</strong>, the rest follow.</p><p>Two leaders, or mismatched sample rates, give clicks, pops, dropouts or silence. On Dante the network elects a leader automatically, but check it's the one the system design expects.</p>", "s2-9 s8-2"],
+    ["what is a decibel|what is db|how much louder is 6db|what is 3db|10db louder", "<p>A <strong>decibel</strong> is a ratio, not a fixed amount. Useful rules of thumb:</p><ul><li><strong>+3 dB</strong> — double the power; a just-noticeable change.</li><li><strong>+6 dB</strong> — double the voltage (or SPL pressure); clearly louder.</li><li><strong>+10 dB</strong> — sounds roughly twice as loud.</li><li>Every doubling of distance from a small source: about <strong>−6 dB</strong> outdoors.</li></ul><p>The calculators in Support do the maths for you.</p>", "s2-10 support-calc"],
+    ["what frequency is|frequency chart|what lives where|where is the boom|where is mud|where is sibilance|frequency crib", "<p>A rough map:</p><ul><li><strong>Below 60 Hz</strong> — sub, kick weight; felt more than heard.</li><li><strong>100–250 Hz</strong> — warmth; too much is boom and mud.</li><li><strong>250–500 Hz</strong> — boxiness.</li><li><strong>1–4 kHz</strong> — presence and intelligibility; too much is harsh. Most feedback lives here on vocals.</li><li><strong>5–8 kHz</strong> — sibilance (s and t sounds).</li><li><strong>10 kHz and up</strong> — air.</li></ul>", "s2-11 s16-2"],
+    ["speed of sound|how much delay per metre|delay calculation|how many milliseconds per metre", "<p>Sound travels about <strong>344 m/s</strong> in air, so roughly <strong>2.9 ms per metre</strong>. A delay speaker 30 m back needs roughly 87 ms to line up with the main PA, plus a little extra so the main system is heard first.</p><p>Use the distance &amp; delay calculator in Support for the exact figure.</p>", "s6-8 support-calc"],
+    ["inverse square law|how much quieter further away|spl drop distance|6db per doubling", "<p>For a small (point) source in the open, level falls by about <strong>6 dB every time the distance doubles</strong>. A tall line array behaves differently up close — nearer 3 dB per doubling in its near field — which is part of why it throws further.</p><p>Indoors, reflections stop the level falling as fast. The SPL calculator in Support works the free-field figure out for you.</p>", "s6-6 support-calc"],
+
+    /* cables and connectors */
+    ["xlr pinout|which pin is hot on xlr|xlr pin 1 2 3|what are the pins on an xlr", "<p>Standard XLR audio: <strong>pin 1</strong> screen (ground), <strong>pin 2</strong> hot (+), <strong>pin 3</strong> cold (−). Pin 2 hot is the international standard; very old American gear sometimes used pin 3 hot.</p>", "s3-1"],
+    ["trs vs ts|what is a trs jack|stereo jack vs balanced jack|what is trrs", "<p>A <strong>TS</strong> jack (tip, sleeve) is unbalanced mono — guitars, some keyboards. A <strong>TRS</strong> jack (tip, ring, sleeve) is either a balanced mono line <em>or</em> an unbalanced stereo pair (headphones, insert cables) — same plug, different job, so check what the socket expects. <strong>TRRS</strong> is the phone headset plug: stereo plus a mic.</p>", "s3-2"],
+    ["what is speakon|why speakon not jack for speakers|speakon vs jack|speaker cable vs instrument cable", "<p><strong>speakON</strong> is the locking connector for speaker-level signals. Speaker cable carries real power, so it uses thick, unscreened cores and a connector that locks and can't be touched when live.</p><p>Never use an instrument jack cable to drive a speaker — the thin screened cable overheats and the jack can short the amp.</p>", "s3-3"],
+    ["nl4 vs nlt4|what is an nlt4|difference between nl4 and nlt4|what does nlt4 mean|nl4fx nlt4fx", "<p>On the shelf they usually mean the same thing: a <strong>four-pole speakON cable</strong>. The letters are Neutrik part numbers for the connector:</p><ul><li><strong>NL4FX / NL4FC</strong> — the standard plastic-bodied cable connector.</li><li><strong>NLT4FX</strong> — the STX heavy-duty, all-metal version. Same four pins, same socket, tougher and higher-rated: what touring and rental stock uses.</li><li><strong>NLT4MX</strong> — a male cable end, so one cable can plug straight into another (extensions).</li></ul><p>Either fits the same NL4MP socket on the amp or box.</p>", "s3-12"],
+    ["nl2 vs nl4|what is an nl2|can i use nl2 in nl4 socket|two pole speakon", "<p>An <strong>NL2</strong> is a two-pole speakON: it fits a four-pole socket but only connects <strong>pins 1+/1−</strong>. That's the classic trap — anything that needed pins 2 (a sub in Mix TOP/SUB, the HF of a 2-way active box, a link to the next box) goes silent. Use 4-core NL4/NLT4 wherever pins 2 are in play.</p>", "s3-12 s6-17"],
+    ["nl4 pinout|what do nl4 pins carry|pins 1 and 2 speakon|what is on pin 2 of speakon|speakon wiring", "<p>A four-pole speakON has two pairs:</p><ul><li><strong>1+ / 1−</strong> — the first (or only) channel: tops and full-range boxes, the LF in 2-way active, channel A or C on d&amp;b.</li><li><strong>2+ / 2−</strong> — a second channel or a link through: subs in Mix TOP/SUB, the HF in 2-way active, channel B or D.</li></ul><p>So one 4-core cable can carry two amp channels. A 2-core cable on NL4 ends only carries pins 1.</p>", "s3-12 s6-17"],
+    ["how do i lock a speakon|speakon wont lock|how to connect speakon|how to release speakon", "<ol><li><strong>Mute</strong> the amp channel first.</li><li>Line up the key and push fully home — don't force it.</li><li>Twist clockwise about a quarter turn until it clicks. No click means not locked.</li><li>Tug-test gently on the connector body.</li><li>To release: pull back the latch tab, twist anticlockwise, pull the body straight out — never the cable.</li></ol>", "s3-12"],
+    ["what is nl8|nl8 cable|eight pole speakon|speaker multicore", "<p><strong>NL8</strong> is the eight-pole speakON — four amp channels down one cable. It's used for speaker multicores (for example from an amp rack to a breakout near a hang). It doesn't fit NL4 sockets; you need a breakout or a matching amp output.</p>", "s3-12 s3-5"],
+    ["what is a multicore|what is a stagebox|what is a loom|snake cable", "<p>A <strong>multicore</strong> (snake) carries many signals in one cable. A <strong>stagebox</strong> is the box on stage you plug mics into — analogue, or (now usually) a digital stagebox that converts to a network or digital link back to the desk. A <strong>loom</strong> is a bundle of separate cables taped or sleeved together. Label both ends, always.</p>", "s3-5"],
+    ["cat5 vs cat6|which ethercon cable|ethercon|network cable for audio|how long can a cat cable be", "<p>Network cable is now core audio infrastructure. Use shielded Cat5e or Cat6 with <strong>etherCON</strong> (locking) ends for touring. A single copper run is limited to <strong>100 m</strong>; beyond that, use a switch in the middle or fibre. Treat it gently — kinks and crushed cable cause intermittent drops.</p>", "s3-6"],
+    ["what is aes50|what is madi|what is aes3|digital audio formats", "<p>The main digital transports:</p><ul><li><strong>AES3 (AES/EBU)</strong> — two channels on one 110 Ω XLR cable.</li><li><strong>MADI</strong> — up to 64 channels on coax or fibre.</li><li><strong>AES50</strong> — Midas/Behringer's point-to-point link on Cat cable.</li><li><strong>Dante</strong> — audio over standard IP networks; the most common.</li><li><strong>AVB / Milan</strong> — network audio with timing built into the switches; d&amp;b and L-Acoustics support Milan.</li></ul>", "s3-7 s8-2"],
+    ["what is powercon|powercon true1|blue and grey powercon|can i unplug powercon live", "<p><strong>powerCON</strong> is the locking mains connector on amps and powered speakers. The older <strong>blue (in) / grey (out)</strong> type must not be connected or disconnected under load. <strong>TRUE1</strong> (black/yellow) is rated to break under load. Either way: turn the device off first where you can, and lock it — twist until it clicks.</p>", "s3-8"],
+    ["16a vs 32a|what is a ceeform|blue ceeform|16 amp plug|32 amp plug|red ceeform", "<p>Industrial <strong>CEE form</strong> connectors are colour-coded: <strong>blue</strong> is single-phase 230 V (16 A, 32 A, 63 A), <strong>red</strong> is three-phase 400 V. A 16 A blue is the everyday one for small audio racks. Mains distribution — and anything three-phase — is the qualified electrician's or the power tech's job, not yours.</p>", "s3-8 s9-6 s12-15"],
+    ["what is a di box|why use a di|active vs passive di|when do i need a di|di box", "<p>A <strong>DI box</strong> turns an unbalanced, high-impedance source (guitar, bass, keyboard, laptop) into a balanced mic-level signal the stagebox can take over a long run. It also isolates grounds.</p><ul><li><strong>Passive DI</strong> — no power, very robust; great for keys and hot sources.</li><li><strong>Active DI</strong> — needs phantom or a battery; better for passive pickups (bass, acoustic).</li></ul><p>The <strong>ground lift</strong> switch is the first thing to try on a hum.</p>", "s3-9 s12-10"],
+    ["ground lift|what does ground lift do|is ground lift safe|hum from laptop", "<p>A <strong>ground lift</strong> on a DI disconnects the audio screen (pin 1) at one end to break a ground loop — the usual cure for hum from laptops, keyboards and video kit. It only lifts the <em>audio</em> screen; it's safe.</p><p><strong>Never</strong> remove the mains earth from anything (no cheater plugs, no cutting earth pins). That's dangerous and illegal.</p>", "s3-9 s12-3"],
+    ["how to coil a cable|over under|how should i coil cables|cable care", "<p>Coil <strong>over–under</strong>: one loop normal, the next with a half twist the other way. The cable lies flat, doesn't kink, and throws out straight without tangling. Tie it with a velcro tie, label both ends, and never wrap it round your elbow.</p>", "s3-10"],
+    ["how do cables fail|why do cables break|which cables fail most|cable fault", "<p>Cables mostly fail at the <strong>ends</strong>: a broken solder joint or core where the strain relief has given up, or a connector that's been stood on. Symptoms are crackle when the cable moves, intermittent drop-outs, or noise. Wiggle-test near each end; replace, don't bodge. Quarantine and label faulty cables so they don't go back on the shelf.</p>", "s3-11 s11-5"],
+
+    /* microphones */
+    ["dynamic vs condenser|what is a condenser mic|what is a dynamic mic|ribbon mic|types of microphone", "<ul><li><strong>Dynamic</strong> — robust, no power needed, handles high level: vocals on loud stages, guitar amps, drums (SM58, SM57).</li><li><strong>Condenser</strong> — needs phantom power, more detailed and sensitive: overheads, acoustic instruments, choirs, lecterns.</li><li><strong>Ribbon</strong> — smooth and fragile; careful with phantom and wind.</li></ul>", "s4-1"],
+    ["cardioid vs supercardioid|polar pattern|what is cardioid|omni mic|figure of eight", "<p>A mic's <strong>polar pattern</strong> is where it listens.</p><ul><li><strong>Cardioid</strong> — front, rejects the back. Wedges go behind it.</li><li><strong>Supercardioid / hypercardioid</strong> — tighter at the front, with a small pick-up lobe directly behind, so wedges go off to either side of the back (roughly 120–130° from the front), not dead centre.</li><li><strong>Omni</strong> — everywhere; natural, but more feedback-prone.</li><li><strong>Figure-of-8</strong> — front and back, not the sides.</li></ul>", "s4-2"],
+    ["proximity effect|why is the vocal boomy close|bass boost close mic", "<p><strong>Proximity effect</strong>: directional mics boost bass the closer the source gets. That's why a singer eating the mic sounds boomy, and why a high-pass filter on most vocal channels is standard. It's also a tool — a presenter can warm up their voice by moving closer.</p>", "s4-3"],
+    ["where to put a mic|how to mic a guitar amp|how to mic a kick|how to mic drums|mic placement", "<p>Start points (then listen and move):</p><ul><li><strong>Guitar amp</strong> — a dynamic close to the grille, pointed at the speaker cone; centre is brighter, towards the edge is warmer.</li><li><strong>Kick</strong> — inside the port or just inside the drum; closer to the beater is more click.</li><li><strong>Snare</strong> — a few cm above the rim, angled at the centre, rejecting the hi-hat.</li><li><strong>Vocal</strong> — close, on-axis, with the wedge in the mic's dead zone.</li></ul><p>The placement crib sheet has the full set.</p>", "s4-5"],
+    ["3 to 1 rule|three to one rule|two mics one source|xy vs ab|stereo mic technique", "<p>The <strong>3:1 rule</strong>: when two mics pick up different sources, keep the distance between the mics at least three times each mic's distance from its own source — it keeps spill low enough to avoid nasty comb-filtering. For stereo pairs: <strong>XY</strong> (coincident) is mono-safe; <strong>AB</strong> (spaced) is wider but less mono-compatible.</p>", "s4-6"],
+    ["how to look after mics|mic hygiene|cleaning mic grilles|dropped mic", "<p>Hold mics by the body, not the grille; don't blow into them; store them in their case or a padded drawer. Clean vocal mic grilles regularly (remove and wash the grille and foam, dry fully). A dropped condenser should be tested before the show, not discovered during it.</p>", "s4-8"],
+    ["what mic for lectern|lectern mic|gooseneck|conference mic|mic for speeches", "<p>For a lectern, a <strong>gooseneck condenser</strong> (cardioid or supercardioid) aimed at the speaker's mouth from 20–40 cm. Presenters move around, so keep it a little further away rather than very close, high-pass it, and ring it out with the room PA before people arrive. A headset or lavalier radio mic suits a presenter who walks.</p>", "s4-4 s10-2"],
+
+    /* wireless & RF */
+    ["what is channel 38|do i need a licence for radio mics|ofcom licence radio mic|uk radio mic licence|pmse licence", "<p>In the UK, most professional radio mics and IEMs need an <strong>Ofcom PMSE licence</strong>. <strong>Channel 38</strong> (606.5–613.5 MHz) is a UK-wide shared licence — the everyday hire-stock band — but it's shared and unprotected, so you still scan and plan. Other UHF channels are coordinated per site and date. A small licence-exempt band (around 863–865 MHz) suits a few low-power mics. Check §5.4 and Ofcom for current details.</p>", "s5-4"],
+    ["how to set up radio mics|frequency scan|how do i scan for frequencies|sync radio mic|radio mic setup", "<ol><li>Switch everything that will be on during the show on (LED walls, other radio systems).</li><li>Scan with the receivers or the coordination software.</li><li>Pick a coordinated set of frequencies (intermod-free), within your licence.</li><li>Sync each transmitter to its receiver (IR sync).</li><li>Walk test every mic in every spot it will be used.</li><li>Fresh batteries, label packs and receivers.</li></ol>", "s5-8 s11-6 s19-8"],
+    ["what is intermod|intermodulation|why do frequencies need coordinating|frequency coordination", "<p>When several transmitters are on at once, they mix inside receivers and transmitters to create <strong>intermodulation products</strong> — ghost signals on new frequencies. If one lands on another mic's frequency, that mic gets noise or drop-outs. Coordination software (Wireless Workbench, Sennheiser WSM and similar) picks sets of frequencies where the products miss everything you're using.</p>", "s5-5"],
+    ["antenna placement|where to put radio mic antennas|antenna distribution|paddle antenna|line of sight", "<p>Keep <strong>line of sight</strong> from transmitter to antenna, get antennas up above head height, away from metal and LED walls, and at least a quarter wavelength apart for diversity. Use the right antenna for the band, low-loss coax, and an antenna distribution system rather than daisy-chained whips. Most drop-outs are antenna problems, not mic problems.</p>", "s5-3 s5-9"],
+    ["radio mic batteries|how long do batteries last|rechargeable radio mic|aa batteries radio mic", "<p>Start every show with <strong>fresh or fully charged</strong> batteries — never part-used ones. Use the type the system expects (alkaline AAs, or the manufacturer's rechargeable packs), note when they went in, and change between shows on long days. Battery status on the receiver is a guide, not a guarantee.</p>", "s5-6"],
+    ["what is an iem|in ear monitor|how do iems work|iem setup", "<p><strong>IEMs</strong> (in-ear monitors) send each performer's monitor mix wirelessly (or wired) to earpieces. They cut stage volume and feedback and protect hearing — but they're radio too, so they need licensing, coordination and their own clean frequencies. Start the performer's volume low, and give them an ambient or crowd mic so they don't feel cut off.</p>", "s5-7 s15-2 s15-3"],
+    ["radio mic dropping out|why does my radio mic drop out|rf dropouts|wireless keeps cutting out", "<p>Usually in this order: <strong>antennas</strong> (line of sight, placement, cables), <strong>interference</strong> (a new device, an LED wall, someone else on your frequency — rescan), <strong>batteries</strong>, then <strong>body-pack position</strong> (sweat, against skin, under metal). Watch the receiver's RF meter while the performer walks the dead spot.</p>", "s5-9 s12-11"],
+    ["rf exposure|is rf dangerous|emf safety|radio mic health", "<p>Radio mic and IEM transmitters are very low power and well within exposure guidelines. Larger transmitters, broadcast links and antennas on site are a different matter — respect exclusion zones and signage, and don't stand in front of high-power antennas.</p>", "s5-10"],
+
+    /* PA */
+    ["what is a line array|line array vs point source|why line array|how does a line array work", "<p>A <strong>line array</strong> is a column of boxes that couple together into one tall source, so it throws sound a long way with even level front to back. A <strong>point source</strong> box spreads from a single point and drops off faster. Line arrays need prediction software, careful splay angles and proper rigging; point sources are simpler for smaller rooms.</p>", "s6-2 s6-6"],
+    ["what is a sub|why do subs need their own amp|subwoofer setup|sub placement", "<p>A <strong>sub</strong> reproduces the lowest frequencies, usually below about 100 Hz. Subs are crossed over from the tops, often driven by their own amp channels or via Mix TOP/SUB on d&amp;b. Placement matters as much as the box: ground-stacked across the front, in an arc, or in a cardioid arrangement to reduce bass behind them.</p>", "s6-2 s6-6"],
+    ["what is a cardioid sub|cardioid sub array|why is there bass on stage|reduce bass on stage", "<p>A <strong>cardioid sub array</strong> uses some subs facing (or delayed) backwards to cancel bass behind the array while keeping it in front — less boom on stage and at the desk end of a venue. It only works if the spacing, delay and polarity are exactly as designed, so don't change any of it without the system tech.</p>", "s6-6 s6-19"],
+    ["what is an amp|what does an amplifier do|amp vs processor|what is dsp in an amp", "<p>An <strong>amplifier</strong> turns a line-level signal into speaker-level power. Modern touring amps like d&amp;b's also contain the <strong>processing</strong> (DSP): crossover, EQ, delay and limiters, set by a speaker-specific setup. That's why the right setup for the right box matters — the wrong one can sound bad or damage drivers.</p>", "s6-4 s6-16"],
+    ["what is a limiter|why is my amp limiting|gr light|gain reduction|amp limiting", "<p>A <strong>limiter</strong> stops the signal going above a set level to protect the speakers. On a d&amp;b amp, a yellow <strong>GR</strong> (gain reduction) indicator means the limiter is working. Occasional flicker on peaks is normal; constant GR means the system is being driven too hard — turn down at the desk, or tell the system tech you need more boxes.</p>", "s6-4 s6-17"],
+    ["what is system tuning|how is a pa tuned|time alignment|what is smaart|measurement mic", "<p><strong>System tuning</strong> is setting delays, levels and EQ so the PA sounds even and correct across the audience. It's done with a measurement mic and software (Smaart, or the free Open Sound Meter) comparing what goes in with what the mic hears. Tuning corrects the system's response — it doesn't fix the room, and it's the system tech's job on most shows.</p>", "s6-8 s8-3"],
+    ["what is arraycalc|prediction software|what is easefocus|soundvision", "<p><strong>Prediction software</strong> models how a PA will cover a venue before it's rigged: ArrayCalc (d&amp;b), Soundvision (L-Acoustics), and similar from other makers. It produces the splay angles, rigging loads and amp setups. On d&amp;b jobs, the ArrayCalc file is the plan.</p>", "s6-7 s6-16"],
+    ["how loud is too loud|spl limits|noise limits at events|dba limit|venue noise limit", "<p>Events often have <strong>sound level limits</strong> set by the licence or the local authority (for the neighbours) and the venue. Separately, the Noise at Work Regulations protect workers: action values at 80 and 85 dB(A) daily exposure. Your job: know the limit, have the meter running where the plan says, and tell the engineer early if you're getting close.</p>", "s6-10 s13-5"],
+    ["what is a hearing loop|induction loop|t setting hearing aid|assistive listening", "<p>A <strong>hearing loop</strong> (induction loop) carries audio as a magnetic field round a room so hearing-aid users on the T setting hear it directly. It needs a clean feed (usually the speech mics, not the music), a correctly installed loop and a check with a loop listener. Infrared and radio systems are the alternatives.</p>", "s6-11 s19-15"],
+
+    /* consoles */
+    ["what is a channel strip|signal flow through desk|how does a mixing desk work", "<p>The <strong>channel strip</strong> is the path every input takes: gain → high-pass filter → gate → EQ → compressor → inserts → aux sends → pan → fader → routing to buses or the main mix. Learn one strip properly and you can find your way round any desk.</p>", "s7-1"],
+    ["pfl vs afl|what is pfl|what is afl|solo on a desk|what does solo do", "<p><strong>PFL</strong> (pre-fade listen) solos the channel as it comes in, ignoring the fader — use it to set gain and check a signal. <strong>AFL</strong> (after-fade listen) solos it as it is in the mix, after the fader and pan. Solo only changes what you hear in headphones; it never changes the PA.</p>", "s7-6"],
+    ["what is an aux send|pre fade vs post fade|monitor sends|aux pre or post", "<p>An <strong>aux send</strong> feeds a channel to a separate mix — monitors or effects. <strong>Pre-fade</strong> sends ignore the channel fader: use them for monitors, so your FOH moves don't change the band's wedges. <strong>Post-fade</strong> sends follow the fader: use them for reverb and effects.</p>", "s7-1 s15-1"],
+    ["what is a dca|vca vs dca|what is a group bus|dca vs subgroup", "<p>A <strong>DCA</strong> (or VCA) is a remote control for the faders of several channels — no audio passes through it. A <strong>group / subgroup</strong> is an actual audio bus the channels are summed into, so you can process them together. Use DCAs for quick level control of sections (drums, vocals), groups when you want shared processing.</p>", "s7-3"],
+    ["what is a scene|show file vs scene|recall safe|how do i save a show file|scene recall", "<p>A <strong>show file</strong> is everything about the desk's setup; a <strong>scene</strong> is a snapshot of settings you can recall. <strong>Recall safe</strong> protects chosen channels or parameters from being changed by a scene recall. Before touching anything: save a copy of the show file with the date in the name, onto a USB stick too.</p>", "s7-4"],
+    ["what is an offline editor|practise a desk at home|desk software free|learn a console without the console", "<p>Most digital desks have a free <strong>offline editor</strong> for a computer — the same screens as the real desk. Use it to learn the layout, build and check show files before the job, and practise. Yamaha (DM7 Editor, CL/QL Editor), Allen &amp; Heath, DiGiCo and Midas all offer one.</p>", "s8-1 s18-2"],
+    ["what is a gate|noise gate|expander|when to use a gate", "<p>A <strong>gate</strong> mutes (or turns down) a channel when the signal drops below a threshold — useful on toms and kick to cut spill. An <strong>expander</strong> is gentler: it turns quiet signals down by a ratio. Set the threshold just under the hits, and the release so tails aren't chopped.</p>", "s16-3"],
+    ["what is a compressor|compressor settings|threshold ratio attack release|how to set a compressor", "<p>A <strong>compressor</strong> turns down a signal by a <strong>ratio</strong> when it goes over the <strong>threshold</strong>, evening out level. <strong>Attack</strong> is how fast it reacts; <strong>release</strong> how fast it lets go. Starting point for vocals: ratio 3:1, medium attack, release that recovers between phrases, 3–6 dB of gain reduction on the loud bits, then make-up gain.</p>", "s16-4 s7-5"],
+    ["subtractive eq|how to eq|cut or boost|eq tips|how do i eq a vocal", "<p>Cut before you boost. Find what's wrong (boom, boxiness, harshness), cut it narrowly, and only then add a little of what's missing. High-pass everything that doesn't need low end. For a vocal: HPF around 80–120 Hz, cut mud around 200–400 Hz if needed, gentle presence around 2–5 kHz only if it isn't cutting through.</p>", "s16-1 s7-5"],
+    ["how to build a mix|mixing from scratch|where to start mixing|mix order", "<p>Get every channel clean and gained first. Then build the foundation (kick and bass), add the rest of the drums, then the harmonic instruments, and the vocal on top — the vocal is usually the most important thing in the mix. Keep checking in the room, not just on headphones, and leave headroom for the show to grow.</p>", "s16-6"],
+    ["what is talkback|talkback mic|how do i talk to stage|oscillator tone|pink noise", "<p><strong>Talkback</strong> is a mic at the desk routed to wedges, IEMs or comms so you can speak to the stage. The desk's <strong>oscillator</strong> sends test tone or pink noise to chosen outputs — useful for checking every speaker and line. Always start it at low level, and warn people before you send noise.</p>", "s7-6"],
+    ["console gotchas|common desk mistakes|why is there no sound from desk|desk not outputting", "<p>The greatest hits: a channel or mix <strong>muted</strong>, a <strong>DCA or mute group</strong> down, a <strong>scene recall</strong> changed something, the <strong>patch</strong> doesn't route to the output you think, the master fader is down, or an output is in <strong>solo/PFL</strong> only. Follow the signal: input meter → channel → bus → output patch → physical output.</p>", "s7-7 s12-12"],
+    /* Dante and networks */
+    ["what is dante|how does dante work|dante explained|audio over network", "<p><strong>Dante</strong> sends many channels of audio over a standard IP network. Every device has transmit and receive channels; you connect them with <strong>Dante Controller</strong> (free software) by ticking the grid. One device becomes the clock leader. It's the network audio system you're most likely to meet, and Audinate's free certification is worth doing.</p>", "s8-2 s18-3"],
+    ["dante primary secondary|dante redundancy|what is the secondary port|should i connect secondary to primary", "<p>Many Dante devices have a <strong>primary</strong> and a <strong>secondary</strong> port. In redundant mode they must go to <strong>two completely separate networks</strong> (separate switches, never linked). Plugging secondary into the same switch as primary, or linking the two networks, can break the whole system. If there's no secondary network, leave the secondary port empty.</p>", "s8-2 s12-14"],
+    ["what is dante controller|how to patch in dante controller|dante routing|subscribe dante channels", "<p><strong>Dante Controller</strong> is the free app for routing: transmitters across the top, receivers down the side, tick where they cross to subscribe. Green tick = working, a warning symbol = a problem (often clock, sample rate or bandwidth). Name devices clearly and save a preset of the routing before the show.</p>", "s8-2"],
+    ["what switch for dante|eee green ethernet dante|dante switch settings|qos dante|igmp snooping", "<p>Dante works on most decent gigabit managed switches, but they need setting up: turn <strong>EEE / Green Ethernet off</strong> (it causes clicks and dropouts), enable <strong>QoS</strong> so clock and audio get priority, and use <strong>IGMP snooping</strong> carefully if there's lots of multicast. Don't plug audio into a house or office network without the network owner's say-so.</p>", "s8-6 s12-14"],
+    ["what ip address|dhcp vs static|link local|169.254|why cant i see the device on the network", "<p>Dante devices usually pick their own address: from a <strong>DHCP</strong> server if there is one, otherwise a <strong>link-local</strong> 169.254.x.x address. Your laptop has to be on the same network and addressing scheme to see them. If a device is missing: check the cable and switch port lights, that you're on the right network (and Wi-Fi is off), and the laptop's IP settings.</p>", "s8-6 s12-14"],
+    ["what is vlan|what is a vlan|network basics for audio|what is a switch", "<p>A <strong>switch</strong> connects network devices together. A <strong>VLAN</strong> splits one physical switch into separate virtual networks — for example audio on one, lighting or control on another. Useful, but only change switch setups if you know the design; one wrong port can join networks that should stay apart.</p>", "s8-6"],
+    ["what is r1|d&b r1|how to connect r1|r1 remote|amp not in r1", "<p><strong>R1</strong> is d&amp;b's remote control software: it shows and controls every amp — mutes, levels, setups, delays, temperatures, errors. Connect the laptop to the amp control network (Ethernet), open the project, and go online. If an amp is missing, check its network cable, IP settings and that you're on the right network.</p>", "s6-16 s6-17"],
+    ["what is comms|clearcom|talkback system|intercom|belt pack", "<p><strong>Comms</strong> (intercom) lets crew talk on channels via belt packs and headsets — Clear-Com, Riedel, Green-GO and others. Typical channels: production, sound, lighting, stage. Check every pack before doors, keep the mic flipped up or off when not talking, and never key a channel to chat.</p>", "s8-5 s11-8"],
+    ["what is qlab|playback software|how to play music at an event|walk on music", "<p><strong>QLab</strong> (Mac) is the standard show-control and playback software for theatre and events: cues fire in order with one key. For simple events, a dedicated playback laptop or player with a backup copy is fine. Disable notifications, sleep and updates, and route through a proper DI or interface.</p>", "s8-4"],
+
+    /* test before doors */
+    ["system check vs line check|what is a line check|what is a system check|difference between line check and sound check", "<p>A <strong>system check</strong> proves the PA: every box, every amp channel, the right setup, levels and coverage. A <strong>line check</strong> proves every input: each mic or DI gets to the right desk channel cleanly. A <strong>soundcheck</strong> is the band playing so the engineer can mix. Do them in that order.</p>", "s11-1 s11-3"],
+    ["how to do a line check|line check steps|line checking|line check without talkback", "<ol><li>Patch list in hand.</li><li>Phantom off until you need it, PA muted or low.</li><li>One input at a time: speak or scratch at the mic, watch the right channel meter move.</li><li>Check it's clean — no crackle, hum or distortion.</li><li>Tick the sheet; mark anything faulty and quarantine it.</li></ol><p>No talkback? Use a phone or a walkie and a second person, or PFL and headphones.</p>", "s11-3 s11-4 s19-5"],
+    ["how to prove a d&b system|test the pa before doors|check every speaker|pre event test", "<p>Prove it one box at a time at low level with pink noise or music, against the plan: right box, right amp channel, right setup, no limiting, no errors in R1. Then the whole system together, then walk the room. The 15-step test is in Job Hub → System test, and the chat can run it with you.</p>", "s11-9 s6-18"],
+    ["what is quarantine|faulty kit|what do i do with broken cable|label faulty equipment", "<p><strong>Quarantine</strong> means taking faulty kit out of use so it can't go back on the shelf: tape it, label it with the fault and date, and put it in the fault bin or bag. Tell whoever handles repairs. A cable that's ‘probably fine’ is the one that fails during the show.</p>", "s11-5"],
+    ["how to walk test radio mics|walk test|wireless proving", "<p>With everything on that will be on during the show (LED walls, lighting, other radio), walk each radio mic to every spot it'll be used — including the far corners and behind the set — while someone watches the receiver RF and audio meters and listens. Note any drops and fix antenna placement before doors.</p>", "s11-6"],
+
+    /* faults (knowledge-type) */
+    ["what causes hum|ground loop|why is there a buzz|50hz hum|mains hum", "<p><strong>Hum</strong> (a steady 50 Hz tone and its harmonics) is usually a <strong>ground loop</strong>: two pieces of kit earthed at different points, joined by an audio cable. Fixes in order: find which input it's on, try the DI's ground lift, use a balanced connection or isolation transformer, keep audio cables away from dimmers and power. Never remove a mains earth.</p>", "s12-3"],
+    ["how to fault find|fault finding method|troubleshooting method|how to find a fault", "<p>Work like a crew chief: <strong>define</strong> the symptom exactly, <strong>split</strong> the chain in half to find which side it's on, change <strong>one thing at a time</strong>, and use <strong>substitution</strong> — swap in a known-good part. Cheapest and most likely first. Write down what you've checked, so the handover makes sense.</p>", "s12-1 s12-4"],
+    ["intermittent fault|fault comes and goes|crackle when moving cable|keeps cutting out", "<p>Intermittent faults are usually <strong>mechanical</strong>: a connector, a solder joint, a cable end. Wiggle-test each connection in the chain while listening (at low level), and watch for patterns — moving, heat, vibration, a time of day. Swap the suspect part rather than chasing it during a show.</p>", "s12-5 s3-11"],
+    ["what is feedback|why does feedback happen|how to stop feedback|howl", "<p><strong>Feedback</strong> is a loop: the mic hears the speaker, it's amplified again, and it runs away at one frequency. Immediately: pull the fader (or the mix) down. Then: keep mics behind the PA, wedges in the mic's dead zone, mics closer to the source, fewer open mics, and notch the ringing frequency on the right output EQ.</p>", "s12-18 s15-8"],
+    ["what to do when something breaks during show|first sixty seconds|fault during show", "<p>First sixty seconds: <strong>make it safe</strong> (mute if it's loud or dangerous), <strong>tell</strong> your lead in one sentence, <strong>work around</strong> it if there's an obvious spare (swap the mic, use another channel), and only then diagnose. Keep the show going; fix it properly in the next gap.</p>", "s12-8"],
+    ["when should i ask for help|who do i tell|when to stop|escalate a fault", "<p>Stop and get help when it involves <strong>mains power, rigging or someone else's system</strong>, when anything is unsafe, when you've done the obvious checks and it's still broken, or when the fix needs a change you aren't authorised to make. Hand over the facts: the symptom, what changed, what you've checked, what you need.</p>", "s12-7"],
+    ["how to keep a fault log|fault log|write up a fault|report a fault", "<p>A good fault note: <strong>what</strong> failed, <strong>when</strong>, <strong>which</strong> item (asset number), <strong>what you checked</strong>, and <strong>what you did</strong>. Put it on the item's label and in the job notes. The chat writes it for you at the end of any fault route.</p>", "s12-17"],
+
+    /* safety and law */
+    ["electricity at work regulations|am i allowed to touch power|what electrical work can i do|eawr", "<p>The <strong>Electricity at Work Regulations 1989</strong> require electrical systems to be safe and the people working on them to be competent. In practice: you can do user checks (visual inspection, plugging in kit that's been tested) but mains distribution, generators and anything three-phase are for the qualified person. If in doubt, don't.</p>", "s13-2 s12-15"],
+    ["what is loler|what is puwer|working at height|ladder rules|rigging rules", "<p><strong>LOLER</strong> covers lifting equipment (hoists, rigging, truss) and needs it examined and used by competent people. <strong>PUWER</strong> covers all work equipment. The <strong>Work at Height Regulations</strong> cover ladders, towers and lifts. Don't climb, rig or fly anything you aren't trained and authorised for.</p>", "s13-3"],
+    ["manual handling|how to lift a speaker|lifting heavy kit|two person lift", "<p>Plan the lift: weight, route, help. Lift close to your body with your legs, don't twist, and use two people (or a dolly or hoist) for anything heavy or awkward — a big speaker or amp rack is always at least two. Use the handles and the case wheels; it's not weak to ask.</p>", "s13-4"],
+    ["noise at work|how loud before ear protection|hearing protection|ear plugs|80 85 db", "<p>The <strong>Control of Noise at Work Regulations 2005</strong> set action levels at <strong>80 dB(A)</strong> and <strong>85 dB(A)</strong> daily exposure — a loud gig blows past both. Carry decent filtered earplugs and wear them during soundcheck and loud sets, not just the show. Hearing damage is permanent and invisible until it's done.</p>", "s13-5"],
+    ["what is rams|risk assessment|method statement|do i need to read the rams", "<p><strong>RAMS</strong> is the Risk Assessment and Method Statement: what could go wrong on this job, how it's controlled, and how the work will be done safely. Read it before the job, follow it on site, and say if what you're asked to do isn't in it or doesn't match reality.</p>", "s13-7"],
+    ["what is cdm|cdm 2015 events|principal contractor event", "<p><strong>CDM 2015</strong> (Construction Design and Management) applies to building and taking down events, not just building sites. It means there's a principal contractor in charge of site safety, inductions, and rules everyone follows. For you: attend the induction, follow the site rules, wear the PPE asked for.</p>", "s13-6"],
+    ["what is pat testing|does kit need pat test|pat test sticker|in service inspection", "<p>“PAT testing” isn't a legal requirement in itself — the law requires electrical equipment to be maintained safely. In practice hire companies inspect and test regularly and label kit. Before you use anything: a quick <strong>visual check</strong> — damaged cable, cracked plug, scorch marks, a missing or out-of-date label. Faulty means quarantine.</p>", "s13-8"],
+    ["what ppe do i need|steel toe caps|hard hat|hi vis|ppe for events", "<p>Typical event PPE: <strong>safety boots</strong> (toe caps) always on load-in and out, <strong>hi-vis</strong> where vehicles move, <strong>hard hat</strong> when work is going on overhead, <strong>gloves</strong> for loading, and <strong>hearing protection</strong>. The site rules and RAMS say what's required.</p>", "s13-11"],
+    ["riddor|accident reporting|near miss|someone got hurt", "<p>Report every accident and near miss to the site or company safety person — that's how things get fixed. <strong>RIDDOR</strong> requires the employer to report serious injuries, some dangerous occurrences and injuries that keep someone off work for more than seven days to the HSE. First, get first aid and make the area safe.</p>", "s13-13"],
+    ["what is coshh|haze fluid|hazardous substances|chemicals on site", "<p><strong>COSHH</strong> covers hazardous substances: haze and smoke fluid, cleaning products, solvents, battery acid. Use them as the safety data sheet says, ventilate, and tell people with asthma before haze goes up. Don't decant chemicals into unlabelled bottles.</p>", "s13-14 s9-12"],
+    ["working time regulations|how many hours can i work|48 hour week|opt out|rest break|break entitlement", "<p>The <strong>Working Time Regulations</strong> limit average working time to <strong>48 hours a week over 17 weeks</strong> (most event employers ask you to sign an opt-out, which is normal and can be withdrawn with notice). You're also entitled to <strong>11 hours' rest</strong> between working days, a <strong>20-minute break</strong> in a shift over six hours, and paid holiday.</p>", "s13-15"],
+    ["working alone|lone working|early start alone|late finish safety", "<p>If you're working alone: someone must know where you are and when you'll be done, you check in at agreed times, and you don't do anything high-risk alone (rigging, heavy lifts, mains). Keep a charged phone and know the venue's emergency procedure.</p>", "s13-12"],
+    ["fire exit|site induction|emergency procedure|what to do in a fire", "<p>At every venue: attend the induction, find the <strong>fire exits, assembly point and fire alarm sound</strong>, and never block exits or extinguishers with cases or cable. Know who the first aider is. If the alarm goes, leave — don't stay to save kit.</p>", "s13-10"],
+
+    /* the job */
+    ["what does an audio technician do|what is my role|what is a sound tech job|role on site", "<p>The audio technician builds, tests, runs and takes down the sound system so the engineer and the show can work. That means prep, cabling, system and line checks, solving faults, looking after kit, and being calm and reliable. Engineers mix; system techs own the PA design; you make it all work, and learn every part of it.</p>", "s1-1 s1-3"],
+    ["who is who on site|production manager|stage manager|system tech|foh engineer", "<p>The usual chain: <strong>production manager</strong> (the whole show), <strong>stage manager</strong> (the stage and running order), <strong>FOH engineer</strong> (the audience mix), <strong>monitor engineer</strong> (the performers' mixes), <strong>system tech</strong> (the PA design and tuning), then technicians and crew. Know who you report to on each job.</p>", "s1-3"],
+    ["what is advancing|advance a show|tech rider|what is a rider|input list", "<p><strong>Advancing</strong> is confirming the details before the job: timings, access, power, the <strong>tech rider</strong> (what the act needs), the <strong>input list</strong> and stage plot, contacts and parking. Most on-the-day problems are things nobody advanced.</p>", "s1-7 s19-9"],
+    ["what paperwork do i need|patch sheet|stage plot|pick list|job sheet", "<p>The core paperwork: <strong>job sheet</strong> (times, place, contacts), <strong>pick list</strong> (the kit), <strong>stage plot</strong> and <strong>input/patch list</strong>, the system drawing, and the RAMS. Keep them on your phone and on paper; update them when things change, so the derig and the next job are easy.</p>", "s1-5 s8-8"],
+    ["site etiquette|unwritten rules|how to behave on site|crew etiquette", "<p>Be early, ask before touching anyone else's kit, don't stand on the stage during a performance or walk through the audience's sightlines, keep your phone away during the show, label everything, and help with the boring jobs. Say what you don't know — it's far better than guessing.</p>", "s1-6"],
+    ["warehouse prep|how to prep a job|prep checklist|what to check before leaving warehouse", "<p>Prep from the pick list: every item <strong>counted, tested and labelled</strong>. Test every cable, power up every amp and desk, check radio mics and spares, pack the fault kit. Load the van in reverse order of unloading. The warehouse prep checklist in §19.2 has the full list.</p>", "s19-2"],
+    ["load in order|how to load in|load-in|build order", "<p>A typical order: power and distribution first (by the right people), then PA position and rigging, amps and speaker cables, stage boxes and multicores, desk and network, then stage mics and monitors. Test as you go, not all at the end. The load-in checklist in §19.4 follows that.</p>", "s19-4"],
+    ["derig|load out|pack down|after the show", "<p>Derig safely and tidily: wait for the all-clear, power down in the right order (amps before the desk), coil cables properly, count everything back against the pick list, and put faulty kit in quarantine with a label. Leave the venue as you found it.</p>", "s19-7 s19-3"],
+
+    /* monitors and IEMs */
+    ["how to ring out a wedge|ringing out|ring out monitors|eq a wedge", "<p>With the mic where the performer will be: raise the wedge level slowly until it just starts to ring, find that frequency (an RTA helps), cut it narrowly on the wedge's output EQ by a few dB, and carry on. Two or three cuts, not twenty — after that, move the mic or the wedge instead.</p>", "s15-8"],
+    ["wedge vs iem|wedges or in ears|should we use iems", "<p><strong>Wedges</strong> are simple, robust, and performers hear the room — but add stage volume and feedback risk. <strong>IEMs</strong> give a cleaner, quieter stage and protect hearing, but need radio coordination, careful mixes and an ambient mic so performers don't feel cut off. Many shows mix both.</p>", "s15-2"],
+    ["how to build an iem mix|iem mix|in ear mix|monitor mix for singer", "<p>Start with the performer's own voice or instrument, then add only what they ask for, in the order they ask. Keep it low to start, give them a stereo mix if you can, add a little reverb and an ambient mic for the room, and keep checking in — monitor mixes are a conversation.</p>", "s15-3 s15-7"],
+    ["what is a click track|click in ears|drummer click|backing track", "<p>A <strong>click track</strong> is a metronome (and often cues) sent only to the drummer's or band's ears to keep time with backing tracks or video. It must never go to the PA. Route it carefully, label it clearly, and check it's on the right mixes during line check.</p>", "s15-10"],
+
+    /* recording and streaming */
+    ["how to record a gig|multitrack recording|record from the desk|virtual soundcheck", "<p>Most digital desks can send every channel over USB, Dante or another network to a computer for a <strong>multitrack recording</strong>. Set the sample rate to match the desk, record pre-fader (so the recording isn't affected by your mix moves), check the drive has space, and run a backup recording if it matters. Played back into the desk, it's a <strong>virtual soundcheck</strong>.</p>", "s14-2 s14-3 s14-7"],
+    ["sample rate and bit depth|48k or 96k|24 bit|what format to record", "<p>For live recording: <strong>48 kHz, 24-bit WAV</strong> is the safe default (match the desk's sample rate). 96 kHz doubles the file size with little gain for most jobs. Never record to MP3 as the master.</p>", "s14-4"],
+    ["broadcast feed|press feed|stream mix|what is a submix for broadcast", "<p>A <strong>broadcast or stream feed</strong> needs its own mix — what sounds right in the room (with the PA doing the heavy lifting) is wrong on a stream. Build a separate submix with more vocals and room mics, check the level and loudness the broadcaster wants, and agree the format and connector before the day.</p>", "s14-5 s14-8"],
+    ["can i record the show|recording rights|consent to record|is it legal to record", "<p>Only record a show if the people with the rights — the act, the promoter, the venue — have <strong>agreed</strong>. Recording for the engineer's virtual soundcheck still needs permission. Never share or post anything you recorded without written consent.</p>", "s14-11"],
+
+    /* career */
+    ["how do i become a sound engineer|career path|how to progress|what next in my career", "<p>Common routes: technician → system tech or monitor engineer → FOH engineer, or into production management, broadcast, install or touring. Progress comes from doing every job properly, saying yes to new responsibilities, learning the desks and software you meet (offline editors are free), and keeping evidence of your work.</p>", "s17-1 s17-6"],
+    ["freelance|how to go freelance|self employed sound|day rate", "<p>Freelancing basics: register as self-employed with HMRC, keep records of income and expenses, agree your rate and payment terms before the job, get your own liability insurance, and invoice promptly. Build a network of companies and engineers who know your work.</p>", "s17-2"],
+    ["what training should i do|certifications|dante certification|courses for audio", "<p>Worth having: <strong>Dante certification</strong> (free, online), manufacturer training for the kit you use (d&amp;b, Yamaha, Shure), an IPAF or PASMA ticket if your work needs it, first aid, and any console training you can get. Part 18 lists free courses.</p>", "s17-4 s18-3"],
+    ["what kit should i buy|own tools|what should be in my bag|tools for sound tech", "<p>First buys: a good <strong>torch</strong>, <strong>multitool</strong>, <strong>cable tester</strong>, gaffa and electrical tape, Sharpies, a few adapters, <strong>filtered earplugs</strong>, headphones, and a USB stick for show files. A small multimeter later. See §19.17 for the full bag list.</p>", "s17-5 s19-17"],
+
+    /* events */
+    ["corporate event audio|conference audio|what changes at corporate events|corporate av", "<p>Corporate work is about <strong>speech</strong> being clear, every time, and the client never noticing the sound. Expect lectern and radio mics, playback, video feeds, hybrid links and a tight schedule. Ring out every mic, have spare radio mics on, check every presenter's mic before they walk on, and keep the volume comfortable.</p>", "s10-2 s19-18"],
+    ["theatre sound|musicals|working in theatre|theatre show day", "<p>Theatre is precise and repeatable: radio mics on every cast member, a cue-based show, QLab playback, and strict show-day routines. Mic checks, battery changes and the same order every time. See §10.4 and the theatre show-day checklist.</p>", "s10-4 s19-19"],
+    ["hybrid meeting audio|zoom audio|teams call audio|echo on video call|mix minus", "<p>For hybrid events, the remote people need the room's speech and the room needs to hear them — without sending them their own voices back (echo). That's a <strong>mix-minus</strong>: send the call everything except the call's own return. Check both directions with a real test call before the start.</p>", "s10-8"],
+    ["wedding audio|party audio|small function|dj setup", "<p>Small functions are about simple, reliable kit and people skills: a speech mic that works first time, background music at a sensible level, the DJ connected cleanly (DI if needed), and a plan for the first dance and speeches. Do a quick check with the couple or organiser.</p>", "s10-9"],
+    ["outdoor gig|rain|weather|working outside|outdoor event audio", "<p>Outdoors: cover the desk and electronics, keep connectors off the ground, watch the wind (speaker stacks and flown kit), plan for cold batteries and condensation, and know the site's weather-stop rules. Sound behaves differently outside — no walls to help, and wind moves it around.</p>", "s6-14 s19-14"],
+    ["festival|festival audio|changeover|festival stage", "<p>Festivals mean fast changeovers, shared stages and strict curfews. Prep line systems and stage boxes in advance, label everything, use the patch the stage manager gives you, and keep the changeover calm and in order. Noise limits are policed.</p>", "s10-10"],
+    /* researched additions (Nov 2026) */
+    ["what is a dm7|yamaha dm7|dm7 vs dm7 compact|how many channels dm7|dm7 inputs", "<p>The <strong>Yamaha DM7</strong> has 120 input channels, 48 mixes, 12 matrices and two stereo buses, 32 local inputs and 16 outputs, and 144×144 Dante built in at up to 96 kHz. The <strong>DM7 Compact</strong> has the same bus structure with 72 inputs, one fader bay and 16 local in and out.</p>", "s7-8"],
+    ["how do i set up a dm7|dm7 setup|dm7 show file|load show file dm7", "<p>Save what's on the desk to USB first, then load or initialise the show file, check Dante (devices, sample rate, clock leader), patch inputs and outputs, set up mixes, Recall Safe what must not change, line check, then store a scene and save again. Full order in §7.9 — or say “set up a DM7” and I'll walk you through it.</p>", "s7-9 s7-8"],
+    ["dm7 recall safe|dm7 focus recall|scene changed my channel dm7|what is focus recall", "<p><strong>Recall Safe</strong> protects chosen channels or parameters from every scene recall. <strong>Focus Recall</strong> sets, per scene, what that scene is allowed to change. If a scene changed something it shouldn't, one of these is set wrong — tell the engineer before recalling anything else.</p>", "s7-8 s7-4"],
+    ["dm7 two screens select|unlink sel keys dm7|dm7 surface settings", "<p>On the full DM7, each bay can have its own selected channel: Setup → User Setup → Surface, and unlink the SEL keys. Most engineers prefer it, so the two screens show two different channels.</p>", "s7-8"],
+    ["dm7 rio gain|ha remote|who controls the rio gain|gain compensation", "<p>A DM7 sets the gain and phantom of Yamaha Rio stage boxes over Dante (<strong>HA remote</strong>). On a shared FOH and monitor system, one person's gain change moves everyone's levels — so only the preamp owner changes them. Ask who owns the preamps before the job.</p>", "s7-8"],
+    ["dm7 recording|record on a dm7|dm7 usb channels|dante virtual soundcard", "<p>The DM7's USB carries 18 channels in and out — fine for stereo or a small recording. For a full multitrack, use <strong>Dante Virtual Soundcard</strong> on a computer (up to 64 channels at 48 kHz) and record pre-fader.</p>", "s7-9 s14-7"],
+    ["what is the dugan automixer|automixer|automatic mixer for speech|panel mics feedback", "<p>An <strong>automixer</strong> (the DM7 has Dan Dugan's built in) automatically shares gain between speech mics, so the total stays steady however many people talk. Open panel mics don't add up to feedback and room noise, and nobody has to ride faders for every word.</p>", "s7-8 s10-11"],
+    ["digico vs yamaha|allen and heath dlive|avantis|digico snapshot|which desk", "<p>The channel strip is the same on every desk; the words and scene systems change. Yamaha uses <strong>scenes</strong> with Recall Safe and Focus; DiGiCo uses <strong>snapshots</strong> with recall scope; Allen &amp; Heath uses <strong>scenes</strong> with recall filters and safes. On any desk you don't know, save the show file first and find the solo-clear and the main mute.</p>", "s7-10"],
+    ["shure wireless workbench|how to use wireless workbench|wwb deploy|ulxd setup|sennheiser ewdx setup", "<p>With everything that will be on during the show switched on: scan, add your devices' frequencies, <strong>Analyze</strong>, <strong>Calculate</strong>, then <strong>Assign and Deploy</strong> to the networked receivers. Batteries in, sync each transmitter, set gain, label, walk test. Sennheiser's WSM or Control Cockpit do the same job.</p>", "s5-11 s5-8"],
+    ["how much is a radio mic licence|channel 38 licence cost|ofcom fee|channel 70 licence free|licence exempt radio mic", "<p>As of November 2026: the UK shared licence for <strong>Channel 38</strong> (606.5–613.5 MHz) is <strong>£75 a year or £135 for two years</strong> bought on Ofcom's website (£85 / £155 otherwise). <strong>Channel 70</strong> (863.1–864.9 MHz) is licence-exempt — free, but crowded. Bigger shows use coordinated site licences. Check ofcom.org.uk for current fees.</p>", "s5-12 s5-4"],
+    ["l-acoustics|la12x|la network manager|kara preset|l acoustics vs d&b|what is soundvision", "<p>L-Acoustics works like d&amp;b with different names: amplified controllers (LA4X, LA12X, LA7.16) instead of D-series amps, <strong>presets</strong> instead of setups, <strong>LA Network Manager</strong> instead of R1, and <strong>Soundvision</strong> instead of ArrayCalc. Preset suffixes: <strong>_FI</strong> for fills, <strong>_MO</strong> for monitors.</p>", "s6-21"],
+    ["what is milan|milan vs dante|avb switch|does d&b use milan|milan network", "<p><strong>Milan</strong> is network audio on AVB: the switches themselves keep time and reserve bandwidth, so there's no QoS or IGMP setup — but they <strong>must be AVB/Milan-capable</strong>. d&amp;b D40/D90, L-Acoustics and Meyer support it. Redundancy needs two physically separate networks. Don't mix Milan and Dante on the same switches unless the design says so.</p>", "s8-10"],
+    ["dante controller step by step|how to route dante|dante clock leader|preferred leader|dante preset", "<p>Laptop on the audio network by cable (Wi-Fi off), open Dante Controller, check every device is there, one clock leader (set Preferred Leader on that device only), sample rates match, then tick transmit-meets-receive in the grid. Rename devices <em>before</em> routing, and save a preset of the routing.</p>", "s8-9"],
+    ["open sound meter|free measurement software|how to measure a pa|transfer function|smaart free alternative", "<p><strong>Open Sound Meter</strong> is free measurement software. You need a two-input interface and a measurement mic: input 1 the mic, input 2 the pink noise looped back as reference. Use the delay finder, then read magnitude, phase and coherence. Measuring is for learning; changing the system's EQ is the system tech's call.</p>", "s8-11 s6-8"],
+    ["corporate presenter mic|how to mic a presenter|lavalier placement|where to clip a lapel mic|headset or lav", "<p>Lavalier on the sternum (about a hand's width below the chin), on the side they turn to, cable taped so it can't rustle. Headsets for movers and quiet talkers; handhelds for Q&amp;A. Fresh battery, gain set so they don't clip, muted until they walk on, and rung out with the room PA before doors.</p>", "s10-11 s5-11"],
+    ["martyns law|martyn's law|terrorism protection of premises act|event security law|invacuation", "<p><strong>Martyn's Law</strong> (Terrorism (Protection of Premises) Act 2025) is expected to come into force in <strong>spring 2027</strong>. Venues and events of 200–799 people need public protection procedures (evacuation, invacuation, lockdown, communication); 800 or more also need protective measures. It's the venue's duty — yours is to know the signals and keep the announcement mic working.</p>", "s13-16"],
+    ["bs 7909|temporary power event|distro tripped|rcd 30ma|generator earth", "<p>Event temporary power is designed and certified under <strong>BS 7909:2023+A1:2024</strong> by the power technician. Expect 30 mA RCD protection on sockets, inspection before switch-on, and earth rods on generator systems — don't disturb them. If the distro trips, tell the power tech; never reset someone else's breakers or bypass an RCD.</p>", "s13-17 s12-15"]
+  ];
+  var bank = null;
+  function bankIndex(){
+    if(bank) return bank;
+    var df = {};
+    var entries = ANSWERS.map(function(a){
+      var ps = a[0].split('|').map(function(q){ return terms(q).filter(function(t, i, all){ return all.indexOf(t) === i; }); }).filter(function(p){ return p.length; });
+      var seen = {};
+      ps.forEach(function(p){ p.forEach(function(t){ seen[t] = true; }); });
+      Object.keys(seen).forEach(function(t){ df[t] = (df[t] || 0) + 1; });
+      return {ps:ps, all:Object.keys(seen), a:a[1], see:(a[2] || '').split(' ').filter(Boolean), q:a[0].split('|')[0]};
+    });
+    bank = {entries:entries, df:df, n:entries.length};
+    return bank;
+  }
+  function bestAnswer(text){
+    var B = bankIndex();
+    if(!B.n) return null;
+    var q = terms(text).filter(function(t, i, all){ return all.indexOf(t) === i; });
+    if(!q.length) return null;
+    function w(t){ var d = B.df[t] || 0; return Math.log(1 + (B.n + 1) / (d + 0.5)); }
+    var qw = q.reduce(function(sum, t){ return sum + w(t); }, 0);
+    var best = null, runner = 0;
+    B.entries.forEach(function(e){
+      /* How much of the question this entry covers (any of its phrasings),
+         and how closely the best single phrasing matches. */
+      var got = q.filter(function(t){ return e.all.indexOf(t) > -1; });
+      if(!got.length || got.length < Math.min(2, q.length)) return;
+      var cover = got.reduce(function(sum, t){ return sum + w(t); }, 0) / qw;
+      var close = 0;
+      e.ps.forEach(function(p){
+        var gw = p.filter(function(t){ return q.indexOf(t) > -1; }).reduce(function(sum, t){ return sum + w(t); }, 0);
+        var pw = p.reduce(function(sum, t){ return sum + w(t); }, 0);
+        if(gw / pw > close) close = gw / pw;
+      });
+      var top = 0.65 * cover + 0.35 * close;
+      if(top > (best ? best.score : 0)){ if(best) runner = Math.max(runner, best.score); best = {e:e, score:top}; }
+      else if(top > runner) runner = top;
+    });
+    if(!best || best.score < 0.62) return null;
+    best.runner = runner;
+    return best;
+  }
+  function showAnswer(hit, text){
+    var e = hit.e;
+    var m = addMsg('bot', e.a);
+    if(e.see.length) addLinks(m, e.see.filter(function(id){ return document.getElementById(id); }).map(function(id){ return ['#' + id, esc(sectionLabel(id))]; }));
+    var next = [];
+    var f = scoreFlows(text);
+    if(f) next.push({label: (f.kind === 'setup' ? 'Walk me through: ' : 'Troubleshoot: ') + f.title, go: function(){ addMsg('me', esc(f.title)); startFlow(f, text); }});
+    if(e.see[0] && SECTION_LINK.test('#' + e.see[0]) && document.getElementById(e.see[0])) next.push({label:'Read it here', go: function(){ addMsg('me', 'Read it here'); peek(e.see[0]); setChips(next.filter(function(c){ return c.label !== 'Read it here'; })); }});
+    next.push({label:'Not what I asked', quiet:true, go: function(){ addMsg('me', 'Not what I asked'); answerInfo(text, true); }});
+    next.push(BACK);
+    setChips(next);
+  }
+
   function sectionLabel(id){
     var sec = document.getElementById(id);
     var h = sec && sec.querySelector('h3');
@@ -8586,11 +9111,13 @@ if(quickfabBtn && quickfabMenu){
     });
     return best.length > 320 ? best.slice(0, 317).replace(/\s+\S*$/, '') + '…' : best;
   }
-  function answerInfo(text){
+  function answerInfo(text, noBank){
+    var hit = !noBank && bestAnswer(text);
+    if(hit){ showAnswer(hit, text); return; }
     var defs = findGlossary(text);
     var found = searchBook(text, 3);
     if(!defs.length && !found.length){
-      addMsg('bot', '<p>I couldn\'t find that in the book. Try a different word for it — or, with a key and a signal, ask the AI assistant.</p>');
+      addMsg('bot', '<p>I couldn\'t find that in the book. Try a different word for it, or describe what you can see.</p>');
       menu();
       return;
     }
@@ -8630,8 +9157,14 @@ if(quickfabBtn && quickfabMenu){
        it's really a fault report that happens to name the kit, in which case
        the kit is remembered for the report and the fault route starts. */
     var fixRanked = rankFlows(text, 'fix');
-    var faultish = fixRanked.length && fixRanked[0].s >= 1 && !info && !COMPAT_Q.test(text) && !WHICH_AMP_Q.test(text) && fixRanked[0].f.id !== 'setup';
+    /* "How do I route Dante?" is a how-to, not a fault — unless it says something's wrong. */
+    var fixAsk = /\b(fix|wrong|broken|faulty|not working|won't|isn|stopped|no sound|silent|problem|fault|dropping|crackl\w*|hum\w*)\b/i.test(text);
+    var faultish = fixRanked.length && fixRanked[0].s >= 1 && !info && (!setupAsk || fixAsk) && !COMPAT_Q.test(text) && !WHICH_AMP_Q.test(text) && fixRanked[0].f.id !== 'setup';
     if(!faultish && !(setupAsk && f && f.kind === 'setup' && !findModels(text).length) && modelAnswer(text)) return;
+    /* A question with a written answer gets it straight away — unless it's
+       really a fault report, which goes to the step-by-step route. */
+    var hit = bestAnswer(text);
+    if(hit && (!faultish || info) && (info || !f || (setupAsk && f.kind !== 'setup'))){ showAnswer(hit, text); return; }
     if(!g.symptom) g.symptom = text;
     /* Two problems in one message: start with the stronger, queue the other. */
     if(f && !info && ranked.length > 1 && ranked[1].f !== f && ranked[1].s >= 1 && /\b(and|also|plus|as well|too)\b/i.test(text) && (f.kind || 'fix') === 'fix' && (ranked[1].f.kind || 'fix') === 'fix'){
@@ -8658,252 +9191,6 @@ if(quickfabBtn && quickfabMenu){
     answerInfo(text);
   }
 
-  /* ---- AI assistant ---- */
-  var ai = {history:[], busy:false, system:null, refIds:{}};
-  var pendingImage = null;
-  var sdkPromise = null;
-  var REF_IDS = ['s3-3','s3-12','s6-1','s6-4','s6-16','s6-17','s6-18','s6-19','s6-20','s11-9','s12-1','s12-8','s12-13','s12-15'];
-
-  function sectionText(id, max){
-    var sec = document.getElementById(id);
-    if(!sec) return '';
-    var clone = sec.cloneNode(true);
-    Array.prototype.forEach.call(clone.querySelectorAll('.notefield, script, button'), function(n){ n.remove(); });
-    Array.prototype.forEach.call(clone.querySelectorAll('tr'), function(tr){ tr.appendChild(document.createTextNode(' \n')); });
-    Array.prototype.forEach.call(clone.querySelectorAll('td, th, dt'), function(td){ td.appendChild(document.createTextNode(' | ')); });
-    Array.prototype.forEach.call(clone.querySelectorAll('p, li, dd, h4, div.note'), function(p){ p.appendChild(document.createTextNode('\n')); });
-    var txt = (clone.textContent || '').replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n').trim();
-    return max && txt.length > max ? txt.slice(0, max) + ' …' : txt;
-  }
-  /* Built once from the page and never changed afterwards, so the whole system
-     prompt is a stable prefix the API can cache across every turn. */
-  function systemPrompt(){
-    if(ai.system) return ai.system;
-    var contents = Array.prototype.map.call(document.querySelectorAll('main > .part section.s h3'), function(h){ return h.textContent.trim(); }).join('\n');
-    var ref = REF_IDS.map(function(id){ ai.refIds[id] = true; return '<section>\n' + sectionText(id) + '\n</section>'; }).join('\n');
-    ai.system = [
-      'You are the on-site assistant inside TreebySound, a UK live-audio field handbook. The person talking to you is usually a junior or developing audio technician, often mid-job, on a phone, under time pressure.',
-      '',
-      'You help with three kinds of request, and should recognise which one you have:',
-      '- Setting something up: walk them through it in order, a few steps at a time, checking where they are before moving on (for example a d&b amp rack, speaker cabling, R1, a line check, radio mics).',
-      '- Finding and fixing a problem: narrow down where the fault is, then how to resolve it or who to hand it to.',
-      '- General information: explain a term, a setting, a light, a connector or a piece of kit clearly and briefly, with the practical "so what" for their job.',
-      '',
-      'How to help:',
-      '- Safety first. If anything suggests smoke, burning, electric shock, injury, a rigging or suspended-load problem, or a mains or distribution fault, tell them to stop or mute, make it safe and get the responsible or qualified person before giving any technical advice. Never advise opening amplifiers, loudspeakers or mains equipment, re-terminating cables on a live system, or touching rigging.',
-      '- Work like a calm crew chief: the most likely and cheapest checks first, one change at a time, substitution (swap in a known-good part) rather than rewiring. If the symptom is ambiguous, ask one short question first — which box, which amp, which output mode, what the indicators show.',
-      '- Keep replies short and scannable on a phone: one sentence on what it probably is, then at most five numbered checks. No preamble, no essays.',
-      '- Respect authority: on a system they do not own, tell them what to report rather than changing amp setups, output modes, ArrayProcessing, console show files or network settings.',
-      '- Be specific about d&b audiotechnik amplifiers (D6, D12, D20, D40, D80, D90 and the install amps), d&b loudspeakers, R1, ArrayCalc and Neutrik speakON NL2/NL4/NLT4/NL8, using the reference below. Where a detail depends on a model, version or firmware you are not sure of, say so and point them to the label above the amp outputs or the manual. Never invent pinouts, menu names or specifications.',
-      '- For advanced or compound problems (several symptoms at once, line arrays and ArrayProcessing, cardioid sub arrays, time alignment, AES/Milan/Dante feeds, amp loading), separate the symptoms, say which you would chase first and why, and keep track of what has already been ruled out across the conversation. Use the d&b model tables in the reference for which amp drives which box; if a pairing is not confirmed there, say so.',
-      '- They often set up and test events without a technician coming in first. Help them prove the system themselves (the 15-step test in §11.9), but be clear about what is not theirs to do alone: rigging, mains distribution, changing someone else\'s system design. When their own kit list is given, answer for that kit first.',
-      '- If they ask how to progress, point to the technician skills on the Pathway (#path-tech) and the concrete next thing to practise on a real job.',
-      '- If they attach a photo, say what you can actually see (screen text, indicator colours, connector type) before drawing conclusions, and say if the photo is too unclear to read.',
-      '- Refer to handbook sections as §x.y (for example §6.19) when one helps; the app turns them into links. Only cite sections that appear in the contents list.',
-      '- When they have found the fault, are stuck, or ask you to "write it up", give a short message for their lead in this order: the symptom, what changed, what has been checked, what they need.',
-      '- UK English. Plain words; explain any jargon you use.',
-      '',
-      '<handbook_contents>',
-      contents,
-      '</handbook_contents>',
-      '',
-      '<reference_sections>',
-      ref,
-      '</reference_sections>'
-    ].join('\n');
-    return ai.system;
-  }
-
-  function loadSdk(){
-    if(!sdkPromise){
-      sdkPromise = import('https://esm.sh/@anthropic-ai/sdk').then(function(m){ return m.default || m.Anthropic; });
-      sdkPromise.catch(function(){ sdkPromise = null; });
-    }
-    return sdkPromise;
-  }
-
-  /* Minimal, safe formatting: escape everything, then allow bold, inline code,
-     bullet and numbered lists, and turn §x.y into links to the book. */
-  function formatAi(text){
-    var out = [], list = null;
-    function inline(s){
-      s = esc(s)
-        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-        .replace(/`([^`]+)`/g, '<code>$1</code>');
-      return s.replace(/§\s?(\d{1,2})\.(\d{1,2})/g, function(all, a, b){
-        var id = 's' + a + '-' + b;
-        return document.getElementById(id) ? '<a href="#' + id + '">§' + a + '.' + b + '</a>' : all;
-      });
-    }
-    function close(){ if(list){ out.push('</' + list + '>'); list = null; } }
-    text.split(/\n/).forEach(function(line){
-      var t = line.trim();
-      var ul = /^[-*•]\s+(.*)/.exec(t), ol = /^\d+[.)]\s+(.*)/.exec(t);
-      if(ul || ol){
-        var want = ul ? 'ul' : 'ol';
-        if(list !== want){ close(); out.push('<' + want + '>'); list = want; }
-        out.push('<li>' + inline((ul || ol)[1]) + '</li>');
-      } else if(!t){
-        close();
-      } else {
-        close();
-        out.push('<p>' + inline(t.replace(/^#+\s*/, '')) + '</p>');
-      }
-    });
-    close();
-    return out.join('');
-  }
-
-  function setBusy(on){
-    ai.busy = on;
-    sendBtn.disabled = on;
-    sendBtn.textContent = on ? '…' : 'Send';
-  }
-
-  function sendAi(text){
-    if(ai.busy) return;
-    var key = storeGet(KEY_STORE);
-    if(!key){
-      addMsg('bot', '<p>Add your API key in <strong>AI assistant setup</strong> first — or switch to Guided, which needs nothing.</p>', 'warn');
-      settings.open = true;
-      return;
-    }
-    if(!navigator.onLine){
-      addMsg('bot', '<p>No signal, so the AI assistant can\'t be reached. Switching to the guided fault finder, which works offline.</p>', 'warn');
-      setMode('guided', true);
-      guidedText(text);
-      return;
-    }
-    var shown = esc(text).replace(/\n/g, '<br>');
-    if(pendingImage) shown += '<img alt="Attached photo" src="' + pendingImage.url + '">';
-    addMsg('me', shown);
-    if(DANGER.test(text)) safetyNote();
-
-    var system = systemPrompt();
-    var excerpts = searchBook(text, 3, ai.refIds).map(function(e){
-      return '<section>\n' + sectionText(e.id, 3500) + '\n</section>';
-    }).join('\n');
-    var content = [];
-    if(pendingImage) content.push({type:'image', source:{type:'base64', media_type:'image/jpeg', data: pendingImage.data}});
-    if(excerpts) content.push({type:'text', text:'<handbook_excerpts>\n' + excerpts + '\n</handbook_excerpts>'});
-    mergeSlots(text);
-    var kitNow = kitLine();
-    if(kitNow) content.push({type:'text', text:'<kit_mentioned_so_far>' + kitNow + '</kit_mentioned_so_far>'});
-    var owned = window.tbKit ? window.tbKit.summary() : '';
-    if(owned) content.push({type:'text', text:'<their_kit_from_equipment_list>' + owned + '</their_kit_from_equipment_list>'});
-    if(window.tbSysTest){
-      var tc = window.tbSysTest.counts();
-      if(tc.pass + tc.fail + tc.na) content.push({type:'text', text:'<system_test_in_progress>\n' + window.tbSysTest.record() + '\n</system_test_in_progress>'});
-    }
-    content.push({type:'text', text: text});
-    ai.history.push({role:'user', content: content});
-    clearImage();
-
-    var reply = addMsg('bot', '', 'typing');
-    var acc = '';
-    setBusy(true);
-    loadSdk().then(function(Anthropic){
-      var client = new Anthropic({apiKey: key, dangerouslyAllowBrowser: true});
-      var stream = client.beta.messages.stream({
-        model: MODEL,
-        max_tokens: 64000,
-        betas: ['server-side-fallback-2026-07-01'],
-        fallbacks: 'default',
-        output_config: {effort: 'medium'},
-        system: [{type:'text', text: system, cache_control:{type:'ephemeral'}}],
-        messages: ai.history
-      });
-      return (async function(){
-        for await (var event of stream){
-          if(event.type === 'content_block_delta' && event.delta.type === 'text_delta'){
-            acc += event.delta.text;
-            reply.innerHTML = formatAi(acc);
-            scrollDown();
-          }
-        }
-        return stream.finalMessage();
-      })().then(function(final){
-        reply.classList.remove('typing');
-        if(final.stop_reason === 'refusal'){
-          ai.history.pop();
-          reply.innerHTML = '<p>The assistant couldn\'t answer that one. Try rephrasing it, or use the guided mode.</p>';
-          reply.classList.add('warn');
-          return;
-        }
-        ai.history.push({role:'assistant', content: final.content});
-        if(!acc) reply.innerHTML = '<p>(No answer came back — try again.)</p>';
-        if(final.stop_reason === 'max_tokens') addMsg('bot', 'That answer was cut off — ask it to carry on.', 'note');
-        setChips([
-          {label:'That fixed it', go:function(){ sendAi('That fixed it. Give me a two-line log note of the fault and the fix.'); }},
-          {label:'Still not right', go:function(){ sendAi('Still not right after those checks. What next?'); }},
-          {label:'Write it up for my lead', go:function(){ sendAi('Write it up as a short message for my lead: symptom, what changed, what I have checked, what I need.'); }}
-        ]);
-      }, function(err){ failed(err, Anthropic); });
-    }, function(){
-      failed(null, null);
-    }).then(function(){ setBusy(false); }, function(){ setBusy(false); });
-
-    function failed(err, Anthropic){
-      ai.history.pop();
-      reply.classList.remove('typing');
-      reply.classList.add('warn');
-      var msg;
-      if(!Anthropic){
-        msg = 'Couldn\'t load the assistant — no signal, or the connection is blocked. The guided mode works offline.';
-      } else if(err instanceof Anthropic.AuthenticationError || err instanceof Anthropic.PermissionDeniedError){
-        msg = 'Your API key wasn\'t accepted. Check it in AI assistant setup, or create a new one at console.anthropic.com.';
-      } else if(err instanceof Anthropic.RateLimitError){
-        msg = 'Too many requests, or the key has hit its spend limit. Wait a minute and try again, or check your limits at console.anthropic.com.';
-      } else if(err instanceof Anthropic.APIConnectionError){
-        msg = 'Lost the connection. The guided mode works with no signal.';
-      } else if(err instanceof Anthropic.APIError){
-        msg = 'The assistant returned an error (' + (err.status || 'unknown') + '). Try again, or use the guided mode.';
-      } else {
-        msg = 'Something went wrong reaching the assistant. Try again, or use the guided mode.';
-      }
-      reply.innerHTML = (acc ? formatAi(acc) : '') + '<p>' + esc(msg) + '</p>';
-      setChips([{label:'Use guided mode', go:function(){ setMode('guided', true); guidedText(text); }}]);
-    }
-  }
-
-  /* ---- photos (AI mode): shrink on the phone before sending ---- */
-  function clearImage(){
-    pendingImage = null;
-    attachBar.hidden = true;
-    attachBar.innerHTML = '';
-    photoInput.value = '';
-  }
-  photoBtn.addEventListener('click', function(){ photoInput.click(); });
-  photoInput.addEventListener('change', function(){
-    var file = photoInput.files && photoInput.files[0];
-    if(!file) return;
-    var url = URL.createObjectURL(file);
-    var img = new Image();
-    img.onload = function(){
-      var max = 1400, w = img.naturalWidth, h = img.naturalHeight;
-      var scale = Math.min(1, max / Math.max(w, h));
-      var c = document.createElement('canvas');
-      c.width = Math.round(w * scale); c.height = Math.round(h * scale);
-      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
-      URL.revokeObjectURL(url);
-      var dataUrl = c.toDataURL('image/jpeg', 0.85);
-      pendingImage = {url: dataUrl, data: dataUrl.split(',')[1]};
-      attachBar.innerHTML = '';
-      var thumb = document.createElement('img');
-      thumb.src = dataUrl; thumb.alt = 'Photo to send';
-      var lab = document.createElement('span');
-      lab.textContent = 'Photo attached';
-      var rm = document.createElement('button');
-      rm.type = 'button'; rm.textContent = 'Remove';
-      rm.addEventListener('click', clearImage);
-      attachBar.appendChild(thumb); attachBar.appendChild(lab); attachBar.appendChild(rm);
-      attachBar.hidden = false;
-      input.focus();
-    };
-    img.onerror = function(){ URL.revokeObjectURL(url); addMsg('bot', 'Couldn\'t read that photo.', 'note'); };
-    img.src = url;
-  });
-
   /* ---- shared plumbing ---- */
   function safetyNote(){
     var m = addMsg('bot', '<p><strong>Stop and make it safe first.</strong> Mute or stop, keep people clear, isolate power at the source only if that\'s yours to do, and get the responsible person. Then come back to the fault.</p>', 'warn');
@@ -8912,39 +9199,16 @@ if(quickfabBtn && quickfabMenu){
   function reset(){
     log.innerHTML = '';
     g = {flow:null, node:null, steps:[], symptom:'', slots:{}, trail:[], models:[], queue:[], lastQ:'', test:null};
-    ai.history = [];
-    clearImage();
     greet();
   }
-  function setMode(m, quiet){
-    mode = m;
-    storeSet(MODE_STORE, m);
-    modeBtns.forEach(function(b){
-      var on = b.getAttribute('data-mode') === m;
-      b.classList.toggle('on', on);
-      b.setAttribute('aria-checked', on ? 'true' : 'false');
-    });
-    photoBtn.hidden = m !== 'ai';
-    if(m !== 'ai') clearImage();
-    input.placeholder = m === 'ai' ? 'Ask, or describe what you see…' : 'What\'s going on?';
-    if(!quiet) reset();
-  }
-  modeBtns.forEach(function(b){
-    b.addEventListener('click', function(){
-      var m = b.getAttribute('data-mode');
-      if(m !== mode) setMode(m);
-    });
-  });
   resetBtn.addEventListener('click', reset);
 
   form.addEventListener('submit', function(ev){
     ev.preventDefault();
     var text = input.value.trim();
-    if(!text && !(mode === 'ai' && pendingImage)) return;
-    if(!text) text = 'What can you see in this photo, and is anything wrong?';
+    if(!text) return;
     input.value = '';
     input.style.height = '';
-    if(mode === 'ai'){ setChips([]); sendAi(text); return; }
     if(g.test && !DANGER.test(text)){
       if(g.test.awaiting === 'kit'){ addMsg('me', esc(text)); window.tbSysTest.setField('kit', text); g.test.awaiting = 'step'; setChips([]); askStep(); return; }
       if(g.test.awaiting === 'note'){ addMsg('me', esc(text)); var ix = g.test.step; window.tbSysTest.set(ix, 'fail', text); g.test.awaiting = 'step'; setChips([]); afterFail(ix); return; }
@@ -8978,34 +9242,13 @@ if(quickfabBtn && quickfabMenu){
     input.style.height = Math.min(input.scrollHeight, 140) + 'px';
   });
 
-  /* ---- key management ---- */
-  function syncKeyStatus(){
-    var k = storeGet(KEY_STORE);
-    keyStatus.textContent = k ? 'Key saved on this device (ending …' + k.slice(-4) + ').' : 'No key saved.';
-    keyInput.value = '';
-  }
-  keySave.addEventListener('click', function(){
-    var k = keyInput.value.trim();
-    if(!k){ keyStatus.textContent = 'Paste a key first.'; return; }
-    if(!/^sk-ant-/.test(k)){ keyStatus.textContent = 'That doesn\'t look like an Anthropic API key (they start sk-ant-).'; return; }
-    storeSet(KEY_STORE, k);
-    syncKeyStatus();
-    if(mode !== 'ai') setMode('ai'); else reset();
-  });
-  keyForget.addEventListener('click', function(){
-    storeRemove(KEY_STORE);
-    syncKeyStatus();
-    if(mode === 'ai') reset();
-  });
-
   /* The "what's going on?" box on Home: jump to the fault finder and ask it
-     there, in whichever mode is set (guided if the AI has no key yet). */
+     there. */
   var homeAsk = document.getElementById('homeAsk');
   var homeAskInput = document.getElementById('homeAskInput');
   function askFromHome(text){
     location.hash = '#support-chat';
     setTimeout(function(){
-      if(mode === 'ai' && !storeGet(KEY_STORE)) setMode('guided', true);
       reset();
       if(text){
         input.value = text;
@@ -9027,8 +9270,6 @@ if(quickfabBtn && quickfabMenu){
     });
   }
 
-  syncKeyStatus();
-  setMode(mode, true);
   greet();
 })();
 
