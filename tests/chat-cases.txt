@@ -50,3 +50,6 @@ how far is 45 ms => 15.48 m
 quarter wave at 606 MHz => 12.4 cm
 4 boxes of 8 ohms on one channel => 2 Ω
 what's the best pizza => couldn't find that
+how do i connect r1 to the amps => which way to synchronise
+how do i set up clearcom => channel plan
+laptop playback checklist => notifications

@@ -134,4 +134,4 @@ additions was *function and placement*, so targeted changes:
       comms down, playback/laptop problems, hearing loop, recording/stream
       with no audio, wedge feedback.
 - [x] Answer bank: 250 entries (target 300+ as the product list arrives).
-- [ ] More researched content.
+- [x] More researched content: §6.22 d&b R1 step by step, §8.12 comms, §8.13 reliable laptop playback.
