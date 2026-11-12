@@ -201,3 +201,15 @@ additions was *function and placement*, so targeted changes:
 - Pocket reference: delay per metre, d&b lights, UK radio licences, Dante
   rules, noise at work, your hours.
 - Chat cases 77, all passing; content check clean.
+
+### Round 7 log (2026-11-12)
+
+- Accessibility: axe-core audit of every screen and part, 0 violations
+  (2,000+ were term/definition lists not in a <dl>; also contrast, keyboard
+  access to flow diagrams, empty table headers, a heading level).
+  `tests/check-a11y.js` keeps it there.
+- Home "First time here?" card: home screen install, ask one question (one-tap
+  "Try one"), tick one Pathway skill — each ticks itself off; hides when done
+  or dismissed.
+- Speed (4× slowed CPU, phone size): ready in ~0.75 s, first answer ~0.6 s,
+  later answers ~0.1 s. No change needed.
