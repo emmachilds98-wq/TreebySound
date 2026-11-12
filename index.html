@@ -874,6 +874,36 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 .home-ask-hints button{font-family:var(--display);font-size:12.5px;color:#f3fbfa;background:transparent;border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:5px 10px;cursor:pointer}
 .home-ask-hints button:hover{background:rgba(255,255,255,.14)}
 :root[data-contrast="high"] .home-ask label{color:#fff}
+/* ---------- system test (Job Hub) ---------- */
+.systest{background:var(--card);border:1px solid var(--rule);border-radius:14px;box-shadow:var(--shadow);padding:16px}
+.systest-fields{display:grid;gap:4px;margin-bottom:10px}
+.systest-hint{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin:4px 0 0}
+.systest-progress{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--petrol-ink);background:var(--petrol-soft);border-radius:8px;padding:8px 10px;margin:6px 0 10px}
+.systest-progress.has-fail{color:var(--fault);background:var(--fault-soft)}
+.systest-progress.all-done{color:var(--pass);background:var(--pass-soft)}
+.systest-steps{list-style:none;padding:0;margin:0;counter-reset:st}
+.systest-step{counter-increment:st;border-top:1px solid var(--rule);padding:11px 0 11px 34px;position:relative}
+.systest-step::before{content:counter(st);position:absolute;left:0;top:11px;width:24px;height:24px;border-radius:50%;background:var(--paper-2);color:var(--ink-2);font-family:var(--mono);font-size:12px;display:flex;align-items:center;justify-content:center}
+.systest-step.is-pass::before{content:"\2713";background:var(--pass);color:#fff}
+.systest-step.is-fail::before{content:"!";background:var(--fault);color:#fff}
+.systest-step.is-na::before{content:"\2013";background:var(--rule-2);color:var(--ink)}
+.systest-step-head{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.systest-step-head strong{font-family:var(--display);font-size:15.5px}
+.systest-how{font-family:var(--mono);font-size:11px;color:var(--petrol-ink)}
+.systest-detail{font-size:14px;color:var(--ink-2);margin:3px 0 8px}
+.systest-btns{display:flex;gap:6px;flex-wrap:wrap}
+.systest-btn{font-family:var(--display);font-size:13.5px;font-weight:600;border:1px solid var(--rule-2);background:var(--card);color:var(--ink-2);border-radius:999px;padding:7px 14px;cursor:pointer;min-height:36px}
+.systest-btn.pass[aria-pressed="true"]{background:var(--pass);border-color:var(--pass);color:#fff}
+.systest-btn.fail[aria-pressed="true"]{background:var(--fault);border-color:var(--fault);color:#fff}
+.systest-btn.na[aria-pressed="true"]{background:var(--rule-2);border-color:var(--rule-2);color:var(--ink)}
+.systest-note{width:100%;margin-top:7px;font:inherit;font-size:14.5px;padding:7px 10px;border:1px solid var(--rule);border-radius:8px;background:var(--paper);color:var(--ink)}
+.systest-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.systest-actions .hub-button{cursor:pointer}
+.systest-record{margin-top:10px}
+/* "In my kit" on the d&b model tables */
+tr.in-kit td{background:var(--pass-soft)}
+.kit-badge{display:inline-block;margin-left:6px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--pass);border:1px solid var(--pass);border-radius:999px;padding:1px 6px;vertical-align:middle}
+@media print{.systest-btns,.systest-actions,.systest-note{display:none}}
 </style>
 </head>
 <body>
@@ -963,6 +993,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
         <button type="submit">Ask</button>
       </div>
       <div class="home-ask-hints" aria-label="Examples">
+        <button type="button" data-ask="Test the system before doors">Test before doors</button>
         <button type="button" data-ask="Set up the d&amp;b rack">Set up the d&amp;b rack</button>
         <button type="button" data-ask="One speaker silent">Speaker silent</button>
         <button type="button" data-ask="Amp showing red">Amp light on</button>
@@ -1072,7 +1103,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
     <h2>Before, during and after a job</h2>
     <p class="screen-lead">Everything tied to an actual booking: what to do in the run-up, the order a job runs in and the checklist for each stage, the people around you and what they need, and a private workspace for this job's documents, contacts and unfamiliar kit.</p>
     <nav class="hub-nav" aria-label="Job Hub sections">
-      <a href="#hub-today">Before the job</a><a href="#job-stages">Shape of a job</a><a href="#hub-job">On a job</a><a href="#hub-workspace">Job workspace</a><a href="#hub-people">People</a><a href="#hub-guides">Quick guides</a>
+      <a href="#hub-today">Before the job</a><a href="#job-stages">Shape of a job</a><a href="#hub-job">On a job</a><a href="#hub-systest">System test</a><a href="#hub-workspace">Job workspace</a><a href="#hub-people">People</a><a href="#hub-guides">Quick guides</a>
     </nav>
   </div>
 
@@ -1125,7 +1156,37 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
       <article class="hub-card"><h4>Before the build</h4><ol class="hub-steps"><li>Find the audio lead and confirm your task.</li><li>Read the latest documents, not an old screenshot.</li><li>Walk cable routes and power with the people who own them.</li><li>Set up one clean work area; keep cases and walkways clear.</li></ol><p><a class="hub-button" href="#s19-4">Open build checklist</a></p></article>
       <article class="hub-card"><h4>When something is wrong</h4><ol class="hub-steps"><li>Make it safe; mute or stop if needed.</li><li>Ask: one thing or everything? What changed?</li><li>Check the cheap, obvious points first.</li><li>Trace one direction through the signal path.</li><li>Escalate early with a clear update.</li></ol><p><a class="hub-button" href="#s12-8">First 60 seconds</a></p></article>
     </div>
-    <div class="hub-shelf" style="margin-top:14px"><a href="#s19-5"><strong>Line check</strong>Prove one input at a time.</a><a href="#s19-6"><strong>Before doors</strong>Last calm check before the room opens.</a><a href="#s12-2"><strong>Fault kit</strong>What to carry and why.</a><a href="#s19-7"><strong>Derig &amp; return</strong>Finish accurately, even when tired.</a></div>
+    <div class="hub-shelf" style="margin-top:14px"><a href="#hub-systest"><strong>System test</strong>Prove the PA yourself and keep the record.</a><a href="#s19-5"><strong>Line check</strong>Prove one input at a time.</a><a href="#s19-6"><strong>Before doors</strong>Last calm check before the room opens.</a><a href="#s12-2"><strong>Fault kit</strong>What to carry and why.</a><a href="#s19-7"><strong>Derig &amp; return</strong>Finish accurately, even when tired.</a></div>
+  </section>
+  <section class="hub-section" id="hub-systest">
+    <h3>System test before doors</h3>
+    <p class="hub-lead">Prove the PA yourself, step by step, and come away with a dated record of what passed. Built for d&amp;b systems; the steps and the reasons behind them are in <a href="#s11-9">§11.9</a>. Everything saves on this device as you go.</p>
+    <div class="systest" id="sysTest">
+      <div class="systest-fields">
+        <div class="workspace-field"><label for="stEvent">Event</label><input id="stEvent" data-st-field="event" type="text" placeholder="e.g. Awards dinner, main room"></div>
+        <div class="workspace-field"><label for="stVenue">Venue</label><input id="stVenue" data-st-field="venue" type="text" placeholder="Venue and room"></div>
+        <div class="workspace-row">
+          <div class="workspace-field"><label for="stDate">Date</label><input id="stDate" data-st-field="date" type="date"></div>
+          <div class="workspace-field"><label for="stBy">Tested by</label><input id="stBy" data-st-field="by" type="text" placeholder="Your name"></div>
+        </div>
+        <div class="workspace-field"><label for="stKit">System / kit</label><input id="stKit" data-st-field="kit" type="text" placeholder="e.g. 2 × D20, 4 × E8, 2 × E15X-SUB"><p class="systest-hint" id="stKitHint"></p></div>
+      </div>
+      <div class="systest-progress" id="sysTestProgress" aria-live="polite"></div>
+      <ol class="systest-steps" id="sysTestSteps"></ol>
+      <div class="systest-actions">
+        <button type="button" class="hub-button" id="stRecordBtn">Show the record</button>
+        <button type="button" class="hub-button" id="stChatBtn">Talk me through it</button>
+        <button type="button" class="hub-button" id="stNewBtn">Start a new test</button>
+      </div>
+      <div class="systest-record" id="sysTestRecordWrap" hidden>
+        <pre class="chat-report" id="sysTestRecord"></pre>
+        <div class="systest-actions">
+          <button type="button" class="hub-button" id="stCopyBtn">Copy</button>
+          <button type="button" class="hub-button" id="stShareBtn">Share or save</button>
+        </div>
+      </div>
+      <details class="hub-guide" id="stHistory"><summary>Previous test records on this device</summary><div id="stHistoryList"><p class="workspace-empty">None yet. A record is kept here when you start a new test.</p></div></details>
+    </div>
   </section>
   <section class="hub-section" id="hub-workspace">
     <h3>Job workspace</h3><p class="hub-lead">A private, reusable pocket job pack for the move from Bespoke Events London’s Medway warehouse into varied event work. Keep documents in Bespoke’s approved systems; record where they are and what matters here. This page saves only in this browser.</p>
@@ -1154,7 +1215,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
           <div id="wsContacts"><p class="workspace-empty">No contacts yet. Add the audio lead, production contact, venue duty manager and hire supplier only when relevant.</p></div>
         </section>
         <section class="workspace-block wide">
-          <div class="workspace-item-head"><div><h4>My equipment reference</h4><p class="workspace-note">Build a personal recognition guide as you work: stock label, model, type, usual case/location and practical notes. Do not add serial numbers, purchase prices, passwords, live stock availability or client data.</p></div><button type="button" id="wsAddGear">+ Add equipment</button></div>
+          <div class="workspace-item-head"><div><h4>My equipment reference</h4><p class="workspace-note">Build a personal recognition guide as you work: stock label, model, type, usual case/location and practical notes. The d&amp;b models you add here are your kit: the system test fills them in, <a href="#s6-20">§6.20</a> marks them, and the fault finder checks your amps against your boxes. Do not add serial numbers, purchase prices, passwords, live stock availability or client data.</p></div><button type="button" id="wsAddGear">+ Add equipment</button></div>
           <div id="wsGear"><p class="workspace-empty">No equipment entries yet. Start with the most common microphones, DIs, cable types and stageboxes—not the entire warehouse.</p></div>
         </section>
       </div>
@@ -1420,7 +1481,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
     <h2>What to read, in what order, and what to do with it</h2>
     <p class="screen-lead">The library is 21 parts and several hundred sections. This is the route through it — five stages, each one telling you exactly which sections to read in order, what to practise on a real job before moving on, and which free training is worth doing at that point and not before.</p>
     <nav class="hub-nav" aria-label="Pathway sections">
-      <a href="#path-stages">The five stages</a><a href="#hub-learn">How to learn it</a><a href="#path-free">Free training</a><a href="#hub-me">Your own pace</a><a href="#path-career">Career</a><a href="#hub-conservation">Outside work</a>
+      <a href="#path-stages">The five stages</a><a href="#path-tech">Technician skills</a><a href="#hub-learn">How to learn it</a><a href="#path-free">Free training</a><a href="#hub-me">Your own pace</a><a href="#path-career">Career</a><a href="#hub-conservation">Outside work</a>
     </nav>
   </div>
 
@@ -1552,7 +1613,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
             <li>Capture a job cleanly and hand the files over with usable notes.</li>
           </ul>
           <p class="kicker">Free training that fits now</p>
-          <p class="stage-train"><a href="https://www.getdante.com/resources/training/dante-certification-3rd-edition/" target="_blank" rel="noopener">Dante Levels 2 and 3</a>; <a href="https://www.shure.com/en-US/docs/quickstart/Wireless-Workbench" target="_blank" rel="noopener">Wireless Workbench</a> with the official quick-start; and <a href="#s18-6">18.6 System tuning &amp; measurement</a> for what is free and what is genuinely worth paying for. Check <a href="#s18-5">18.5</a> for UK licensing before you coordinate anything for real.</p>
+          <p class="stage-train"><a href="https://www.getdante.com/resources/training/dante-certification-3rd-edition/" target="_blank" rel="noopener">Dante Levels 2 and 3</a>; <a href="https://www.shure.com/en-US/products/software/wwb" target="_blank" rel="noopener">Wireless Workbench</a> with the official quick-start; and <a href="#s18-6">18.6 System tuning &amp; measurement</a> for what is free and what is genuinely worth paying for. Check <a href="#s18-5">18.5</a> for UK licensing before you coordinate anything for real.</p>
         </div>
       </div>
     </article>
@@ -1586,6 +1647,49 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
     </article>
   </section>
 
+  <section class="hub-section" id="path-tech">
+    <h3>Toward audio technician: what you can do on your own</h3>
+    <p class="hub-lead">The five stages above are what to read. This is what to be able to <em>do</em> — the skills that let a company send you to an event and trust it'll be ready without a technician coming in first. Tick a skill when you've done it for real, unsupervised, at least twice; keep the test records as your evidence. Ticks save on this device.</p>
+    <div class="hub-grid two">
+      <article class="hub-card"><p class="kicker">Level 1 · Safe, reliable crew</p><h4>Trusted on any build</h4>
+        <ul class="check" id="chk-tech-1">
+          <li><label><input type="checkbox"><span>Prep, label and test a job's cable — speaker cables on a tester, not by eye (<a href="#s3-12">§3.12</a>)</span></label></li>
+          <li><label><input type="checkbox"><span>Know what isn't mine: rigging, distro, someone else's design (<a href="#s11-9">§11.9</a>)</span></label></li>
+          <li><label><input type="checkbox"><span>Line check a stage of inputs, start to finish (<a href="#s11-3">§11.3</a>)</span></label></li>
+          <li><label><input type="checkbox"><span>Report a fault with symptom, checks and ask (<a href="#support-say">What to say</a>)</span></label></li>
+        </ul></article>
+      <article class="hub-card"><p class="kicker">Level 2 · Sets up a d&amp;b system</p><h4>Builds and proves it to a plan</h4>
+        <ul class="check" id="chk-tech-2">
+          <li><label><input type="checkbox"><span>Read a patch plan or ArrayCalc printout and build to it (<a href="#s6-18">§6.18</a>)</span></label></li>
+          <li><label><input type="checkbox"><span>Choose the output mode and socket for every channel without help (<a href="#s6-17">§6.17</a>)</span></label></li>
+          <li><label><input type="checkbox"><span>Check every channel's setup against the box it drives (<a href="#s6-20">§6.20</a>)</span></label></li>
+          <li><label><input type="checkbox"><span>Get R1 online and every amp showing (<a href="#s6-16">§6.16</a>)</span></label></li>
+          <li><label><input type="checkbox"><span>Run the full system test and keep the record (<a href="#hub-systest">System test</a>)</span></label></li>
+        </ul></article>
+      <article class="hub-card"><p class="kicker">Level 3 · Runs the event audio</p><h4>Corporate and small events, start to finish</h4>
+        <ul class="check" id="chk-tech-3">
+          <li><label><input type="checkbox"><span>Build and save a console show file for the event (<a href="#s7-4">§7.4</a>)</span></label></li>
+          <li><label><input type="checkbox"><span>Set up, prove and run radio mics, legally licensed (<a href="#s5-8">§5.8</a>)</span></label></li>
+          <li><label><input type="checkbox"><span>Ring out the system and mix speech that's clear at the back (<a href="#s15-8">§15.8</a>, <a href="#s16-6">§16.6</a>)</span></label></li>
+          <li><label><input type="checkbox"><span>Fix the common faults in the moment, calmly (<a href="#s6-19">§6.19</a>, <a href="#p12">Part 12</a>)</span></label></li>
+        </ul></article>
+      <article class="hub-card"><p class="kicker">Level 4 · System technician skills</p><h4>Beyond building to someone else's plan</h4>
+        <ul class="check" id="chk-tech-4">
+          <li><label><input type="checkbox"><span>Model a simple system in ArrayCalc (<a href="#s6-7">§6.7</a>)</span></label></li>
+          <li><label><input type="checkbox"><span>Time-align a fill or delay to the mains (<a href="#s6-8">§6.8</a>, <a href="#calcDelay">calculator</a>)</span></label></li>
+          <li><label><input type="checkbox"><span>Set up cardioid subs and check they're cancelling (<a href="#s6-6">§6.6</a>)</span></label></li>
+          <li><label><input type="checkbox"><span>Route and troubleshoot Dante or Milan to the amps (<a href="#s8-2">§8.2</a>)</span></label></li>
+          <li><label><input type="checkbox"><span>Measure a system with free software (<a href="#s8-3">§8.3</a>)</span></label></li>
+        </ul></article>
+    </div>
+    <div class="hub-shelf" style="margin-top:14px">
+      <a href="https://www.getdante.com/resources/training/dante-certification-3rd-edition/" target="_blank" rel="noopener"><strong>Dante Certification</strong>Free online, Levels 1–3 from Audinate.</a>
+      <a href="https://www.dbaudio.com/global/en/education/workshops/" target="_blank" rel="noopener"><strong>d&amp;b workshops</strong>d&amp;basics, then Software &amp; System Fundamentals (ArrayCalc and R1). UK sessions at Nailsworth.</a>
+      <a href="https://www.shure.com/en-US/products/software/wwb" target="_blank" rel="noopener"><strong>Wireless Workbench</strong>Free RF coordination software from Shure.</a>
+      <a href="#path-career"><strong>Career routes</strong>Where audio technician leads next.</a>
+    </div>
+    <p class="hub-disclaimer">Training dates, prices and availability change — check each provider before booking. This ladder is a guide to what to practise, not a qualification; your employer decides what you're authorised to do.</p>
+  </section>
   <section class="hub-section" id="hub-learn">
     <h3>Learn it in layers</h3><p class="hub-lead">Learn the job in layers: safe hands first, then signal flow, then systems and operating. A focused session whenever you've got twenty minutes is enough — there's no clock running.</p>
     <div class="hub-grid">
@@ -1596,7 +1700,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
     <div class="hub-grid two" style="margin-top:14px"><article class="hub-card"><p class="kicker">The learning loop</p><h4>Use real work as the syllabus</h4><ol class="hub-steps"><li><strong>Early on:</strong> make the physical layer automatic—common stock, cable care, labels and safe lifting.</li><li><strong>Once that's solid:</strong> trace signal paths and support a line check; log fault patterns as you meet them.</li><li><strong>When you're ready:</strong> ask for one supervised desk, patch or wireless task; explain the result back in plain language.</li></ol></article><article class="hub-card"><p class="kicker">One job, one learning loop</p><h4>Turn experience into progress</h4><ol class="hub-steps"><li>Before: choose one thing to notice or practise.</li><li>During: ask one well-timed question and write down the answer.</li><li>After: add one useful line to the learning log.</li><li>Next time: use that note on a real task before studying something new.</li></ol><p><a class="hub-button" href="#hub-guide-log">Open learning log guide</a></p></article></div>
     <h4>The four free routes that matter most</h4>
     <p class="hub-lead">The full list, sorted by when each one is worth doing, is in <a href="#path-free">Free training</a> below.</p>
-    <div class="hub-shelf"><a href="https://www.getdante.com/resources/training/dante-certification-3rd-edition/" target="_blank" rel="noopener"><strong>Dante Certification</strong>Free Levels 1–3 from Audinate; do Level 1 when basic signal flow is familiar.</a><a href="https://www.shure.com/en-ASIA/shure-academy/online-training" target="_blank" rel="noopener"><strong>Shure Academy</strong>Free, self-paced audio, wireless and AV/networking training.</a><a href="https://www.shure.com/en-US/docs/quickstart/Wireless-Workbench" target="_blank" rel="noopener"><strong>Wireless Workbench</strong>Free professional RF software and an official starter guide.</a><a href="https://www.avolites.com/support/titan-pc-suite/" target="_blank" rel="noopener"><strong>Titan PC Suite</strong>Official download and manual path; only practise on a version supported by the workplace.</a></div>
+    <div class="hub-shelf"><a href="https://www.getdante.com/resources/training/dante-certification-3rd-edition/" target="_blank" rel="noopener"><strong>Dante Certification</strong>Free Levels 1–3 from Audinate; do Level 1 when basic signal flow is familiar.</a><a href="https://www.shure.com/en-ASIA/shure-academy/online-training" target="_blank" rel="noopener"><strong>Shure Academy</strong>Free, self-paced audio, wireless and AV/networking training.</a><a href="https://www.shure.com/en-US/products/software/wwb" target="_blank" rel="noopener"><strong>Wireless Workbench</strong>Free professional RF software and an official starter guide.</a><a href="https://www.avolites.com/support/titan-pc-suite/" target="_blank" rel="noopener"><strong>Titan PC Suite</strong>Official download and manual path; only practise on a version supported by the workplace.</a></div>
     <p class="hub-disclaimer">Free does not mean “do it all now.” Start with the equipment the company actually uses. External sites change; use the official links here rather than old video tutorials.</p>
   </section>
   <section class="hub-section" id="path-free">
@@ -1609,7 +1713,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
         <a href="https://www.shure.com/en-ASIA/shure-academy/online-training" target="_blank" rel="noopener"><strong>Shure Academy</strong>Free, self-paced audio, wireless and AV/networking training. The best starting point that exists.</a>
         <a href="https://www.getdante.com/resources/training/dante-certification-3rd-edition/" target="_blank" rel="noopener"><strong>Dante Certification 1–3</strong>Free from Audinate. Level 1 once signal flow is familiar; 2 and 3 when you are on networked systems.</a>
         <a href="#s18-2"><strong>Console offline editors</strong>Free downloads from every major desk manufacturer. Build show files at home on the desk you actually use.</a>
-        <a href="https://www.shure.com/en-US/docs/quickstart/Wireless-Workbench" target="_blank" rel="noopener"><strong>Wireless Workbench</strong>Free professional RF coordination software, with an official starter guide.</a>
+        <a href="https://www.shure.com/en-US/products/software/wwb" target="_blank" rel="noopener"><strong>Wireless Workbench</strong>Free professional RF coordination software — download and user guide on Shure's page.</a>
         <a href="https://www.avolites.com/support/titan-pc-suite/" target="_blank" rel="noopener"><strong>Titan PC Suite</strong>Official download and manual path — only practise on a version the workplace supports.</a>
       </div>
     </div>
@@ -1620,7 +1724,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
         <a href="#s18-7"><strong>Essential reading</strong>The books actually worth owning, and what each one is for.</a>
         <a href="https://www.soundonsound.com/techniques" target="_blank" rel="noopener"><strong>Sound On Sound — Techniques</strong>A deep free archive of recording and live technique. See <a href="#s18-16">18.16</a>.</a>
         <a href="#s18-8"><strong>Safety &amp; regulation</strong>HSE entertainment pages, the Purple Guide and the standards that apply to you.</a>
-        <a href="https://www.ofcom.org.uk/spectrum/radio-equipment/pmse-licence-info" target="_blank" rel="noopener"><strong>Ofcom PMSE</strong>The actual UK rules on wireless licensing — read before you coordinate anything.</a>
+        <a href="https://www.ofcom.org.uk/manage-your-licence/radiocommunication-licences/pmse" target="_blank" rel="noopener"><strong>Ofcom PMSE</strong>The actual UK rules on wireless licensing — read before you coordinate anything.</a>
         <a href="#s18-9"><strong>Communities &amp; forums</strong>Where to ask, and how to ask so that experienced people answer.</a>
       </div>
     </div>
@@ -2591,11 +2695,11 @@ EARS            the only part of the system that actually matters</div>
 <tr><td class="mono">Channel 38<br>606.5–613.5 MHz</td><td>Licensed — UK-wide shared access</td><td>Common everyday hire-stock band. It is shared and non-protected, so a scan and a retune plan still matter.</td></tr>
 <tr><td class="mono">470–694 MHz</td><td>Licensed, coordinated per site/date where available</td><td>Used where channel count, venue and local spectrum conditions justify coordinated assignments. Do not assume a frequency is available just because a receiver tunes to it.</td></tr>
 <tr><td class="mono">Channel 70<br>863–865 MHz</td><td>Licence-exempt</td><td>Free to use, no paperwork — but tiny (2 MHz), crowded, and shared with consumer gear. Fine for a couple of channels, hopeless for a show.</td></tr>
-<tr><td class="mono">821.5–832 MHz<br>1785–1805 MHz</td><td>Licence-exempt from 2026, subject to technical conditions</td><td>Useful additional options on compliant systems, but still not “set and forget”: check the exact equipment, interface requirements and local RF situation.</td></tr>
+<tr><td class="mono">821.5–832 MHz<br>1785–1805 MHz</td><td>Being made licence-exempt — Ofcom has decided this and expects to bring it in during 2026. <strong>Until Ofcom confirms it is in force, treat these as licensed.</strong></td><td>Useful extra options on compliant systems once exempt, but still not “set and forget”: check the exact equipment, interface requirements and local RF situation.</td></tr>
 <tr><td class="mono">2.4 GHz</td><td>Licence-exempt</td><td>Shares with every WiFi network and Bluetooth device on the planet. Convenient, unpredictable in a crowd.</td></tr>
 </tbody></table></div>
 <div class="note std"><span class="lab">Standard</span><p>The realistic professional position: the company or RF lead owns the licence and coordination decision. For routine shared-band work, confirm which frequencies are authorised; for high channel counts or busy sites, use coordinated assignments. If hired equipment is supplied under someone else’s UK Wireless Microphone Licence, make sure the required written permit is in the job pack. If you're unsure, <strong>ask before the day</strong> — not on site.</p></div>
-<div class="note alt"><span class="lab">Current check</span><p>UK PMSE spectrum has been actively changing. These bands were checked against Ofcom guidance in August 2026; always use the current <a href="https://www.ofcom.org.uk/spectrum/radio-equipment/pmse" target="_blank" rel="noopener">Ofcom PMSE guidance</a> for the exact job, equipment and date.</p></div>
+<div class="note alt"><span class="lab">Current check</span><p>UK PMSE spectrum has been actively changing. These bands were re-checked against Ofcom's published guidance in November 2026, when the exemption for 821.5–832 MHz and 1785–1805 MHz was still described as expected during 2026 rather than in force; always use the current <a href="https://www.ofcom.org.uk/spectrum/radio-equipment/pmse" target="_blank" rel="noopener">Ofcom PMSE guidance</a> for the exact job, equipment and date.</p></div>
 <div class="note deep"><span class="lab">Go deeper</span><p>Ofcom's PMSE pages explain licence types and how to apply. If RF interests you, this is a specialism worth chasing — RF techs are in demand and it's a genuinely skilled niche. See <a href="#s18-5">§18.5</a>.</p></div>
 </section>
 
@@ -2715,7 +2819,7 @@ EARS            the only part of the system that actually matters</div>
 <tbody>
 <tr><td><strong>Portable active</strong></td><td>RCF ART series, QSC K.2 / CP, Yamaha DXR / DZR, JBL EON, Electro-Voice ELX / ZLX, Turbosound iQ</td></tr>
 <tr><td><strong>Mid-scale / small arrays</strong></td><td>RCF HDL, JBL VRX / SRX, Martin Audio Blackline X / Wavefront, Nexo ID / PS, EV EKX</td></tr>
-<tr><td><strong>Pro touring</strong></td><td>d&amp;b audiotechnik (E, T, Y, V, KSL, GSL, plus J), L-Acoustics (X, A, Kara, K2/K3, K1, Syva), Meyer Sound (UPJ, LEO, LYON, PANTHER), Martin Audio MLA / Wavefront Precision, Adamson (S, E), Nexo STM/GEO</td></tr>
+<tr><td><strong>Pro touring</strong></td><td>d&amp;b audiotechnik (E, xS, A, T, Y, V, CCL, KSL, XSL, GSL, plus the discontinued J and Q — every model in <a href="#s6-20">§6.20</a>), L-Acoustics (X, A, Kara, K2/K3, K1, Syva), Meyer Sound (UPJ, LEO, LYON, PANTHER), Martin Audio MLA / Wavefront Precision, Adamson (S, E), Nexo STM/GEO</td></tr>
 <tr><td><strong>Install / discreet</strong></td><td>Bose, Tannoy, Community, K-array, d&amp;b xS series</td></tr>
 </tbody></table></div>
 <div class="note std"><span class="lab">Standard</span><p>Learn <em>your company's</em> stock properly rather than trying to learn all of it. Know for each box: is it active or passive, what amp preset it needs, what it weighs, how it flies, what it draws, and what its dispersion is. That's the knowledge that makes you useful on site.</p></div>
@@ -2921,7 +3025,7 @@ EARS            the only part of the system that actually matters</div>
 </div>
 <div class="note std"><span class="lab">Standard</span><p>Every d&amp;b job has a <strong>plan</strong>: an ArrayCalc file, an R1 project, or at minimum a patch sheet from the system tech — box, amp, channel, mode, setup. Work from it, and if you're handed a d&amp;b system with no plan, ask for one before you configure anything.</p></div>
 <div class="note warn"><span class="lab">Watch it</span><p><strong>Never drive a d&amp;b box from a generic amp</strong>, or from a d&amp;b amp in "linear" mode, unless the system owner has specifically said to. Without its setup the box has no protection at all — the HF driver is the first thing to go.</p></div>
-<div class="note deep"><span class="lab">Go deeper</span><p>d&amp;b run free training — online videos for each amp (overview, input modes, output modes, channel setup) and in-person "d&amp;b Education" courses on systems and software. ArrayCalc and R1 are both free downloads, and R1 can open a project offline, so you can learn the screens on your own laptop before you're ever near a live rack.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>d&amp;b publish free video tutorials for each amp (overview, input modes, output modes, channel setup), and run in-person workshops — in the UK at Nailsworth — including <strong>d&amp;basics</strong> (loudspeakers, amps and choosing the right system) and <strong>Software &amp; System Fundamentals</strong> (ArrayCalc and R1, from data entry to simulation and output). Dates, places and costs are on <a href="https://www.dbaudio.com/global/en/education/workshops/" target="_blank" rel="noopener">d&amp;b's workshops page</a>. ArrayCalc and R1 are both free downloads, and R1 can open a project offline, so you can learn the screens on your own laptop before you're ever near a live rack.</p></div>
 </section>
 
 <section class="s" id="s6-17"><h3><span class="n">6.17</span> d&amp;b amps — output modes, connectors and the front panel</h3>
@@ -3004,7 +3108,7 @@ EARS            the only part of the system that actually matters</div>
 </section>
 
 <section class="s" id="s6-20"><h3><span class="n">6.20</span> d&amp;b models — which box, which amp</h3>
-<p>A field reference to the d&amp;b amplifiers and loudspeakers you're likely to meet in UK hire stock and venues — current models, and the discontinued ones (d&amp;b call them "heritage") that are still out working every week. Use it to work out what a box is, what drives it and what to watch for. The fault finder in Support reads these tables too, so you can ask it "what amp does a V8 need?" or "can a D20 run KSL?".</p>
+<p>A field reference to the d&amp;b amplifiers and loudspeakers you're likely to meet in UK hire stock and venues — current models, and the discontinued ones (d&amp;b call them "heritage") that are still out working every week. Use it to work out what a box is, what drives it and what to watch for. The fault finder in Support reads these tables too, so you can ask it "what amp does a V8 need?" or "can a D20 run KSL?". Kit you've added to <a href="#hub-workspace">My equipment reference</a> is marked <span class="kit-badge">My kit</span> below.</p>
 <div class="note std"><span class="lab">Standard</span><p><strong>The one rule that settles it on site:</strong> if the box's setup isn't in the amp's setup list (on its screen or in R1), that amp can't drive it. Firmware updates add setups over time, so an older amp that hasn't been updated may be missing a newer box. And with line arrays, the plan will say which setup each box gets.</p></div>
 
 <h4>Reading the names</h4>
@@ -3591,7 +3695,7 @@ EARS            the only part of the system that actually matters</div>
 <dt>System check</dt><dd>Proving the PA itself works — every box making sound, correct polarity, sensible level, no buzzes or rattles. Usually the systems tech's job, done before anyone's plugged an input in. Covered from the speaker end in <a href="#s6-8">§6.8</a>.</dd>
 <dt>Line check</dt><dd>Proving every <em>input</em> — every mic, DI and line source — arrives cleanly at the console, on the correct channel, with sensible gain. This is very often your job, and it's what this part is mostly about.</dd>
 </div>
-<p>Do the system check first. There's no point proving forty inputs sound correct through a PA you haven't confirmed is working.</p>
+<p>Do the system check first. There's no point proving forty inputs sound correct through a PA you haven't confirmed is working. When there's no systems tech and the system check is yours, <a href="#s11-9">§11.9</a> is the full test.</p>
 </section>
 
 <section class="s" id="s11-2"><h3><span class="n">11.2</span> Before you start: setting up channels, from equipment to patch</h3>
@@ -3689,6 +3793,46 @@ EARS            the only part of the system that actually matters</div>
 </ul>
 <div class="note alt"><span class="lab">Also seen</span><p>On a small job this is one sentence: "can you hear me, over" into a single radio. On a bigger multi-department show with a wired party-line it's worth its own five minutes before doors, the same way the PA gets a system check before the line check runs.</p></div>
 </section>
+
+<section class="s" id="s11-9"><h3><span class="n">11.9</span> Proving a d&amp;b system on your own — the pre-event test</h3>
+<p>More and more often the person who builds the system is also the person who has to say it's ready — with no system tech coming in before doors. That's fine for a system you know, built to a plan, inside what you're authorised to do. This section is how to do it properly and leave a record that shows you did. The <a href="#hub-systest">System test</a> in the Job Hub walks the same steps with you, ticks them off and writes the record; the <a href="#support-chat">fault finder</a> can run it as a conversation.</p>
+
+<h4>What's yours to do alone — and what isn't</h4>
+<div class="tw"><table>
+<thead><tr><th>Yours, once you're trained and authorised for it</th><th>Not yours alone — get the right person</th></tr></thead>
+<tbody>
+<tr><td>Placing and ground-stacking boxes to the plan, securely</td><td>Anything flown: hanging, trims, angles, sign-off of rigging (<a href="#s6-5">§6.5</a>)</td></tr>
+<tr><td>Plugging amps into the supply you were given; locking powerCONs</td><td>Mains distribution itself: connecting distros, three-phase, generators, resetting tripped RCDs (<a href="#s12-15">§12.15</a>)</td></tr>
+<tr><td>Running and locking speaker cables to the right sockets</td><td>Re-terminating or repairing cables on site</td></tr>
+<tr><td>Choosing setups, output modes and functions <em>that the plan specifies</em></td><td>Designing the system, or changing a design someone else made: new setups, ArrayProcessing, delays, EQ beyond what you've been told</td></tr>
+<tr><td>Proving each box, polarity, levels, and recording the result</td><td>Deciding a known fault is "fine for tonight" on somebody else's system</td></tr>
+</tbody></table></div>
+<div class="note warn"><span class="lab">Watch it</span><p>"No technician before the event" never means "no plan" or "no one to call". Before you're on your own, agree with whoever owns the system: the plan you'll build to, what you may change, and who answers the phone if something fails the test.</p></div>
+
+<h4>The test, in order</h4>
+<ol class="seq">
+<li><strong>Plan in hand.</strong> Box, amp, channel, output mode and setup for every channel — the ArrayCalc printout, R1 project or patch sheet.</li>
+<li><strong>Safe before powered.</strong> Ground stacks stable and secured, anything flown signed off by the rigger, cables routed and taped, nothing blocking exits or amp ventilation.</li>
+<li><strong>Power.</strong> Amps on the supply you were given, powerCONs locked, nothing else sharing it that shouldn't.</li>
+<li><strong>Speaker cables.</strong> Right socket for each output mode, 4-core where pins 2 are needed, locked at both ends, labelled (<a href="#s6-17">§6.17</a>, <a href="#s3-12">§3.12</a>).</li>
+<li><strong>Power up muted.</strong> Console and processing first, amps last, channels muted. Every amp boots with no error on screen.</li>
+<li><strong>Channel settings against the plan.</strong> Setup matches the box, output mode, functions (CUT and the rest), level, delay. Read every one — don't assume.</li>
+<li><strong>Remote and System check.</strong> R1 online with every amp present and no warnings; run System check if the amps have it, against the reference taken at prep.</li>
+<li><strong>Signal to every amp.</strong> Input mode and routing right, green signal on every channel, digital lock if it's AES or network, fallback set the way the plan says.</li>
+<li><strong>Every box, one at a time.</strong> Low-level pink noise or a known track, everything else muted: right box answering, every driver working, no rattles or distortion.</li>
+<li><strong>Polarity.</strong> Box against box, or with a polarity checker — a reversed box shows up as a hole in the sound where two overlap.</li>
+<li><strong>The whole system.</strong> Subs and tops together, fills and delays doing what the plan says, no phasey patches where systems overlap (<a href="#s6-8">§6.8</a>).</li>
+<li><strong>Level and limits.</strong> Show level at the mix position without the amps living in yellow GR, and inside any venue noise limit or licence condition (<a href="#s6-10">§6.10</a>).</li>
+<li><strong>Inputs.</strong> Line check every mic, DI and playback source (<a href="#s11-3">§11.3</a>), and radio mics proved (<a href="#s11-6">§11.6</a>).</li>
+<li><strong>Show stop.</strong> You can mute everything in one move — console master or a mute group in R1 — and you know how to reach whoever you'd call.</li>
+<li><strong>Save and record.</strong> Console show file and R1 project saved; anything that changed from the plan written down; known issues named; handed over to whoever runs the show.</li>
+</ol>
+
+<h4>Why the record matters</h4>
+<p>A dated test record — what was checked, what passed, what didn't and who did it — is what lets you run events without a technician coming in first. It shows the system was proven, it gives whoever comes next the facts if something changes after doors, and over time it's the evidence of what you can do on your own. Keep them; they belong with your learning log (<a href="#path-tech">technician skills</a>).</p>
+<div class="note std"><span class="lab">Standard</span><p>If any step fails and you can't fix it inside what you're allowed to do, the test hasn't passed. Say so plainly, with the facts — "box 3 stage left has no HF, cable swapped, fault follows the box" — and let the person who owns the system decide.</p></div>
+</section>
+
 
 </div></div>
 
@@ -4502,7 +4646,7 @@ EARS            the only part of the system that actually matters</div>
 </section>
 
 <section class="s" id="s18-5"><h3><span class="n">18.5</span> Wireless &amp; RF</h3>
-<p>Complements Part 5. Shure and Sennheiser both publish detailed, freely available RF coordination and antenna guides aimed at working engineers rather than marketing — search "<strong>[Shure or Sennheiser] wireless systems guide</strong>". <a href="https://www.ofcom.org.uk/spectrum/radio-equipment/pmse-licence-info" target="_blank" rel="noopener">Ofcom's own PMSE licence pages</a> are the authoritative, current source for what's actually licensed in the UK — spectrum allocation does change over time, so check there rather than trusting anything printed, including this book, as permanently current.</p>
+<p>Complements Part 5. Shure and Sennheiser both publish detailed, freely available RF coordination and antenna guides aimed at working engineers rather than marketing — search "<strong>[Shure or Sennheiser] wireless systems guide</strong>". <a href="https://www.ofcom.org.uk/manage-your-licence/radiocommunication-licences/pmse" target="_blank" rel="noopener">Ofcom's own PMSE licence pages</a> are the authoritative, current source for what's actually licensed in the UK — spectrum allocation does change over time, so check there rather than trusting anything printed, including this book, as permanently current.</p>
 </section>
 
 <section class="s" id="s18-6"><h3><span class="n">18.6</span> System tuning &amp; measurement — courses</h3>
@@ -4572,7 +4716,7 @@ EARS            the only part of the system that actually matters</div>
 <p>Referenced from <a href="#hub-learn">TreebySound Learn</a>. These are deliberately short, free routes that fit around work. Do the one that matches the next likely opportunity at work; completing everything is not the goal.</p>
 <ul class="links">
 <li><a href="https://www.shure.com/en-ASIA/shure-academy/online-training" target="_blank" rel="noopener">Shure Academy</a><span class="d">Free, self-paced courses in audio fundamentals, wireless, conferencing and AV networking. Use it to prepare for equipment or work types you will actually encounter.</span></li>
-<li><a href="https://www.shure.com/en-US/docs/quickstart/Wireless-Workbench" target="_blank" rel="noopener">Wireless Workbench Quick Start</a><span class="d">Official guide to Shure's free RF coordination and monitoring software. Learn the workflow before touching a real RF plan, then practise alongside an authorised engineer.</span></li>
+<li><a href="https://www.shure.com/en-US/products/software/wwb" target="_blank" rel="noopener">Wireless Workbench</a><span class="d">Shure's official page (download, release notes and user guide) for Shure's free RF coordination and monitoring software. Learn the workflow before touching a real RF plan, then practise alongside an authorised engineer.</span></li>
 <li><a href="https://www.avolites.com/support/titan-pc-suite/" target="_blank" rel="noopener">Avolites Titan PC Suite</a><span class="d">Official software and documentation. Licensing and feature access change by version, so check the current requirements and do not open a live show file without permission.</span></li>
 <li><a href="https://irecord.org.uk/" target="_blank" rel="noopener">iRecord</a> / <a href="https://www.inaturalist.org/" target="_blank" rel="noopener">iNaturalist</a><span class="d">Keep conservation practice alive in small weekly pieces, but at your level treat records as data that feeds the national datasets, not just a private log — full guidance and the bioacoustics crossover are in <a href="#s18-15">§18.15</a>.</span></li>
 </ul>
@@ -4797,6 +4941,7 @@ EARS            the only part of the system that actually matters</div>
 <h4 id="howto-linecheck">Line check &amp; system check</h4>
 <ul class="links">
 <li><a href="#s11-3">§11.3 Running a line check, start to finish</a><span class="d">The full patch-order sequence, channel by channel.</span></li>
+<li><a href="#s11-9">§11.9 Proving a d&amp;b system on your own — the pre-event test</a><span class="d">The fifteen checks, what's yours to do alone, and the record that shows it's ready.</span></li>
 <li><a href="#s11-5">§11.5 Quarantining faulty kit</a><span class="d">Taking a suspect item out of service properly, not just setting it aside.</span></li>
 </ul>
 <h4 id="howto-fault">Fault-finding</h4>
@@ -5330,6 +5475,8 @@ EARS            the only part of the system that actually matters</div>
     <a href="#s12-8"><strong>First sixty seconds</strong><small>The script, not a feeling</small></a>
     <a href="#p12"><strong>Full fault-finding toolkit</strong><small>Every subsystem, step by step</small></a>
     <a href="#s13-13"><strong>Accident or near-miss</strong><small>Make it safe, then tell the right person</small></a>
+    <div class="quickfab-label">Before doors</div>
+    <a href="#hub-systest"><strong>System test</strong><small>Prove the PA, keep the record</small></a>
     <div class="quickfab-label">Checklists</div>
     <a href="#s19-1"><strong>All checklists</strong><small>Every stage of a job, tickable</small></a>
     <a href="#s19-4"><strong>Load-in &amp; build</strong><small>Power, cable routes, comms, patch</small></a>
@@ -6629,8 +6776,13 @@ Array.prototype.forEach.call(document.querySelectorAll('[data-hub-target]'), fun
       }
     }catch(e){}
   }
+  function kitChanged(){
+    try{ document.dispatchEvent(new CustomEvent('tb-kit-change')); }catch(e){}
+  }
   function save(){
     storeSet(WORKSPACE_KEY, JSON.stringify(state));
+    clearTimeout(save.kitTimer);
+    save.kitTimer = setTimeout(kitChanged, 400);
     if(status){
       status.textContent = 'Saved on this device';
       clearTimeout(save.timer);
@@ -6730,7 +6882,195 @@ Array.prototype.forEach.call(document.querySelectorAll('[data-hub-target]'), fun
   document.getElementById('wsAddContact').addEventListener('click', function(){ state.contacts.push({role:'',name:'',route:'',note:''}); save(); renderContacts(); focusNewRow(contactsEl); announce('Contact added'); });
   document.getElementById('wsAddGear').addEventListener('click', function(){ state.gear.push({label:'',item:'',category:'',location:'',note:''}); save(); renderGear(); focusNewRow(document.getElementById('wsGear')); announce('Equipment added'); });
   renderDocs(); renderContacts(); renderGear();
+  /* The equipment reference doubles as "my kit": the system test, the model
+     tables and the fault finder all read it from here. */
+  window.tbKit = {
+    list: function(){ return state.gear.slice(); },
+    summary: function(){ return state.gear.map(function(g){ return (g.item || '').trim(); }).filter(Boolean).join(', '); },
+    add: function(entry){
+      state.gear.push({label:'', item:entry.item || '', category:entry.category || '', location:'', note:entry.note || ''});
+      save(); renderGear(); kitChanged();
+    }
+  };
+  setTimeout(kitChanged, 0);
 })();
+
+/* ---------- System test before doors (Job Hub) ----------
+   The pre-event test from §11.9 as something to tick through on site: each
+   step gets pass / fail / not needed and a note, and the whole thing becomes a
+   dated record to copy, share or keep. The fault finder drives the same steps
+   through window.tbSysTest, so the conversation and the page never disagree. */
+(function(){
+  var host = document.getElementById('sysTest');
+  if(!host) return;
+  var KEY = 'treebysound-systest-v1', HIST_KEY = 'treebysound-systest-history-v1';
+  var STEPS = [
+    {t:'Plan in hand', d:'Box, amp, channel, output mode and setup for every channel.', l:'#s6-18'},
+    {t:'Safe before powered', d:'Stacks stable and secured, anything flown signed off by the rigger, cables taped, exits and amp vents clear.', l:'#s11-9'},
+    {t:'Power', d:'Amps on the supply you were given, powerCONs locked.', l:'#s12-15'},
+    {t:'Speaker cables', d:'Right socket for the output mode, 4-core where pins 2 are needed, locked both ends, labelled.', l:'#s6-17'},
+    {t:'Power up muted', d:'Console first, amps last, channels muted; no errors on any amp.', l:'#s6-18'},
+    {t:'Channel settings match the plan', d:'Setup, output mode, functions, level and delay — every channel read, not assumed.', l:'#s6-20'},
+    {t:'R1 and System check', d:'Every amp online with no warnings; System check passed where the amps have it.', l:'#s6-16'},
+    {t:'Signal to every amp', d:'Input mode and routing right, green on every channel, digital lock, fallback as planned.', l:'#s6-17'},
+    {t:'Every box, one at a time', d:'Low level, everything else muted: right box, every driver, no rattles.', l:'#s6-19'},
+    {t:'Polarity', d:'Box against box, or with a polarity checker.', l:'#s6-8'},
+    {t:'Whole system', d:'Subs and tops together, fills and delays as planned, nothing phasey where they overlap.', l:'#s6-8'},
+    {t:'Level and limits', d:'Show level without living in yellow GR, inside any noise limit.', l:'#s6-10'},
+    {t:'Inputs line checked', d:'Every mic, DI, playback and radio mic proved.', l:'#s11-3'},
+    {t:'Show stop ready', d:'One move mutes everything; you know who to call.', l:'#support-now'},
+    {t:'Saved and handed over', d:'Show file and R1 project saved, changes and known issues written down, handed over.', l:'#s11-7'}
+  ];
+  var LABEL = {pass:'Pass', fail:'Fail', na:'Not needed'};
+  var state = load();
+  function blank(){ return {fields:{date:new Date().toISOString().slice(0, 10)}, results:STEPS.map(function(){ return {s:'', note:''}; })}; }
+  function load(){
+    try{
+      var p = JSON.parse(storeGet(KEY) || 'null');
+      if(p && p.results && p.results.length === STEPS.length) return p;
+    }catch(e){}
+    return blank();
+  }
+  function save(){ storeSet(KEY, JSON.stringify(state)); }
+
+  var list = document.getElementById('sysTestSteps');
+  var progress = document.getElementById('sysTestProgress');
+  var kitHint = document.getElementById('stKitHint');
+  function render(){
+    list.textContent = '';
+    STEPS.forEach(function(step, i){
+      var r = state.results[i];
+      var li = document.createElement('li');
+      li.className = 'systest-step' + (r.s ? ' is-' + r.s : '');
+      var head = document.createElement('div'); head.className = 'systest-step-head';
+      var title = document.createElement('strong'); title.textContent = step.t; head.appendChild(title);
+      var a = document.createElement('a'); a.href = step.l; a.textContent = 'how'; a.className = 'systest-how'; head.appendChild(a);
+      li.appendChild(head);
+      var d = document.createElement('p'); d.className = 'systest-detail'; d.textContent = step.d; li.appendChild(d);
+      var btns = document.createElement('div'); btns.className = 'systest-btns'; btns.setAttribute('role', 'group'); btns.setAttribute('aria-label', step.t);
+      ['pass','fail','na'].forEach(function(s){
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'systest-btn ' + s;
+        b.textContent = LABEL[s]; b.setAttribute('aria-pressed', r.s === s ? 'true' : 'false');
+        b.addEventListener('click', function(){ set(i, r.s === s ? '' : s); });
+        btns.appendChild(b);
+      });
+      li.appendChild(btns);
+      var note = document.createElement('input'); note.type = 'text'; note.className = 'systest-note';
+      note.placeholder = r.s === 'fail' ? 'What failed, and what you did' : 'Note (optional)';
+      note.setAttribute('aria-label', 'Note for ' + step.t);
+      note.value = r.note || '';
+      note.addEventListener('input', function(){ r.note = note.value; save(); });
+      li.appendChild(note);
+      list.appendChild(li);
+    });
+    renderProgress();
+  }
+  function counts(){
+    var c = {pass:0, fail:0, na:0, open:0};
+    state.results.forEach(function(r){ if(r.s) c[r.s]++; else c.open++; });
+    return c;
+  }
+  function renderProgress(){
+    var c = counts();
+    progress.textContent = (c.pass + c.na) + ' of ' + STEPS.length + ' done' + (c.fail ? ' · ' + c.fail + ' failed' : '') + (c.open ? ' · ' + c.open + ' to go' : ' · all steps checked');
+    progress.className = 'systest-progress' + (c.fail ? ' has-fail' : (!c.open ? ' all-done' : ''));
+  }
+  function set(i, s, note){
+    if(i < 0 || i >= STEPS.length) return;
+    state.results[i].s = s;
+    if(note !== undefined) state.results[i].note = note;
+    save(); render();
+  }
+  /* fields */
+  Array.prototype.forEach.call(host.querySelectorAll('[data-st-field]'), function(f){
+    var k = f.getAttribute('data-st-field');
+    f.value = state.fields[k] || '';
+    f.addEventListener('input', function(){ state.fields[k] = f.value; if(k === 'kit') state.fields.kitAuto = false; save(); });
+  });
+  function syncKitHint(){
+    var kit = window.tbKit ? window.tbKit.summary() : '';
+    var f = document.getElementById('stKit');
+    if(kit && (!f.value || state.fields.kitAuto)){ f.value = kit; state.fields.kit = kit; state.fields.kitAuto = true; save(); }
+    kitHint.textContent = kit ? 'From your equipment list: ' + kit : 'Tip: add the kit you use to My equipment reference in the Job workspace and it fills in here.';
+  }
+  document.addEventListener('tb-kit-change', syncKitHint);
+
+  function record(){
+    var f = state.fields, c = counts();
+    var verdict = c.fail ? 'NOT PASSED — ' + c.fail + ' failed' + (c.open ? ', ' + c.open + ' not checked' : '')
+      : c.open ? 'INCOMPLETE — ' + c.open + ' not checked' : 'PASSED — all ' + STEPS.length + ' steps checked';
+    var lines = ['SYSTEM TEST RECORD',
+      'Event: ' + (f.event || '—'), 'Venue: ' + (f.venue || '—'), 'Date: ' + (f.date || '—'), 'Tested by: ' + (f.by || '—'),
+      'System: ' + (f.kit || '—'), 'Result: ' + verdict, ''];
+    STEPS.forEach(function(step, i){
+      var r = state.results[i];
+      lines.push((i + 1) + '. ' + step.t + ' — ' + (r.s ? LABEL[r.s].toUpperCase() : 'NOT CHECKED') + (r.note ? ' (' + r.note + ')' : ''));
+    });
+    var fails = STEPS.map(function(s, i){ return state.results[i].s === 'fail' ? '- ' + s.t + (state.results[i].note ? ': ' + state.results[i].note : '') : null; }).filter(Boolean);
+    if(fails.length){ lines.push('', 'Needs attention before doors:'); lines = lines.concat(fails); }
+    return lines.join('\n');
+  }
+  var recWrap = document.getElementById('sysTestRecordWrap'), recPre = document.getElementById('sysTestRecord');
+  function showRecord(){ recPre.textContent = record(); recWrap.hidden = false; }
+  document.getElementById('stRecordBtn').addEventListener('click', showRecord);
+  document.getElementById('stCopyBtn').addEventListener('click', function(){
+    var t = record();
+    if(navigator.clipboard) navigator.clipboard.writeText(t).then(function(){ announce('Test record copied'); }, function(){});
+  });
+  document.getElementById('stShareBtn').addEventListener('click', function(){
+    var t = record(), name = 'system-test-' + (state.fields.date || 'record') + '.txt';
+    if(navigator.share){ navigator.share({title:'System test record', text:t}).catch(function(){}); return; }
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([t], {type:'text/plain'}));
+    a.download = name; document.body.appendChild(a); a.click();
+    setTimeout(function(){ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  });
+  function history(){ try{ return JSON.parse(storeGet(HIST_KEY) || '[]'); }catch(e){ return []; } }
+  function renderHistory(){
+    var h = history(), box = document.getElementById('stHistoryList');
+    if(!h.length) return;
+    box.textContent = '';
+    h.forEach(function(rec){
+      var d = document.createElement('details'); d.className = 'hub-guide';
+      var sm = document.createElement('summary'); sm.textContent = rec.title; d.appendChild(sm);
+      var pre = document.createElement('pre'); pre.className = 'chat-report'; pre.textContent = rec.text; d.appendChild(pre);
+      box.appendChild(d);
+    });
+  }
+  function newTest(){
+    var c = counts();
+    if(c.pass + c.fail + c.na){
+      var h = history();
+      h.unshift({title:(state.fields.date || '') + ' · ' + (state.fields.event || 'Untitled') + ' · ' + (c.fail ? 'not passed' : c.open ? 'incomplete' : 'passed'), text:record()});
+      storeSet(HIST_KEY, JSON.stringify(h.slice(0, 8)));
+    }
+    var keepBy = state.fields.by;
+    state = blank();
+    if(keepBy) state.fields.by = keepBy;
+    save();
+    Array.prototype.forEach.call(host.querySelectorAll('[data-st-field]'), function(f){ f.value = state.fields[f.getAttribute('data-st-field')] || ''; });
+    recWrap.hidden = true;
+    render(); renderHistory(); syncKitHint();
+  }
+  document.getElementById('stNewBtn').addEventListener('click', newTest);
+  document.getElementById('stChatBtn').addEventListener('click', function(){
+    if(window.tbChatStartTest) window.tbChatStartTest();
+  });
+
+  window.tbSysTest = {
+    steps: STEPS,
+    results: function(){ return state.results; },
+    fields: function(){ return state.fields; },
+    set: set,
+    setField: function(k, v){ state.fields[k] = v; save(); var f = host.querySelector('[data-st-field="' + k + '"]'); if(f) f.value = v; },
+    next: function(){ for(var i = 0; i < STEPS.length; i++){ if(!state.results[i].s) return i; } return -1; },
+    counts: counts,
+    record: record,
+    reset: newTest
+  };
+  render(); renderHistory(); syncKitHint();
+})();
+
 
 function railIsPersistent(){
   return !!(window.matchMedia && window.matchMedia('(min-width:1100px)').matches);
@@ -7492,7 +7832,7 @@ if(quickfabBtn && quickfabMenu){
   }
 
   /* ---- guided mode state ---- */
-  var g = {flow:null, node:null, steps:[], symptom:'', slots:{}, trail:[], models:[], queue:[], lastQ:''};
+  var g = {flow:null, node:null, steps:[], symptom:'', slots:{}, trail:[], models:[], queue:[], lastQ:'', test:null};
 
   /* ---- understanding what was typed ----
      Everything typed is normalised the same way as the routes' own words:
@@ -7609,7 +7949,7 @@ if(quickfabBtn && quickfabMenu){
           MODELS[name.toUpperCase()] = entry;
           if(NO_MATCH[name]) return;
           var pat = name.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/-/g, '[\\s-]?');
-          MODEL_LIST.push({entry:entry, re:new RegExp('(^|[^a-z0-9])' + pat + '(?![a-z0-9])', 'i')});
+          MODEL_LIST.push({entry:entry, re:new RegExp('(^|[^a-z0-9])' + pat + '(?:s)?(?![a-z0-9])', 'i')});
         });
         if(kind === 'speaker'){
           /* the range on its own too: "KSL", "V-Series", "V series", "CCL" */
@@ -7667,6 +8007,7 @@ if(quickfabBtn && quickfabMenu){
     var firm = driven.replace(/\([^)]*check[^)]*\)/gi, '').split(/\.\s+/).filter(function(x){ return !/check/i.test(x); }).join('. ').replace(/\bnot\b.*$/i, '');
     if(new RegExp('\\b' + a + '\\b').test(firm)) return {ok:true, why:spk.row.range + ' is driven by: ' + driven};
     if(a === 'D80') return {ok:true, why:'The D80 carries setups for all d&b loudspeakers. ' + spk.row.range + ': ' + driven};
+    if(/^Practically any d&b amp/i.test(driven) && /^(D20|D25|D40|D90)$/.test(a)) return {ok:true, why:spk.row.range + ': ' + driven};
     return {ok:null, why:'I can\'t confirm that from the table. ' + spk.row.range + ' is driven by: ' + driven + ' Check whether the setup is in the ' + a + '\'s list (amp screen or R1).'};
   }
   var COMPAT_Q = /\b(can|could|will|does|do|would)\b[^?]*\b(run|drive|power|work|handle|use|support|take)|\bcompatib|\bon an? (d\d|\d+d)\b|\bwith an? (d\d|\d+d)\b/i;
@@ -7679,6 +8020,10 @@ if(quickfabBtn && quickfabMenu){
     if(SETUP_INTENT.test(text) && !COMPAT_Q.test(text) && !WHICH_AMP_Q.test(text)) return false;
     var ms = findModels(text);
     var t = text.toLowerCase();
+    /* "can my amps run a V8?" — use the amps in his kit */
+    if(/\bmy (amps?|rack|kit)\b|\bour (amps?|rack)\b/.test(t)){
+      myKit().forEach(function(e){ if(e.row.kind === 'amp' && !ms.some(function(x){ return x.name === e.name; })) ms.push(e); });
+    }
     var refersBack = /\b(it|they|them|that|those|these|this one|the box|the boxes|the amp)\b/.test(t) || /^(and|what about|how about)\b/.test(t.trim());
     if(!ms.length && refersBack && g.models.length) ms = g.models.slice(-2);
     if(!ms.length) return false;
@@ -7740,10 +8085,200 @@ if(quickfabBtn && quickfabMenu){
     if(spk && !amp) c.push({label:'Which amp does it need?', quiet:true, go:function(){ addMsg('me', 'Which amp does it need?'); modelAnswer('which amp does it need'); }});
     if(spk && amp) c.push({label:'Set it up', quiet:true, go:function(){ addMsg('me', 'Set it up'); startFlow(FLOW_BY_ID.setup); }});
     if(spk) c.push({label:'Something\'s wrong with it', quiet:true, go:function(){ addMsg('me', 'Something\'s wrong with it'); addMsg('bot', '<p>What\'s it doing? Describe it, or pick:</p>'); setChips(starterChips(['box','sub','crackle','limit','array','phasey']).concat([BACK])); }});
+    [spk, amp].forEach(function(e){ var k = e && addToKitChip(e); if(k) c.push(k); });
     if(amp && !spk) c.push({label:'What can it drive?', quiet:true, go:function(){ addMsg('me', 'What can it drive?'); var m = addMsg('bot', '<p><strong>' + esc(amp.name) + '</strong> drives: ' + esc(amp.row.drives) + '</p>'); addLinks(m, [['#s6-20','6.20 d&amp;b models']]); menu(); }});
     c.push(BACK);
     setChips(c);
   }
+
+
+  /* ---- the kit he actually uses ----
+     Read from "My equipment reference" in the Job workspace. Any d&b model
+     written there counts as his kit: answers lean on it, the model tables
+     mark it, and new kit the chat hears about can be added in one tap. */
+  function myKit(){
+    var text = window.tbKit ? window.tbKit.summary() : '';
+    var seen = {}, out = [];
+    findModels(text).forEach(function(e){ if(!e.range && !seen[e.name.toUpperCase()]){ seen[e.name.toUpperCase()] = true; out.push(e); } });
+    return out;
+  }
+  function inKit(e){
+    var n = e.name.toUpperCase();
+    return myKit().some(function(k){ return k.name.toUpperCase() === n; });
+  }
+  function addToKitChip(e){
+    if(!window.tbKit || e.range || inKit(e)) return null;
+    return {label:'Add ' + e.name + ' to my kit', quiet:true, go:function(){
+      window.tbKit.add({item:'d&b ' + e.name, category:'d&b ' + (e.row.kind === 'amp' ? 'amplifier' : 'loudspeaker — ' + e.row.range), note:'Added from the fault finder'});
+      addMsg('bot', '<p>Added <strong>' + esc(e.name) + '</strong> to My equipment reference in the Job workspace.</p>', 'note');
+      menu();
+    }};
+  }
+  /* Every amp in the kit against every box in the kit. */
+  function kitCheck(){
+    var kit = myKit();
+    var amps = kit.filter(function(e){ return e.row.kind === 'amp'; });
+    var spks = kit.filter(function(e){ return e.row.kind === 'speaker'; });
+    if(!kit.length){
+      var m0 = addMsg('bot', '<p>There\'s no d&amp;b kit in your equipment list yet. Add what you use to <strong>My equipment reference</strong> in the Job workspace — or just tell me ("we use D20s with E8s and E15X-SUBs") and I\'ll offer to add it.</p>');
+      addLinks(m0, [['#hub-workspace','Job workspace']]);
+      menu();
+      return;
+    }
+    var lines = ['<p>Your kit: <strong>' + kit.map(function(e){ return esc(e.name); }).join(', ') + '</strong>.</p>'];
+    if(amps.length && spks.length){
+      var bad = [], unsure = [];
+      spks.forEach(function(sp){ amps.forEach(function(am){
+        var v = canDrive(am, sp);
+        if(v.ok === false) bad.push(am.name.toUpperCase() + ' can\'t drive ' + sp.name);
+        else if(v.ok === null) unsure.push(am.name.toUpperCase() + ' with ' + sp.name);
+      }); });
+      if(bad.length) lines.push('<p><strong>Watch:</strong> ' + esc(bad.join('; ')) + '.</p>');
+      if(unsure.length) lines.push('<p>' + (bad.length ? 'And these' : 'Nothing rules a pairing out, but these') + ' aren\'t confirmed in §6.20 — check the amp\'s setup list: ' + esc(unsure.join('; ')) + '.</p>');
+      if(!bad.length && !unsure.length) lines.push('<p>Every amp in your kit has setups for every box in it, as far as §6.20 shows.</p>');
+    } else if(spks.length){
+      lines.push('<p>No amps in the list yet — add the amps you use and I\'ll check them against these boxes.</p>');
+    }
+    var m = addMsg('bot', lines.join(''));
+    addLinks(m, [['#s6-20','6.20 d&amp;b models'],['#hub-workspace','Edit my kit']]);
+    menu();
+  }
+  /* "We use D20s with E8s and subs" — offer to add what isn't there yet. */
+  function offerKitFromText(text){
+    if(!window.tbKit || !/\b(we|i) (use|have|run|got)\b|\bour (kit|stock|system|amps|boxes|speakers)\b|\bat (my |our )?work\b|\bin (our |the )?warehouse\b/i.test(text)) return false;
+    var fresh = findModels(text).filter(function(e){ return !e.range && !inKit(e); });
+    if(!fresh.length) return false;
+    var m = addMsg('bot', '<p>Want me to add ' + fresh.map(function(e){ return '<strong>' + esc(e.name) + '</strong>'; }).join(', ') + ' to your kit? Then I\'ll check your amps against your boxes and fill them into the system test.</p>');
+    setChips([
+      {label:'Add to my kit', go:function(){
+        fresh.forEach(function(e){ window.tbKit.add({item:'d&b ' + e.name, category:'d&b ' + (e.row.kind === 'amp' ? 'amplifier' : 'loudspeaker — ' + e.row.range), note:'Added from the fault finder'}); });
+        addMsg('me', 'Add to my kit');
+        kitCheck();
+      }},
+      {label:'Not now', quiet:true, go:function(){ addMsg('me', 'Not now'); menu(); }}
+    ]);
+    return true;
+  }
+
+  /* ---- system test as a conversation ----
+     Drives the same steps and record as the System test in the Job Hub. */
+  var TEST_HELP = {6:'r1', 7:'digital', 8:'box', 9:'phasey', 10:'phasey', 11:'limit', 3:'nl4', 12:'mic'};
+  function startTest(){
+    var T = window.tbSysTest;
+    if(!T){ addMsg('bot', '<p>The system test isn\'t available on this page.</p>'); return; }
+    g.test = {awaiting:'step', step:-1};
+    var c = T.counts();
+    var done = c.pass + c.fail + c.na;
+    addMsg('bot', done
+      ? '<p>Carrying on with the system test you started — ' + done + ' of ' + T.steps.length + ' steps done.</p>'
+      : '<p>Let\'s prove the system, one check at a time. Answer <strong>pass</strong>, <strong>fail</strong> or <strong>not needed</strong> — if something fails, tell me what you found. I\'ll write the record as we go.</p>', 'note');
+    var f = T.fields();
+    if(!f.kit){
+      var kit = window.tbKit ? window.tbKit.summary() : '';
+      if(kit){ T.setField('kit', kit); T.fields().kitAuto = true; }
+      else { g.test.awaiting = 'kit'; addMsg('bot', '<p>First, what\'s the system? e.g. "2 × D20, 4 × E8, 2 × E15X-SUB".</p>'); setChips([{label:'Skip', quiet:true, go:function(){ addMsg('me', 'Skip'); g.test.awaiting = 'step'; askStep(); }}]); return; }
+    }
+    askStep();
+  }
+  function askStep(){
+    var T = window.tbSysTest, i = T.next();
+    if(i < 0){ finishTest(); return; }
+    g.test.step = i; g.test.awaiting = 'step';
+    var st = T.steps[i];
+    var m = addMsg('bot', '<p><strong>' + (i + 1) + ' of ' + T.steps.length + ' — ' + esc(st.t) + '.</strong> ' + esc(st.d) + '</p>');
+    addLinks(m, [[st.l, 'How']]);
+    setChips([
+      {label:'Pass', go:function(){ answerStep('pass'); }},
+      {label:'Fail', go:function(){ answerStep('fail'); }},
+      {label:'Not needed', quiet:true, go:function(){ answerStep('na'); }},
+      {label:'Pause the test', quiet:true, go:function(){ addMsg('me', 'Pause the test'); g.test = null; addMsg('bot', '<p>Paused — your answers are saved. Pick it up any time from here or from the System test in the Job Hub.</p>'); menu(); }}
+    ]);
+  }
+  function answerStep(s, note){
+    var T = window.tbSysTest, i = g.test.step;
+    addMsg('me', esc({pass:'Pass', fail:'Fail', na:'Not needed'}[s]) + (note ? ' — ' + esc(note) : ''));
+    T.set(i, s, note !== undefined ? note : undefined);
+    if(s === 'fail' && note === undefined){
+      g.test.awaiting = 'note';
+      addMsg('bot', '<p>What did you find? A few words for the record.</p>');
+      setChips([{label:'Skip the note', quiet:true, go:function(){ addMsg('me', 'Skip the note'); afterFail(i); }}]);
+      return;
+    }
+    if(s === 'fail'){ afterFail(i); return; }
+    askStep();
+  }
+  function afterFail(i){
+    var flowId = TEST_HELP[i];
+    var c = [{label:'Carry on testing', go:function(){ addMsg('me', 'Carry on testing'); askStep(); }}];
+    if(flowId && FLOW_BY_ID[flowId]) c.unshift({label:'Troubleshoot it now', go:function(){ addMsg('me', 'Troubleshoot it now'); g.test = null; g.symptom = 'System test step ' + (i + 1) + ' failed: ' + window.tbSysTest.steps[i].t; startFlow(FLOW_BY_ID[flowId]); }});
+    addMsg('bot', '<p>Noted. A failed step means the system hasn\'t passed until it\'s fixed or the system\'s owner decides.</p>');
+    setChips(c);
+  }
+  function finishTest(){
+    var T = window.tbSysTest, c = T.counts();
+    g.test = null;
+    var m = addMsg('bot', c.fail
+      ? '<p>All steps answered — <strong>not passed</strong>: ' + c.fail + ' failed. Here\'s the record to send whoever owns the system:</p>'
+      : '<p>All steps answered — <strong>passed</strong>. Here\'s your record:</p>');
+    var pre = document.createElement('div'); pre.className = 'chat-report'; pre.textContent = T.record(); m.appendChild(pre);
+    var row = [];
+    if(navigator.clipboard) row.push({label:'Copy record', go:function(){ navigator.clipboard.writeText(T.record()).then(function(){ addMsg('bot', 'Copied.', 'note'); }, function(){}); setChips(row); }});
+    row.push({label:'Open the test page', quiet:true, go:function(){ location.hash = '#hub-systest'; }});
+    row.push({label:'New test', quiet:true, go:function(){ T.reset(); addMsg('me', 'New test'); startTest(); }});
+    setChips(row);
+  }
+  var TEST_Q = /\b(system test|test the (system|pa|rig)|pre-?event test|prove the (system|pa|rig)|test before doors|before doors test|run (a|the) test)\b/i;
+  var KIT_Q = /\b(my|our) (kit|equipment|gear|stock|amps|boxes|speakers|system)\b.*\b(check|work|compatible|ok|fine|run|drive|list|what)\b|\bwhat('s| is) in my kit\b|^my kit\??$|\bcheck my kit\b/i;
+  var COACH_Q = /\b(what (should|do) i (learn|practi[sc]e|work on)|learn next|next skill|become (an? )?(audio )?technician|progress(ion)?|career next|how do i (get better|improve|step up|move up))\b/i;
+  function coach(){
+    var lists = Array.prototype.slice.call(document.querySelectorAll('ul.check[id^="chk-tech-"]'));
+    var total = 0, ticked = 0, next = null, level = 0;
+    lists.forEach(function(ul, li){
+      var items = Array.prototype.slice.call(ul.querySelectorAll('li'));
+      items.forEach(function(item){
+        total++;
+        var box = item.querySelector('input');
+        if(box && box.checked) ticked++;
+        else if(!next){ next = item; level = li + 1; }
+      });
+    });
+    if(!next){
+      var m0 = addMsg('bot', '<p>You\'ve ticked every technician skill. Next is depth: d&amp;b\'s Software &amp; System Fundamentals workshop, measurement, and taking the lead on a bigger system with someone experienced alongside.</p>');
+      addLinks(m0, [['#path-tech','Technician skills'],['#path-career','Career routes']]);
+      menu(); return;
+    }
+    var link = next.querySelector('a');
+    var text = (next.querySelector('span') || next).textContent.replace(/\s*\(.*\)\s*$/, '');
+    var m = addMsg('bot', '<p>You\'ve ticked <strong>' + ticked + ' of ' + total + '</strong> technician skills. Next, at level ' + level + ': <strong>' + esc(text) + '</strong>.</p><p>Read it, then do it for real on your next job — tick it once you\'ve done it unsupervised twice.</p>');
+    var links = [['#path-tech','Technician skills']];
+    if(link) links.unshift([link.getAttribute('href'), 'Start here']);
+    addLinks(m, links);
+    menu();
+  }
+  window.tbChatStartTest = function(){
+    location.hash = '#support-chat';
+    setTimeout(function(){
+      if(mode !== 'guided') setMode('guided', true);
+      reset();
+      startTest();
+    }, 120);
+  };
+  /* Mark his kit on the §6.20 tables. Deferred: it reads the tables, and
+     nothing about it needs to happen during start-up. */
+  function markKitRows(){
+    var names = {};
+    myKit().forEach(function(e){ names[e.name.toUpperCase()] = true; });
+    Array.prototype.forEach.call(document.querySelectorAll('table.db-models tr[data-models]'), function(tr){
+      var hit = tr.getAttribute('data-models').split(',').filter(function(n){ return names[n.trim().toUpperCase()]; });
+      tr.classList.toggle('in-kit', hit.length > 0);
+      var cell = tr.querySelector('td'), badge = cell && cell.querySelector('.kit-badge');
+      if(hit.length){
+        if(!badge){ badge = document.createElement('span'); badge.className = 'kit-badge'; cell.appendChild(badge); }
+        badge.textContent = 'My kit: ' + hit.join(', ');
+      } else if(badge){ badge.remove(); }
+    });
+  }
+  document.addEventListener('tb-kit-change', function(){ setTimeout(markKitRows, 0); });
 
   function mergeSlots(text){
     var sl = readSlots(text);
@@ -7784,8 +8319,12 @@ if(quickfabBtn && quickfabMenu){
     setChips([
       {label:'Set something up', go:function(){ addMsg('me', 'Set something up'); addMsg('bot', '<p>What are you setting up? Pick one, or type it — "connect R1", "run the sub cables", "line check".</p>'); setChips(starterChips(SETUP_STARTERS).concat([BACK])); }},
       {label:'Something\'s wrong', go:function(){ addMsg('me', 'Something\'s wrong'); addMsg('bot', '<p>Which is closest? Or describe it — "sub silent on amp 2", "crackle from stage left".</p>'); setChips(starterChips(FIX_STARTERS).concat([{label:'More advanced…', quiet:true, go:function(){ addMsg('me', 'More advanced'); setChips(starterChips(ADV_STARTERS).concat([BACK])); }}, BACK])); }},
+      {label:'Test before doors', go:function(){ addMsg('me', 'Test before doors'); startTest(); }},
       {label:'Look something up', go:function(){ addMsg('me', 'Look something up'); addMsg('bot', '<p>Type a word or a question — a term, a connector, a setting, a light. A few to try:</p>'); setChips(INFO_HINTS.map(function(h){ return {label:h, quiet:true, go:function(){ addMsg('me', esc(h)); answerInfo(h); }}; }).concat([BACK])); }}
     ]);
+  }
+  function myKitSafe(){
+    try{ return myKit().map(function(e){ return e.name; }).join(', '); }catch(e){ return ''; }
   }
   function greet(){
     if(mode === 'ai'){
@@ -7797,7 +8336,8 @@ if(quickfabBtn && quickfabMenu){
       setChips([]);
       return;
     }
-    addMsg('bot', '<p>I can help you <strong>set something up</strong>, <strong>find and fix a problem</strong>, or <strong>look something up</strong>. Type it in your own words, or pick one:</p>');
+    var kitNames = myKitSafe();
+    addMsg('bot', '<p>I can help you <strong>set something up</strong>, <strong>test it before doors</strong>, <strong>find and fix a problem</strong>, or <strong>look something up</strong>. Type it in your own words, or pick one:</p>' + (kitNames ? '<p class="chat-kitline">Your kit: ' + esc(kitNames) + '</p>' : ''));
     menu();
   }
 
@@ -8075,6 +8615,10 @@ if(quickfabBtn && quickfabMenu){
   }
 
   function guidedText(text){
+    if(TEST_Q.test(text)){ startTest(); return; }
+    if(KIT_Q.test(text) && !findModels(text).some(function(e){ return !inKit(e); })){ kitCheck(); return; }
+    if(COACH_Q.test(text)){ coach(); return; }
+    if(offerKitFromText(text)) return;
     mergeSlots(text);
     var setupAsk = SETUP_INTENT.test(text);
     var ranked = setupAsk ? rankFlows(text, 'setup') : rankFlows(text, 'fix');
@@ -8118,7 +8662,7 @@ if(quickfabBtn && quickfabMenu){
   var ai = {history:[], busy:false, system:null, refIds:{}};
   var pendingImage = null;
   var sdkPromise = null;
-  var REF_IDS = ['s3-3','s3-12','s6-1','s6-4','s6-16','s6-17','s6-18','s6-19','s6-20','s12-1','s12-8','s12-13','s12-15'];
+  var REF_IDS = ['s3-3','s3-12','s6-1','s6-4','s6-16','s6-17','s6-18','s6-19','s6-20','s11-9','s12-1','s12-8','s12-13','s12-15'];
 
   function sectionText(id, max){
     var sec = document.getElementById(id);
@@ -8152,6 +8696,8 @@ if(quickfabBtn && quickfabMenu){
       '- Respect authority: on a system they do not own, tell them what to report rather than changing amp setups, output modes, ArrayProcessing, console show files or network settings.',
       '- Be specific about d&b audiotechnik amplifiers (D6, D12, D20, D40, D80, D90 and the install amps), d&b loudspeakers, R1, ArrayCalc and Neutrik speakON NL2/NL4/NLT4/NL8, using the reference below. Where a detail depends on a model, version or firmware you are not sure of, say so and point them to the label above the amp outputs or the manual. Never invent pinouts, menu names or specifications.',
       '- For advanced or compound problems (several symptoms at once, line arrays and ArrayProcessing, cardioid sub arrays, time alignment, AES/Milan/Dante feeds, amp loading), separate the symptoms, say which you would chase first and why, and keep track of what has already been ruled out across the conversation. Use the d&b model tables in the reference for which amp drives which box; if a pairing is not confirmed there, say so.',
+      '- They often set up and test events without a technician coming in first. Help them prove the system themselves (the 15-step test in §11.9), but be clear about what is not theirs to do alone: rigging, mains distribution, changing someone else\'s system design. When their own kit list is given, answer for that kit first.',
+      '- If they ask how to progress, point to the technician skills on the Pathway (#path-tech) and the concrete next thing to practise on a real job.',
       '- If they attach a photo, say what you can actually see (screen text, indicator colours, connector type) before drawing conclusions, and say if the photo is too unclear to read.',
       '- Refer to handbook sections as §x.y (for example §6.19) when one helps; the app turns them into links. Only cite sections that appear in the contents list.',
       '- When they have found the fault, are stuck, or ask you to "write it up", give a short message for their lead in this order: the symptom, what changed, what has been checked, what they need.',
@@ -8243,6 +8789,12 @@ if(quickfabBtn && quickfabMenu){
     mergeSlots(text);
     var kitNow = kitLine();
     if(kitNow) content.push({type:'text', text:'<kit_mentioned_so_far>' + kitNow + '</kit_mentioned_so_far>'});
+    var owned = window.tbKit ? window.tbKit.summary() : '';
+    if(owned) content.push({type:'text', text:'<their_kit_from_equipment_list>' + owned + '</their_kit_from_equipment_list>'});
+    if(window.tbSysTest){
+      var tc = window.tbSysTest.counts();
+      if(tc.pass + tc.fail + tc.na) content.push({type:'text', text:'<system_test_in_progress>\n' + window.tbSysTest.record() + '\n</system_test_in_progress>'});
+    }
     content.push({type:'text', text: text});
     ai.history.push({role:'user', content: content});
     clearImage();
@@ -8359,7 +8911,7 @@ if(quickfabBtn && quickfabMenu){
   }
   function reset(){
     log.innerHTML = '';
-    g = {flow:null, node:null, steps:[], symptom:'', slots:{}, trail:[], models:[], queue:[], lastQ:''};
+    g = {flow:null, node:null, steps:[], symptom:'', slots:{}, trail:[], models:[], queue:[], lastQ:'', test:null};
     ai.history = [];
     clearImage();
     greet();
@@ -8393,6 +8945,18 @@ if(quickfabBtn && quickfabMenu){
     input.value = '';
     input.style.height = '';
     if(mode === 'ai'){ setChips([]); sendAi(text); return; }
+    if(g.test && !DANGER.test(text)){
+      if(g.test.awaiting === 'kit'){ addMsg('me', esc(text)); window.tbSysTest.setField('kit', text); g.test.awaiting = 'step'; setChips([]); askStep(); return; }
+      if(g.test.awaiting === 'note'){ addMsg('me', esc(text)); var ix = g.test.step; window.tbSysTest.set(ix, 'fail', text); g.test.awaiting = 'step'; setChips([]); afterFail(ix); return; }
+      var tn = text.trim().toLowerCase();
+      if(/^(pass(ed)?|ok(ay)?|yes|yep|good|fine|done|all good|checked|tick)\b/.test(tn)){ setChips([]); answerStep('pass'); return; }
+      if(/^(skip|n\/?a|not needed|not applicable|none)\b/.test(tn)){ setChips([]); answerStep('na'); return; }
+      if(/^(fail(ed)?|no|nope|not (ok|right|working))\b/.test(tn)){
+        var rest = text.replace(/^\s*(fail(ed)?|no|nope|not (ok|right|working))[\s,:—-]*/i, '').trim();
+        setChips([]); answerStep('fail', rest || undefined); return;
+      }
+      if(/^(pause|stop)( the)? test\b/.test(tn)){ addMsg('me', esc(text)); g.test = null; addMsg('bot', '<p>Paused — your answers are saved.</p>'); menu(); return; }
+    }
     var chip = !DANGER.test(text) && matchChip(text);
     if(chip){ setChips([]); chip.go(); return; }
     addMsg('me', esc(text));
