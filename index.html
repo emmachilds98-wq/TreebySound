@@ -844,6 +844,7 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 .ask-screen .chat{height:calc(100vh - 230px);min-height:460px}
 .ask-screen .chat-log{max-height:none;flex:1 1 auto;min-height:0}
 .ask-open{display:inline-block;text-decoration:none}
+[data-screen="ask"] .quickfab-wrap{display:none!important}
 .bb-ask .ic{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--petrol);color:var(--paper)!important;font-family:var(--display);font-weight:700;font-size:16px!important}
 .bottombar button.bb-ask.on{color:var(--petrol)}
 @media (max-width:820px){
@@ -1127,7 +1128,7 @@ tr.in-kit td{background:var(--pass-soft)}
   </div>
     <div class="chat" id="faultChat">
       <div class="chat-bar">
-        <p class="chat-title">Works offline · nothing leaves your phone</p>
+        <p class="chat-title">Offline · private to this phone</p>
         <button type="button" class="chat-reset" id="chatReset">Start over</button>
       </div>
       <div class="chat-log" id="chatLog" role="log" aria-live="polite" aria-label="Fault finder conversation"></div>
@@ -9388,7 +9389,7 @@ if(quickfabBtn && quickfabMenu){
     var m = addMsg('bot', e.a);
     if(e.see.length) addLinks(m, e.see.filter(function(id){ return document.getElementById(id); }).map(function(id){ return ['#' + id, esc(sectionLabel(id))]; }));
     var next = [];
-    var f = scoreFlows(text);
+    var rf = rankFlows(text), f = rf.length && rf[0].s >= 2 ? rf[0].f : null;
     if(f) next.push({label: (f.kind === 'setup' ? 'Walk me through: ' : 'Troubleshoot: ') + f.title, go: function(){ addMsg('me', esc(f.title)); startFlow(f, text); }});
     if(e.see[0] && SECTION_LINK.test('#' + e.see[0]) && document.getElementById(e.see[0])) next.push({label:'Read it here', go: function(){ addMsg('me', 'Read it here'); peek(e.see[0]); setChips(next.filter(function(c){ return c.label !== 'Read it here'; })); }});
     (hit.others || []).forEach(function(o){

@@ -135,3 +135,21 @@ additions was *function and placement*, so targeted changes:
       with no audio, wedge feedback.
 - [x] Answer bank: 250 entries (target 300+ as the product list arrives).
 - [x] More researched content: §6.22 d&b R1 step by step, §8.12 comms, §8.13 reliable laptop playback.
+
+### Round 2 log
+
+- 2026-11-12 — Ask screen; Home ask-first; headings clear of floating buttons;
+  chat memory (12 h), plain-words calculators, related answers, "tell me more";
+  7 new routes (side missing, clipping, can't hear themselves, comms, playback,
+  hearing loop, recording/stream); answer bank 142 → 256; routing fixes
+  ("X not working" follows the thing named, strong answers beat weak route
+  matches, "set up" kept as one term); §6.22 R1, §8.12 comms, §8.13 playback;
+  `tests/check-chat.js` (53 cases, all passing). Checked at iPhone size, desktop
+  and low-light.
+
+### Still open after round 2
+
+- Product-specific guides once the kit list arrives; confirm "techniks".
+- Part 13 line-by-line re-audit; Meyer/other PA brands if in stock.
+- Library reading bar is still tight on narrow phones next to the floating
+  buttons — consider moving refresh/settings into the bar when reading.

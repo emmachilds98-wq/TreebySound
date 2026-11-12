@@ -12,20 +12,22 @@ the phone.
 
 | File | What it is |
 | --- | --- |
-| `index.html` | The whole app (screens: Home, Ask, Job, Support, Pathway, Library): styles, the handbook (21 parts), the four app screens and all the scripts. Works opened straight from disk too. |
+| `index.html` | The whole app (screens: Home, Ask, Job, Support, Pathway, Library): styles, the handbook (21 parts), the app screens and all the scripts. Works opened straight from disk too. |
 | `sw.js` | Service worker: keeps an offline copy, fetches updates in the background, and keeps one previous version for "Use previous version". |
 | `manifest.webmanifest`, `treebysound-icon.png` | Home-screen app details and icon. |
 | `PLAN.md` | The current upgrade plan and progress log — read this first if you're continuing work. |
 
-## How the chat ("Talk it through") works
+## How the chat (the Ask screen) works
 
-It runs entirely in the page. In order, it tries:
+It runs entirely in the page and keeps the conversation on the phone for 12
+hours (`saveSoon()` / `restoreLog()`). In order, it tries:
 
-1. **Special requests** — system test, "my kit", career coaching.
-2. **d&b model questions** — answered from the tables in §6.20 (`buildModels()`), so the book and the chat never disagree.
-3. **The answer bank** — `var ANSWERS = [` — direct written answers to common questions.
-4. **Guided routes** — `var FLOWS = [` — step-by-step fault-finding and set-up conversations.
-5. **The book** — glossary (§20.1) and a ranked search of every section (`searchBook()`, BM25).
+1. **Follow-ups and sums** — "tell me more" opens the last answer's section; `calcAnswer()` does delay, SPL, dB, volts, antenna and impedance sums.
+2. **Special requests** — system test, "my kit", career coaching.
+3. **d&b model questions** — answered from the tables in §6.20 (`buildModels()`), so the book and the chat never disagree.
+4. **The answer bank** — `var ANSWERS = [` — direct written answers to common questions.
+5. **Guided routes** — `var FLOWS = [` — step-by-step fault-finding and set-up conversations.
+6. **The book** — glossary (§20.1) and a ranked search of every section (`searchBook()`, BM25).
 
 Typos, synonyms ("cab" → speaker) and word endings are handled the same way
 everywhere (`SYNONYMS`, `norm()`, `terms()`, `stem()`). Links to sections from the
