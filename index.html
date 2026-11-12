@@ -9517,7 +9517,7 @@ if(quickfabBtn && quickfabMenu){
        really a fault report, which goes to the step-by-step route. */
     var hit = bestAnswer(text);
     var weakRoute = !ranked.length || ranked[0].s <= 1;
-    if(hit && (((!faultish || info) && (info || !f || (setupAsk && f.kind !== 'setup'))) || (weakRoute && hit.score >= 0.8 && !fixAsk))){ showAnswer(hit, text); return; }
+    if(hit && (((!faultish || info) && (info || !f || (setupAsk && f.kind !== 'setup'))) || (weakRoute && hit.score >= 0.8 && !fixAsk && !(setupAsk && f && f.kind === 'setup')))){ showAnswer(hit, text); return; }
     if(!g.symptom) g.symptom = text;
     /* Two problems in one message: start with the stronger, queue the other. */
     if(f && !info && ranked.length > 1 && ranked[1].f !== f && ranked[1].s >= 1 && /\b(and|also|plus|as well|too)\b/i.test(text) && (f.kind || 'fix') === 'fix' && (ranked[1].f.kind || 'fix') === 'fix'){

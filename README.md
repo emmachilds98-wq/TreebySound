@@ -12,7 +12,7 @@ the phone.
 
 | File | What it is |
 | --- | --- |
-| `index.html` | The whole app: styles, the handbook (21 parts), the four app screens and all the scripts. Works opened straight from disk too. |
+| `index.html` | The whole app (screens: Home, Ask, Job, Support, Pathway, Library): styles, the handbook (21 parts), the four app screens and all the scripts. Works opened straight from disk too. |
 | `sw.js` | Service worker: keeps an offline copy, fetches updates in the background, and keeps one previous version for "Use previous version". |
 | `manifest.webmanifest`, `treebysound-icon.png` | Home-screen app details and icon. |
 | `PLAN.md` | The current upgrade plan and progress log — read this first if you're continuing work. |
@@ -55,6 +55,13 @@ node format), and add its id to `FIX_STARTERS`, `ADV_STARTERS` or
 
 ## Checking a change
 
-There are no automated checks yet. Before merging, at least open `index.html`
-in a browser, check the console for errors, and ask the chat a few questions —
-including ones the change should and shouldn't affect.
+There's no CI. Before merging, run the chat test set — 50 real questions, each
+with what the reply must contain:
+
+```bash
+node tests/check-chat.js
+```
+
+Add a line to `tests/chat-cases.txt` whenever you add an answer or a route, or
+find a question the chat gets wrong. Also open `index.html` at phone size and
+look at the screen you changed.
