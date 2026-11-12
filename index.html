@@ -2300,6 +2300,20 @@ EARS            the only part of the system that actually matters</div>
 <div class="note deep"><span class="lab">Go deeper</span><p>Ear training is the highest-leverage thing you can do for your mixing. Free browser tools like SoundGym's free trainers or the "Train Your Ears" style EQ quizzes get you recognising frequencies within a few weeks of ten-minute sessions. See <a href="#s18-6">§18.6</a>.</p></div>
 </section>
 
+<section class="s" id="s2-12"><h3><span class="n">2.12</span> Meters and levels on a digital desk</h3>
+<p>Digital desks measure level in <strong>dBFS</strong> — decibels below <em>full scale</em>. <strong>0 dBFS is the ceiling</strong>: nothing can go above it, so anything louder clips hard and sounds awful. Every meter reading on a digital desk is a negative number counting down from that ceiling.</p>
+<div class="tw"><table>
+<thead><tr><th>What you see</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td>Peak meter</td><td>The highest instant — what you watch to avoid clipping. Leave a generous gap below 0 dBFS on the loudest moments.</td></tr>
+<tr><td>VU / RMS / average</td><td>Closer to how loud it sounds. Two channels peaking at the same level can sound very different in loudness.</td></tr>
+<tr><td>Nominal level</td><td>Where the desk expects normal signals to sit — commonly −18 or −20 dBFS, which lines up with +4 dBu on the analogue outputs. Varies by desk; check the manual.</td></tr>
+<tr><td>LUFS</td><td>Loudness over time, used for broadcast and streams (§14.14). Not a clipping meter.</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>Set input gain so the loudest real moments peak well clear of 0 dBFS — on most desks that means normal singing or playing showing around the nominal mark with plenty of room above. Digital headroom is free; clipping is not.</p></div>
+<div class="note warn"><span class="lab">Watch it</span><p>A channel can clip at the <strong>input</strong> while its fader is low — the damage happens before the fader. Watch the input/gain meter, not just the channel strip's output meter (§12.6).</p></div>
+</section>
+
 </div></div>
 
 <div class="part" id="p3">
@@ -2506,6 +2520,19 @@ EARS            the only part of the system that actually matters</div>
 <div class="note alt"><span class="lab">Also seen</span><p>Older German and touring stock sometimes uses <strong>EP5</strong> (or EP4/EP6) connectors instead of speakON, and some d&amp;b amps came in EP5 versions. They aren't interchangeable with NL4 without an adapter, and the pin numbering is different — check the amp's label before using one.</p></div>
 </section>
 
+<section class="s" id="s3-13"><h3><span class="n">3.13</span> Testing cables properly — step by step</h3>
+<ol class="seq">
+<li><strong>Look first:</strong> strain relief intact, no cuts or crush marks, pins straight, locking tabs work, label readable.</li>
+<li><strong>Cable tester:</strong> plug both ends in and step through every pin. Each pin should light only with its partner — not with any other pin, not with the shell. (On XLR: 1, 2, 3; on NL4: 1+, 1−, 2+, 2−.)</li>
+<li><strong>Wiggle test:</strong> while the tester is connected, flex the cable near each connector. A light that flickers is an intermittent fault — the most common kind.</li>
+<li><strong>Speaker cables:</strong> test all four poles of a 4-core NL4/NLT4, even if today's job only uses pins 1 — the next job may need pins 2 (§3.12).</li>
+<li><strong>Network cables:</strong> a network cable tester checks all 8 cores in order; a cable that passes a laptop link test can still fail at gigabit speed.</li>
+<li><strong>Multimeter</strong> (continuity mode) for anything the tester can't take — a beep means connected.</li>
+<li><strong>Fail?</strong> Tape it, label it with the fault, quarantine it (§11.5). Never coil a failed cable back into stock.</li>
+</ol>
+<div class="note std"><span class="lab">Standard</span><p>Test at prep, not on site. A cable that's been tested in the warehouse is a cable you don't have to think about at 6 pm.</p></div>
+</section>
+
 </div></div>
 
 <div class="part" id="p4">
@@ -2661,6 +2688,23 @@ EARS            the only part of the system that actually matters</div>
 <li><strong>Handle by the body, not the grille.</strong> Grip oils and dents both cause problems.</li>
 </ul>
 <div class="note std"><span class="lab">Standard</span><p>Clean and check every vocal mic on return, not at the next prep. It's five minutes when it's part of the check-in routine and it's a crisis when you discover it at 8am with a van to load.</p></div>
+</section>
+
+<section class="s" id="s4-9"><h3><span class="n">4.9</span> Which mic for which source — a cheat sheet</h3>
+<p>Starting points, not rules — use what's on the kit list and listen.</p>
+<div class="tw"><table>
+<thead><tr><th>Source</th><th>Usual choice</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Lead vocal (loud stage)</td><td>Dynamic or handheld condenser, cardioid/supercardioid</td><td>Rejection matters more than detail. Wedge in the dead zone.</td></tr>
+<tr><td>Speech at a lectern</td><td>Gooseneck condenser</td><td>20–40 cm, high-pass on, rung out (§4.4).</td></tr>
+<tr><td>Presenter who walks</td><td>Headset or lavalier radio mic</td><td>Headset for quiet talkers and movers (§10.11).</td></tr>
+<tr><td>Kick drum</td><td>Large-diaphragm dynamic made for kick</td><td>Inside the port for attack, outside for weight.</td></tr>
+<tr><td>Snare, toms, guitar cab</td><td>Dynamic instrument mic</td><td>Close and angled; watch spill.</td></tr>
+<tr><td>Overheads, acoustic guitar, choir, strings</td><td>Small-diaphragm condensers</td><td>Need phantom; mind feedback on quiet sources.</td></tr>
+<tr><td>Bass guitar, keys, laptop</td><td>DI (often bass also gets a mic)</td><td>Ground lift for hum (§3.9).</td></tr>
+<tr><td>Brass and wind</td><td>Dynamic, or clip-on condenser</td><td>Clip-ons let players move.</td></tr>
+<tr><td>Audience/ambience</td><td>Pair of condensers</td><td>For IEM mixes and recordings, not the PA (§15.4).</td></tr>
+</tbody></table></div>
 </section>
 
 </div></div>
@@ -4150,6 +4194,18 @@ EARS            the only part of the system that actually matters</div>
 <div class="note std"><span class="lab">Standard</span><p>If any step fails and you can't fix it inside what you're allowed to do, the test hasn't passed. Say so plainly, with the facts — "box 3 stage left has no HF, cable swapped, fault follows the box" — and let the person who owns the system decide.</p></div>
 </section>
 
+<section class="s" id="s11-10"><h3><span class="n">11.10</span> Handing over to the engineer</h3>
+<p>When the engineer or system tech arrives to a system you've built and checked, the first two minutes decide whether they trust it. Give them, briefly and in this order:</p>
+<ol class="seq">
+<li><strong>What's built:</strong> the system as built, and anything different from the plan (a swapped box, a different cable route).</li>
+<li><strong>What's proved:</strong> system test done (§11.9), line check done (§11.7) — with the record if they want it.</li>
+<li><strong>What's outstanding:</strong> by name — “channel 22 waiting on a cable”, “fill amp shows a warning, here's the text”.</li>
+<li><strong>What's been changed:</strong> any setting you touched, and why.</li>
+<li><strong>Where things are:</strong> spares, fault kit, show file on USB, comms pack for them.</li>
+</ol>
+<div class="note std"><span class="lab">Standard</span><p>Then step back and stay close. Answer questions, don't hover — and never change anything on the system once they've taken it over without asking.</p></div>
+</section>
+
 
 </div></div>
 
@@ -4354,6 +4410,19 @@ EARS            the only part of the system that actually matters</div>
 <li><strong>Bring the fader back up slowly</strong>, listening for the same ring returning. If it comes back at a lower level than before, you've genuinely bought headroom; if it's still right on the edge, the room or the mic technique is the real problem, not the EQ.</li>
 </ol>
 <div class="note warn"><span class="lab">Watch it</span><p>Feedback through an open IEM channel is a hearing-safety issue, not just an embarrassing noise — see the warning in <a href="#s5-7">§5.7</a>. Pull the level immediately rather than trying to EQ your way out of it in-ear.</p></div>
+</section>
+
+<section class="s" id="s12-19"><h3><span class="n">12.19</span> Following the signal with test tone — the universal method</h3>
+<p>Works on any brand, any desk, any network: send a known signal and follow it until it disappears.</p>
+<ol class="seq">
+<li><strong>Warn people</strong>, then send <strong>pink noise at low level</strong> from the desk's oscillator to one output (or one amp's built-in generator for the far end).</li>
+<li><strong>Desk output meter</strong> moving? If not, it's the desk: routing, output patch, mute (§7.7).</li>
+<li><strong>Network or link:</strong> Dante subscription green, AES lock, analogue cable — is the signal arriving at the amp's input indicator? If not, it's the link (§12.14).</li>
+<li><strong>Amp:</strong> input present but no output? Channel muted, wrong routing, or a fault on the amp (§6.17).</li>
+<li><strong>Cable and box:</strong> output present but silent box — speakON locked, right socket for the mode, 4-core where needed, then swap the cable (§6.19).</li>
+<li>The <strong>first place it disappears</strong> is the fault. Fix there, retest end to end.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p>Start tone <strong>low</strong> and bring it up — pink noise at full level through a big PA is painful and can damage drivers. Never send tone to IEMs or headphones people are wearing.</p></div>
 </section>
 
 </div></div>
@@ -4662,6 +4731,18 @@ EARS            the only part of the system that actually matters</div>
 </div>
 </section>
 
+<section class="s" id="s14-14"><h3><span class="n">14.14</span> Stream audio — a quick start</h3>
+<ol class="seq">
+<li><strong>A separate mix</strong> for the stream — more vocals and speech, room/audience mics for atmosphere; the PA mix is wrong for headphones and laptops (§14.8).</li>
+<li><strong>Loudness, not just peaks:</strong> agree a target with the stream team. Online platforms normalise playback; many streams aim around −16 to −14 LUFS integrated. Use a loudness meter.</li>
+<li><strong>A limiter</strong> on the stream output so a shout or a dropped mic can't clip it.</li>
+<li><strong>Lip sync:</strong> video processing delays the picture — any delay goes on the <em>stream audio</em>, agreed with the video team, never on the PA (§9.13).</li>
+<li><strong>Remote guests:</strong> a mix-minus so they don't hear themselves back (§10.8).</li>
+<li><strong>Listen to the actual stream</strong> on a separate device — what leaves the building is what counts.</li>
+</ol>
+<div class="note deep"><span class="lab">Go deeper</span><p>Broadcast loudness standards (EBU R128 at −23 LUFS) and platform targets are in §18.17.</p></div>
+</section>
+
 </div></div>
 
 <div class="part" id="p15">
@@ -4772,6 +4853,19 @@ EARS            the only part of the system that actually matters</div>
 <dt>Custom-moulded</dt><dd>Made from an impression of the performer's own ear canal. Better seal, better isolation, more consistent bass response, and generally more comfortable for a long set — but expensive, slow to replace if lost or damaged, and useless to anyone else.</dd>
 </div>
 <div class="note warn"><span class="lab">Watch it</span><p>Never hand a used universal foam/silicone tip to a different performer without a fresh tip fitted — sharing eartips between people is a genuine hygiene issue, not just an etiquette one.</p></div>
+</section>
+
+<section class="s" id="s15-13"><h3><span class="n">15.13</span> Safe in-ear levels</h3>
+<p>IEMs put sound straight into the ear canal — great for protecting hearing when they replace loud wedges, dangerous if they're simply loud.</p>
+<ul>
+<li><strong>Start low.</strong> Packs start at a low volume and the performer brings them up; the monitor engineer adds a little at a time.</li>
+<li><strong>A good seal needs less level.</strong> Proper earpieces (custom or well-fitted tips) isolate the stage, so the mix can run quieter.</li>
+<li><strong>Stereo needs less level than mono</strong> — instruments panned apart are easier to hear without turning everything up.</li>
+<li><strong>Limiters</strong> on the IEM transmitter or mix protect against a dropped mic, a feedback squeal or a mistakenly sent tone.</li>
+<li><strong>Never</strong> send pink noise or oscillator tone to a mix someone is wearing.</li>
+<li>An <strong>ambient mic</strong> (§15.4) stops performers pushing the level to feel connected to the room.</li>
+</ul>
+<div class="note std"><span class="lab">Standard</span><p>If a performer keeps asking for “everything louder”, check the fit and the mix balance before turning anything up.</p></div>
 </section>
 
 </div></div>
@@ -4886,6 +4980,18 @@ EARS            the only part of the system that actually matters</div>
 <dt>Bus / mix bus</dt><dd>A shared signal path that more than one channel is summed into — an aux bus (<a href="#s16-5">§16.5</a>'s effects sends), a group or DCA and the matrix (<a href="#s7-3">§7.3</a>), and the main mix bus itself that everything ultimately reaches. Routing a channel "to a bus" just means adding its signal into that shared path rather than sending it straight to the main mix.</dd>
 <dt>Sidechain</dt><dd>Using one signal's level to control processing applied to a different signal, rather than to itself. The live example is a gate on a talkback mic keyed from the console's own output, so it only opens when there's genuinely something to duck for; the studio example is "ducking" a music bed under a voiceover. You won't build these often as a junior tech, but recognising the word — and that it means "controlled by something other than itself" — saves confusion the first time you meet it on a desk.</dd>
 </div>
+</section>
+
+<section class="s" id="s16-11"><h3><span class="n">16.11</span> Mixing speech — clear, natural, no feedback</h3>
+<ol class="seq">
+<li><strong>Gain</strong> set with the person speaking at their real presentation level — not “check, check” (§2.5).</li>
+<li><strong>High-pass</strong> around 100–150 Hz for most voices: removes rumble, handling noise and boom.</li>
+<li><strong>EQ</strong> to cut, not boost: mud around 200–400 Hz if needed, harshness around 2–4 kHz if a voice is sharp. A small lift for clarity only if the voice is dull.</li>
+<li><strong>Compression</strong> gentle (around 3:1, a few dB on loud words) to keep quiet and loud speakers even.</li>
+<li><strong>Gain before feedback:</strong> mics close to the mouth, behind the PA, as few open as possible — an automixer for panels (§7.8). Ring out first (§15.8).</li>
+<li><strong>Level:</strong> comfortably above the room noise everywhere, not loud. Walk the room.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p>Turning a quiet presenter up is where feedback starts. Get the mic closer (or switch to a headset) before reaching for the fader.</p></div>
 </section>
 
 </div></div>
@@ -8146,7 +8252,7 @@ if(quickfabBtn && quickfabMenu){
       feed:{q:'The break is between the console and the amps: output patch, stage box or network, AES/Dante routing, a processor in between. Trace the signal path one hop at a time.', k:'Result', end:true, links:[['#s2-1','2.1 Signal flow'],['#s12-14','12.14 Network faults']]},
       mutes:{q:'Amps have signal but nothing comes out: look for mutes in R1 (all amps or a group), amps in standby, or every channel muted at the front panel.', k:'Result', end:true, links:[['#s6-17','6.17 Front panel']]}
      }},
-    {id:'nl4', kind:'setup', title:'Check or test an NL4 / NLT4 cable', words:['nl4','nlt4','nl8','nl2','speakon','speak on','cable test','tester','pinout','pin out','2-core','4-core','two core','four core','stx','coupler'],
+    {id:'nl4', kind:'setup', title:'Check or test an NL4 / NLT4 cable', words:['nl4','nlt4','nl8','nl2','speakon','speak on','cable test','tester','test a speaker cable','test speaker cable','test the speaker cable','speaker cable test','testing speaker cable','check a speaker cable','pinout','pin out','2-core','4-core','two core','four core','stx','coupler'],
      ask:'Is this cable OK to go out, or shall I quarantine it?',
      nodes:{
       start:{q:'Mute anything it\'s plugged into first. Then: (1) look — strain relief tight, no copper showing, latch springs back, body not cracked; (2) put it through a speakON cable tester — all four poles continuous, no shorts between any of them; (3) check the label says whether it\'s 2-core or 4-core. Pins 1± carry the first channel, pins 2± the second.', k:'Result', end:true, links:[['#s3-12','3.12 NL4 &amp; NLT4 cables'],['#s6-17','6.17 Which pins carry what']]}
@@ -9610,7 +9716,18 @@ if(quickfabBtn && quickfabMenu){
     ["meyer sound|self powered speakers|panther|leopard|galaxy processor|nebra|mapp", "<p><strong>Meyer Sound</strong> boxes are <strong>self-powered</strong>: amp and processing inside every box, so each needs mains <em>and</em> signal. Arrays are designed in <strong>MAPP 3D</strong>, processed by <strong>GALAXY</strong>, and monitored in <strong>Nebra</strong>. Power distribution up the stack is part of the system — plan it with the power and system techs.</p>", "s6-23"],
     ["self powered vs passive|active vs passive pa|why does each speaker need power", "<p><strong>Passive</strong> systems (d&amp;b, L-Acoustics, Martin Audio) run speaker cables from amp racks. <strong>Self-powered</strong> systems (Meyer and many smaller active boxes) put the amp in each box, so every box needs mains and a signal — fewer racks, more power distribution.</p>", "s6-23 s6-1"],
     ["digico|digico session|digico snapshot|recall scope|digico quick start|sd12", "<p>On a DiGiCo, a <strong>session</strong> is the whole show (“one band”) and a <strong>snapshot</strong> changes values within it (“one song”). <strong>Recall scope</strong> decides what each snapshot changes — head-amp gains, for example, may not be included. Save the session first, keep snapshots simple, and learn it on the free offline software.</p>", "s7-11"],
-    ["dlive|avantis|allen and heath|mixrack|recall filter|dlive director", "<p><strong>dLive</strong> keeps the processing and I/O in the <strong>MixRack</strong>, with the Surface as the control desk; <strong>Avantis</strong> is all-in-one. Sockets are named R-nn (MixRack), S-nn (Surface), DX, P (I/O card). Scenes use <strong>recall filters</strong> (per scene) and global safes. Save the show to USB first; practise on dLive Director.</p>", "s7-12"]
+    ["dlive|avantis|allen and heath|mixrack|recall filter|dlive director", "<p><strong>dLive</strong> keeps the processing and I/O in the <strong>MixRack</strong>, with the Surface as the control desk; <strong>Avantis</strong> is all-in-one. Sockets are named R-nn (MixRack), S-nn (Surface), DX, P (I/O card). Scenes use <strong>recall filters</strong> (per scene) and global safes. Save the show to USB first; practise on dLive Director.</p>", "s7-12"],
+    ["what is dbfs|0 dbfs|digital meter|desk meters explained|peak vs rms|where should my meters sit", "<p>Digital desks meter in <strong>dBFS</strong>: 0 dBFS is the ceiling, so readings count down from it. Watch <strong>peak</strong> meters to avoid clipping, and leave plenty of room below 0 on the loudest moments. Nominal level is commonly −18 or −20 dBFS (lining up with +4 dBu) — check the desk's manual.</p>", "s2-12 s2-5"],
+    ["how to test a cable properly|test speaker cable|test nl4|wiggle test|network cable tester", "<p>Look first, then a cable tester through every pin (each pin lights only with its partner), wiggling near each end to catch intermittents. Test all four poles of an NL4/NLT4 even if today only uses pins 1. Fails get taped, labelled and quarantined — at prep, not on site.</p>", "s3-13 s3-11"],
+    ["which mic should i use|mic for each source|mic cheat sheet|best mic for vocals|which mic for kick", "<p>Loud vocals: dynamic or handheld condenser, cardioid/supercardioid. Lectern: gooseneck condenser. Moving presenter: headset or lav. Kick: kick-specific dynamic. Snare, toms, guitar cab: dynamic instrument mic. Overheads, acoustic, choir: small condensers. Bass, keys, laptops: DI. §4.9 has the table.</p>", "s4-9 s4-5"],
+    ["hand over to the engineer|what to tell the engineer|engineer arrives|handover", "<p>In two minutes: what's built (and what differs from the plan), what's proved (system test, line check), what's outstanding by name, anything you changed and why, and where the spares, fault kit and show file are. Then stay close and don't change anything without asking.</p>", "s11-10"],
+    ["follow the signal|pink noise test|use the oscillator to find a fault|tone test", "<p>Send pink noise at low level from the desk to one output, then follow it: desk output meter → network/link (Dante green, AES lock) → amp input indicator → amp output → cable and box. The first place it disappears is the fault. Warn people first and never send tone to IEMs.</p>", "s12-19 s12-1"],
+    ["safe iem level|iems too loud|in ear hearing damage|iem limiter", "<p>Start packs low and let the performer bring them up; a good seal and a stereo mix both need less level; use limiters on IEM mixes or transmitters; add an ambient mic; and never send tone to a pack someone's wearing.</p>", "s15-13 s15-3"],
+    ["mixing speech|how to mix a presenter|speech eq|eq for speech|compress speech", "<p>Gain at their real speaking level, high-pass around 100–150 Hz, cut mud or harshness rather than boosting, gentle compression (about 3:1), mics close and behind the PA, an automixer for panels, and a level comfortably above the room noise — not loud.</p>", "s16-11 s10-11"],
+    ["stream audio|how loud should a stream be|stream loudness|lufs for youtube|stream mix", "<p>Build a separate stream mix, agree a loudness target with the stream team (many aim around −16 to −14 LUFS), put a limiter on the output, put any lip-sync delay on the stream audio (never the PA), use a mix-minus for remote guests, and listen to the actual stream on another device.</p>", "s14-14 s14-8"],
+    ["which checklist|checklists|what checklists are there|list of checklists", "<p>Part 19 has tickable checklists for every stage: prep, load-out, load-in, line check, show day, derig, RF, advancing, monitors, recording, outdoor, access, your bag, corporate, theatre, network &amp; Dante, any desk, comms &amp; playback, fault kit, festival changeovers and end-of-job handover.</p>", "s19-1 s19-21"],
+    ["network checklist|dante checklist|before trusting the network", "<p>Network drawing in hand, the right switches (EEE off, QoS set for Dante; AVB-capable for Milan), primary and secondary physically separate, every device seen on one sample rate, exactly one clock leader, all subscriptions green, and a routing preset saved.</p>", "s19-20 s8-9"],
+    ["fault kit checklist|what spares to pack|spares list", "<p>Spare XLRs, 4-core NL4s and a coupler, DIs, a spare vocal mic and radio mic (synced), batteries, adapters and a labelled phase-reverse, cable tester, multimeter, torch, tape, a spare network cable — and this app offline.</p>", "s19-23 s12-2"]
   ];
   var bank = null;
   function bankIndex(){
