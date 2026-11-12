@@ -77,3 +77,7 @@ what does gptp mean => timing protocol
 what is a slapback => short repeat
 radio mic droping out => Radio mic dropouts
 whats phantom powr => +48 V
+what to do in a fire => fire exits
+someone got hurt => first aid
+how do i lock a speakon => twist clockwise
+what is a stage plot => drawing of where

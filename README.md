@@ -72,6 +72,12 @@ sections, checklists without a reset link):
 node tests/check-content.js
 ```
 
+Every way each written answer can be asked (about 1,250 phrasings) — how many get exactly that answer; `--list` shows the misses:
+
+```bash
+node tests/check-answers.js
+```
+
 Accessibility (axe-core, every screen and part) — install axe once, then run:
 
 ```bash
