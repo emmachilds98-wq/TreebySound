@@ -428,7 +428,8 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
   body{padding-bottom:calc(66px + env(safe-area-inset-bottom))}
   .quickfab-wrap{bottom:calc(66px + env(safe-area-inset-bottom) + 8px)}
   .quickfab{display:none}
-  .top{right:14px;bottom:calc(74px + env(safe-area-inset-bottom))}
+  .top{right:12px;bottom:calc(76px + env(safe-area-inset-bottom));width:38px;height:38px;padding:0;border-radius:50%;font-size:0;opacity:.88;box-shadow:var(--shadow)}
+  .top::before{content:"\2191";font-size:17px;line-height:36px;display:block;text-align:center}
 
   /* touch sizing */
   .cog-btn{width:44px;height:44px;font-size:19px}
@@ -5134,14 +5135,16 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s19-2"><h3><span class="n">19.2</span> Warehouse prep checklist</h3>
 <ul class="check" id="chk-prep">
-<li><label><input type="checkbox"><span>Kit list checked against what's physically pulled, not just the system record (<a href="#s1-5">§1.5</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Every item tested — powers on, passes signal, no visible damage</span></label></li>
-<li><label><input type="checkbox"><span>Cables coiled and checked, no suspect ones included (<a href="#s3-10">§3.10</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Batteries — correct type and quantity, spares packed (<a href="#s5-6">§5.6</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Consumables — gaff tape, cable ties, spare fuses, labels</span></label></li>
-<li><label><input type="checkbox"><span>Input list and stage plan saved to your phone (<a href="#s1-5">§1.5</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Cases labelled and packed in load-out order</span></label></li>
-<li><label><input type="checkbox"><span>Any flagged/quarantined kit substituted, not silently left out</span></label></li>
+<li><label><input type="checkbox"><span>Kit list read end to end, and anything unclear asked about before pulling (<a href="#s1-5">§1.5</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Every item pulled, counted against the list and scanned out in the rental system (<a href="#s8-7">§8.7</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Every cable tested on a tester — speaker cables included, not checked by eye (<a href="#s3-12">§3.12</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Amps, desk and stage boxes powered up and showing no errors (<a href="#s6-17">§6.17</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Desk show file for this job loaded (or a clean template) and saved to USB (<a href="#s7-4">§7.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Radio mics and IEMs on, synced, batteries fresh, frequencies inside the licence (<a href="#s5-12">§5.12</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Spares packed: mics, cables, DIs, NL4s, batteries — tested, not "probably fine" (<a href="#s12-2">§12.2</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Fault kit and tools packed (tester, torch, tape, adapters) (<a href="#s19-23">§19.23</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Everything labelled, cases closed and ready to load in order (<a href="#s3-10">§3.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Faulty kit found during prep quarantined and logged (<a href="#s11-5">§11.5</a>)</span></label></li>
 </ul>
 <p><a href="#" class="reset-link" data-target="chk-prep">Reset this list</a></p>
 </section>
@@ -5150,23 +5153,27 @@ EARS            the only part of the system that actually matters</div>
 <ul class="check" id="chk-loadout">
 <li><label><input type="checkbox"><span>Everything on the kit list physically present and counted</span></label></li>
 <li><label><input type="checkbox"><span>Loaded in reverse order of need — last on is first off</span></label></li>
-<li><label><input type="checkbox"><span>Heavy items low and secured; nothing that can shift in transit</span></label></li>
-<li><label><input type="checkbox"><span>Paperwork (RAMS, schedule, input list, contact numbers) with you, not just in the system</span></label></li>
-<li><label><input type="checkbox"><span>Route, parking and load-in access at the venue confirmed</span></label></li>
+<li><label><input type="checkbox"><span>Heavy items low and strapped; nothing that can shift in transit (<a href="#s13-4">§13.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Fragile kit (desk, laptops, radio racks) protected and not under heavy cases</span></label></li>
+<li><label><input type="checkbox"><span>Paperwork with you on paper and phone: RAMS, schedule, input list, contacts (<a href="#s1-5">§1.5</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Route, parking, load-in door and access times at the venue confirmed (<a href="#s1-7">§1.7</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Fuel, journey time and the drive home after a long day planned (<a href="#s13-9">§13.9</a>)</span></label></li>
 </ul>
 <p><a href="#" class="reset-link" data-target="chk-loadout">Reset this list</a></p>
 </section>
 
 <section class="s" id="s19-4"><h3><span class="n">19.4</span> Load-in &amp; build checklist</h3>
 <ul class="check" id="chk-loadin">
-<li><label><input type="checkbox"><span>Found the crew chief / who's running audio today (<a href="#s1-3">§1.3</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Confirmed power source and that it's dedicated to audio where agreed (<a href="#s3-8">§3.8</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Cable routes agreed with other departments before running (<a href="#s9-5">§9.5</a>)</span></label></li>
-<li><label><input type="checkbox"><span>PA positioned and rigged, weight/SWL confirmed if flown (<a href="#s6-5">§6.5</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Stage built to plan — DIs, stands, power drops in place</span></label></li>
-<li><label><input type="checkbox"><span>Console patched and labelled to match the patch list</span></label></li>
-<li><label><input type="checkbox"><span>Network switch isolated from venue guest WiFi/public network, nothing unfamiliar plugged in (<a href="#s8-6">§8.6</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Comms channel confirmed working with all relevant departments</span></label></li>
+<li><label><input type="checkbox"><span>Site induction done: fire exits, assembly point, first aider, site rules (<a href="#s13-10">§13.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>PPE on as the site requires — boots, hi-vis, hard hat where work is overhead (<a href="#s13-11">§13.11</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Positions agreed: PA, desk, stage boxes, amp racks, cable routes (<a href="#s9-5">§9.5</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Power: where it comes from, who owns it, and audio kept off dimmer circuits (<a href="#s9-6">§9.6</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Amp racks near the boxes they drive; speaker cables run, locked and labelled (<a href="#s6-18">§6.18</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Multicores and network run, protected where people walk, nothing across fire exits (<a href="#s3-5">§3.5</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Desk and network up; Dante/I/O devices seen and clock correct (<a href="#s8-9">§8.9</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Stage patched to the input list, stage box labelled (<a href="#s11-2">§11.2</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Power up last, amps muted; then R1 (or the system's software) online (<a href="#s6-22">§6.22</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Test as you go — each box and each line, not everything at the end (<a href="#s11-9">§11.9</a>)</span></label></li>
 </ul>
 <p><a href="#" class="reset-link" data-target="chk-loadin">Reset this list</a></p>
 </section>
@@ -5174,50 +5181,63 @@ EARS            the only part of the system that actually matters</div>
 <section class="s" id="s19-5"><h3><span class="n">19.5</span> Line check sheet</h3>
 <p>Referenced from <a href="#s1-5">§1.5</a> and <a href="#s11-2">§11.2</a>. The generic version — copy this pattern per channel on the day, since the real one needs your actual input list.</p>
 <ul class="check" id="chk-linecheck">
-<li><label><input type="checkbox"><span>Signal present at the console, correct channel</span></label></li>
-<li><label><input type="checkbox"><span>Correct source confirmed (not bleed or a mix-up)</span></label></li>
-<li><label><input type="checkbox"><span>Gain set sensibly — not clipping, not buried (<a href="#s2-5">§2.5</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Polarity checked where relevant (<a href="#s2-8">§2.8</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Phantom power correct for the source (<a href="#s2-6">§2.6</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Routed to the correct mix bus / monitor sends</span></label></li>
+<li><label><input type="checkbox"><span>Input list in hand, stage box labelled, desk channels named to match (<a href="#s11-2">§11.2</a>)</span></label></li>
+<li><label><input type="checkbox"><span>PA muted or low; phantom off until each condenser/active DI needs it (<a href="#s2-6">§2.6</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Every input proved one at a time — speak, scratch or play, watch the right meter (<a href="#s11-3">§11.3</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Each input clean: no crackle, hum, distortion or intermittent drop (<a href="#s12-9">§12.9</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Radio mics checked on the body and in position, not on the table (<a href="#s11-6">§11.6</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Every monitor and IEM send checked to the right wedge/pack (<a href="#s15-1">§15.1</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Playback, video audio and any remote/stream feeds checked through the system (<a href="#s8-13">§8.13</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Faulty inputs swapped or quarantined, and the input list updated (<a href="#s11-5">§11.5</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Line check declared complete to whoever runs the show — outstanding items named (<a href="#s11-7">§11.7</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Scene stored and show file saved (<a href="#s7-4">§7.4</a>)</span></label></li>
 </ul>
 <p><a href="#" class="reset-link" data-target="chk-linecheck">Reset this list</a></p>
 </section>
 
 <section class="s" id="s19-6"><h3><span class="n">19.6</span> Show-day checklist — before doors</h3>
 <ul class="check" id="chk-showday">
-<li><label><input type="checkbox"><span>Line check fully complete and signed off (<a href="#s11-7">§11.7</a>)</span></label></li>
-<li><label><input type="checkbox"><span>System check complete — every box proven (<a href="#s6-8">§6.8</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Wireless systems walked and proven, spectrum scanned (<a href="#s5-8">§5.8</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Recording (if required) tested and confirmed capturing (<a href="#s14-2">§14.2</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Playback machine — notifications, sleep, updates all off (<a href="#s8-4">§8.4</a>)</span></label></li>
-<li><label><input type="checkbox"><span>If running a hot-spare or redundant console — mirrored/loaded with the current show file and confirmed ready (<a href="#s7-4">§7.4</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Spares kit accessible, not packed away</span></label></li>
-<li><label><input type="checkbox"><span>Stage tidy, cable dressed, nothing left that shouldn't be seen</span></label></li>
-<li><label><input type="checkbox"><span>Told the right person you're ready for doors</span></label></li>
+<li><label><input type="checkbox"><span>System test complete and recorded (<a href="#hub-systest">hub-systest</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Every box proved at low level; no limiting or errors on any amp (<a href="#s6-17">§6.17</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Line check complete and declared (<a href="#s11-7">§11.7</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Radio: fresh batteries, walk test done, spares synced and on (<a href="#s11-6">§11.6</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Comms checked on every pack and channel (<a href="#s11-8">§11.8</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Noise limit known; meter where the plan says (<a href="#s6-10">§6.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Desk: show file saved, recall safes set, solo cleared, scene stored (<a href="#s7-4">§7.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Running order and cues with you; you know who calls them (<a href="#s10-11">§10.11</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Fault kit and spares within reach of FOH and stage (<a href="#s19-23">§19.23</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Cables dressed, nothing across exits; area safe for the public (<a href="#s13-10">§13.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Water, food and a quick break taken before doors (<a href="#s13-9">§13.9</a>)</span></label></li>
 </ul>
 <p><a href="#" class="reset-link" data-target="chk-showday">Reset this list</a></p>
 </section>
 
 <section class="s" id="s19-7"><h3><span class="n">19.7</span> Derig &amp; return checklist</h3>
 <ul class="check" id="chk-derig">
-<li><label><input type="checkbox"><span>Cables coiled properly, not just bundled (<a href="#s3-10">§3.10</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Everything counted against the kit list before it leaves the building</span></label></li>
-<li><label><input type="checkbox"><span>Anything damaged or suspect flagged and separated, not packed with good stock (<a href="#s11-5">§11.5</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Site left clean — tape up, rubbish cleared, nothing left behind</span></label></li>
-<li><label><input type="checkbox"><span>Back at the warehouse: checked in properly, not just shelved (<a href="#s1-2">§1.2</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Wait for the all-clear; the area made safe before anything comes down (<a href="#s13-10">§13.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Desk show file saved to USB before the desk is powered off (<a href="#s7-4">§7.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Amps muted and powered down before the desk and before speaker cables come out (<a href="#s3-12">§3.12</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Speaker cables unlocked properly — latch back, twist, pull the body (<a href="#s3-12">§3.12</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Cables coiled over-under and tied; radio packs and batteries collected (<a href="#s3-10">§3.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Everything counted back against the kit list (<a href="#s1-5">§1.5</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Faulty kit labelled with the fault and quarantined for repair (<a href="#s11-5">§11.5</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Venue left as you found it; lost property and gaffa tape cleared</span></label></li>
+<li><label><input type="checkbox"><span>Notes for next time written while you remember them (<a href="#s12-17">§12.17</a>)</span></label></li>
 </ul>
 <p><a href="#" class="reset-link" data-target="chk-derig">Reset this list</a></p>
 </section>
 
 <section class="s" id="s19-8"><h3><span class="n">19.8</span> RF day checklist</h3>
 <ul class="check" id="chk-rf">
-<li><label><input type="checkbox"><span>Fresh batteries in every pack, correct type (<a href="#s5-6">§5.6</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Frequency scan done on site, not assumed from last time (<a href="#s5-5">§5.5</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Antennas correctly oriented and positioned, not behind metal or crowds (<a href="#s5-3">§5.3</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Every pack walked through the performance area during proving (<a href="#s5-8">§5.8</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Spare pack, spare capsule and a wired backup mic ready (<a href="#s5-9">§5.9</a>)</span></label></li>
-<li><label><input type="checkbox"><span>For high-power IEM combiner/transmit racks — working distance checked against manufacturer guidance (<a href="#s5-10">§5.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Licence for this job known: Channel 38, Channel 70 or a site licence (<a href="#s5-12">§5.12</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Everything that will be on during the show switched on before scanning (<a href="#s5-8">§5.8</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Scan done and frequencies coordinated (intermod-free) (<a href="#s5-5">§5.5</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Antennas placed with line of sight, above head height, away from LED walls (<a href="#s5-3">§5.3</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Every pack synced, gain set for that voice, and labelled with the person's name (<a href="#s5-11">§5.11</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Fresh or fully charged batteries in every pack; spares to hand (<a href="#s5-6">§5.6</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Walk test done in every position the mics will be used (<a href="#s11-6">§11.6</a>)</span></label></li>
+<li><label><input type="checkbox"><span>IEMs coordinated with the mics and kept away from the mic antennas (<a href="#s5-7">§5.7</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Spare mics coordinated, synced and on (<a href="#s5-8">§5.8</a>)</span></label></li>
 </ul>
 <p><a href="#" class="reset-link" data-target="chk-rf">Reset this list</a></p>
 </section>
@@ -5225,15 +5245,18 @@ EARS            the only part of the system that actually matters</div>
 <section class="s" id="s19-9"><h3><span class="n">19.9</span> Advancing / pre-job checklist</h3>
 <p>Referenced from <a href="#s1-7">§1.7</a>. Run through this before you commit to anything, ideally at least a few days out.</p>
 <ul class="check" id="chk-advance">
-<li><label><input type="checkbox"><span>Date, times, venue address and load-in access confirmed (loading bay, stairs, lift size, parking)</span></label></li>
-<li><label><input type="checkbox"><span>Input list and stage plan received, even a rough one (<a href="#s1-5">§1.5</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Power availability and location confirmed, not just assumed adequate</span></label></li>
-<li><label><input type="checkbox"><span>What's already in the room checked — house PA, house console, existing rigging points</span></label></li>
-<li><label><input type="checkbox"><span>Other departments on site and shared power/cable routes confirmed (<a href="#p9">Part 9</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Venue restrictions checked — noise limits (<a href="#s6-10">§6.10</a>), curfews, no-fly zones, load-in hours</span></label></li>
-<li><label><input type="checkbox"><span>If outdoor, in a marquee, or otherwise weather-exposed — rain/severe weather plan and cover for FOH and racks confirmed (<a href="#s6-14">§6.14</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Access services needed — audio description, interpretation, hearing loop — flagged early if the job requires them (<a href="#s6-13">§6.13</a>, <a href="#s6-12">§6.12</a>, <a href="#s6-11">§6.11</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Anything you can't supply flagged early, not on the day</span></label></li>
+<li><label><input type="checkbox"><span>Venue, address, load-in door, parking and access times confirmed (<a href="#s1-7">§1.7</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Contacts: production manager, venue tech, stage manager, client — names and numbers (<a href="#s1-3">§1.3</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Schedule: load-in, line check, soundcheck, doors, show, curfew, derig (<a href="#s1-4">§1.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Tech rider, input list and stage plot received and checked against the kit (<a href="#s1-7">§1.7</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Power: what's there, who owns it, and what the system needs (<a href="#s9-6">§9.6</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Noise limits and any licensing conditions (<a href="#s6-10">§6.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Radio: number of channels, licence, and other radio users on site (<a href="#s5-12">§5.12</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Desk: whose desk, whose show file, what firmware (<a href="#s7-8">§7.8</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Network: how audio gets to the amps (Dante, Milan, AES, analogue) (<a href="#s8-10">§8.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Recording, streaming or hybrid needs agreed — with formats and connections (<a href="#s14-5">§14.5</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Access needs: hearing loop, audio description, interpretation (<a href="#s19-15">§19.15</a>)</span></label></li>
+<li><label><input type="checkbox"><span>RAMS received and read (<a href="#s13-7">§13.7</a>)</span></label></li>
 </ul>
 <p><a href="#" class="reset-link" data-target="chk-advance">Reset this list</a></p>
 </section>
@@ -5241,13 +5264,15 @@ EARS            the only part of the system that actually matters</div>
 <section class="s" id="s19-10"><h3><span class="n">19.10</span> Monitor world &amp; IEM checklist</h3>
 <p>Referenced from <a href="#s15-7">§15.7</a>. Building blocks for a first monitor mix or wedge ring-out — see <a href="#s15-7">§15.7</a> and <a href="#s15-8">§15.8</a> for the full walkthroughs behind each line.</p>
 <ul class="check" id="chk-monitor">
-<li><label><input type="checkbox"><span>Performer's own source set as the anchor, at a comfortable level (<a href="#s15-7">§15.7</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Click or backing track added, loud enough to lock to without burying everything else (<a href="#s15-10">§15.10</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Rest of the band brought in at a supporting, not "finished", level</span></label></li>
-<li><label><input type="checkbox"><span>Anything specifically requested added — a harmony cue, a cue instrument</span></label></li>
-<li><label><input type="checkbox"><span>Mix checked standing where the performer will actually stand</span></label></li>
-<li><label><input type="checkbox"><span>Wedges rung out before the mic goes anywhere near them (<a href="#s15-8">§15.8</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Mix saved and clearly labelled for tomorrow's rebuild</span></label></li>
+<li><label><input type="checkbox"><span>Monitor list from the band: who wants what, wedge or IEM (<a href="#s15-1">§15.1</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Wedges placed for where performers actually stand, in the mic's dead zone (<a href="#s4-2">§4.2</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Every wedge rung out at its real mic position (<a href="#s15-8">§15.8</a>)</span></label></li>
+<li><label><input type="checkbox"><span>IEM packs synced, labelled, batteries fresh, volume starting low (<a href="#s15-3">§15.3</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Ambient/crowd mics up for IEM users (<a href="#s15-4">§15.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Click/backing tracks only on the mixes that need them — never the PA (<a href="#s15-10">§15.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Talkback to every mix checked (<a href="#s7-6">§7.6</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Sends pre-fade, mix masters up, outputs patched to the right wedge/transmitter (<a href="#s7-1">§7.1</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Spare IEM pack and earpieces ready (<a href="#s15-12">§15.12</a>)</span></label></li>
 </ul>
 <p><a href="#" class="reset-link" data-target="chk-monitor">Reset this list</a></p>
 </section>
@@ -5255,13 +5280,15 @@ EARS            the only part of the system that actually matters</div>
 <section class="s" id="s19-11"><h3><span class="n">19.11</span> Recording checklist</h3>
 <p>Referenced from <a href="#s14-7">§14.7</a>. Covers a full multitrack — for the exact build sequence see <a href="#s14-7">§14.7</a>, and for a broadcast submix see <a href="#s14-8">§14.8</a>.</p>
 <ul class="check" id="chk-recording">
-<li><label><input type="checkbox"><span>Storage confirmed formatted correctly, with enough space for the set (<a href="#s14-4">§14.4</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Session named properly — date and event, not a default name</span></label></li>
-<li><label><input type="checkbox"><span>Test recording done and played back — right channels, sensible level</span></label></li>
-<li><label><input type="checkbox"><span>Gain staging checked specifically for recording (<a href="#s14-2">§14.2</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Recording started in good time before the show, not at the last second</span></label></li>
-<li><label><input type="checkbox"><span>Levels checked in on during the show, not left unattended</span></label></li>
-<li><label><input type="checkbox"><span>Backed up to two places before leaving site (<a href="#s14-10">§14.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>What's needed agreed: multitrack, stereo, stream feed — formats and who receives it (<a href="#s14-1">§14.1</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Permission to record confirmed (<a href="#s14-11">§14.11</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Sample rate matches the desk (48 kHz, 24-bit WAV by default) (<a href="#s14-4">§14.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Computer sees the desk (USB or Dante Virtual Soundcard); DAW inputs routed (<a href="#s14-7">§14.7</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Recording taken pre-fader where mix moves shouldn't affect it (<a href="#s14-2">§14.2</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Drive space checked for the whole show plus margin (<a href="#s14-7">§14.7</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Test recording made and played back (<a href="#s14-7">§14.7</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Backup recording running (<a href="#s14-12">§14.12</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Files named, checked and handed over with a backup kept (<a href="#s14-13">§14.13</a>)</span></label></li>
 </ul>
 <p><a href="#" class="reset-link" data-target="chk-recording">Reset this list</a></p>
 </section>
@@ -5374,13 +5401,15 @@ EARS            the only part of the system that actually matters</div>
 <section class="s" id="s19-14"><h3><span class="n">19.14</span> Outdoor &amp; weather-exposed job checklist</h3>
 <p>Referenced from <a href="#s6-14">§6.14</a>. Run through this alongside the usual load-in checklist (<a href="#s19-4">§19.4</a>) whenever the job has no roof, or only a partial one.</p>
 <ul class="check" id="chk-outdoor">
-<li><label><input type="checkbox"><span>Rain cover confirmed for FOH, any exposed patch bays, and amp racks (<a href="#s6-14">§6.14</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Speaker and electronics IP ratings checked against the forecast and pitch — nothing unrated left exposed</span></label></li>
-<li><label><input type="checkbox"><span>Wind protection on open mics — foam or dead cat as appropriate</span></label></li>
-<li><label><input type="checkbox"><span>Line array/flown elements and lightweight stands checked for wind loading, not just rigged and left</span></label></li>
-<li><label><input type="checkbox"><span>Extra battery spares packed for cold-weather drain</span></label></li>
-<li><label><input type="checkbox"><span>Written severe weather plan seen, and who calls a stop confirmed</span></label></li>
-<li><label><input type="checkbox"><span>Shade or cover arranged for anything that'll sit in direct sun for hours</span></label></li>
+<li><label><input type="checkbox"><span>Weather forecast checked; wind and rain plan agreed with production (<a href="#s6-14">§6.14</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Desk and electronics covered; connectors off the ground (<a href="#s6-14">§6.14</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Cable routes protected from people, vehicles and water (<a href="#s3-5">§3.5</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Stacks and flown kit within wind limits — the weather-stop rules known (<a href="#s6-5">§6.5</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Power and distribution protected (the power tech's job — know where it is) (<a href="#s13-17">§13.17</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Batteries for cold weather; spares warm (<a href="#s5-6">§5.6</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Windshields on mics; high-pass filters on (<a href="#s4-3">§4.3</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Noise limit and monitoring points known — sound carries further outdoors (<a href="#s6-10">§6.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Your own kit: waterproofs, layers, sun cream, water (<a href="#s19-17">§19.17</a>)</span></label></li>
 </ul>
 <p><a href="#" class="reset-link" data-target="chk-outdoor">Reset this list</a></p>
 </section>
@@ -5388,12 +5417,13 @@ EARS            the only part of the system that actually matters</div>
 <section class="s" id="s19-15"><h3><span class="n">19.15</span> Access services checklist</h3>
 <p>Referenced from <a href="#s6-13">§6.13</a>. Covers audio description, interpretation and hearing loop provision together, since they're usually advanced, tested and run the same way even though the equipment differs.</p>
 <ul class="check" id="chk-access">
-<li><label><input type="checkbox"><span>Exactly which services are needed confirmed with the venue/client, not assumed (<a href="#s6-11">§6.11</a>, <a href="#s6-12">§6.12</a>, <a href="#s6-13">§6.13</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Clean feed of the show mix routed to the describer's or interpreter's position</span></label></li>
-<li><label><input type="checkbox"><span>Transmission system (IR/RF headsets, loop driver) tested end-to-end, not just powered on</span></label></li>
-<li><label><input type="checkbox"><span>Tested live with the describer/interpreter present, before doors — not assumed working from a bench test</span></label></li>
-<li><label><input type="checkbox"><span>Touch tour supported if the venue is running one — portable PA or comms channel as needed (<a href="#s6-13">§6.13</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Hearing loop spill checked if adjacent rooms are also looped (<a href="#s6-11">§6.11</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Hearing loop fed with the speech mics and checked with a loop listener (<a href="#s6-11">§6.11</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Loop coverage walked; dead spots reported to the venue (<a href="#s6-11">§6.11</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Audio description: describer's mic, transmitter and every headset checked (<a href="#s6-13">§6.13</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Interpretation: floor feed to booths, booth outputs to transmitters, every channel tested (<a href="#s6-12">§6.12</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Receivers and headsets charged, counted and clean (<a href="#s6-12">§6.12</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Front-of-house staff know how to hand out receivers</span></label></li>
+<li><label><input type="checkbox"><span>Captioning or BSL interpreter positions have the feeds and sightlines they need (<a href="#s10-11">§10.11</a>)</span></label></li>
 </ul>
 <p><a href="#" class="reset-link" data-target="chk-access">Reset this list</a></p>
 </section>
@@ -5406,15 +5436,18 @@ EARS            the only part of the system that actually matters</div>
 <section class="s" id="s19-17"><h3><span class="n">19.17</span> Your own bag — before you leave home</h3>
 <p>Every other list here is about the job's kit. This one is about yours. <a href="#s12-2">§12.2</a> covers the fault-finding tools and <a href="#s17-5">§17.5</a> covers what's worth buying in what order — this is simply the tickable version for the ten minutes before you walk out the door, when forgetting one item means borrowing all day or working around it.</p>
 <ul class="check" id="chk-gobag">
-<li><label><input type="checkbox"><span>Earplugs — filtered, not foam. The one item you should never be without (<a href="#s13-5">§13.5</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Torch, and a headtorch if there's any chance of a dark stage or a derig</span></label></li>
-<li><label><input type="checkbox"><span>Multitool or small screwdriver set, and a roll of your own tape</span></label></li>
-<li><label><input type="checkbox"><span>Known-good short XLR and a known-good adapter or two — your personal test kit (<a href="#s12-2">§12.2</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Sharpie and something to write on; phone charger and a power bank</span></label></li>
-<li><label><input type="checkbox"><span>Blacks, and steel toes if the site needs them (<a href="#s1-6">§1.6</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Input list, stage plan and schedule on the phone, not just on a shared drive (<a href="#s1-5">§1.5</a>)</span></label></li>
-<li><label><input type="checkbox"><span>Water and food for a long day — catering is not guaranteed to be open when you're free (<a href="#s1-6">§1.6</a>)</span></label></li>
-<li><label><input type="checkbox"><span>This handbook saved offline on the phone, so it works in a basement with no signal (<a href="#s0-2">§0.2</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Filtered earplugs (<a href="#s13-5">§13.5</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Torch (and a spare battery)</span></label></li>
+<li><label><input type="checkbox"><span>Multitool and a small screwdriver set</span></label></li>
+<li><label><input type="checkbox"><span>Cable tester and a small multimeter (<a href="#s12-2">§12.2</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Gaffa, electrical tape and a marker pen (<a href="#s3-10">§3.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Adapter bag: XLR turnarounds, jack, mini-jack, phono (<a href="#s3-4">§3.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Headphones</span></label></li>
+<li><label><input type="checkbox"><span>USB stick for show files (<a href="#s7-4">§7.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Phone charger and power bank</span></label></li>
+<li><label><input type="checkbox"><span>Safety boots, hi-vis and layers (<a href="#s13-11">§13.11</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Water and snacks (<a href="#s13-9">§13.9</a>)</span></label></li>
+<li><label><input type="checkbox"><span>This app saved to your home screen and working offline (<a href="#s0-2">§0.2</a>)</span></label></li>
 </ul>
 <p><a href="#" class="reset-link" data-target="chk-gobag">Reset this list</a></p>
 <div class="note std"><span class="lab">Standard</span><p>Build the bag once and then only top it up — a bag you repack from scratch every time is a bag you'll eventually leave something out of. The two items people most regret forgetting are earplugs and a torch, and neither is expensive.</p></div>
@@ -5422,28 +5455,128 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s19-18"><h3><span class="n">19.18</span> Corporate AV / conference-day checklist</h3>
 <p>Referenced from <a href="#s10-2">§10.2</a> and <a href="#s10-8">§10.8</a>. Run through this alongside the usual show-day checklist (<a href="#s19-6">§19.6</a>) — corporate work fails quietly and visibly, so the extra ten minutes here is well spent.</p>
-<ol class="seq">
-<li>Every presenter mic'd and checked actually talking at normal volume, not just "check check" (<a href="#s10-2">§10.2</a>).</li>
-<li>Lav mics checked for rustle against clothing, lanyards and badges.</li>
-<li>Laptop/playback audio for slides and VT tested through the actual PA, not just monitored on headphones.</li>
-<li>Panel discussion gains checked with all mics live together, not one at a time.</li>
-<li>Running order and cue points confirmed with the producer or stage manager calling the show.</li>
-<li>Hybrid/remote link tested both ways — room hears remote, remote hears room, no echo (<a href="#s10-8">§10.8</a>).</li>
-<li>Recording or streaming feed confirmed live if required, and who's watching it agreed.</li>
-<li>Walk-in/walk-out music level checked at the volume it'll actually play at, not the soundcheck volume (<a href="#s16-7">§16.7</a>).</li>
-</ol>
+<ul class="check" id="chk-corporate">
+<li><label><input type="checkbox"><span>Running order with every speaker, their mic type and any videos with sound (<a href="#s10-11">§10.11</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Every presenter mic checked with them talking at normal volume, not "check check" (<a href="#s10-2">§10.2</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Lavs checked for rustle against clothing, lanyards and badges (<a href="#s10-11">§10.11</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Every mic rung out at its real position with the room PA (<a href="#s15-8">§15.8</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Panel mics checked all live together — automixer on if the desk has one (<a href="#s7-8">§7.8</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Laptop/playback and VT audio tested through the actual PA (<a href="#s8-13">§8.13</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Hybrid link tested both ways with a real call — no echo (<a href="#s10-8">§10.8</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Recording or stream feed live, at the right level, and someone watching it (<a href="#s14-8">§14.8</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Spare handheld and lav on, synced and to hand (<a href="#s5-11">§5.11</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Walk-in/walk-out music level checked at the level it will actually play (<a href="#s16-7">§16.7</a>)</span></label></li>
+</ul>
+<p><a href="#" class="reset-link" data-target="chk-corporate">Reset this list</a></p>
 </section>
 
 <section class="s" id="s19-19"><h3><span class="n">19.19</span> Theatre show-day checklist</h3>
 <p>Referenced from <a href="#s10-4">§10.4</a> and <a href="#s18-13">§18.13</a>. Run through this alongside the usual show-day checklist (<a href="#s19-6">§19.6</a>) for a cued show — the things specific to working on a call rather than by ear.</p>
-<ol class="seq">
-<li>Show file cues checked against the current cue sheet, not last night's memory (<a href="#s7-4">§7.4</a>).</li>
-<li>Radio mic changeover plan walked through with whoever's doing it in the wings — timing, hands, spare pack.</li>
-<li>Comms with the Deputy Stage Manager's calling position tested and confirmed clear.</li>
-<li>Any notes from the last cue-to-cue actioned, not just noted.</li>
-<li>Absolute silence confirmed achievable at your position once the house is dark (<a href="#s1-4">§1.4</a>).</li>
-<li>Interval reset cues checked, so act two starts from the right state.</li>
-</ol>
+<ul class="check" id="chk-theatre">
+<li><label><input type="checkbox"><span>Show file cues checked against the current cue sheet (<a href="#s7-4">§7.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Radio mic plot: who's on which channel, changes and spare packs (<a href="#s10-4">§10.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Every cast mic checked before the half, batteries changed on schedule (<a href="#s10-4">§10.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Changeover plan walked through with whoever does it in the wings</span></label></li>
+<li><label><input type="checkbox"><span>Comms with the DSM's calling position tested (<a href="#s8-12">§8.12</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Playback (QLab) cues checked; computer set up so it can't interrupt (<a href="#s8-13">§8.13</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Last rehearsal's notes actioned, not just noted</span></label></li>
+<li><label><input type="checkbox"><span>Silence achievable at your position once the house is dark (<a href="#s1-4">§1.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Interval reset cues checked so act two starts from the right state</span></label></li>
+</ul>
+<p><a href="#" class="reset-link" data-target="chk-theatre">Reset this list</a></p>
+</section>
+
+<section class="s" id="s19-20"><h3><span class="n">19.20</span> Network &amp; Dante checklist</h3>
+<p>Before you trust audio over a network — Dante, Milan or a desk's own stage-box link.</p>
+<ul class="check" id="chk-network">
+<li><label><input type="checkbox"><span>Network drawing in hand: which switch, which ports, primary vs secondary (<a href="#s8-8">§8.8</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Switches are the right ones (managed gigabit for Dante; AVB/Milan-capable for Milan) (<a href="#s8-10">§8.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>EEE / Green Ethernet off and QoS set for Dante (<a href="#s8-6">§8.6</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Primary and secondary networks physically separate — never linked (<a href="#s8-9">§8.9</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Every device seen in Dante Controller, named, on the same sample rate (<a href="#s8-9">§8.9</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Exactly one clock leader, the one the design names (<a href="#s8-9">§8.9</a>)</span></label></li>
+<li><label><input type="checkbox"><span>All subscriptions green; no latency or error warnings (<a href="#s8-9">§8.9</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Routing preset saved with the job name (<a href="#s8-9">§8.9</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Laptop on the audio network by cable, Wi-Fi off; nobody else's traffic on it (<a href="#s8-6">§8.6</a>)</span></label></li>
+</ul>
+<p><a href="#" class="reset-link" data-target="chk-network">Reset this list</a></p>
+</section>
+
+<section class="s" id="s19-21"><h3><span class="n">19.21</span> Any mixing desk — before you touch it</h3>
+<p>The same safe order on a DM7, DiGiCo, dLive or anything else.</p>
+<ul class="check" id="chk-desk">
+<li><label><input type="checkbox"><span>Current show file saved to USB with the date and job in its name (<a href="#s7-4">§7.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Firmware and show-file versions compatible (<a href="#s7-8">§7.8</a>)</span></label></li>
+<li><label><input type="checkbox"><span>I/O seen: stage boxes, cards and network devices synced (<a href="#s7-9">§7.9</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Inputs patched to the input list; channels named and coloured (<a href="#s7-9">§7.9</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Outputs patched: PA, subs, fills, monitors, recording, broadcast (<a href="#s7-9">§7.9</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Monitor sends pre-fade; effects sends post-fade (<a href="#s7-1">§7.1</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Recall safes / recall scope / recall filters set so scenes can't change what they shouldn't (<a href="#s7-10">§7.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Solo cleared, talkback working, oscillator off (<a href="#s7-6">§7.6</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Line check done, scene stored, show file saved again (<a href="#s11-3">§11.3</a>)</span></label></li>
+</ul>
+<p><a href="#" class="reset-link" data-target="chk-desk">Reset this list</a></p>
+</section>
+
+<section class="s" id="s19-22"><h3><span class="n">19.22</span> Comms &amp; playback checklist</h3>
+<p>Two things that fail quietly until the moment they're needed.</p>
+<ul class="check" id="chk-commsplay">
+<li><label><input type="checkbox"><span>Comms channel plan known — production, sound, lighting, stage (<a href="#s8-12">§8.12</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Every pack checked: talk, listen and call light on each channel (<a href="#s11-8">§11.8</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Wireless packs charged and registered; spare batteries (<a href="#s8-12">§8.12</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Comms cable labelled so it isn't borrowed for a mic (<a href="#s8-12">§8.12</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Playback laptop on mains; Wi-Fi, Bluetooth, notifications, sleep and updates off (<a href="#s8-13">§8.13</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Playback out through an interface or DI to the right desk channels (<a href="#s8-13">§8.13</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Files local, in running order, levels set at the desk (<a href="#s8-13">§8.13</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Backup playback ready on another channel (<a href="#s8-13">§8.13</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Every cue rehearsed with the person calling it (<a href="#s8-13">§8.13</a>)</span></label></li>
+</ul>
+<p><a href="#" class="reset-link" data-target="chk-commsplay">Reset this list</a></p>
+</section>
+
+<section class="s" id="s19-23"><h3><span class="n">19.23</span> Fault kit &amp; spares</h3>
+<p>Packed and tested before the job — the spare you didn't bring is the one you'll need.</p>
+<ul class="check" id="chk-faultkit">
+<li><label><input type="checkbox"><span>Spare XLRs (a few lengths) and a spare multicore tail (<a href="#s12-2">§12.2</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Spare NL4/NLT4 speaker cables (4-core) and an NL4 coupler (<a href="#s3-12">§3.12</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Spare DIs (passive and active) (<a href="#s3-9">§3.9</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Spare vocal mic and a spare radio mic, synced (<a href="#s12-2">§12.2</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Batteries for every radio pack and DI (<a href="#s5-6">§5.6</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Adapter bag and a labelled phase-reverse XLR (<a href="#s3-4">§3.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Cable tester, multimeter, torch, gaffa and electrical tape (<a href="#s12-2">§12.2</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Spare network cable and a small switch if the job uses one (<a href="#s8-6">§8.6</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Manuals or this app available offline (<a href="#s0-2">§0.2</a>)</span></label></li>
+</ul>
+<p><a href="#" class="reset-link" data-target="chk-faultkit">Reset this list</a></p>
+</section>
+
+<section class="s" id="s19-24"><h3><span class="n">19.24</span> Festival &amp; changeover checklist</h3>
+<p>Fast stages, shared kit, hard curfews.</p>
+<ul class="check" id="chk-changeover">
+<li><label><input type="checkbox"><span>Stage plot and input list for the next act printed and on the riser (<a href="#s10-10">§10.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Mics on stands, cables looped and labelled off-stage before the changeover (<a href="#s10-10">§10.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Risers and backline moved on in a fixed order (<a href="#s9-4">§9.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Each input line-checked as soon as it's plugged (<a href="#s11-3">§11.3</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Monitor mixes and IEMs for the next act loaded or set (<a href="#s15-3">§15.3</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Desk: next act's scene or session ready; the outgoing one saved (<a href="#s7-4">§7.4</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Curfew and noise limit known; the show-stop procedure known (<a href="#s6-10">§6.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Stage cleared and safe before the act walks on (<a href="#s13-10">§13.10</a>)</span></label></li>
+</ul>
+<p><a href="#" class="reset-link" data-target="chk-changeover">Reset this list</a></p>
+</section>
+
+<section class="s" id="s19-25"><h3><span class="n">19.25</span> End of job — handover &amp; report</h3>
+<p>So the next person, and the next job, starts from the truth.</p>
+<ul class="check" id="chk-handover">
+<li><label><input type="checkbox"><span>Faults found written up: what, which item, what was checked, what was done (<a href="#s12-17">§12.17</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Faulty kit labelled and in quarantine (<a href="#s11-5">§11.5</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Anything changed from the plan recorded (patch, settings, extra kit) (<a href="#s11-7">§11.7</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Show files, R1 projects and recordings saved and handed over (<a href="#s14-10">§14.10</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Missing or damaged kit reported straight away (<a href="#s1-2">§1.2</a>)</span></label></li>
+<li><label><input type="checkbox"><span>Accidents or near misses reported (<a href="#s13-13">§13.13</a>)</span></label></li>
+<li><label><input type="checkbox"><span>One thing learned added to your job log (<a href="#s17-7">§17.7</a>)</span></label></li>
+</ul>
+<p><a href="#" class="reset-link" data-target="chk-handover">Reset this list</a></p>
 </section>
 
 </div></div>
