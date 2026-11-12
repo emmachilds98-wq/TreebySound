@@ -72,6 +72,16 @@ sections, checklists without a reset link):
 node tests/check-content.js
 ```
 
+Accessibility (axe-core, every screen and part) — install axe once, then run:
+
+```bash
+npm install --no-save axe-core@4.10.2
+```
+
+```bash
+node tests/check-a11y.js
+```
+
 Add a line to `tests/chat-cases.txt` whenever you add an answer or a route, or
 find a question the chat gets wrong. Also open `index.html` at phone size and
 look at the screen you changed.

@@ -538,7 +538,7 @@ mark{background:var(--mark);color:inherit;padding:0 1px;border-radius:2px}
 .workspace{background:var(--paper-2);border:1px solid var(--rule);border-radius:16px;padding:16px;box-shadow:var(--shadow)}.workspace h4{margin:0 0 8px}.workspace-note{font-size:13px;color:var(--ink-2);margin:0 0 15px}.workspace-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.workspace-block{background:var(--card);border:1px solid var(--rule);border-radius:11px;padding:14px}.workspace-block.wide{grid-column:1/-1}.workspace-field{display:flex;flex-direction:column;gap:4px;margin:0 0 9px}.workspace-field label{font-family:var(--mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}.workspace-field input,.workspace-field textarea,.workspace-field select{width:100%;border:1px solid var(--rule-2);border-radius:7px;padding:8px 9px;background:var(--paper);color:var(--ink);font:inherit;font-size:14px}.workspace-field textarea{min-height:66px;resize:vertical}.workspace-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}.workspace-actions{display:flex;gap:8px;align-items:center;margin-top:6px}.workspace-actions button,.workspace-remove{border:1px solid var(--rule-2);background:var(--paper);border-radius:7px;padding:7px 9px;color:var(--petrol-ink);font-family:var(--display);font-size:13px;cursor:pointer}.workspace-actions button:hover{border-color:var(--petrol);background:var(--petrol-soft)}.workspace-remove{color:var(--fault);font-family:var(--mono);font-size:11px;padding:5px 7px}.workspace-item{border-top:1px solid var(--rule);padding:11px 0}.workspace-item:first-child{border-top:0;padding-top:0}.workspace-item-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.workspace-empty{font-size:14px;color:var(--ink-3);margin:0}.workspace-status{font-family:var(--mono);font-size:10px;color:var(--pass);min-height:13px}.hire-card{border-left:4px solid var(--amber)}
 @media (max-width:820px){.hub{padding:0 16px;margin-top:16px}.hub-intro{border-radius:15px;padding:22px}.hub-nav{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}.hub-nav a{font-size:12px;flex:0 0 auto;min-width:96px;scroll-snap-align:start}.hub-grid,.hub-grid.two{grid-template-columns:1fr}.hub-section{margin:32px 0}.hub-card{padding:16px}.hub-shelf a{min-width:156px}}
 @media (max-width:620px){.workspace-grid{grid-template-columns:1fr}.workspace-block.wide{grid-column:auto}.workspace-row{grid-template-columns:1fr}}
-.site-credit{text-align:center;font-size:11.5px;color:var(--ink-3);opacity:.65;margin:36px 0 18px;letter-spacing:.02em}.gift-heart{font-size:10px;margin-left:3px}
+.site-credit{text-align:center;font-size:11.5px;color:var(--ink-3);margin:36px 0 18px;letter-spacing:.02em}.gift-heart{font-size:10px;margin-left:3px}
 
 /* ---------- one screen at a time: Home (hero+hub) or a single Part ----------
    TreebySound no longer renders as one continuous scroll. Only the active
@@ -1905,12 +1905,12 @@ tr.in-kit td{background:var(--pass-soft)}
 
 <section class="s" id="s1-1"><h3><span class="n">1.1</span> What the role actually is</h3>
 <p>"Audio technician" in the event world is really four jobs wearing one coat, and which one you're doing changes by the day:</p>
-<div class="kv">
+<dl class="kv">
 <dt>Warehouse</dt><dd>Prep, test, pack, unpack, fault-find, maintain, keep the stock honest. You're doing this bit already. It's the foundation — a well-prepped job barely goes wrong on site.</dd>
 <dt>Crew</dt><dd>Load in, push boxes, run cable, build stacks, take direction. Physical, fast, and where you learn the most by watching.</dd>
 <dt>Tech</dt><dd>Actually setting things up and making them work — patching, powering, testing, line-checking, fixing. This is the step you're moving into.</dd>
 <dt>Operator</dt><dd>Mixing the show, or running playback, or looking after monitors. The visible job, and the one everyone thinks is the whole job. It isn't.</dd>
-</div>
+</dl>
 <p>Most people move roughly along that line, but not cleanly — you'll be crewing on Monday, teching on Wednesday, and back in the warehouse Friday. That's normal and it's a good thing. The best techs are the ones who've done every part of the chain, because when something breaks on site they know what happened to it in the van.</p>
 </section>
 
@@ -1968,7 +1968,7 @@ tr.in-kit td{background:var(--pass-soft)}
 
 <section class="s" id="s1-5"><h3><span class="n">1.5</span> The paperwork, and why it matters</h3>
 <p>Every document below exists because someone once got it wrong without one. Learn to read all of them; learn to write the first three.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Input list</dt><dd>Numbered list of every source: <code>1 Kick In</code>, <code>2 Kick Out</code>, <code>3 Snare Top</code>… It includes the mic type and whether it needs phantom or a DI. This is the single most useful bit of paper in live sound.</dd>
 <dt>Patch list</dt><dd>Where each input physically lands — which stagebox, which socket, which console channel. Sometimes merged with the input list.</dd>
 <dt>Stage plan</dt><dd>A top-down drawing of who stands where, where the wedges point, where the DIs and power are. Lets you build the stage before anyone arrives. Example below.</dd>
@@ -1977,7 +1977,7 @@ tr.in-kit td{background:var(--pass-soft)}
 <dt>Schedule</dt><dd>Times for load-in, soundcheck, doors, curfew. Curfew is usually a legal condition, not a suggestion.</dd>
 <dt>RAMS</dt><dd>Risk Assessment &amp; Method Statement. The safety paperwork for the job. See <a href="#s13-7">§13.7</a>.</dd>
 <dt>Line check sheet</dt><dd>Your own tick list for proving inputs. See <a href="#p19">Part 19</a>.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Get a copy of the input list and stage plan on your phone <em>before</em> you leave the warehouse. Half of prep mistakes are "we didn't know they needed four DIs" and that's a five-second check.</p></div>
 <figure class="diagram">
 <svg viewBox="0 0 420 300" width="420" height="300" role="img" aria-labelledby="spDgTitle spDgDesc">
@@ -2041,7 +2041,7 @@ tr.in-kit td{background:var(--pass-soft)}
 
 <section class="s" id="s1-8"><h3><span class="n">1.8</span> A day in the life — a worked example</h3>
 <p>Everything above as separate topics can feel disconnected from what a real day actually looks like. Here's one, stitched together, with links back to where each part is properly explained.</p>
-<div class="kv">
+<dl class="kv">
 <dt>06:30</dt><dd>Arrive at the warehouse. Check the job sheet against what's been pulled overnight — kit list versus what's actually in the cases (<a href="#s1-2">§1.2</a>). Spot a DI missing from the count; grab a spare rather than assuming it'll turn up.</dd>
 <dt>07:15</dt><dd>Load the van in reverse order of need — last on, first off (<a href="#s19-3">§19.3</a>). Paperwork — RAMS, input list, contact numbers — goes in your bag, not just on a shared drive.</dd>
 <dt>08:30</dt><dd>Arrive on site. First two questions: who's running audio today, and where's the power coming from (<a href="#s1-3">§1.3</a>). Meet the LX crew chief while you're at it — you'll be sharing a cable route with them later (<a href="#s9-5">§9.5</a>).</dd>
@@ -2052,32 +2052,32 @@ tr.in-kit td{background:var(--pass-soft)}
 <dt>17:45</dt><dd>Doors. Everything on stage stops being adjusted out loud from this point (<a href="#s1-4">§1.4</a>). A last-minute buzz turns out to be a cable now running parallel to a lighting run that wasn't there this morning — move it, problem gone (<a href="#s9-2">§9.2</a>).</dd>
 <dt>20:00–22:30</dt><dd>Show. Watch, listen, fix quietly, take notes for tomorrow.</dd>
 <dt>23:00</dt><dd>Derig — coiled properly even though it's late, everything counted before it leaves the building, the faulty DI from this morning handed in properly flagged, not just shelved (<a href="#s19-7">§19.7</a>).</dd>
-</div>
+</dl>
 <p>Nothing in that day was exotic. It was the fundamentals, applied in order, under a bit of time pressure — which is really what most of this book is training you for.</p>
 </section>
 
 <section class="s" id="s1-9"><h3><span class="n">1.9</span> The different worlds of event audio</h3>
 <p>"Events" is one job title covering genuinely different working cultures. The core skills — signal flow, patching, line check — carry across all of them; what changes is the pace, the paperwork, and how much room there is to improvise. Knowing which world a job sits in tells you what to expect before you arrive.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Corporate &amp; conference</dt><dd>AGMs, product launches, awards dinners, panel discussions. Tight running order, radio mics on delegates who've never worn one, playback cues to the second, high client visibility. Formal dress, minimal visible cable, very low tolerance for anything audible going wrong mid-speech.</dd>
 <dt>Live music &amp; touring</dt><dd>Bands, one-off gigs, support-band changeovers. Faster, noisier build; more paperwork upfront (rider, stage plan, input list) but less formality on site than corporate work.</dd>
 <dt>Theatre</dt><dd>A fixed, repeatable run rather than a one-off show. Cue-driven, careful radio mic changeovers between cast members, and stricter backstage discipline than a touring gig — see the "wear black" habit in <a href="#s1-6">§1.6</a>.</dd>
 <dt>Outdoor &amp; festival</dt><dd>Weather, generators, longer cable runs, a licensing-condition noise limit that's actively enforced on-site (<a href="#s6-10">§6.10</a>), and more genuine improvisation than any of the above — less shelter for kit, people or plans.</dd>
 <dt>Private parties &amp; weddings</dt><dd>Often your first paid solo booking. No producer, no crew hierarchy — you're frequently the only production person on site. See <a href="#s10-9">§10.9</a> for what's different.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Ask which of these a job sits in before you leave the warehouse — it changes what to wear, how much paperwork to expect, and how much slack there is if the build runs late.</p></div>
 </section>
 
 <section class="s" id="s1-10"><h3><span class="n">1.10</span> The part nobody puts in a manual</h3>
 <p>Every technical manual, including this one, can make it sound like the job is only ever a sequence of correct actions. It isn't. Some of it is standing next to someone who's done this for fifteen years, understanding about a third of what they just said on the radio, and trying not to let it show. That feeling is completely normal — it happens to nearly everyone at some point, however experienced they look now — and it's worth a page of its own rather than pretending it away.</p>
 <div class="note std"><span class="lab">Standard</span><p>Everyone currently confident on a stagebox once didn't know what a stagebox was. The gap you can see between yourself and an experienced tech is real, but it's a gap of reps, not of ability — and it closes faster than it feels like it will.</p></div>
-<div class="kv">
+<dl class="kv">
 <dt>Why this job makes it louder than most</dt><dd>The mistakes are audible, the audience is real, and jargon flies past on the radio fast enough that you can't always ask what something meant in the moment. That combination makes ordinary new-job nerves feel bigger here than in a quieter job where a slow week goes unnoticed.</dd>
 <dt>The comparison that isn't fair</dt><dd>Measuring your month three against someone else's year ten is a rigged comparison — they've had the ten years of reps you haven't had yet. A fairer one is your month three against your own month one.</dd>
 <dt>In the moment</dt><dd>Narrow the job down to the next physical action, not the evaluation. "Coil this cable" is manageable; "am I good enough to be here" isn't a question you can usefully answer mid-show. <a href="#s12-7">§12.7</a>'s approach to asking for help works the same way — one small, specific action beats one large, vague worry.</dd>
 <dt>After a mistake</dt><dd>What almost always actually happens: someone notices, it gets quietly fixed, and within a day nobody but you remembers it. What it feels like happens: everyone clocked it and is silently judging you. The second one is very rarely true. Own it briefly, fix what's yours to fix, and let the moment end — dwelling on it on site costs you the next task's attention, which is the thing actually in your control.</dd>
 <dt>Write it down instead of carrying it</dt><dd>The <a href="#hub-guide-log">learning log</a> exists partly for this. A specific, three-minute note turns a vague bad feeling about a shift into a concrete, fixable thing — and concrete things are much easier to stop worrying about than vague ones.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>Normal nerves settle with reps. If a job is leaving you dreading it, not sleeping, or feeling genuinely low well beyond the shift itself, that's no longer just new-job nerves, and it's worth talking to someone about — a GP, or the <a href="https://www.bapam.org.uk/" target="_blank" rel="noopener">British Association for Performing Arts Medicine (BAPAM)</a>, a UK charity supporting the health of people working in live events and performance, crew included, not just performers. Pushing through in silence isn't the professional option; asking for help is — the same standard <a href="#s17-6">§17.6</a> already sets for asking for more responsibility applies just as well to asking for support.</p></div>
 </section>
 
@@ -2089,7 +2089,7 @@ tr.in-kit td{background:var(--pass-soft)}
 
 <section class="s" id="s2-1"><h3><span class="n">2.1</span> The chain, start to finish</h3>
 <p>Every single audio system, from a lectern in a meeting room to a stadium, is this:</p>
-<div class="flow">SOURCE          a voice, a guitar amp, a laptop
+<div class="flow" tabindex="0" role="region" aria-label="Signal flow">SOURCE          a voice, a guitar amp, a laptop
    ↓
 TRANSDUCER      microphone / DI  — turns sound or an instrument signal into a small electrical one
    ↓
@@ -2148,11 +2148,11 @@ EARS            the only part of the system that actually matters</div>
 <section class="s" id="s2-3"><h3><span class="n">2.3</span> Balanced vs unbalanced, and why XLR won</h3>
 <p><strong>Unbalanced</strong> (a guitar lead, an RCA, a 3.5mm jack) carries the signal on one conductor with a shield around it. Any interference the cable picks up along the way gets added to the signal. Fine for two metres, hopeless for twenty.</p>
 <p><strong>Balanced</strong> (XLR, TRS) carries the same signal twice — once normal, once polarity-flipped — plus a shield. At the far end, the receiving device flips one back and adds them together. The wanted signal doubles; anything picked up equally by both wires cancels out. This is called <em>common-mode rejection</em>, and it's why you can run a balanced mic line 100 m past a dimmer rack and still get clean audio.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Practical rule</dt><dd>Balanced for anything long or anything mic level. Unbalanced only for short runs of line-level, and get it onto a DI as soon as you can.</dd>
 <dt>Pinout</dt><dd>XLR pin 1 = screen/earth, pin 2 = hot (+), pin 3 = cold (−). Memorable as "one is ground, two is hot". This is the AES standard and effectively universal now.</dd>
 <dt>Direction</dt><dd>Signal flows <em>out</em> of male pins and <em>into</em> female sockets. So a cable has a female end that goes on the source, and a male end that goes into the destination. "Female follows the source" is one way to remember it.</dd>
-</div>
+</dl>
 <figure class="diagram">
 <svg viewBox="0 0 260 190" width="260" height="190" role="img" aria-labelledby="xlrDgTitle xlrDgDesc">
 <title id="xlrDgTitle">XLR 3-pin connector face</title>
@@ -2175,11 +2175,11 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s2-4"><h3><span class="n">2.4</span> Gain vs volume vs trim vs fader</h3>
 <p>People use these interchangeably and it causes endless confusion. They are not the same control.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Gain / Trim</dt><dd>At the <em>input</em>. Sets how much the preamp amplifies the incoming signal to bring it to a healthy internal working level. Set once, correctly, then mostly leave alone. Too little = noise. Too much = distortion.</dd>
 <dt>Fader</dt><dd><em>After</em> the processing. Sets how much of that channel goes into the mix. This is your musical control — move it constantly.</dd>
 <dt>Volume / Master</dt><dd>At the <em>output</em>. How loud the whole thing is.</dd>
-</div>
+</dl>
 <p>The distinction matters because turning up the wrong one has completely different consequences. If a vocal is too quiet, the fader is almost always the answer. If a vocal is quiet <em>and</em> hissy, the gain was set too low. If it's distorting even with the fader down, the gain is too high — the damage already happened at the input.</p>
 </section>
 
@@ -2243,22 +2243,22 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s2-8"><h3><span class="n">2.8</span> Polarity vs phase</h3>
 <p>Used interchangeably in conversation; technically different, and the difference occasionally matters.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Polarity</dt><dd>Whether the waveform is the right way up. Flipping it inverts the whole signal at all frequencies. The <code>Ø</code> button on your console does this. Instant, frequency-independent.</dd>
 <dt>Phase</dt><dd>A time relationship between two signals. Because a fixed time delay is a different fraction of a cycle at different frequencies, phase problems are frequency-dependent — which is why two mics on the same source at different distances sound hollow, not just quiet.</dd>
-</div>
+</dl>
 <p>Practically: if two mics on the same source sound thin and weedy together but fine alone, try the polarity flip on one. If it gets fuller, you had a polarity problem. If it changes but doesn't fix it, you've got a distance/timing problem and the answer is moving a mic, not pressing a button.</p>
 <div class="note std"><span class="lab">Standard</span><p>Classic cases where you'll reach for the polarity button: snare top vs snare bottom (bottom mic almost always gets flipped), kick in vs kick out, a guitar cab mic'd front and back, and DI vs mic on the same bass rig.</p></div>
 </section>
 
 <section class="s" id="s2-9"><h3><span class="n">2.9</span> Analogue, digital, and the clock</h3>
 <p>Digital audio samples the waveform many thousands of times a second and stores each sample as a number.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Sample rate</dt><dd>How many snapshots per second. 48 kHz is the live/video standard; 44.1 kHz is the CD/music standard; 96 kHz exists and is rarely worth the I/O cost live. <strong>Everything on one network must agree.</strong></dd>
 <dt>Bit depth</dt><dd>How precisely each snapshot is measured. 24-bit is standard and gives you a huge dynamic range. This is why digital headroom is generous — but clipping is still absolute and ugly.</dd>
 <dt>Latency</dt><dd>The delay caused by converting, processing and transporting. A few milliseconds is invisible; stack up enough conversions and processors and musicians start to notice, especially on in-ears.</dd>
 <dt>Clock (word clock)</dt><dd>Every digital device must agree on exactly when a sample happens. One device is the <strong>master</strong> and the rest follow. "Word clock" is the actual term printed on converters and consoles for this — a dedicated clock signal, or a setting, telling a device whose timing to follow. Get this wrong and you get clicks, pops, or dropouts.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>Two clock masters on one network is a classic and infuriating fault — intermittent ticking that comes and goes. When you build a digital system, decide what the clock master is (usually the console, or a dedicated clock source) and check every other device is set to follow. See <a href="#s8-2">§8.2</a> for how this looks in Dante Controller.</p></div>
 </section>
 
@@ -2322,11 +2322,11 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s3-1"><h3><span class="n">3.1</span> XLR — the workhorse</h3>
 <p>Three-pin, latching, balanced, and the connector that carries almost all mic and line audio in live sound.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Pin 1</dt><dd>Screen / earth / shield</dd>
 <dt>Pin 2</dt><dd>Hot (+), in-phase signal</dd>
 <dt>Pin 3</dt><dd>Cold (−), inverted signal</dd>
-</div>
+</dl>
 <p>Brands you'll handle: <strong>Neutrik</strong> (the good stuff — the X-series with the coloured ring, and the chunky NC3 range), <strong>Amphenol</strong>, <strong>Switchcraft</strong>, and various no-brand ones that are why the cable failed. Neutrik connectors are worth learning to strip and solder; it's the single most useful practical skill you can pick up in a warehouse.</p>
 <div class="note std"><span class="lab">Standard</span><p>Cable lengths in most UK hire stock are colour-coded or ring-coded by length — commonly 1 m, 3 m, 5 m, 10 m, 20 m, 30 m. Learn your company's system on day one; grabbing the right length first time is a superpower on a build.</p></div>
 <div class="note alt"><span class="lab">Also seen</span><p>Five-pin XLR is used for DMX lighting control (<a href="#s9-7">§9.7</a>) and for some dual-channel headset/intercom applications. Four-pin XLR is standard for single-ear intercom headsets. Three-pin DMX exists on cheap fixtures and is a constant source of "why won't this talk to that" — you'll need turnarounds.</p></div>
@@ -2347,11 +2347,11 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s3-3"><h3><span class="n">3.3</span> speakON — and why speaker cable is different</h3>
 <p>Neutrik speakON is the standard for connecting amplifiers to passive speakers. It twists to lock, the contacts are shrouded so you can't touch live terminals, and it handles serious current.</p>
-<div class="kv">
+<dl class="kv">
 <dt>NL2</dt><dd>Two poles (+1/−1). One channel.</dd>
 <dt>NL4</dt><dd>Four poles (+1/−1/+2/−2). Two channels down one cable — used for bi-amped boxes, or for a top and a sub, or to link through. Part numbers, NLT4 (STX), testing and faults: <a href="#s3-12">§3.12</a>.</dd>
 <dt>NL8</dt><dd>Eight poles. Multi-way, mostly on line array and larger systems.</dd>
-</div>
+</dl>
 <p><strong>Speaker cable is not signal cable.</strong> It's unshielded, heavy-gauge (typically 2.5 mm² or 4 mm² for long runs) because it's carrying real current. Using thin cable on a long run loses power and damping — the bass goes soft. Using signal cable will, at best, sound bad; at worst it melts.</p>
 <p class="calc-pointer"><a href="#calcCableLoss">Open the speaker cable loss estimator →</a> <span>Is this run thin enough over this distance to matter.</span></p>
 <div class="note warn"><span class="lab">Watch it</span><p>An NL4 will physically plug into an NL8 socket and vice versa in some combinations, and a two-pole cable in a four-pole socket may give you nothing, or may give you the wrong driver. If a top is silent but the sub works, check you haven't got a cable wired on 2+/2− going into a box expecting 1+/1−. Label your speaker cables by pinout, not just length.</p></div>
@@ -2371,13 +2371,13 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s3-5"><h3><span class="n">3.5</span> Multicores, looms, stageboxes</h3>
 <p>Rather than run 32 individual XLRs from stage to FOH, you run one thick cable containing all of them.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Multicore / snake</dt><dd>The cable itself. UK tends to say "multicore", US says "snake".</dd>
 <dt>Stagebox</dt><dd>The metal box at the stage end with all the sockets in it, numbered.</dd>
 <dt>Fan-out / tails</dt><dd>The bunch of individual connectors at the other end.</dd>
 <dt>Sends and returns</dt><dd>A multicore usually carries inputs one way and a few outputs (for wedges, or a feed to the stage) the other. Described as e.g. "32/8" — 32 in, 8 out.</dd>
 <dt>Digital stagebox</dt><dd>The modern version: converters at the stage end, one Cat5e or fibre run back to the console. Far lighter and higher channel count. See <a href="#s3-7">§3.7</a>.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Always run the multicore first, before anything else is cabled, and always run it where it won't be walked on, driven over or need to be moved. Once it's down and taped, it stays down. Leave a service loop at both ends so you can reposition the console a metre without repulling the whole run.</p></div>
 </section>
 
@@ -2410,14 +2410,14 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s3-8"><h3><span class="n">3.8</span> Power</h3>
 <p>You will not be wiring distros as a junior, but you must understand what you're plugging into.</p>
-<div class="kv">
+<dl class="kv">
 <dt>13 A</dt><dd>Standard UK three-pin plug. Fine for consoles, small racks, active speakers.</dd>
 <dt>16 A ceeform</dt><dd>Blue round industrial connector. The event-industry standard for single-phase distribution.</dd>
 <dt>32 A ceeform</dt><dd>Bigger blue one. Feeds distros and bigger amp racks.</dd>
 <dt>Three-phase (63 A / 125 A)</dt><dd>Red ceeform. Feeds the whole event. Three live legs — and balancing loads across them is a skilled job. Not yours yet.</dd>
 <dt>IEC</dt><dd>The kettle-lead connector on the back of nearly everything. C13/C14 is standard; C19/C20 is the bigger high-current version on amps.</dd>
 <dt>powerCON / powerCON TRUE1</dt><dd>Neutrik locking mains connectors. TRUE1 is the one you can safely connect and disconnect under load. Blue in, white out — the convention is input is grey/blue, output is white.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p><strong>Never remove or defeat an earth pin</strong> to solve a hum problem. Ever. It's the thing that stops a fault killing someone. If you have an earth loop, fix it properly with a DI box's ground lift or an isolating transformer — <a href="#s12-3">§12.3</a>. There is no situation in which lifting mains earth is acceptable, and anyone who tells you otherwise is dangerous.</p></div>
 <div class="note std"><span class="lab">Standard</span><p>Get all audio on the same power source where possible — same distro, same phase. Sharing a supply with lighting dimmers, LED walls or motors is the most common cause of buzz on a job. If you must share, ask for a separate audio supply early, before the power is committed.</p></div>
 <div class="note deep"><span class="lab">Go deeper</span><p>PAT — Portable Appliance Testing — is a routine warehouse task and an easy qualification to pick up. If your company does it in-house, ask to be trained. It makes you more useful immediately and it's a genuine line on a CV. The distribution itself — generators, distros, RCD protection, cable runs — is designed and signed off against <strong>BS 7909</strong>, the industry code of practice for temporary electrical systems at events. You won't be the one designing it, but knowing the name means you understand why a distro on a job looks the way it does, and why an electrician can point at a specific requirement rather than just "that's how we do it". See <a href="#s18-8">§18.8</a>.</p></div>
@@ -2502,11 +2502,11 @@ EARS            the only part of the system that actually matters</div>
 <li><strong>With only a meter:</strong> each core end-to-end should read a fraction of an ohm on a normal-length cable; between any two different cores it should read open (no continuity).</li>
 <li><strong>Label by type, not just length:</strong> "4-core 2.5 mm² 20 m" tells the next person whether this cable will carry a sub on pins 2. Many companies colour-code 2-core vs 4-core — learn yours.</li>
 </ul>
-<div class="kv">
+<dl class="kv">
 <dt>4 × 2.5 mm²</dt><dd>The everyday four-core speaker cable.</dd>
 <dt>4 × 4 mm²</dt><dd>For longer runs, where thin cable would lose level and control of the bass (the <a href="#calcCableLoss">cable loss estimator</a> shows when it starts to matter).</dd>
 <dt>8-core + NL8</dt><dd>Multicore runs to arrays — four channels on one cable, broken out to NL4s at the far end with a breakout box or fan.</dd>
-</div>
+</dl>
 <div class="tw"><table>
 <thead><tr><th>Symptom</th><th>Likely cause</th><th>Test</th></tr></thead>
 <tbody>
@@ -2567,13 +2567,13 @@ EARS            the only part of the system that actually matters</div>
 </section>
 
 <section class="s" id="s4-3"><h3><span class="n">4.3</span> Proximity effect &amp; other physical realities</h3>
-<div class="kv">
+<dl class="kv">
 <dt>Proximity effect</dt><dd>All directional mics boost low frequencies as the source gets closer. A singer eating the mic gets a big warm boom; backing off two inches thins it out. Vocalists use this deliberately. You compensate with the high-pass filter.</dd>
 <dt>Off-axis colouration</dt><dd>Sound arriving from the side isn't just quieter, it's <em>differently</em> coloured — usually duller. Good mics have smooth off-axis response; cheap ones sound honky when the singer turns their head.</dd>
 <dt>Plosives</dt><dd>"P" and "B" sounds fire a blast of air at the diaphragm, producing a low thump. Fixed with a pop shield, a foam windshield, slight off-axis positioning, and a high-pass filter.</dd>
 <dt>Handling noise</dt><dd>Vibration through the body of the mic. Worse on condensers and on mics without internal shockmounting. Shockmounts and stand isolation help.</dd>
 <dt>Wind</dt><dd>Outdoors, a foam windshield is not enough. You need a proper furry ("dead cat", "windjammer"). Wind noise is huge, low-frequency, and eats your headroom.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Engage the <strong>high-pass filter</strong> on almost every channel that isn't kick, bass or a full-range source. Somewhere around 80–100 Hz on vocals, 100–120 Hz on most other things. It removes rumble, handling noise, stage vibration and plosive energy that contributes nothing but eats headroom. This is genuinely one of the highest-value habits in live sound.</p></div>
 </section>
 
@@ -2663,7 +2663,7 @@ EARS            the only part of the system that actually matters</div>
 </section>
 
 <section class="s" id="s4-7"><h3><span class="n">4.7</span> Stands and accessories</h3>
-<div class="kv">
+<dl class="kv">
 <dt>Tall boom</dt><dd>The standard vocal/overhead stand. Heavy round base or tripod.</dd>
 <dt>Short boom</dt><dd>Snare, toms, guitar cabs, kick. You need far more of these than people ever pack.</dd>
 <dt>Straight stand</dt><dd>Simple, stable, no boom arm. Common for backing vocals and speech.</dd>
@@ -2673,7 +2673,7 @@ EARS            the only part of the system that actually matters</div>
 <dt>Shockmount</dt><dd>Elastic cradle isolating the mic from stand vibration. For condensers.</dd>
 <dt>Pop shield</dt><dd>Mesh or foam screen against plosives.</dd>
 <dt>Windshield / dead cat</dt><dd>Foam for indoors, fur for outdoors.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>Two stand failures cause most on-stage incidents: a <strong>boom arm not tightened</strong>, which slowly droops through the show until the mic is at the singer's chest; and a <strong>tall boom with too much counterweight-free extension</strong>, which topples. Tighten every clutch properly, and set the base so the weight of the boom sits over a leg, not between them.</p></div>
 </section>
 
@@ -2733,11 +2733,11 @@ EARS            the only part of the system that actually matters</div>
 <tr><td><strong>Audio-Technica 3000/5000</strong></td><td>Mid / upper</td><td>Good value, less common in UK hire.</td></tr>
 </tbody></table></div>
 <p>Regardless of brand, a system is: a <strong>transmitter</strong> (handheld, bodypack, or plug-on), a <strong>receiver</strong>, and <strong>antennas</strong>. Everything else is refinement.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Handheld</dt><dd>Mic and transmitter in one. Capsules are often interchangeable — a Shure handheld body can take an SM58, Beta 58, KSM9 head. Check what capsule is fitted at prep; clients specify it.</dd>
 <dt>Bodypack</dt><dd>Belt pack feeding a lav, headset, or instrument cable. Connector type is brand-specific and a classic prep trap.</dd>
 <dt>Plug-on</dt><dd>Transmitter that clips onto the back of a normal XLR mic. Turns any wired mic wireless. Great for roving reporter mics and awkward positions; many supply phantom.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s5-3"><h3><span class="n">5.3</span> Antennas</h3>
@@ -2800,12 +2800,12 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s5-7"><h3><span class="n">5.7</span> In-ear monitors (IEMs)</h3>
 <p>Same RF principles, opposite direction: the transmitter is in the rack and the receiver is on the performer.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Common systems</dt><dd>Shure PSM 300 / PSM 900 / PSM 1000, Sennheiser EW IEM G4 and 2000 series, Lectrosonics.</dd>
 <dt>Mono vs stereo</dt><dd>Most systems can run true stereo, or "MixMode" where one ear is the band and the other is vocals, blended with the pack's balance control.</dd>
 <dt>Combiner</dt><dd>Multiple IEM transmitters into one antenna. Essential above two or three channels — otherwise the transmitters desensitise each other.</dd>
 <dt>Moulds vs universals</dt><dd>Custom-moulded earpieces isolate far better and sound better. Generic tips are what you'll hire out. Hygiene matters — new tips per user.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>Keep <strong>IEM transmit antennas physically separated from mic receive antennas</strong> — different ends of the stage if you can, and at minimum a couple of metres apart. A transmitter next to a receiver's antenna will swamp its front end. This is the single most common cause of "the radio mics were fine until we added in-ears".</p></div>
 <div class="note warn"><span class="lab">Watch it</span><p>IEMs sit directly in someone's ear canal. A feedback squeal, a dropped mic, or a mis-patch at full level can cause real hearing injury. Build the habit of <strong>bringing IEM levels up from zero</strong>, always limiting the IEM outputs, and never soloing something into a live IEM mix.</p></div>
 </section>
@@ -2884,14 +2884,14 @@ EARS            the only part of the system that actually matters</div>
 <div class="col">
 
 <section class="s" id="s6-1"><h3><span class="n">6.1</span> Anatomy of a loudspeaker</h3>
-<div class="kv">
+<dl class="kv">
 <dt>Driver</dt><dd>The moving part. A <em>cone</em> driver (woofer) for low and mid; a <em>compression driver</em> on a horn for high.</dd>
 <dt>Horn / waveguide</dt><dd>The flare in front of the HF driver. It controls where the high frequencies go — the "dispersion pattern", quoted as e.g. 90° × 60° (horizontal × vertical).</dd>
 <dt>Crossover</dt><dd>Splits the signal so each driver only gets the frequencies it can handle.</dd>
 <dt>Passive</dt><dd>Crossover is inside the box, after the amplifier. One amp channel feeds the whole box. Simple, needs external amps.</dd>
 <dt>Active / powered</dt><dd>Amplifier and DSP built into the box. Plug in mains and a signal. Dominant now for small and mid-scale work.</dd>
 <dt>Bi-amp / tri-amp</dt><dd>Separate amp channels per driver, crossover done before the amps in DSP. More control, better performance, more cabling.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>A passive box wired to an amp with the <em>wrong preset</em>, or a bi-amp box fed a full-range signal on both inputs, will destroy the HF driver in seconds. Compression drivers handle a few watts; a woofer handles hundreds. If you're ever unsure whether a box is passive, active or bi-amp, <strong>find out before you send it signal.</strong></p></div>
 </section>
 
@@ -2927,18 +2927,18 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s6-4"><h3><span class="n">6.4</span> Amplifiers &amp; processing</h3>
 <p>For passive systems, the amplifier is not a generic box — it's part of the loudspeaker system. Modern touring amps are really <strong>amplified DSP controllers</strong>: they contain the crossover, EQ, limiting and delay that make a specific box model behave correctly.</p>
-<div class="kv">
+<dl class="kv">
 <dt>d&amp;b D20 / D40 / D80</dt><dd>Amps for d&amp;b systems. You <em>must</em> select the correct loudspeaker preset (d&amp;b call it the <em>setup</em>) for the boxes connected. The whole d&amp;b system — amps, output modes, setup and faults — is in <a href="#s6-16">§6.16–6.19</a>.</dd>
 <dt>L-Acoustics LA4X / LA12X</dt><dd>Same principle for L-Acoustics.</dd>
 <dt>Lab.gruppen, Powersoft, Camco, Crown, QSC</dt><dd>General-purpose touring amplification, usually with configurable DSP.</dd>
 <dt>Outboard processor</dt><dd>Where DSP isn't in the amp: BSS Soundweb / Blu, dbx DriveRack, Xilica, Symetrix. Sits between console and amps.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p><strong>The amp preset must match the box.</strong> Loading a preset for a different model — or worse, a "full range" preset onto a bi-amped enclosure — is the most expensive mistake in this part of the job. Check it every time, and check it again after anyone else has touched the rack. On a lot of systems this is a locked, password-protected setting for exactly this reason.</p></div>
 </section>
 
 <section class="s" id="s6-5"><h3><span class="n">6.5</span> Rigging &amp; flying — the honest version</h3>
 <div class="note warn"><span class="lab">Watch it</span><p><strong>Rigging is a qualified discipline and this section will not teach it to you.</strong> Flown loudspeakers weigh hundreds of kilos and hang over people. Do not attach, adjust, or sign off flown audio unless you are trained, competent and authorised to do so — and even then, under supervision until you're signed off. What follows is so you understand what's happening around you and can be a useful pair of hands, not so you can do it yourself.</p></div>
-<div class="kv">
+<dl class="kv">
 <dt>Ground stack</dt><dd>Boxes stacked on the floor or on subs, often on a frame. Simpler, no rigging, but sightlines and coverage suffer.</dd>
 <dt>Flown</dt><dd>Hung from the venue's structure via motors or fixed points. Better coverage, better sightlines, more skill and paperwork.</dd>
 <dt>Bumper / fly frame</dt><dd>The top piece an array hangs from.</dd>
@@ -2946,7 +2946,7 @@ EARS            the only part of the system that actually matters</div>
 <dt>SWL / WLL</dt><dd>Safe Working Load / Working Load Limit — the rated maximum. Never exceeded, never guessed.</dd>
 <dt>Secondary / safety</dt><dd>A backup attachment that catches the load if the primary fails.</dd>
 <dt>LOLER / PUWER</dt><dd>The UK regulations covering lifting equipment and its inspection. See <a href="#s13-3">§13.3</a>.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Universal rule on any site: <strong>nobody stands under a suspended load.</strong> Not "briefly", not "just to plug this in". If a motor is moving, the area below it is clear. Learn to notice this and step out of the way without being told — people notice.</p></div>
 </section>
 
@@ -2970,14 +2970,14 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s6-7"><h3><span class="n">6.7</span> Prediction software</h3>
 <p>Before a system is built, it's modelled. Every major manufacturer supplies free software that predicts coverage and SPL for their own boxes in a given room.</p>
-<div class="kv">
+<dl class="kv">
 <dt>d&amp;b ArrayCalc</dt><dd>For d&amp;b systems. Pairs with R1 for control.</dd>
 <dt>L-Acoustics Soundvision</dt><dd>For L-Acoustics. Pairs with LA Network Manager.</dd>
 <dt>Meyer MAPP</dt><dd>Meyer's prediction tool.</dd>
 <dt>Martin Audio DISPLAY</dt><dd>For Martin systems, especially MLA.</dd>
 <dt>Nexo NS-1</dt><dd>Nexo's version.</dd>
 <dt>EASE / EASE Focus</dt><dd>Cross-manufacturer. EASE Focus is free and covers many brands — a great one to learn on.</dd>
-</div>
+</dl>
 <div class="note deep"><span class="lab">Go deeper</span><p>Download <strong>EASE Focus</strong> and model a room you know — your local venue, your workplace. Being able to say "that hang will hit the back wall hard, we should steer it down" with a picture to back it up is a genuinely senior skill and you can start learning it tonight for free.</p></div>
 </section>
 
@@ -2997,81 +2997,81 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s6-9"><h3><span class="n">6.9</span> Monitor world</h3>
 <p>Stage monitoring is a separate craft from FOH and arguably harder — you're building six to sixteen different mixes simultaneously for people who can't tell you what's wrong except by pointing.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Wedges</dt><dd>Angled floor boxes. Aimed at the performer's head, positioned so the vocal mic's null faces them.</dd>
 <dt>Mix count</dt><dd>How many independent monitor mixes you're providing. Every performer wanting their own is expensive in outputs and time.</dd>
 <dt>Pre-fade sends</dt><dd>Monitor sends are <strong>pre-fade</strong> so FOH fader moves don't change what the band hears. This is close to universal and getting it wrong is very obvious.</dd>
 <dt>Ringing out</dt><dd>Deliberately pushing a monitor until it feeds back, identifying the frequency, and cutting it — repeated a few times to raise gain before feedback.</dd>
 <dt>Graphic EQ</dt><dd>Traditionally a 31-band GEQ per wedge. Still the standard on many desks.</dd>
-</div>
+</dl>
 <div class="note alt"><span class="lab">Also seen</span><p>Ringing out a wedge with a graphic before soundcheck is the traditional approach and still widely done. Others prefer to leave the monitor flat and only cut narrow parametric notches reactively when something actually rings, arguing that pre-emptive ringing out just makes everything sound worse for a problem that might not occur. Both are legitimate; the second is increasingly common with modern boxes and good mic technique.</p></div>
 <div class="note warn"><span class="lab">Watch it</span><p>Never point a wedge at the back of a vocal mic, never let someone stand between the wedge and their own mic, and never turn a monitor up "just to check" while someone's face is next to it. Feedback at wedge level is painful and can damage hearing.</p></div>
 </section>
 
 <section class="s" id="s6-10"><h3><span class="n">6.10</span> Loudness, limits and the law</h3>
-<div class="kv">
+<dl class="kv">
 <dt>dBA</dt><dd>A-weighted — approximates human sensitivity, discounts bass heavily. What most noise conditions are written in.</dd>
 <dt>dBC</dt><dd>C-weighted — much flatter, includes the low end. Better for measuring what actually annoys neighbours.</dd>
 <dt>Leq</dt><dd>Equivalent continuous level — an average over a period, e.g. "Leq 15 min". This is how limits are usually written, not as an instantaneous peak.</dd>
 <dt>Venue noise limiter</dt><dd>A device that cuts the power to the stage if the level exceeds a threshold. Common in function rooms and hotels. Find out if there is one, where it is and what it's set to <em>before</em> you build.</dd>
 <dt>Licence conditions</dt><dd>Many events have legally binding noise limits and curfews as conditions of the premises licence (or, for smaller one-off events, a Temporary Event Notice) granted under the <strong>Licensing Act 2003</strong>. For bigger or higher-risk events, a Safety Advisory Group — the local authority, police, fire and other agencies working together — reviews the event and can set or tighten these conditions, often drawing on the guidance in the Purple Guide. That matters practically: a limit breach isn't just "the neighbours are annoyed", it's a breach of a legal condition the promoter's licence depends on, which is why the SAG or an environmental health officer can shut a show down over it. Breaching them has consequences for the promoter, not just embarrassment.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p><strong>Protect your hearing from day one.</strong> Hearing damage is cumulative, permanent and completely invisible until it's done. The UK Control of Noise at Work Regulations 2005 set action levels at 80 dB(A) and 85 dB(A) daily exposure — a loud gig blows past both. Carry decent filtered earplugs (Alpine, Etymotic, EarPeace — around £20 and they don't muffle) and get custom moulds when you can afford them (£150–200, last years). Every experienced engineer you meet either wears them or wishes they had.</p></div>
 </section>
 
 <section class="s" id="s6-11"><h3><span class="n">6.11</span> Assistive listening &amp; hearing loops</h3>
 <p>Not part of the PA, but genuinely part of the job — audio techs are very often the ones who end up responsible for these, simply because they're the closest thing to "audio" on site.</p>
-<div class="kv">
+<dl class="kv">
 <dt>What it is</dt><dd>A hearing/induction loop is a wire run around a room (or a smaller area, sometimes called a counter loop) driven by a dedicated <strong>loop driver</strong> amplifier. It creates a magnetic field carrying the audio, which a hearing aid's built-in <strong>T-coil</strong> picks up directly — bypassing the room's background noise entirely, rather than just amplifying it along with everything else.</dd>
 <dt>The legal side</dt><dd>Under the Equality Act 2010, venues are expected to make reasonable adjustments for disabled customers, which in practice includes providing a working induction loop. Building Regulations Part M requires hearing enhancement systems in new or altered buildings at reception points, performance areas and meeting spaces — marked with the standard blue "ear and T" symbol.</dd>
 <dt>Feeding it</dt><dd>The loop driver wants a dedicated mono line-level feed of the primary programme audio — usually a matrix or aux send from the console — not a stray mic picking up the room. A room mic gives loop users the room's echo and noise along with the speech; a proper feed gives them exactly what everyone else is hearing, cleanly.</dd>
 <dt>The standard</dt><dd>IEC 60118-4 sets the technical requirements — field strength, frequency response and signal-to-noise ratio — that a compliant loop has to meet. You're not expected to certify a system yourself, but knowing the standard exists is enough to recognise when a "we've got a loop" claim needs an actual test, not just a knowing nod.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>If a venue tells you they have an induction loop, ask when it was last tested and who feeds it — a genuinely surprising number of installed loops are silently unplugged, mis-patched, or fed from the wrong source. If you're asked to feed one yourself, a dedicated send from the console, checked with a level that's neither buried nor distorted, is the whole job.</p></div>
 <div class="note deep"><span class="lab">Go deeper</span><p>Ampetronic and Contacta both publish clear, freely available technical guides on loop systems aimed at installers rather than end users — genuinely useful if you end up dealing with these regularly. See <a href="#s18-11">§18.11</a>.</p></div>
 </section>
 
 <section class="s" id="s6-12"><h3><span class="n">6.12</span> Interpretation &amp; conference systems</h3>
 <p>The conference-world cousin of the hearing loop — and the same pattern applies: audio techs very often end up owning it, again simply because it's the closest thing to "audio" on site, even though it's really its own small discipline.</p>
-<div class="kv">
+<dl class="kv">
 <dt>What it is</dt><dd>Simultaneous interpretation lets a speaker be heard live in another language — an interpreter in a soundproofed booth listens on headphones and speaks the translation into a mic, which is transmitted to delegates on wireless IR or RF receivers with earpieces, channel-selectable if there's more than one target language.</dd>
 <dt>Your part in it</dt><dd>Almost always just the feed — the interpreters need a clean, dedicated feed of the source language audio (the same discipline as a broadcast submix, <a href="#s14-8">§14.8</a>), and their translated output needs to be received back into the system correctly if it's being mixed into a recording or a specific zone. You are not expected to manage the booths or receivers themselves — that's normally a specialist interpretation-equipment supplier's job.</dd>
 <dt>What to check</dt><dd>Which channel is which language, that the interpreter feed is live and clean before delegates arrive, and — if it's your job to supply it — that the receiver count matches the expected audience, with spares. A silent interpretation channel five minutes into a conference is a much bigger problem than a silent audio channel, because there's no way for that portion of the audience to follow anything until it's fixed.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Treat the interpreter feed with the same care as a broadcast feed — test it properly before doors with the interpreters actually present, not just by yourself. They'll tell you immediately if the level or source is wrong, and they're the only people in the building who can.</p></div>
 </section>
 
 <section class="s" id="s6-13"><h3><span class="n">6.13</span> Audio description</h3>
 <p>The theatre-world accessibility service that's easy to miss entirely if nobody's ever pointed it out to you — a describer narrates the visual action (movement, expressions, set changes) into the gaps between dialogue, for blind and partially-sighted audience members listening on a headset. In the UK, specialist providers like VocalEyes train describers and often run the service itself; the venue's job, and by extension yours, is mostly making sure the infrastructure works.</p>
-<div class="kv">
+<dl class="kv">
 <dt>What you're actually asked for</dt><dd>A clean feed of the show mix to the describer's booth or position (so they can hear what the audience hears while they narrate), and a transmission system — usually the same IR or RF infrastructure as an interpretation system (<a href="#s6-12">§6.12</a>) — carrying the describer's voice out to headset receivers in the audience.</dd>
 <dt>Touch tours</dt><dd>Many venues offer a pre-show "touch tour" letting blind patrons handle set pieces, props and sometimes costumes to build a mental picture before the performance. Not really an audio job, but you'll sometimes be asked to support it with a portable PA or just a quiet, working comms channel.</dd>
 <dt>What to check</dt><dd>Same discipline as the interpreter feed — test it live, with the describer present, before doors. A describer who can't hear the show clearly can't do their job at all.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Tickable version of all of the above, covering audio description alongside interpretation and hearing loops together, at <a href="#s19-15">§19.15, the access services checklist</a>.</p></div>
 </section>
 
 <section class="s" id="s6-14"><h3><span class="n">6.14</span> Outdoor &amp; weather-exposed work</h3>
 <p>Everything above assumes a roof. A genuinely large share of UK live audio doesn't have one — festivals, outdoor corporate, marquees with open sides — and weather causes its own specific category of problems worth knowing before you meet them for the first time.</p>
-<div class="kv">
+<dl class="kv">
 <dt>IP ratings</dt><dd>The two-digit code on outdoor-rated boxes (IP54, IP55, IP65…) — first digit is protection against solid objects/dust, second is against water. IP54 (dust-protected, splash-resistant) is a common minimum for touring outdoor boxes; IP55 adds stronger jet protection; IP65 (fully dust-tight, low-pressure jet resistant) is typical for permanent outdoor install. A box with no IP rating at all almost certainly isn't meant to get rained on, whatever it looks like.</dd>
 <dt>Electronics in the wet</dt><dd>Consoles, racks and anything with an unsealed connector are the actual risk, not the speakers — rain covers (fitted covers, gazebos, or simply a tarp rigged with a run-off slope so water doesn't pool) over FOH and any exposed patch bays are standard on any outdoor job, wired or not.</dd>
 <dt>Wind</dt><dd>Rumbles and thumps on open mics, especially outdoor vocal or speech mics — a foam windshield helps a little, a proper wind muff ("dead cat") helps a lot more. Wind also physically moves line array elements and lightweight boxes on stands, which is a rigging and PUWER concern (<a href="#s13-3">§13.3</a>) as much as an audio one.</dd>
 <dt>Temperature</dt><dd>Cold weather drains batteries faster and makes wireless receivers slightly less predictable at the margins of range — carry more spares than you think you need on a cold outdoor day. Direct sun on a black console or amp rack for hours can push internal temperatures high enough to matter; shade it if you can.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>Never work on live electrical connections in the rain, and if lightning is genuinely close, that's a stop-the-show safety call for the Event Safety Officer or Production Manager, not something to quietly push through. Outdoor events should have a written severe weather plan — ask to see it if one job feels like it might need it.</p></div>
 <div class="note std"><span class="lab">Standard</span><p>Tickable version of all of the above at <a href="#s19-14">§19.14, the outdoor &amp; weather-exposed job checklist</a>.</p></div>
 </section>
 
 <section class="s" id="s6-15"><h3><span class="n">6.15</span> The room is part of the system</h3>
 <p>Everything up to here has been about the boxes. But the audience never hears the boxes on their own — they hear the boxes plus the room, and in a difficult building the room is the louder partner. This is the bit that explains why the same PA can sound superb in one venue and like a swimming pool in the next, and why <a href="#s6-8">§6.8</a> insists you can't EQ a room.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Direct sound</dt><dd>What arrives straight from the loudspeaker, first. It carries the intelligibility — the consonants that let someone understand a word rather than just hear a noise.</dd>
 <dt>Reflections</dt><dd>The same sound arriving later, having bounced off a wall, the ceiling or the floor. Early reflections (within roughly 30&nbsp;ms) mostly reinforce the direct sound. Later ones smear it.</dd>
 <dt>Reverberation</dt><dd>What's left once the reflections are too many and too close together to hear individually — a decaying wash. Measured as <strong>reverberation time (RT60)</strong>: how long it takes to decay by 60&nbsp;dB after the source stops.</dd>
 <dt>Room modes / standing waves</dt><dd>At low frequencies, wavelengths are comparable to the room's dimensions, so the room resonates at particular frequencies. That's why bass can be overwhelming in one seat and almost missing three metres away, with nothing wrong with the system.</dd>
 <dt>Absorption</dt><dd>Soft things — curtains, carpet, seating, and above all <em>people</em> — turn sound energy into a tiny amount of heat instead of reflecting it. This is why a room measured empty is not the room you'll be mixing in.</dd>
-</div>
+</dl>
 <p>Rough expectations, so you know what you're walking into: a well-treated studio or a small meeting room might be a few tenths of a second of RT60; a decent theatre around a second; a big church, atrium or sports hall three seconds or more. Above roughly two seconds, speech intelligibility is genuinely hard to achieve and the system design has to fight for it.</p>
 <div class="note std"><span class="lab">Standard</span><p>You can't remove reverberation, so you avoid feeding it. That means <strong>directivity</strong> — using boxes whose pattern puts energy on people and not on walls and ceilings (<a href="#s6-6">§6.6</a>), getting sources closer to listeners with fills or delays rather than turning the mains up, and choosing column arrays or tight-pattern boxes in reverberant rooms (<a href="#s6-2">§6.2</a>). Turning it up in a live room makes the reverberation louder too, so it makes things worse, not better.</p></div>
 <div class="note warn"><span class="lab">Watch it</span><p>An empty room and a full room are different acoustic spaces. A few hundred people are a large amount of absorption, mostly in the mid and high frequencies — so the room gets drier and slightly duller once doors open. A system tuned to sound perfect in an empty hall at 3pm will usually want a little more top end at 8pm. Don't panic-EQ during the first song; expect the change and leave yourself somewhere to go.</p></div>
@@ -3082,13 +3082,13 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s6-16"><h3><span class="n">6.16</span> d&amp;b audiotechnik — how the system fits together</h3>
 <p>d&amp;b is one of the brands you're most likely to meet on UK touring, theatre and corporate work, and it works differently from a rack of generic amps and passive boxes. The thing to understand first: <strong>d&amp;b sell a system, not separate parts.</strong> Almost every d&amp;b loudspeaker is passive, and is designed to be driven only by a d&amp;b amplifier running the matching <em>loudspeaker setup</em> for that exact box. The setup holds the crossover, EQ and — most importantly — the protection that keeps that model's drivers alive.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Loudspeaker</dt><dd>The box. Passive, with NL4 input and link sockets (some older or install models differ). Its model name is the setup you'll need.</dd>
 <dt>Amplifier</dt><dd>A d&amp;b amp, four channels on current models, with DSP inside. Each channel is told which box it's driving.</dd>
 <dt>Setup</dt><dd>The loudspeaker preset — d&amp;b's word for it. Chosen per channel. Wrong setup, wrong sound at best, damaged drivers at worst.</dd>
 <dt>Cable</dt><dd>NL4 (or NL8 multicore). Part of the system — the amp can even correct for its length (LoadMatch, below).</dd>
 <dt>Software</dt><dd>ArrayCalc to design it, R1 to control and monitor it.</dd>
-</div>
+</dl>
 <h4>The amplifiers you'll meet</h4>
 <div class="tw"><table>
 <thead><tr><th>Amp</th><th>What to know</th></tr></thead>
@@ -3115,13 +3115,13 @@ EARS            the only part of the system that actually matters</div>
 </tbody></table></div>
 <p class="calc-pointer"><a href="#s6-20">Every model, and which amp drives it — §6.20 →</a> <span>Amps, loudspeakers, the naming, and what's discontinued.</span></p>
 <h4>The software around it</h4>
-<div class="kv">
+<dl class="kv">
 <dt>ArrayCalc</dt><dd>d&amp;b's free design software (<a href="#s6-7">§6.7</a>). The system tech models the room and the boxes, and ArrayCalc works out angles, rigging loads, delays — and which amp channel drives which box with which setup. It exports a project for R1.</dd>
 <dt>ArrayProcessing</dt><dd>An ArrayCalc option that calculates individual filters for every box in a line array to shape its coverage and tonal balance front to back. Applied through the amps; never "tweak it" by hand.</dd>
 <dt>R1 Remote control</dt><dd>The laptop software that shows and controls every amp on the network: setups, levels, mutes, delays, EQ, and live meters. Current amps connect over Ethernet (OCA / AES70); D6/D12-era amps need a CAN interface.</dd>
 <dt>LoadMatch</dt><dd>On current amps, compensates electrically for the speaker cable — so a box at the end of a long run sounds like one on a short run (d&amp;b quote up to 70 m). It needs the real cable length and cross-section entered, so note them as you run cable.</dd>
 <dt>System check</dt><dd>On current amps, measures each connected loudspeaker against a reference taken when the system was known to be good, and flags a missing box, a dead driver or a bad cable. Most useful when the reference was taken at prep.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Every d&amp;b job has a <strong>plan</strong>: an ArrayCalc file, an R1 project, or at minimum a patch sheet from the system tech — box, amp, channel, mode, setup. Work from it, and if you're handed a d&amp;b system with no plan, ask for one before you configure anything.</p></div>
 <div class="note warn"><span class="lab">Watch it</span><p><strong>Never drive a d&amp;b box from a generic amp</strong>, or from a d&amp;b amp in "linear" mode, unless the system owner has specifically said to. Without its setup the box has no protection at all — the HF driver is the first thing to go.</p></div>
 <div class="note deep"><span class="lab">Go deeper</span><p>d&amp;b publish free video tutorials for each amp (overview, input modes, output modes, channel setup), and run in-person workshops — in the UK at Nailsworth — including <strong>d&amp;basics</strong> (loudspeakers, amps and choosing the right system) and <strong>Software &amp; System Fundamentals</strong> (ArrayCalc and R1, from data entry to simulation and output). Dates, places and costs are on <a href="https://www.dbaudio.com/global/en/education/workshops/" target="_blank" rel="noopener">d&amp;b's workshops page</a>. ArrayCalc and R1 are both free downloads, and R1 can open a project offline, so you can learn the screens on your own laptop before you're ever near a live rack.</p></div>
@@ -3140,12 +3140,12 @@ EARS            the only part of the system that actually matters</div>
 <p>That's why d&amp;b boxes are built the way they are: on d&amp;b's usual convention a <strong>top listens on pins 1</strong> and a <strong>sub listens on pins 2</strong>, and the link socket on each box passes all four poles through. So a single 4-core cable from the centre A/B output can go to a sub and link on to a top, and each hears only its own channel. Every d&amp;b cabinet has its pin use printed beside its connectors — read it when you're unsure.</p>
 <div class="note warn"><span class="lab">Watch it</span><p>Older amps (D6, D12) and EP5-fitted amps don't follow exactly this layout. <strong>Always read the label above the outputs</strong> — it states the mode and pins for each socket — and check the amp's manual if anything doesn't match the table.</p></div>
 <h4>Inputs</h4>
-<div class="kv">
+<dl class="kv">
 <dt>Analogue</dt><dd>XLR inputs (A1–A4 on a D20), with XLR link outputs to feed the next amp.</dd>
 <dt>Digital (AES3)</dt><dd>XLR inputs carrying two channels each (D1/2, D3/4), with a digital link out. The amp must lock to the sample rate (48 or 96 kHz).</dd>
 <dt>Network</dt><dd>D40/D90: Milan (AVB) built in. D20/D80: Dante arrives through a bridge (such as d&amp;b's DS10) converting to AES.</dd>
 <dt>Input mode / routing</dt><dd>Each amp has an input mode (analogue, digital, network), and each channel is routed from one or more inputs. Current amps can also <em>fall back</em> to a second input if the first one is lost — handy, and also a reason a channel can be playing from somewhere unexpected.</dd>
-</div>
+</dl>
 <h4>Reading the front panel</h4>
 <div class="tw"><table>
 <thead><tr><th>Indicator</th><th>Means</th><th>What to do</th></tr></thead>
@@ -3211,14 +3211,14 @@ EARS            the only part of the system that actually matters</div>
 <div class="note std"><span class="lab">Standard</span><p><strong>The one rule that settles it on site:</strong> if the box's setup isn't in the amp's setup list (on its screen or in R1), that amp can't drive it. Firmware updates add setups over time, so an older amp that hasn't been updated may be missing a newer box. And with line arrays, the plan will say which setup each box gets.</p></div>
 
 <h4>Reading the names</h4>
-<div class="kv">
+<dl class="kv">
 <dt>8 / 12 in a line array</dt><dd>The horizontal coverage: 8 = 80°, 12 = 120° (V8/V12, Y8/Y12, KSL8/KSL12, CCL8/CCL12, J8/J12). Same height and rigging, so the two can mix in one hang.</dd>
 <dt>P</dt><dd>A point-source box from a line-array family (V7P, V10P, Y7P, Y10P).</dd>
 <dt>-SUB / -GSUB</dt><dd>Subwoofer. GSUB is the ground-stack-only version; SUB versions can usually be flown with the array.</dd>
 <dt>-D</dt><dd>A wider-dispersion version of the same box (E12-D, 10S-D, 12S-D, 24S-D).</dd>
 <dt>i (Yi8, KSLi12, ALi60…)</dt><dd>The installation version: same sound, different cabinet finish and fixings. Venue kit, not hire stock.</dd>
 <dt>Arc / Line / AP / PS</dt><dd>Setup variants for array boxes: <strong>Arc</strong> for boxes in the curved part of a hang, <strong>Line</strong> for the straight part, <strong>AP</strong> when the array runs ArrayProcessing, <strong>PS</strong> for a box used on its own as a point source. Take them from the plan, box by box.</dd>
-</div>
+</dl>
 
 <h4>Amplifiers</h4>
 <div class="tw"><table class="db-models" data-kind="amp">
@@ -3325,14 +3325,14 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s7-1"><h3><span class="n">7.1</span> The channel strip — the unit of everything</h3>
 <p>Whatever the desk, whatever the decade, a channel does the same things in the same order. Learn this once and every console makes sense.</p>
-<div class="flow">INPUT  →  GAIN/PAD  →  PHANTOM  →  POLARITY  →  HIGH-PASS  →  GATE
+<div class="flow" tabindex="0" role="region" aria-label="Signal flow">INPUT  →  GAIN/PAD  →  PHANTOM  →  POLARITY  →  HIGH-PASS  →  GATE
                                                                   ↓
                                             FADER  ←  PAN  ←  COMPRESSOR  ←  EQ
                                               ↓
                                     ROUTING → mix bus / groups / matrix
                                               ↓
                                      AUX SENDS (pre- or post-fade)</div>
-<div class="kv">
+<dl class="kv">
 <dt>Pad</dt><dd>A fixed attenuator (usually −20 dB) for very hot sources, before the preamp.</dd>
 <dt>High-pass filter (HPF)</dt><dd>Removes everything below a set frequency. Use it constantly — <a href="#s4-3">§4.3</a>.</dd>
 <dt>Gate</dt><dd>Mutes the channel when the signal drops below a threshold. Cleans up drum bleed and open mics.</dd>
@@ -3343,7 +3343,7 @@ EARS            the only part of the system that actually matters</div>
 <dt>Aux send</dt><dd>A separate feed to somewhere else — a wedge, an IEM, a reverb, a recording. <strong>Pre-fade</strong> ignores the fader (monitors); <strong>post-fade</strong> follows it (effects).</dd>
 <dt>PFL / AFL</dt><dd>Pre/After Fade Listen — soloing a channel to your headphones without affecting the mix.</dd>
 <dt>Mute</dt><dd>Off. The most under-used control in live sound — anything not in use should be muted.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Pre-fade for monitors, post-fade for effects. Nearly universal, and the reasoning is simple: the band's wedge mix shouldn't change when FOH pulls a fader, but a vocal's reverb <em>should</em> get quieter when the vocal does.</p></div>
 </section>
 
@@ -3367,7 +3367,7 @@ EARS            the only part of the system that actually matters</div>
 </section>
 
 <section class="s" id="s7-3"><h3><span class="n">7.3</span> Digital console concepts</h3>
-<div class="kv">
+<dl class="kv">
 <dt>Layers / banks</dt><dd>A desk with 16 physical faders and 64 channels shows you them 16 at a time. The fader you're moving is not necessarily the channel you think — <strong>always check the layer.</strong></dd>
 <dt>Channel vs socket</dt><dd>The physical input socket and the console channel are separate things, connected by a <strong>patch</strong>. Socket 12 does not have to be channel 12. This is powerful and it's also the single biggest source of confusion for people coming from analogue.</dd>
 <dt>DCA / VCA</dt><dd>A master fader that controls a group of channels' faders remotely, without the audio passing through it. Perfect for "all drums", "all vocals".</dd>
@@ -3376,7 +3376,7 @@ EARS            the only part of the system that actually matters</div>
 <dt>Scene / snapshot / cue</dt><dd>A stored state of the console you can recall. Essential in theatre and corporate; used more sparingly in live music.</dd>
 <dt>Safe / recall scope</dt><dd>Settings excluded from scene recall, so recalling a scene doesn't undo your gain changes. Learn this before you use scenes in anger.</dd>
 <dt>Show file</dt><dd>The whole console state, saved to internal storage or USB.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p><strong>Loading a show file changes the output patch.</strong> If you load an unfamiliar show while the PA is on, you can send a full-range signal to an HF driver, unmute something into a live IEM, or dump 0 dB of pink noise into a full room. Habit: <strong>mute the outputs / turn the amps down before you load anything</strong>, then bring it back up and check. Every time.</p></div>
 <div class="note alt"><span class="lab">Also seen</span><p>[2026] Some newer digital consoles and standalone products (Waves eMotion LV1 with its automixer, among others) offer AI-assisted automixing — automatically adjusting gain-sharing between open mics to reduce bleed and rider fatigue on multi-mic speech jobs. Genuinely useful on the right corporate/panel job with a competent operator supervising it. It is not yet, and shouldn't be treated as, a substitute for understanding gain structure and bleed control yourself — you still need to recognise when it's getting it wrong.</p></div>
 </section>
@@ -3394,7 +3394,7 @@ EARS            the only part of the system that actually matters</div>
 </section>
 
 <section class="s" id="s7-5"><h3><span class="n">7.5</span> Dynamics &amp; EQ on the desk</h3>
-<div class="kv">
+<dl class="kv">
 <dt>Gate</dt><dd><strong>Threshold</strong> (level to open), <strong>range/depth</strong> (how much it attenuates when closed), <strong>attack</strong> (how fast it opens), <strong>hold</strong> and <strong>release</strong> (how it closes). Used on toms and to control bleed.</dd>
 <dt>Compressor</dt><dd><strong>Threshold</strong> (where it starts working), <strong>ratio</strong> (how hard), <strong>attack</strong> (how fast it grabs), <strong>release</strong> (how fast it lets go), <strong>knee</strong> (how gradually it engages), <strong>makeup gain</strong> (to restore level).</dd>
 <dt>Limiter</dt><dd>A compressor with a very high ratio, used to stop signals exceeding a ceiling. On outputs, protective. On IEMs, essential.</dd>
@@ -3402,7 +3402,7 @@ EARS            the only part of the system that actually matters</div>
 <dt>Graphic EQ (GEQ)</dt><dd>Fixed bands, usually 31. Fast and visual. Traditional on monitors and system outputs.</dd>
 <dt>Shelf</dt><dd>Boosts or cuts everything above (high shelf) or below (low shelf) a point.</dd>
 <dt>RTA</dt><dd>Real Time Analyser — shows you the frequency content. Useful for identifying feedback frequencies fast. Not a substitute for ears.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Starting compressor settings for a live vocal: ratio around 3:1, medium attack, medium-fast release, threshold set so you're seeing 3–6 dB of gain reduction on the loudest phrases and none on the quiet ones. Then adjust by ear. Compression on live vocals is mostly about consistency, not effect.</p></div>
 </section>
 
@@ -3434,7 +3434,7 @@ EARS            the only part of the system that actually matters</div>
 <section class="s" id="s7-8"><h3><span class="n">7.8</span> Yamaha DM7 — the desk, the layout, the words</h3>
 <p>The <strong>DM7</strong> is Yamaha's current mid-size touring and install console, and the one you're most likely to meet on premium hire jobs alongside CL/QL and RIVAGE. If you've used a CL or QL, most of it will feel familiar; it's faster, has more touch screens, and runs at 96 kHz.</p>
 <div class="tw"><table>
-<thead><tr><th></th><th>DM7</th><th>DM7 Compact</th></tr></thead>
+<thead><tr><th><span class="sr-only">Item</span></th><th>DM7</th><th>DM7 Compact</th></tr></thead>
 <tbody>
 <tr><td>Input channels</td><td>120</td><td>72</td></tr>
 <tr><td>Mixes</td><td>48 mix + 12 matrix + 2 stereo</td><td>Same bus structure, fewer inputs</td></tr>
@@ -3549,26 +3549,26 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s8-1"><h3><span class="n">8.1</span> Offline editors — learn a desk without the desk</h3>
 <p>Nearly every digital console has a free PC/Mac application that mirrors the console's software. You can build show files, learn the layout, and practise workflows on your laptop at home, then load the file onto the real desk.</p>
-<div class="kv">
+<dl class="kv">
 <dt>X32-Edit / M32-Edit</dt><dd>Free from Behringer/Midas. Full desk emulation. Also runs as an iPad app for remote control.</dd>
 <dt>A&amp;H Qu-Pad, SQ / Avantis / dLive Director</dt><dd>Free from Allen &amp; Heath. Director runs the whole desk offline.</dd>
 <dt>Yamaha CL/QL Editor, TF Editor, DM7 Editor</dt><dd>Free from Yamaha's pro audio site.</dd>
 <dt>DiGiCo Offline Software</dt><dd>Free download per console range. The best way to get familiar before you ever touch one.</dd>
 <dt>Soundcraft ViSi / Vi Offline</dt><dd>Same idea.</dd>
-</div>
+</dl>
 <div class="note deep"><span class="lab">Go deeper</span><p>This is the single highest-value thing you can do with a free evening. Download the offline editor for whatever console your company uses most, and build a show file for a fictional five-piece band from an input list. Do it three times and you'll be faster than half the people on site. Links in <a href="#s18-2">§18.2</a>.</p></div>
 </section>
 
 <section class="s" id="s8-2"><h3><span class="n">8.2</span> Dante — the one to actually learn</h3>
 <p>Dante moves audio over standard networks. If you understand it, you're immediately useful on a huge range of jobs.</p>
 <h4>The three applications</h4>
-<div class="kv">
+<dl class="kv">
 <dt>Dante Controller</dt><dd>Free. The routing and management tool. You use it to see every Dante device on the network and connect outputs to inputs.</dd>
 <dt>Dante Virtual Soundcard (DVS)</dt><dd>Paid, cheap. Turns a laptop into a Dante device — record multitrack, play back, run virtual soundcheck.</dd>
 <dt>Dante Via</dt><dd>Paid. Routes any application's audio onto the network. Handy for corporate playback and conferencing.</dd>
-</div>
+</dl>
 <h4>Core concepts</h4>
-<div class="kv">
+<dl class="kv">
 <dt>Transmitter / Receiver</dt><dd>Dante calls outputs "transmit channels" and inputs "receive channels". A <strong>subscription</strong> is a connection between them, made in the grid in Dante Controller.</dd>
 <dt>Device names</dt><dd>Rename everything meaningfully on day one — <code>Console-Main</code>, <code>Stagebox-SL</code>, not <code>DLI-a1b2c3</code>. Future you will be grateful.</dd>
 <dt>Clock</dt><dd>One device is the leader. Dante mostly sorts this automatically, but you can and sometimes should set a preferred leader. A green tick in Clock Status is what you want.</dd>
@@ -3577,58 +3577,58 @@ EARS            the only part of the system that actually matters</div>
 <dt>Device Lock</dt><dd>Password-protects a device's config so nobody can change your routing. Useful; also a great way to lock yourself out. Note the password.</dd>
 <dt>Unicast vs multicast</dt><dd>Unicast sends a separate stream per receiver; multicast sends one stream to many. Use multicast when several devices need the same channels — it saves bandwidth.</dd>
 <dt>Redundancy</dt><dd>Many Dante devices have primary and secondary ports for a fully duplicated network. Two physically separate switches, two cable runs. Standard on anything that matters.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p><strong>Never connect the Dante network to the venue's WiFi/office network or to a router handing out addresses</strong>, unless you know exactly what you're doing. Rogue DHCP servers, IGMP snooping misconfiguration, and general internet traffic will break audio in confusing ways. Audio networks are dedicated networks with dumb-but-configured switches, kept separate. Green cable for Dante, clearly labelled, is a habit worth adopting.</p></div>
 <h4>Dante isn't the only network audio ecosystem</h4>
 <p>It's the one to learn because it's by far the most common in hire stock, but you will meet the others, and it's worth knowing they're not just "other versions of Dante" — they're separate, generally non-interoperable ecosystems.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Milan (AVB)</dt><dd>An open standard built on the IEEE AVB/TSN networking layer, used natively by d&b, L-Acoustics and Meyer among others. It needs AVB-compatible switches (not just any network switch, unlike Dante) and doesn't talk to Dante directly. If you turn up to a d&b or L-Acoustics rig and Dante Controller can't see the PA, this is usually why — it's not broken, it's a different network.</dd>
 <dt>AES67</dt><dd>Not a competing product but an interoperability standard — a common language that lets Dante, and other AES67-capable systems, exchange audio directly without a converter, most often seen at the boundary with broadcast infrastructure (<a href="#s14-5">§14.5</a>). Recent Dante devices generally support AES67 mode alongside native Dante.</dd>
 <dt>MADI</dt><dd>Older and simpler than either — a fixed 56 or 64 channels down one coax or fibre link, no network configuration at all. Still common as a straightforward point-to-point link between a console and a stagebox or recording rig, precisely because there's nothing to configure.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>If a PA or console you're patching into "isn't showing up" in Dante Controller, check what network ecosystem it actually uses before assuming a fault — a Milan-native rig simply isn't going to appear there, and that's normal, not broken.</p></div>
 <div class="note deep"><span class="lab">Go deeper</span><p>Do the free <strong>Dante Certification Level 1</strong> today. It's a couple of hours online, it's free, and it's a recognised credential. Level 2 is also free and covers switch configuration and redundancy. Level 3 is classroom-based. <a href="#s18-3">§18.3</a>.</p></div>
 </section>
 
 <section class="s" id="s8-3"><h3><span class="n">8.3</span> Measurement software</h3>
-<div class="kv">
+<dl class="kv">
 <dt>Smaart (Rational Acoustics)</dt><dd>The industry standard for live system measurement. Paid, and the training is genuinely worth doing. Dual-channel FFT — compares what you sent with what you measured.</dd>
 <dt>Open Sound Meter</dt><dd><strong>Free and open source.</strong> Does transfer function measurement, RTA, spectrogram. Astonishingly good for the price. Start here.</dd>
 <dt>Room EQ Wizard (REW)</dt><dd>Free. Aimed at rooms and studios but hugely capable. Excellent for learning what measurements mean.</dd>
 <dt>SysTune, ARTA, EASERA</dt><dd>Other options in the same space.</dd>
 <dt>Measurement mic</dt><dd>You need one — an omni condenser with a known flat response. Behringer ECM8000 is the cheap standard; Earthworks M23 and iSEMcon are the proper ones. An individually-calibrated mic with a cal file is much better than an uncalibrated cheap one.</dd>
-</div>
+</dl>
 <div class="note alt"><span class="lab">Also seen</span><p>SPL meter apps on a phone are everywhere and they are <em>indicative only</em> — the phone mic is not calibrated, compresses at high levels, and rolls off the bass. Fine for "is this roughly 95 or roughly 105". Useless for anything you have to certify. If noise limits are contractual, use a proper Class 1 or Class 2 meter.</p></div>
 <div class="note deep"><span class="lab">Go deeper</span><p>Reading a <strong>spectrogram</strong> — frequency up the side, time along the bottom, level as brightness — is a skill that pays off twice. It's how you spot a ringing frequency or a noise floor here, and it's exactly how wildlife recordings are analysed in bioacoustics, where the same plot is used to identify a species by the shape of its call. Same tool, same eye, different subject. See <a href="#s18-15">§18.15</a>.</p></div>
 </section>
 
 <section class="s" id="s8-4"><h3><span class="n">8.4</span> Playback</h3>
-<div class="kv">
+<dl class="kv">
 <dt>QLab (Mac)</dt><dd>The theatre and events standard for cue-based playback — audio, video, lighting cues, all triggered in sequence with a spacebar. Free to learn, paid for advanced features. Learn this if you touch theatre or corporate at all.</dd>
 <dt>Show Cue System / Multiplay (Windows)</dt><dd>Windows alternatives to QLab. SCS is the serious one.</dd>
 <dt>Ableton Live</dt><dd>Backing tracks, click, and playback for bands. Very common on tours — you'll meet a band with a laptop running Ableton and a multi-output interface.</dd>
 <dt>Reaper</dt><dd>Cheap, extremely capable DAW. Popular for virtual soundcheck and multitrack recording of shows.</dd>
 <dt>Pro Tools</dt><dd>Studio standard; used live where Avid consoles are involved.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p><strong>Streaming services are not a playback system.</strong> Spotify/Apple Music will drop out, play ads, lose connection, autoplay something unexpected, and normalise your levels. For anything that matters, use local files on a machine with notifications off, WiFi off, sleep off, and auto-updates off. And always have the files on a second device.</p></div>
 <div class="note std"><span class="lab">Standard</span><p>Any playback machine going to a show: notifications off, screen sleep off, auto-update off, volume at a fixed known level (usually 100% with level set downstream), and a physical copy of the files on a USB stick in your pocket.</p></div>
 </section>
 
 <section class="s" id="s8-5"><h3><span class="n">8.5</span> Comms</h3>
 <p>Intercom is how the crew talks during a show, and on bigger jobs you'll be responsible for building it.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Wired party-line</dt><dd>Clear-Com and Tecpro — belt packs on a single cable loop, everyone hears everyone. Simple and bulletproof.</dd>
 <dt>Digital matrix</dt><dd>Riedel, Clear-Com Eclipse. Big shows, routed channels, individual keys.</dd>
 <dt>Wireless comms</dt><dd>Clear-Com FreeSpeak, Riedel Bolero, Green-Go. Full duplex, roaming.</dd>
 <dt>Green-Go</dt><dd>Network-based (runs over Ethernet/PoE). Increasingly common and good value.</dd>
 <dt>Unity Intercom</dt><dd>Runs on phones over WiFi. Cheap and cheerful; depends on the WiFi being good, which it never is.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Comms discipline: identify yourself and your target ("Sound to Stage"), wait for acknowledgement, be brief, and get off. And remember that everything you say on the ring is heard by everyone including the client's production team.</p></div>
 </section>
 
 <section class="s" id="s8-6"><h3><span class="n">8.6</span> Networking you actually need</h3>
 <p>You don't need to be a network engineer. You do need these:</p>
-<div class="kv">
+<dl class="kv">
 <dt>IP address</dt><dd>Four numbers, e.g. <code>192.168.1.50</code>. Every device on a network needs a unique one.</dd>
 <dt>Subnet mask</dt><dd>Usually <code>255.255.255.0</code>. Devices can only talk directly to others in the same subnet — so <code>192.168.1.x</code> devices talk to each other but not to <code>192.168.2.x</code>.</dd>
 <dt>Static vs DHCP</dt><dd>Static = you set the address manually. DHCP = a server hands them out. Audio networks are usually static or link-local so addresses don't change between days.</dd>
@@ -3637,30 +3637,30 @@ EARS            the only part of the system that actually matters</div>
 <dt>Switch</dt><dd>The box everything plugs into. <em>Unmanaged</em> = plug and play. <em>Managed</em> = configurable, needed for bigger Dante networks (QoS, IGMP snooping).</dd>
 <dt>VLAN</dt><dd>Splitting one physical switch into separate logical networks. Used to keep audio, lighting and control apart on shared infrastructure.</dd>
 <dt>OSC (Open Sound Control)</dt><dd>A lightweight, open messaging protocol sent over the same IP network as everything else — used to trigger cues and remote-control parameters between completely different systems (a lighting console firing a QLab cue, a show-control system nudging a mixer's scene, a tablet driving a console's channel faders). Not an audio-transport protocol like Dante — it carries commands and values, not sound. See <a href="#s8-4">§8.4</a> and <a href="#s10-4">§10.4</a> for QLab, and <a href="#s9-8">§9.8</a> for Titan, which can both send and receive it.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Keep a laptop with a known static IP config saved as a profile, plus a USB-to-Ethernet adapter in your bag. Half of "the network is broken" calls are actually "the laptop is on the wrong subnet". Free tools like <strong>Fing</strong> or <strong>Angry IP Scanner</strong> show you everything on the network in seconds and are worth having installed.</p></div>
 <div class="note warn"><span class="lab">Watch it</span><p>A production audio network is not the internet, and it should stay that way. Never bridge a Dante or other audio switch into a venue's guest WiFi or public network — one careless patch cable turns your isolated, low-latency audio network into something anyone in the building can see and potentially interfere with. If a job genuinely needs internet access for something (a streaming feed, remote monitoring), keep it on a clearly separate, dedicated connection or VLAN rather than the same switch your audio lives on, and ask before plugging anything unfamiliar — a guest's laptop, an unknown access point — into a switch that's carrying your show.</p></div>
 </section>
 
 <section class="s" id="s8-7"><h3><span class="n">8.7</span> Rental management software</h3>
 <p>This is your current world, and it's worth understanding properly because it makes you visible to the people who do the hiring.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Rentman</dt><dd>Very widely used in European/UK event hire. Equipment, crew, planning, quotes.</dd>
 <dt>Current RMS</dt><dd>Cloud-based, big in the UK.</dd>
 <dt>HireHop</dt><dd>UK, popular with smaller and mid-size companies.</dd>
 <dt>inspHire</dt><dd>Broader plant/equipment hire, used by some AV companies.</dd>
 <dt>Flex / R2</dt><dd>Used by larger production companies.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>The thing that makes warehouse staff indispensable is <strong>data integrity</strong> — the system saying what's actually on the shelf. Scanning honestly, flagging discrepancies, and quarantining faulty kit in the system as well as physically is unglamorous and enormously valuable. It also means when you say "we haven't got four of those", people believe you.</p></div>
 </section>
 
 <section class="s" id="s8-8"><h3><span class="n">8.8</span> Reading &amp; producing system drawings</h3>
 <p>The stage plan and input list (<a href="#s1-5">§1.5</a>) are the documents you'll use daily; this is the software behind the more formal drawings — a full sound or lighting system design — that a system tech, designer or production manager works from.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Vectorworks</dt><dd>The industry-standard CAD package for live events specifically — stage plans, rigging plots, lighting plots and full system drawings, with a plugin ecosystem (Spotlight) built around exactly this kind of work.</dd>
 <dt>AutoCAD</dt><dd>The general-purpose CAD standard, more common on the venue-architecture and permanent-install side (<a href="#s10-6">§10.6</a>) than on touring production drawings.</dd>
 <dt>What's actually yours to do early on</dt><dd>Reading a drawing accurately — knowing your position on the stage plan, checking a rigging plot against what's actually flown, spotting when the drawing and the room disagree — matters far more day to day than producing one. Producing them is a specialism worth picking up later if system design or production management (<a href="#s17-1">§17.1</a>, <a href="#s21-7">§21.7</a>) is a direction that appeals.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s8-9"><h3><span class="n">8.9</span> Dante Controller — step by step</h3>
@@ -3682,7 +3682,7 @@ EARS            the only part of the system that actually matters</div>
 <section class="s" id="s8-10"><h3><span class="n">8.10</span> Milan and AVB — how it differs from Dante</h3>
 <p><strong>Milan</strong> is network audio built on AVB, an IEEE standard where the <em>switches themselves</em> keep time and reserve bandwidth for each audio stream. d&amp;b (D40 and D90 amps), L-Acoustics and Meyer Sound support it, so you'll meet it on premium PA systems.</p>
 <div class="tw"><table>
-<thead><tr><th></th><th>Dante</th><th>Milan / AVB</th></tr></thead>
+<thead><tr><th><span class="sr-only">Item</span></th><th>Dante</th><th>Milan / AVB</th></tr></thead>
 <tbody>
 <tr><td>Switches</td><td>Ordinary managed switches, set up correctly (QoS, EEE off)</td><td>Must be AVB/Milan-capable (ideally Avnu-certified) — an ordinary switch won't pass it</td></tr>
 <tr><td>Switch setup</td><td>QoS, IGMP, VLANs matter</td><td>No QoS or IGMP setup — the switches reserve bandwidth automatically</td></tr>
@@ -3757,34 +3757,34 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s9-2"><h3><span class="n">9.2</span> Lighting — noise, truss and real estate</h3>
 <p>You'll spend more time coordinating with LX than any other department, because you're fighting over the same physical space: the same truss to hang things from, the same cable tray or floor route, often the same power.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Dimmer noise</dt><dd>Old-style dimmers chop the AC waveform to control brightness, and that chopping radiates as buzz. It couples into anything running near it — which is the practical reason (alongside sharing a hum-prone supply, <a href="#s3-8">§3.8</a>) that audio and lighting cable shouldn't be run in the same tray for long distances. LED fixtures with switch-mode drivers can do the same thing at a higher, whinier frequency.</dd>
 <dt>Cable routing</dt><dd>Where you can't avoid a crossing, cross lighting and audio cable at right angles, not parallel — a 90° crossing picks up almost nothing, a long parallel run picks up plenty. Where you're both running the same direction for any distance, ask for separate trunking or at least separate sides of the tray.</dd>
 <dt>Truss and rigging points</dt><dd>Delay speakers, hanging mics and comms often go on LX truss, not your own. That's a rigging conversation with whoever's calling the motors — know your box's weight and always confirm before you hang anything on someone else's point.</dd>
 <dt>Comms</dt><dd>On bigger shows LX will have their own channel — know how to reach it. "Sound to LX" gets used constantly during a get-in, mostly to ask who's got the last free spot on the truss.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>If a wireless mic or IEM system starts buzzing or dropping the moment the lighting rig is powered up and tested, don't assume it's coincidence — it usually isn't. Report it early rather than fighting it all afternoon; a moved cable run or a different dimmer curve often fixes it in minutes once someone knows to look.</p></div>
 </section>
 
 <section class="s" id="s9-3"><h3><span class="n">9.3</span> Video &amp; AV</h3>
 <p>Video is the department you'll most often be feeding audio to, or taking it from.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Timecode</dt><dd>Where playback needs to stay locked to a video track — a corporate film, a themed show, a broadcast — video usually generates <strong>LTC</strong> (linear timecode, an audio-rate signal you can literally patch down an XLR) or sends <strong>MTC</strong> (MIDI timecode) to your playback system. Your job is normally just to receive and chase it, not generate it.</dd>
 <dt>Embedded audio</dt><dd>Broadcast and streaming feeds often carry audio embedded inside the video signal (SDI) rather than as a separate cable. If a broadcast truck is involved, expect to be handing them a clean mix to embed, on their schedule, not yours.</dd>
 <dt>Playback content with its own audio</dt><dd>VT, adverts and video content usually arrive with a soundtrack that needs to land on a specific console channel, at a level nobody's checked. Ask for it in advance and gain-stage it like anything else — video editors mix for headphones, not a PA.</dd>
 <dt>Screens as a noise source</dt><dd>LED walls and their processing gear can be electrically noisy in the same way dimmers are. If you're running mic cable near a screen wall, treat it the same as a lighting run.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Get any video content with embedded audio onto your system and through a level check <em>before</em> doors, the same as you would a band. "It'll be fine, it's just a video" is how a screaming-loud advert happens live.</p></div>
 </section>
 
 <section class="s" id="s9-4"><h3><span class="n">9.4</span> Staging, rigging &amp; backline</h3>
 <p>The staging and rigging crew build the physical platform everything else sits on, and backline is the world of the instruments themselves — often the band's own tech, sometimes yours to provide and mic.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Backline</dt><dd>Guitar and bass amps, drum kits, keyboard rigs. If it's your job to mic it, that's Part 4 territory (<a href="#s4-5">§4.5</a> has placement); if it's the band's own tech's job, your role is patching their DIs and mic feeds into your system and agreeing stage volume with them — loud backline is one of the most common reasons a mix fights itself at FOH.</dd>
 <dt>Risers &amp; decking</dt><dd>Drum risers in particular need cable routed <em>through</em> them, not just to them — plan that before the deck goes down, because pulling a riser apart mid-build to feed a cable through is a bad afternoon.</dd>
 <dt>Rigging calls</dt><dd>If any of your kit is flying (delay speakers, hung mics, truss-mounted anything), you'll be in the room for "hands in the air" — everyone confirms clear before a motor moves. Never wander off during a lift, and never assume someone else has checked your gear is clear.</dd>
 <dt>Barrier &amp; FOH position</dt><dd>Staging or event crew usually build your FOH riser and the barrier in front of the stage. If your desk position, sightline or cable route isn't what you were expecting, raise it as soon as you see the plan, not once it's built.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s9-5"><h3><span class="n">9.5</span> Shared infrastructure — routes, trays and colour</h3>
@@ -3800,22 +3800,22 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s9-6"><h3><span class="n">9.6</span> Power beyond your own rig</h3>
 <p>You'll usually only be responsible for your own audio distro, but it helps to recognise what's happening around it.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Generators</dt><dd>Off-grid events run on generators rather than mains. Generator power sags under sudden load — a big lighting cue hitting at the same moment as a bass-heavy song can occasionally cause an audible dip. It's not something you fix; it's something worth recognising so you don't chase a phantom console fault.</dd>
 <dt>Load balancing</dt><dd>Three-phase power needs roughly equal load across all three legs, or one phase trips while the others sit comfortably under capacity. This is normally the power department's job to manage, but if you're asked which phase your rig is on, know the answer.</dd>
 <dt>Separate audio supply</dt><dd>As covered in <a href="#s3-8">§3.8</a>, the standard ask is a power feed dedicated to audio, ideally off its own phase, so lighting and motor loads aren't sharing your earth reference. Ask for this at the advance stage, not on the day — by the time you're on site the distro's usually already built.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s9-7"><h3><span class="n">9.7</span> DMX — the protocol you'll keep meeting</h3>
 <p>You don't need to operate lighting, but DMX turns up often enough at the edges of your world — shared connectors, shared trunking, the occasional "can you just patch this through your snake" — that it's worth knowing what it actually is.</p>
-<div class="kv">
+<dl class="kv">
 <dt>What it is</dt><dd>DMX512 is a one-way digital control protocol carrying up to 512 channels of control data (dimmer levels, moving-light positions, colour, whatever) down one line, refreshed dozens of times a second. It's control data, not audio — there is nothing to listen to.</dd>
 <dt>The cable</dt><dd>Electrically it's RS-485, a balanced differential signal, run on cable rated at 120 Ω. That's the number to remember: it's why DMX cable and mic cable, though both often on 3-pin XLR, aren't really interchangeable for anything but the shortest, least critical run (<a href="#s3-1">§3.1</a>).</dd>
 <dt>The connector confusion</dt><dd>The DMX spec calls for 5-pin XLR; a huge amount of fixture-level gear ships with 3-pin instead, because it's cheaper and 3-pin XLR is everywhere. You'll meet turnaround adaptors (5-pin to 3-pin) constantly. It's not your fault when it doesn't just work — it's a known mess in the industry.</dd>
 <dt>Daisy chain &amp; termination</dt><dd>DMX devices link in a chain, in to out, not a star like a Dante network. The last fixture in the chain needs a 120 Ω terminator (a resistor across the data pins) or the signal reflects back down the line and things flicker or misbehave, especially over longer runs.</dd>
 <dt>Universes</dt><dd>One DMX line carries one "universe" of 512 channels. A big rig with hundreds of fixtures needs several universes, usually distributed over the lighting network (often Art-Net or sACN over standard Ethernet) rather than run as physical DMX the whole way.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>Never patch a DMX line down a spare pair in an audio multicore as a favour without checking with whoever owns the snake. Even where it technically works over a short run, the impedance mismatch (<a href="#s3-1">§3.1</a>) can cause exactly the kind of intermittent flickering that's miserable to fault-find later, and it's now tangled up with your audio cable when someone needs to trace it.</p></div>
 <div class="note deep"><span class="lab">Go deeper</span><p>You don't need to learn to programme a lighting desk, but understanding DMX addressing and universes well enough to have an intelligent conversation with an LX tech is a genuinely useful hour of reading. See <a href="#p18">Part 18</a>.</p></div>
 </section>
@@ -3823,11 +3823,11 @@ EARS            the only part of the system that actually matters</div>
 <section class="s" id="s9-8"><h3><span class="n">9.8</span> Avolites Titan — what it actually is</h3>
 <p>If you've got a Titan licence, this is worth a proper section rather than a passing mention, because it's a real, marketable skill on top of your audio work, not just a curiosity.</p>
 <p><strong>Titan is Avolites' lighting control software</strong> — it's not audio kit, and it's worth being precise about that distinction even though this is an audio handbook: it's the operating software that runs on Avolites' own consoles (Tiger Touch, Arena, Sapphire, Quartz and others), and it also runs as PC software so you can build and rehearse a whole show without a physical console in front of you.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Titan PC Suite</dt><dd>Free software from Avolites that puts the full Titan environment on a normal Windows PC — patching, programming, the works.</dd>
 <dt>Titan Simulator</dt><dd>Part of the same suite — shows an on-screen virtual version of a specific console's physical control surface, so what you learn on your laptop maps directly onto the real hardware later.</dd>
 <dt>AvoKey</dt><dd>A USB licence dongle. This is almost certainly the "licence" you already have — it's what lets Titan PC Suite and the Simulator run at full capability rather than in a limited demo mode.</dd>
-</div>
+</dl>
 <p>Why this is worth your time: on any job with LX, being the audio tech who can also patch a fixture, understand what "the desk's not seeing that dimmer" actually means, or sensibly troubleshoot a DMX chain (<a href="#s9-7">§9.7</a>) makes you noticeably more useful than someone who only knows their own department. It won't make you a lighting designer, but it removes the "not my department" ceiling on a lot of small, useful jobs.</p>
 </section>
 
@@ -3844,13 +3844,13 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s9-10"><h3><span class="n">9.10</span> Titan's core concepts</h3>
 <p>Five ideas that everything else in Titan is built from. Learn these properly and the rest of the software makes sense; skip them and every screen looks like an unrelated wall of buttons.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Patching &amp; fixture personalities</dt><dd>Before Titan can control a fixture, it needs to know what that fixture <em>is</em> — how many DMX channels it uses and what each one does. That definition is called a <strong>fixture personality</strong>, and Titan ships with a library of them for real fixtures, organised by manufacturer, model and <em>mode</em> (many fixtures can run in different modes using different numbers of channels).</dd>
 <dt>The Programmer</dt><dd>A temporary workspace, not a permanent one. When you select a fixture and change something — intensity, colour, position — that change lives in the Programmer until you either record it into a cue or press <strong>Clear</strong> to wipe it. Selecting a new fixture after making changes deselects the old one, but the changes you made stay in the Programmer until cleared. This trips up every beginner at least once: forgetting the Programmer is holding leftover values from an earlier fixture, and recording them into a cue by accident.</dd>
 <dt>Palettes</dt><dd>Saved, reusable settings — colour palettes, position palettes, and beam/gobo palettes are the three main types. Critically, a cue doesn't store a copy of the palette's values — it stores a <em>reference</em> to the palette. Change the palette later and every cue using it updates automatically. This is exactly why touring lighting rigs can be rebuilt fast in a new venue: reset the position palettes for the new room, and every cue that uses them follows along.</dd>
 <dt>Cues &amp; cue lists</dt><dd>A <strong>cue</strong> is one recorded look — a snapshot of fixture states, which can include fade-in and fade-out times and even movement. A <strong>cue list</strong> is a sequence of cues triggered in order, usually from a "Go" button on a playback fader — the lighting equivalent of your show file's scene recall (<a href="#s7-4">§7.4</a>), stepping through a show moment by moment.</dd>
 <dt>Grand Master &amp; playback faders</dt><dd>The <strong>Grand Master</strong> is a single fader controlling the overall intensity of everything the console is outputting — pull it down and the whole rig dims proportionally, regardless of what any individual cue says. It's often disabled by default on a new show specifically so a beginner doesn't get confused wondering why nothing's appearing on stage. Individual <strong>playback faders</strong> each run a cue list or a look, with their own Flash (momentarily add to the output) and Swop (solo this playback, suppress the others) buttons alongside them.</dd>
-</div>
+</dl>
 <h4>How to patch your first fixture</h4>
 <ol class="seq">
 <li>Open the <strong>Patch</strong> menu.</li>
@@ -3872,50 +3872,50 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s9-12"><h3><span class="n">9.12</span> Special effects — pyro, confetti &amp; haze</h3>
 <p>Not your department, but its effects land on your gear and its cues sit in your running order, so it's worth knowing the boundaries.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Who fires it</dt><dd>Always a licensed pyrotechnician or a specifically trained operator — never you, and never anyone without the qualification, whatever the time pressure. Confetti and CO2 cannons carry their own competence and risk-assessment requirements too, even though they're not explosive.</dd>
 <dt>Protecting your kit</dt><dd>Confetti and streamer residue gets into everything within its throw radius — open mic capsules, fader mechanisms, DI box connectors. Cover or relocate anything you can before a cannon fires nearby, and budget time afterwards to actually clean gear rather than packing it away dirty.</dd>
 <dt>Cueing</dt><dd>Pyro and confetti cues are usually fired from a dedicated, separate firing system, not your console — but the cue to fire it often comes from the same show-control chain as your own cues (<a href="#s8-4">§8.4</a>), so know where in the running order it happens even though you're not the one pressing the button.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>Never agree to fire, rig, or "just hold" a pyrotechnic device, however informally you're asked, and however confident the person asking sounds. It's licensed, regulated work with its own legal competence requirements — exactly the same boundary as <a href="#s13-2">§13.2</a> draws around electrical work.</p></div>
 </section>
 
 <section class="s" id="s9-13"><h3><span class="n">9.13</span> Video signals &amp; routing — the basics</h3>
 <p>Like Titan (<a href="#s9-8">§9.8</a>), this is real hands-on video knowledge rather than just "what to expect from the video department" — a second marketable skill built on signal-flow thinking you already have from audio.</p>
-<div class="kv">
+<dl class="kv">
 <dt>HDMI vs SDI</dt><dd>HDMI is the consumer/laptop connector — cheap, but the connector isn't locking and the reliable cable run is short (a few metres before signal integrity gets shaky). <strong>SDI</strong> (Serial Digital Interface) is the professional standard for a reason: a locking BNC connector, a single coax that runs hundreds of feet reliably, and — like Dante for audio — it's the one actually worth learning first if you're going to do this seriously.</dd>
 <dt>NDI</dt><dd>Video carried over a standard network switch instead of dedicated cable, the video equivalent of Dante (<a href="#s8-2">§8.2</a>) — same appeal (one network, many signals, no dedicated cable run per source), same caveat (it needs bandwidth and a network that's actually built for it, not just "plugged into the venue WiFi").</dd>
 <dt>Genlock &amp; sync</dt><dd>Multiple cameras or sources need to change frames at exactly the same instant, or switching between them produces a visible glitch — the video equivalent of word clock keeping digital audio devices sample-locked (<a href="#s2-9">§2.9</a>). A genlock generator (or one source acting as the sync reference) is what keeps everything switching cleanly.</dd>
 <dt>A video router / matrix</dt><dd>The video equivalent of a patch bay (<a href="#s3-9">§3.9</a>'s DI-box patching logic, scaled up) — any input can be routed to any output, so a camera feed can land on a screen, a recording device and a streaming encoder simultaneously without re-cabling.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s9-14"><h3><span class="n">9.14</span> Vision mixing &amp; switching</h3>
 <p>A vision mixer (switcher) is the video department's console — it takes several sources in and decides what the audience actually sees, live.</p>
-<div class="kv">
+<dl class="kv">
 <dt>PGM &amp; PVW</dt><dd>Program (PGM) is what's live, on screen, right now. Preview (PVW) is what's queued up to go next. Everything on a switcher exists to move a source from preview into program cleanly.</dd>
 <dt>Cut, mix &amp; wipe</dt><dd>A <strong>cut</strong> is instant, no transition. A <strong>mix</strong> (dissolve) crossfades between two sources over a set time — the video equivalent of a crossfader. A <strong>wipe</strong> reveals the new source with a moving edge. Live events lean heavily on cuts and simple mixes; elaborate wipes read as dated.</dd>
 <dt>Keying</dt><dd>Compositing one source over another — a <strong>chroma key</strong> (green screen) removes a specific colour to reveal what's behind it; a <strong>luma key</strong> uses brightness instead, common for overlaying titles or a presenter's slides.</dd>
 <dt>What to actually learn on</dt><dd>Blackmagic's ATEM range is the accessible, widely-used starting point in events and streaming — inexpensive, well documented, and common enough that fluency on it is a genuinely transferable skill, the video equivalent of learning Dante Certification before a specific desk brand.</dd>
-</div>
+</dl>
 <div class="note deep"><span class="lab">Go deeper</span><p><strong>IMAG</strong> (image magnification) — a camera feed of the stage projected onto screens so a back-of-room or large-venue audience can actually see the performer — is the video job you'll meet most often at a live event. You're unlikely to be the camera operator, but knowing the basics of framing (headroom, not centring a face awkwardly, avoiding the top of a mic stand clipping a shot) means you can competently step in for a static, single-camera IMAG shot if you're ever asked to.</p></div>
 </section>
 
 <section class="s" id="s9-15"><h3><span class="n">9.15</span> LED walls &amp; image processing</h3>
 <p>The video screens now on almost every corporate and touring stage are their own small technical world, built on the same "source, process, output" logic as an audio system.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Pixel pitch</dt><dd>The distance between individual LEDs, in millimetres — a smaller number means a sharper image at close range but costs more. The right pitch depends entirely on how close the nearest viewer will actually be, exactly like speaker coverage depends on room size (<a href="#s6-6">§6.6</a>).</dd>
 <dt>The processor</dt><dd>The video equivalent of a lighting desk driving fixtures (<a href="#s9-10">§9.10</a>) — it takes an input source and maps it correctly onto however the physical panels are actually arranged, including oddly-shaped or curved walls, and handles brightness calibration between panels so the wall doesn't look patchy.</dd>
 <dt>Content gotchas</dt><dd>Content built at the wrong resolution or aspect ratio for the actual wall is a constant, avoidable problem — the video version of a mix built quiet and played loud (<a href="#s16-7">§16.7</a>). Confirm the wall's real dimensions before content is finalised, not on the day.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s9-16"><h3><span class="n">9.16</span> Streaming &amp; recording — tools worth knowing</h3>
 <p><a href="#s14-6">§14.6</a> covers what changes about your audio job when a show streams. This is the software actually doing the streaming and recording on the video side.</p>
-<div class="kv">
+<dl class="kv">
 <dt>OBS Studio</dt><dd>Free, open-source, and the default starting point for streaming and screen/webinar-style recording — genuinely capable enough that plenty of small-to-mid events run on it rather than anything paid.</dd>
 <dt>vMix</dt><dd>Paid, more capable, more common on higher-end streaming and broadcast-adjacent events — a step up once a job's requirements outgrow OBS.</dd>
-</div>
+</dl>
 </section>
 
 </div></div>
@@ -3930,46 +3930,46 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s10-2"><h3><span class="n">10.2</span> Corporate AV</h3>
 <p>Conferences, AGMs, product launches, award dinners. High client visibility, low tolerance for anything visibly going wrong, and the audience is usually not there for the sound — it just needs to be invisible and correct.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Priorities</dt><dd>Speech intelligibility above everything. A slightly boring but flawless mix beats an exciting one with a single dropout.</dd>
 <dt>Typical sources</dt><dd>Lecterns, handheld/lav radio mics on presenters, laptop playback for VT and slides, panel discussions on multiple mics at once.</dd>
 <dt>What's different</dt><dd>Tight rehearsal time, strict running order, a producer or stage manager calling cues, and often a client watching you directly. Presentation and calm matter as much as technical skill.</dd>
 <dt>Common pitfalls</dt><dd>Presenters who wander off-axis from a lav mic, laptop audio nobody checked, and multiple panellists on live mics causing feedback or comb filtering if gains aren't managed.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Get every presenter mic'd and sound-checked before doors, including a moment of them actually talking at a normal volume — not just "check check". Nerves make people speak differently on the day than in rehearsal.</p></div>
 <div class="note deep"><span class="lab">Go deeper</span><p>A growing share of corporate work has a remote-participant element built in from the start — see <a href="#s10-8">§10.8</a> for hybrid meetings and video conferencing specifically.</p></div>
 </section>
 
 <section class="s" id="s10-3"><h3><span class="n">10.3</span> Live music &amp; touring</h3>
 <p>Bands and club shows. The audience is there specifically for the sound and the performance — expectations for impact and quality are high, and so is the pace. Festivals share everything here but add enough of their own (multiple stages, multiple contractors, hard licensing curfews) to get their own section — see <a href="#s10-10">§10.10</a>.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Priorities</dt><dd>Energy, impact, and a mix that serves the music. Perfect isn't always the goal — the right amount of excitement is.</dd>
 <dt>Typical sources</dt><dd>Full band inputs — drums, bass, guitars, backline, multiple vocals — often changing completely between acts on a multi-band bill.</dd>
 <dt>What's different</dt><dd>Fast changeovers (sometimes minutes between acts), visiting engineers who may want to run their own desk or bring their own show file, and a much more physical, high-tempo build.</dd>
 <dt>Common pitfalls</dt><dd>Under-running changeover time, not having a solid house patch that visiting engineers can drop into quickly, and stage volume from backline overwhelming the FOH mix.</dd>
-</div>
+</dl>
 <div class="note alt"><span class="lab">Also seen</span><p>On touring shows with their own engineer and system tech, your job shifts to advancing, translating local knowledge (venue quirks, power, load-in access) and supporting their show rather than mixing it yourself. Being genuinely useful in that support role gets you rebooked by touring companies just as much as mixing skill does.</p></div>
 </section>
 
 <section class="s" id="s10-4"><h3><span class="n">10.4</span> Theatre &amp; musicals</h3>
 <p>The most heavily documented, cue-based world you'll work in. Everything happens on a call, from a defined script, at a defined moment — audio design here is closer to a technical performance in itself than a live mix.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Priorities</dt><dd>Precision and repeatability. The show must sound the same on night 40 as night 1.</dd>
 <dt>Typical sources</dt><dd>Radio mics on performers (often a lot of them, with fast changeovers backstage), playback/sound effects cues, orchestra or band in a pit.</dd>
 <dt>What's different</dt><dd>Everything is cued — the Stage Manager calls "SQ42, go" and a sequence fires. A show file with every scene, every cue, painstakingly built and rehearsed. Radio mic changeovers between actors happen in the wings in seconds, silently, in the dark.</dd>
 <dt>Common pitfalls</dt><dd>Missing a cue, a radio mic pack not swapped in time for the next scene, wig/costume interference with a lav mic, and — as covered in <a href="#s1-4">§1.4</a> — anything audible once doors are open and the house is dark.</dd>
-</div>
+</dl>
 <div class="note deep"><span class="lab">Go deeper</span><p>If you want to move into theatre sound specifically, learning a cueing system like QLab or a theatre-standard console workflow, and understanding how a Deputy Stage Manager calls a show, is time very well spent. See <a href="#s18-13">§18.13</a>.</p></div>
 </section>
 
 <section class="s" id="s10-5"><h3><span class="n">10.5</span> Broadcast &amp; streaming</h3>
 <p>The audience isn't in the room — they're watching a screen, and the room's acoustics are irrelevant to what they hear. Different rules apply.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Priorities</dt><dd>A clean, consistent, correctly-leveled feed for the broadcast mix — not necessarily what sounds best in the room. Broadcast engineers often want a drier, more controlled sound than a PA mix.</dd>
 <dt>Typical sources</dt><dd>The same inputs as the live show, split or fed in parallel to a broadcast desk via a splitter or a Dante/AES67 feed, plus your own comms tying into theirs.</dd>
 <dt>What's different</dt><dd>Loudness standards (broadcasters commonly work to defined LUFS targets rather than dBFS peak), strict timing, and a whole extra layer of people — a broadcast sound supervisor — who need a split of your signal, usually via an isolated multicore split or digitally via <a href="#s9-3">§9.3</a>.</dd>
 <dt>Common pitfalls</dt><dd>Ground/earth issues introduced by an improperly isolated broadcast split, level mismatches between what sounds right in-room and what the broadcast desk wants, and forgetting the broadcast feed needs to keep working even if the PA doesn't.</dd>
-</div>
+</dl>
 <div class="note alt"><span class="lab">Also seen</span><p>A proper broadcast split uses an isolation transformer or a digitally isolated feed so a fault on the broadcast side (or a dodgy earth on their truck) can never affect your system, and vice versa. Never just parallel-wire an unbalanced feed off your desk for a broadcaster without isolating it.</p></div>
 </section>
 
@@ -3997,35 +3997,35 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s10-8"><h3><span class="n">10.8</span> Hybrid meetings &amp; video conferencing</h3>
 <p>Increasingly the default expectation on corporate work (<a href="#s10-2">§10.2</a>) rather than a special request — some or all of the audience is joining remotely, and the room audio has to work both ways: the room needs to hear the remote participants, and the remote participants need to hear the room cleanly.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Teams Rooms / Zoom Rooms</dt><dd>Purpose-built hardware and software combinations (a small PC or appliance, a camera, a DSP-based audio bar or a ceiling mic array) certified to run Microsoft Teams or Zoom natively in a room. Increasingly what you'll find already installed in a client's own conference rooms rather than being asked to build from scratch.</dd>
 <dt>USB audio</dt><dd>The most common way your own desk or a room's DSP hands off to a laptop running the call — a USB audio interface or a room's built-in USB output appears to the laptop as a standard microphone and speaker, no drivers or special software needed on the laptop end.</dd>
 <dt>Acoustic echo cancellation (AEC)</dt><dd>The processing that stops the remote participants hearing their own voice come back a moment later through the room's speakers and back into the room mic. Built into proper conferencing DSPs and soundbars; a bare laptop mic and a room PA are a recipe for exactly this problem.</dd>
 <dt>What's actually yours to check</dt><dd>Confirm the remote feed can actually hear the room at a sensible level (not just that the room can hear them), confirm there's no echo or feedback loop before the call starts, and know where the mute button is for both directions. A silent remote participant nobody can hear is a very common, very avoidable failure.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>Never feed a live room mic straight into a laptop's built-in mic input alongside PA playback without checking for echo first — it's the single most common cause of a hybrid meeting becoming unusable, and it's completely preventable with five minutes of testing before anyone's watching.</p></div>
 </section>
 
 <section class="s" id="s10-9"><h3><span class="n">10.9</span> Private parties, weddings &amp; smaller functions</h3>
 <p>A very common way into paid audio work, and a genuinely different context from anything else in this part: no producer, no stage manager, and often nobody on site who's ever worked with a sound crew before.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Priorities</dt><dd>Reliability and reading the room over technical ambition. A background music level that creeps up through the evening without anyone checking is a far more common complaint than anything technically wrong.</dd>
 <dt>Typical sources</dt><dd>A speech mic or two (best man, father of the bride), background/DJ playback, sometimes a small live act for a set. Often your own compact PA and desk rather than a big hired system.</dd>
 <dt>What's different</dt><dd>You're frequently the only production person on site, dealing directly with the client or a wedding/event planner rather than a crew chief — decisions that would normally go up a chain land on you directly. There's usually no RAMS culture, no formal running order, and timings move constantly as the event runs long or short.</dd>
 <dt>Common pitfalls</dt><dd>A curfew that's genuinely a licensing condition of a residential venue, not just a courtesy (<a href="#s1-5">§1.5</a>) — going over it can cost the client their licence for future events, not just annoy a neighbour. Also: an unbriefed guest asking to "just say a few words" on a live mic, and background music left running unattended and creeping louder.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Agree who has authority to change the plan — timings, volume, what's played — before the event starts, and get it in writing if you can (an email is enough). Without a producer in the room, "the client" can mean four different family members with four different opinions by 9pm.</p></div>
 </section>
 
 <section class="s" id="s10-10"><h3><span class="n">10.10</span> Festivals</h3>
 <p>Touring and festival work share a lot of DNA — fast changeovers, visiting engineers, physical builds — but a festival adds problems a single-stage tour date doesn't have: several stages running near-simultaneously, several different companies and crews sharing one site, and an audience moving freely between all of it.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Stage bleed</dt><dd>Two or more stages close enough that one's low end or monitor wash carries into another's mix position or FOH. Rarely fixable by you alone — staggered set times and physical layout are decided long before you arrive — but worth knowing about before you troubleshoot a "muddy" mix that's actually the next stage's bass bleeding in.</dd>
 <dt>Changeover choreography</dt><dd>Multiple acts, often with their own techs and riders, moving through one stage on a tight schedule — sometimes minutes, not the hour-plus of a single touring show (<a href="#s10-3">§10.3</a>). A pre-built patch that doesn't need reworking for each act, and a clear runner/changeover system, matters more here than almost anywhere else.</dd>
 <dt>Multiple contractors, one site</dt><dd>Audio, lighting, staging, security, welfare and site power are usually different companies entirely, coordinated by a production manager rather than any one of them. Shared cable routes, shared generators and shared load-in windows mean the department coordination habits in <a href="#p9">Part 9</a> matter constantly, not occasionally.</dd>
 <dt>Weather &amp; site conditions</dt><dd>Often fully or partially outdoors for the whole run, with mud, rain covers and generator-only power (<a href="#s6-14">§6.14</a> · <a href="#s9-6">§9.6</a>) as the default rather than the exception.</dd>
 <dt>Noise &amp; curfew conditions</dt><dd>Frequently governed by a licence with noise monitored at specific off-site points, not just an on-site SPL target — see the Safety Advisory Group and noise-condition material in <a href="#s6-10">§6.10</a>. A festival curfew is very often a hard legal deadline, not a guideline.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>On your first festival, spend the first hour learning the site as much as the stage: where your stage sits relative to others, where the generator and fuel point are, where the nearest production office and medical point are, and who your stage manager and production manager actually are. You'll need all of it before the day is out.</p></div>
 </section>
 
@@ -4052,10 +4052,10 @@ EARS            the only part of the system that actually matters</div>
 <div class="col">
 
 <section class="s" id="s11-1"><h3><span class="n">11.1</span> System check vs line check — the difference</h3>
-<div class="kv">
+<dl class="kv">
 <dt>System check</dt><dd>Proving the PA itself works — every box making sound, correct polarity, sensible level, no buzzes or rattles. Usually the systems tech's job, done before anyone's plugged an input in. Covered from the speaker end in <a href="#s6-8">§6.8</a>.</dd>
 <dt>Line check</dt><dd>Proving every <em>input</em> — every mic, DI and line source — arrives cleanly at the console, on the correct channel, with sensible gain. This is very often your job, and it's what this part is mostly about.</dd>
-</div>
+</dl>
 <p>Do the system check first. There's no point proving forty inputs sound correct through a PA you haven't confirmed is working. When there's no systems tech and the system check is yours, <a href="#s11-9">§11.9</a> is the full test.</p>
 </section>
 
@@ -4215,7 +4215,7 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s12-1"><h3><span class="n">12.1</span> The method</h3>
 <p>Back in <a href="#s2-1">§2.1</a>: every fault is the same question — <em>where along the chain did the signal stop, or start sounding wrong?</em> The method is <strong>divide and conquer</strong>: pick a point roughly in the middle of the suspect chain, check if the signal is correct there, and that tells you which half the fault is in. Repeat inside that half. Each check should eliminate roughly half of what's left.</p>
-<div class="flow">Mic → Cable → Stagebox → Snake/network → Console input → Processing → Output patch → Amp → Speaker
+<div class="flow" tabindex="0" role="region" aria-label="Signal flow">Mic → Cable → Stagebox → Snake/network → Console input → Processing → Output patch → Amp → Speaker
                               ↑
                     "Is it good HERE?" — splits the chain in two, repeat inside the faulty half</div>
 <div class="note std"><span class="lab">Standard</span><p>Say what you're testing and why, even just to yourself: "if I get signal at the stagebox, the fault's in the console or beyond; if I don't, it's the mic or the cable." Fault-finding out loud, even alone, keeps you from randomly retrying the same thing.</p></div>
@@ -4223,13 +4223,13 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s12-2"><h3><span class="n">12.2</span> The universal fault-finding kit</h3>
 <p>Half of fault-finding is having the right five things in your pocket so you can test without walking back to the truck.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Known-good cable</dt><dd>A short XLR you trust completely. Swap it in — if the fault follows the cable, it was the cable.</dd>
 <dt>Known-good mic or DI</dt><dd>Same logic at the source end.</dd>
 <dt>Headphones</dt><dd>To listen at intermediate points in the chain without needing the PA or a whole channel of the desk.</dd>
 <dt>Multimeter</dt><dd>Continuity testing on a cable in seconds — beats guessing by ear every time. <a href="#s12-4">§12.4</a>.</dd>
 <dt>Torch, small screwdriver set, gaffer tape, spare fuses, cable ties</dt><dd>The unglamorous stuff that solves 80% of physical faults. Tickable version of the whole personal bag at <a href="#s19-17">§19.17</a>.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s12-3"><h3><span class="n">12.3</span> Ground loops &amp; hum — the practical fix</h3>
@@ -4245,10 +4245,10 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s12-4"><h3><span class="n">12.4</span> Substitution &amp; isolation</h3>
 <p>The two techniques that solve almost everything:</p>
-<div class="kv">
+<dl class="kv">
 <dt>Substitution</dt><dd>Swap the suspect part for one you know is good. If the fault goes away, the swapped part was faulty (or was fine, and something downstream changed — check both).</dd>
 <dt>Isolation</dt><dd>Remove everything from the chain except the minimum needed to test one link — a mic straight into a known-good channel on a different console, bypassing everything else, to prove the mic itself works.</dd>
-</div>
+</dl>
 <p>A multimeter earns its place here: continuity mode (usually a beep) confirms a cable's cores are connected end to end and not shorted to each other or the shield — the fastest way to clear or confirm a suspect cable without needing a whole signal chain to test it in.</p>
 </section>
 
@@ -4376,10 +4376,10 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s12-15"><h3><span class="n">12.15</span> Power &amp; electrical faults — what's yours to check</h3>
 <p>This is the one category where the boundary matters as much as the diagnosis. As a non-electrician, there's a real, useful amount you can safely check — and a clear line past which the answer is always "get someone qualified", not "have a go".</p>
-<div class="kv">
+<dl class="kv">
 <dt>Safe to check yourself</dt><dd>Is the socket/distro actually switched on. Is a fuse or breaker tripped, and if so, does it trip again immediately on reset (if it does, stop — that's a real fault, not a nuisance trip). Is a cable visibly damaged. Is a device actually plugged in properly. Is the right circuit/phase being used.</dd>
 <dt>Not yours to open up or bypass</dt><dd>Anything inside a distro, a suspect mains lead you're tempted to "just tape up", a breaker that keeps re-tripping, any earth-related fault. This is exactly the boundary <a href="#s13-2">§13.2</a> and <a href="#s3-8">§3.8</a> describe — competence and the law both stop at the same point.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>A breaker or RCD that trips repeatedly is protecting someone from something real. Don't reset it more than once without investigating what caused it, and never defeat a protective device to "get through the show" — that's the exact scenario the Electricity at Work Regulations exist to prevent (<a href="#s13-2">§13.2</a>).</p></div>
 </section>
 
@@ -4457,10 +4457,10 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s13-3"><h3><span class="n">13.3</span> LOLER, PUWER &amp; Working at Height</h3>
 <p>Any motor, chain hoist, shackle, sling or spreader beam you use to lift anything is "lifting equipment" under <strong>LOLER</strong>, and needs a periodic thorough examination by a competent person, documented, before it's used.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Lifting accessories (slings, shackles, hooks) &amp; anything lifting people</dt><dd>Thorough examination every <strong>6 months</strong>.</dd>
 <dt>Lifting machines used only for goods (most chain motors, hoists)</dt><dd>Thorough examination every <strong>12 months</strong>, unless a written examination scheme specifies otherwise.</dd>
-</div>
+</dl>
 <p><strong>PUWER</strong> is the broader regulation covering all work equipment, not just lifting gear — it's why a company drill, a pallet truck or a table saw in the warehouse has to be suitable for the job, properly maintained, and only used by someone trained on it.</p>
 <div class="note std"><span class="lab">Standard</span><p>Never use a motor, chain, sling or shackle whose inspection tag is missing or out of date, and never improvise a lifting accessory from something not rated for the job (a length of rope instead of a proper sling, for instance). This one's non-negotiable — it's the regulation that exists because gravity doesn't negotiate either.</p></div>
 <p><strong>The Working at Height Regulations 2005</strong> are the separate duty covering the person, not the equipment — anywhere a fall could cause injury, from a step ladder patching a stagebox to a MEWP flying a PA. The core requirement is straightforward: avoid work at height where reasonably practicable, use the right equipment (proper access rather than an improvised stack of cases), and make sure anyone working at height is trained and competent for the specific task and equipment involved.</p>
@@ -4479,11 +4479,11 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s13-5"><h3><span class="n">13.5</span> Noise at Work — protecting your own hearing</h3>
 <p>This is the regulation about <em>your</em> safety, not the audience's. Long-term exposure to loud sound damages hearing permanently and cumulatively — the risk you're managing here is a career-length one, not a single-show one.</p>
-<div class="kv">
+<dl class="kv">
 <dt>80 dB(A) — lower exposure action value</dt><dd>Employer must assess risk and provide information, training and (on request) hearing protection.</dd>
 <dt>85 dB(A) — upper exposure action value</dt><dd>Employer must provide hearing protection and mark out hearing protection zones.</dd>
 <dt>87 dB(A) — exposure limit value</dt><dd>The absolute ceiling, accounting for any protection worn. Must never be exceeded.</dd>
-</div>
+</dl>
 <p>The regulations also set <strong>peak</strong> sound-pressure values for sudden loud bangs: 135 dB(C) lower action, 137 dB(C) upper action, 140 dB(C) limit. These daily figures are averaged exposure values over a working day, not instantaneous levels — a loud band soundcheck plus a loud show plus loud monitors easily adds up to a daily average well past 85 dB(A), even if no single moment felt dangerous.</p>
 <div class="note std"><span class="lab">Standard</span><p>Wear hearing protection during system tuning, soundcheck and load-in tool use as a matter of routine — musicians' earplugs (flat attenuation, doesn't dull the tone) are cheap and worth having a set of in your bag permanently. Protecting your hearing at 22 is what lets you still do this job at 55. Mixing loud all afternoon also drifts your judgement, not just your hearing — <a href="#s16-7">§16.7</a>.</p></div>
 <div class="note deep"><span class="lab">Current source</span><p>The figures above are from the UK Control of Noise at Work Regulations. The official <a href="https://www.hse.gov.uk/noise/regulations.htm" target="_blank" rel="noopener">HSE noise guidance</a> confirms the 80 dB(A) lower action value, 85 dB(A) upper action value and 87 dB(A) exposure limit. If your regular work is loud, ask the employer about risk assessment, protection and hearing checks rather than trying to judge exposure by ear.</p></div>
@@ -4496,10 +4496,10 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s13-7"><h3><span class="n">13.7</span> RAMS — reading and writing one</h3>
 <p><strong>Risk Assessment &amp; Method Statement.</strong> The risk assessment identifies what could go wrong and how likely/severe it is; the method statement describes how the work will actually be done to control that risk. Together they're the standard safety paperwork for any event task with meaningful risk — rigging, working at height, electrical builds.</p>
-<div class="kv">
+<dl class="kv">
 <dt>As a reader</dt><dd>You'll be handed RAMS for tasks you're doing and asked to confirm you've read and understood them, sometimes with a signature. Actually read them — they're specific to that site and that task, not generic boilerplate, even when they look similar week to week.</dd>
 <dt>As a (junior) writer</dt><dd>Early on you're unlikely to be writing RAMS solo, but you'll contribute to them — flagging a hazard, describing how you'll actually do a task. Be specific: "two-person lift, case weighs approximately 40 kg, route checked clear" is useful; "be careful" is not.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s13-8"><h3><span class="n">13.8</span> PAT testing in practice</h3>
@@ -4509,12 +4509,12 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s13-9"><h3><span class="n">13.9</span> Long days — working in a way you can keep doing</h3>
 <p>Everything else in this part protects you from the kit. This one protects you from the schedule. Twelve- and fourteen-hour days, early starts after late finishes, irregular weeks and a culture that quietly rewards never complaining are ordinary in this industry, and they cause far more harm across a career than any single piece of equipment. <a href="#s13-5">§13.5</a> is about not losing your hearing by 55; this is about still wanting to do the job at 55. <a href="#s13-15">§13.15</a> covers what the law actually entitles you to underneath all of this, if you want the detail.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Fatigue</dt><dd>It is a safety issue, not a character issue. Tired people misjudge lifts, mis-patch outputs and walk under loads. If you are too tired to do something safely — a lift, a ladder, a long drive — saying so is the professional response, not the weak one. Nobody sensible has ever been sacked for that; people have been badly hurt for not saying it.</dd>
 <dt>The drive home</dt><dd>Usually the most dangerous part of the day. The genuinely serious risk in live events is not the show, it's a 1am motorway drive after a fourteen-hour day. Plan the journey home as part of the job: share driving, take the break, or say up front that you need accommodation rather than discovering at midnight that you can't safely drive. Microsleeps do not announce themselves.</dd>
 <dt>Eat and drink</dt><dd>Do it on purpose. Covered as etiquette in <a href="#s1-6">§1.6</a>, but it's a safety point too. Dehydration and skipped meals show up as poor decisions and short temper long before you notice them as hunger. Water in your bag (<a href="#s19-17">§19.17</a>), and eat when catering is open rather than when you feel like it.</dd>
 <dt>Irregular work</dt><dd>It carries its own load. Freelance and casual work adds uncertainty — not knowing next month's diary, saying yes to everything in case the phone stops ringing, no sick pay. That's a real and well-recognised pressure in this industry, not a personal failing, and it's worth naming rather than absorbing quietly.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Learn to say the useful version of no: <em>"I can do the derig, but I'm not driving after it"</em>, or <em>"I've been on since six — can someone else take the ladder?"</em> It's specific, it offers a solution, and it's much easier to hear than a flat refusal. Crew chiefs would far rather rearrange a job than fill in an accident report.</p></div>
 <div class="note alt"><span class="lab">Also seen</span><p>The UK live-events industry has its own support organisations, which is worth knowing before you need them rather than after. <strong>Music Support</strong> works with people in music and live events on mental health and addiction; <strong>Backup — the Technical Entertainment Charity</strong> gives financial help to technical professionals hit by illness, injury or hardship; and <strong>Stagehand</strong> is the welfare charity attached to the PSA (<a href="#s17-4">§17.4</a>). Contact details and eligibility change, so look up their current pages rather than trusting a number printed anywhere — including here.</p></div>
 <div class="note warn"><span class="lab">Watch it</span><p>Alcohol is unusually available in this line of work — bars, riders, wrap drinks, and a strong tradition of decompressing after a show. That's fine for plenty of people and genuinely isn't for others, particularly alongside irregular hours and stress. If it ever stops feeling like a choice, the organisations above exist precisely for that and talk to people in this industry every day.</p></div>
@@ -4522,22 +4522,22 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s13-10"><h3><span class="n">13.10</span> Site induction, fire &amp; emergency basics</h3>
 <p>Every site should give you a proper induction before you start working — even a five-minute one on a small job. If nobody offers one, ask; it's a completely normal question, not an awkward one.</p>
-<div class="kv">
+<dl class="kv">
 <dt>What a decent induction covers</dt><dd>Where the fire exits and assembly point are, who the site's fire marshal/first aider is, what to do if the fire alarm goes (stop work, leave by the nearest exit, don't go back for kit), and any site-specific hazards (a pit, a raised stage edge, restricted areas).</dd>
 <dt>Keep it clear as you work</dt><dd>Never stack cases, run cable or park a flightcase across a fire exit or in front of an extinguisher, even "just for five minutes" during a fast changeover.</dd>
 <dt>Who's actually responsible</dt><dd>Fire safety at the venue is legally the "responsible person"'s job — usually the venue or the event organiser, not you — but everyone on site still needs to know where to go if the alarm sounds, and you're expected to follow their evacuation procedure without waiting to be told twice.</dd>
-</div>
+</dl>
 <div class="note deep"><span class="lab">Go deeper</span><p>Fire safety in non-domestic premises in England and Wales sits under the Regulatory Reform (Fire Safety) Order 2005; Scotland and Northern Ireland have their own separate legislation. The detail varies by nation and by venue, so treat this as "know the site's actual procedure", not as a number to memorise from here.</p></div>
 </section>
 
 <section class="s" id="s13-11"><h3><span class="n">13.11</span> PPE — what's actually expected of you</h3>
 <p>Personal protective equipment in this job is mostly unglamorous and mostly non-negotiable once a site asks for it. None of this is new if you've read this book cover to cover — it's gathered here as the one place to check what you actually need before you turn up.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Footwear</dt><dd>Steel-toe (safety) boots for load-in, build and de-rig on most sites — a dropped case or a rolled flightcase wheel is a genuinely common injury. Confirm with whoever's booking you whether a site requires them (<a href="#s1-6">§1.6</a>).</dd>
 <dt>Hi-vis</dt><dd>Standard for load-in and de-rig, especially anywhere vehicles are moving. Comes off once doors open and the show look matters (<a href="#s1-6">§1.6</a>).</dd>
 <dt>Hearing protection</dt><dd>Yours to bring, not usually issued — see <a href="#s13-5">§13.5</a> for why it matters and what to actually use.</dd>
 <dt>Gloves</dt><dd>Worth having for cable and case handling — protects against splinters, pinch points and sharp rack ears, and gives you a better grip on a wet loading bay ramp. Not usually mandatory, but cheap insurance.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>If a site tells you PPE is required for a task, that's not a suggestion. If you don't have something a site requires, say so before you start rather than working without it.</p></div>
 <div class="note std"><span class="lab">Your rights</span><p>Since 6 April 2022 the PPE at Work Regulations cover <strong>workers</strong> as well as employees — so if you're casual crew rather than genuinely self-employed, PPE the job requires (boots for a site that demands them, hearing protection in a loud zone) must be provided free by whoever engages you, not bought by you. Genuinely self-employed freelancers provide their own.</p></div>
 <div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>HSE, Personal Protective Equipment at Work (Amendment) Regulations 2022 guidance.</p></div>
@@ -4555,31 +4555,31 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s13-13"><h3><span class="n">13.13</span> RIDDOR — reporting accidents and near-misses</h3>
 <p>The Reporting of Injuries, Diseases and Dangerous Occurrences Regulations 2013 is the law behind why an accident or a near-miss on site gets written down and, sometimes, reported to the HSE. The duty to actually report sits with the employer or the venue's "responsible person," not with you — but you're often the one who saw it happen, so knowing it matters is your part of the job.</p>
-<div class="kv">
+<dl class="kv">
 <dt>What's reportable</dt><dd>Broadly: deaths, specified serious injuries, any injury that puts someone off normal work for more than seven days, and "dangerous occurrences" — incidents that could easily have caused serious harm even if nobody was actually hurt (a dropped case from height, a partial rig failure, an electric shock). Deciding exactly what qualifies is not your call to make.</dd>
 <dt>Your actual job</dt><dd>Make the area safe, get help if needed, and tell your supervisor or the venue's responsible person what happened — including near-misses, not just injuries. A "nothing happened in the end" near-miss (a case that nearly fell, a cable that nearly got someone) is exactly the kind of thing this system exists to catch before it happens again with worse luck.</dd>
 <dt>Write it down</dt><dd>Time, what happened, what you saw, what was done immediately after. Your own factual note protects you as much as anyone else if it's ever followed up later.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>Never decide for yourself that something "wasn't serious enough to mention." Report it up and let the people whose job it is to judge reportability make that call — it costs you nothing, and staying quiet about a near-miss is how the same thing happens again to someone less lucky.</p></div>
 </section>
 
 <section class="s" id="s13-14"><h3><span class="n">13.14</span> COSHH — hazardous substances on site</h3>
 <p>The Control of Substances Hazardous to Health Regulations 2002 cover anything that could harm you through breathing it in, touching it or swallowing it — which, on an event site, includes things you might not immediately think of as chemicals: haze and fog fluid, cleaning solvents, battery contents, and confetti or pyrotechnic residue.</p>
-<div class="kv">
+<dl class="kv">
 <dt>The employer's duty</dt><dd>Assess the risk of any hazardous substance in use and control it — proper ventilation for haze, the right PPE, safe storage. Again, not a decision you're expected to make alone.</dd>
 <dt>Your actual job</dt><dd>Before handling anything you don't recognise — a cleaning product, a fluid, a canister — check it has a safety data sheet and that you know what it is. Never mix cleaning products (some combinations release genuinely dangerous gases). Ventilate a haze/fog-filled space properly before extended time working in it, and treat spent pyro/confetti debris as something to clear up with gloves, not bare hands.</dd>
-</div>
+</dl>
 <div class="note alt"><span class="lab">Also seen</span><p>Haze and fog machines are covered by COSHH like anything else, but the specific competence and risk-assessment requirements for who's allowed to fire pyro or confetti sit separately with the licensed operator (<a href="#s9-12">§9.12</a>) — COSHH is about the substance itself, not who's authorised to deploy it.</p></div>
 </section>
 
 <section class="s" id="s13-15"><h3><span class="n">13.15</span> Working Time Regulations — your legal hours entitlement</h3>
 <p><a href="#s13-9">§13.9</a> covers handling long days as they come at you; this is what the law actually entitles you to underneath that, whether or not any single job feels like it.</p>
-<div class="kv">
+<dl class="kv">
 <dt>The 48-hour week</dt><dd>The baseline limit is an average of 48 hours a week, averaged over 17 weeks — not a hard cap on any single week, which is exactly why a run of 14-hour build days is legal provided it evens out.</dd>
 <dt>The opt-out</dt><dd>Almost every event and entertainment employer asks new starters to sign a voluntary opt-out from the 48-hour limit, precisely because show days routinely exceed it. Signing it is normal in this industry and not, on its own, something to worry about — but know that it must be voluntary and in writing (best kept separate from your main contract), and that you can cancel it — with 7 days' notice, or longer if your opt-out says so, up to a maximum of 3 months.</dd>
 <dt>Daily &amp; weekly rest</dt><dd>Separately from the 48-hour limit: you're entitled to 11 consecutive hours' rest in any 24-hour period, and 24 hours' uninterrupted rest in any 7 days (or 48 hours in any 14). A very early get-in after a very late derig is exactly the situation where this gets squeezed — worth knowing it's there, even on a job where asking for it isn't realistic.</dd>
 <dt>Rest breaks</dt><dd>A 20-minute uninterrupted break if you work more than 6 hours in a day. In practice this usually means "eat something properly," not a formal announced break — but it's a legal entitlement, not a favour.</dd>
-</div>
+</dl>
 <div class="note alt"><span class="lab">Also seen</span><p>None of this is about refusing a long day — the industry runs on them, and <a href="#s13-9">§13.9</a>'s advice on managing that stands. This section exists so you know the actual floor underneath the culture, not to suggest you should be citing regulations on a get-in.</p></div>
 <dl class="glossary">
 <div><dt>Holiday</dt><dd>5.6 weeks' paid holiday a year (28 days for a five-day week), pro rata. Casual and irregular-hours crew build it up at <strong>12.07% of hours worked</strong>; employers may instead pay it "rolled up" as an extra 12.07% on each payslip, which should be shown separately.</dd></div>
@@ -4629,11 +4629,11 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s14-2"><h3><span class="n">14.2</span> Multitrack recording from the desk</h3>
 <p>Most digital consoles can record every channel to an internal or attached drive, independent of the live mix — the fader positions you're mixing with don't affect what gets recorded, because the recording happens pre-fader, at the gained-up signal.</p>
-<div class="kv">
+<dl class="kv">
 <dt>What to check first</dt><dd>Drive formatted correctly for the console, enough free space for the set length at the console's sample rate/bit depth, and a test recording actually played back before doors — a red record light isn't proof of a good file.</dd>
 <dt>Naming &amp; organisation</dt><dd>Console projects/sessions named clearly by date and event, not left as the default. Someone will need to find this file in six months.</dd>
 <dt>Gain staging for recording</dt><dd>The same <a href="#s2-5">§2.5</a> rules apply, but there's no fader to save you after the fact if the input gain was wrong — a clipped multitrack recording is permanently clipped, however good the live mix sounded.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>Confirm the recording actually started and is actually receiving audio — not just that the console says "recording". A drive that failed to mount, or a session that didn't arm properly, fails silently on plenty of desks. Check levels are moving on the recording meters a few minutes in, not just at the start.</p></div>
 </section>
 
@@ -4686,11 +4686,11 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s14-9"><h3><span class="n">14.9</span> Simple stand-alone recordings</h3>
 <p>Not every recording request is a full multitrack off a big digital console — plenty are much smaller: a two-mic podcast recording, a single-camera interview needing clean audio, a small meeting room capture. Worth knowing this world exists as its own smaller category rather than assuming every recording ask needs the full <a href="#s14-2">§14.2</a> treatment.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Typical setup</dt><dd>A small audio interface (Focusrite Scarlett and similar are the common cheap standard) feeding a laptop running a DAW or dedicated recording software, or a standalone field recorder (Zoom, Tascam) for something fully portable.</dd>
 <dt>What still applies</dt><dd>Every fundamental from earlier in the book — gain staging (<a href="#s2-5">§2.5</a>), phantom power for a condenser mic (<a href="#s2-6">§2.6</a>), a proper test before the real take. Small setups fail for exactly the same reasons big ones do.</dd>
 <dt>What's different</dt><dd>Usually far less redundancy — one mic, one cable, no spare channel to fall back on if something's wrong. Check everything twice before a take you can't easily redo, especially an interview that won't happen again.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s14-10"><h3><span class="n">14.10</span> Backing up &amp; handing over recordings</h3>
@@ -4704,11 +4704,11 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s14-11"><h3><span class="n">14.11</span> Rights, consent &amp; who's actually allowed to record</h3>
 <p>Being technically capable of recording or streaming a show isn't the same as being allowed to. This sits above your pay grade to resolve, but it's worth being aware of so you flag it rather than assume someone else already has.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Performer consent</dt><dd>Artists and their management usually need to agree to being recorded, streamed or archived — sometimes it's in the contract rider, sometimes it isn't and needs asking. Don't assume "we're recording tonight" has automatically been cleared with the act.</dd>
 <dt>Music licensing</dt><dd>Recording or streaming copyrighted music (a covers band, a DJ set) can need separate permission from the performance licence a venue already holds — PRS for Music and PPL cover public performance, but recording, streaming and later distribution are often a different licensing question entirely.</dd>
 <dt>Audience</dt><dd>A stream or broadcast that shows the crowd is capturing identifiable people, which has its own privacy considerations — most events handle this with signage or terms at the door, arranged by the organiser, not by you.</dd>
-</div>
+</dl>
 <div class="note deep"><span class="lab">Go deeper</span><p>None of this is something to solve yourself on the day — if you're ever asked to record or stream something and nobody's mentioned rights or consent at all, it's a reasonable question to raise at the advance stage (<a href="#s1-7">§1.7</a>) rather than something to assume is already handled.</p></div>
 </section>
 
@@ -4723,12 +4723,12 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s14-13"><h3><span class="n">14.13</span> Preparing files before handoff</h3>
 <p><a href="#s14-10">§14.10</a> covers getting the recording safely off site and to the right person; this is about what actually makes those files usable once they land, rather than just present.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Trim the dead air</dt><dd>If you started recording well before doors and stopped well after (sensibly, per <a href="#s14-7">§14.7</a>), the recipient doesn't want twenty minutes of silence at the head and tail of every file. Trim it, or at minimum tell them where the useful audio actually starts.</dd>
 <dt>Leave the levels alone</dt><dd>Don't normalise, compress or otherwise process the handed-over files "to make them sound better" unless you've been specifically asked to mix them. Someone downstream may want the raw signal — processing it first just removes options you don't know they need.</dd>
 <dt>Note what went wrong, with a timestamp</dt><dd>A dropped channel at 9:47, a clipped input on song four, a late start — write it down against the actual file, not from memory a week later when someone asks why track 12 is silent for two minutes.</dd>
 <dt>Check the names travel with the files</dt><dd>Track/channel names set at the desk (<a href="#s7-4">§7.4</a>) don't always survive an export to plain WAV files — confirm the exported filenames are still readable as channel names, not just "Track_001.wav", before you hand them over.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s14-14"><h3><span class="n">14.14</span> Stream audio — a quick start</h3>
@@ -4755,7 +4755,7 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s15-2"><h3><span class="n">15.2</span> Wedges vs IEMs</h3>
 <div class="tw"><table>
-<thead><tr><th></th><th>Wedges (floor monitors)</th><th>IEMs (in-ear monitors)</th></tr></thead>
+<thead><tr><th><span class="sr-only">Item</span></th><th>Wedges (floor monitors)</th><th>IEMs (in-ear monitors)</th></tr></thead>
 <tbody>
 <tr><td>Stage volume</td><td>Adds to overall stage noise, heard by everyone nearby</td><td>Private to the performer — much quieter stage overall</td></tr>
 <tr><td>Feedback risk</td><td>Real — a mic pointed near its own wedge rings easily</td><td>None — sealed in-ear, no acoustic path back to the mic</td></tr>
@@ -4826,11 +4826,11 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s15-10"><h3><span class="n">15.10</span> Click tracks &amp; drummer cues</h3>
 <p>Many modern acts play to a click (a metronome track in the drummer's, sometimes the whole band's, IEMs), often alongside backing tracks or programmed elements that need to stay locked to the live band.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Click source</dt><dd>Usually generated by playback software (<a href="#s8-4">§8.4</a>) or a dedicated click/track player, fed as its own channel straight into the drummer's (and sometimes other performers') IEM mix — never through the PA, where the audience would hear it.</dd>
 <dt>Why it matters to you</dt><dd>If a click drops out or falls out of time, the whole band notices immediately and the show visibly wobbles. Treat the click feed with the same care as a lead vocal — check it in line check, know where it comes from, and know how to get it back fast if it fails.</dd>
 <dt>Common request</dt><dd>"More click" or "less click" from the drummer specifically — a fast, simple level request, not usually a fault. Learn to tell the difference between that and a genuine dropout (<a href="#s12-12">§12.12</a>).</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s15-11"><h3><span class="n">15.11</span> Building a wedge mix — start to finish</h3>
@@ -4848,10 +4848,10 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s15-12"><h3><span class="n">15.12</span> Custom vs universal-fit earpieces</h3>
 <p>The IEM mix you build is only as good as the earpiece delivering it — worth knowing the difference exists, even though it's the performer's choice and cost, not yours.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Universal-fit</dt><dd>Generic earpieces with interchangeable foam or silicone tips. Cheap, replaceable on the day, but seal (and therefore isolation and low-end) varies a lot by ear and by tip size.</dd>
 <dt>Custom-moulded</dt><dd>Made from an impression of the performer's own ear canal. Better seal, better isolation, more consistent bass response, and generally more comfortable for a long set — but expensive, slow to replace if lost or damaged, and useless to anyone else.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>Never hand a used universal foam/silicone tip to a different performer without a fresh tip fitted — sharing eartips between people is a genuine hygiene issue, not just an etiquette one.</p></div>
 </section>
 
@@ -4876,10 +4876,10 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s16-1"><h3><span class="n">16.1</span> Subtractive vs additive EQ</h3>
 <p>Two philosophies, both correct in different moments.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Subtractive</dt><dd>Cut what's wrong rather than boost what's missing. Find a harsh, boxy or muddy frequency and pull it down. Generally the safer, more transparent default — cuts rarely sound "processed" the way boosts can.</dd>
 <dt>Additive</dt><dd>Boost a frequency to bring out a wanted character — air on a vocal, punch on a kick. Useful and often necessary, but easier to overdo, and every boost eats into your headroom (<a href="#s2-5">§2.5</a>).</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>A reasonable default sequence: sweep a narrow boost across the spectrum to find problem frequencies, cut those, then use gentle, wide boosts if something still needs character on top. Cut narrow, boost wide is a decent rule of thumb.</p></div>
 </section>
 
@@ -4900,34 +4900,34 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s16-3"><h3><span class="n">16.3</span> Gates &amp; expanders in practice</h3>
 <p>A gate mutes a channel below a threshold; an expander turns it down more gently rather than cutting it off entirely — a softer version of the same idea. Live, the classic use is drum bleed: a snare mic picks up the whole kit, and a gate keyed to open only when the snare itself hits keeps the channel clean between hits.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Threshold</dt><dd>The level below which the gate closes. Set too high and it chops the start of quiet hits; too low and it doesn't help with bleed at all.</dd>
 <dt>Attack</dt><dd>How fast it opens once triggered. Too slow and you lose the transient — the "click" of the hit.</dd>
 <dt>Hold &amp; release</dt><dd>How long it stays open and how it fades closed. Too short and it chatters or cuts a note off unnaturally; too long and the bleed it was meant to remove comes back through.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>An aggressively gated channel can sound fine solo'd and completely wrong in the full mix, because the gate is reacting to everything else happening on stage too. Always judge gate settings with the whole band playing, not solo'd.</p></div>
 </section>
 
 <section class="s" id="s16-4"><h3><span class="n">16.4</span> Compressors in practice</h3>
 <p>A compressor turns down anything above a threshold, by a ratio, reducing the gap between the quietest and loudest moments of a signal — useful because live sources are unpredictable and a vocal that's controlled sits in a mix far more consistently than one that swings wildly between whisper and shout.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Threshold</dt><dd>The level above which compression kicks in.</dd>
 <dt>Ratio</dt><dd>How hard it compresses above threshold. 2:1 is gentle; 8:1 and beyond starts to sound like limiting.</dd>
 <dt>Attack</dt><dd>How fast it starts reducing gain once triggered. Fast attack tames transients hard (can dull the punch); slower attack lets the initial transient through before clamping down.</dd>
 <dt>Release</dt><dd>How fast it lets go afterwards. Too fast can sound pumpy or breathy; too slow can leave it clamped down through the next quiet passage.</dd>
 <dt>Makeup gain</dt><dd>Turns the whole signal back up after compression to compensate for the level lost — this is how compression can make something sound both more controlled <em>and</em> louder.</dd>
-</div>
+</dl>
 <p>A workable starting point for a lead vocal live: moderate threshold so it's engaging on louder phrases, ratio around 3:1–4:1, medium attack, medium release, then adjust entirely by ear against the actual performance — printed numbers are a starting point, never a destination.</p>
 <div class="note alt"><span class="lab">Also seen</span><p>Some engineers barely touch channel compression live and instead control dynamics mostly with the fader, riding it constantly — "the best compressor is your hand on the fader" is a genuinely common opinion. Both approaches produce good mixes in the right hands; neither is more "correct".</p></div>
 </section>
 
 <section class="s" id="s16-5"><h3><span class="n">16.5</span> Reverb &amp; effects sends</h3>
 <p>Live reverb is used far more sparingly than in a studio — too much and a mix loses definition and becomes hard to hear clearly in a room that likely already has its own natural reverberation. Typically routed as an aux send to a shared effects return rather than inserted per-channel, so several sources can share one reverb and sit in a common sense of space.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Send level</dt><dd>How much of each channel goes to the effect — usually modest for most sources, more for a lead vocal wanting some lift.</dd>
 <dt>Pre vs post-fade send</dt><dd>Post-fade (the effect follows the channel's fader) is standard for reverb, so the effect fades with the source rather than being left hanging at a fixed level.</dd>
 <dt>Decay time</dt><dd>Longer decay for ballad-paced or spacious material; shorter for busy, fast material where a long tail muddies things.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s16-6"><h3><span class="n">16.6</span> Building a mix from silence</h3>
@@ -4944,42 +4944,42 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s16-7"><h3><span class="n">16.7</span> Why the mix changes with volume</h3>
 <p>Your ears are not equally sensitive across the spectrum, and — crucially — the shape of that sensitivity <em>changes with level</em>. At quiet levels we hear much less bass and slightly less extreme top; as things get louder the response flattens out. This is measured by the <strong>equal-loudness contours</strong>, and it has a very practical consequence: a mix built at one volume will not sound the same at another.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Built quiet, played loud</dt><dd>You compensated for ears that weren't hearing bass, so you added low end. Turn it up and it's boomy and thick.</dd>
 <dt>Built loud, played quiet</dt><dd>The reverse. It sounds thin, gutless and oddly mid-heavy at background level — a common surprise on a corporate job where the "walk-in music" mix was set during a loud soundcheck.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Build the mix at roughly the level the show will actually run at, and check it at a couple of others before you commit. If the same material has to work at two very different levels — a conference that plays quiet beds and loud stings — expect to need a slightly different balance for each, rather than one mix that's a compromise at both.</p></div>
 <div class="note alt"><span class="lab">Also seen</span><p>This is also why mixing loud all afternoon is a bad idea beyond the hearing-damage argument in <a href="#s13-5">§13.5</a>: your ears fatigue, your judgement of top end drifts, and you tend to keep creeping the level up to chase the excitement you had an hour ago. Taking the level down for a few minutes resets your reference more reliably than trusting your ears at hour six.</p></div>
 </section>
 
 <section class="s" id="s16-8"><h3><span class="n">16.8</span> Delay as an effect</h3>
 <p>Distinct from the reverb send in <a href="#s16-5">§16.5</a> — a delay repeats the signal as one or more discrete echoes rather than a wash of reflections, and it's routed and used the same way, as an aux send to a shared return.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Slapback</dt><dd>A single short repeat (tens of milliseconds), used to thicken a vocal or add a bit of vintage character without an obvious "echo" being audible.</dd>
 <dt>Tempo-synced delay</dt><dd>A longer, clearly audible repeat set to a musical subdivision of the song's tempo (a quarter note, a dotted eighth) rather than a fixed time — sounds intentional and musical rather than like a mistake or a room problem.</dd>
 <dt>Feedback (the delay parameter, not acoustic feedback)</dt><dd>How many times the signal repeats before dying away — confusingly named the same as the acoustic problem in <a href="#s15-8">§15.8</a>, but a completely different thing here: it's a control on the delay effect itself.</dd>
-</div>
+</dl>
 <div class="note std"><span class="lab">Standard</span><p>Getting a tempo-synced delay right by ear means tapping the tempo in live if the console supports it, or setting a time in milliseconds calculated from the song's BPM — either works, but an un-synced delay sitting slightly off the beat is more distracting than no delay at all.</p></div>
 </section>
 
 <section class="s" id="s16-9"><h3><span class="n">16.9</span> De-essing — controlling sibilance</h3>
 <p>Sharp "s", "sh" and "t" sounds sit in the same 5–10 kHz range that gives a vocal its clarity and air (<a href="#s16-2">§16.2</a>), which is exactly why they're awkward to fix with a static EQ cut — pull that range down enough to tame the esses and the vocal loses its presence everywhere else too. A <strong>de-esser</strong> is a compressor that only engages in that narrow band, and only when a sibilant sound actually happens, leaving the rest of the vocal untouched.</p>
-<div class="kv">
+<dl class="kv">
 <dt>What triggers it</dt><dd>Its own threshold, watching only the sibilant frequency band — not the whole signal like a normal compressor. When that band gets loud (an "s"), it ducks; the rest of the time it does nothing.</dd>
 <dt>Split-band vs broadband</dt><dd>A split-band de-esser reduces only the offending frequency range when it triggers; a broadband one ducks the whole signal briefly instead, which is cruder but sometimes all an older console offers.</dd>
 <dt>Why it's live-specific</dt><dd>A bright condenser vocal mic close-mic'd on a sibilant singer is the classic case — the closer and brighter the mic, the more esses bite, and it's rarely practical to ask a performer to change their diction mid-show.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>Over-de-essed vocals develop a noticeable lisp — the "s" sounds vanish rather than just soften. If it's audibly changing the words, back the amount off; a slightly sibilant vocal is far less distracting than one that sounds like it's had a stroke.</p></div>
 </section>
 
 <section class="s" id="s16-10"><h3><span class="n">16.10</span> Processing order, busses &amp; sidechains</h3>
 <p>Everything above happens in a specific order on a channel strip, and that order matters — gate before EQ, or EQ before gate, gives a genuinely different result, not just a different-sounding one.</p>
-<div class="kv">
+<dl class="kv">
 <dt>A typical order</dt><dd>Gate/expander → EQ → compressor → de-esser, then the fader and pan. Gate first so it's triggered by the raw signal rather than one already reshaped by EQ; de-esser last so it reacts to the tone you've actually settled on. Some engineers put compression before EQ instead, so the compressor reacts to the untouched signal — both are legitimate, and which order a desk uses by default usually isn't something you get to freely rearrange.</dd>
 <dt>Insert point</dt><dd>A patch point in that chain — physical on an analogue channel, a menu option on a digital one — where an external processor (an outboard unit, or a plugin on a digital console that offers them) can be dropped in instead of, or alongside, the built-in EQ and dynamics. With nothing plugged into it, the signal just passes straight through.</dd>
 <dt>Bus / mix bus</dt><dd>A shared signal path that more than one channel is summed into — an aux bus (<a href="#s16-5">§16.5</a>'s effects sends), a group or DCA and the matrix (<a href="#s7-3">§7.3</a>), and the main mix bus itself that everything ultimately reaches. Routing a channel "to a bus" just means adding its signal into that shared path rather than sending it straight to the main mix.</dd>
 <dt>Sidechain</dt><dd>Using one signal's level to control processing applied to a different signal, rather than to itself. The live example is a gate on a talkback mic keyed from the console's own output, so it only opens when there's genuinely something to duck for; the studio example is "ducking" a music bed under a voiceover. You won't build these often as a junior tech, but recognising the word — and that it means "controlled by something other than itself" — saves confusion the first time you meet it on a desk.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s16-11"><h3><span class="n">16.11</span> Mixing speech — clear, natural, no feedback</h3>
@@ -5006,13 +5006,13 @@ EARS            the only part of the system that actually matters</div>
 </section>
 
 <section class="s" id="s17-2"><h3><span class="n">17.2</span> Freelancing basics</h3>
-<div class="kv">
+<dl class="kv">
 <dt>Day rate</dt><dd>Varies hugely by role, region and experience. Ask other freelancers what's typical for your level rather than guessing — undercutting the going rate makes you cheaper to book but harder for everyone (including you, later) to get a fair rate.</dd>
 <dt>Invoicing</dt><dd>Simple, prompt, clear — company/job name, dates, rate, total, payment terms. Chase late payment politely but persistently; it's a genuinely common freelance headache.</dd>
 <dt>Public Liability Insurance (PLI)</dt><dd>Covers you if your work causes injury or damage to someone else or their property. Many venues and production companies won't let you on site without it. Relatively cheap for the protection it gives — get it before you need it.</dd>
 <dt>Equipment insurance</dt><dd>A separate policy from PLI — covers loss, theft or damage to kit you own (see <a href="#s17-5">§17.5</a>). Only worth pricing up once you own something worth insuring, but venues and hire companies will occasionally ask whether your own gear is covered, so it's worth being able to answer.</dd>
 <dt>Being your own admin</dt><dd>Diary management, tax (in the UK, registering as self-employed with HMRC if you're trading as a sole trader), and keeping basic records of income and expenses. Unglamorous, but getting caught out at tax time is avoidable with an hour a month.</dd>
-</div>
+</dl>
 <div class="note deep"><span class="lab">Go deeper</span><p>This book won't make you an accountant, and it shouldn't try to. Talk to other freelancers in the industry about what they actually do for insurance and tax — the details change and local practice varies. See <a href="#p18">Part 18</a>.</p></div>
 <div class="note alt"><span class="lab">Also seen</span><p>A job that crosses into the EU brings its own paperwork — carnets, work permits, visas — on top of all this. See <a href="#s17-8">§17.8</a>.</p></div>
 </section>
@@ -5022,7 +5022,7 @@ EARS            the only part of the system that actually matters</div>
 </section>
 
 <section class="s" id="s17-4"><h3><span class="n">17.4</span> Training &amp; certifications worth having</h3>
-<div class="kv">
+<dl class="kv">
 <dt>Dante Certification (Levels 1–2)</dt><dd>Free, online, genuinely respected. See <a href="#s8-2">§8.2</a>.</dd>
 <dt>IOSH Working Safely</dt><dd>A short, widely-recognised general safety course. Useful baseline credential for site work generally.</dd>
 <dt>Manufacturer-specific training</dt><dd>Console and PA manufacturers (Allen & Heath, DiGiCo, d&b, L-Acoustics and others) run free or low-cost training on their own systems — worth doing on whatever your company uses most.</dd>
@@ -5033,7 +5033,7 @@ EARS            the only part of the system that actually matters</div>
 <dt>Avolites Titan fluency</dt><dd>If you've already got a Titan licence (<a href="#s9-8">§9.8</a>), building real fluency with it on the side is one of the better uses of a spare evening on this whole list — a second, cross-department skill is rarer and more hireable than depth in audio alone.</dd>
 <dt>ABTT training (if theatre pulls you)</dt><dd>The <strong>Association of British Theatre Technicians</strong> runs the training most theatre venues and touring theatre companies actually recognise — worth chasing specifically if <a href="#s10-4">§10.4</a>'s world appeals more than corporate or touring music.</dd>
 <dt>AVIXA CTS (if install/corporate AV pulls you)</dt><dd>The <strong>Certified Technology Specialist</strong> is the standard credential in corporate and permanent-install AV — the world of <a href="#s10-2">§10.2</a> and <a href="#s10-6">§10.6</a> rather than touring. It's the AVIXA/install-world equivalent of Dante Certification above: not essential, but a recognised signal that you're serious about that specific direction.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s17-5"><h3><span class="n">17.5</span> Kit of your own — what to buy first</h3>
@@ -5054,22 +5054,22 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s17-7"><h3><span class="n">17.7</span> Keeping evidence of your work</h3>
 <p><a href="#s17-3">§17.3</a> covers why reputation matters more than a CV here — this is about not losing track of it. A short, private record of what you actually did and who you did it for turns "I've done quite a bit of corporate work" into a specific, checkable list when someone asks.</p>
-<div class="kv">
+<dl class="kv">
 <dt>What to note</dt><dd>Company, venue, date, your role, and one line on what you actually did — "ran line check solo for a 40-input corporate panel" is worth far more than "helped out".</dd>
 <dt>Testimonials</dt><dd>A short "happy to work with again" message after a job you did well is worth asking for, especially from a crew chief or company you'd like to work with regularly. Most people are glad to give one if asked directly rather than hoping it happens on its own.</dd>
 <dt>What not to record</dt><dd>Client-confidential details, other people's rates, or anything from a show you weren't supposed to discuss. A factual record of your own work never needs any of that.</dd>
-</div>
+</dl>
 <div class="note alt"><span class="lab">Also seen</span><p>This is the freelance version of the <a href="#hub-guide-log">learning log</a> described earlier in this book — same habit, later purpose. Keep doing it once you're being paid, not just while you're learning.</p></div>
 </section>
 
 <section class="s" id="s17-8"><h3><span class="n">17.8</span> Touring outside the UK</h3>
 <p>Since Brexit, taking a job into the EU means more than packing a passport. None of this is something you'll arrange yourself as a junior on someone else's tour — it's the tour manager's or production company's job — but not recognising the words when they come up makes you look like you don't understand the gig, so it's worth knowing what they mean.</p>
-<div class="kv">
+<dl class="kv">
 <dt>ATA Carnet</dt><dd>An international customs document that lets professional equipment cross a border temporarily without paying import duty, on the promise it leaves again within the carnet's validity. Every case on the truck typically needs to be listed against it, matched at each border — which is why an accurate kit list matters even more on an international run.</dd>
 <dt>Work permits &amp; visas</dt><dd>UK crew working in the EU (and vice versa) may need a specific work permit or visa depending on the country and how long the job runs — this varies country by country and changes over time, so it's genuinely not something to assume from a previous job.</dd>
 <dt>The 90/180-day rule</dt><dd>UK passport holders can generally spend up to 90 days in any rolling 180-day period across the Schengen area without a visa — a touring crew member working multiple EU dates across a year needs to actually track this, not estimate it.</dd>
 <dt>Cabotage</dt><dd>EU rules restricting how much a UK-registered truck can move goods between EU countries on one trip — relevant to how a touring truck's route gets planned, not something you'll plan yourself, but a word worth recognising when a tour manager mentions routing headaches.</dd>
-</div>
+</dl>
 <div class="note warn"><span class="lab">Watch it</span><p>All of this changes with government policy and isn't something to work from memory of a previous tour. If an international job is genuinely yours to help plan rather than just crew, get current, specific advice — a carnet agent or a production company with recent experience of the actual route — rather than relying on what applied last time or what worked for someone else's tour.</p></div>
 </section>
 
@@ -5709,7 +5709,7 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s20-1"><h3><span class="n">20.1</span> Full A–Z</h3>
 <p>Each term links to where it's properly explained, plus the other places it actually matters — treat this as an index as much as a glossary. Multiple links are ordered: definition first, then practical/fault-finding uses. Prefer to browse by topic — jump to <a href="#s20-2">§20.2</a> instead.</p>
-<div class="glossary"><div><dt>Absorption</dt><dd>How soft surfaces — drapes, seating and above all an audience — convert sound energy to heat instead of reflecting it. Why a full room sounds drier than an empty one. <a href="#s6-15">§6.15</a></dd></div>
+<dl class="glossary"><div><dt>Absorption</dt><dd>How soft surfaces — drapes, seating and above all an audience — convert sound energy to heat instead of reflecting it. Why a full room sounds drier than an empty one. <a href="#s6-15">§6.15</a></dd></div>
 <div><dt>ABTT</dt><dd>Association of British Theatre Technicians — the theatre world's recognised training body. <a href="#s17-4">§17.4</a> · <a href="#s10-4">§10.4</a></dd></div>
 <div><dt>ADAT</dt><dd>An older optical ("lightpipe") digital audio format carrying 8 channels at 48 kHz. Legacy, but still common in studios and small rigs. <a href="#s3-7">§3.7</a></dd></div>
 <div><dt>Advancing</dt><dd>Finding out what a job actually involves before anyone loads a van — dates, power, access, what's already in the room. <a href="#s1-7">§1.7</a> · <a href="#s19-9">§19.9</a></dd></div>
@@ -5996,7 +5996,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Working Time Regulations 1998</dt><dd>UK employment law setting the 48-hour average working week (commonly opted out of in events), plus statutory rest breaks and rest periods. <a href="#s13-15">§13.15</a></dd></div>
 <div><dt>Wwise</dt><dd>Audiokinetic's game-audio middleware, roughly FMOD's main alternative. Its free 101/201/301 courses are a genuinely respected way into game audio without a games degree. <a href="#s21-5">§21.5</a></dd></div>
 <div><dt>XLR</dt><dd>The three-pin locking connector carrying almost all mic and line-level audio in live sound. <a href="#s3-1">§3.1</a> · <a href="#s12-2">§12.2</a> · <a href="#s9-7">§9.7</a></dd></div>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s20-2"><h3><span class="n">20.2</span> By area</h3>
@@ -6017,83 +6017,83 @@ EARS            the only part of the system that actually matters</div>
 
 <section class="s" id="s21-2"><h3><span class="n">21.2</span> Broadcast &amp; outside broadcast (OB)</h3>
 <p>Sound for television and radio, live or recorded: studio-based broadcast, and outside broadcast (OB) — the trucks and crews that cover sport, awards shows and outside events. <a href="#s10-5">§10.5</a> already covers what changes technically when a broadcast split joins your show; this is about doing that job full-time rather than feeding one.</p>
-<div class="kv">
+<dl class="kv">
 <dt>What the job actually is</dt><dd>Broadcast sound assistant/A2 through to sound supervisor — rigging and de-rigging radio mics and comms on presenters and contributors, running a broadcast desk, or building and striking an OB truck's audio chain on location.</dd>
 <dt>Where the audio background helps</dt><dd>RF and radio mic handling (<a href="#p5">Part 5</a>) transfers almost directly — broadcast uses the same wireless discipline, often at higher channel counts. Comms and split-feed experience from <a href="#s10-5">§10.5</a> is the exact skill a truck needs.</dd>
 <dt>The usual way in</dt><dd>Less often straight into a broadcaster, more often via a facilities or OB hire company — the businesses that supply trucks, kit and freelance crew to the broadcasters. They hire from live/events backgrounds regularly, because the on-site instincts are the same.</dd>
 <dt>Worth knowing about</dt><dd><strong>ScreenSkills</strong> is the UK skills body for film, TV and games, and runs bursaries and short courses relevant to broadcast sound. The <strong>National Film and Television School (NFTS)</strong> runs postgraduate sound courses if you wanted to go deeper academically later.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s21-3"><h3><span class="n">21.3</span> AV systems integration &amp; install</h3>
 <p><a href="#s10-6">§10.6</a> covers what it's like operating an installed system — this is building and programming them for a living, for the systems integrators who fit out boardrooms, campuses, stadiums and control rooms.</p>
-<div class="kv">
+<dl class="kv">
 <dt>What the job actually is</dt><dd>Installing and commissioning fixed AV — speakers, DSPs, control systems and video — then programming how it all behaves: what a single "Start Meeting" button on a touch panel actually does behind the scenes.</dd>
 <dt>Where the audio background helps</dt><dd>DSP routing and gain-structure thinking from <a href="#s10-6">§10.6</a> and Dante/AV-over-IP from <a href="#p8">Part 8</a> are most of the technical core. What install companies usually can't get elsewhere is someone who's already calm fault-finding a live system in front of a client.</dd>
 <dt>The usual way in</dt><dd>Many installers started as riggers or commissioning-day extra hands on a live crew's quieter weeks, then moved across once a company saw they could be trusted alone with a client's boardroom.</dd>
 <dt>Worth knowing about</dt><dd><strong>AVIXA's CTS</strong> (<a href="#s17-4">§17.4</a>) is the entry-level credential the whole install industry recognises. <strong>Crestron</strong>, <strong>QSC Q-SYS</strong> and <strong>Extron</strong> — the three control/DSP platforms you'll meet most — each run their own free or low-cost certification tracks once you're pointed at a specific one; most installers end up fluent in whichever platform their employer standardises on.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s21-4"><h3><span class="n">21.4</span> Studio, post-production &amp; music technology</h3>
 <p>Recording and mixing music, or sound for picture — dialogue editing, ADR, foley and sound design for film and TV. A quieter, more solitary discipline than live work, built around getting one thing exactly right rather than reacting to a room in real time.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Where the audio background helps</dt><dd>Signal flow, mic technique and critical listening (<a href="#p2">Part 2</a>, <a href="#p4">Part 4</a>) are the same skills pointed at a recording rather than a PA. What's genuinely different is the pace and the editing/DAW-based workflow, which live work doesn't teach.</dd>
 <dt>The usual way in</dt><dd>Assistant engineer roles at a studio, or — more realistically for most people — building a portfolio on your own kit at home first (<a href="#s14-3">§14.3</a> already covers multitrack recording basics) and using that to get a foot in somewhere.</dd>
 <dt>Worth knowing about</dt><dd>The <strong>Music Producers Guild (MPG)</strong> is the UK trade body for studio and production engineers. <strong>ScreenSkills</strong> (<a href="#s21-2">§21.2</a>) also covers the post-production side specifically.</dd>
-</div>
+</dl>
 <div class="note alt"><span class="lab">Also seen</span><p>This is usually the slowest of the paths here to earn a living from directly — studio and post work is competitive and often starts unpaid or low-paid. It's a genuinely good direction to build on the side for years before it needs to pay the bills, not one to jump into cold.</p></div>
 </section>
 
 <section class="s" id="s21-5"><h3><span class="n">21.5</span> Game audio &amp; esports production</h3>
 <p>Two different things that both sit near live audio. Game audio is sound design and implementation for video games — a studio-based, technical-audio discipline. Esports production is running the live event around competitive gaming — arena shows, broadcast overlay, comms for casters and players — and is functionally a live-events job with a gaming audience, a genuinely fast-growing part of the UK events calendar.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Game audio</dt><dd>Built around middleware that connects sound assets to game engines — <strong>Wwise</strong> (Audiokinetic) and <strong>FMOD</strong> (Firelight Technologies) are the two you'll meet. Both run their own free, structured online certification courses (Wwise 101/201/301; FMOD's own learning courses) that are a genuinely respected way in without a games-specific degree.</dd>
 <dt>Esports production</dt><dd>Close to <a href="#s10-3">§10.3</a> and <a href="#s10-5">§10.5</a> combined — a broadcast feed, a live room, comms, and a fast, high-pressure build. Crews are very often drawn straight from live music and corporate AV backgrounds; there isn't a separate esports-specific training route worth chasing, the transferable event skills already covered in this book are the actual qualification.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s21-6"><h3><span class="n">21.6</span> A second discipline: lighting, video &amp; LED</h3>
 <p><a href="#p9">Part 9</a> already builds real Titan fluency for lighting, mostly so it helps your audio job. Taken further, it's also a genuine second discipline in its own right — and video/LED-wall work is one of the fastest-growing, most kit-hungry corners of live production right now.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Lighting</dt><dd>You already have a real head start from <a href="#s9-8">§9.8</a> onwards. Going further means building actual programming speed and a design eye, not just operational familiarity — best built by programming real shows, not just the simulator.</dd>
 <dt>Video &amp; LED</dt><dd>Vision mixing, camera operation, and — increasingly in demand — LED wall technicians who build, calibrate and run the video screens that now appear on almost every corporate and touring stage. Signal and networking knowledge from <a href="#p8">Part 8</a> transfers directly; video-specific skills (colour, resolution, processing) are the new part to learn.</dd>
 <dt>A genuine advantage of a second discipline</dt><dd>Crew who can competently cover a second department are rarer and more bookable than deep specialists in one — <a href="#s17-4">§17.4</a> already flags this about Titan specifically; it's true more broadly.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s21-7"><h3><span class="n">21.7</span> Moving into production or technical management</h3>
 <p><a href="#s17-1">§17.1</a> mentions this as one of the main routes out of a crew start — this is the detail. Production management is planning and running the event rather than operating one part of it: budgets, schedules, crew, suppliers and the client relationship, for a company or freelance.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Where the audio background helps</dt><dd>You already know what a realistic build schedule looks like, what a crew actually needs on site, and where things typically go wrong — all of which is most of what a technical production manager does, just from a desk instead of a stage.</dd>
 <dt>The usual way in</dt><dd>Rarely a direct application — almost always an internal step up within a company that already trusts you, once you've shown you can see the whole job and not just your own patch of it (<a href="#s17-6">§17.6</a> covers asking for that kind of responsibility).</dd>
 <dt>Worth knowing about</dt><dd>The <strong>Production Services Association (PSA)</strong> already covers the crew end (<a href="#s17-4">§17.4</a>); its more senior membership tiers and events also connect you to the production-management side of the same industry.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s21-8"><h3><span class="n">21.8</span> Venue &amp; festival technical management</h3>
 <p>Running the technical side of one place rather than following the work around — head of sound or technical manager at a venue, or technical/site coordinator for a festival. A natural place to land after some years of touring or freelance life, when a settled base starts to matter more than variety.</p>
-<div class="kv">
+<dl class="kv">
 <dt>What changes</dt><dd>You become the person other visiting crews and touring engineers rely on for local knowledge — exactly the "advancing and supporting" role <a href="#s10-3">§10.3</a> describes touring companies valuing, but as your day-to-day rather than an occasional mode.</dd>
 <dt>The usual way in</dt><dd>Building a relationship with one venue or festival over repeat bookings until they'd rather have you permanently than keep re-briefing someone new each time.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s21-9"><h3><span class="n">21.9</span> Training, technical sales &amp; warehouse/ops leadership</h3>
 <p>Three different desk-based routes that all lean on the same thing: knowing the kit properly, from the inside, the way someone who's only ever sold or taught it usually doesn't.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Manufacturer application/training roles</dt><dd>Manufacturers and distributors employ application engineers and trainers to run the free courses you've already used (<a href="#s17-4">§17.4</a>) and to support customers using their kit. They hire from users of the product, not from a separate teaching pipeline.</dd>
 <dt>Technical sales</dt><dd>Pro-audio dealers, rental companies and manufacturers all need sales staff who can actually answer a technical question — genuinely different from, and better paid than, generic sales, precisely because real product knowledge is rare in that role.</dd>
 <dt>Warehouse &amp; operations leadership</dt><dd>The most direct route of all, since it's where you're already standing — warehouse manager, stock controller or operations lead at a hire company, running the systems (<a href="#hub-guide-equipment">§0.2</a>-adjacent record-keeping, prep scheduling, fleet maintenance) that everyone else's job depends on.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s21-10"><h3><span class="n">21.10</span> Acoustics consultancy &amp; compliance</h3>
 <p>Two more technical, more office-based directions — worth knowing about even though both usually need further study.</p>
-<div class="kv">
+<dl class="kv">
 <dt>Acoustics consultancy</dt><dd>Room design, noise assessment and building acoustics — a genuinely different career, usually reached via further study rather than a direct step. The <strong>Institute of Acoustics (IOA)</strong> is the UK professional body; its <strong>Diploma in Acoustics and Noise Control</strong> is a part-time, work-alongside route into the profession that doesn't require starting a full degree from scratch, and your practical hearing and measurement experience (<a href="#s13-5">§13.5</a>, <a href="#s6-8">§6.8</a>) is a genuine head start on it.</dd>
 <dt>Health, safety &amp; compliance</dt><dd>A senior step up from the IOSH course already covered in <a href="#s17-4">§17.4</a> — <strong>NEBOSH's General Certificate</strong> is the next recognised level up, and event/production companies increasingly employ a dedicated safety or compliance officer drawn from people who already understand how a site actually runs, not generic HR/safety staff.</dd>
-</div>
+</dl>
 </section>
 
 <section class="s" id="s21-11"><h3><span class="n">21.11</span> How to try a direction without leaving your day job</h3>
@@ -6180,7 +6180,7 @@ EARS            the only part of the system that actually matters</div>
 
 <div class="appearance-panel" id="appearancePanel" role="dialog" aria-label="Appearance settings">
   <button class="ap-close" id="appearanceClose" type="button" aria-label="Close">✕</button>
-  <h4>Make it yours</h4>
+  <h4 role="heading" aria-level="2">Make it yours</h4>
   <p class="ap-intro">Choose a full TreebySound theme. It changes the page surfaces, type contrast, dividers and accents on this device only; nothing is sent anywhere.</p>
 
   <div class="ap-row">
@@ -6691,7 +6691,7 @@ if(searchBox){
     var h4 = document.createElement('h4');
     h4.textContent = area;
     container.appendChild(h4);
-    var glossDiv = document.createElement('div');
+    var glossDiv = document.createElement('dl');
     glossDiv.className = 'glossary';
     groups[area].forEach(function(node){ glossDiv.appendChild(node); });
     container.appendChild(glossDiv);
