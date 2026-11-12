@@ -189,3 +189,15 @@ additions was *function and placement*, so targeted changes:
   speech.
 - Back-to-top button is a small round arrow on phones (it covered text).
 - `tests/check-content.js` added; 317 answers, 72 chat cases, all passing.
+
+### Round 6 log (2026-11-12)
+
+- Glossary 230 → 287 terms (dBFS-era, desks, PA brands, networks, comms,
+  measurement, law); the chat answers "what is X" from these.
+- Typo handling: real words used by the glossary and answers are never
+  "corrected" (coherence ≠ conference); unknown words snap to the book's
+  nearest word when one letter off (phantom powr → power), nonsense still
+  finds nothing. Radio-mic phrasing routes to the RF route.
+- Pocket reference: delay per metre, d&b lights, UK radio licences, Dante
+  rules, noise at work, your hours.
+- Chat cases 77, all passing; content check clean.
