@@ -153,3 +153,13 @@ additions was *function and placement*, so targeted changes:
 - [x] Part 13 re-audited (Nov 2026): peak noise values, PPE for workers (2022), opt-out notice, holiday (12.07%), SSP from day one (Apr 2026), zero-hours rights (Apr 2027), under-18 limits. Meyer/other PA brands still wait on stock list.
 - Library reading bar is still tight on narrow phones next to the floating
   buttons — consider moving refresh/settings into the bar when reading.
+
+### Round 3 log (2026-11-12)
+
+- Reading a part on a phone: settings move into the reading bar, so the title
+  has room (floating buttons hide while reading).
+- Part 13 re-audited against current law (see checklist above).
+- Answer bank 256 → 301; every handbook section except the checklists, glossary
+  and tooling now has at least one answer pointing to it. "§x.y" in answers
+  becomes a link that opens the section in the chat.
+- Test set 53 → 61 cases, all passing.
