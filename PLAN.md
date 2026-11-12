@@ -213,3 +213,14 @@ additions was *function and placement*, so targeted changes:
   or dismissed.
 - Speed (4× slowed CPU, phone size): ready in ~0.75 s, first answer ~0.6 s,
   later answers ~0.1 s. No change needed.
+
+### Round 8 log (2026-11-12)
+
+- Asked the chat all ~1,250 answer phrasings (`tests/check-answers.js`):
+  83% → 85% exact answer, 13% go to a guided route (usually right for faults),
+  the rest are mostly sibling answers or d&b model-table answers.
+- Fixes: safety questions get the safety note *and* the answer; a strong
+  written answer beats a tie between routes; six overview answers stopped
+  claiming specific questions (input list, stage plot, measurement mic,
+  Avantis/DiGiCo snapshot, stream mix, other careers).
+- Chat cases 81, all passing.
