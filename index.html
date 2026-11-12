@@ -839,6 +839,19 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 .chat-send[disabled]{opacity:.55;cursor:default}
 @media (max-width:820px){.chat-msg{max-width:94%}.chat-log{max-height:58vh}}
 @media print{.chat{display:none}}
+
+/* ---------- first-run card on Home ---------- */
+.first-run{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.22);border-radius:14px;padding:12px 14px 6px;margin:16px 0 6px}
+.first-run-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.first-run-head .eyebrow{margin:0}
+.first-run-hide{font:inherit;font-size:12.5px;background:none;border:1px solid rgba(255,255,255,.4);color:inherit;border-radius:8px;padding:3px 10px;cursor:pointer}
+.first-run-lead{margin:6px 0 4px;font-size:15px}
+.first-run-steps{margin:6px 0 8px;padding-left:22px;font-size:15px}
+.first-run-steps li{margin:6px 0}
+.first-run-steps li.done{opacity:.6;text-decoration:line-through}
+.first-run-steps li.done::marker{content:"✓  "}
+.first-run-steps a{color:inherit}
+.first-run-try{font:inherit;font-size:13px;font-weight:600;margin-left:4px;background:var(--amber-soft,#FBE38A);color:#1e1e1e;border:0;border-radius:999px;padding:3px 10px;cursor:pointer}
 /* ---------- Ask screen: the chat gets the whole screen ---------- */
 .ask-screen .ask-head{padding-bottom:6px}
 .ask-screen .ask-head h2{margin-bottom:4px}
@@ -1032,6 +1045,15 @@ tr.in-kit td{background:var(--pass-soft)}
         <button type="button" data-ask="What is Mix TOP/SUB?">What's Mix TOP/SUB?</button>
       </div>
     </form>
+    <div class="first-run" id="firstRun" hidden>
+      <div class="first-run-head"><p class="eyebrow">First time here?</p><button type="button" class="first-run-hide" id="firstRunHide">Hide</button></div>
+      <p class="first-run-lead">Three things, five minutes — then it's ready for your next job.</p>
+      <ol class="first-run-steps">
+        <li data-step="install"><strong>Put it on your home screen.</strong> In Safari: Share → <em>Add to Home Screen</em>. It then opens like an app and works with no signal.</li>
+        <li data-step="ask"><strong>Ask it one real question.</strong> Something you've wondered on a job. <button type="button" class="first-run-try" data-ask="What does Mix TOP/SUB mean?">Try one</button></li>
+        <li data-step="tick"><strong>Tick one skill you can already do</strong> on the <a href="#path-tech">Pathway</a> — it then suggests what to learn next.</li>
+      </ol>
+    </div>
     <h2>Everything from your first shift to specialist skills</h2>
     <p>The job itself, the fix when something breaks, the route through the learning, and the whole handbook underneath it — in one place, on this device, offline.</p>
     <div class="home-actions">
@@ -8193,6 +8215,37 @@ if(quickfabBtn && quickfabMenu){
   if(b && cog) b.addEventListener('click', function(){ cog.click(); });
 })();
 
+
+/* ---------- first-run card: three steps, each ticks itself off ----------
+   Shown on Home until all three are done or it's hidden. Nothing leaves the
+   phone; it only reads what this device already knows. */
+(function(){
+  var card = document.getElementById('firstRun');
+  if(!card) return;
+  var HIDE = 'treebysound-first-run-hidden';
+  function installed(){ return window.navigator.standalone === true || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches); }
+  function asked(){ return storeGet('treebysound-first-ask') === '1'; }
+  function ticked(){
+    try{ for(var i = 1; i <= 4; i++){ var v = JSON.parse(storeGet('treebysound-check-chk-tech-' + i) || '[]'); if(v.some(Boolean)) return true; } }catch(e){}
+    return false;
+  }
+  function sync(){
+    var state = {install: installed(), ask: asked(), tick: ticked()};
+    var all = true;
+    Array.prototype.forEach.call(card.querySelectorAll('[data-step]'), function(li){
+      var done = !!state[li.getAttribute('data-step')];
+      li.classList.toggle('done', done);
+      if(!done) all = false;
+    });
+    card.hidden = all || storeGet(HIDE) === '1';
+  }
+  document.getElementById('firstRunHide').addEventListener('click', function(){ storeSet(HIDE, '1'); card.hidden = true; });
+  window.addEventListener('hashchange', sync);
+  document.addEventListener('change', function(ev){ if(ev.target && ev.target.closest && ev.target.closest('#path-tech')) sync(); });
+  window.tbFirstRunSync = sync;
+  sync();
+})();
+
 /* ---------- floating tools tuck away while reading (phone) ----------
    Scrolling down hides the refresh and Appearance buttons so they stop sitting
    on top of the text; any scroll up, the top of a page, a new screen, or
@@ -10106,6 +10159,8 @@ if(quickfabBtn && quickfabMenu){
     ev.preventDefault();
     var text = input.value.trim();
     if(!text) return;
+    storeSet('treebysound-first-ask', '1');
+    if(window.tbFirstRunSync) window.tbFirstRunSync();
     input.value = '';
     input.style.height = '';
     if(g.test && !DANGER.test(text)){
@@ -10164,7 +10219,7 @@ if(quickfabBtn && quickfabMenu){
       homeAskInput.value = '';
       askFromHome(text);
     });
-    Array.prototype.forEach.call(homeAsk.querySelectorAll('[data-ask]'), function(b){
+    Array.prototype.forEach.call(document.querySelectorAll('#homeAsk [data-ask], #firstRun [data-ask]'), function(b){
       b.addEventListener('click', function(){ askFromHome(b.getAttribute('data-ask')); });
     });
   }
