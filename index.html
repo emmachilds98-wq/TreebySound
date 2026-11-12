@@ -2891,8 +2891,9 @@ EARS            the only part of the system that actually matters</div>
 <thead><tr><th>Amp</th><th>What to know</th></tr></thead>
 <tbody>
 <tr><td><strong>D6 / D12</strong></td><td>Older two-channel amps, still in plenty of hire stock. Small LCD and buttons; remote control over CAN bus rather than Ethernet. Pinouts differ slightly from the current amps — read the label above the outputs.</td></tr>
-<tr><td><strong>D20</strong></td><td>Four-channel, 2U, touchscreen. The everyday workhorse for E, Y, V, T, A and xS boxes. Four analogue (XLR) and two AES digital inputs, four individual NL4 outputs, two centre NL4s for paired modes, and an NL8. Not for J-Series, M2 or SL-Series.</td></tr>
+<tr><td><strong>D20</strong></td><td>Four-channel, 2U, touchscreen. Now discontinued but still the everyday workhorse in a lot of stock, for E, Y, V, T, A and xS boxes. Four analogue (XLR) and two AES digital inputs, four individual NL4 outputs, two centre NL4s for paired modes, and an NL8. Not for J-Series, M2 or SL-Series.</td></tr>
 <tr><td><strong>D80</strong></td><td>Four-channel high-power touring amp — runs the larger systems the D20 can't. Same touchscreen logic, outputs as NL4 (or EP5 on some versions) plus NL8.</td></tr>
+<tr><td><strong>D25</strong></td><td>The newest (2025): a four-channel amp for smaller, high-efficiency mobile systems, with Milan networking like the D40/D90.</td></tr>
 <tr><td><strong>D40 / D90</strong></td><td>The newer generation. Milan (AVB) networking built in alongside analogue and AES, plus a built-in web interface as well as R1 control. The D90 drives the highest-power systems.</td></tr>
 <tr><td><strong>5D / 10D / 30D / 40D</strong></td><td>Installation amps. You'll find them in venues rather than in hire stock — usually somebody else's system, so look but don't change.</td></tr>
 </tbody></table></div>
@@ -2904,10 +2905,12 @@ EARS            the only part of the system that actually matters</div>
 <tr><td><strong>xS-Series</strong> (5S, 8S, 10S…), <strong>A-Series</strong></td><td>Current point source and augmented arrays — fills, small rooms, theatre, corporate.</td></tr>
 <tr><td><strong>T-Series</strong></td><td>Compact box that switches between line-array and point-source use. Small arrays, theatres, corporate.</td></tr>
 <tr><td><strong>Y-Series</strong>, <strong>V-Series</strong></td><td>Mid-to-large line arrays with matching point-source boxes and subs. Touring and festivals.</td></tr>
-<tr><td><strong>J-Series</strong>, <strong>SL-Series</strong> (KSL, GSL)</td><td>Large-format touring arrays. SL boxes are cardioid by design — they control their own low end behind the array.</td></tr>
+<tr><td><strong>CL-Series</strong> (CCL)</td><td>Compact cardioid line array (2025) on a single amp channel per box. Small to mid-size venues and tours.</td></tr>
+<tr><td><strong>J-Series</strong>, <strong>SL-Series</strong> (KSL, GSL, XSL)</td><td>Large-format touring arrays. SL boxes are cardioid by design — they control their own low end behind the array.</td></tr>
 <tr><td><strong>M-Series</strong> (M4, M2…)</td><td>Stage monitors / wedges.</td></tr>
 <tr><td><strong>…-SUB</strong> and <strong>B-Series</strong></td><td>Subwoofers. Several are designed to be run in cardioid arrangements (<a href="#s6-6">§6.6</a>).</td></tr>
 </tbody></table></div>
+<p class="calc-pointer"><a href="#s6-20">Every model, and which amp drives it — §6.20 →</a> <span>Amps, loudspeakers, the naming, and what's discontinued.</span></p>
 <h4>The software around it</h4>
 <div class="kv">
 <dt>ArrayCalc</dt><dd>d&amp;b's free design software (<a href="#s6-7">§6.7</a>). The system tech models the room and the boxes, and ArrayCalc works out angles, rigging loads, delays — and which amp channel drives which box with which setup. It exports a project for R1.</dd>
@@ -2999,6 +3002,61 @@ EARS            the only part of the system that actually matters</div>
 <div class="note warn"><span class="lab">Watch it</span><p>Don't change a setup, an output mode or an ArrayProcessing setting to "see if it helps" — on someone else's system that's not your call, and the wrong change can damage drivers. Gather the facts above and hand them over. Don't open amps or boxes; that's for the service department.</p></div>
 <div class="note std"><span class="lab">Standard</span><p>The <a href="#support-chat">fault finder in Support</a> walks through these same checks as a conversation, and builds the "symptom, what changed, what I've checked, what I need" message for you at the end.</p></div>
 </section>
+
+<section class="s" id="s6-20"><h3><span class="n">6.20</span> d&amp;b models — which box, which amp</h3>
+<p>A field reference to the d&amp;b amplifiers and loudspeakers you're likely to meet in UK hire stock and venues — current models, and the discontinued ones (d&amp;b call them "heritage") that are still out working every week. Use it to work out what a box is, what drives it and what to watch for. The fault finder in Support reads these tables too, so you can ask it "what amp does a V8 need?" or "can a D20 run KSL?".</p>
+<div class="note std"><span class="lab">Standard</span><p><strong>The one rule that settles it on site:</strong> if the box's setup isn't in the amp's setup list (on its screen or in R1), that amp can't drive it. Firmware updates add setups over time, so an older amp that hasn't been updated may be missing a newer box. And with line arrays, the plan will say which setup each box gets.</p></div>
+
+<h4>Reading the names</h4>
+<div class="kv">
+<dt>8 / 12 in a line array</dt><dd>The horizontal coverage: 8 = 80°, 12 = 120° (V8/V12, Y8/Y12, KSL8/KSL12, CCL8/CCL12, J8/J12). Same height and rigging, so the two can mix in one hang.</dd>
+<dt>P</dt><dd>A point-source box from a line-array family (V7P, V10P, Y7P, Y10P).</dd>
+<dt>-SUB / -GSUB</dt><dd>Subwoofer. GSUB is the ground-stack-only version; SUB versions can usually be flown with the array.</dd>
+<dt>-D</dt><dd>A wider-dispersion version of the same box (E12-D, 10S-D, 12S-D, 24S-D).</dd>
+<dt>i (Yi8, KSLi12, ALi60…)</dt><dd>The installation version: same sound, different cabinet finish and fixings. Venue kit, not hire stock.</dd>
+<dt>Arc / Line / AP / PS</dt><dd>Setup variants for array boxes: <strong>Arc</strong> for boxes in the curved part of a hang, <strong>Line</strong> for the straight part, <strong>AP</strong> when the array runs ArrayProcessing, <strong>PS</strong> for a box used on its own as a point source. Take them from the plan, box by box.</dd>
+</div>
+
+<h4>Amplifiers</h4>
+<div class="tw"><table class="db-models" data-kind="amp">
+<thead><tr><th>Amp</th><th>Status</th><th>Channels &amp; power</th><th>Inputs</th><th>Drives</th></tr></thead>
+<tbody>
+<tr data-models="D6"><td><strong>D6</strong></td><td>Discontinued</td><td>2 ch, 2 × 600 W into 4 Ω</td><td>Analogue</td><td>Smaller and older boxes. Remote over CAN, not Ethernet.</td></tr>
+<tr data-models="D12"><td><strong>D12</strong></td><td>Discontinued</td><td>2 ch, 2 × 1200 W into 4 Ω</td><td>Analogue (AES on some)</td><td>Was the touring amp of the Q- and J-Series era. Remote over CAN. Its own output pin layout — read the label.</td></tr>
+<tr data-models="D20"><td><strong>D20</strong></td><td>Discontinued, very common</td><td>4 ch, 4 × 1600 W into 4 Ω</td><td>4 analogue, 2 AES pairs</td><td>Everything current <em>except</em> J-Series, M2 and the SL-Series. The everyday rack amp for E, xS, T, Y, V and A.</td></tr>
+<tr data-models="D25"><td><strong>D25</strong></td><td>Current (2025)</td><td>4 ch, 4 × 1800 / 900 W into 4 / 8 Ω</td><td>4 analogue, 4 AES, 8 Milan</td><td>Smaller, high-efficiency mobile systems. Check the setup list before pairing it with large-format boxes.</td></tr>
+<tr data-models="D40"><td><strong>D40</strong></td><td>Current</td><td>4 ch, 4 × 2400 / 2000 W into 4 / 8 Ω</td><td>4 analogue, 4 AES, 8 Milan</td><td>Everything current <em>except</em> GSL, SL-SUB, J-Series and M2. Named by d&amp;b for KSL, V, Y and T.</td></tr>
+<tr data-models="D80"><td><strong>D80</strong></td><td>Current</td><td>4 ch, up to 4 × 4000 W into 4 Ω</td><td>4 analogue, 2 AES pairs</td><td>All d&amp;b loudspeaker setups, plus linear. The long-standing touring standard. Remote over CAN or Ethernet.</td></tr>
+<tr data-models="D90"><td><strong>D90</strong></td><td>Current</td><td>4 ch, 4 × 2700 / 5400 W into 8 / 4 Ω</td><td>4 analogue, 4 AES, 8 Milan (redundant)</td><td>The largest systems — d&amp;b's high-voltage amp for SL-Series and everything else. Has a Fallback input structure (manual or automatic).</td></tr>
+<tr data-models="5D,5DM,10D,25D,30D,40D"><td><strong>5D, 10D, 25D, 30D, 40D</strong></td><td>Installation (30D discontinued)</td><td>4 ch each, from small (5D) to the most powerful install amp (40D)</td><td>Varies by model</td><td>Venue systems. If you find one, it's somebody else's installed system — look, don't change.</td></tr>
+<tr data-models="E-PAC,EPAC,P1200A,A1"><td><strong>E-PAC, P1200A, A1</strong></td><td>Old, discontinued</td><td>E-PAC: 1 ch, 300 W into 8 Ω</td><td>Analogue</td><td>Older small systems. Still turn up in village halls and old stock.</td></tr>
+</tbody></table></div>
+
+<h4>Loudspeakers</h4>
+<div class="tw"><table class="db-models" data-kind="speaker">
+<thead><tr><th>Range</th><th>Models</th><th>What they are</th><th>Driven by</th></tr></thead>
+<tbody>
+<tr data-models="E4,E5,E6,E8,E12,E12-D,E12X-SUB,E15X-SUB,E0,E3,E9,E12-SUB,E15-SUB,E18-SUB" data-range="E-Series"><td><strong>E-Series</strong></td><td>E4, E5, E6, E8, E12, E12-D, E12X-SUB, E15X-SUB (older: E0, E3, E9, E12-SUB, E15-SUB, E18-SUB)</td><td>Compact two-way point source and small subs — fills, delays, corporate, small rooms. The workhorse of a lot of hire stock.</td><td>Practically any d&amp;b amp. On an old D6/D12, check the setup list for the newest boxes (E4, E5).</td></tr>
+<tr data-models="4S,5S,8S,10S,10S-D,12S,12S-D,24S,24S-D,42S,44S,16C,24C,24C-E,12S-SUB,18S-SUB,21S-SUB,27S-SUB" data-range="xS-Series"><td><strong>xS-Series</strong></td><td>4S, 5S, 8S, 10S, 10S-D, 12S, 12S-D, 24S, 24S-D, 42S, 44S; columns 16C, 24C, 24C-E; subs 12S-SUB, 18S-SUB, 21S-SUB, 27S-SUB</td><td>Current point source (mostly coaxial), slim and column models for speech and reverberant rooms, and matching subs.</td><td>D20, D40, D80, D90 and the install amps (D25: check its setup list).</td></tr>
+<tr data-models="AL60,AL90,ALi60,ALi90" data-range="A-Series"><td><strong>A-Series</strong></td><td>AL60, AL90</td><td>"Augmented arrays": a few boxes with adjustable splay, between a point source and a line array. 60° or 90° wide.</td><td>D20, D40, D80, D90.</td></tr>
+<tr data-models="T10,T-SUB,Ti10L,Ti10P" data-range="T-Series"><td><strong>T-Series</strong></td><td>T10, T-SUB</td><td>Compact box that works as a point source or a small line array — the setup (PS, Arc, Line) tells the amp which.</td><td>D20, D40, D80, D90.</td></tr>
+<tr data-models="Y7P,Y10P,Y8,Y12,Y-SUB,B6-SUB" data-range="Y-Series"><td><strong>Y-Series</strong></td><td>Y7P, Y10P (point source), Y8, Y12 (line array), Y-SUB, with B6-SUB</td><td>Mid-size touring and theatre. B6-SUB is a single 18" sub for the point-source boxes.</td><td>D20, D40, D80, D90.</td></tr>
+<tr data-models="V7P,V10P,V8,V12,V-SUB,V-GSUB" data-range="V-Series"><td><strong>V-Series</strong></td><td>V7P, V10P (point source), V8, V12 (line array), V-SUB (flyable), V-GSUB (ground stack)</td><td>Larger touring and festival system. V-SUB and V-GSUB are cardioid.</td><td>D20, D40, D80, D90. d&amp;b recommend the D80 for V-GSUB, and one V-SUB per channel on a D40 for maximum output.</td></tr>
+<tr data-models="CCL8,CCL12,CCL-SUB,CCLi8,CCLi12,CCLi-SUB" data-range="CL-Series"><td><strong>CL-Series</strong></td><td>CCL8, CCL12, CCL-SUB</td><td>Compact cardioid line array (2025): cardioid at low frequencies from a passive box on a single amp channel.</td><td>D40, D80, D90 (and 40D in installs) — up to eight boxes per amp.</td></tr>
+<tr data-models="KSL8,KSL12,KSL-SUB,KSL-GSUB,KSLi8,KSLi12" data-range="SL-Series (KSL)"><td><strong>SL-Series — KSL</strong></td><td>KSL8, KSL12, KSL-SUB, KSL-GSUB</td><td>Large touring line array, cardioid by design across most of its range.</td><td>D40, D80, D90 — not D20.</td></tr>
+<tr data-models="XSL8,XSL12,XSL-SUB,XSL-GSUB,XSLi8,XSLi12" data-range="SL-Series (XSL)"><td><strong>SL-Series — XSL</strong></td><td>XSL8, XSL12, XSL-SUB, XSL-GSUB</td><td>The smallest SL system — the same cardioid control in a smaller box.</td><td>D80 (firmware with XSL setups), D90 — not D20. Check the setup list on anything else.</td></tr>
+<tr data-models="GSL8,GSL12,SL-SUB,SL-GSUB" data-range="SL-Series (GSL)"><td><strong>SL-Series — GSL</strong></td><td>GSL8, GSL12, SL-SUB, SL-GSUB</td><td>d&amp;b's biggest touring system. SL-GSUB is ground-stack only.</td><td>D80, D90 — not D20 or D40.</td></tr>
+<tr data-models="J8,J12,J-SUB,J-INFRA" data-range="J-Series"><td><strong>J-Series</strong></td><td>J8, J12, J-SUB, J-INFRA</td><td>Discontinued large-format three-way line array, still in plenty of touring stock. J-SUB (3 × 18") and J-INFRA (3 × 21") are cardioid.</td><td>D80 (originally D12) — not D20 or D40. On a D90, check the setup list.</td></tr>
+<tr data-models="Q1,Q7,Q10,Q-SUB,Qi1,Qi7,Qi10,Qi-SUB" data-range="Q-Series"><td><strong>Q-Series</strong></td><td>Q1 (line array), Q7, Q10, Q-SUB</td><td>Discontinued compact system, still common: Q1 hangs as a small array, Q7/Q10 are point source.</td><td>D6, D12, D20, D80. On newer amps, check the setup list.</td></tr>
+<tr data-models="M2,M4,M6,MAX2,MAX,MAX12" data-range="M-Series"><td><strong>M-Series</strong></td><td>M2, M4, M6, MAX2 (older: MAX, MAX12)</td><td>Stage monitors. M4 and M6 have both active and passive setups; MAX2 is the low-profile wedge.</td><td>M4, M6, MAX2: most d&amp;b amps. <strong>M2: D80 or D90 only</strong> — not D20 or D40.</td></tr>
+<tr data-models="B4-SUB,B6-SUB,B8-SUB,B10-SUB,B10N-SUB,B12-SUB,B22-SUB,B1-SUB,B2-SUB" data-range="B-Series subs"><td><strong>B-Series subs</strong></td><td>B4, B6, B8, B10, B10N, B12, B22-SUB (older: B1, B2)</td><td>Subwoofers to go with the point-source ranges. Several can be set up cardioid.</td><td>Most d&amp;b amps — check the setup list for the larger ones.</td></tr>
+<tr data-models="C4-TOP,C4-SUB,C6,C7-TOP,C7-SUB,C690,Ci45,Ci60,Ci80,Ci90" data-range="C-Series"><td><strong>C-Series, Ci</strong></td><td>C4, C6, C7 and the Ci install boxes</td><td>Old discontinued ranges. Still found in venues and older stock.</td><td>Check the amp's setup list; older installs often run D6/D12 or E-PAC.</td></tr>
+</tbody></table></div>
+<div class="note warn"><span class="lab">Watch it</span><p>"Not D20" means exactly that: the setup isn't in the amp, and running the box on a linear or wrong setup leaves it unprotected. If the plan pairs a box with an amp this table says can't drive it, stop and ask before you rack it up — the plan, or the stock list, may be wrong.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>Alongside the amps you'll meet d&amp;b's network and processing boxes: <strong>DS10</strong> (Dante to AES bridge), <strong>DS20</strong> (Dante to Milan), <strong>DS100</strong> (the Soundscape processor), plus <strong>R90</strong> touchscreen remotes in installs. And installation-only loudspeaker ranges — U-Series and the "i" versions above — that you'll see in venues rather than on the shelf.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>Each product page on dbaudio.com has the manual and datasheet, and the amp firmware release notes carry the full list of setups each amp supports. When this table and a current d&amp;b document disagree, the d&amp;b document wins — and tell whoever looks after this pack.</p></div>
+</section>
+
 
 </div></div>
 
@@ -4777,6 +4835,8 @@ EARS            the only part of the system that actually matters</div>
 <p>Pin 1 = screen/earth, pin 2 = hot (+), pin 3 = cold (−). "One is ground, two is hot." (<a href="#s2-3">§2.3</a>)</p>
 <h4>speakON NL4 / NLT4</h4>
 <p>Pins 1± = first channel (d&amp;b: top, or LF). Pins 2± = second channel (d&amp;b: sub, or HF). A 2-core cable carries pins 1 only. Mute, push in, twist until it clicks. (<a href="#s3-12">§3.12</a> · <a href="#s6-17">§6.17</a>)</p>
+<h4>Which d&amp;b amp?</h4>
+<p>If the box's setup isn't in the amp's list, that amp can't drive it. Not on a D20: J-Series, M2, SL-Series. Not on a D40: GSL, SL-SUB, J-Series, M2. (<a href="#s6-20">§6.20</a>)</p>
 <h4>Signal levels</h4>
 <p>Mic level ≈ 1–10 mV. Line level ≈ 0.3–1.5 V (+4 dBu pro / −10 dBV consumer). (<a href="#s2-2">§2.2</a>)</p>
 <h4>Gain staging target (digital desk)</h4>
@@ -4909,6 +4969,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>AFL</dt><dd>After-Fade Listen — solo mode that reflects the channel's fader position. <a href="#s7-6">§7.6</a></dd></div>
 <div><dt>AI-assisted tools (automixing / feedback suppression)</dt><dd>Emerging products that automatically gain-share open mics or detect and notch ringing frequencies. Worth knowing about, not a substitute for understanding gain structure or ringing out a wedge yourself. <a href="#s7-3">§7.3</a> · <a href="#s15-8">§15.8</a></dd></div>
 <div><dt>Ambient mic</dt><dd>A mic used to blend a sense of the room into a sealed IEM mix. <a href="#s15-4">§15.4</a></dd></div>
+<div><dt>Arc / Line / AP (d&amp;b setups)</dt><dd>Variants of a line-array box's setup: Arc for the curved part of a hang, Line for the straight part, AP when ArrayProcessing is in use. The plan says which box gets which. <a href="#s6-20">§6.20</a></dd></div>
 <div><dt>ArrayCalc</dt><dd>d&amp;b's free system design software: models the room and the boxes, works out angles, rigging loads and delays, and produces the amp setups and an R1 project. <a href="#s6-7">§6.7</a> · <a href="#s6-16">§6.16</a></dd></div>
 <div><dt>ATA Carnet</dt><dd>An international customs document letting professional equipment cross a border temporarily without import duty, on the promise it leaves again. <a href="#s17-8">§17.8</a></dd></div>
 <div><dt>Audio description</dt><dd>A live spoken narration of a show's visual action for blind and partially-sighted audience members, delivered by a describer over a dedicated feed. <a href="#s6-13">§6.13</a></dd></div>
@@ -4930,6 +4991,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Bus / mix bus</dt><dd>A shared signal path that more than one channel is summed into — an aux, group/DCA, the matrix, or the main mix itself. <a href="#s16-10">§16.10</a> · <a href="#s7-3">§7.3</a></dd></div>
 <div><dt>Call sheet</dt><dd>A personalised day-of document — your own call time, site address, parking and contacts — distinct from the show's overall timing schedule. <a href="#s17-2">§17.2</a></dd></div>
 <div><dt>Call time</dt><dd>The time you are required to be on site and ready to work — not the time you set off. <a href="#s1-7">§1.7</a> · <a href="#s1-4">§1.4</a></dd></div>
+<div><dt>CCL (d&amp;b CL-Series)</dt><dd>d&amp;b's compact cardioid line array (2025): CCL8, CCL12 and CCL-SUB, cardioid from a passive box on one amp channel. <a href="#s6-20">§6.20</a></dd></div>
 <div><dt>CDM 2015</dt><dd>UK construction safety regulations that apply to event builds and de-rigs. <a href="#s13-1">§13.1</a> · <a href="#s13-6">§13.6</a></dd></div>
 <div><dt>ceeform</dt><dd>The round industrial power connector family used across UK events — blue 16 A and 32 A for single-phase, red for three-phase. <a href="#s3-8">§3.8</a></dd></div>
 <div><dt>Changeover</dt><dd>The gap between acts where one band's setup is struck and the next built. <a href="#s10-3">§10.3</a></dd></div>
@@ -4947,7 +5009,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Curfew</dt><dd>The legally binding time by which sound must stop, usually a condition of the premises or event licence rather than a courtesy. <a href="#s1-5">§1.5</a> · <a href="#s6-10">§6.10</a></dd></div>
 <div><dt>Custom-moulded IEM</dt><dd>An earpiece cast from an impression of the performer's own ear canal, for a better seal and more consistent low end than a universal-fit tip. <a href="#s15-12">§15.12</a></dd></div>
 <div><dt>Dante</dt><dd>A protocol for moving multichannel digital audio over standard Ethernet networks. <a href="#s8-2">§8.2</a> · <a href="#s12-14">§12.14</a> · <a href="#s18-3">§18.3</a></dd></div>
-<div><dt>d&amp;b (d&amp;b audiotechnik)</dt><dd>German loudspeaker and amplifier maker common on UK touring, theatre and corporate work. A d&amp;b system is the box, a d&amp;b amp and the matching loudspeaker setup, used together. <a href="#s6-16">§6.16</a> · <a href="#s6-18">§6.18</a></dd></div>
+<div><dt>d&amp;b (d&amp;b audiotechnik)</dt><dd>German loudspeaker and amplifier maker common on UK touring, theatre and corporate work. A d&amp;b system is the box, a d&amp;b amp and the matching loudspeaker setup, used together. <a href="#s6-16">§6.16</a> · <a href="#s6-18">§6.18</a> · <a href="#s6-20">§6.20</a></dd></div>
 <div><dt>d&amp;b loudspeaker setup</dt><dd>The preset chosen on each d&amp;b amp channel for the exact box it drives — crossover, EQ and the protection that keeps the drivers alive. The wrong one is the most expensive mistake on a d&amp;b rig. <a href="#s6-16">§6.16</a> · <a href="#s6-17">§6.17</a></dd></div>
 <div><dt>d&amp;b output mode</dt><dd>How a d&amp;b amp pairs its channels — Dual Channel, Mix TOP/SUB or 2-Way Active — which decides which output socket to use and which NL4 pins carry what. <a href="#s6-17">§6.17</a></dd></div>
 <div><dt>dB SPL</dt><dd>Decibels of actual sound pressure in the air — what a sound level meter reads. <a href="#s2-10">§2.10</a> · <a href="#s13-5">§13.5</a></dd></div>
@@ -4992,6 +5054,7 @@ EARS            the only part of the system that actually matters</div>
 <div><dt>Handover</dt><dd>A clear transfer of information or responsibility between people or shifts: what is working, what changed, what remains to do, and any risk. <a href="#hub-people">People</a> · <a href="#s1-5">§1.5</a></dd></div>
 <div><dt>Headroom</dt><dd>The space between a normal working level and the point of clipping. <a href="#s2-5">§2.5</a> · <a href="#s14-2">§14.2</a></dd></div>
 <div><dt>Hearing loop (induction loop)</dt><dd>A wire loop and driver amplifier feeding a magnetic field that a hearing aid's T-coil picks up directly. Tested to IEC 60118-4. <a href="#s6-11">§6.11</a> · <a href="#s18-11">§18.11</a></dd></div>
+<div><dt>Heritage (d&amp;b)</dt><dd>d&amp;b's name for discontinued products — J-Series, Q-Series, D6, D12, D20 and others — which are still widely used in hire stock. <a href="#s6-20">§6.20</a></dd></div>
 <div><dt>Hi-vis</dt><dd>High-visibility vest or jacket, required during build and derig on many sites — and deliberately off stage once doors are open. <a href="#s1-4">§1.4</a></dd></div>
 <div><dt>Hire-in</dt><dd>Equipment sourced from another supplier for a particular job rather than from the company’s own stock. Confirm the exact model, version, ownership, return condition and authorised changes before treating it like familiar kit. <a href="#hub-workspace">Job workspace</a></dd></div>
 <div><dt>House tech (venue tech)</dt><dd>The venue’s own technician — knows where the power, tie lines and noise limiter are. Worth being nice to. <a href="#s1-3">§1.3</a></dd></div>
@@ -7210,7 +7273,7 @@ if(quickfabBtn && quickfabMenu){
       sigcable:{q:'Swap the signal cable into the amp. For AES, check the amp shows digital lock at the right sample rate. For a network feed, check the stream or subscription.', k:'Result', end:true, links:[['#s12-14','12.14 Network faults']]},
       generic:{q:'Treat it as a general speaker fault: power to the box or amp, speakON locked at both ends, the output patch actually routed to it — then swap the cable to isolate.', k:'Result', end:true, links:[['#s12-13','12.13 Speaker &amp; amp faults']]}
      }},
-    {id:'sub', title:'Sub silent, tops fine (or the reverse)', words:['subwoofer','subwoofers','no sub','no subs','no bass','no low end','no bottom','sub silent','subs silent','sub is silent','subs are silent','sub quiet','sub not','subs not','sub dead','sub missing','sub isn','subs aren','tops fine','tops are fine','top is fine','top silent','tops silent','top is silent','tops are silent','no tops','top not working','tops not working','sub works','subs work','sub fine','subs fine','sub is fine','subs are fine'],
+    {id:'sub', title:'Sub silent, tops fine (or the reverse)', words:['no sub','no subs','no bass','no low end','no bottom','sub silent','subs silent','sub is silent','subs are silent','sub quiet','sub not','subs not','sub dead','sub missing','sub isn','subs aren','tops fine','tops are fine','top is fine','top silent','tops silent','top is silent','tops are silent','no tops','top not working','tops not working','sub works','subs work','sub fine','subs fine','sub is fine','subs are fine'],
      ask:'Do you want to check the amp settings, or shall I keep swapping cables to isolate it?',
      nodes:{
       start:{q:'Is a d&amp;b amp feeding the top and the sub down <strong>one cable</strong> (Mix TOP/SUB — from the centre A/B or C/D output)?', k:'Top and sub on one cable', opts:[['Yes, one cable','core'],['No, separate channels','sep'],['Not sure','unsure']]},
@@ -7258,12 +7321,12 @@ if(quickfabBtn && quickfabMenu){
       feed:{q:'The break is between the console and the amps: output patch, stage box or network, AES/Dante routing, a processor in between. Trace the signal path one hop at a time.', k:'Result', end:true, links:[['#s2-1','2.1 Signal flow'],['#s12-14','12.14 Network faults']]},
       mutes:{q:'Amps have signal but nothing comes out: look for mutes in R1 (all amps or a group), amps in standby, or every channel muted at the front panel.', k:'Result', end:true, links:[['#s6-17','6.17 Front panel']]}
      }},
-    {id:'nl4', title:'Check or test an NL4 / NLT4 cable', words:['nl4','nlt4','nl8','nl2','speakon','speak on','cable test','tester','pinout','pin out','2-core','4-core','two core','four core','stx','coupler'],
+    {id:'nl4', kind:'setup', title:'Check or test an NL4 / NLT4 cable', words:['nl4','nlt4','nl8','nl2','speakon','speak on','cable test','tester','pinout','pin out','2-core','4-core','two core','four core','stx','coupler'],
      ask:'Is this cable OK to go out, or shall I quarantine it?',
      nodes:{
       start:{q:'Mute anything it\'s plugged into first. Then: (1) look — strain relief tight, no copper showing, latch springs back, body not cracked; (2) put it through a speakON cable tester — all four poles continuous, no shorts between any of them; (3) check the label says whether it\'s 2-core or 4-core. Pins 1± carry the first channel, pins 2± the second.', k:'Result', end:true, links:[['#s3-12','3.12 NL4 &amp; NLT4 cables'],['#s6-17','6.17 Which pins carry what']]}
      }},
-    {id:'setup', kind:'setup', title:'Set up a d&b system', words:['d&b','d20','d80','d40','d90','d6','d12','amp rack','amps','amp','speakers','speaker','pa','line array','preset','arraycalc','output mode','loadmatch','system check','r1','speakon','nl4','nlt4','sub','subs','tops'],
+    {id:'setup', kind:'setup', title:'Set up a d&b system', words:['d&b','d20','d80','d40','d90','d6','d12','amp rack','amps','amp','speakers','speaker','pa','line array','preset','arraycalc','output mode','loadmatch','system check','r1','speakon','nl4','nlt4','sub','subs','tops','hang','line array','array','flown','rack','system'],
      entries:{r1:['r1','remote','laptop'], cabling:['cable','cables','cabling','nl4','nlt4','speakon','sub cables'], lm:['loadmatch','system check'], modes:['output mode','mode','socket','which output'], prove:['prove','proving','test the boxes','check the boxes'], channel:['channel','preset','setup on','configure the amp'], lights:['light','lights','led','indicator'], seq:['whole','from scratch','start to finish','everything']},
      ask:'Can you check my setup before we go live?',
      nodes:{
@@ -7290,7 +7353,60 @@ if(quickfabBtn && quickfabMenu){
       bc:{q:'A separate, isolated mix built for the feed, tested with the receiving end, with its own level checks — never just a copy of the room mix.', k:'Result', end:true, links:[['#s14-8','14.8 Broadcast submix']]},
       sf:{q:'Save early and often, name it with date and venue, keep a backup off the console, and never overwrite someone else\'s file.', k:'Result', end:true, links:[['#s7-4','7.4 Show file discipline']]}
      }},
-    {id:'hum', title:'Hum or buzz', words:['hum','humming','buzz','buzzing','ground loop','earth','mains hum','hiss','noise floor'],
+    {id:'array', title:'Line array: one box or part of the hang wrong',
+     entries:{dull:['dull','no top end','no highs','muffled','sounds different'], zones:['top of the hang','bottom of the hang','top half','bottom half'], coverage:['coverage','front to back','back of the room','too loud at the front'], 'box:start':['silent','not working']},
+     words:['line array','array','hang','flown','the hang','top box','top boxes','bottom box','bottom boxes','arrayprocessing','array processing','throw','one box in','part of the array','down the array'],
+     ask:'Can you check the array setups and processing with me?',
+     nodes:{
+      start:{q:'What\'s wrong with the hang?', k:'Array symptom', opts:[['One box silent','box:start'],['One box sounds dull or different','dull'],['The top or bottom of the hang sounds wrong','zones'],['Level or coverage front-to-back is off','coverage']]},
+      dull:{q:'Solo that box at low level and listen close. Then check, in order: its <strong>setup variant</strong> matches the plan (Arc, Line or AP — a box on the wrong variant sounds different), the speaker cable carries all the pins it needs, and the HF driver is actually working. A box that sounds dull on the right setup and a good cable has a driver fault — quarantine it.', k:'Result', end:true, links:[['#s6-20','6.20 Setup variants'],['#s6-19','6.19 d&amp;b faults']]},
+      zones:{q:'With <strong>ArrayProcessing</strong>, each box gets filters calculated for its own place in the hang. If amps or channels were swapped, or a cable re-patched, those filters land on the wrong box. Check the patch against the plan box by box, that every box is on its AP setup, and that the system tech has loaded the processing onto every amp. Don\'t edit it yourself.', k:'Result', end:true, links:[['#s6-16','6.16 ArrayProcessing'],['#s6-18','6.18 Setting up']]},
+      coverage:{q:'Usually design or aim, not a fault: splay angles, trim height, ArrayProcessing on or off, LoadMatch cable data. Note where it\'s too loud or too quiet and tell the system tech — changing angles or trim is a rigging job.', k:'Result', end:true, links:[['#s6-6','6.6 Coverage'],['#s6-8','6.8 Tuning']]}
+     }},
+    {id:'cardioid', title:'Cardioid subs: too much bass behind them',
+     entries:{csa:['csa','reversed','backwards','facing back','turned round'], endfire:['end-fire','endfire','end fire'], builtin:['v-sub','v-gsub','j-sub','sl-sub','ksl-sub','xsl-sub','ccl-sub']},
+     words:['cardioid','behind the subs','back of the subs','rear of the subs','stage bass','bass on stage','csa','end-fire','endfire','end fire','sub array','rear rejection','bass behind'],
+     ask:'Can you check the sub array settings with me?',
+     nodes:{
+      start:{q:'How are the subs arranged?', k:'Sub arrangement', opts:[['d&b cardioid subs (V-SUB, J-SUB, SL…)','builtin'],['A stack with one box facing backwards','csa'],['End-fire: subs in a line, front to back','endfire']]},
+      builtin:{q:'Built-in cardioid subs only cancel behind when every driver is working on the right cardioid setup. Check: the setup is the cardioid one from the plan, every driver is producing (listen close at low level, front and back), and nothing is right up against the back — a wall or set close behind stops the cancellation working.', k:'Result', end:true, links:[['#s6-6','6.6 Sub configurations'],['#s6-20','6.20 Models']]},
+      csa:{q:'The reversed box needs its own amp channel running the cardioid processing (its delay and polarity), and the spacing must match the plan. Check that channel\'s setup, the box positions, and that nobody has "fixed" a polarity or delay setting. Wrong delay or polarity gives you <em>more</em> bass on stage and less out front.', k:'Result', end:true, links:[['#s6-6','6.6 Sub configurations']]},
+      endfire:{q:'Each row is delayed to match its distance from the front, so spacing and delays have to agree with the plan. A row out of position, or delays reset on one amp, and the rear cancellation disappears. Check positions with a tape and delays in R1 against the plan.', k:'Result', end:true, links:[['#s6-6','6.6 Sub configurations'],['#calcDelay','Delay calculator']]}
+     }},
+    {id:'phasey', title:'Sounds thin, phasey or hollow',
+     entries:{overlap:['overlap','fill','fills','front fill','delay','delays','out fill'], seats:['some seats','one area','one side','power alley'], everywhere:['everywhere','whole room','all over']},
+     words:['phasey','phasy','phase','out of phase','thin','hollow','comb','combing','comb filter','flanging','swirly','cancelling','cancellation','no low mid','time alignment','alignment','echo','slap','doubled','smeared'],
+     ask:'Can we check polarity and alignment together?',
+     nodes:{
+      start:{q:'Where do you hear it?', k:'Where it sounds wrong', opts:[['Everywhere','everywhere'],['Only where two systems overlap (mains and a fill or delay)','overlap'],['Only in some seats','seats']]},
+      everywhere:{q:'Check, in order: one box or channel with reversed polarity (a cable wired wrong, or a polarity setting), <strong>CUT</strong> left on the tops with no subs running (thin), and sub-to-top alignment. Mute the subs — if the tops on their own sound right, it\'s how the subs and tops join, which is the system tech\'s call.', k:'Result', end:true, links:[['#s6-8','6.8 Tuning'],['#s6-17','6.17 CUT']]},
+      overlap:{q:'Two systems arriving at different times comb-filter where they overlap. The fill or delay system\'s delay has to match its distance from the mains — check the delay in R1 against the plan, and against the delay calculator for a sanity check. Temperature shifts it slightly over long distances.', k:'Result', end:true, links:[['#calcDelay','Delay calculator'],['#s6-8','6.8 Time alignment']]},
+      seats:{q:'Usually the room or the layout, not a fault: reflections off a nearby wall, or the "power alley" between left and right subs. Walk it, note where it happens, and tell the system tech.', k:'Result', end:true, links:[['#s6-15','6.15 The room'],['#s6-6','6.6 Subs']]}
+     }},
+    {id:'digital', title:'Amp input: AES, Milan or Dante not arriving',
+     entries:{fallback:['fallback','backup input','override'], milan:['milan','avb'], dante:['dante','ds10','ds20'], aes:['aes','aes3','lock','sample rate']},
+     words:['aes','aes3','digital input','sample rate','lock','unlocked','no lock','milan','avb','ds10','ds20','stream','fallback','override','network audio','96k','48k','digital link','backup input'],
+     ask:'Can you check the digital feed with me?',
+     nodes:{
+      start:{q:'How is signal getting to the amps?', k:'Input type', opts:[['AES (digital XLR)','aes'],['Milan (D25, D40, D90)','milan'],['Dante, through a DS10 or DS20','dante'],['It switched to its backup input','fallback']]},
+      aes:{q:'<ol><li>Does the amp show digital lock? No lock means no audio.</li><li>Sample rate matches what the amp accepts (48 or 96 kHz on D20/D80).</li><li>Proper 110 Ω AES cable on long runs, not mic cable.</li><li>The digital link chain is unbroken — each amp feeds the next from its link out.</li><li>The amp\'s input mode is set to digital and the channels are routed from D1–D4.</li></ol>', k:'Result', end:true, links:[['#s6-17','6.17 Inputs'],['#s12-14','12.14 Digital faults']]},
+      milan:{q:'Milan isn\'t Dante: it needs AVB-capable switches, and the stream has to be connected to the amp in the network controller. On a D40 or D90, the main Milan and R1 port is <strong>ETH1/PRI</strong> — ETH2/SEC is for redundancy only. Dante Controller won\'t show Milan devices at all.', k:'Result', end:true, links:[['#s8-2','8.2 Networks'],['#s6-20','6.20 Amps']]},
+      dante:{q:'The DS10 turns Dante into AES for the amps, so check it in two halves: the DS10\'s Dante subscriptions and clock in Dante Controller, then its AES outputs and the cables onward to the amps (and their lock lights).', k:'Result', end:true, links:[['#s12-14','12.14 Network faults']]},
+      fallback:{q:'Current d&amp;b amps can switch to a <strong>fallback</strong> input when the main one is lost — manually or automatically. If an amp is running on fallback, the main input failed: find out why before switching back, and remember the fallback feed may be a different mix or level.', k:'Result', end:true, links:[['#s6-17','6.17 Inputs']]}
+     }},
+    {id:'loading', title:'How many boxes per amp channel', words:['per channel','boxes per channel','speakers per channel','how many boxes','how many speakers','how many cabs','impedance','ohm','ohms','load','too many','parallel','daisy chain','daisy-chain','link out','link through'],
+     ask:'Can you confirm how many boxes this channel should run?',
+     nodes:{
+      start:{q:'Every d&amp;b box has a maximum number per amp channel, which can differ between amps — it\'s in the box\'s manual, and ArrayCalc won\'t let a plan exceed it. Linking more boxes through on one channel lowers the load: too many and the channel limits hard (yellow GR) or protects. Stick to what the plan says; if the plan isn\'t to hand, ask rather than guess.', k:'Result', end:true, links:[['#s2-7','2.7 Impedance'],['#s6-20','6.20 Models'],['#s6-19','6.19 d&amp;b faults']]}
+     }},
+    {id:'noise', title:'Hiss or noise from the speakers', words:['hiss','hissing','white noise','static','noisy','whine','whining','noise from the speakers','noise floor','background noise','digital noise','high pitched'],
+     ask:'Can you help me find where the noise is coming in?',
+     nodes:{
+      start:{q:'Mute the amp channel\'s input (or the console output feeding it). Does the noise stop?', k:'Stops when input muted', opts:[['Yes','upstream'],['No','amp']]},
+      upstream:{q:'It\'s coming in with the signal. Work back towards the console: an open channel with too much gain, a noisy source or DI, a long unbalanced run, or a digital clock problem (clicks and whines). Gain structure is usually the answer to steady hiss.', k:'Result', end:true, links:[['#s2-5','2.5 Gain staging'],['#s12-14','12.14 Clocking']]},
+      amp:{q:'Noise with the input muted is in the amp, the speaker cable or the box. Swap the speaker cable, then move the box to another channel. If it stays with one amp channel, report the amp with any screen message — don\'t open it.', k:'Result', end:true, links:[['#s6-19','6.19 d&amp;b faults']]}
+     }},
+    {id:'hum', title:'Hum or buzz', words:['hum','humming','buzz','buzzing','ground loop','earth','mains hum'],
      ask:'Can I try a ground lift on the DI, or do you want to look?',
      nodes:{
       start:{q:'Mute channels one at a time. Does the hum go away when one particular source is muted?', k:'Hum follows one source', opts:[['Yes, one source','one'],['No — it\'s on the PA itself','pa']]},
@@ -7326,8 +7442,9 @@ if(quickfabBtn && quickfabMenu){
   var FLOW_BY_ID = {};
   FLOWS.forEach(function(f){ FLOW_BY_ID[f.id] = f; });
   var FIX_STARTERS = ['box','sub','crackle','limit','r1','all','hum','mic','feedback','rf','dante','power'];
+  var ADV_STARTERS = ['array','cardioid','phasey','digital','loading','noise'];
   var SETUP_STARTERS = ['setup','setupother','nl4'];
-  var INFO_HINTS = ['What is Mix TOP/SUB?','What does GR mean?','NL4 vs NLT4','What is LoadMatch?','What does a DI do?'];
+  var INFO_HINTS = ['What amp does a V8 need?','Can a D20 run KSL?','D40 vs D80','What is Mix TOP/SUB?','What does GR mean?','NL4 vs NLT4'];
   var INFO_INTENT = /^(what|whats|what's|which|who|why|when|where|explain|define|definition|meaning|tell me|difference|is there|does|do i need|can i|should i)\b|\b(mean|means|stand for|stands for|difference between|vs|versus)\b|\?$/i;
   var SETUP_INTENT = /\b(set ?up|setting up|configure|configuring|install|connect(ing)?|how (do|to|should) i|how to|walk me through|step by step|get .* working|patch)\b/i;
   var DANGER = /\b(smoke|smoking|burning|burnt smell|fire|flames?|sparks?|sparking|shock(ed)?|electrocut\w*|injur\w*|hurt|bleeding|falling|fell|collapsed?|swaying)\b/i;
@@ -7375,7 +7492,7 @@ if(quickfabBtn && quickfabMenu){
   }
 
   /* ---- guided mode state ---- */
-  var g = {flow:null, node:null, steps:[], symptom:'', slots:{}, trail:[]};
+  var g = {flow:null, node:null, steps:[], symptom:'', slots:{}, trail:[], models:[], queue:[], lastQ:''};
 
   /* ---- understanding what was typed ----
      Everything typed is normalised the same way as the routes' own words:
@@ -7428,11 +7545,11 @@ if(quickfabBtn && quickfabMenu){
     return prev[b.length];
   }
   function hasWord(t, w, tokens){
-    if(w.length <= 3) return t.indexOf(' ' + w + ' ') > -1;
+    if(w.length <= 3) return t.indexOf(' ' + w + ' ') > -1 || t.indexOf(' ' + w + 's ') > -1;
     if(t.indexOf(w) > -1) return true;
-    if(w.indexOf(' ') > -1 || w.length < 5) return false;
+    if(w.indexOf(' ') > -1 || w.length < 5 || /\d/.test(w)) return false;
     var allow = w.length >= 8 ? 2 : 1;
-    return tokens.some(function(tok){ return tok.length >= 4 && editDistance(tok, w) <= allow; });
+    return tokens.some(function(tok){ return tok.length >= 4 && !/\d/.test(tok) && editDistance(tok, w) <= allow; });
   }
   FLOWS.forEach(function(f){ f.words.forEach(function(w){ w.split(' ').forEach(function(x){ if(/^[a-z]{5,}$/.test(x)) VOCAB[x] = true; }); }); });
   FLOWS.forEach(function(f){
@@ -7462,8 +7579,175 @@ if(quickfabBtn && quickfabMenu){
     if(/\b(error|warning|temperature|overheat\w*)\b/.test(t)) sl.error = true;
     return sl;
   }
+
+  /* ---- d&b model knowledge ----
+     Read from the two tables in §6.20, so the book and the chat can never
+     disagree. Every model name in a row's data-models becomes something the
+     chat recognises in what's typed, with or without hyphens and spaces. */
+  var MODELS = null, MODEL_LIST = [];
+  var NO_MATCH = {A1:true, MAX:true};
+  /* Verified exclusions (d&b product pages): the setups these amps don't have. */
+  var NOT_ON = {
+    D20: /^(J8|J12|J-SUB|J-INFRA|M2|KSL|XSL|GSL|SL-)/,
+    D40: /^(GSL|SL-SUB|SL-GSUB|J8|J12|J-SUB|J-INFRA|M2)$|^GSL/
+  };
+  function cellText(td){ return td ? (td.textContent || '').replace(/\s+/g, ' ').trim() : ''; }
+  function buildModels(){
+    if(MODELS) return MODELS;
+    MODELS = {};
+    Array.prototype.forEach.call(document.querySelectorAll('table.db-models'), function(table){
+      var kind = table.getAttribute('data-kind');
+      Array.prototype.forEach.call(table.querySelectorAll('tbody tr[data-models]'), function(tr){
+        var td = tr.querySelectorAll('td');
+        var row = kind === 'amp'
+          ? {kind:'amp', status:cellText(td[1]), power:cellText(td[2]), inputs:cellText(td[3]), drives:cellText(td[4])}
+          : {kind:'speaker', range:tr.getAttribute('data-range') || cellText(td[0]), models:cellText(td[1]), what:cellText(td[2]), driven:cellText(td[3])};
+        row.names = tr.getAttribute('data-models').split(',').map(function(x){ return x.trim(); });
+        tr.getAttribute('data-models').split(',').forEach(function(name){
+          name = name.trim();
+          var entry = {name:name, row:row};
+          MODELS[name.toUpperCase()] = entry;
+          if(NO_MATCH[name]) return;
+          var pat = name.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/-/g, '[\\s-]?');
+          MODEL_LIST.push({entry:entry, re:new RegExp('(^|[^a-z0-9])' + pat + '(?![a-z0-9])', 'i')});
+        });
+        if(kind === 'speaker'){
+          /* the range on its own too: "KSL", "V-Series", "V series", "CCL" */
+          var range = row.range, m = /\(([^)]+)\)/.exec(range), aliases = [];
+          if(m) aliases.push(m[1]);
+          var base = range.replace(/\s*\(.*\)/, '');
+          aliases.push(base);
+          var lead = /^([A-Za-z]+)-Series$/.exec(base);
+          if(lead) aliases.push(lead[1] + ' series', lead[1] + '-series', lead[1] + 'series');
+          aliases.forEach(function(a){
+            var pat = a.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/[\s-]+/g, '[\\s-]?');
+            MODEL_LIST.push({entry:{name:a, row:row, range:true}, re:new RegExp('(^|[^a-z0-9])' + pat + '(?![a-z0-9])', 'i')});
+          });
+        }
+      });
+    });
+    /* longest names first, so "V-GSUB" wins over "V" family matches */
+    MODEL_LIST.sort(function(a, b){ return b.entry.name.length - a.entry.name.length; });
+    return MODELS;
+  }
+  function findModels(text){
+    buildModels();
+    var t = String(text), found = [], taken = [];
+    MODEL_LIST.forEach(function(mm){
+      var m = mm.re.exec(t);
+      if(!m) return;
+      var start = m.index + m[1].length, end = start + m[0].length - m[1].length;
+      if(taken.some(function(r){ return start < r[1] && end > r[0]; })) return;
+      taken.push([start, end]);
+      found.push({entry:mm.entry, at:start});
+    });
+    found.sort(function(a, b){ return a.at - b.at; });
+    return found.map(function(f){ return f.entry; });
+  }
+  function modelCard(e){
+    var r = e.row, h;
+    if(r.kind === 'amp'){
+      h = '<p><strong>' + esc(e.name) + '</strong> — d&amp;b amplifier · ' + esc(r.status) + '</p><ul><li>' + esc(r.power) + '</li><li>Inputs: ' + esc(r.inputs) + '</li><li>Drives: ' + esc(r.drives) + '</li></ul>';
+    } else {
+      h = '<p><strong>' + esc(e.name) + '</strong> — ' + esc(r.range) + (e.range ? ': ' + esc(r.models) : '') + '</p><p>' + esc(r.what) + '</p><p><strong>Driven by:</strong> ' + esc(r.driven) + '</p>';
+    }
+    return h;
+  }
+  function speakerKey(e){ return e.range ? e.row.models.split(/[,(]/)[0].trim() : e.name; }
+  /* Can this amp drive this box? Exclusions are d&b's own; otherwise the
+     "Driven by" cell decides, and anything we can't confirm says so. */
+  function canDrive(amp, spk){
+    var a = amp.name.toUpperCase(), driven = spk.row.driven;
+    var keys = spk.range ? spk.row.names : [spk.name];
+    if(/^(5D|5DM|10D|25D|30D|40D)$/.test(a)) return {ok:null, why:a + ' is an installation amp — in a venue it will already be set up for its system. Check its setup list rather than re-purpose it.'};
+    var excluded = NOT_ON[a] ? keys.filter(function(k){ return NOT_ON[a].test(k.toUpperCase()); }) : [];
+    if(excluded.length && excluded.length === keys.length) return {ok:false, why:'The ' + a + ' doesn\'t have setups for ' + (spk.range ? spk.name : spk.name) + '. ' + spk.row.range + ' is driven by: ' + driven};
+    if(excluded.length) return {ok:null, why:'Not all of them: the ' + a + ' has no setup for ' + excluded.join(', ') + '. ' + spk.row.range + ' is driven by: ' + driven};
+    /* Only count a firm mention: drop "check the setup list" clauses and anything after "not". */
+    var firm = driven.replace(/\([^)]*check[^)]*\)/gi, '').split(/\.\s+/).filter(function(x){ return !/check/i.test(x); }).join('. ').replace(/\bnot\b.*$/i, '');
+    if(new RegExp('\\b' + a + '\\b').test(firm)) return {ok:true, why:spk.row.range + ' is driven by: ' + driven};
+    if(a === 'D80') return {ok:true, why:'The D80 carries setups for all d&b loudspeakers. ' + spk.row.range + ': ' + driven};
+    return {ok:null, why:'I can\'t confirm that from the table. ' + spk.row.range + ' is driven by: ' + driven + ' Check whether the setup is in the ' + a + '\'s list (amp screen or R1).'};
+  }
+  var COMPAT_Q = /\b(can|could|will|does|do|would)\b[^?]*\b(run|drive|power|work|handle|use|support|take)|\bcompatib|\bon an? (d\d|\d+d)\b|\bwith an? (d\d|\d+d)\b/i;
+  var WHICH_AMP_Q = /\b(what|which)\b[^?]*\bamps?\b|\bdriven by\b|\bwhat drives\b|\bamp (does|do) (it|they|that|these|this)\b|\bwhat amp\b/i;
+  var COMPARE_Q = /\b(vs\.?|versus|compare|comparison|difference|differ|better|or)\b/i;
+  var PER_CHANNEL_Q = /\b(per channel|how many)\b/i;
+
+  /* Answer a question about d&b kit by name. Returns true if it answered. */
+  function modelAnswer(text){
+    if(SETUP_INTENT.test(text) && !COMPAT_Q.test(text) && !WHICH_AMP_Q.test(text)) return false;
+    var ms = findModels(text);
+    var t = text.toLowerCase();
+    var refersBack = /\b(it|they|them|that|those|these|this one|the box|the boxes|the amp)\b/.test(t) || /^(and|what about|how about)\b/.test(t.trim());
+    if(!ms.length && refersBack && g.models.length) ms = g.models.slice(-2);
+    if(!ms.length) return false;
+    var amps = ms.filter(function(e){ return e.row.kind === 'amp'; });
+    var spks = ms.filter(function(e){ return e.row.kind === 'speaker'; });
+    /* "and the D40?" after talking about a speaker */
+    if(amps.length && !spks.length && refersBack){
+      var lastSpk = g.models.filter(function(e){ return e.row.kind === 'speaker'; }).pop();
+      if(lastSpk) spks = [lastSpk];
+    }
+    if(spks.length && !amps.length && WHICH_AMP_Q.test(t) === false && /\b(and|what about|how about)\b/.test(t)){
+      var lastAmp = g.models.filter(function(e){ return e.row.kind === 'amp'; }).pop();
+      if(lastAmp && COMPAT_Q.test(g.lastQ || '')) amps = [lastAmp];
+    }
+    ms.forEach(function(e){ g.models.push(e); });
+    if(g.models.length > 8) g.models = g.models.slice(-8);
+    if(amps[0]) g.slots.amp = g.slots.amp || amps[0].name.toUpperCase();
+    if(spks[0]) g.slots.box = spks[0].name;
+    g.lastQ = text;
+    var links = [['#s6-20','6.20 d&amp;b models']];
+
+    if(PER_CHANNEL_Q.test(t) && spks.length){
+      var mm = addMsg('bot', '<p>The maximum number of ' + esc(spks[0].name) + ' per amp channel is in its manual, and ArrayCalc won\'t let a plan exceed it — it can differ from amp to amp. Too many on one channel and it limits hard or protects.</p>' + (/^CCL/i.test(speakerKey(spks[0])) ? '<p>For CCL, d&amp;b quote up to eight boxes per amp.</p>' : '') + '<p>Go by the plan; if it isn\'t to hand, ask.</p>');
+      addLinks(mm, links);
+      modelChips(spks[0], amps[0]);
+      return true;
+    }
+    if(amps.length && spks.length && (COMPAT_Q.test(t) || refersBack || amps.length + spks.length === 2)){
+      var verdicts = [];
+      spks.forEach(function(sp){ amps.forEach(function(am){
+        var v = canDrive(am, sp);
+        verdicts.push('<p>' + (v.ok === true ? '<strong>Yes</strong> — ' : v.ok === false ? '<strong>No</strong> — ' : '<strong>Not certain</strong> — ') + esc(am.name.toUpperCase()) + ' with ' + esc(sp.name) + '. ' + esc(v.why) + '</p>');
+      }); });
+      var m1 = addMsg('bot', verdicts.join('') + '<p class="note-line">Whatever the table says, the amp\'s own setup list has the final word.</p>');
+      addLinks(m1, links);
+      modelChips(spks[0], amps[0]);
+      return true;
+    }
+    if(spks.length && !amps.length && WHICH_AMP_Q.test(t)){
+      var sp0 = spks[0];
+      var m2 = addMsg('bot', '<p><strong>' + esc(sp0.name) + '</strong> (' + esc(sp0.row.range) + ') is driven by: ' + esc(sp0.row.driven) + '</p>');
+      addLinks(m2, links);
+      modelChips(sp0, null);
+      return true;
+    }
+    if(ms.length >= 2 && (COMPARE_Q.test(t) || ms.length === 2)){
+      var m3 = addMsg('bot', '<p>Side by side:</p>' + ms.slice(0, 3).map(modelCard).join('<hr>'));
+      addLinks(m3, links);
+      modelChips(spks[0], amps[0]);
+      return true;
+    }
+    var m4 = addMsg('bot', modelCard(ms[0]));
+    addLinks(m4, links);
+    modelChips(spks[0], amps[0]);
+    return true;
+  }
+  function modelChips(spk, amp){
+    var c = [];
+    if(spk && !amp) c.push({label:'Which amp does it need?', quiet:true, go:function(){ addMsg('me', 'Which amp does it need?'); modelAnswer('which amp does it need'); }});
+    if(spk && amp) c.push({label:'Set it up', quiet:true, go:function(){ addMsg('me', 'Set it up'); startFlow(FLOW_BY_ID.setup); }});
+    if(spk) c.push({label:'Something\'s wrong with it', quiet:true, go:function(){ addMsg('me', 'Something\'s wrong with it'); addMsg('bot', '<p>What\'s it doing? Describe it, or pick:</p>'); setChips(starterChips(['box','sub','crackle','limit','array','phasey']).concat([BACK])); }});
+    if(amp && !spk) c.push({label:'What can it drive?', quiet:true, go:function(){ addMsg('me', 'What can it drive?'); var m = addMsg('bot', '<p><strong>' + esc(amp.name) + '</strong> drives: ' + esc(amp.row.drives) + '</p>'); addLinks(m, [['#s6-20','6.20 d&amp;b models']]); menu(); }});
+    c.push(BACK);
+    setChips(c);
+  }
+
   function mergeSlots(text){
     var sl = readSlots(text);
+    findModels(text).forEach(function(e){ if(e.row.kind === 'speaker') sl.box = e.name; else sl.amp = sl.amp || e.name.toUpperCase(); });
     Object.keys(sl).forEach(function(k){ g.slots[k] = sl[k]; });
   }
   function kitLine(){
@@ -7473,6 +7757,7 @@ if(quickfabBtn && quickfabMenu){
     if(sl.channel) parts.push('channel ' + sl.channel);
     if(sl.mode) parts.push(sl.mode);
     if(sl.cable) parts.push(sl.cable + ' cable');
+    if(sl.box) parts.unshift(sl.box);
     return parts.join(', ');
   }
   /* For a question the person has already answered in passing, the answer —
@@ -7498,7 +7783,7 @@ if(quickfabBtn && quickfabMenu){
   function menu(){
     setChips([
       {label:'Set something up', go:function(){ addMsg('me', 'Set something up'); addMsg('bot', '<p>What are you setting up? Pick one, or type it — "connect R1", "run the sub cables", "line check".</p>'); setChips(starterChips(SETUP_STARTERS).concat([BACK])); }},
-      {label:'Something\'s wrong', go:function(){ addMsg('me', 'Something\'s wrong'); addMsg('bot', '<p>Which is closest? Or describe it — "sub silent on amp 2", "crackle from stage left".</p>'); setChips(starterChips(FIX_STARTERS).concat([BACK])); }},
+      {label:'Something\'s wrong', go:function(){ addMsg('me', 'Something\'s wrong'); addMsg('bot', '<p>Which is closest? Or describe it — "sub silent on amp 2", "crackle from stage left".</p>'); setChips(starterChips(FIX_STARTERS).concat([{label:'More advanced…', quiet:true, go:function(){ addMsg('me', 'More advanced'); setChips(starterChips(ADV_STARTERS).concat([BACK])); }}, BACK])); }},
       {label:'Look something up', go:function(){ addMsg('me', 'Look something up'); addMsg('bot', '<p>Type a word or a question — a term, a connector, a setting, a light. A few to try:</p>'); setChips(INFO_HINTS.map(function(h){ return {label:h, quiet:true, go:function(){ addMsg('me', esc(h)); answerInfo(h); }}; }).concat([BACK])); }}
     ]);
   }
@@ -7536,7 +7821,9 @@ if(quickfabBtn && quickfabMenu){
     addMsg('bot', f.kind === 'setup'
       ? '<p><strong>' + esc(f.title) + '</strong> — one step at a time.</p>'
       : '<p>Sounds like <strong>' + esc(f.title.toLowerCase()) + '</strong>. One check at a time — and if anything is unsafe, stop and <a href="#support-now">make it safe</a> first.</p>', 'note');
-    showNode(f, entryNode(f, text));
+    var entry = resolve(entryNode(f, text), f);
+    if(entry.flow !== f) g.flow = entry.flow;
+    showNode(entry.flow, entry.id);
   }
   function resolve(ref, f){
     if(ref.indexOf(':') > -1){
@@ -7634,6 +7921,10 @@ if(quickfabBtn && quickfabMenu){
     }
     if(!fixed && storeGet(KEY_STORE)){
       row.push({label:'Ask the AI assistant', go:function(){ setMode('ai', true); sendAi('I worked through the guided fault finder and I\'m still stuck. Here\'s where I am:\n\n' + report + '\n\nWhat should I check next?'); }});
+    }
+    if(g.queue.length){
+      var nextF = g.queue.shift();
+      row.unshift({label:'Now: ' + nextF.title, go:function(){ addMsg('me', esc(nextF.title)); g.symptom = nextF.title; startFlow(nextF); }});
     }
     row.push({label:'Another problem', quiet:true, go: reset});
     setChips(row);
@@ -7784,13 +8075,27 @@ if(quickfabBtn && quickfabMenu){
   }
 
   function guidedText(text){
-    if(!g.symptom) g.symptom = text;
     mergeSlots(text);
     var setupAsk = SETUP_INTENT.test(text);
     var ranked = setupAsk ? rankFlows(text, 'setup') : rankFlows(text, 'fix');
     if(!ranked.length) ranked = rankFlows(text);
     var f = ranked.length ? ranked[0].f : null;
     var info = INFO_INTENT.test(text.trim()) && !setupAsk;
+    /* A question about d&b kit by name ("can a D20 run KSL?", "V8 vs Y8",
+       "what amp does it need?") is answered from the model tables — unless
+       it's really a fault report that happens to name the kit, in which case
+       the kit is remembered for the report and the fault route starts. */
+    var fixRanked = rankFlows(text, 'fix');
+    var faultish = fixRanked.length && fixRanked[0].s >= 1 && !info && !COMPAT_Q.test(text) && !WHICH_AMP_Q.test(text) && fixRanked[0].f.id !== 'setup';
+    if(!faultish && !(setupAsk && f && f.kind === 'setup' && !findModels(text).length) && modelAnswer(text)) return;
+    if(!g.symptom) g.symptom = text;
+    /* Two problems in one message: start with the stronger, queue the other. */
+    if(f && !info && ranked.length > 1 && ranked[1].f !== f && ranked[1].s >= 1 && /\b(and|also|plus|as well|too)\b/i.test(text) && (f.kind || 'fix') === 'fix' && (ranked[1].f.kind || 'fix') === 'fix'){
+      g.queue = [ranked[1].f];
+      addMsg('bot', '<p>Two things there. Starting with <strong>' + esc(f.title.toLowerCase()) + '</strong>, then <strong>' + esc(ranked[1].f.title.toLowerCase()) + '</strong>.</p>', 'note');
+      startFlow(f, text);
+      return;
+    }
     if(f && !info && ranked.length > 1 && ranked[1].s === ranked[0].s){
       addMsg('bot', '<p>That could be a couple of things — which is closer?</p>');
       setChips(ranked.slice(0, 3).map(function(r){
@@ -7813,7 +8118,7 @@ if(quickfabBtn && quickfabMenu){
   var ai = {history:[], busy:false, system:null, refIds:{}};
   var pendingImage = null;
   var sdkPromise = null;
-  var REF_IDS = ['s3-3','s3-12','s6-1','s6-4','s6-16','s6-17','s6-18','s6-19','s12-1','s12-8','s12-13','s12-15'];
+  var REF_IDS = ['s3-3','s3-12','s6-1','s6-4','s6-16','s6-17','s6-18','s6-19','s6-20','s12-1','s12-8','s12-13','s12-15'];
 
   function sectionText(id, max){
     var sec = document.getElementById(id);
@@ -7846,6 +8151,7 @@ if(quickfabBtn && quickfabMenu){
       '- Keep replies short and scannable on a phone: one sentence on what it probably is, then at most five numbered checks. No preamble, no essays.',
       '- Respect authority: on a system they do not own, tell them what to report rather than changing amp setups, output modes, ArrayProcessing, console show files or network settings.',
       '- Be specific about d&b audiotechnik amplifiers (D6, D12, D20, D40, D80, D90 and the install amps), d&b loudspeakers, R1, ArrayCalc and Neutrik speakON NL2/NL4/NLT4/NL8, using the reference below. Where a detail depends on a model, version or firmware you are not sure of, say so and point them to the label above the amp outputs or the manual. Never invent pinouts, menu names or specifications.',
+      '- For advanced or compound problems (several symptoms at once, line arrays and ArrayProcessing, cardioid sub arrays, time alignment, AES/Milan/Dante feeds, amp loading), separate the symptoms, say which you would chase first and why, and keep track of what has already been ruled out across the conversation. Use the d&b model tables in the reference for which amp drives which box; if a pairing is not confirmed there, say so.',
       '- If they attach a photo, say what you can actually see (screen text, indicator colours, connector type) before drawing conclusions, and say if the photo is too unclear to read.',
       '- Refer to handbook sections as §x.y (for example §6.19) when one helps; the app turns them into links. Only cite sections that appear in the contents list.',
       '- When they have found the fault, are stuck, or ask you to "write it up", give a short message for their lead in this order: the symptom, what changed, what has been checked, what they need.',
@@ -7934,6 +8240,9 @@ if(quickfabBtn && quickfabMenu){
     var content = [];
     if(pendingImage) content.push({type:'image', source:{type:'base64', media_type:'image/jpeg', data: pendingImage.data}});
     if(excerpts) content.push({type:'text', text:'<handbook_excerpts>\n' + excerpts + '\n</handbook_excerpts>'});
+    mergeSlots(text);
+    var kitNow = kitLine();
+    if(kitNow) content.push({type:'text', text:'<kit_mentioned_so_far>' + kitNow + '</kit_mentioned_so_far>'});
     content.push({type:'text', text: text});
     ai.history.push({role:'user', content: content});
     clearImage();
@@ -8050,7 +8359,7 @@ if(quickfabBtn && quickfabMenu){
   }
   function reset(){
     log.innerHTML = '';
-    g = {flow:null, node:null, steps:[], symptom:'', slots:{}, trail:[]};
+    g = {flow:null, node:null, steps:[], symptom:'', slots:{}, trail:[], models:[], queue:[], lastQ:''};
     ai.history = [];
     clearImage();
     greet();
