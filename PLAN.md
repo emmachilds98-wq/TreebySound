@@ -133,5 +133,5 @@ additions was *function and placement*, so targeted changes:
 - [x] More guided routes: one side of the PA missing, input distortion,
       comms down, playback/laptop problems, hearing loop, recording/stream
       with no audio, wedge feedback.
-- [ ] Answer bank towards 300.
+- [x] Answer bank: 250 entries (target 300+ as the product list arrives).
 - [ ] More researched content.
