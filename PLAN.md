@@ -45,7 +45,7 @@ the changes for review.
       snapshot when the downloaded page actually differs.
 - [x] `sw.js`: never cache a non-OK response (a 404/500 must not replace the
       offline copy).
-- [ ] README: explain the structure and how to add a section, route or answer.
+- [x] README: explain the structure and how to add a section, route or answer.
 
 ## Phase 2 — one fluid assistant
 
@@ -99,3 +99,14 @@ Add a line per pushed chunk of work: date — what changed — what's next.
 - 2026-11-12 — sw.js fixes, API-key mode removed (stored key now wiped on load), in-chat peek added. Next: smarter search + answer bank.
 - 2026-11-12 — BM25 search with synonyms/stemming and a relevance cut-off; answer bank engine + 125 answers. Next: new guided routes, then Phase 3 research.
 - 2026-11-12 — 12 researched sections (§5.11–5.12, §6.21, §7.8–7.10, §8.9–8.11, §10.11, §13.16–13.17), 4 new routes (desk no output, IEM, DM7 setup, presenter mics), 17 more answers (142 total), intent fixes. Next: README, then merge.
+- 2026-11-12 — README rewritten. Full-page browser check passed (all screens, contents, starters, cross-route jumps, no script errors). Merged for review.
+
+## Next session (tomorrow's upgrade)
+
+- Owner supplies the detailed product list. Then: model-level guides for each
+  product (same depth as d&b), answer-bank entries and routes for them.
+- Confirm what "techniks" refers to before writing anything about it.
+- Meyer Sound / other PA brands if they're in the stock.
+- Grow the answer bank towards several hundred entries; re-audit Part 13
+  line by line.
+- Phase 4 only if real questions are still being missed.
