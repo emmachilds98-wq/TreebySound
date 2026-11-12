@@ -61,3 +61,7 @@ what is audio description => describer
 signal chain => preamp
 what does standard mean in the book => your default
 mic stands => short booms
+what is meyer sound => self-powered
+martin audio wavefront => iKON
+digico recall scope => snapshot
+dlive mixrack => MixRack

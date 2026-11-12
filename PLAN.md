@@ -163,3 +163,12 @@ additions was *function and placement*, so targeted changes:
   and tooling now has at least one answer pointing to it. "§x.y" in answers
   becomes a link that opens the section in the chat.
 - Test set 53 → 61 cases, all passing.
+
+### Round 4 log (2026-11-12)
+
+- New sections (sources checked Nov 2026): §6.23 Martin Audio and Meyer Sound,
+  §7.11 DiGiCo quick start, §7.12 Allen & Heath dLive/Avantis quick start.
+- Pathway technician ladder 18 → 23 skills (comms, DM7 show from blank,
+  reliable playback, Dante Controller, second PA brand). New items were
+  appended at the end of each list because ticks are stored by position.
+- Answer bank 307 → 312; test set 65 cases, all passing.
