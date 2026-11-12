@@ -8011,6 +8011,60 @@ if(quickfabBtn && quickfabMenu){
       lav:{q:'Lavalier on the sternum (about a hand\'s width below the chin), on the side they turn to; cable taped so it can\'t rustle. Headset for movers and quiet talkers. Fresh battery, gain set so they don\'t clip, pack labelled, muted until they\'re on.', k:'Result', end:true, links:[['#s10-11','10.11 Corporate audio, step by step'],['#s5-11','5.11 Shure and Sennheiser systems']]},
       panel:{q:'One mic per panellist, all into the desk\'s automixer if it has one (the Dugan on a DM7) so open mics don\'t add up to feedback and room noise. Ring them out with all of them open.', k:'Result', end:true, links:[['#s10-11','10.11 Corporate audio, step by step'],['#s7-8','7.8 Yamaha DM7']]}
      }},
+    {id:'side', title:'One side of the PA missing (left or right)', words:['one side','left side','right side','stage left','stage right','left missing','right missing','only left','only right','left hang','right hang','one hang','half the pa','one side of the pa'],
+     ask:'Can you check the output patch and the feed to that side?',
+     nodes:{
+      start:{q:'Look at the desk\'s main <strong>L and R</strong> output meters. Are both moving?', k:'Desk L/R meters', opts:[['Both move','after'],['Only one moves','pan'],['Not sure / can\'t see','tone']]},
+      pan:{q:'The desk is only sending one side. Check: everything isn\'t <strong>panned</strong> hard to one side, the main isn\'t set to mono-to-one-side, and no <strong>matrix or output</strong> for that side is muted. Fixed?', k:'Pan and main', opts:[['Yes','fixedside'],['No','after']]},
+      after:{q:'The desk sends both, so it\'s after the desk. Follow the missing side: <strong>output patch</strong> → Dante/AES/analogue route to that side\'s amps → amp input indicators (green?) → amp channels muted? Where does it stop?', k:'Missing-side path', opts:[['Desk output patch','fixpatchside'],['Network / signal to the amps','dante:start'],['Amps show signal, boxes silent','box:start'],['Whole hang dead, amps off','power:start']]},
+      tone:{q:'Send pink noise from the oscillator to the left output only, then the right, at low level. Listen and watch each side\'s amp inputs. The side that doesn\'t respond is the one to follow.', k:'Result', end:true, links:[['#s7-6','7.6 Talkback, tone and solo'],['#s12-12','12.12 Console faults']]},
+      fixpatchside:{q:'Patch that side\'s output to the right socket or Dante channel (the system drawing says which), and retest with tone at low level.', k:'Result', end:true, links:[['#s8-8','8.8 System drawings']]},
+      fixedside:{q:'Good. If the pan or mono setting came from a scene, tell the engineer so it doesn\'t come back.', k:'Result', end:true, fixed:true}
+     }},
+    {id:'clip', title:'Input distorted or clipping', words:['clipping','clip','is clipping','mic clipping','vocal clipping','input clipping','channel clipping','distorted vocal','distorting mic','input distorted','overload light','peak light','red on the channel','too hot','input red','gain too high','fuzzy vocal'],
+     ask:'Can you check the gain structure with me?',
+     nodes:{
+      start:{q:'Is the <strong>channel\'s input meter</strong> hitting the top or showing a peak/OL light?', k:'Input meter', opts:[['Yes, peaking','gain'],['No, meter looks fine','later']]},
+      gain:{q:'Turn the <strong>gain/HA down</strong> until the loudest moments peak well below the top, then bring the fader up to compensate. If it\'s a DI on a hot source, use its pad. If the gain is already all the way down, the source is too hot — pad it or ask for it turned down. On a shared stage box, ask the preamp owner first.', k:'Result', end:true, links:[['#s2-5','2.5 Gain structure'],['#s3-9','3.9 DI boxes']]},
+      later:{q:'The input\'s clean, so the distortion is later: a compressor or insert overdriven, a bus or the main clipping, the amps limiting, or a damaged speaker. Solo the channel in headphones — clean there? Then it\'s downstream.', k:'Where it distorts', opts:[['Clean in headphones','limit:start'],['Distorted in headphones too','dirty']]},
+      dirty:{q:'Distorted at the desk with a clean input meter means processing on the channel: bypass inserts, then the compressor and EQ one at a time. Also try a different mic and cable — a failing mic or cable can sound distorted at any level.', k:'Result', end:true, links:[['#s12-9','12.9 Mic &amp; cable faults'],['#s16-10','16.10 Processing order']]}
+     }},
+    {id:'wedge', title:'Performer can\'t hear themselves', words:['cant hear themselves','can\'t hear myself','can\'t hear themselves','more me','wedge too quiet','monitor too quiet','cant hear in wedge','monitor mix','wedge','more vocal in','turn me up'],
+     ask:'Can the monitor engineer take this one?',
+     nodes:{
+      start:{q:'Is it a <strong>wedge</strong> or <strong>IEMs</strong>?', k:'Monitor type', opts:[['Wedge','level'],['IEMs','iem:start']]},
+      level:{q:'Is the wedge making <strong>any</strong> sound?', k:'Wedge sound', opts:[['Nothing at all','box:start'],['Yes, just not enough of them','more']]},
+      more:{q:'<ol><li>Their channel is in that mix (send up, pre-fade).</li><li>The wedge is pointed at their ears from where they actually stand.</li><li>Turn <strong>down</strong> what\'s masking them before turning them up.</li><li>Raise slowly, listening for the edge of feedback — then stop.</li></ol>Feeding back before it\'s loud enough? Ring it out and move the mic or wedge.', k:'Result', end:true, links:[['#s15-11','15.11 Building a wedge mix'],['#s15-8','15.8 Ringing out']]}
+     }},
+    {id:'comms', title:'Comms (intercom) not working', words:['comms','intercom','clearcom','clear-com','clear com','riedel','green-go','greengo','beltpack','belt pack','headset','talkback channel','cans'],
+     ask:'Can you check the comms base station or tell me who looks after comms?',
+     nodes:{
+      start:{q:'Is it <strong>one belt pack</strong>, or <strong>everyone</strong>?', k:'Comms scope', opts:[['One pack','pack'],['Everyone / one whole channel','base']]},
+      pack:{q:'<ol><li>Headset plugged in fully; try a known-good headset.</li><li>Pack on the right channel, volume up, mic switched on (talk button/latch).</li><li>Wired: swap the XLR from the ring — a damaged cable kills a pack. Wireless: battery, and is the pack registered to the base?</li></ol>', k:'Result', end:true, links:[['#s8-5','8.5 Comms'],['#s11-8','11.8 Comms check']]},
+      base:{q:'Look at the base station or master: powered, the channel on, and (wired party-line) the line not shorted — unplug outstations one at a time to find a bad cable. Network comms: the network link is up. Comms usually belongs to production or the stage manager — tell them straight away.', k:'Result', end:true, links:[['#s8-5','8.5 Comms']]}
+     }},
+    {id:'playback', title:'Playback or laptop audio problems', words:['playback','laptop','qlab','music not playing','video sound','spotify','walk on music','backing track','playback machine','computer audio','usb audio','hdmi audio'],
+     ask:'Can I swap to the backup playback?',
+     nodes:{
+      start:{q:'What\'s happening?', k:'Playback symptom', opts:[['No sound from it','none'],['Hum or buzz with it','hum:start'],['Clicks, drop-outs or stutter','glitch']]},
+      none:{q:'<ol><li>Laptop output going to the right device (USB interface, not the built-in speakers or HDMI).</li><li>Laptop volume up and not muted; the player\'s own volume up.</li><li>Cable into a DI or interface, into the right desk channel — channel meter moving?</li><li>Bluetooth off, so audio isn\'t going to a speaker somewhere else.</li></ol>', k:'Result', end:true, links:[['#s8-4','8.4 Playback']]},
+      glitch:{q:'Plug the laptop into mains, turn off Wi-Fi, notifications, sleep and updates, close other apps, and check the audio interface\'s sample rate matches the desk. Have the backup ready to go if it happens during the show.', k:'Result', end:true, links:[['#s8-4','8.4 Playback']]}
+     }},
+    {id:'loop', title:'Hearing loop not working', words:['hearing loop','hearing loop not','loop not working','loop isn','loop silent','induction loop','loop system','t setting','loop amp','assistive listening','hearing aid','loop listener'],
+     ask:'Can the venue check the loop driver, or do we need the installer?',
+     nodes:{
+      start:{q:'With a <strong>loop listener</strong> (or a hearing aid on T), do you hear <strong>anything</strong> in the loop area?', k:'Loop listener', opts:[['Nothing','driver'],['Hum or buzz','buzz'],['Speech too quiet or uneven','level']]},
+      driver:{q:'Loop amplifier (driver) powered and on; its input lights show signal — is the desk feed patched to it? Loop cable connected at the driver. Most venues have a fixed install: the venue\'s technician or installer owns the driver settings.', k:'Result', end:true, links:[['#s6-11','6.11 Hearing loops'],['#s19-15','19.15 Access services checklist']]},
+      buzz:{q:'Loops pick up magnetic fields — dimmers, LED drivers and power cables near the loop make buzz. Note when it happens (lighting changes?) and tell the venue; don\'t move the loop cable.', k:'Result', end:true, links:[['#s6-11','6.11 Hearing loops']]},
+      level:{q:'Feed the loop the <strong>speech mics</strong> (not the music or the full mix), with compression, at a steady level. Uneven coverage is an install issue — report the spots.', k:'Result', end:true, links:[['#s6-11','6.11 Hearing loops']]}
+     }},
+    {id:'record', title:'Recording or stream has no (or wrong) audio', words:['recording','record','multitrack','stream','streaming','broadcast feed','press feed','zoom audio','teams audio','livestream','virtual soundcheck','dvs','no audio on recording','stream audio'],
+     ask:'Can you check what the recording or stream is actually receiving?',
+     nodes:{
+      start:{q:'Recording or stream?', k:'Capture type', opts:[['Multitrack recording','rec'],['Stream / broadcast / video call','stream']]},
+      rec:{q:'<ol><li>The computer sees the desk (USB or Dante Virtual Soundcard) and the DAW uses it as the input device.</li><li>Sample rate matches the desk.</li><li>Tracks armed and inputs routed; recording patch on the desk is set.</li><li>Record pre-fader if the mix moves shouldn\'t affect it.</li><li>Drive has space; record a test and play it back.</li></ol>', k:'Result', end:true, links:[['#s14-7','14.7 Multitrack recording'],['#s7-9','7.9 DM7 show setup']]},
+      stream:{q:'<ol><li>The stream feed is its own mix (more vocals, room mics) patched to the output the stream kit uses.</li><li>Level: the stream kit\'s meters, not just yours.</li><li>Echo on a call? Build a mix-minus — the call shouldn\'t hear itself back.</li><li>Ask the stream or video team what they receive — agree it before doors.</li></ol>', k:'Result', end:true, links:[['#s14-8','14.8 Broadcast submix'],['#s10-8','10.8 Hybrid meetings']]}
+     }},
     {id:'feedback', title:'Feedback', words:['feedback','howl','howling','squeal','ringing','screech'],
      ask:'Can you take over the ring-out?',
      nodes:{
@@ -8034,7 +8088,8 @@ if(quickfabBtn && quickfabMenu){
   ];
   var FLOW_BY_ID = {};
   FLOWS.forEach(function(f){ FLOW_BY_ID[f.id] = f; });
-  var FIX_STARTERS = ['box','sub','crackle','limit','r1','all','desk','hum','mic','feedback','rf','iem','dante','power'];
+  var FIX_STARTERS = ['box','sub','crackle','limit','r1','all','side','desk','clip','hum','mic','feedback','wedge','rf','iem','dante','power'];
+  var OTHER_STARTERS = ['comms','playback','loop','record'];
   var ADV_STARTERS = ['array','cardioid','phasey','digital','loading','noise'];
   var SETUP_STARTERS = ['setup','dm7','presenter','nl4','setupother'];
   var INFO_HINTS = ['What amp does a V8 need?','Can a D20 run KSL?','D40 vs D80','What is Mix TOP/SUB?','What does GR mean?','NL4 vs NLT4'];
@@ -8675,7 +8730,7 @@ if(quickfabBtn && quickfabMenu){
   function menu(){
     setChips([
       {label:'Set something up', go:function(){ addMsg('me', 'Set something up'); addMsg('bot', '<p>What are you setting up? Pick one, or type it — "connect R1", "run the sub cables", "line check".</p>'); setChips(starterChips(SETUP_STARTERS).concat([BACK])); }},
-      {label:'Something\'s wrong', go:function(){ addMsg('me', 'Something\'s wrong'); addMsg('bot', '<p>Which is closest? Or describe it — "sub silent on amp 2", "crackle from stage left".</p>'); setChips(starterChips(FIX_STARTERS).concat([{label:'More advanced…', quiet:true, go:function(){ addMsg('me', 'More advanced'); setChips(starterChips(ADV_STARTERS).concat([BACK])); }}, BACK])); }},
+      {label:'Something\'s wrong', go:function(){ addMsg('me', 'Something\'s wrong'); addMsg('bot', '<p>Which is closest? Or describe it — "sub silent on amp 2", "crackle from stage left".</p>'); setChips(starterChips(FIX_STARTERS).concat([{label:'Comms, playback, loops, recording…', quiet:true, go:function(){ addMsg('me', 'Comms, playback, loops, recording'); setChips(starterChips(OTHER_STARTERS).concat([BACK])); }}, {label:'More advanced…', quiet:true, go:function(){ addMsg('me', 'More advanced'); setChips(starterChips(ADV_STARTERS).concat([BACK])); }}, BACK])); }},
       {label:'Test before doors', go:function(){ addMsg('me', 'Test before doors'); startTest(); }},
       {label:'Look something up', go:function(){ addMsg('me', 'Look something up'); addMsg('bot', '<p>Type a word or a question — a term, a connector, a setting, a light. A few to try:</p>'); setChips(INFO_HINTS.map(function(h){ return {label:h, quiet:true, go:function(){ addMsg('me', esc(h)); answerInfo(h); }}; }).concat([BACK])); }}
     ]);
