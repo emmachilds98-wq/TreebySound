@@ -53,10 +53,10 @@ the changes for review.
       photo button, `sendAi`, related CSS and the service-worker comment.
 - [x] In-chat "peek": section links in chat open the passage inside the chat,
       with an option to open it in the library.
-- [ ] Smarter book search: apply the same typo correction and synonyms as the
+- [x] Smarter book search: apply the same typo correction and synonyms as the
       routes, match word endings (crackling → crackle), weight titles, rank by
       BM25 instead of raw counts.
-- [ ] Answer bank: several hundred common questions with direct, checked
+- [x] Answer bank (125 entries so far; grow it — see `var ANSWERS`): several hundred common questions with direct, checked
       answers taken from the handbook, matched offline.
 - [ ] New guided routes where they're missing (e.g. console no output, IEM
       problems, corporate presenter-mic check, DM7-specific checks).
@@ -95,3 +95,4 @@ Add a line per pushed chunk of work: date — what changed — what's next.
 
 - 2026-11-12 — Plan written. Starting Phase 1.
 - 2026-11-12 — sw.js fixes, API-key mode removed (stored key now wiped on load), in-chat peek added. Next: smarter search + answer bank.
+- 2026-11-12 — BM25 search with synonyms/stemming and a relevance cut-off; answer bank engine + 125 answers. Next: new guided routes, then Phase 3 research.
