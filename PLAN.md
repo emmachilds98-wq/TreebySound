@@ -172,3 +172,20 @@ additions was *function and placement*, so targeted changes:
   reliable playback, Dante Controller, second PA brand). New items were
   appended at the end of each list because ticks are stored by position.
 - Answer bank 307 → 312; test set 65 cases, all passing.
+
+### Round 5 log (2026-11-12) — "he hasn't ticked anything yet"
+
+- No ticks saved anywhere yet, so checklists were rewritten freely (reordering
+  is safe now; once he starts ticking, only append — ticks are stored by
+  position).
+- Every Part 19 checklist made more thorough, each item linked to its section;
+  corporate (§19.18) and theatre (§19.19) now tickable; six new lists:
+  §19.20 network & Dante, §19.21 any mixing desk, §19.22 comms & playback,
+  §19.23 fault kit, §19.24 festival changeover, §19.25 end-of-job handover.
+  263 tickable items in total.
+- Eight new sections: §2.12 meters & dBFS, §3.13 testing cables, §4.9 mic
+  cheat sheet, §11.10 handing over to the engineer, §12.19 following the
+  signal with tone, §14.14 stream audio, §15.13 safe IEM levels, §16.11 mixing
+  speech.
+- Back-to-top button is a small round arrow on phones (it covered text).
+- `tests/check-content.js` added; 317 answers, 72 chat cases, all passing.

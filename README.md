@@ -57,11 +57,19 @@ node format), and add its id to `FIX_STARTERS`, `ADV_STARTERS` or
 
 ## Checking a change
 
-There's no CI. Before merging, run the chat test set — 50 real questions, each
+There's no CI. Before merging, run the chat test set — real questions, each
 with what the reply must contain:
 
 ```bash
 node tests/check-chat.js
+```
+
+And the pack-wide content check (no browser needed — broken links, missing §
+references, duplicate ids, misnumbered sections, answers pointing at missing
+sections, checklists without a reset link):
+
+```bash
+node tests/check-content.js
 ```
 
 Add a line to `tests/chat-cases.txt` whenever you add an answer or a route, or
