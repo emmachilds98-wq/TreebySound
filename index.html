@@ -2752,6 +2752,35 @@ EARS            the only part of the system that actually matters</div>
 <div class="note alt"><span class="lab">Also seen</span><p>You are far more likely to be asked about this by a venue's own health and safety officer doing due diligence than to encounter an actual problem. Being able to say "our transmit power and distances are well within manufacturer guidance" is the correct answer, not a shrug.</p></div>
 </section>
 
+<section class="s" id="s5-11"><h3><span class="n">5.11</span> Shure and Sennheiser systems — step by step</h3>
+<p>Most premium hire stock is Shure (Axient Digital, ULX-D, SLX-D) or Sennheiser (Digital 6000, EW-DX). The steps are the same shape on every system.</p>
+<ol class="seq">
+<li><strong>Antennas on, receivers powered,</strong> outputs into the desk or stage box. With several receivers, use an antenna distribution system and remote paddles, not a forest of whips.</li>
+<li><strong>Turn on everything that will be on during the show</strong> — LED walls, video, other radio — then scan.</li>
+<li><strong>Coordinate.</strong> Shure: <em>Wireless Workbench</em> (free) — scan, add your devices' frequencies from the inventory, Analyze, Calculate, then Assign and Deploy to the networked receivers. Sennheiser: <em>Wireless Systems Manager</em> or <em>Sennheiser Control Cockpit</em> do the same job. On a single small system, the receiver's own group scan is fine.</li>
+<li><strong>Stay inside your licence</strong> — Channel 38, Channel 70, or the frequencies on your site licence (§5.12).</li>
+<li><strong>Batteries in</strong> (fresh AAs or the system's rechargeable packs, e.g. Shure SB900-series), transmitter on.</li>
+<li><strong>Sync</strong> each transmitter to its receiver channel (IR sync — hold the pack's window to the receiver's sync window).</li>
+<li><strong>Set transmitter gain/sensitivity</strong> so the loudest talker or singer doesn't clip, then label the pack and receiver channel with the person's name.</li>
+<li><strong>Walk test</strong> every mic (§11.6) and keep backups: spare mics already coordinated and synced.</li>
+</ol>
+<div class="note alt"><span class="lab">Also seen</span><p>Sennheiser <strong>Spectera</strong> and other new "wideband" (WMAS) systems carry many mics and IEMs in one wide channel. They're coordinated differently — follow the system owner's setup rather than the steps above.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Shure Wireless Workbench quick start and ULX-D user guide (v6.8, 2026); Sennheiser product documentation. Menu names vary by model and firmware.</p></div>
+</section>
+
+<section class="s" id="s5-12"><h3><span class="n">5.12</span> UK licences in practice — what to buy and when</h3>
+<div class="tw"><table>
+<thead><tr><th>Route</th><th>Frequencies</th><th>Cost (Nov 2026)</th><th>Use it for</th></tr></thead>
+<tbody>
+<tr><td>Licence-exempt</td><td>UHF Channel 70: 863.1–864.9 MHz · VHF 173.7–175.1 MHz · 2.4 GHz below 10 mW</td><td>Free</td><td>A handful of low-power mics; crowded, so expect to share</td></tr>
+<tr><td>UK Wireless Microphone Licence (shared)</td><td>UHF Channel 38: 606.5–613.5 MHz (about 10–12 mics) · or 15 VHF spot frequencies</td><td>£75 a year or £135 for two years bought on Ofcom's website (£85 / £155 otherwise)</td><td>Everyday hire stock. Shared and unprotected — still scan</td></tr>
+<tr><td>Coordinated (standard) licence</td><td>Ofcom assigns frequencies for a site and date</td><td>Varies with how many and how long</td><td>Bigger shows, more channels, protected frequencies. Apply well in advance</td></tr>
+</tbody></table></div>
+<p>Whoever owns the radio kit usually holds the licence — the hire company or the production. Your job is to know <strong>which licence the job is using</strong> and keep every transmitter (mics <em>and</em> IEMs) inside it. Using frequencies you aren't licensed for is a criminal offence under the Wireless Telegraphy Act 2006, and on mobile-network frequencies it interferes with phones.</p>
+<div class="note warn"><span class="lab">Watch it</span><p>Cheap imported radio mics often transmit on frequencies that are illegal in the UK. If a client or band brings their own, check the frequency range before it goes on.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Ofcom, PMSE licence information (fees and frequencies, checked Nov 2026); Ofcom PMSE sector review call for input (2026). Ofcom fees and bands change — check ofcom.org.uk before buying.</p></div>
+</section>
+
 </div></div>
 
 <div class="part" id="p6">
@@ -3135,6 +3164,29 @@ EARS            the only part of the system that actually matters</div>
 <div class="note deep"><span class="lab">Go deeper</span><p>Each product page on dbaudio.com has the manual and datasheet, and the amp firmware release notes carry the full list of setups each amp supports. When this table and a current d&amp;b document disagree, the d&amp;b document wins — and tell whoever looks after this pack.</p></div>
 </section>
 
+<section class="s" id="s6-21"><h3><span class="n">6.21</span> L-Acoustics — the same ideas, different names</h3>
+<p>If you know d&amp;b, you already understand L-Acoustics: amps with built-in processing, loudspeaker-specific settings, prediction software and a remote-control app. The names change.</p>
+<div class="tw"><table>
+<thead><tr><th>Job</th><th>d&amp;b</th><th>L-Acoustics</th></tr></thead>
+<tbody>
+<tr><td>Amps with processing</td><td>D20, D40, D80, D90</td><td>Amplified controllers: LA4X, LA12X, LA7.16, LA2Xi</td></tr>
+<tr><td>Speaker-specific settings</td><td>Setup (per channel)</td><td>Preset — loaded from the amp's preset library</td></tr>
+<tr><td>Remote control &amp; monitoring</td><td>R1</td><td>LA Network Manager</td></tr>
+<tr><td>Prediction</td><td>ArrayCalc</td><td>Soundvision</td></tr>
+<tr><td>Network audio</td><td>Milan (D40/D90), Dante via card on some</td><td>Milan / AVB on current controllers, plus AES and analogue</td></tr>
+<tr><td>Speaker cable</td><td>NL4 / NL8</td><td>NL4 / NL8 (check the pin use for each enclosure)</td></tr>
+</tbody></table></div>
+<h4>Reading a preset name</h4>
+<ul>
+<li>The plain name (e.g. <em>KARA II 90</em>) is the main FOH preset — the number is the horizontal coverage set by the box's adjustable fins.</li>
+<li><strong>_FI</strong> — the box used as a fill (with a high-pass filter).</li>
+<li><strong>_MO</strong> — the box used as a stage monitor (low latency).</li>
+<li>Other suffixes adapt a box to sit with a particular main system — use what the Soundvision file specifies.</li>
+</ul>
+<div class="note warn"><span class="lab">Watch it</span><p>As on d&amp;b: <strong>never change a preset, fin setting or controller group on someone else's system</strong> to "see if it helps", and match each box to the preset the design specifies. A wrong preset can sound fine at low level and damage drivers at show level.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>L-Acoustics amplified controller manuals and preset library guides; LA Network Manager product pages. Model names and preset lists change with firmware — the preset guide for the controller's firmware is the reference.</p></div>
+</section>
+
 
 </div></div>
 
@@ -3248,6 +3300,79 @@ EARS            the only part of the system that actually matters</div>
 <tr><td>One side of the PA missing</td><td>Pan, output patch, or a cable — check the meters to see whether it's the desk or downstream</td></tr>
 </tbody></table></div>
 <div class="note std"><span class="lab">Standard</span><p>Work the chain in order and check the meters at each stage — that tells you instantly whether the problem is upstream or downstream of where you're looking. See <a href="#p12">Part 12</a>.</p></div>
+</section>
+
+<section class="s" id="s7-8"><h3><span class="n">7.8</span> Yamaha DM7 — the desk, the layout, the words</h3>
+<p>The <strong>DM7</strong> is Yamaha's current mid-size touring and install console, and the one you're most likely to meet on premium hire jobs alongside CL/QL and RIVAGE. If you've used a CL or QL, most of it will feel familiar; it's faster, has more touch screens, and runs at 96 kHz.</p>
+<div class="tw"><table>
+<thead><tr><th></th><th>DM7</th><th>DM7 Compact</th></tr></thead>
+<tbody>
+<tr><td>Input channels</td><td>120</td><td>72</td></tr>
+<tr><td>Mixes</td><td>48 mix + 12 matrix + 2 stereo</td><td>Same bus structure, fewer inputs</td></tr>
+<tr><td>Local I/O</td><td>32 mic/line in, 16 out</td><td>16 in, 16 out</td></tr>
+<tr><td>Dante</td><td colspan="2">Built in, 144 in / 144 out, primary + secondary ports, up to 96 kHz</td></tr>
+<tr><td>Surface</td><td>Two bays, 28 motorised touch-sensitive faders, two 12.1" touch screens + one 7"</td><td>One bay, one 12.1" screen + one 7"</td></tr>
+<tr><td>Expansion</td><td colspan="2">One PY card slot (Dante with sample-rate conversion, MADI, Waves SoundGrid, AES/EBU and more); optional CTL-DM7 extra control surface</td></tr>
+<tr><td>Scenes</td><td colspan="2">500, with Recall Safe, Focus Recall and selective load/save</td></tr>
+<tr><td>Power</td><td colspan="2">Internal dual (redundant) power supplies on the DM7</td></tr>
+</tbody></table></div>
+<h4>The words you'll hear on a DM7</h4>
+<dl class="glossary">
+<div><dt>Rio / Tio stage boxes</dt><dd>Yamaha's Dante stage boxes. The DM7 works with first- and second-generation R-series Rio boxes and controls their preamps (<em>HA remote</em>) over Dante. Other Dante devices can be "mounted" so their inputs show up for patching.</dd></div>
+<div><dt>HA</dt><dd>Head amp — the preamp gain. On a Rio it's the stage box's gain, controlled from the desk.</dd></div>
+<div><dt>Selected channel</dt><dd>Press a channel's SEL key and its whole strip opens on the screen above that bay. On the full DM7 each bay can have its own selected channel (unlink the SEL keys in Setup → User Setup → Surface) — most engineers prefer that.</dd></div>
+<div><dt>Sends on Fader (SoF)</dt><dd>Flips the faders to show every channel's send to one mix — the quickest way to build a monitor mix.</dd></div>
+<div><dt>User Defined Keys (UDK)</dt><dd>Four banks of twelve touch keys on the 7" screen, set up for whatever the engineer wants one press away: talkback, mute groups, a mix, a scene.</dd></div>
+<div><dt>Recall Safe / Focus Recall</dt><dd>Recall Safe protects chosen channels or parameters from <em>every</em> scene recall. Focus Recall sets, per scene, what that scene is allowed to change. Both explain most "a scene changed my channel" surprises.</dd></div>
+<div><dt>Assist</dt><dd>Built-in helpers that suggest head-amp gains, channel names and a starting fader balance from what they hear. A starting point — the engineer still decides.</dd></div>
+<div><dt>Split mode</dt><dd>Splits the full DM7 into two independent consoles (for example FOH and monitors, or two rooms) in one frame.</dd></div>
+<div><dt>Dugan automixer</dt><dd>Built-in automatic mixing for speech mics — invaluable on panels and conferences (§10.11).</dd></div>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p>On a shared Dante network a DM7 can see and control other people's Rio preamps. <strong>Never change HA gain, phantom or patching on a stage box you don't own</strong> — on a shared FOH/monitor system, one person's gain change moves everyone's levels. Ask who owns the preamps before the job.</p></div>
+<div class="note std"><span class="lab">Standard</span><p>Keep the console on current firmware (Yamaha publishes updates and release notes on its DM7 support pages), and check the show file was made on the same or older firmware before you load it. Learn it for free on the <strong>DM7 Editor</strong> (§8.1) and Yamaha's DM7 training videos.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Yamaha DM7 specifications and DM7 Series training videos (Yamaha); FOH magazine DM7 road test (2025); TPi and Light Sound Journal DM7 features. Firmware-dependent details (menu names, feature lists) change between versions — check the manual for the version on the desk.</p></div>
+</section>
+
+<section class="s" id="s7-9"><h3><span class="n">7.9</span> DM7 — setting up a show, start to finish</h3>
+<p>The order below works whether you're building a show from scratch or loading an engineer's file. If the engineer is bringing their own file, your job is steps 1–4 and 9–11; theirs is the mix.</p>
+<ol class="seq">
+<li><strong>Power and network first.</strong> Desk and stage boxes powered; Dante primary cables connected (secondary only to a separate secondary network, never to the primary switch — §8.9).</li>
+<li><strong>Save what's on the desk before you touch anything.</strong> Store the current show file to USB with the date and job in its name.</li>
+<li><strong>Load or initialise.</strong> Load the show file for this job (check firmware compatibility), or start from the initial data if you're building from scratch.</li>
+<li><strong>Check Dante.</strong> In the Dante setup screen, confirm the desk sees every Rio or Dante device it should, the sample rate matches (48 or 96 kHz everywhere), and the clock leader is the one the design expects.</li>
+<li><strong>Patch inputs.</strong> Input patch from the Rio (or local) inputs to channels, following the patch list. Name and colour each channel as you go.</li>
+<li><strong>Patch outputs.</strong> Mixes, matrices and stereo to the right Dante or local outputs — PA feeds, sub feed, fills, monitors, recording, broadcast.</li>
+<li><strong>Set up mixes.</strong> Monitor mixes pre-fade; effects sends post-fade (§7.1). Use Sends on Fader to build them quickly.</li>
+<li><strong>Protect what must not change.</strong> Recall Safe on anything a scene must never touch (talkback, PA feeds, broadcast feed); Focus Recall on scenes that should only change some things.</li>
+<li><strong>Line check</strong> every input (§11.3) and send tone or pink noise to every output at low level to prove the patch.</li>
+<li><strong>Store a scene</strong> once the line check is clean, and save the show file to USB again.</li>
+<li><strong>Write down</strong> anything that differs from the plan, for the engineer and for the derig.</li>
+</ol>
+<div class="tw"><table>
+<thead><tr><th>DM7 symptom</th><th>Check first</th></tr></thead>
+<tbody>
+<tr><td>Channel meters move, nothing out</td><td>Channel on and assigned to the mix/stereo bus · DCA or mute group · output patch · output muted or in a mute group</td></tr>
+<tr><td>No input at all from a Rio</td><td>Dante device present and synced · sample rate matches · input patch · HA gain and phantom (if it's yours to set)</td></tr>
+<tr><td>"Scene changed my channel"</td><td>Recall Safe and Focus Recall for that channel and scene</td></tr>
+<tr><td>Can't edit two channels at once on the two screens</td><td>SEL keys are linked — unlink in User Setup → Surface</td></tr>
+<tr><td>Dante errors or clicks</td><td>Two clock leaders, mismatched sample rate, or EEE/Green Ethernet on a switch (§12.14)</td></tr>
+<tr><td>Recording only gets 18 channels</td><td>USB is 18×18 — use Dante Virtual Soundcard for multitrack (up to 64 channels at 48 kHz)</td></tr>
+</tbody></table></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Yamaha DM7 user guide and training videos (Dante setup, preferences, recording); engineer reports from first use of the DM7. Always follow the job's own patch list and the engineer's instructions over a generic order.</p></div>
+</section>
+
+<section class="s" id="s7-10"><h3><span class="n">7.10</span> Other premium desks — what's different about each</h3>
+<p>The channel strip (§7.1) is the same everywhere; what changes is the words, where things live, and how scenes work. Learn each one on its free offline editor before the job.</p>
+<div class="tw"><table>
+<thead><tr><th>Family</th><th>You'll meet</th><th>The words</th><th>Watch for</th></tr></thead>
+<tbody>
+<tr><td>Yamaha</td><td>DM7, CL/QL, RIVAGE PM</td><td>Scene, Recall Safe, Focus, Rio, HA, Selected Channel</td><td>Shared Rio preamps between FOH and monitors (gain compensation on CL/RIVAGE)</td></tr>
+<tr><td>DiGiCo</td><td>SD9/10/12, Quantum 225/338/7</td><td>Session, snapshot, recall scope, macros, engine</td><td>Snapshot recall scope — a snapshot only changes what's in its scope; check the session was made on a compatible software version</td></tr>
+<tr><td>Allen &amp; Heath</td><td>dLive, Avantis, SQ</td><td>Show, scene, recall filter, safes, MixRack, I/O port</td><td>dLive's processing is in the MixRack, not the surface; scene recall filters and global safes</td></tr>
+<tr><td>Midas / Behringer</td><td>HD96, PRO series, M32/X32, Wing</td><td>Show, scene, safes, AES50 / stage box</td><td>AES50 links are point-to-point — a stage box goes into a specific port</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>On any desk you don't know: save the show file first, find the solo-clear and the main mute, find where scenes live and what protects channels from them, and ask the engineer before changing anything you didn't build.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Manufacturer offline editors and user guides (Yamaha, DiGiCo, Allen &amp; Heath, Midas). Model ranges change — check what's actually in the hire stock.</p></div>
 </section>
 
 </div></div>
@@ -3370,6 +3495,51 @@ EARS            the only part of the system that actually matters</div>
 <dt>AutoCAD</dt><dd>The general-purpose CAD standard, more common on the venue-architecture and permanent-install side (<a href="#s10-6">§10.6</a>) than on touring production drawings.</dd>
 <dt>What's actually yours to do early on</dt><dd>Reading a drawing accurately — knowing your position on the stage plan, checking a rigging plot against what's actually flown, spotting when the drawing and the room disagree — matters far more day to day than producing one. Producing them is a specialism worth picking up later if system design or production management (<a href="#s17-1">§17.1</a>, <a href="#s21-7">§21.7</a>) is a direction that appeals.</dd>
 </div>
+</section>
+
+<section class="s" id="s8-9"><h3><span class="n">8.9</span> Dante Controller — step by step</h3>
+<ol class="seq">
+<li><strong>Join the right network.</strong> Laptop on the audio network by cable, Wi-Fi off. Open Dante Controller and choose the network interface you're plugged into.</li>
+<li><strong>Check every device appears</strong> in the Routing view. A missing device is a cable, switch port, wrong network or IP problem (§12.14).</li>
+<li><strong>Clock.</strong> In Clock Status, exactly one device is Leader and the rest Follower. It should be the device the design names (often the desk). Set "Preferred Leader" on that one device only.</li>
+<li><strong>Sample rate</strong> matches on every device (Device Info). A device on the wrong rate shows but won't pass audio to the others.</li>
+<li><strong>Route.</strong> Transmitters along the top, receivers down the side: expand both, click where a transmit channel meets a receive channel. A green tick means subscribed and working.</li>
+<li><strong>Name things.</strong> Rename devices and channels to what they are (FOH-DM7, Rio-SR) — renaming a device breaks its existing subscriptions, so do it before routing.</li>
+<li><strong>Check for warnings</strong> — red or amber symbols, errors in the Network view, latency warnings.</li>
+<li><strong>Save a preset</strong> of the routing (File → Save Preset) with the job name, so it can be reloaded in seconds.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Redundancy:</strong> primary ports go to the primary switch; secondary ports go to a completely separate secondary switch, never linked to the primary. No secondary network? Leave secondary ports empty. Linking the two can take the whole system down.</p></div>
+<div class="note std"><span class="lab">Standard</span><p>Switch rules for Dante: gigabit managed switches, <strong>EEE / Green Ethernet off</strong>, QoS set for Dante (clock highest), and no other traffic you don't control. Audinate's free Level 1–3 certification covers all of this properly (§18.3).</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Audinate Dante Controller user guide and Dante certification material; Yamaha DM7 Dante setup training. Menu names vary slightly between Dante Controller versions.</p></div>
+</section>
+
+<section class="s" id="s8-10"><h3><span class="n">8.10</span> Milan and AVB — how it differs from Dante</h3>
+<p><strong>Milan</strong> is network audio built on AVB, an IEEE standard where the <em>switches themselves</em> keep time and reserve bandwidth for each audio stream. d&amp;b (D40 and D90 amps), L-Acoustics and Meyer Sound support it, so you'll meet it on premium PA systems.</p>
+<div class="tw"><table>
+<thead><tr><th></th><th>Dante</th><th>Milan / AVB</th></tr></thead>
+<tbody>
+<tr><td>Switches</td><td>Ordinary managed switches, set up correctly (QoS, EEE off)</td><td>Must be AVB/Milan-capable (ideally Avnu-certified) — an ordinary switch won't pass it</td></tr>
+<tr><td>Switch setup</td><td>QoS, IGMP, VLANs matter</td><td>No QoS or IGMP setup — the switches reserve bandwidth automatically</td></tr>
+<tr><td>Clock</td><td>One Dante leader on the network</td><td>gPTP timing run by the switches; all devices exchanging audio share one media clock domain</td></tr>
+<tr><td>Redundancy</td><td>Primary and secondary networks</td><td>Two physically separate networks (separate VLANs on one switch don't count)</td></tr>
+<tr><td>Software</td><td>Dante Controller</td><td>A Milan controller (e.g. Hive, or d&amp;b's Milan Manager) and R1</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>Don't mix a Milan network and a Dante network on the same switches unless the system design says so. If the PA is Milan and the desk is Dante, there will be a defined bridge (a converter or a device that speaks both) — find out where it is during the advance.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>d&amp;b audiotechnik TI 370 (Milan) and Milan Manager announcement (2025); AVB Academy user guides; L-Acoustics AVB paper (2023).</p></div>
+</section>
+
+<section class="s" id="s8-11"><h3><span class="n">8.11</span> Open Sound Meter — measure a system for free</h3>
+<p><strong>Open Sound Meter</strong> is free, cross-platform measurement software built to be simple for younger engineers. It does the same core job as Smaart: comparing what goes into the system with what a measurement mic hears.</p>
+<ol class="seq">
+<li><strong>Kit:</strong> laptop, an audio interface with at least two inputs, a measurement mic (omni, needs phantom), a mic stand.</li>
+<li><strong>Two inputs:</strong> input 1 is the <em>measurement</em> (the mic); input 2 is the <em>reference</em> — the pink noise you're sending, looped straight back into the interface.</li>
+<li><strong>Send pink noise</strong> to the system at a sensible level (warn people first).</li>
+<li><strong>Find the delay.</strong> Use the delay finder to line up the reference with the mic — it estimates the time it takes sound to reach the mic.</li>
+<li><strong>Read the transfer function:</strong> magnitude (the tonal balance), phase, and coherence (how trustworthy the reading is — low coherence means reflections or noise).</li>
+<li><strong>Store a trace</strong> before you change anything, so you can compare.</li>
+</ol>
+<div class="note std"><span class="lab">Standard</span><p>Measuring is a great way to learn; <strong>changing</strong> a system's EQ or delays is the system tech's call. Use it to understand and to show them what you found.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Open Sound Meter manual (v1.1) and release notes; Open Sound Meter fundamentals tutorials.</p></div>
 </section>
 
 </div></div>
@@ -3656,6 +3826,22 @@ EARS            the only part of the system that actually matters</div>
 <dt>Noise &amp; curfew conditions</dt><dd>Frequently governed by a licence with noise monitored at specific off-site points, not just an on-site SPL target — see the Safety Advisory Group and noise-condition material in <a href="#s6-10">§6.10</a>. A festival curfew is very often a hard legal deadline, not a guideline.</dd>
 </div>
 <div class="note std"><span class="lab">Standard</span><p>On your first festival, spend the first hour learning the site as much as the stage: where your stage sits relative to others, where the generator and fuel point are, where the nearest production office and medical point are, and who your stage manager and production manager actually are. You'll need all of it before the day is out.</p></div>
+</section>
+
+<section class="s" id="s10-11"><h3><span class="n">10.11</span> Corporate &amp; conference audio — step by step</h3>
+<p>Corporate audio is judged on one thing: <strong>every word heard, first time, with no squeal.</strong> Clients rarely notice good sound; they always notice bad.</p>
+<ol class="seq">
+<li><strong>Advance the running order:</strong> who speaks, when, with which mic (lectern, handheld, headset, lavalier), any videos with sound, any remote presenters.</li>
+<li><strong>One channel per person</strong> where you can, labelled with their name; spares already on and synced.</li>
+<li><strong>Ring out</strong> every mic at its real position with the room PA before the audience arrives (§15.8 — same method as a wedge).</li>
+<li><strong>Automixer for panels.</strong> On a desk with one (the DM7's Dugan, for example), put the panel mics in it: it keeps the overall gain steady however many people talk, and cuts the room noise from open mics.</li>
+<li><strong>Playback and video</strong> through a DI or proper interface; check the levels match the speech.</li>
+<li><strong>Hybrid:</strong> build a mix-minus for the remote call — everything except the call's own return — and test both directions with a real call (§10.8).</li>
+<li><strong>Before each speaker:</strong> radio pack on, muted until they walk on, battery fresh, a quick word check if there's time.</li>
+<li><strong>Keep it comfortable</strong> — speech clear, not loud. Watch the presenter, not the screen.</li>
+</ol>
+<div class="note alt"><span class="lab">Also seen</span><p>Lavalier mics clip to the sternum (about a hand's width below the chin), on the side the presenter turns towards; headsets for anyone who moves a lot or speaks quietly; handhelds for Q&amp;A, with a runner.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Handbook §10.2, §10.8 and §19.18; Yamaha DM7 Dugan automixer documentation.</p></div>
 </section>
 
 </div></div>
@@ -4167,6 +4353,33 @@ EARS            the only part of the system that actually matters</div>
 <dt>Rest breaks</dt><dd>A 20-minute uninterrupted break if you work more than 6 hours in a day. In practice this usually means "eat something properly," not a formal announced break — but it's a legal entitlement, not a favour.</dd>
 </div>
 <div class="note alt"><span class="lab">Also seen</span><p>None of this is about refusing a long day — the industry runs on them, and <a href="#s13-9">§13.9</a>'s advice on managing that stands. This section exists so you know the actual floor underneath the culture, not to suggest you should be citing regulations on a get-in.</p></div>
+</section>
+
+<section class="s" id="s13-16"><h3><span class="n">13.16</span> Martyn's Law and event security</h3>
+<p>The <strong>Terrorism (Protection of Premises) Act 2025</strong>, known as Martyn's Law, makes venues and events prepare for a terrorist attack. It's expected to come into force in <strong>spring 2027</strong>, regulated by the Security Industry Authority (SIA).</p>
+<ul>
+<li><strong>Standard tier</strong> — premises or events expecting 200–799 people at once: they must notify the SIA and have public protection <em>procedures</em> (evacuation, invacuation, lockdown, communication), so far as reasonably practicable.</li>
+<li><strong>Enhanced tier</strong> — 800 or more: they must also put protective <em>measures</em> in place, document them and name a senior responsible person.</li>
+</ul>
+<p>It's the venue or organiser's duty, not yours — but you'll be part of it:</p>
+<ul>
+<li>Expect security briefings in inductions, and know the <strong>evacuation, invacuation and lockdown</strong> signals for that venue.</li>
+<li>Your PA and radio mics may be part of the communication plan — the show-stop or announcement mic must work, and you must know who can use it.</li>
+<li>Don't leave cases, bags or kit unattended in public areas; report anything suspicious to security, not on social media.</li>
+</ul>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>GOV.UK (Home Office / SIA), New tools to support preparation for Martyn's Law (Nov 2026); ProtectUK Martyn's Law overview; Home Office statutory guidance (2026). Commencement dates can move — check GOV.UK.</p></div>
+</section>
+
+<section class="s" id="s13-17"><h3><span class="n">13.17</span> Temporary power at events — BS 7909 in brief</h3>
+<p>Temporary power for events is designed, installed and certified under <strong>BS 7909</strong> (the current edition is BS 7909:2023+A1:2024), alongside the wiring regulations (BS 7671) and HSE guidance GS50. It's the power technician's or electrician's job — knowing the basics tells you what to expect and what not to touch.</p>
+<ul>
+<li>Every temporary system is <strong>inspected and tested before it's switched on</strong>, and certified. On a multi-day event it's re-inspected, and the certificate reissued.</li>
+<li>Socket circuits you plug into should have <strong>30 mA RCD protection</strong>.</li>
+<li>Generators create their own earth on site — that's why earth rods and bonding appear, and why you never disturb them.</li>
+<li>Cables are fully unwound (coiled cable heats up), protected where people walk, and not daisy-chained from extension to extension.</li>
+</ul>
+<div class="note warn"><span class="lab">Watch it</span><p>If the distro trips, <strong>tell the power tech</strong> — don't reset breakers on someone else's distribution, and never swap fuses or bypass an RCD. See §12.15.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>BS 7909:2023+A1:2024 (BSI); HSE GS50; event electrical safety guides (2026). Read the standard itself or ask the power tech for anything beyond these basics.</p></div>
 </section>
 
 </div></div>
@@ -7720,6 +7933,45 @@ if(quickfabBtn && quickfabMenu){
      nodes:{
       start:{q:'Work it from the source towards the desk: mic switched on, phantom on if it\'s a condenser, cable swapped for a known-good one, then a different stage-box input. The fault follows whatever you\'ve just swapped.', k:'Result', end:true, links:[['#s12-9','12.9 Mic &amp; cable faults'],['#s12-10','12.10 DI faults']]}
      }},
+    {id:'desk', title:'Desk shows signal, nothing coming out', words:['desk','console','mixer','dm7','meter','meters','no output','nothing out','main','master','bus','mix','output patch','solo','pfl','headphones only','scene'],
+     entries:{solo:['headphones only','only in headphones','solo','pfl'], scene:['scene','recalled','changed']},
+     ask:'Can you check the desk with me, or tell me how it should be patched?',
+     nodes:{
+      start:{q:'Look at the meters. Is the <strong>channel</strong> meter moving, and does the <strong>main (stereo) meter</strong> move too?', k:'Desk meters', opts:[['Channel yes, main no','route'],['Both move, nothing in the room','outpatch'],['I only hear it in headphones','solo'],['It all changed suddenly','scene']]},
+      route:{q:'The channel isn\'t reaching the main mix. Check: channel <strong>on</strong> (not muted), fader up, the channel <strong>assigned to the stereo/main bus</strong>, its <strong>DCA</strong> up, and no <strong>mute group</strong> active. Found it?', k:'Channel to main', opts:[['Yes','fixedroute'],['All fine','outpatch']]},
+      fixedroute:{q:'Good. If a mute group or DCA caught you out, tell the engineer — it may be set that way for a reason (a scene for walk-in, say).', k:'Result', end:true, fixed:true, links:[['#s7-7','7.7 Console gotchas']]},
+      outpatch:{q:'The desk is mixing, so it\'s after the main bus. Check the <strong>output patch</strong> (main to the right local or Dante outputs), the <strong>output isn\'t muted</strong>, and then the far end: Dante route green (§8.9), amp input present, amps unmuted. Where does the signal stop?', k:'Output path', opts:[['At the desk output patch','fixpatch'],['On the network / Dante','dante:start'],['At the amps','box:start'],['Can\'t tell','splitter']]},
+      fixpatch:{q:'Patch the main (and sub/fill feeds) to the outputs the system expects — the patch list or the system tech will say which — and retest at low level.', k:'Result', end:true, links:[['#s7-9','7.9 DM7 show setup']]},
+      splitter:{q:'Send tone or pink noise from the desk\'s oscillator to the PA output at low level, then follow it: desk output meter, the Dante subscription, the amp\'s input indicator. The first place it disappears is the fault.', k:'Result', end:true, links:[['#s12-12','12.12 Console faults'],['#s12-1','12.1 The method']]},
+      solo:{q:'Something is soloed (PFL/AFL) — that only changes what you hear in the headphones. Find the <strong>clear solo</strong> key and press it, then listen again.', k:'Result', end:true, links:[['#s7-6','7.6 Talkback, tone and solo']]},
+      scene:{q:'A scene probably recalled. Don\'t recall another one to "fix" it — tell the engineer. Then check that scene\'s <strong>Recall Safe / Focus</strong> settings so it can\'t happen again.', k:'Result', end:true, links:[['#s7-8','7.8 Yamaha DM7'],['#s7-4','7.4 Show file discipline']]}
+     }},
+    {id:'iem', title:'In-ear monitors: no sound, noise or dropouts', words:['iem','iems','in ear','in-ears','in ears','ears','earpiece','monitor pack','bodypack','iem pack'],
+     ask:'Can the monitor engineer take a look at the IEM transmitter?',
+     nodes:{
+      start:{q:'What\'s the performer hearing?', k:'IEM symptom', opts:[['Nothing at all','none'],['Hiss, noise or dropouts','noise'],['Mix is wrong or too quiet','mix']]},
+      none:{q:'<ol><li>Pack switched on, volume up, earpieces plugged in fully.</li><li>Pack on the same frequency/channel as its transmitter (resync it).</li><li>Transmitter on, RF on (not muted), and getting audio from the desk — check its input meter.</li><li>Fresh batteries.</li></ol>Sound now?', k:'Basic checks', opts:[['Yes','fixediem'],['Still nothing','mix']]},
+      noise:{q:'Usually RF. Check the transmitter antenna (and its cable), line of sight to the stage, and whether a new device is near that frequency — rescan and move to a clean coordinated frequency. Batteries too.', k:'Result', end:true, links:[['#s5-7','5.7 IEMs'],['#s12-11','12.11 Wireless faults']]},
+      mix:{q:'Check the mix itself on the desk: the right channels sent to that IEM mix, sends pre-fade, mix master up, the mix patched to the right transmitter input. Then ask the performer what they want more of — one change at a time.', k:'Result', end:true, links:[['#s15-3','15.3 Building IEM mixes'],['#s15-6','15.6 Monitor world faults']]},
+      fixediem:{q:'Good. Label the pack and its transmitter with the performer\'s name so the pair stays together.', k:'Result', end:true, fixed:true}
+     }},
+    {id:'dm7', kind:'setup', title:'Set up a Yamaha DM7', words:['dm7','dm 7','dm7 compact','yamaha','yamaha desk','rio','scene','recall safe','focus recall','dante desk','show file'],
+     entries:{dante:['dante','rio','network','stage box','stagebox'], scenes:['scene','recall safe','focus','show file'], rec:['record','recording','multitrack','dvs']},
+     nodes:{
+      start:{q:'Which part of the DM7 setup are you on?', k:'DM7 stage', opts:[['The whole sequence','seq'],['Dante and Rio stage boxes','dante'],['Scenes and protecting settings','scenes'],['Recording','rec']]},
+      seq:{q:'<ol><li>Power and Dante cables (secondary only to a separate network).</li><li>Save the current show file to USB first.</li><li>Load the job\'s show file, or initialise.</li><li>Check Dante: every device seen, sample rate matches, right clock leader.</li><li>Patch inputs, name and colour channels.</li><li>Patch outputs: PA, subs, fills, monitors, recording.</li><li>Mixes: monitors pre-fade, effects post-fade.</li><li>Recall Safe what must never change.</li><li>Line check, send tone to every output.</li><li>Store a scene and save to USB again.</li></ol>', k:'Result', end:true, links:[['#s7-9','7.9 DM7 show setup'],['#s7-8','7.8 Yamaha DM7']]},
+      dante:{q:'In the DM7\'s Dante setup: every Rio or Dante device listed and synced, 48 or 96 kHz everywhere, one clock leader as designed. Rio gains and phantom are set from the desk (HA) — only touch them if the preamps are yours. Then patch Rio inputs to channels.', k:'Result', end:true, links:[['#s7-8','7.8 Yamaha DM7'],['#s8-9','8.9 Dante Controller']]},
+      scenes:{q:'Store a scene once the line check is clean. Put <strong>Recall Safe</strong> on anything no scene should change (talkback, PA feeds, broadcast feed), and use <strong>Focus Recall</strong> so each scene only changes what it should. Save the show file to USB with the date in its name.', k:'Result', end:true, links:[['#s7-8','7.8 Yamaha DM7'],['#s7-4','7.4 Show file discipline']]},
+      rec:{q:'USB gives 18 channels in and out — fine for a stereo or small recording. For a full multitrack, record over Dante with Dante Virtual Soundcard (up to 64 channels at 48 kHz), and record pre-fader. Check drive space first.', k:'Result', end:true, links:[['#s7-9','7.9 DM7 show setup'],['#s14-7','14.7 Multitrack recording']]}
+     }},
+    {id:'presenter', kind:'setup', title:'Check presenter mics before a corporate event', words:['presenter','presenters','speaker mic','lectern','lavalier','lav','lapel','headset','conference','corporate','panel','speech','speeches','awards'],
+     nodes:{
+      start:{q:'Which are you checking?', k:'Presenter setup', opts:[['The whole check','seq'],['Lectern mic','lectern'],['Radio lavalier or headset','lav'],['A panel of speakers','panel']]},
+      seq:{q:'<ol><li>Running order: who, when, which mic.</li><li>One labelled channel per person; spares synced and on.</li><li>Ring out every mic at its real position with the room PA.</li><li>Playback and video levels matched to speech.</li><li>Hybrid: mix-minus to the call, tested both ways.</li><li>Before each speaker: fresh battery, muted until they walk on.</li></ol>', k:'Result', end:true, links:[['#s10-11','10.11 Corporate audio, step by step'],['#s19-18','19.18 Corporate AV checklist']]},
+      lectern:{q:'Gooseneck aimed at the mouth from 20–40 cm, high-pass on, rung out with the PA at show level. Ask the presenter to stay at the lectern, or give them a radio mic too.', k:'Result', end:true, links:[['#s4-4','4.4 The stock'],['#s15-8','15.8 Ringing out']]},
+      lav:{q:'Lavalier on the sternum (about a hand\'s width below the chin), on the side they turn to; cable taped so it can\'t rustle. Headset for movers and quiet talkers. Fresh battery, gain set so they don\'t clip, pack labelled, muted until they\'re on.', k:'Result', end:true, links:[['#s10-11','10.11 Corporate audio, step by step'],['#s5-11','5.11 Shure and Sennheiser systems']]},
+      panel:{q:'One mic per panellist, all into the desk\'s automixer if it has one (the Dugan on a DM7) so open mics don\'t add up to feedback and room noise. Ring them out with all of them open.', k:'Result', end:true, links:[['#s10-11','10.11 Corporate audio, step by step'],['#s7-8','7.8 Yamaha DM7']]}
+     }},
     {id:'feedback', title:'Feedback', words:['feedback','howl','howling','squeal','ringing','screech'],
      ask:'Can you take over the ring-out?',
      nodes:{
@@ -7730,7 +7982,7 @@ if(quickfabBtn && quickfabMenu){
      nodes:{
       start:{q:'Check the transmitter battery first, then the receiver\'s RF meters while someone walks the space. Antennas connected, line of sight, nothing new nearby transmitting. Then frequencies.', k:'Result', end:true, links:[['#s12-11','12.11 Wireless &amp; RF faults']]}
      }},
-    {id:'dante', title:'Dante or network audio problems', words:['dante','aes67','milan','avb','clock','clocking','subscription','glitch','glitching','clicks','dropouts on network'],
+    {id:'dante', title:'Dante or network audio problems', words:['dante','dante drop','dante click','network drop','network click','dante dropout','dante dropouts','aes67','milan','avb','clock','clocking','subscription','glitch','glitching','clicks','dropouts on network'],
      ask:'Can you check the network with me?',
      nodes:{
       start:{q:'One clock leader, subscriptions all green, switches you trust, and nothing else sharing the network. Remember d&amp;b D40/D90 use Milan, which Dante Controller won\'t show.', k:'Result', end:true, links:[['#s12-14','12.14 Network faults'],['#s8-2','8.2 Networks']]}
@@ -7743,11 +7995,11 @@ if(quickfabBtn && quickfabMenu){
   ];
   var FLOW_BY_ID = {};
   FLOWS.forEach(function(f){ FLOW_BY_ID[f.id] = f; });
-  var FIX_STARTERS = ['box','sub','crackle','limit','r1','all','hum','mic','feedback','rf','dante','power'];
+  var FIX_STARTERS = ['box','sub','crackle','limit','r1','all','desk','hum','mic','feedback','rf','iem','dante','power'];
   var ADV_STARTERS = ['array','cardioid','phasey','digital','loading','noise'];
-  var SETUP_STARTERS = ['setup','setupother','nl4'];
+  var SETUP_STARTERS = ['setup','dm7','presenter','nl4','setupother'];
   var INFO_HINTS = ['What amp does a V8 need?','Can a D20 run KSL?','D40 vs D80','What is Mix TOP/SUB?','What does GR mean?','NL4 vs NLT4'];
-  var INFO_INTENT = /^(what|whats|what's|which|who|why|when|where|explain|define|definition|meaning|tell me|difference|is there|does|do i need|can i|should i)\b|\b(mean|means|stand for|stands for|difference between|vs|versus)\b|\?$/i;
+  var INFO_INTENT = /^(what|whats|what's|which|who|why|when|where|explain|define|definition|meaning|tell me|difference|is there|is it|are|does|do i need|can i|should i|how much|how many|how long|how loud)\b|\b(mean|means|stand for|stands for|difference between|vs|versus|cost|price|fee|legal)\b|\?$/i;
   var SETUP_INTENT = /\b(set ?up|setting up|configure|configuring|install|connect(ing)?|how (do|to|should) i|how to|walk me through|step by step|get .* working|patch)\b/i;
   var DANGER = /\b(smoke|smoking|burning|burnt smell|fire|flames?|sparks?|sparking|shock(ed)?|electrocut\w*|injur\w*|hurt|bleeding|falling|fell|collapsed?|swaying)\b/i;
 
@@ -8605,7 +8857,7 @@ if(quickfabBtn && quickfabMenu){
     ["what is nl8|nl8 cable|eight pole speakon|speaker multicore", "<p><strong>NL8</strong> is the eight-pole speakON — four amp channels down one cable. It's used for speaker multicores (for example from an amp rack to a breakout near a hang). It doesn't fit NL4 sockets; you need a breakout or a matching amp output.</p>", "s3-12 s3-5"],
     ["what is a multicore|what is a stagebox|what is a loom|snake cable", "<p>A <strong>multicore</strong> (snake) carries many signals in one cable. A <strong>stagebox</strong> is the box on stage you plug mics into — analogue, or (now usually) a digital stagebox that converts to a network or digital link back to the desk. A <strong>loom</strong> is a bundle of separate cables taped or sleeved together. Label both ends, always.</p>", "s3-5"],
     ["cat5 vs cat6|which ethercon cable|ethercon|network cable for audio|how long can a cat cable be", "<p>Network cable is now core audio infrastructure. Use shielded Cat5e or Cat6 with <strong>etherCON</strong> (locking) ends for touring. A single copper run is limited to <strong>100 m</strong>; beyond that, use a switch in the middle or fibre. Treat it gently — kinks and crushed cable cause intermittent drops.</p>", "s3-6"],
-    ["what is aes50|what is madi|what is aes3|digital audio formats|what is avb|what is milan", "<p>The main digital transports:</p><ul><li><strong>AES3 (AES/EBU)</strong> — two channels on one 110 Ω XLR cable.</li><li><strong>MADI</strong> — up to 64 channels on coax or fibre.</li><li><strong>AES50</strong> — Midas/Behringer's point-to-point link on Cat cable.</li><li><strong>Dante</strong> — audio over standard IP networks; the most common.</li><li><strong>AVB / Milan</strong> — network audio with timing built into the switches; d&amp;b and L-Acoustics support Milan.</li></ul>", "s3-7 s8-2"],
+    ["what is aes50|what is madi|what is aes3|digital audio formats", "<p>The main digital transports:</p><ul><li><strong>AES3 (AES/EBU)</strong> — two channels on one 110 Ω XLR cable.</li><li><strong>MADI</strong> — up to 64 channels on coax or fibre.</li><li><strong>AES50</strong> — Midas/Behringer's point-to-point link on Cat cable.</li><li><strong>Dante</strong> — audio over standard IP networks; the most common.</li><li><strong>AVB / Milan</strong> — network audio with timing built into the switches; d&amp;b and L-Acoustics support Milan.</li></ul>", "s3-7 s8-2"],
     ["what is powercon|powercon true1|blue and grey powercon|can i unplug powercon live", "<p><strong>powerCON</strong> is the locking mains connector on amps and powered speakers. The older <strong>blue (in) / grey (out)</strong> type must not be connected or disconnected under load. <strong>TRUE1</strong> (black/yellow) is rated to break under load. Either way: turn the device off first where you can, and lock it — twist until it clicks.</p>", "s3-8"],
     ["16a vs 32a|what is a ceeform|blue ceeform|16 amp plug|32 amp plug|red ceeform", "<p>Industrial <strong>CEE form</strong> connectors are colour-coded: <strong>blue</strong> is single-phase 230 V (16 A, 32 A, 63 A), <strong>red</strong> is three-phase 400 V. A 16 A blue is the everyday one for small audio racks. Mains distribution — and anything three-phase — is the qualified electrician's or the power tech's job, not yours.</p>", "s3-8 s9-6 s12-15"],
     ["what is a di box|why use a di|active vs passive di|when do i need a di|di box", "<p>A <strong>DI box</strong> turns an unbalanced, high-impedance source (guitar, bass, keyboard, laptop) into a balanced mic-level signal the stagebox can take over a long run. It also isolates grounds.</p><ul><li><strong>Passive DI</strong> — no power, very robust; great for keys and hot sources.</li><li><strong>Active DI</strong> — needs phantom or a battery; better for passive pickups (bass, acoustic).</li></ul><p>The <strong>ground lift</strong> switch is the first thing to try on a hum.</p>", "s3-9 s12-10"],
@@ -8732,7 +8984,25 @@ if(quickfabBtn && quickfabMenu){
     ["hybrid meeting audio|zoom audio|teams call audio|echo on video call|mix minus", "<p>For hybrid events, the remote people need the room's speech and the room needs to hear them — without sending them their own voices back (echo). That's a <strong>mix-minus</strong>: send the call everything except the call's own return. Check both directions with a real test call before the start.</p>", "s10-8"],
     ["wedding audio|party audio|small function|dj setup", "<p>Small functions are about simple, reliable kit and people skills: a speech mic that works first time, background music at a sensible level, the DJ connected cleanly (DI if needed), and a plan for the first dance and speeches. Do a quick check with the couple or organiser.</p>", "s10-9"],
     ["outdoor gig|rain|weather|working outside|outdoor event audio", "<p>Outdoors: cover the desk and electronics, keep connectors off the ground, watch the wind (speaker stacks and flown kit), plan for cold batteries and condensation, and know the site's weather-stop rules. Sound behaves differently outside — no walls to help, and wind moves it around.</p>", "s6-14 s19-14"],
-    ["festival|festival audio|changeover|festival stage", "<p>Festivals mean fast changeovers, shared stages and strict curfews. Prep line systems and stage boxes in advance, label everything, use the patch the stage manager gives you, and keep the changeover calm and in order. Noise limits are policed.</p>", "s10-10"]
+    ["festival|festival audio|changeover|festival stage", "<p>Festivals mean fast changeovers, shared stages and strict curfews. Prep line systems and stage boxes in advance, label everything, use the patch the stage manager gives you, and keep the changeover calm and in order. Noise limits are policed.</p>", "s10-10"],
+    /* researched additions (Nov 2026) */
+    ["what is a dm7|yamaha dm7|dm7 vs dm7 compact|how many channels dm7|dm7 inputs", "<p>The <strong>Yamaha DM7</strong> has 120 input channels, 48 mixes, 12 matrices and two stereo buses, 32 local inputs and 16 outputs, and 144×144 Dante built in at up to 96 kHz. The <strong>DM7 Compact</strong> has the same bus structure with 72 inputs, one fader bay and 16 local in and out.</p>", "s7-8"],
+    ["how do i set up a dm7|dm7 setup|dm7 show file|load show file dm7", "<p>Save what's on the desk to USB first, then load or initialise the show file, check Dante (devices, sample rate, clock leader), patch inputs and outputs, set up mixes, Recall Safe what must not change, line check, then store a scene and save again. Full order in §7.9 — or say “set up a DM7” and I'll walk you through it.</p>", "s7-9 s7-8"],
+    ["dm7 recall safe|dm7 focus recall|scene changed my channel dm7|what is focus recall", "<p><strong>Recall Safe</strong> protects chosen channels or parameters from every scene recall. <strong>Focus Recall</strong> sets, per scene, what that scene is allowed to change. If a scene changed something it shouldn't, one of these is set wrong — tell the engineer before recalling anything else.</p>", "s7-8 s7-4"],
+    ["dm7 two screens select|unlink sel keys dm7|dm7 surface settings", "<p>On the full DM7, each bay can have its own selected channel: Setup → User Setup → Surface, and unlink the SEL keys. Most engineers prefer it, so the two screens show two different channels.</p>", "s7-8"],
+    ["dm7 rio gain|ha remote|who controls the rio gain|gain compensation", "<p>A DM7 sets the gain and phantom of Yamaha Rio stage boxes over Dante (<strong>HA remote</strong>). On a shared FOH and monitor system, one person's gain change moves everyone's levels — so only the preamp owner changes them. Ask who owns the preamps before the job.</p>", "s7-8"],
+    ["dm7 recording|record on a dm7|dm7 usb channels|dante virtual soundcard", "<p>The DM7's USB carries 18 channels in and out — fine for stereo or a small recording. For a full multitrack, use <strong>Dante Virtual Soundcard</strong> on a computer (up to 64 channels at 48 kHz) and record pre-fader.</p>", "s7-9 s14-7"],
+    ["what is the dugan automixer|automixer|automatic mixer for speech|panel mics feedback", "<p>An <strong>automixer</strong> (the DM7 has Dan Dugan's built in) automatically shares gain between speech mics, so the total stays steady however many people talk. Open panel mics don't add up to feedback and room noise, and nobody has to ride faders for every word.</p>", "s7-8 s10-11"],
+    ["digico vs yamaha|allen and heath dlive|avantis|digico snapshot|which desk", "<p>The channel strip is the same on every desk; the words and scene systems change. Yamaha uses <strong>scenes</strong> with Recall Safe and Focus; DiGiCo uses <strong>snapshots</strong> with recall scope; Allen &amp; Heath uses <strong>scenes</strong> with recall filters and safes. On any desk you don't know, save the show file first and find the solo-clear and the main mute.</p>", "s7-10"],
+    ["shure wireless workbench|how to use wireless workbench|wwb deploy|ulxd setup|sennheiser ewdx setup", "<p>With everything that will be on during the show switched on: scan, add your devices' frequencies, <strong>Analyze</strong>, <strong>Calculate</strong>, then <strong>Assign and Deploy</strong> to the networked receivers. Batteries in, sync each transmitter, set gain, label, walk test. Sennheiser's WSM or Control Cockpit do the same job.</p>", "s5-11 s5-8"],
+    ["how much is a radio mic licence|channel 38 licence cost|ofcom fee|channel 70 licence free|licence exempt radio mic", "<p>As of November 2026: the UK shared licence for <strong>Channel 38</strong> (606.5–613.5 MHz) is <strong>£75 a year or £135 for two years</strong> bought on Ofcom's website (£85 / £155 otherwise). <strong>Channel 70</strong> (863.1–864.9 MHz) is licence-exempt — free, but crowded. Bigger shows use coordinated site licences. Check ofcom.org.uk for current fees.</p>", "s5-12 s5-4"],
+    ["l-acoustics|la12x|la network manager|kara preset|l acoustics vs d&b|what is soundvision", "<p>L-Acoustics works like d&amp;b with different names: amplified controllers (LA4X, LA12X, LA7.16) instead of D-series amps, <strong>presets</strong> instead of setups, <strong>LA Network Manager</strong> instead of R1, and <strong>Soundvision</strong> instead of ArrayCalc. Preset suffixes: <strong>_FI</strong> for fills, <strong>_MO</strong> for monitors.</p>", "s6-21"],
+    ["what is milan|milan vs dante|avb switch|does d&b use milan|milan network", "<p><strong>Milan</strong> is network audio on AVB: the switches themselves keep time and reserve bandwidth, so there's no QoS or IGMP setup — but they <strong>must be AVB/Milan-capable</strong>. d&amp;b D40/D90, L-Acoustics and Meyer support it. Redundancy needs two physically separate networks. Don't mix Milan and Dante on the same switches unless the design says so.</p>", "s8-10"],
+    ["dante controller step by step|how to route dante|dante clock leader|preferred leader|dante preset", "<p>Laptop on the audio network by cable (Wi-Fi off), open Dante Controller, check every device is there, one clock leader (set Preferred Leader on that device only), sample rates match, then tick transmit-meets-receive in the grid. Rename devices <em>before</em> routing, and save a preset of the routing.</p>", "s8-9"],
+    ["open sound meter|free measurement software|how to measure a pa|transfer function|smaart free alternative", "<p><strong>Open Sound Meter</strong> is free measurement software. You need a two-input interface and a measurement mic: input 1 the mic, input 2 the pink noise looped back as reference. Use the delay finder, then read magnitude, phase and coherence. Measuring is for learning; changing the system's EQ is the system tech's call.</p>", "s8-11 s6-8"],
+    ["corporate presenter mic|how to mic a presenter|lavalier placement|where to clip a lapel mic|headset or lav", "<p>Lavalier on the sternum (about a hand's width below the chin), on the side they turn to, cable taped so it can't rustle. Headsets for movers and quiet talkers; handhelds for Q&amp;A. Fresh battery, gain set so they don't clip, muted until they walk on, and rung out with the room PA before doors.</p>", "s10-11 s5-11"],
+    ["martyns law|martyn's law|terrorism protection of premises act|event security law|invacuation", "<p><strong>Martyn's Law</strong> (Terrorism (Protection of Premises) Act 2025) is expected to come into force in <strong>spring 2027</strong>. Venues and events of 200–799 people need public protection procedures (evacuation, invacuation, lockdown, communication); 800 or more also need protective measures. It's the venue's duty — yours is to know the signals and keep the announcement mic working.</p>", "s13-16"],
+    ["bs 7909|temporary power event|distro tripped|rcd 30ma|generator earth", "<p>Event temporary power is designed and certified under <strong>BS 7909:2023+A1:2024</strong> by the power technician. Expect 30 mA RCD protection on sockets, inspection before switch-on, and earth rods on generator systems — don't disturb them. If the distro trips, tell the power tech; never reset someone else's breakers or bypass an RCD.</p>", "s13-17 s12-15"]
   ];
   var bank = null;
   function bankIndex(){
@@ -8887,12 +9157,14 @@ if(quickfabBtn && quickfabMenu){
        it's really a fault report that happens to name the kit, in which case
        the kit is remembered for the report and the fault route starts. */
     var fixRanked = rankFlows(text, 'fix');
-    var faultish = fixRanked.length && fixRanked[0].s >= 1 && !info && !COMPAT_Q.test(text) && !WHICH_AMP_Q.test(text) && fixRanked[0].f.id !== 'setup';
+    /* "How do I route Dante?" is a how-to, not a fault — unless it says something's wrong. */
+    var fixAsk = /\b(fix|wrong|broken|faulty|not working|won't|isn|stopped|no sound|silent|problem|fault|dropping|crackl\w*|hum\w*)\b/i.test(text);
+    var faultish = fixRanked.length && fixRanked[0].s >= 1 && !info && (!setupAsk || fixAsk) && !COMPAT_Q.test(text) && !WHICH_AMP_Q.test(text) && fixRanked[0].f.id !== 'setup';
     if(!faultish && !(setupAsk && f && f.kind === 'setup' && !findModels(text).length) && modelAnswer(text)) return;
     /* A question with a written answer gets it straight away — unless it's
        really a fault report, which goes to the step-by-step route. */
     var hit = bestAnswer(text);
-    if(hit && (!faultish || info) && (info || !f || (setupAsk && f.kind !== 'setup') || hit.score >= 0.85)){ showAnswer(hit, text); return; }
+    if(hit && (!faultish || info) && (info || !f || (setupAsk && f.kind !== 'setup'))){ showAnswer(hit, text); return; }
     if(!g.symptom) g.symptom = text;
     /* Two problems in one message: start with the stronger, queue the other. */
     if(f && !info && ranked.length > 1 && ranked[1].f !== f && ranked[1].s >= 1 && /\b(and|also|plus|as well|too)\b/i.test(text) && (f.kind || 'fix') === 'fix' && (ranked[1].f.kind || 'fix') === 'fix'){

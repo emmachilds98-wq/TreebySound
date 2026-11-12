@@ -58,7 +58,7 @@ the changes for review.
       BM25 instead of raw counts.
 - [x] Answer bank (125 entries so far; grow it — see `var ANSWERS`): several hundred common questions with direct, checked
       answers taken from the handbook, matched offline.
-- [ ] New guided routes where they're missing (e.g. console no output, IEM
+- [x] New guided routes where they're missing (e.g. console no output, IEM
       problems, corporate presenter-mic check, DM7-specific checks).
 
 ## Phase 3 — expand the handbook with research
@@ -67,20 +67,22 @@ Each new or expanded section ends with a short "Sources, checked <month year>"
 note. Anything model- or firmware-specific that can't be confirmed is flagged,
 not guessed. Each new section also adds answer-bank entries.
 
-- [ ] Yamaha DM7 — layout, patching, scenes/show files, Dante, common traps.
-- [ ] Other premium desks he may meet (DiGiCo, Allen & Heath dLive/Avantis,
+- [x] Yamaha DM7 — layout, patching, scenes/show files, Dante, common traps.
+- [x] Other premium desks he may meet (DiGiCo, Allen & Heath dLive/Avantis,
       Yamaha CL/QL/RIVAGE).
-- [ ] Wireless systems (Shure, Sennheiser) step by step + current Ofcom
+- [x] Wireless systems (Shure, Sennheiser) step by step + current Ofcom
       licensing.
-- [ ] Dante in depth — Controller step by step, clocking, redundancy, switch
+- [x] Dante in depth — Controller step by step, clocking, redundancy, switch
       settings; intro to Milan/AVB.
-- [ ] Other premium PA brands (L-Acoustics, Meyer) to the same depth as d&b
+- [~] Other premium PA brands — L-Acoustics done (§6.21); Meyer and others
+      wait for the owner's stock list. (L-Acoustics, Meyer) to the same depth as d&b
       once the owner confirms stock.
-- [ ] Measurement — Open Sound Meter (free) and Smaart basics.
-- [ ] Corporate AV / hybrid — presenter mics, conference systems, video-call
+- [x] Measurement — Open Sound Meter (free) and Smaart basics.
+- [x] Corporate AV / hybrid — presenter mics, conference systems, video-call
       audio.
-- [ ] Safety refresh — Part 13 checked against current HSE, BS 7909, Purple
-      Guide.
+- [x] Safety refresh — added §13.16 Martyn's Law (in force spring 2027) and
+      §13.17 BS 7909:2023+A1:2024 temporary power. Older Part 13 sections not
+      re-audited line by line yet.
 
 ## Phase 4 — optional, only if search is still missing questions
 
@@ -96,3 +98,4 @@ Add a line per pushed chunk of work: date — what changed — what's next.
 - 2026-11-12 — Plan written. Starting Phase 1.
 - 2026-11-12 — sw.js fixes, API-key mode removed (stored key now wiped on load), in-chat peek added. Next: smarter search + answer bank.
 - 2026-11-12 — BM25 search with synonyms/stemming and a relevance cut-off; answer bank engine + 125 answers. Next: new guided routes, then Phase 3 research.
+- 2026-11-12 — 12 researched sections (§5.11–5.12, §6.21, §7.8–7.10, §8.9–8.11, §10.11, §13.16–13.17), 4 new routes (desk no output, IEM, DM7 setup, presenter mics), 17 more answers (142 total), intent fixes. Next: README, then merge.
