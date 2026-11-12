@@ -796,12 +796,19 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 /* ---------- fault finder chat (Support → Talk it through) ---------- */
 .chat{background:var(--card);border:1px solid var(--rule);border-radius:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:hidden}
 .chat-bar{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;border-bottom:1px solid var(--rule);background:var(--paper-2);flex-wrap:wrap}
-.chat-modes{display:flex;gap:6px;flex-wrap:wrap}
-.chat-mode{font-family:var(--display);font-size:13.5px;font-weight:600;color:var(--ink-2);background:var(--card);border:1px solid var(--rule-2);border-radius:999px;padding:6px 12px;cursor:pointer;line-height:1.15;text-align:left}
-.chat-mode span{display:block;font-family:var(--mono);font-size:9.5px;font-weight:400;letter-spacing:.04em;color:var(--ink-3)}
-.chat-mode.on{background:var(--petrol);border-color:var(--petrol);color:#fff}
-.chat-mode.on span{color:rgba(255,255,255,.85)}
-:root[data-theme="dark"] .chat-mode.on{color:var(--paper)} :root[data-theme="dark"] .chat-mode.on span{color:var(--paper)}
+.chat-title{margin:0;font-family:var(--mono);font-size:11.5px;letter-spacing:.04em;color:var(--ink-3)}
+.chat-foot{margin:0;padding:8px 14px 10px;border-top:1px solid var(--rule);font-size:13px;color:var(--ink-3);background:var(--paper)}
+.chat-msg.peek{max-width:100%;width:100%;background:var(--card);border:1px solid var(--rule-2);border-left:4px solid var(--petrol);padding:10px 13px 8px}
+.chat-peek-body{position:relative;max-height:260px;overflow:hidden;font-size:14.5px}
+.chat-peek-body.open{max-height:none}
+.chat-peek-body:not(.open)::after{content:"";position:absolute;left:0;right:0;bottom:0;height:56px;background:linear-gradient(to bottom,transparent,var(--card))}
+.chat-peek-body h3{font-size:16px;margin:0 0 6px}
+.chat-peek-body h4{font-size:15px;margin:10px 0 4px}
+.chat-peek-body table{font-size:13px;display:block;overflow-x:auto;max-width:100%}
+.chat-peek-body .note{margin:8px 0}
+.chat-peek-tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chat-peek-tools button,.chat-peek-tools a{font-family:var(--display);font-size:13px;font-weight:600;color:var(--petrol-ink);background:var(--card);border:1px solid var(--rule-2);border-radius:7px;padding:5px 9px;cursor:pointer;text-decoration:none}
+.chat-answer-src{font-family:var(--mono);font-size:11px;color:var(--ink-3);margin-top:6px}
 .chat-reset{font-family:var(--display);font-size:13px;color:var(--petrol-ink);background:none;border:1px solid var(--rule-2);border-radius:8px;padding:6px 10px;cursor:pointer}
 .chat-log{min-height:220px;max-height:min(62vh,560px);overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:10px;-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
 .chat-msg{max-width:88%;padding:10px 13px;border-radius:14px;font-size:15px;line-height:1.45;overflow-wrap:anywhere}
@@ -829,17 +836,6 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 .chat-send{font-family:var(--display);font-size:15px;font-weight:600;color:#fff;background:var(--petrol);border:none;border-radius:10px;padding:0 16px;height:42px;cursor:pointer}
 :root[data-theme="dark"] .chat-send{color:var(--paper)}
 .chat-send[disabled]{opacity:.55;cursor:default}
-.chat-photo{font-size:19px;height:42px;width:42px;border:1px solid var(--rule-2);border-radius:10px;background:var(--card);cursor:pointer}
-.chat-attach{display:flex;align-items:center;gap:8px;padding:0 12px 10px;font-family:var(--mono);font-size:12px;color:var(--ink-3);background:var(--paper)}
-.chat-attach img{height:42px;border-radius:6px}
-.chat-attach button{font:inherit;background:none;border:1px solid var(--rule-2);border-radius:6px;padding:3px 8px;cursor:pointer;color:var(--ink-2)}
-.chat-settings{border-top:1px solid var(--rule);padding:10px 14px 4px;font-size:14.5px}
-.chat-settings summary{font-family:var(--display);font-size:14px;font-weight:600;color:var(--petrol-ink);cursor:pointer;padding:4px 0}
-.chat-key{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:8px 0}
-.chat-key label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);width:100%}
-.chat-key input{flex:1;min-width:180px;font-family:var(--mono);font-size:14px;padding:8px 10px;border:1px solid var(--rule-2);border-radius:8px;background:var(--card);color:var(--ink)}
-.chat-key .hub-button{cursor:pointer}
-.chat-key-status{font-family:var(--mono);font-size:12px;color:var(--ink-3);min-height:1em}
 @media (max-width:820px){.chat-msg{max-width:94%}.chat-log{max-height:58vh}}
 @media print{.chat{display:none}}
 /* ---------- floating tools stay out of the way of what you're reading ----------
@@ -1281,39 +1277,17 @@ tr.in-kit td{background:var(--pass-soft)}
     <p class="hub-lead">Tell the fault finder what's happening, in your own words — "sub's silent on the d&amp;b", "crackle from one speaker", "amp not showing in R1". It asks the next question, points you at the check, and when you're done writes the message to send your lead.</p>
     <div class="chat" id="faultChat">
       <div class="chat-bar">
-        <div class="chat-modes" role="radiogroup" aria-label="Fault finder mode">
-          <button type="button" class="chat-mode on" data-mode="guided" role="radio" aria-checked="true">Guided <span>works offline</span></button>
-          <button type="button" class="chat-mode" data-mode="ai" role="radio" aria-checked="false">AI assistant <span>needs signal + key</span></button>
-        </div>
+        <p class="chat-title">Works offline · nothing leaves your phone</p>
         <button type="button" class="chat-reset" id="chatReset">Start over</button>
       </div>
       <div class="chat-log" id="chatLog" role="log" aria-live="polite" aria-label="Fault finder conversation"></div>
       <div class="chat-chips" id="chatChips"></div>
       <form class="chat-form" id="chatForm" autocomplete="off">
-        <button type="button" class="chat-photo" id="chatPhotoBtn" title="Attach a photo (AI assistant only)" aria-label="Attach a photo" hidden>&#128247;</button>
-        <input type="file" id="chatPhoto" accept="image/*" capture="environment" hidden>
         <label class="sr-only" for="chatInput">Describe the problem</label>
         <textarea id="chatInput" rows="1" placeholder="What's going on?"></textarea>
         <button type="submit" class="chat-send" id="chatSend">Send</button>
       </form>
-      <div class="chat-attach" id="chatAttach" hidden></div>
-      <details class="chat-settings" id="chatSettings">
-        <summary>AI assistant setup</summary>
-        <p>The guided mode is built into this page and never needs a connection. The <strong>AI assistant</strong> is optional: it sends your question, any photo you attach and the relevant handbook pages to Anthropic's Claude, using <em>your own</em> API key. Nothing else from this app — notes, job details, checklists — is ever sent.</p>
-        <ol class="seq">
-          <li>Create an API key at <strong>console.anthropic.com</strong> (Settings → API keys). It's pay-as-you-go — set a monthly spend limit there so it can never surprise you.</li>
-          <li>Paste it below. It's saved only in this browser on this device, and only ever sent to Anthropic.</li>
-          <li>Switch to <em>AI assistant</em> above. You need a signal; with none, it falls back to the guided mode.</li>
-        </ol>
-        <div class="chat-key">
-          <label for="chatKey">Anthropic API key</label>
-          <input type="password" id="chatKey" placeholder="sk-ant-…" autocomplete="off" spellcheck="false">
-          <button type="button" class="hub-button" id="chatKeySave">Save key</button>
-          <button type="button" class="hub-button" id="chatKeyForget">Forget key</button>
-        </div>
-        <p class="chat-key-status" id="chatKeyStatus"></p>
-        <p class="hub-disclaimer">The assistant is a second opinion, not an authority. It can be wrong. Anything electrical, rigged or on someone else's system still goes to the person responsible — and safety always comes first (<a href="#support-now">Make it safe</a>).</p>
-      </details>
+      <p class="chat-foot">A second opinion, not an authority. Anything electrical, rigged or on someone else's system still goes to the person responsible — and safety always comes first (<a href="#support-now">Make it safe</a>).</p>
     </div>
   </section>
 
@@ -1851,7 +1825,7 @@ tr.in-kit td{background:var(--pass-soft)}
 <li><strong>Glossary</strong> — every piece of jargon, alphabetically at <a href="#s20-1">§20.1</a> or grouped by area at <a href="#s20-2">§20.2</a>. Each entry links straight back to where it's properly explained.</li>
 <li><strong>Pocket reference</strong> — a condensed, one-page cheat sheet of the numbers and steps you'll want mid-job, at <a href="#s19-13">§19.13</a>, with its own print button.</li>
 <li><strong>Print</strong> — the Print button lays it out for paper properly. A printed line-check sheet in your back pocket beats a phone in the rain.</li>
-<li><strong>Works with no signal</strong> — this whole book is one self-contained file with nothing pulled in from the internet (the one optional exception is the AI mode of the fault finder in Support, which only connects when you switch it on and give it your own key), so once it's saved to your phone, laptop or a USB stick it works exactly the same in a basement venue with no signal as it does at home. Keep a copy on your phone specifically — that's the one device you'll always have with you. To pin it like an app: open the file in your phone's browser, then <em>Share → Add to Home Screen</em> (iPhone/Safari) or the <em>⋮</em> menu → <em>Add to Home screen</em> (Android/Chrome).</li>
+<li><strong>Works with no signal</strong> — this whole book is one self-contained file with nothing pulled in from the internet, so once it's saved to your phone, laptop or a USB stick it works exactly the same in a basement venue with no signal as it does at home. Keep a copy on your phone specifically — that's the one device you'll always have with you. To pin it like an app: open the file in your phone's browser, then <em>Share → Add to Home Screen</em> (iPhone/Safari) or the <em>⋮</em> menu → <em>Add to Home screen</em> (Android/Chrome).</li>
 <li><strong>Back up your notes</strong> — the private notes, ticked checklists, progress and job workspace you build up are saved <em>only</em> in this browser. Now and then, open <em>Appearance</em> and use <strong>Export backup</strong> to save them to a file; <strong>Restore backup</strong> reads one back on a new phone or after clearing your browser. Nothing is ever sent anywhere.</li>
 </ul>
 </section>
@@ -7543,15 +7517,12 @@ if(quickfabBtn && quickfabMenu){
 })();
 
 /* ---------- fault finder chat (Support → Talk it through) ----------
-   Two modes behind one conversation window.
-   Guided: a set of symptom flows written into this page. It matches what the
+   A set of symptom flows written into this page. It matches what the
    person types against each flow's words, then asks one question at a time and
    points at the check and the section. No network, ever — it works in a
    basement with no signal, like the rest of the book.
-   AI assistant: optional, off until the person pastes their own Anthropic API
-   key. Their question, any photo they attach and the handbook sections that
-   match it go to Claude; nothing else from the app does. The key lives only in
-   this browser's localStorage. With no signal it falls back to Guided. */
+   An offline answer bank and the book's own search cover questions that
+   aren't faults. There is no online mode: nothing typed here leaves the phone. */
 (function(){
   var box = document.getElementById('faultChat');
   if(!box) return;
@@ -7561,20 +7532,11 @@ if(quickfabBtn && quickfabMenu){
   var input = document.getElementById('chatInput');
   var sendBtn = document.getElementById('chatSend');
   var resetBtn = document.getElementById('chatReset');
-  var photoBtn = document.getElementById('chatPhotoBtn');
-  var photoInput = document.getElementById('chatPhoto');
-  var attachBar = document.getElementById('chatAttach');
-  var settings = document.getElementById('chatSettings');
-  var keyInput = document.getElementById('chatKey');
-  var keySave = document.getElementById('chatKeySave');
-  var keyForget = document.getElementById('chatKeyForget');
-  var keyStatus = document.getElementById('chatKeyStatus');
-  var modeBtns = Array.prototype.slice.call(box.querySelectorAll('.chat-mode'));
 
-  var KEY_STORE = 'treebysound-anthropic-key';
-  var MODE_STORE = 'treebysound-chat-mode';
-  var MODEL = 'claude-opus-5-5';
-  var mode = storeGet(MODE_STORE) === 'ai' ? 'ai' : 'guided';
+  /* The online AI mode (and the API key it needed) has been removed. Clear
+     anything it left on this device so a backup never carries an old key. */
+  storeRemove('treebysound-anthropic-key');
+  storeRemove('treebysound-chat-mode');
 
   function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function plain(html){ var d = document.createElement('div'); d.innerHTML = html; return (d.textContent || '').replace(/\s+/g, ' ').trim(); }
@@ -7830,6 +7792,56 @@ if(quickfabBtn && quickfabMenu){
       chips.appendChild(b);
     });
   }
+
+
+  /* ---- peek: read a section without leaving the conversation ----
+     A link to a book section from inside the chat opens that section here,
+     in the conversation, instead of switching screens — he reads it and
+     carries on where he was. "Open in the library" still goes to the page. */
+  var SECTION_LINK = /^#s\d+-\d+$/;
+  function peek(id){
+    var sec = document.getElementById(id);
+    if(!sec) return false;
+    var clone = sec.cloneNode(true);
+    Array.prototype.forEach.call(clone.querySelectorAll('.notefield, script, .next-part'), function(n){ n.remove(); });
+    Array.prototype.forEach.call(clone.querySelectorAll('[id]'), function(n){ n.removeAttribute('id'); });
+    clone.removeAttribute('id');
+    Array.prototype.forEach.call(clone.querySelectorAll('input, select, textarea, button'), function(n){ n.disabled = true; });
+    var m = addMsg('bot', '', 'peek');
+    var body = document.createElement('div');
+    body.className = 'chat-peek-body';
+    while(clone.firstChild) body.appendChild(clone.firstChild);
+    m.appendChild(body);
+    var tools = document.createElement('div');
+    tools.className = 'chat-peek-tools';
+    var more = document.createElement('button');
+    more.type = 'button';
+    more.textContent = 'Show the whole section';
+    more.addEventListener('click', function(){
+      var open = body.classList.toggle('open');
+      more.textContent = open ? 'Show less' : 'Show the whole section';
+      if(!open) m.scrollIntoView({block:'nearest'});
+    });
+    var go = document.createElement('a');
+    go.href = '#' + id;
+    go.setAttribute('data-nopeek', '');
+    go.textContent = 'Open in the library →';
+    tools.appendChild(more); tools.appendChild(go);
+    m.appendChild(tools);
+    requestAnimationFrame(function(){
+      if(body.scrollHeight <= body.clientHeight + 4){ body.classList.add('open'); more.remove(); }
+      m.scrollIntoView({block:'start', behavior:'smooth'});
+    });
+    return true;
+  }
+  log.addEventListener('click', function(ev){
+    var a = ev.target.closest && ev.target.closest('a[href^="#"]');
+    if(!a || !log.contains(a) || a.hasAttribute('data-nopeek')) return;
+    var href = a.getAttribute('href');
+    if(!SECTION_LINK.test(href)) return;
+    if(ev.metaKey || ev.ctrlKey || ev.shiftKey) return;
+    if(peek(href.slice(1))) ev.preventDefault();
+  });
 
   /* ---- guided mode state ---- */
   var g = {flow:null, node:null, steps:[], symptom:'', slots:{}, trail:[], models:[], queue:[], lastQ:'', test:null};
@@ -8258,7 +8270,6 @@ if(quickfabBtn && quickfabMenu){
   window.tbChatStartTest = function(){
     location.hash = '#support-chat';
     setTimeout(function(){
-      if(mode !== 'guided') setMode('guided', true);
       reset();
       startTest();
     }, 120);
@@ -8327,15 +8338,6 @@ if(quickfabBtn && quickfabMenu){
     try{ return myKit().map(function(e){ return e.name; }).join(', '); }catch(e){ return ''; }
   }
   function greet(){
-    if(mode === 'ai'){
-      addMsg('bot', '<p>Ask anything: how to set something up, what\'s wrong and how to fix it, or what a term, setting or light means. You can attach a photo of an amp screen, a connector or a patch with the camera button.</p><p>Short answers, one step at a time; say "write it up" when you want the message for your lead.</p>');
-      if(!storeGet(KEY_STORE)){
-        addMsg('bot', '<p>No API key saved on this device yet — open <strong>AI assistant setup</strong> below. Until then, the guided mode works with no key and no signal.</p>', 'warn');
-        settings.open = true;
-      }
-      setChips([]);
-      return;
-    }
     var kitNames = myKitSafe();
     addMsg('bot', '<p>I can help you <strong>set something up</strong>, <strong>test it before doors</strong>, <strong>find and fix a problem</strong>, or <strong>look something up</strong>. Type it in your own words, or pick one:</p>' + (kitNames ? '<p class="chat-kitline">Your kit: ' + esc(kitNames) + '</p>' : ''));
     menu();
@@ -8458,9 +8460,6 @@ if(quickfabBtn && quickfabMenu){
         navigator.clipboard.writeText(report).then(function(){ addMsg('bot', 'Copied.', 'note'); }, function(){ addMsg('bot', 'Couldn\'t copy — press and hold the text to select it.', 'note'); });
         setChips(row);
       }});
-    }
-    if(!fixed && storeGet(KEY_STORE)){
-      row.push({label:'Ask the AI assistant', go:function(){ setMode('ai', true); sendAi('I worked through the guided fault finder and I\'m still stuck. Here\'s where I am:\n\n' + report + '\n\nWhat should I check next?'); }});
     }
     if(g.queue.length){
       var nextF = g.queue.shift();
@@ -8590,7 +8589,7 @@ if(quickfabBtn && quickfabMenu){
     var defs = findGlossary(text);
     var found = searchBook(text, 3);
     if(!defs.length && !found.length){
-      addMsg('bot', '<p>I couldn\'t find that in the book. Try a different word for it — or, with a key and a signal, ask the AI assistant.</p>');
+      addMsg('bot', '<p>I couldn\'t find that in the book. Try a different word for it, or describe what you can see.</p>');
       menu();
       return;
     }
@@ -8658,252 +8657,6 @@ if(quickfabBtn && quickfabMenu){
     answerInfo(text);
   }
 
-  /* ---- AI assistant ---- */
-  var ai = {history:[], busy:false, system:null, refIds:{}};
-  var pendingImage = null;
-  var sdkPromise = null;
-  var REF_IDS = ['s3-3','s3-12','s6-1','s6-4','s6-16','s6-17','s6-18','s6-19','s6-20','s11-9','s12-1','s12-8','s12-13','s12-15'];
-
-  function sectionText(id, max){
-    var sec = document.getElementById(id);
-    if(!sec) return '';
-    var clone = sec.cloneNode(true);
-    Array.prototype.forEach.call(clone.querySelectorAll('.notefield, script, button'), function(n){ n.remove(); });
-    Array.prototype.forEach.call(clone.querySelectorAll('tr'), function(tr){ tr.appendChild(document.createTextNode(' \n')); });
-    Array.prototype.forEach.call(clone.querySelectorAll('td, th, dt'), function(td){ td.appendChild(document.createTextNode(' | ')); });
-    Array.prototype.forEach.call(clone.querySelectorAll('p, li, dd, h4, div.note'), function(p){ p.appendChild(document.createTextNode('\n')); });
-    var txt = (clone.textContent || '').replace(/[ \t]+/g, ' ').replace(/\n\s*\n+/g, '\n').trim();
-    return max && txt.length > max ? txt.slice(0, max) + ' …' : txt;
-  }
-  /* Built once from the page and never changed afterwards, so the whole system
-     prompt is a stable prefix the API can cache across every turn. */
-  function systemPrompt(){
-    if(ai.system) return ai.system;
-    var contents = Array.prototype.map.call(document.querySelectorAll('main > .part section.s h3'), function(h){ return h.textContent.trim(); }).join('\n');
-    var ref = REF_IDS.map(function(id){ ai.refIds[id] = true; return '<section>\n' + sectionText(id) + '\n</section>'; }).join('\n');
-    ai.system = [
-      'You are the on-site assistant inside TreebySound, a UK live-audio field handbook. The person talking to you is usually a junior or developing audio technician, often mid-job, on a phone, under time pressure.',
-      '',
-      'You help with three kinds of request, and should recognise which one you have:',
-      '- Setting something up: walk them through it in order, a few steps at a time, checking where they are before moving on (for example a d&b amp rack, speaker cabling, R1, a line check, radio mics).',
-      '- Finding and fixing a problem: narrow down where the fault is, then how to resolve it or who to hand it to.',
-      '- General information: explain a term, a setting, a light, a connector or a piece of kit clearly and briefly, with the practical "so what" for their job.',
-      '',
-      'How to help:',
-      '- Safety first. If anything suggests smoke, burning, electric shock, injury, a rigging or suspended-load problem, or a mains or distribution fault, tell them to stop or mute, make it safe and get the responsible or qualified person before giving any technical advice. Never advise opening amplifiers, loudspeakers or mains equipment, re-terminating cables on a live system, or touching rigging.',
-      '- Work like a calm crew chief: the most likely and cheapest checks first, one change at a time, substitution (swap in a known-good part) rather than rewiring. If the symptom is ambiguous, ask one short question first — which box, which amp, which output mode, what the indicators show.',
-      '- Keep replies short and scannable on a phone: one sentence on what it probably is, then at most five numbered checks. No preamble, no essays.',
-      '- Respect authority: on a system they do not own, tell them what to report rather than changing amp setups, output modes, ArrayProcessing, console show files or network settings.',
-      '- Be specific about d&b audiotechnik amplifiers (D6, D12, D20, D40, D80, D90 and the install amps), d&b loudspeakers, R1, ArrayCalc and Neutrik speakON NL2/NL4/NLT4/NL8, using the reference below. Where a detail depends on a model, version or firmware you are not sure of, say so and point them to the label above the amp outputs or the manual. Never invent pinouts, menu names or specifications.',
-      '- For advanced or compound problems (several symptoms at once, line arrays and ArrayProcessing, cardioid sub arrays, time alignment, AES/Milan/Dante feeds, amp loading), separate the symptoms, say which you would chase first and why, and keep track of what has already been ruled out across the conversation. Use the d&b model tables in the reference for which amp drives which box; if a pairing is not confirmed there, say so.',
-      '- They often set up and test events without a technician coming in first. Help them prove the system themselves (the 15-step test in §11.9), but be clear about what is not theirs to do alone: rigging, mains distribution, changing someone else\'s system design. When their own kit list is given, answer for that kit first.',
-      '- If they ask how to progress, point to the technician skills on the Pathway (#path-tech) and the concrete next thing to practise on a real job.',
-      '- If they attach a photo, say what you can actually see (screen text, indicator colours, connector type) before drawing conclusions, and say if the photo is too unclear to read.',
-      '- Refer to handbook sections as §x.y (for example §6.19) when one helps; the app turns them into links. Only cite sections that appear in the contents list.',
-      '- When they have found the fault, are stuck, or ask you to "write it up", give a short message for their lead in this order: the symptom, what changed, what has been checked, what they need.',
-      '- UK English. Plain words; explain any jargon you use.',
-      '',
-      '<handbook_contents>',
-      contents,
-      '</handbook_contents>',
-      '',
-      '<reference_sections>',
-      ref,
-      '</reference_sections>'
-    ].join('\n');
-    return ai.system;
-  }
-
-  function loadSdk(){
-    if(!sdkPromise){
-      sdkPromise = import('https://esm.sh/@anthropic-ai/sdk').then(function(m){ return m.default || m.Anthropic; });
-      sdkPromise.catch(function(){ sdkPromise = null; });
-    }
-    return sdkPromise;
-  }
-
-  /* Minimal, safe formatting: escape everything, then allow bold, inline code,
-     bullet and numbered lists, and turn §x.y into links to the book. */
-  function formatAi(text){
-    var out = [], list = null;
-    function inline(s){
-      s = esc(s)
-        .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-        .replace(/`([^`]+)`/g, '<code>$1</code>');
-      return s.replace(/§\s?(\d{1,2})\.(\d{1,2})/g, function(all, a, b){
-        var id = 's' + a + '-' + b;
-        return document.getElementById(id) ? '<a href="#' + id + '">§' + a + '.' + b + '</a>' : all;
-      });
-    }
-    function close(){ if(list){ out.push('</' + list + '>'); list = null; } }
-    text.split(/\n/).forEach(function(line){
-      var t = line.trim();
-      var ul = /^[-*•]\s+(.*)/.exec(t), ol = /^\d+[.)]\s+(.*)/.exec(t);
-      if(ul || ol){
-        var want = ul ? 'ul' : 'ol';
-        if(list !== want){ close(); out.push('<' + want + '>'); list = want; }
-        out.push('<li>' + inline((ul || ol)[1]) + '</li>');
-      } else if(!t){
-        close();
-      } else {
-        close();
-        out.push('<p>' + inline(t.replace(/^#+\s*/, '')) + '</p>');
-      }
-    });
-    close();
-    return out.join('');
-  }
-
-  function setBusy(on){
-    ai.busy = on;
-    sendBtn.disabled = on;
-    sendBtn.textContent = on ? '…' : 'Send';
-  }
-
-  function sendAi(text){
-    if(ai.busy) return;
-    var key = storeGet(KEY_STORE);
-    if(!key){
-      addMsg('bot', '<p>Add your API key in <strong>AI assistant setup</strong> first — or switch to Guided, which needs nothing.</p>', 'warn');
-      settings.open = true;
-      return;
-    }
-    if(!navigator.onLine){
-      addMsg('bot', '<p>No signal, so the AI assistant can\'t be reached. Switching to the guided fault finder, which works offline.</p>', 'warn');
-      setMode('guided', true);
-      guidedText(text);
-      return;
-    }
-    var shown = esc(text).replace(/\n/g, '<br>');
-    if(pendingImage) shown += '<img alt="Attached photo" src="' + pendingImage.url + '">';
-    addMsg('me', shown);
-    if(DANGER.test(text)) safetyNote();
-
-    var system = systemPrompt();
-    var excerpts = searchBook(text, 3, ai.refIds).map(function(e){
-      return '<section>\n' + sectionText(e.id, 3500) + '\n</section>';
-    }).join('\n');
-    var content = [];
-    if(pendingImage) content.push({type:'image', source:{type:'base64', media_type:'image/jpeg', data: pendingImage.data}});
-    if(excerpts) content.push({type:'text', text:'<handbook_excerpts>\n' + excerpts + '\n</handbook_excerpts>'});
-    mergeSlots(text);
-    var kitNow = kitLine();
-    if(kitNow) content.push({type:'text', text:'<kit_mentioned_so_far>' + kitNow + '</kit_mentioned_so_far>'});
-    var owned = window.tbKit ? window.tbKit.summary() : '';
-    if(owned) content.push({type:'text', text:'<their_kit_from_equipment_list>' + owned + '</their_kit_from_equipment_list>'});
-    if(window.tbSysTest){
-      var tc = window.tbSysTest.counts();
-      if(tc.pass + tc.fail + tc.na) content.push({type:'text', text:'<system_test_in_progress>\n' + window.tbSysTest.record() + '\n</system_test_in_progress>'});
-    }
-    content.push({type:'text', text: text});
-    ai.history.push({role:'user', content: content});
-    clearImage();
-
-    var reply = addMsg('bot', '', 'typing');
-    var acc = '';
-    setBusy(true);
-    loadSdk().then(function(Anthropic){
-      var client = new Anthropic({apiKey: key, dangerouslyAllowBrowser: true});
-      var stream = client.beta.messages.stream({
-        model: MODEL,
-        max_tokens: 64000,
-        betas: ['server-side-fallback-2026-07-01'],
-        fallbacks: 'default',
-        output_config: {effort: 'medium'},
-        system: [{type:'text', text: system, cache_control:{type:'ephemeral'}}],
-        messages: ai.history
-      });
-      return (async function(){
-        for await (var event of stream){
-          if(event.type === 'content_block_delta' && event.delta.type === 'text_delta'){
-            acc += event.delta.text;
-            reply.innerHTML = formatAi(acc);
-            scrollDown();
-          }
-        }
-        return stream.finalMessage();
-      })().then(function(final){
-        reply.classList.remove('typing');
-        if(final.stop_reason === 'refusal'){
-          ai.history.pop();
-          reply.innerHTML = '<p>The assistant couldn\'t answer that one. Try rephrasing it, or use the guided mode.</p>';
-          reply.classList.add('warn');
-          return;
-        }
-        ai.history.push({role:'assistant', content: final.content});
-        if(!acc) reply.innerHTML = '<p>(No answer came back — try again.)</p>';
-        if(final.stop_reason === 'max_tokens') addMsg('bot', 'That answer was cut off — ask it to carry on.', 'note');
-        setChips([
-          {label:'That fixed it', go:function(){ sendAi('That fixed it. Give me a two-line log note of the fault and the fix.'); }},
-          {label:'Still not right', go:function(){ sendAi('Still not right after those checks. What next?'); }},
-          {label:'Write it up for my lead', go:function(){ sendAi('Write it up as a short message for my lead: symptom, what changed, what I have checked, what I need.'); }}
-        ]);
-      }, function(err){ failed(err, Anthropic); });
-    }, function(){
-      failed(null, null);
-    }).then(function(){ setBusy(false); }, function(){ setBusy(false); });
-
-    function failed(err, Anthropic){
-      ai.history.pop();
-      reply.classList.remove('typing');
-      reply.classList.add('warn');
-      var msg;
-      if(!Anthropic){
-        msg = 'Couldn\'t load the assistant — no signal, or the connection is blocked. The guided mode works offline.';
-      } else if(err instanceof Anthropic.AuthenticationError || err instanceof Anthropic.PermissionDeniedError){
-        msg = 'Your API key wasn\'t accepted. Check it in AI assistant setup, or create a new one at console.anthropic.com.';
-      } else if(err instanceof Anthropic.RateLimitError){
-        msg = 'Too many requests, or the key has hit its spend limit. Wait a minute and try again, or check your limits at console.anthropic.com.';
-      } else if(err instanceof Anthropic.APIConnectionError){
-        msg = 'Lost the connection. The guided mode works with no signal.';
-      } else if(err instanceof Anthropic.APIError){
-        msg = 'The assistant returned an error (' + (err.status || 'unknown') + '). Try again, or use the guided mode.';
-      } else {
-        msg = 'Something went wrong reaching the assistant. Try again, or use the guided mode.';
-      }
-      reply.innerHTML = (acc ? formatAi(acc) : '') + '<p>' + esc(msg) + '</p>';
-      setChips([{label:'Use guided mode', go:function(){ setMode('guided', true); guidedText(text); }}]);
-    }
-  }
-
-  /* ---- photos (AI mode): shrink on the phone before sending ---- */
-  function clearImage(){
-    pendingImage = null;
-    attachBar.hidden = true;
-    attachBar.innerHTML = '';
-    photoInput.value = '';
-  }
-  photoBtn.addEventListener('click', function(){ photoInput.click(); });
-  photoInput.addEventListener('change', function(){
-    var file = photoInput.files && photoInput.files[0];
-    if(!file) return;
-    var url = URL.createObjectURL(file);
-    var img = new Image();
-    img.onload = function(){
-      var max = 1400, w = img.naturalWidth, h = img.naturalHeight;
-      var scale = Math.min(1, max / Math.max(w, h));
-      var c = document.createElement('canvas');
-      c.width = Math.round(w * scale); c.height = Math.round(h * scale);
-      c.getContext('2d').drawImage(img, 0, 0, c.width, c.height);
-      URL.revokeObjectURL(url);
-      var dataUrl = c.toDataURL('image/jpeg', 0.85);
-      pendingImage = {url: dataUrl, data: dataUrl.split(',')[1]};
-      attachBar.innerHTML = '';
-      var thumb = document.createElement('img');
-      thumb.src = dataUrl; thumb.alt = 'Photo to send';
-      var lab = document.createElement('span');
-      lab.textContent = 'Photo attached';
-      var rm = document.createElement('button');
-      rm.type = 'button'; rm.textContent = 'Remove';
-      rm.addEventListener('click', clearImage);
-      attachBar.appendChild(thumb); attachBar.appendChild(lab); attachBar.appendChild(rm);
-      attachBar.hidden = false;
-      input.focus();
-    };
-    img.onerror = function(){ URL.revokeObjectURL(url); addMsg('bot', 'Couldn\'t read that photo.', 'note'); };
-    img.src = url;
-  });
-
   /* ---- shared plumbing ---- */
   function safetyNote(){
     var m = addMsg('bot', '<p><strong>Stop and make it safe first.</strong> Mute or stop, keep people clear, isolate power at the source only if that\'s yours to do, and get the responsible person. Then come back to the fault.</p>', 'warn');
@@ -8912,39 +8665,16 @@ if(quickfabBtn && quickfabMenu){
   function reset(){
     log.innerHTML = '';
     g = {flow:null, node:null, steps:[], symptom:'', slots:{}, trail:[], models:[], queue:[], lastQ:'', test:null};
-    ai.history = [];
-    clearImage();
     greet();
   }
-  function setMode(m, quiet){
-    mode = m;
-    storeSet(MODE_STORE, m);
-    modeBtns.forEach(function(b){
-      var on = b.getAttribute('data-mode') === m;
-      b.classList.toggle('on', on);
-      b.setAttribute('aria-checked', on ? 'true' : 'false');
-    });
-    photoBtn.hidden = m !== 'ai';
-    if(m !== 'ai') clearImage();
-    input.placeholder = m === 'ai' ? 'Ask, or describe what you see…' : 'What\'s going on?';
-    if(!quiet) reset();
-  }
-  modeBtns.forEach(function(b){
-    b.addEventListener('click', function(){
-      var m = b.getAttribute('data-mode');
-      if(m !== mode) setMode(m);
-    });
-  });
   resetBtn.addEventListener('click', reset);
 
   form.addEventListener('submit', function(ev){
     ev.preventDefault();
     var text = input.value.trim();
-    if(!text && !(mode === 'ai' && pendingImage)) return;
-    if(!text) text = 'What can you see in this photo, and is anything wrong?';
+    if(!text) return;
     input.value = '';
     input.style.height = '';
-    if(mode === 'ai'){ setChips([]); sendAi(text); return; }
     if(g.test && !DANGER.test(text)){
       if(g.test.awaiting === 'kit'){ addMsg('me', esc(text)); window.tbSysTest.setField('kit', text); g.test.awaiting = 'step'; setChips([]); askStep(); return; }
       if(g.test.awaiting === 'note'){ addMsg('me', esc(text)); var ix = g.test.step; window.tbSysTest.set(ix, 'fail', text); g.test.awaiting = 'step'; setChips([]); afterFail(ix); return; }
@@ -8978,34 +8708,13 @@ if(quickfabBtn && quickfabMenu){
     input.style.height = Math.min(input.scrollHeight, 140) + 'px';
   });
 
-  /* ---- key management ---- */
-  function syncKeyStatus(){
-    var k = storeGet(KEY_STORE);
-    keyStatus.textContent = k ? 'Key saved on this device (ending …' + k.slice(-4) + ').' : 'No key saved.';
-    keyInput.value = '';
-  }
-  keySave.addEventListener('click', function(){
-    var k = keyInput.value.trim();
-    if(!k){ keyStatus.textContent = 'Paste a key first.'; return; }
-    if(!/^sk-ant-/.test(k)){ keyStatus.textContent = 'That doesn\'t look like an Anthropic API key (they start sk-ant-).'; return; }
-    storeSet(KEY_STORE, k);
-    syncKeyStatus();
-    if(mode !== 'ai') setMode('ai'); else reset();
-  });
-  keyForget.addEventListener('click', function(){
-    storeRemove(KEY_STORE);
-    syncKeyStatus();
-    if(mode === 'ai') reset();
-  });
-
   /* The "what's going on?" box on Home: jump to the fault finder and ask it
-     there, in whichever mode is set (guided if the AI has no key yet). */
+     there. */
   var homeAsk = document.getElementById('homeAsk');
   var homeAskInput = document.getElementById('homeAskInput');
   function askFromHome(text){
     location.hash = '#support-chat';
     setTimeout(function(){
-      if(mode === 'ai' && !storeGet(KEY_STORE)) setMode('guided', true);
       reset();
       if(text){
         input.value = text;
@@ -9027,8 +8736,6 @@ if(quickfabBtn && quickfabMenu){
     });
   }
 
-  syncKeyStatus();
-  setMode(mode, true);
   greet();
 })();
 

@@ -41,17 +41,17 @@ the changes for review.
 
 ## Phase 1 — fixes and foundations
 
-- [ ] `sw.js`: "Use previous version" is overwritten on every online load — only
+- [x] `sw.js`: "Use previous version" is overwritten on every online load — only
       snapshot when the downloaded page actually differs.
-- [ ] `sw.js`: never cache a non-OK response (a 404/500 must not replace the
+- [x] `sw.js`: never cache a non-OK response (a 404/500 must not replace the
       offline copy).
 - [ ] README: explain the structure and how to add a section, route or answer.
 
 ## Phase 2 — one fluid assistant
 
-- [ ] Remove the API-key mode: mode switch, key setup panel, SDK loading,
+- [x] Remove the API-key mode: mode switch, key setup panel, SDK loading,
       photo button, `sendAi`, related CSS and the service-worker comment.
-- [ ] In-chat "peek": section links in chat open the passage inside the chat,
+- [x] In-chat "peek": section links in chat open the passage inside the chat,
       with an option to open it in the library.
 - [ ] Smarter book search: apply the same typo correction and synonyms as the
       routes, match word endings (crackling → crackle), weight titles, rank by
@@ -94,3 +94,4 @@ not guessed. Each new section also adds answer-bank entries.
 Add a line per pushed chunk of work: date — what changed — what's next.
 
 - 2026-11-12 — Plan written. Starting Phase 1.
+- 2026-11-12 — sw.js fixes, API-key mode removed (stored key now wiped on load), in-chat peek added. Next: smarter search + answer bank.
