@@ -8055,7 +8055,34 @@ if(quickfabBtn && quickfabMenu){
     m.innerHTML = html;
     log.appendChild(m);
     scrollDown();
+    saveSoon();
     return m;
+  }
+  /* The conversation is kept on this phone for 12 hours, so switching apps
+     (which on an iPhone often closes this one) doesn't lose it. Only the
+     words on screen are kept — never sent anywhere. */
+  var LOG_STORE = 'treebysound-chat-log';
+  function saveSoon(){
+    clearTimeout(saveSoon.t);
+    saveSoon.t = setTimeout(function(){
+      var msgs = log.querySelectorAll('.chat-msg');
+      if(msgs.length < 2){ storeRemove(LOG_STORE); return; }
+      var keep = Array.prototype.slice.call(msgs, -60).map(function(n){ return n.outerHTML; }).join('');
+      if(keep.length > 400000) keep = keep.slice(-400000).replace(/^[\s\S]*?(?=<div class="chat-msg)/, '');
+      storeSet(LOG_STORE, JSON.stringify({t: Date.now(), html: keep, slots: g.slots, symptom: g.symptom}));
+    }, 400);
+  }
+  function restoreLog(){
+    try{
+      var saved = JSON.parse(storeGet(LOG_STORE) || 'null');
+      if(!saved || !saved.html || Date.now() - saved.t > 12 * 3600 * 1000) return false;
+      log.innerHTML = saved.html;
+      Array.prototype.forEach.call(log.querySelectorAll('.typing'), function(n){ n.classList.remove('typing'); });
+      g.slots = saved.slots || {};
+      g.symptom = saved.symptom || '';
+      addMsg('bot', 'Carrying on from earlier — or tap Start over.', 'note');
+      return true;
+    }catch(e){ return false; }
   }
   function addLinks(m, links){
     if(!links || !links.length) return;
@@ -8107,12 +8134,8 @@ if(quickfabBtn && quickfabMenu){
     tools.className = 'chat-peek-tools';
     var more = document.createElement('button');
     more.type = 'button';
+    more.className = 'peek-more';
     more.textContent = 'Show the whole section';
-    more.addEventListener('click', function(){
-      var open = body.classList.toggle('open');
-      more.textContent = open ? 'Show less' : 'Show the whole section';
-      if(!open) m.scrollIntoView({block:'nearest'});
-    });
     var go = document.createElement('a');
     go.href = '#' + id;
     go.setAttribute('data-nopeek', '');
@@ -8126,6 +8149,17 @@ if(quickfabBtn && quickfabMenu){
     return true;
   }
   log.addEventListener('click', function(ev){
+    var more = ev.target.closest && ev.target.closest('.peek-more');
+    if(more){
+      var pm = more.closest('.chat-msg'), pb = pm && pm.querySelector('.chat-peek-body');
+      if(pb){
+        var open = pb.classList.toggle('open');
+        more.textContent = open ? 'Show less' : 'Show the whole section';
+        if(!open) pm.scrollIntoView({block:'nearest'});
+        saveSoon();
+      }
+      return;
+    }
     var a = ev.target.closest && ev.target.closest('a[href^="#"]');
     if(!a || !log.contains(a) || a.hasAttribute('data-nopeek')) return;
     var href = a.getAttribute('href');
@@ -9085,7 +9119,7 @@ if(quickfabBtn && quickfabMenu){
     if(!q.length) return null;
     function w(t){ var d = B.df[t] || 0; return Math.log(1 + (B.n + 1) / (d + 0.5)); }
     var qw = q.reduce(function(sum, t){ return sum + w(t); }, 0);
-    var best = null, runner = 0;
+    var all = [];
     B.entries.forEach(function(e){
       /* How much of the question this entry covers (any of its phrasings),
          and how closely the best single phrasing matches. */
@@ -9098,12 +9132,12 @@ if(quickfabBtn && quickfabMenu){
         var pw = p.reduce(function(sum, t){ return sum + w(t); }, 0);
         if(gw / pw > close) close = gw / pw;
       });
-      var top = 0.65 * cover + 0.35 * close;
-      if(top > (best ? best.score : 0)){ if(best) runner = Math.max(runner, best.score); best = {e:e, score:top}; }
-      else if(top > runner) runner = top;
+      all.push({e:e, score:0.65 * cover + 0.35 * close});
     });
+    all.sort(function(a, b){ return b.score - a.score; });
+    var best = all[0];
     if(!best || best.score < 0.62) return null;
-    best.runner = runner;
+    best.others = all.slice(1, 3).filter(function(o){ return o.score >= 0.55; });
     return best;
   }
   function showAnswer(hit, text){
@@ -9114,8 +9148,12 @@ if(quickfabBtn && quickfabMenu){
     var f = scoreFlows(text);
     if(f) next.push({label: (f.kind === 'setup' ? 'Walk me through: ' : 'Troubleshoot: ') + f.title, go: function(){ addMsg('me', esc(f.title)); startFlow(f, text); }});
     if(e.see[0] && SECTION_LINK.test('#' + e.see[0]) && document.getElementById(e.see[0])) next.push({label:'Read it here', go: function(){ addMsg('me', 'Read it here'); peek(e.see[0]); setChips(next.filter(function(c){ return c.label !== 'Read it here'; })); }});
+    (hit.others || []).forEach(function(o){
+      next.push({label:'Also: ' + o.e.q, quiet:true, go: function(){ addMsg('me', esc(o.e.q)); showAnswer({e:o.e, others:[]}, o.e.q); }});
+    });
     next.push({label:'Not what I asked', quiet:true, go: function(){ addMsg('me', 'Not what I asked'); answerInfo(text, true); }});
     next.push(BACK);
+    g.lastAnswer = e;
     setChips(next);
   }
 
@@ -9201,7 +9239,75 @@ if(quickfabBtn && quickfabMenu){
     setChips(next);
   }
 
+
+  /* ---- the maths, asked in plain words ----
+     "delay for 30 m", "how far is 45 ms", "120 dB at 1 m, what at 32 m",
+     "+4 dBu in volts", "1.23 V in dBu", "how many dB is double the power",
+     "quarter wave at 606 MHz", "4 boxes of 8 ohms". Same formulas as the
+     calculators in Support; the working is shown so it can be checked. */
+  function num(x){ return parseFloat(String(x).replace(',', '.')); }
+  function round(n, dp){ var f = Math.pow(10, dp); return Math.round(n * f) / f; }
+  var C = 344; /* m/s — the figure used throughout the book */
+  function calcAnswer(text){
+    var t = String(text).toLowerCase().replace(/metres|meters|metre|meter/g, 'm').replace(/\s+/g, ' ');
+    var m, out = null, links = [['#support-calc','Calculators']];
+    if((m = /(\d+(?:[.,]\d+)?) ?(m|ft|feet|foot)\b/.exec(t)) && /\b(delay|ms|millisec|time|align)/.test(t) && !/\bms\b.*\b(how far|distance)/.test(t)){
+      var d = num(m[1]); if(/ft|feet|foot/.test(m[2])) d = d * 0.3048;
+      out = '<p><strong>' + round(d / C * 1000, 1) + ' ms</strong> for ' + round(d, 1) + ' m.</p><p>Sound travels about 344 m/s, so roughly 2.9 ms per metre. For a delay speaker, add a few milliseconds on top so the main PA is still heard first — and set it with the system tech.</p>';
+      links.unshift(['#s6-8','6.8 System tuning']);
+    }
+    else if((m = /(\d+(?:[.,]\d+)?) ?ms\b/.exec(t)) && /\b(how far|distance|metres|m\b|far)/.test(t)){
+      var ms = num(m[1]);
+      out = '<p><strong>' + round(ms * C / 1000, 2) + ' m</strong> — the distance sound travels in ' + ms + ' ms (at about 344 m/s).</p>';
+    }
+    else if((m = /(\d+(?:[.,]\d+)?) ?db\w*(?: spl)? (?:at|@) ?(\d+(?:[.,]\d+)?) ?m\b.*?(\d+(?:[.,]\d+)?) ?m\b/.exec(t))){
+      var L1 = num(m[1]), d1 = num(m[2]), d2 = num(m[3]);
+      var L2 = L1 - 20 * Math.log10(d2 / d1);
+      out = '<p><strong>About ' + round(L2, 1) + ' dB</strong> at ' + d2 + ' m (from ' + L1 + ' dB at ' + d1 + ' m).</p><p>That\'s the free-field inverse-square figure: −6 dB per doubling of distance. Indoors reflections keep it higher; a line array in its near field drops more slowly.</p>';
+      links.unshift(['#s6-6','6.6 Coverage, aiming and subs']);
+    }
+    else if((m = /([+-]?\d+(?:[.,]\d+)?) ?dbu\b/.exec(t)) && /\bvolt|\bv\b/.test(t)){
+      var dbu = num(m[1]);
+      out = '<p><strong>' + round(0.775 * Math.pow(10, dbu / 20), 3) + ' V</strong> RMS for ' + dbu + ' dBu (0 dBu = 0.775 V).</p>';
+      links.unshift(['#s2-2','2.2 Signal levels']);
+    }
+    else if((m = /([+-]?\d+(?:[.,]\d+)?) ?dbv\b/.exec(t)) && /\bvolt|\bv\b/.test(t)){
+      var dbv = num(m[1]);
+      out = '<p><strong>' + round(Math.pow(10, dbv / 20), 3) + ' V</strong> RMS for ' + dbv + ' dBV (0 dBV = 1 V).</p>';
+      links.unshift(['#s2-2','2.2 Signal levels']);
+    }
+    else if((m = /(\d+(?:[.,]\d+)?) ?(?:v|volts?)\b/.exec(t)) && /\bdbu\b|\bdbv\b/.test(t)){
+      var v = num(m[1]);
+      out = '<p><strong>' + round(20 * Math.log10(v / 0.775), 1) + ' dBu</strong> (or ' + round(20 * Math.log10(v), 1) + ' dBV) for ' + v + ' V RMS.</p>';
+      links.unshift(['#s2-2','2.2 Signal levels']);
+    }
+    else if(/\bdb\b/.test(t) && /\b(double|twice|half|halve|(\d+(?:[.,]\d+)?) ?(x|times))\b/.test(t) && /\b(power|watts?|voltage|volts?|spl|pressure|level|amp)/.test(t)){
+      var ratio = /half|halve/.test(t) ? 0.5 : /double|twice/.test(t) ? 2 : num((/(\d+(?:[.,]\d+)?) ?(x|times)/.exec(t) || [0, 2])[1]);
+      var power = /power|watt/.test(t);
+      var db = (power ? 10 : 20) * Math.log10(ratio);
+      out = '<p><strong>' + (db > 0 ? '+' : '') + round(db, 1) + ' dB</strong> for ' + ratio + '× the ' + (power ? 'power' : 'voltage / pressure') + '.</p><p>Power: 10 × log(ratio) — double the watts is +3 dB. Voltage or SPL pressure: 20 × log(ratio) — double is +6 dB. About +10 dB sounds twice as loud.</p>';
+      links.unshift(['#s2-10','2.10 Decibels']);
+    }
+    else if((m = /(\d+(?:[.,]\d+)?) ?mhz\b/.exec(t)) && /\b(wave|wavelength|antenna|aerial|spacing|apart|quarter|half)/.test(t)){
+      var f = num(m[1]);
+      out = '<p>At ' + f + ' MHz: wavelength <strong>' + round(300 / f * 100, 1) + ' cm</strong>, quarter wave <strong>' + round(75 / f * 100, 1) + ' cm</strong>.</p><p>Diversity antennas want to be at least a quarter wavelength apart — further is better.</p>';
+      links.unshift(['#s5-3','5.3 Antennas']);
+    }
+    else if((m = /(\d+) ?(?:boxes|speakers|cabs|cabinets|drivers)\b.*?(\d+(?:[.,]\d+)?) ?(?:ohms?|Ω)/.exec(t))){
+      var n = parseInt(m[1], 10), r = num(m[2]);
+      out = '<p><strong>' + round(r / n, 2) + ' Ω</strong> — ' + n + ' × ' + r + ' Ω in parallel on one amp channel.</p><p>Check that against the amp\'s minimum load and, on d&amp;b, the boxes-per-channel limits in <a href="#s6-20">§6.20</a> — the limit there wins.</p>';
+      links.unshift(['#s6-20','6.20 d&amp;b models']);
+    }
+    if(!out) return false;
+    var msg = addMsg('bot', out);
+    addLinks(msg, links);
+    setChips([{label:'Another sum', quiet:true, go:function(){ input.focus(); }}, BACK]);
+    return true;
+  }
+
   function guidedText(text){
+    if(/^(tell me more|more|go on|more detail|more please|explain more|why\??|and\??)$/i.test(text.trim()) && g.lastAnswer && g.lastAnswer.see[0] && SECTION_LINK.test('#' + g.lastAnswer.see[0])){ peek(g.lastAnswer.see[0]); return; }
+    if(calcAnswer(text)) return;
     if(TEST_Q.test(text)){ startTest(); return; }
     if(KIT_Q.test(text) && !findModels(text).some(function(e){ return !inKit(e); })){ kitCheck(); return; }
     if(COACH_Q.test(text)){ coach(); return; }
@@ -9258,6 +9364,7 @@ if(quickfabBtn && quickfabMenu){
   }
   function reset(){
     log.innerHTML = '';
+    storeRemove(LOG_STORE);
     g = {flow:null, node:null, steps:[], symptom:'', slots:{}, trail:[], models:[], queue:[], lastQ:'', test:null};
     greet();
   }
@@ -9330,7 +9437,7 @@ if(quickfabBtn && quickfabMenu){
     });
   }
 
-  greet();
+  if(restoreLog()) menu(); else greet();
 })();
 
 })();

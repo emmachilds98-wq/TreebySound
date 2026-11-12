@@ -125,11 +125,11 @@ additions was *function and placement*, so targeted changes:
       standfirst is hidden on phones so the box sits above the fold.
 - [x] Screen headings reserve room for the floating refresh/settings buttons.
 - [x] Chat chrome compacted (one-line status bar, short disclaimer).
-- [ ] Chat remembers the conversation across app restarts (iOS kills
+- [x] Chat remembers the conversation across app restarts (iOS kills
       backgrounded PWAs).
-- [ ] Chat does the maths: delay/distance, SPL over distance, dB ratios,
+- [x] Chat does the maths: delay/distance, SPL over distance, dB ratios,
       dBu/volts, antenna lengths — typed as questions.
-- [ ] Chat offers related answers and "tell me more".
+- [x] Chat offers related answers and "tell me more".
 - [ ] More guided routes: one side of the PA missing, input distortion,
       comms down, playback/laptop problems, hearing loop, recording/stream
       with no audio, wedge feedback.
