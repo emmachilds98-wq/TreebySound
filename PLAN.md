@@ -110,3 +110,28 @@ Add a line per pushed chunk of work: date — what changed — what's next.
 - Grow the answer bank towards several hundred entries; re-audit Part 13
   line by line.
 - Phase 4 only if real questions are still being missed.
+
+## Round 2 — design review and "more everything" (2026-11-12)
+
+**Design decision: no full redesign.** The visual system (warm paper palette,
+type, cards, notes) and content structure hold up. What didn't fit the new
+additions was *function and placement*, so targeted changes:
+
+- [x] Chat gets its own **Ask** screen and bottom-bar tab (centre, accented):
+      full-height, input pinned above the bar and above the keyboard
+      (`sizeAsk()`), no "top" button over it. Support keeps a link to it;
+      every old `#support-chat` link now points to `#ask`.
+- [x] Home: the ask box is the first thing in the Home card; the masthead's
+      standfirst is hidden on phones so the box sits above the fold.
+- [x] Screen headings reserve room for the floating refresh/settings buttons.
+- [x] Chat chrome compacted (one-line status bar, short disclaimer).
+- [ ] Chat remembers the conversation across app restarts (iOS kills
+      backgrounded PWAs).
+- [ ] Chat does the maths: delay/distance, SPL over distance, dB ratios,
+      dBu/volts, antenna lengths — typed as questions.
+- [ ] Chat offers related answers and "tell me more".
+- [ ] More guided routes: one side of the PA missing, input distortion,
+      comms down, playback/laptop problems, hearing loop, recording/stream
+      with no audio, wedge feedback.
+- [ ] Answer bank towards 300.
+- [ ] More researched content.
