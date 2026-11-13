@@ -916,3 +916,11 @@ p.say{font-family:var(--body);font-size:15.5px;line-height:1.5;color:var(--petro
 tr.in-kit td{background:var(--pass-soft)}
 .kit-badge{display:inline-block;margin-left:6px;font-family:var(--mono);font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--pass);border:1px solid var(--pass);border-radius:999px;padding:1px 6px;vertical-align:middle}
 @media print{.systest-btns,.systest-actions,.systest-note{display:none}}
+
+/* answers built from passages: where it's from, and the notes that travel with it */
+.chat-msg .chat-from{font-family:var(--mono);font-size:11.5px;letter-spacing:.02em;color:var(--ink-3);margin-bottom:6px}
+.chat-msg .chat-from strong{color:var(--petrol-ink);font-weight:600}
+.chat-msg .chat-note-warn{border-left:3px solid var(--fault);padding-left:9px}
+.chat-msg .chat-note-warn strong{color:var(--fault)}
+.chat-msg .chat-note-std{border-left:3px solid var(--pass);padding-left:9px}
+.chat-msg .chat-note-alt,.chat-msg .chat-note-deep{border-left:3px solid var(--rule-2);padding-left:9px}

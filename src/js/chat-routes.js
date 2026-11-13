@@ -79,7 +79,7 @@
      nodes:{
       start:{q:'Mute anything it\'s plugged into first. Then: (1) look — strain relief tight, no copper showing, latch springs back, body not cracked; (2) put it through a speakON cable tester — all four poles continuous, no shorts between any of them; (3) check the label says whether it\'s 2-core or 4-core. Pins 1± carry the first channel, pins 2± the second.', k:'Result', end:true, links:[['#s3-12','3.12 NL4 &amp; NLT4 cables'],['#s6-17','6.17 Which pins carry what']]}
      }},
-    {id:'setup', kind:'setup', title:'Set up a d&b system', words:['d&b','d20','d80','d40','d90','d6','d12','amp rack','amps','amp','speakers','speaker','pa','line array','preset','arraycalc','output mode','loadmatch','system check','r1','speakon','nl4','nlt4','sub','subs','tops','hang','line array','array','flown','rack','system'],
+    {id:'setup', kind:'setup', title:'Set up a d&b system', words:['d&b','d20','d80','d40','d90','d25','d6','d12','amp rack','d&b rack','line array','preset','arraycalc','output mode','loadmatch','system check','r1','speakon','nl4','nlt4','hang','flown','rack'],
      entries:{r1:['r1','remote','laptop'], cabling:['cable','cables','cabling','nl4','nlt4','speakon','sub cables'], lm:['loadmatch','system check'], modes:['output mode','mode','socket','which output'], prove:['prove','proving','test the boxes','check the boxes'], channel:['channel','preset','setup on','configure the amp'], lights:['light','lights','led','indicator'], seq:['whole','from scratch','start to finish','everything']},
      ask:'Can you check my setup before we go live?',
      nodes:{
@@ -264,12 +264,12 @@
       rec:{q:'<ol><li>The computer sees the desk (USB or Dante Virtual Soundcard) and the DAW uses it as the input device.</li><li>Sample rate matches the desk.</li><li>Tracks armed and inputs routed; recording patch on the desk is set.</li><li>Record pre-fader if the mix moves shouldn\'t affect it.</li><li>Drive has space; record a test and play it back.</li></ol>', k:'Result', end:true, links:[['#s14-7','14.7 Multitrack recording'],['#s7-9','7.9 DM7 show setup']]},
       stream:{q:'<ol><li>The stream feed is its own mix (more vocals, room mics) patched to the output the stream kit uses.</li><li>Level: the stream kit\'s meters, not just yours.</li><li>Echo on a call? Build a mix-minus — the call shouldn\'t hear itself back.</li><li>Ask the stream or video team what they receive — agree it before doors.</li></ol>', k:'Result', end:true, links:[['#s14-8','14.8 Broadcast submix'],['#s10-8','10.8 Hybrid meetings']]}
      }},
-    {id:'feedback', title:'Feedback', words:['feedback','howl','howling','squeal','ringing','screech'],
+    {id:'feedback', title:'Feedback', words:['feedback','feeding back','feeds back','howl','howling','squeal','ringing','screech'],
      ask:'Can you take over the ring-out?',
      nodes:{
       start:{q:'Pull the level down <strong>now</strong> — the open mic, or the master. Protect ears first, then work out which mic and which speaker are feeding each other.', k:'Result', end:true, links:[['#s12-18','12.18 Feedback'],['#s15-8','15.8 Ringing out']]}
      }},
-    {id:'rf', title:'Radio mic dropouts', words:['radio','radio mic','radio mics','wireless mic','radio mic drop','radio mic cut','mic dropping out','mic cutting out','wireless','rf','dropout','dropouts','drop out','transmitter','receiver','beltpack','iem'],
+    {id:'rf', title:'Radio mic dropouts', words:['radio','radio mic','radio mics','wireless mic','radio mic drop','radio mic cut','mic dropping out','mic cutting out','headset cutting out','headset mic cutting out','lav cutting out','keeps cutting out','headset','headset mic','lav','lav mic','lavalier','wireless','rf','dropout','dropouts','drop out','transmitter','receiver','beltpack','iem'],
      ask:'Can we look at the RF together before doors?',
      nodes:{
       start:{q:'Check the transmitter battery first, then the receiver\'s RF meters while someone walks the space. Antennas connected, line of sight, nothing new nearby transmitting. Then frequencies.', k:'Result', end:true, links:[['#s12-11','12.11 Wireless &amp; RF faults']]}

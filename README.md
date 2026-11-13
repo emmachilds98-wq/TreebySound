@@ -91,6 +91,12 @@ Every way each written answer can be asked (about 1,250 phrasings) — how many 
 node tests/check-answers.js
 ```
 
+Harder questions the answer bank wasn't written for (`tests/probe-cases.txt`) — scored by topic; `--list` shows every reply, `--min N` fails below N:
+
+```bash
+node tests/check-probes.js
+```
+
 Accessibility (axe-core, every screen and part) — install axe once, then run:
 
 ```bash

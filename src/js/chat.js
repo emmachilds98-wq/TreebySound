@@ -39,7 +39,7 @@
   var INFO_HINTS = ['What amp does a V8 need?','Can a D20 run KSL?','D40 vs D80','What is Mix TOP/SUB?','What does GR mean?','NL4 vs NLT4'];
   var INFO_INTENT = /^(what|whats|what's|which|who|why|when|where|explain|define|definition|meaning|tell me|difference|is there|is it|are|does|do i need|can i|should i|how much|how many|how long|how loud)\b|\b(mean|means|stand for|stands for|difference between|vs|versus|cost|price|fee|legal|checklist|check list|tips|guide)\b|^(is|are|can|could)\b.*\b(dangerous|safe|legal|ok|okay|allowed|necessary|needed|required|normal|bad)\b|\?$/i;
   var SETUP_INTENT = /\b(set ?up|setting up|configure|configuring|install|connect(ing)?|how (do|to|should) i|how to|walk me through|step by step|get .* working|patch)\b/i;
-  var DANGER = /\b(smoke|smoking|burning|burnt smell|fire|flames?|sparks?|sparking|shock(ed)?|electrocut\w*|injur\w*|hurt|bleeding|falling|fell|collapsed?|swaying)\b/i;
+  var DANGER = /\b(smoke|smoking|burning|burnt smell|fire(?! (exit|exits|door|doors|escape|route|routes|alarm test|marshal|marshals|extinguisher|extinguishers|safety|risk|regs|regulations|order|assessment|strategy|plan))|flames?|sparks?|sparking|shock(ed)?|electrocut\w*|injur\w*|hurt|bleeding|falling|fell|collapsed?|swaying)\b/i;
 
   /* ---- conversation window ---- */
   /* Scroll on the next frame: measuring the log straight away forced a layout
@@ -197,6 +197,7 @@
      "no sound", "dead" → silent), and small typos forgiven, so "spekaer crakling"
      still lands on the right route. */
   var SYNONYMS = [
+    [/\bpower alley\b/g, 'poweralley'],
     [/\b(d ?& ?b|d and b|dnb|db audiotechnik|d&b audiotechnik)\b/g, 'd&b'],
     [/\b(cabs?|cabinets?|loudspeakers?|speakers)\b/g, 'speaker'],
     [/\b(subwoofers?|subs|bass bins?)\b/g, 'sub'],
@@ -370,7 +371,7 @@
   var COMPAT_Q = /\b(can|could|will|does|do|would)\b[^?]*\b(run|drive|power|work|handle|use|support|take)|\bcompatib|\bon an? (d\d|\d+d)\b|\bwith an? (d\d|\d+d)\b/i;
   var WHICH_AMP_Q = /\b(what|which)\b[^?]*\bamps?\b|\bdriven by\b|\bwhat drives\b|\bamp (does|do) (it|they|that|these|this)\b|\bwhat amp\b/i;
   var COMPARE_Q = /\b(vs\.?|versus|compare|comparison|difference|differ|better|or)\b/i;
-  var PER_CHANNEL_Q = /\b(per channel|how many)\b/i;
+  var PER_CHANNEL_Q = /\b(per channel|how many)\b|\b(on|off|per|from) (one|a|each|1|the same|single) (\w+ )?channel\b/i;
 
   /* Answer a question about d&b kit by name. Returns true if it answered. */
   function modelAnswer(text){
@@ -426,6 +427,11 @@
       modelChips(sp0, null);
       return true;
     }
+    /* Past this point the reply would be a model's info card. That's only right
+       when the model is the subject ("what is a V8", "D40 vs D80"). If the
+       question is about something else — a light, a setup, a cable, a sound —
+       let the answers and the book handle it; the model stays remembered. */
+    if(!modelIsTopic(t, ms)) return false;
     if(ms.length >= 2 && (COMPARE_Q.test(t) || ms.length === 2)){
       var m3 = addMsg('bot', '<p>Side by side:</p>' + ms.slice(0, 3).map(modelCard).join('<hr>'));
       addLinks(m3, links);
@@ -436,6 +442,13 @@
     addLinks(m4, links);
     modelChips(spks[0], amps[0]);
     return true;
+  }
+  var TOPIC_FILLER = /^(what|whats|what's|is|are|a|an|the|tell|me|about|explain|info|information|on|of|vs|versus|difference|differences|between|compare|comparison|and|or|d&b|amp|amps|amplifier|box|boxes|speaker|speakers|loudspeaker|sub|subs|it|its|which|better|for|i|do|does|need|to|know|please|model|series|show|give|details|spec|specs|in|with|festival|tour|touring|event|events|gig|job|use|good|best|one|ones|than|more|less|bigger|smaller|current|old|new)$/;
+  function modelIsTopic(t, ms){
+    var rest = t.replace(/[?.!,]/g, ' ');
+    ms.forEach(function(e){ rest = rest.replace(new RegExp(e.name.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/-/g, '[\\s-]?') + 's?', 'g'), ' '); });
+    var left = rest.split(/\s+/).filter(function(w){ return w && !TOPIC_FILLER.test(w) && !/^\d+$/.test(w); });
+    return left.length <= 1;
   }
   function modelChips(spk, amp){
     var c = [];
@@ -502,6 +515,9 @@
   }
   /* "We use D20s with E8s and subs" — offer to add what isn't there yet. */
   function offerKitFromText(text){
+    /* Only for statements ("we use D20s"), never a question that happens to say
+       "can I run" or "should I use". */
+    if(/\?\s*$/.test(text) || /^\s*(how|what|whats|what's|why|which|when|where|who|can|could|should|would|will|is|are|do|does|did|may|might|must|shall)\b/i.test(text)) return false;
     if(!window.tbKit || !/\b(we|i) (use|have|run|got)\b|\bour (kit|stock|system|amps|boxes|speakers)\b|\bat (my |our )?work\b|\bin (our |the )?warehouse\b/i.test(text)) return false;
     var fresh = findModels(text).filter(function(e){ return !e.range && !inKit(e); });
     if(!fresh.length) return false;
@@ -929,6 +945,258 @@
     return scored.slice(0, limit).map(function(x){ return x.e; });
   }
   (window.requestIdleCallback || function(fn){ setTimeout(fn, 3000); })(function(){ try{ buildBookIndex(); }catch(e){} });
+  (window.requestIdleCallback || function(fn){ setTimeout(fn, 4000); })(function(){ try{ buildPassageIndex(); }catch(e){} });
+
+  /* ---- answering from passages ----
+     Whole sections are too coarse to answer a question: the answer is usually
+     one paragraph, a few steps, a term and its definition, or one row of a
+     table. So every section is cut into passages — paragraphs, list items,
+     term lines (dt + dd), table rows (each cell labelled with its column
+     heading) and notes — and those are ranked with the same BM25, typo and
+     synonym handling as the section search. A passage also earns credit for
+     its section and sub-heading matching the question, so the answer comes
+     from the right place in the book, not a stray mention.
+     The reply is built for the kind of question: steps for "how do I", the
+     defining passage for "what is", both sides for "difference", the reasons
+     and warnings for "why", the figure for "how many / how far". A "Watch it"
+     note in the same section that shares the question's words always travels
+     with the answer. Built once, on the first question that needs it. */
+  var pidx = null;
+  function cleanText(el){ return (el.textContent || '').replace(/\s+/g, ' ').trim(); }
+  function buildPassageIndex(){
+    if(pidx) return pidx;
+    var docs = [], df = {}, total = 0;
+    var NOTE_LABEL = {warn:'Watch it', std:'Standard', alt:'Also seen', deep:'Go deeper'};
+    sectionIndex.forEach(function(e){
+      if(!/^s\d/.test(e.id) || /^s(19-1[26]|20-)/.test(e.id)) return;
+      var sec = document.getElementById(e.id);
+      if(!sec) return;
+      var titleTerms = terms(e.title, true);
+      var h4 = '', order = 0;
+      function push(kind, text, el, extra){
+        if(!text || text.length < 12) return;
+        var head = terms(h4, true);
+        var tf = {}, len = 0;
+        terms(text, true).forEach(function(t){ tf[t] = (tf[t] || 0) + 1; len++; });
+        head.forEach(function(t){ tf[t] = (tf[t] || 0) + 0.6; });
+        Object.keys(tf).forEach(function(t){ df[t] = (df[t] || 0) + 1; });
+        var d = {id:e.id, title:e.title, h4:h4, kind:kind, text:text, el:el, tf:tf, len:Math.max(len, 4), order:order++, titleTerms:titleTerms};
+        if(extra) Object.keys(extra).forEach(function(k){ d[k] = extra[k]; });
+        docs.push(d); total += d.len;
+      }
+      Array.prototype.forEach.call(sec.querySelectorAll('h4, p, li, dt, tr, div.note'), function(el){
+        if(el.closest('.notefield, .next-part, figure, .diagram')) return;
+        var tag = el.tagName;
+        if(tag === 'H4'){ h4 = cleanText(el); return; }
+        var note = el.closest('div.note');
+        if(tag === 'DIV'){
+          var cls = (el.className.match(/\b(warn|std|alt|deep)\b/) || [])[1] || 'std';
+          var body = Array.prototype.map.call(el.querySelectorAll('p'), cleanText).join(' ');
+          push('note-' + cls, body, el, {label: NOTE_LABEL[cls]});
+          return;
+        }
+        if(note) return;                       /* notes are taken whole, above */
+        if(tag === 'P' && !el.closest('li, td, dd, .hub-card')) push('p', cleanText(el), el);
+        else if(tag === 'LI' && !el.closest('ul.check, .chat, nav')){
+          var list = el.parentElement;
+          push(list && list.tagName === 'OL' ? 'step' : 'item', cleanText(el), el, {list:list});
+        }
+        else if(tag === 'DT'){
+          var dd = el.nextElementSibling;
+          if(dd && dd.tagName === 'DD') push('term', cleanText(el) + ' — ' + cleanText(dd), el, {term:cleanText(el)});
+        }
+        else if(tag === 'TR' && el.parentElement && el.parentElement.tagName === 'TBODY'){
+          var table = el.closest('table');
+          var heads = table ? Array.prototype.map.call(table.querySelectorAll('thead th'), cleanText) : [];
+          var cells = Array.prototype.map.call(el.children, cleanText);
+          var text = cells.map(function(c, i){ return (heads[i] && i ? heads[i] + ': ' : '') + c; }).join(' · ');
+          push('row', text, el, {cells:cells, heads:heads});
+        }
+      });
+    });
+    pidx = {docs:docs, df:df, n:docs.length, avg: total / Math.max(1, docs.length)};
+    docs.forEach(function(d){ d.text.toLowerCase().split(/[^a-z]+/).forEach(function(w){ if(w.length >= 5) VOCAB[w] = true; }); });
+    return pidx;
+  }
+
+  function questionType(text){
+    var t = text.toLowerCase().trim();
+    if(/\b(difference|differ|vs\.?|versus|compare|compared|better)\b/.test(t)) return 'diff';
+    if(/^(how|what) (do|should|would|can) (i|you|we)\b|^how to\b|^(walk me through|steps? (to|for))\b|\b(step by step|set ?up|connect|configure|install|run|ring out|check|test|fix|stop|avoid|prevent|explain to)\b/.test(t) && !/^(what|which) (is|are|does)\b/.test(t)) return 'how';
+    if(/^why\b|\bwhy (does|do|is|are|would|should)\b/.test(t)) return 'why';
+    if(/^how (many|much|far|long|loud|big|high|low|close)\b|\bhow (many|much|far|long|loud)\b/.test(t)) return 'amount';
+    if(/^(can|could|should|is it ok|is it safe|am i allowed|do i need|may)\b/.test(t)) return 'can';
+    if(/^(what|whats|what's|which|who|define|explain|meaning|tell me about)\b|\bmeans?\b|\bstand(s)? for\b|\bwhat (is|are|does)\b/.test(t)) return 'what';
+    return 'other';
+  }
+
+  /* Rank passages for a question. Returns [{d, s}] best first, and the share of
+     the question's meaning (by IDF) that the best passage covers. */
+  function rankPassages(text){
+    var P = buildPassageIndex();
+    var q = terms(text).map(function(t){ return nearest(t, P.df); }).filter(function(t, i, all){ return all.indexOf(t) === i; });
+    if(!q.length) return {list:[], cover:0, q:q};
+    var unknown = q.filter(function(t){ return !P.df[t] && t.length >= 4 && !/\d/.test(t); });
+    var secs = {};
+    searchBook(text, 6).forEach(function(e, i){ secs[e.id] = 6 - i; });
+    var qtype = questionType(text);
+    var k1 = 1.2, b = 0.75, qIdf = 0, ids = {};
+    q.forEach(function(t){ ids[t] = idf(t, P); qIdf += ids[t]; });
+    var out = [];
+    P.docs.forEach(function(d){
+      var s = 0, got = 0, hits = 0;
+      q.forEach(function(t){
+        var f = d.tf[t];
+        var inTitle = d.titleTerms.indexOf(t) > -1;
+        if(!f && !inTitle) return;
+        hits++; got += ids[t];
+        if(f) s += ids[t] * (f * (k1 + 1)) / (f + k1 * (1 - b + b * d.len / P.avg));
+        if(inTitle) s += ids[t] * 0.35;
+      });
+      if(!s) return;
+      s *= (1 + hits / q.length);
+      if(secs[d.id]) s *= 1 + secs[d.id] * 0.12;
+      if(qtype === 'how' && d.kind === 'step') s *= 1.25;
+      if((qtype === 'what' || qtype === 'diff' || qtype === 'other') && (d.kind === 'term' || d.kind === 'row')) s *= 1.2;
+      if(qtype === 'why' && (/\b(because|so that|which is why|otherwise|that's why|so the)\b/i.test(d.text) || d.kind === 'note-warn')) s *= 1.2;
+      if(qtype === 'amount' && /\d/.test(d.text)) s *= 1.2;
+      out.push({d:d, s:s, cover: got / qIdf});
+    });
+    out.sort(function(a, b){ return b.s - a.s; });
+    return {list:out, cover: out.length ? out[0].cover : 0, q:q, qtype:qtype, unknown:unknown};
+  }
+
+  function passageHTML(d){
+    if(d.kind === 'term') return '<p><strong>' + esc(d.term) + '</strong> — ' + esc(d.text.slice(d.term.length + 3)) + '</p>';
+    if(d.kind === 'row'){
+      return '<p>' + d.cells.map(function(c, i){ return i === 0 ? '<strong>' + esc(c) + '</strong>' : (d.heads[i] ? esc(d.heads[i]) + ': ' : '') + esc(c); }).join(' · ') + '</p>';
+    }
+    if(/^note-/.test(d.kind)) return '<p class="chat-note-' + d.kind.slice(5) + '"><strong>' + esc(d.label) + ':</strong> ' + esc(d.text) + '</p>';
+    return '<p>' + esc(d.text) + '</p>';
+  }
+  /* The steps of a numbered list, whole — a how-to answer is the list. */
+  function stepsHTML(list){
+    var items = Array.prototype.map.call(list.children, function(li){ return '<li>' + esc(cleanText(li)) + '</li>'; });
+    return '<ol>' + items.slice(0, 12).join('') + '</ol>' + (items.length > 12 ? '<p>…and ' + (items.length - 12) + ' more steps in the section.</p>' : '');
+  }
+
+  /* Build and show an answer from passages. Returns true if it answered with
+     reasonable confidence; false (and shows nothing) if it shouldn't try. */
+  var CONFIDENT = 0.45;
+  function passageAnswer(text, opts){
+    opts = opts || {};
+    var r = rankPassages(text);
+    if(!r.list.length) return false;
+    var top = r.list[0];
+    if(!opts.force && r.cover < CONFIDENT) return false;
+    if(r.unknown.length && !(opts.force && opts.fromBank)) return false;
+    var qtype = r.qtype, used = [], html = [];
+    var sameSec = r.list.filter(function(x){ return x.d.id === top.d.id; });
+    function take(x){ if(used.indexOf(x.d) < 0 && used.length < 4){ used.push(x.d); return true; } return false; }
+
+    if(qtype === 'how' && (top.d.kind === 'step' || sameSec.some(function(x){ return x.d.kind === 'step' && x.s > top.s * 0.6; }))){
+      var stepPassage = top.d.kind === 'step' ? top.d : sameSec.filter(function(x){ return x.d.kind === 'step'; })[0].d;
+      var intro = sameSec.filter(function(x){ return x.d.kind === 'p' && x.s > top.s * 0.4; })[0];
+      if(intro){ take(intro); html.push(passageHTML(intro.d)); }
+      html.push(stepsHTML(stepPassage.list));
+      used.push(stepPassage);
+    } else if(qtype === 'diff'){
+      take(top); html.push(passageHTML(top.d));
+      /* a second passage that covers the words the first one didn't */
+      var missing = r.q.filter(function(t){ return !top.d.tf[t]; });
+      var other = r.list.slice(1, 20).filter(function(x){ return missing.some(function(t){ return x.d.tf[t]; }); })[0] || r.list[1];
+      if(other && take(other)) html.push(passageHTML(other.d));
+    } else {
+      take(top); html.push(passageHTML(top.d));
+      /* one or two more from the same section if they're nearly as relevant */
+      sameSec.slice(1).forEach(function(x){ if(x.s > top.s * 0.55 && used.length < 3 && !/^note-/.test(x.d.kind) && take(x)) html.push(passageHTML(x.d)); });
+    }
+    /* The warning that goes with it: a "Watch it" note from the same section
+       that shares the question's words, or sits right after a passage used. */
+    var warn = r.list.filter(function(x){ return x.d.kind === 'note-warn' && x.d.id === top.d.id && used.indexOf(x.d) < 0; })[0];
+    if(!warn){
+      used.forEach(function(d){
+        var nx = d.el && d.el.nextElementSibling;
+        if(!warn && nx && nx.classList && nx.classList.contains('note') && nx.classList.contains('warn')){
+          var w = buildPassageIndex().docs.filter(function(p){ return p.el === nx; })[0];
+          if(w) warn = {d:w};
+        }
+      });
+    }
+    if(warn) html.push(passageHTML(warn.d));
+
+    var sure = r.cover >= CONFIDENT && top.s > 2;
+    var head = '<p class="chat-from">' + (sure ? 'From' : 'Closest I have, from') + ' <strong>' + esc(top.d.title) + '</strong>' + (top.d.h4 ? ' · ' + esc(top.d.h4) : '') + ':</p>';
+    var m = addMsg('bot', head + html.join(''));
+    var secIds = [top.d.id];
+    r.list.slice(1, 12).forEach(function(x){ if(secIds.indexOf(x.d.id) < 0 && secIds.length < 3 && x.s > top.s * 0.5) secIds.push(x.d.id); });
+    addLinks(m, secIds.map(function(id){ return ['#' + id, esc(sectionLabel(id))]; }));
+
+    g.lastPassages = {text:text, r:r, shown:used.slice(), id:top.d.id};
+    g.lastAnswer = {see:[top.d.id], q:text};
+    var next = [];
+    next.push({label:'Go deeper', go: function(){ addMsg('me', 'Go deeper'); deeper(); }});
+    if(qtype !== 'why') next.push({label:'Why?', quiet:true, go: function(){ addMsg('me', 'Why?'); whyMore(); }});
+    var rf = rankFlows(text), f = rf.length && rf[0].s >= 2 ? rf[0].f : null;
+    if(f) next.push({label:(f.kind === 'setup' ? 'Walk me through: ' : 'Troubleshoot: ') + f.title, quiet:true, go: function(){ addMsg('me', esc(f.title)); startFlow(f, text); }});
+    next.push({label:'Not what I asked', quiet:true, go: function(){ addMsg('me', 'Not what I asked'); notWhatIAsked(text); }});
+    next.push(BACK);
+    setChips(next);
+    return true;
+  }
+  /* The next most relevant passages not shown yet, from the same section
+     first; then the whole section if there's nothing left. */
+  function deeper(){
+    var L = g.lastPassages;
+    if(!L){ menu(); return; }
+    var more = L.r.list.filter(function(x){ return L.shown.indexOf(x.d) < 0 && (x.d.id === L.id || x.s > L.r.list[0].s * 0.5); }).slice(0, 3);
+    if(!more.length){ peek(L.id); return; }
+    more.forEach(function(x){ L.shown.push(x.d); });
+    var m = addMsg('bot', more.map(function(x){ return (x.d.id !== L.id ? '<p class="chat-from">From <strong>' + esc(x.d.title) + '</strong>:</p>' : '') + passageHTML(x.d); }).join(''));
+    addLinks(m, [['#' + L.id, esc(sectionLabel(L.id))]]);
+    setChips([{label:'Go deeper', go: function(){ addMsg('me', 'Go deeper'); deeper(); }}, {label:'Read the whole section', quiet:true, go: function(){ addMsg('me', 'Read the whole section'); peek(L.id); }}, BACK]);
+  }
+  /* Reasons: passages that explain (because / so that / otherwise) and the
+     section's notes. */
+  function whyMore(){
+    var L = g.lastPassages;
+    if(!L){ menu(); return; }
+    var why = L.r.list.filter(function(x){ return L.shown.indexOf(x.d) < 0 && (/\b(because|so that|which is why|otherwise|that's why|so the|means)\b/i.test(x.d.text) || /^note-(warn|std)/.test(x.d.kind)) && (x.d.id === L.id || x.s > L.r.list[0].s * 0.5); }).slice(0, 2);
+    if(!why.length){ deeper(); return; }
+    why.forEach(function(x){ L.shown.push(x.d); });
+    addMsg('bot', why.map(function(x){ return passageHTML(x.d); }).join(''));
+    setChips([{label:'Go deeper', go: function(){ addMsg('me', 'Go deeper'); deeper(); }}, BACK]);
+  }
+
+  /* Questions it couldn't answer well are kept on this phone (never sent
+     anywhere) so they can be turned into answers in the next upgrade. */
+  var MISS_KEY = 'treebysound-missed-questions';
+  function logMiss(text, why){
+    try{
+      var l = JSON.parse(storeGet(MISS_KEY) || '[]');
+      if(l.length && l[0].q === text) return;
+      l.unshift({q:text, why:why || 'low confidence', at:new Date().toISOString().slice(0, 10)});
+      storeSet(MISS_KEY, JSON.stringify(l.slice(0, 150)));
+    }catch(e){}
+  }
+  function bookAnswer(text){
+    var defs = questionType(text) === 'what' ? findGlossary(text) : [];
+    if(defs.length){
+      defs.forEach(function(d){ addMsg('bot', '<p><strong>' + esc(d.name) + '</strong> — ' + (d.dd ? d.dd.innerHTML : '') + '</p>').classList.add('def'); });
+      if(!passageAnswer(text)) menu();
+      return true;
+    }
+    return passageAnswer(text);
+  }
+  function notWhatIAsked(text){
+    logMiss(text, 'not what I asked');
+    var shownFromBank = g.lastAnswer && g.lastAnswer.fromBank;
+    if(shownFromBank && passageAnswer(text, {force:true, fromBank:true})) return;
+    var found = searchBook(text, 4);
+    var m = addMsg('bot', '<p>Sorry — I\'ve kept that question so it can be answered properly in the next update.' + (found.length ? ' The closest sections:' : '') + '</p>');
+    if(found.length) addLinks(m, found.map(function(e){ return ['#' + e.id, esc(sectionLabel(e.id))]; }));
+    menu();
+  }
 
 
   /* ---- the answer bank ----
@@ -1006,9 +1274,10 @@
     (hit.others || []).forEach(function(o){
       next.push({label:'Also: ' + o.e.q, quiet:true, go: function(){ addMsg('me', esc(o.e.q)); showAnswer({e:o.e, others:[]}, o.e.q); }});
     });
-    next.push({label:'Not what I asked', quiet:true, go: function(){ addMsg('me', 'Not what I asked'); answerInfo(text, true); }});
+    next.push({label:'Not what I asked', quiet:true, go: function(){ addMsg('me', 'Not what I asked'); notWhatIAsked(text); }});
     next.push(BACK);
     g.lastAnswer = e;
+    e.fromBank = true;
     setChips(next);
   }
 
@@ -1029,7 +1298,7 @@
       var dt = div.querySelector('dt'), dd = div.querySelector('dd');
       var name = dt ? dt.textContent.trim() : '';
       var alts = [];
-      name.split(/\s*\/\s*/).forEach(function(part){
+      name.split(/\s+\/\s+/).forEach(function(part){
         var bare = part.replace(/\s*\(.*?\)\s*/g, ' ').trim();
         if(bare) alts.push(spaced(bare));
         var inside = /\(([^)]+)\)/.exec(part);
@@ -1068,8 +1337,20 @@
     var hit = !noBank && bestAnswer(text);
     if(hit){ showAnswer(hit, text); return; }
     var defs = findGlossary(text);
+    var qt = questionType(text);
+    /* A definition first when that's what's asked; then the passages that
+       answer it. Only fall back to a list of sections when nothing fits. */
+    if(defs.length && qt === 'what'){
+      defs.forEach(function(d){ addMsg('bot', '<p><strong>' + esc(d.name) + '</strong> — ' + (d.dd ? d.dd.innerHTML : '') + '</p>').classList.add('def'); });
+      if(!passageAnswer(text)){ menu(); }
+      return;
+    }
+    if(passageAnswer(text)) return;
+    var weak = rankPassages(text);
+    if(weak.list.length && weak.cover >= 0.34 && !weak.unknown.length){ logMiss(text); passageAnswer(text, {force:true}); return; }
     var found = searchBook(text, 3);
     if(!defs.length && !found.length){
+      logMiss(text, 'nothing found');
       addMsg('bot', '<p>I couldn\'t find that in the book. Try a different word for it, or describe what you can see.</p>');
       menu();
       return;
@@ -1169,7 +1450,7 @@
     if(offerKitFromText(text)) return;
     mergeSlots(text);
     var setupAsk = SETUP_INTENT.test(text);
-    var ranked = setupAsk ? rankFlows(text, 'setup') : rankFlows(text, 'fix');
+    var ranked = (setupAsk && !/\b(fix|wrong|broken|faulty|not working|feeding back|feedback|hum\w*|buzz\w*|noise|muffled|distort\w*|cutting out)\b/i.test(text)) ? rankFlows(text, 'setup') : rankFlows(text, 'fix');
     if(!ranked.length) ranked = rankFlows(text);
     var f = ranked.length ? ranked[0].f : null;
     var info = INFO_INTENT.test(text.trim()) && !setupAsk;
@@ -1179,12 +1460,14 @@
        the kit is remembered for the report and the fault route starts. */
     var fixRanked = rankFlows(text, 'fix');
     /* "How do I route Dante?" is a how-to, not a fault — unless it says something's wrong. */
-    var fixAsk = /\b(fix|wrong|broken|faulty|not working|won't|isn|stopped|no sound|silent|problem|fault|dropping|crackl\w*|hum\w*)\b/i.test(text);
+    var fixAsk = /\b(fix|wrong|broken|faulty|not working|won't|isn|stopped|no sound|silent|problem|fault|dropping|drops? out|cutting out|crackl\w*|hum\w*|buzz\w*|hiss\w*|feeding back|feedback|howl\w*|ringing|muffled|quieter|too quiet|distort\w*|noise|interference|protect\w*|boomy)\b/i.test(text);
     var faultish = fixRanked.length && fixRanked[0].s >= 1 && !info && (!setupAsk || fixAsk) && !COMPAT_Q.test(text) && !WHICH_AMP_Q.test(text) && fixRanked[0].f.id !== 'setup';
     if(!faultish && !(setupAsk && f && f.kind === 'setup' && !findModels(text).length) && modelAnswer(text)) return;
     /* A question with a written answer gets it straight away — unless it's
        really a fault report, which goes to the step-by-step route. */
     var hit = bestAnswer(text);
+    /* A near-exact written answer wins unless a route matches strongly. */
+    if(hit && hit.score >= 0.9 && (!f || ranked[0].s <= 2) && !(setupAsk && f && f.kind === 'setup')){ showAnswer(hit, text); return; }
     var routeTie = ranked.length > 1 && ranked[1].s === ranked[0].s;
     var weakRoute = !ranked.length || ranked[0].s <= 1 || routeTie;
     if(hit && (((!faultish || info) && (info || !f || (setupAsk && f.kind !== 'setup'))) || (weakRoute && hit.score >= 0.8 && !fixAsk && (routeTie || !(setupAsk && f && f.kind === 'setup'))))){ showAnswer(hit, text); return; }
@@ -1195,6 +1478,18 @@
       addMsg('bot', '<p>Two things there. Starting with <strong>' + esc(f.title.toLowerCase()) + '</strong>, then <strong>' + esc(ranked[1].f.title.toLowerCase()) + '</strong>.</p>', 'note');
       startFlow(f, text);
       return;
+    }
+    /* A question that isn't reporting a fault ("how do I check polarity…",
+       "what is power alley…") is answered from the book unless a set-up route
+       was clearly asked for, or a route matches strongly. */
+    var knowledgeQ = !fixAsk && (info || /^(how|why|what|which|when|where|can|could|should|is|are|does|do|will|would)\b/i.test(text.trim()) || /\?\s*$/.test(text) || /\b(can|could|should) (i|we)\b/i.test(text));
+    var routeAsked = f && f.kind === 'setup' && /\b(set ?up|setting up|configure|install|connect|walk me through)\b/i.test(text) && ranked[0].s >= 1;
+    if(knowledgeQ && !routeAsked){
+      /* A close written answer first; a loose one only if the book has
+         nothing better. */
+      if(hit && hit.score >= 0.75){ showAnswer(hit, text); return; }
+      if(bookAnswer(text)) return;
+      if(hit){ showAnswer(hit, text); return; }
     }
     if(f && !info && ranked.length > 1 && ranked[1].s === ranked[0].s){
       addMsg('bot', '<p>That could be a couple of things — which is closer?</p>');

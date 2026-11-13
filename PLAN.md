@@ -246,12 +246,12 @@ answers, no sense of question type, some facts missing, misses not learnt from.
 don't wait for the kit list.
 
 - [x] 0. Split the source into `src/` + `build.js` (output byte-identical).
-- [ ] 1. Scoring set + routing fixes. Graded probe set by topic (must contain /
+- [x] 1. Scoring set + routing fixes. Graded probe set by topic (must contain /
       must not contain; safety cases must keep their warning) with a scorer.
       Fix: kit offer only for statements; narrow the set-up route's words; a
       model card only when the model is the topic. Target: probe ≥ 20/40 good,
       existing tests stay green.
-- [ ] 2. Answers built from passages. Passage index (paragraphs, steps, term
+- [~] 2. Answers built from passages (engine, question types, warnings, depth, honest "closest" done; clarifying question still to do). Passage index (paragraphs, steps, term
       lines, table rows with their headings, notes) built on first question.
       Question types: what is / how do I / difference / why / how many / can I.
       Reply = best 2–4 passages with § citations; "Go deeper" and "Why?";
@@ -276,3 +276,28 @@ don't wait for the kit list.
 
 - 2026-11-13 — Source split into `src/` (37 files) with `build.js`; rebuilt
   `index.html` byte-identical. README and this map updated.
+- 2026-11-13 — Probe set `tests/probe-cases.txt` (50 harder questions by topic)
+  and `tests/check-probes.js`. Baseline 21/50.
+- 2026-11-13 — Routing: kit offer only for statements; d&b set-up route only on
+  d&b set-up words; a model's card only when the model is the subject;
+  "how do I fix…" and fault words (noise, muffled, feeding back, distorted…)
+  go to fault routes; "fire exit" no longer triggers the emergency stop;
+  "power alley" is not mains power; glossary names only split on " / ".
+- 2026-11-13 — Passage answers: every section cut into ~passages (paragraphs,
+  steps, term lines, table rows with headings, notes), ranked with BM25 +
+  section relevance + question type; replies show the best passages with
+  where they're from, keep a related "Watch it" note, offer "Go deeper" and
+  "Why?", and say "Closest I have" when unsure. Knowledge questions go to a
+  close written answer, then the book, before a weakly matched route.
+  "Not what I asked" and low-confidence questions are kept on the phone
+  (`treebysound-missed-questions`). Book words are protected from typo
+  correction ("alley" ≠ "Allen"). 7 new answers (comb filtering, polarity by
+  ear, Dual Channel vs Mix TOP/SUB, fan noise in a lectern mic, muffled
+  presenter, speech level, a box used as a wedge).
+- Results: probe 21 → 41/50; answer phrasings 85% → 93% exact; chat cases
+  90/90; content check clean; axe 0 violations; first answer ≤ 0.9 s on a 4×
+  slowed CPU if asked straight after opening (index then built), later ~10 ms.
+- Next: clarifying question when unsure (step 2), then step 3 (d&b facts as
+  data + job calculators). Remaining probe misses are mostly content gaps
+  (breakout room playbook, sub coverage front-to-back, amp protect on sub
+  hits) and route ties.
