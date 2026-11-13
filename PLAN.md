@@ -24,19 +24,25 @@ the changes for review.
   (owner to confirm the brand — possibly Technics or a typo for another brand)
   and other premium brands. A detailed product list comes in the next upgrade.
 
-## Where things live (all in `index.html`)
+## Where things live (source in `src/`, built into `index.html`)
 
-| What | Where (search for) |
+Since round 9 the source is split into pieces under `src/` and joined by
+`node build.js` into the same single `index.html` (byte-identical to before the
+split). **Edit `src/`, never `index.html`, then run `node build.js`.**
+
+| What | File · search for |
 | --- | --- |
-| Handbook sections | `<section class="s" id="sX-Y">` inside `<div class="part" id="pX">` |
-| Section search index | `var sectionIndex` / `indexEntry()` |
-| Fault-finder chat | `/* ---------- fault finder chat` |
-| Guided routes | `var FLOWS = [` (each `{id, kind, title, words, nodes}`) |
-| Typo/synonym handling | `var SYNONYMS`, `VOCAB`, `norm()` |
-| Book search used by chat | `function searchBook(` |
-| Glossary | `#s20-1 .glossary` |
-| d&b model tables (chat reads them) | §6.20, `buildModels()` |
-| Answer bank (new) | `var ANSWERS = [` |
+| Handbook sections | `src/parts/pPP.html` · `<section class="s" id="sX-Y">` |
+| App screens | `src/screens/*.html` |
+| Styles | `src/styles.css` |
+| Section search index | `src/js/app.js` · `var sectionIndex` / `indexEntry()` |
+| Fault-finder chat | `src/js/chat.js` |
+| Guided routes | `src/js/chat-routes.js` · `var FLOWS = [` |
+| Answer bank | `src/js/chat-answers.js` · `var ANSWERS = [` |
+| Typo/synonym handling | `src/js/chat.js` · `var SYNONYMS`, `VOCAB`, `norm()` |
+| Book search used by chat | `src/js/chat.js` · `function searchBook(` |
+| Glossary | `src/parts/p20.html` · `#s20-1 .glossary` |
+| d&b model tables (chat reads them) | `src/parts/p06.html` §6.20, `buildModels()` |
 | Offline caching | `sw.js` |
 
 ## Phase 1 — fixes and foundations
@@ -224,3 +230,74 @@ additions was *function and placement*, so targeted changes:
   claiming specific questions (input list, stage plot, measurement mic,
   Avantis/DiGiCo snapshot, stream mix, other careers).
 - Chat cases 81, all passing.
+
+## Round 9 — answer harder, in-depth questions (2026-11-13)
+
+**Why.** 40 realistic in-depth questions the answer bank wasn't written for
+(saved as `tests/probe-cases.txt` from step 1): 10 good, 12 partly useful, 18
+wrong or unhelpful — even where the book holds the answer (Arc vs Line in §6.20,
+power alley in §6.6, antenna spacing via the RF calculator). Causes: the wrong
+layer answers first (kit offer fires on questions; the d&b set-up route grabs any
+question with "sub/PA/amp"; a model's info card answers whatever the question
+was about the model), search returns whole sections instead of the passage that
+answers, no sense of question type, some facts missing, misses not learnt from.
+
+**Owner's decisions:** split the source (done); no monthly scheduled re-check;
+don't wait for the kit list.
+
+- [x] 0. Split the source into `src/` + `build.js` (output byte-identical).
+- [x] 1. Scoring set + routing fixes. Graded probe set by topic (must contain /
+      must not contain; safety cases must keep their warning) with a scorer.
+      Fix: kit offer only for statements; narrow the set-up route's words; a
+      model card only when the model is the topic. Target: probe ≥ 20/40 good,
+      existing tests stay green.
+- [~] 2. Answers built from passages (engine, question types, warnings, depth, honest "closest" done; clarifying question still to do). Passage index (paragraphs, steps, term
+      lines, table rows with their headings, notes) built on first question.
+      Question types: what is / how do I / difference / why / how many / can I.
+      Reply = best 2–4 passages with § citations; "Go deeper" and "Why?";
+      warnings attached to a passage always travel with it; one clarifying
+      question when unsure; honest "not sure" below a confidence floor.
+      Target: probe ≥ 30/40.
+- [ ] 3. d&b facts as data (setups, functions, boxes per channel per amp,
+      lights and messages per amp — from d&b manuals) + job calculators (amps per
+      16/32 A supply, voltage drop, fill/delay from positions, cardioid/end-fire
+      spacing, headroom against a noise limit).
+- [ ] 4. Learn from misses: "Not what I asked" and low-confidence questions
+      saved on the phone with a "send these" button; per-section likely-question
+      gap finder.
+- [ ] 5. Worked playbooks (conference on E-Series + D20, breakout T10 + desk,
+      awards dinner on DM7, small outdoor stage) and diagrams shown in chat;
+      job-aware answers ("what next?", "test plan for tomorrow").
+- [ ] 6. Quiz me (spaced repetition on unticked Pathway skills); voice (dictation
+      in, read-aloud out — both offline on iPhone).
+- [ ] 7. Meaning-based search only if the probe score says it's needed.
+
+### Round 9 log
+
+- 2026-11-13 — Source split into `src/` (37 files) with `build.js`; rebuilt
+  `index.html` byte-identical. README and this map updated.
+- 2026-11-13 — Probe set `tests/probe-cases.txt` (50 harder questions by topic)
+  and `tests/check-probes.js`. Baseline 21/50.
+- 2026-11-13 — Routing: kit offer only for statements; d&b set-up route only on
+  d&b set-up words; a model's card only when the model is the subject;
+  "how do I fix…" and fault words (noise, muffled, feeding back, distorted…)
+  go to fault routes; "fire exit" no longer triggers the emergency stop;
+  "power alley" is not mains power; glossary names only split on " / ".
+- 2026-11-13 — Passage answers: every section cut into ~passages (paragraphs,
+  steps, term lines, table rows with headings, notes), ranked with BM25 +
+  section relevance + question type; replies show the best passages with
+  where they're from, keep a related "Watch it" note, offer "Go deeper" and
+  "Why?", and say "Closest I have" when unsure. Knowledge questions go to a
+  close written answer, then the book, before a weakly matched route.
+  "Not what I asked" and low-confidence questions are kept on the phone
+  (`treebysound-missed-questions`). Book words are protected from typo
+  correction ("alley" ≠ "Allen"). 7 new answers (comb filtering, polarity by
+  ear, Dual Channel vs Mix TOP/SUB, fan noise in a lectern mic, muffled
+  presenter, speech level, a box used as a wedge).
+- Results: probe 21 → 41/50; answer phrasings 85% → 93% exact; chat cases
+  90/90; content check clean; axe 0 violations; first answer ≤ 0.9 s on a 4×
+  slowed CPU if asked straight after opening (index then built), later ~10 ms.
+- Next: clarifying question when unsure (step 2), then step 3 (d&b facts as
+  data + job calculators). Remaining probe misses are mostly content gaps
+  (breakout room playbook, sub coverage front-to-back, amp protect on sub
+  hits) and route ties.

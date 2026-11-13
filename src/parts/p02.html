@@ -1,0 +1,232 @@
+<div class="part" id="p2">
+<div class="part-head"><div class="col"><span class="part-num">PART 2</span><div><h2>Audio essentials</h2><p>The signal-flow mental model everything else hangs on. Learn this properly before chasing specialist knowledge.</p></div></div></div>
+<div class="col">
+
+<section class="s" id="s2-1"><h3><span class="n">2.1</span> The chain, start to finish</h3>
+<p>Every single audio system, from a lectern in a meeting room to a stadium, is this:</p>
+<div class="flow" tabindex="0" role="region" aria-label="Signal flow">SOURCE          a voice, a guitar amp, a laptop
+   ↓
+TRANSDUCER      microphone / DI  — turns sound or an instrument signal into a small electrical one
+   ↓
+PREAMP          console input — brings that tiny signal up to a usable working level
+   ↓
+PROCESSING      EQ, dynamics, effects, routing, mixing
+   ↓
+AMPLIFIER       power amp or the amp inside an active speaker
+   ↓
+TRANSDUCER      loudspeaker — turns electricity back into sound
+   ↓
+EARS            the only part of the system that actually matters</div>
+<figure class="diagram">
+<svg viewBox="0 0 320 470" width="320" height="470" role="img" aria-labelledby="flowDgTitle flowDgDesc">
+<title id="flowDgTitle">The audio signal chain</title>
+<desc id="flowDgDesc">Source, transducer, preamp, processing, amplifier, transducer, ears — each stage connected by an arrow, matching the list above</desc>
+<defs><marker id="dgArrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="dg-arrow"/></marker></defs>
+<g font-size="12.5">
+<rect x="60" y="6" width="200" height="42" rx="5" class="dg-box"/><text x="160" y="32" text-anchor="middle" class="dg-lab">SOURCE</text>
+<line x1="160" y1="48" x2="160" y2="70" class="dg-line" marker-end="url(#dgArrow)"/>
+<rect x="60" y="72" width="200" height="42" rx="5" class="dg-box2"/><text x="160" y="98" text-anchor="middle" class="dg-lab">TRANSDUCER (mic/DI)</text>
+<line x1="160" y1="114" x2="160" y2="136" class="dg-line" marker-end="url(#dgArrow)"/>
+<rect x="60" y="138" width="200" height="42" rx="5" class="dg-box2"/><text x="160" y="164" text-anchor="middle" class="dg-lab">PREAMP</text>
+<line x1="160" y1="180" x2="160" y2="202" class="dg-line" marker-end="url(#dgArrow)"/>
+<rect x="60" y="204" width="200" height="42" rx="5" class="dg-box2"/><text x="160" y="230" text-anchor="middle" class="dg-lab">PROCESSING</text>
+<line x1="160" y1="246" x2="160" y2="268" class="dg-line" marker-end="url(#dgArrow)"/>
+<rect x="60" y="270" width="200" height="42" rx="5" class="dg-box2"/><text x="160" y="296" text-anchor="middle" class="dg-lab">AMPLIFIER</text>
+<line x1="160" y1="312" x2="160" y2="334" class="dg-line" marker-end="url(#dgArrow)"/>
+<rect x="60" y="336" width="200" height="42" rx="5" class="dg-box2"/><text x="160" y="362" text-anchor="middle" class="dg-lab">TRANSDUCER (loudspeaker)</text>
+<line x1="160" y1="378" x2="160" y2="400" class="dg-line" marker-end="url(#dgArrow)"/>
+<rect x="60" y="402" width="200" height="42" rx="5" class="dg-box"/><text x="160" y="428" text-anchor="middle" class="dg-lab">EARS</text>
+</g>
+</svg>
+<figcaption>The same seven stages as the list above, drawn as a chain — the question is always where along it a fault stopped the signal.</figcaption>
+</figure>
+<p>When something doesn't work, you are always asking one question: <em>where along this chain did it stop?</em> That's it. That's fault-finding (<a href="#p12">Part 12</a>). Everything else is detail.</p>
+<div class="note std"><span class="lab">Standard</span><p>Learn to picture the chain physically — "the signal is currently in that XLR, going into socket 4 of that stagebox, arriving on channel 4 of the console". People who can do this fix things in seconds. People who can't press buttons hopefully.</p></div>
+</section>
+
+<section class="s" id="s2-2"><h3><span class="n">2.2</span> Signal levels — the four worlds</h3>
+<p>Audio signals exist at wildly different strengths, and mixing them up is the single most common source of "it sounds terrible" and occasionally "it's now on fire".</p>
+<div class="tw"><table>
+<thead><tr><th>Level</th><th class="mono">Rough voltage</th><th>Where you meet it</th><th>Connector</th></tr></thead>
+<tbody>
+<tr><td><strong>Mic level</strong></td><td class="mono">~1–10 mV</td><td>Microphone output. Tiny. Needs a preamp.</td><td class="mono">XLR</td></tr>
+<tr><td><strong>Instrument level</strong></td><td class="mono">~10–100 mV</td><td>Guitar/bass pickup. Also high impedance — needs a DI.</td><td class="mono">TS jack</td></tr>
+<tr><td><strong>Line level</strong></td><td class="mono">~0.3–1.5 V</td><td>Laptops, mixers, playback, processors. The standard "carrying" level.</td><td class="mono">XLR / TRS / RCA</td></tr>
+<tr><td><strong>Speaker level</strong></td><td class="mono">10–100+ V</td><td>Amp output to a passive speaker. Genuinely dangerous to inputs.</td><td class="mono">speakON</td></tr>
+</tbody></table></div>
+<div class="note warn"><span class="lab">Watch it</span><p>Plugging a <strong>speaker output into an input</strong> destroys the input. This is why speaker connections are speakON and not jack — the connector shape is a safety feature. If you find a passive speaker wired with a jack, treat it as a fault to be fixed, not a quirk.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>Older passive wedges and some backline still use 1/4" jack for speaker connections, and some cheap install gear uses bare-wire terminals. They exist, they work, they're just easier to get wrong. If you're handed one, label it clearly.</p></div>
+<p class="calc-pointer"><a href="#calcLevel">Open the level converter →</a> <span>dBu, dBV and volts, in Support with the rest of the calculators.</span></p>
+
+</section>
+
+<section class="s" id="s2-3"><h3><span class="n">2.3</span> Balanced vs unbalanced, and why XLR won</h3>
+<p><strong>Unbalanced</strong> (a guitar lead, an RCA, a 3.5mm jack) carries the signal on one conductor with a shield around it. Any interference the cable picks up along the way gets added to the signal. Fine for two metres, hopeless for twenty.</p>
+<p><strong>Balanced</strong> (XLR, TRS) carries the same signal twice — once normal, once polarity-flipped — plus a shield. At the far end, the receiving device flips one back and adds them together. The wanted signal doubles; anything picked up equally by both wires cancels out. This is called <em>common-mode rejection</em>, and it's why you can run a balanced mic line 100 m past a dimmer rack and still get clean audio.</p>
+<dl class="kv">
+<dt>Practical rule</dt><dd>Balanced for anything long or anything mic level. Unbalanced only for short runs of line-level, and get it onto a DI as soon as you can.</dd>
+<dt>Pinout</dt><dd>XLR pin 1 = screen/earth, pin 2 = hot (+), pin 3 = cold (−). Memorable as "one is ground, two is hot". This is the AES standard and effectively universal now.</dd>
+<dt>Direction</dt><dd>Signal flows <em>out</em> of male pins and <em>into</em> female sockets. So a cable has a female end that goes on the source, and a male end that goes into the destination. "Female follows the source" is one way to remember it.</dd>
+</dl>
+<figure class="diagram">
+<svg viewBox="0 0 260 190" width="260" height="190" role="img" aria-labelledby="xlrDgTitle xlrDgDesc">
+<title id="xlrDgTitle">XLR 3-pin connector face</title>
+<desc id="xlrDgDesc">Three pins arranged in a triangle: pin 1 ground at top, pin 2 hot lower right, pin 3 cold lower left</desc>
+<circle cx="130" cy="95" r="62" class="dg-box2"/>
+<circle cx="130" cy="48" r="15" class="dg-pin"/>
+<text x="130" y="53" text-anchor="middle" class="dg-lab">1</text>
+<circle cx="164" cy="128" r="15" class="dg-pin"/>
+<text x="164" y="133" text-anchor="middle" class="dg-lab">2</text>
+<circle cx="96" cy="128" r="15" class="dg-pin"/>
+<text x="96" y="133" text-anchor="middle" class="dg-lab">3</text>
+<text x="130" y="20" text-anchor="middle" class="dg-mono">GND</text>
+<text x="200" y="150" text-anchor="middle" class="dg-mono">HOT +</text>
+<text x="60" y="150" text-anchor="middle" class="dg-mono">COLD −</text>
+</svg>
+<figcaption>XLR face, pin numbers only — exact up/down orientation depends on which end you're looking at. Pin 1 ground, pin 2 hot, pin 3 cold.</figcaption>
+</figure>
+<div class="note alt"><span class="lab">Also seen</span><p>Some vintage gear (older Japanese consoles, some 70s/80s equipment) is wired pin 3 hot. If you meet a polarity problem you can't explain on one specific old box, this is why. Modern kit is pin 2 hot without exception.</p></div>
+</section>
+
+<section class="s" id="s2-4"><h3><span class="n">2.4</span> Gain vs volume vs trim vs fader</h3>
+<p>People use these interchangeably and it causes endless confusion. They are not the same control.</p>
+<dl class="kv">
+<dt>Gain / Trim</dt><dd>At the <em>input</em>. Sets how much the preamp amplifies the incoming signal to bring it to a healthy internal working level. Set once, correctly, then mostly leave alone. Too little = noise. Too much = distortion.</dd>
+<dt>Fader</dt><dd><em>After</em> the processing. Sets how much of that channel goes into the mix. This is your musical control — move it constantly.</dd>
+<dt>Volume / Master</dt><dd>At the <em>output</em>. How loud the whole thing is.</dd>
+</dl>
+<p>The distinction matters because turning up the wrong one has completely different consequences. If a vocal is too quiet, the fader is almost always the answer. If a vocal is quiet <em>and</em> hissy, the gain was set too low. If it's distorting even with the fader down, the gain is too high — the damage already happened at the input.</p>
+</section>
+
+<section class="s" id="s2-5"><h3><span class="n">2.5</span> Gain structure &amp; headroom</h3>
+<p>This is the concept that separates people whose systems sound clean from people whose systems sound rough, and it's genuinely simple: <strong>at every stage of the chain, the signal should be comfortably in the middle of what that stage can handle.</strong></p>
+<p>Too low and you're amplifying noise later on to compensate. Too high and you clip. The space between your normal level and the point of clipping is <em>headroom</em>, and you want plenty of it because live sources are unpredictable — the singer who soundchecked politely will be twice as loud with an audience in.</p>
+<div class="note std"><span class="lab">Standard</span><p>On a digital console, aim your input gain so normal programme material sits around <strong>−18 dBFS</strong> average, peaking to maybe −10 dBFS. That leaves 10–18 dB of headroom for surprises. On most desks that's the boundary between the green and the yellow on the meter. If you're regularly touching red, you've gained it too hot.</p></div>
+<figure class="diagram">
+<svg viewBox="0 0 300 340" width="300" height="340" role="img" aria-labelledby="hrDgTitle hrDgDesc">
+<title id="hrDgTitle">Headroom on a digital meter</title>
+<desc id="hrDgDesc">A vertical meter from 0 dBFS at the top down to a low noise floor, showing the red clipping zone near the top, the amber caution zone below it, the green target zone where average level should sit around minus 18 dBFS, and a dark low-level zone at the bottom</desc>
+<rect x="55" y="20" width="55" height="55" class="dg-fault"/>
+<rect x="55" y="75" width="55" height="45" class="dg-amber"/>
+<rect x="55" y="120" width="55" height="90" class="dg-pass"/>
+<rect x="55" y="210" width="55" height="100" class="dg-box2"/>
+<line x1="50" y1="20" x2="115" y2="20" class="dg-line"/>
+<text x="120" y="17" class="dg-lab" font-size="11">0 dBFS</text>
+<text x="120" y="30" class="dg-mono" font-size="10">ceiling</text>
+<line x1="50" y1="75" x2="115" y2="75" class="dg-line" stroke-dasharray="3,3"/>
+<text x="120" y="72" class="dg-lab" font-size="11">−10 dBFS</text>
+<text x="120" y="85" class="dg-mono" font-size="10">peak target</text>
+<line x1="50" y1="165" x2="115" y2="165" class="dg-line" stroke-dasharray="3,3"/>
+<text x="120" y="152" class="dg-lab" font-size="11">−18 dBFS</text>
+<text x="120" y="165" class="dg-mono" font-size="10">average target</text>
+<text x="120" y="178" class="dg-mono" font-size="10">(green zone)</text>
+<line x1="50" y1="310" x2="115" y2="310" class="dg-line"/>
+<text x="120" y="307" class="dg-lab" font-size="11">low level</text>
+<text x="120" y="320" class="dg-mono" font-size="10">noise gets amplified</text>
+</svg>
+<figcaption>Headroom: keep average programme in the green, peaks touching amber, red only ever momentary.</figcaption>
+</figure>
+<div class="note alt"><span class="lab">Also seen</span><p>Plenty of engineers gain hotter than that — chasing the sound of a preamp being driven, or working on kit where the noise floor is worse than the clipping. And analogue desks are a different game entirely: there, 0 VU is your target and the meters mean something different. The −18 dBFS figure is a digital-console rule of thumb, not a law.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>Search "gain staging live sound" and read anything from Rational Acoustics or ProSoundWeb. It's a concept worth understanding rather than memorising — see <a href="#s18-4">§18.4</a>.</p></div>
+</section>
+
+<section class="s" id="s2-6"><h3><span class="n">2.6</span> Phantom power (+48 V)</h3>
+<p>Condenser mics and active DI boxes need power to work. Rather than run a separate supply, the console sends 48 V DC up the same XLR cable that the audio comes back down — equally on pins 2 and 3, referenced to pin 1. Because it's identical on both signal wires, the balanced input ignores it.</p>
+<div class="tw"><table>
+<thead><tr><th>Device</th><th>Needs phantom?</th><th>Harmed by phantom?</th></tr></thead>
+<tbody>
+<tr><td>Dynamic mic (SM58, SM57…)</td><td>No</td><td>No — safe, just pointless</td></tr>
+<tr><td>Condenser mic</td><td>Yes</td><td>No</td></tr>
+<tr><td>Active DI box</td><td>Yes</td><td>No</td></tr>
+<tr><td>Passive DI box</td><td>No</td><td>No</td></tr>
+<tr><td>Ribbon mic</td><td>Usually no</td><td><strong>Potentially yes</strong> — can destroy the ribbon</td></tr>
+<tr><td>Wireless receiver output</td><td>No</td><td>Generally no, but check</td></tr>
+<tr><td>Line output from other gear</td><td>No</td><td>Usually no if balanced; can be bad if unbalanced</td></tr>
+</tbody></table></div>
+<div class="note warn"><span class="lab">Watch it</span><p>Three habits worth building. <strong>One:</strong> mute the channel before switching phantom on or off — the thump is loud and can damage drivers. <strong>Two:</strong> never plug or unplug a mic with phantom live on that channel, for the same reason. <strong>Three:</strong> on desks with a single global phantom switch for a whole rack, check what else is plugged in before you hit it. Ribbon mics and vintage gear are the casualties.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>Some engineers just leave phantom on across the board permanently on modern digital desks, on the basis that nothing in a standard hire stock is harmed by it. It's a defensible position on a rock gig with no ribbons. It's a bad habit to learn as a default, because eventually you'll meet a ribbon or a piece of vintage kit.</p></div>
+</section>
+
+<section class="s" id="s2-7"><h3><span class="n">2.7</span> Impedance, briefly</h3>
+<p>Impedance is resistance to an AC signal, measured in ohms (Ω). You mostly need three facts:</p>
+<ul>
+<li><strong>Mic inputs</strong> are low impedance and expect a low-impedance source. Mics are typically 150–600 Ω, inputs around 1.5–3 kΩ. This mismatch is deliberate — it's called bridging and it's correct.</li>
+<li><strong>Instrument pickups</strong> are <em>high</em> impedance. Plug a guitar straight into a mic input and it'll sound thin and lifeless because the input loads the pickup down. That's what a DI box is for (<a href="#s3-9">§3.9</a>).</li>
+<li><strong>Speakers</strong> have impedance too — usually 4, 8 or 16 Ω. This matters when you're wiring multiple passive speakers to one amp channel: two 8 Ω boxes in parallel make a 4 Ω load, which draws more current from the amp. Go too low and the amp overheats or shuts down. Modern active boxes make this a non-issue, which is one reason they took over.</li>
+</ul>
+</section>
+
+<section class="s" id="s2-8"><h3><span class="n">2.8</span> Polarity vs phase</h3>
+<p>Used interchangeably in conversation; technically different, and the difference occasionally matters.</p>
+<dl class="kv">
+<dt>Polarity</dt><dd>Whether the waveform is the right way up. Flipping it inverts the whole signal at all frequencies. The <code>Ø</code> button on your console does this. Instant, frequency-independent.</dd>
+<dt>Phase</dt><dd>A time relationship between two signals. Because a fixed time delay is a different fraction of a cycle at different frequencies, phase problems are frequency-dependent — which is why two mics on the same source at different distances sound hollow, not just quiet.</dd>
+</dl>
+<p>Practically: if two mics on the same source sound thin and weedy together but fine alone, try the polarity flip on one. If it gets fuller, you had a polarity problem. If it changes but doesn't fix it, you've got a distance/timing problem and the answer is moving a mic, not pressing a button.</p>
+<div class="note std"><span class="lab">Standard</span><p>Classic cases where you'll reach for the polarity button: snare top vs snare bottom (bottom mic almost always gets flipped), kick in vs kick out, a guitar cab mic'd front and back, and DI vs mic on the same bass rig.</p></div>
+</section>
+
+<section class="s" id="s2-9"><h3><span class="n">2.9</span> Analogue, digital, and the clock</h3>
+<p>Digital audio samples the waveform many thousands of times a second and stores each sample as a number.</p>
+<dl class="kv">
+<dt>Sample rate</dt><dd>How many snapshots per second. 48 kHz is the live/video standard; 44.1 kHz is the CD/music standard; 96 kHz exists and is rarely worth the I/O cost live. <strong>Everything on one network must agree.</strong></dd>
+<dt>Bit depth</dt><dd>How precisely each snapshot is measured. 24-bit is standard and gives you a huge dynamic range. This is why digital headroom is generous — but clipping is still absolute and ugly.</dd>
+<dt>Latency</dt><dd>The delay caused by converting, processing and transporting. A few milliseconds is invisible; stack up enough conversions and processors and musicians start to notice, especially on in-ears.</dd>
+<dt>Clock (word clock)</dt><dd>Every digital device must agree on exactly when a sample happens. One device is the <strong>master</strong> and the rest follow. "Word clock" is the actual term printed on converters and consoles for this — a dedicated clock signal, or a setting, telling a device whose timing to follow. Get this wrong and you get clicks, pops, or dropouts.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p>Two clock masters on one network is a classic and infuriating fault — intermittent ticking that comes and goes. When you build a digital system, decide what the clock master is (usually the console, or a dedicated clock source) and check every other device is set to follow. See <a href="#s8-2">§8.2</a> for how this looks in Dante Controller.</p></div>
+</section>
+
+<section class="s" id="s2-10"><h3><span class="n">2.10</span> Decibels, without the maths</h3>
+<p>The dB is a <em>ratio</em>, not a fixed amount, which is why it always has a suffix telling you what it's a ratio to.</p>
+<div class="tw"><table>
+<thead><tr><th class="mono">Unit</th><th>Reference</th><th>Used for</th></tr></thead>
+<tbody>
+<tr><td class="mono">dB SPL</td><td>Threshold of hearing</td><td>Actual loudness in the air. What a sound level meter reads.</td></tr>
+<tr><td class="mono">dBu</td><td>0.775 V</td><td>Analogue signal level. "+4 dBu" is pro line level.</td></tr>
+<tr><td class="mono">dBV</td><td>1 V</td><td>Consumer line level, "−10 dBV". Quieter than pro.</td></tr>
+<tr><td class="mono">dBFS</td><td>Digital full scale</td><td>Digital metering. 0 dBFS is the ceiling — you cannot go above it.</td></tr>
+<tr><td class="mono">dBA / dBC</td><td>Weighted SPL</td><td>Noise limits. A-weighting ignores bass, C-weighting includes it.</td></tr>
+</tbody></table></div>
+<h4>Rules of thumb worth memorising</h4>
+<ul>
+<li><strong>+3 dB</strong> = double the power. Barely audible as a change.</li>
+<li><strong>+6 dB</strong> = double the voltage. Clearly audible.</li>
+<li><strong>+10 dB</strong> = roughly <em>twice as loud</em> to a human. Needs ten times the power.</li>
+<li><strong>Double the distance = −6 dB</strong> from a point source. The inverse square law. This is why the front row is deafened while the back is quiet, and why line arrays and delay stacks exist.</li>
+<li><strong>Doubling the number of identical sources = +3 dB</strong> (if uncorrelated) or +6 dB (if perfectly correlated, e.g. coupled subs).</li>
+</ul>
+</section>
+
+<section class="s" id="s2-11"><h3><span class="n">2.11</span> What lives where — frequency crib</h3>
+<p>Learn these ranges and EQ stops being guesswork. Human hearing is roughly 20 Hz to 20 kHz, and the top end goes first with age and exposure.</p>
+<div class="tw"><table>
+<thead><tr><th class="mono">Range</th><th>Name</th><th>What's there</th><th>Too much sounds…</th></tr></thead>
+<tbody>
+<tr><td class="mono">20–60 Hz</td><td>Sub-bass</td><td>Felt more than heard. Kick body, synth subs, rumble.</td><td>Muddy, uncontrolled, boomy</td></tr>
+<tr><td class="mono">60–250 Hz</td><td>Bass</td><td>Fundamental of bass guitar, kick punch, male voice weight</td><td>Boomy, woolly</td></tr>
+<tr><td class="mono">250–500 Hz</td><td>Low mid</td><td>Warmth — and the classic "mud" zone</td><td>Boxy, congested</td></tr>
+<tr><td class="mono">500 Hz–2 kHz</td><td>Mid</td><td>Body and intelligibility of most instruments; vocal fundamentals</td><td>Honky, nasal, telephone-ish</td></tr>
+<tr><td class="mono">2–4 kHz</td><td>Upper mid</td><td>Consonants, attack, presence. The ear is most sensitive here.</td><td>Harsh, fatiguing, shouty</td></tr>
+<tr><td class="mono">4–8 kHz</td><td>Presence</td><td>Clarity, definition, sibilance starts</td><td>Sibilant, piercing</td></tr>
+<tr><td class="mono">8–20 kHz</td><td>Air / brilliance</td><td>Sparkle, cymbal shimmer, sense of space</td><td>Brittle, hissy</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>When something sounds wrong, the pro move is almost always <strong>cut, don't boost</strong>. Find the offending frequency by boosting a narrow band and sweeping until it gets worse, then cut there instead. Subtractive EQ keeps headroom and sounds more natural.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>Ear training is the highest-leverage thing you can do for your mixing. Free browser tools like SoundGym's free trainers or the "Train Your Ears" style EQ quizzes get you recognising frequencies within a few weeks of ten-minute sessions. See <a href="#s18-6">§18.6</a>.</p></div>
+</section>
+
+<section class="s" id="s2-12"><h3><span class="n">2.12</span> Meters and levels on a digital desk</h3>
+<p>Digital desks measure level in <strong>dBFS</strong> — decibels below <em>full scale</em>. <strong>0 dBFS is the ceiling</strong>: nothing can go above it, so anything louder clips hard and sounds awful. Every meter reading on a digital desk is a negative number counting down from that ceiling.</p>
+<div class="tw"><table>
+<thead><tr><th>What you see</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td>Peak meter</td><td>The highest instant — what you watch to avoid clipping. Leave a generous gap below 0 dBFS on the loudest moments.</td></tr>
+<tr><td>VU / RMS / average</td><td>Closer to how loud it sounds. Two channels peaking at the same level can sound very different in loudness.</td></tr>
+<tr><td>Nominal level</td><td>Where the desk expects normal signals to sit — commonly −18 or −20 dBFS, which lines up with +4 dBu on the analogue outputs. Varies by desk; check the manual.</td></tr>
+<tr><td>LUFS</td><td>Loudness over time, used for broadcast and streams (§14.14). Not a clipping meter.</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>Set input gain so the loudest real moments peak well clear of 0 dBFS — on most desks that means normal singing or playing showing around the nominal mark with plenty of room above. Digital headroom is free; clipping is not.</p></div>
+<div class="note warn"><span class="lab">Watch it</span><p>A channel can clip at the <strong>input</strong> while its fader is low — the damage happens before the fader. Watch the input/gain meter, not just the channel strip's output meter (§12.6).</p></div>
+</section>
+
+</div></div>

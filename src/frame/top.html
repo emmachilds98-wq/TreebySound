@@ -1,0 +1,68 @@
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<button class="cog-btn" id="cogAppearance" type="button" aria-haspopup="dialog" aria-expanded="false" aria-label="Appearance &amp; accessibility settings">⚙</button>
+<button class="cog-btn refresh-btn" id="updateBtn" type="button" aria-label="Refresh — check for a newer version of TreebySound"><span aria-hidden="true">↻</span></button>
+
+<div class="wrap">
+<nav class="rail" id="rail">
+  <div class="rail-head">
+    <button class="ap-close" id="railClose" type="button" aria-label="Close contents" style="display:none">✕</button>
+    <button class="rail-collapse" id="railCollapse" type="button" aria-label="Hide the contents sidebar">‹ Hide</button>
+    <p class="brand brandmark"><span class="brand-treeby">Treeby</span><span class="brand-sound">Sound</span><small>Your workday companion · library &amp; learning</small></p>
+    <div class="rail-find-label"><span>Find in library</span><span>/</span></div>
+    <div class="searchbox">
+      <input id="q" type="search" placeholder="Search topics, faults, kit…" autocomplete="off" aria-label="Search the TreebySound library">
+      <span class="sk">/</span>
+    </div>
+    <p class="hits" id="hits" role="status" aria-live="polite"></p>
+  </div>
+  <nav class="rail-dest" aria-label="Main screens">
+    <a href="#hub" data-nav="hub"><span class="ic" aria-hidden="true">&#8962;</span>Home</a>
+    <a href="#ask" data-nav="ask"><span class="ic" aria-hidden="true">?</span>Ask</a>
+    <a href="#job" data-nav="job"><span class="ic" aria-hidden="true">&#9673;</span>Job Hub</a>
+    <a href="#support" data-nav="support"><span class="ic" aria-hidden="true">&#9889;</span>Support</a>
+    <a href="#path" data-nav="path"><span class="ic" aria-hidden="true">&#8599;</span>Pathway</a>
+  </nav>
+  <div class="rail-library"><span>Library</span><a href="#library">All parts →</a></div>
+  <nav class="rail-routes" aria-label="Library routes">
+    <a href="#p1" data-nav="p1">Learn the job</a>
+    <a href="#p2" data-nav="p2">Learn core audio</a>
+    <a href="#p5" data-nav="p5">Learn systems &amp; skills</a>
+    <a href="#p9" data-nav="p9">Working with other teams</a>
+    <a href="#p10" data-nav="p10">Learn event landscape</a>
+    <a href="#p11" data-nav="p11">Check &amp; fix</a>
+    <a href="#p14" data-nav="p14">Develop your craft</a>
+    <a href="#p17" data-nav="p17">Career development</a>
+  </nav>
+  <div class="toc" id="toc"></div>
+  <div class="rail-foot">
+    <button class="tbtn" id="appearanceBtn" type="button" aria-haspopup="dialog" aria-expanded="false">Appearance</button>
+    <button class="tbtn" id="print">Print</button>
+  </div>
+</nav>
+
+<header class="appbar">
+  <a class="appbar-brand brandmark" href="#hub"><span class="brand-treeby">Treeby</span><span class="brand-sound">Sound</span> <small>audio workday companion</small></a>
+  <nav class="appbar-nav" id="appbarNav" aria-label="Main sections">
+    <a class="appbar-link" href="#hub" data-nav="hub">Home</a>
+    <a class="appbar-link" href="#ask" data-nav="ask">Ask</a>
+    <a class="appbar-link" href="#job" data-nav="job">Job Hub</a>
+    <a class="appbar-link" href="#support" data-nav="support">Support</a>
+    <a class="appbar-link" href="#path" data-nav="path"><span class="nav-long">Learning pathway</span><span class="nav-short">Pathway</span></a>
+  </nav>
+  <button class="appbar-library" id="appbarLibrary" type="button" aria-expanded="false" aria-label="Open the library and search">Library ⌕</button>
+</header>
+
+<main id="main" tabindex="-1">
+<div class="part-nav" id="partNav" aria-label="Part navigation">
+  <button class="part-nav-all" id="partNavAll" type="button" title="Browse every part of the library">☰ <span>All parts</span></button>
+  <div class="part-nav-current"><span class="part-nav-num" id="partNavNum"></span><span class="part-nav-title" id="partNavTitle"></span></div>
+  <div class="part-nav-btns">
+    <button class="part-nav-btn" id="partNavPrev" type="button">‹ <span>Prev</span></button>
+    <button class="part-nav-btn" id="partNavNext" type="button"><span>Next</span> ›</button>
+    <button class="part-nav-btn part-nav-cog" id="partNavCog" type="button" aria-label="Appearance &amp; accessibility settings">⚙</button>
+  </div>
+</div>

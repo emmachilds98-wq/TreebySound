@@ -1,0 +1,125 @@
+<div class="part" id="p14">
+<div class="part-head"><div class="col"><span class="part-num">PART 14</span><div><h2>Capture, stream &amp; hand over audio</h2><p>Recording and broadcast basics for the jobs where somebody needs a multitrack, stream or archive.</p></div></div></div>
+<div class="col">
+
+<section class="s" id="s14-1"><h3><span class="n">14.1</span> Why you'll be asked to record</h3>
+<p>Multitrack recording used to be a specialist add-on; on a modern digital console it's often a tick-box, which means it gets asked for constantly — an archive for the band, a reference for mix notes, a virtual soundcheck for tomorrow, a podcast or stream running alongside a live event. You don't need to be a recording engineer to be the person who presses record correctly and hands over usable files.</p>
+</section>
+
+<section class="s" id="s14-2"><h3><span class="n">14.2</span> Multitrack recording from the desk</h3>
+<p>Most digital consoles can record every channel to an internal or attached drive, independent of the live mix — the fader positions you're mixing with don't affect what gets recorded, because the recording happens pre-fader, at the gained-up signal.</p>
+<dl class="kv">
+<dt>What to check first</dt><dd>Drive formatted correctly for the console, enough free space for the set length at the console's sample rate/bit depth, and a test recording actually played back before doors — a red record light isn't proof of a good file.</dd>
+<dt>Naming &amp; organisation</dt><dd>Console projects/sessions named clearly by date and event, not left as the default. Someone will need to find this file in six months.</dd>
+<dt>Gain staging for recording</dt><dd>The same <a href="#s2-5">§2.5</a> rules apply, but there's no fader to save you after the fact if the input gain was wrong — a clipped multitrack recording is permanently clipped, however good the live mix sounded.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p>Confirm the recording actually started and is actually receiving audio — not just that the console says "recording". A drive that failed to mount, or a session that didn't arm properly, fails silently on plenty of desks. Check levels are moving on the recording meters a few minutes in, not just at the start.</p></div>
+</section>
+
+<section class="s" id="s14-3"><h3><span class="n">14.3</span> Virtual soundcheck</h3>
+<p>Playing yesterday's (or last night's) multitrack recording back through the console today, instead of the band, to build or refine a mix without needing the musicians on stage. Standard practice on touring shows with a fixed lineup across multiple dates.</p>
+<ul>
+<li>Route the recorded tracks back into the same channels they were recorded from, so all your processing and routing stays valid.</li>
+<li>Mute the live inputs while doing this, obviously — you don't want stage mics live and bleeding into a playback session.</li>
+<li>It's genuinely useful for training too — build a mix from a real multitrack at home on an offline editor (<a href="#s8-1">§8.1</a>) to practise.</li>
+</ul>
+</section>
+
+<section class="s" id="s14-4"><h3><span class="n">14.4</span> Formats, sample rate &amp; bit depth for recording</h3>
+<p>Building on <a href="#s2-9">§2.9</a>: for recording specifically, <strong>48 kHz / 24-bit</strong> is the standard default for live multitrack — it matches the live/video world's sample rate and gives ample dynamic range without the storage and processing cost of 96 kHz, which is rarely worth it outside specialist work. Files are almost always exported as <strong>WAV</strong> — uncompressed, universally compatible, no quality loss. Avoid MP3 or other compressed formats for anything that might get remixed later; the compression throws away information permanently.</p>
+</section>
+
+<section class="s" id="s14-5"><h3><span class="n">14.5</span> Broadcast handoffs</h3>
+<p>Covered from the department-relationship side in <a href="#s9-3">§9.3</a> — the technical version: a broadcast truck or streaming setup usually wants either an isolated analogue/digital split of your key channels, or a small submix (a "TX mix") built specifically for them, which is often different from your PA mix — drier, more controlled, sometimes mono-compatible.</p>
+<div class="note std"><span class="lab">Standard</span><p>Agree exactly what the broadcast team needs — which channels or a submix, what level, what format — at the advance stage, and test the actual feed with them before doors. "We'll sort it on the day" with a broadcast crew is a bad plan; their side often has far less flexibility to adapt live than yours does.</p></div>
+</section>
+
+<section class="s" id="s14-6"><h3><span class="n">14.6</span> Streaming — what changes</h3>
+<p>A stream adds a compressed, internet-delivered version of the show, usually built by a separate video/streaming team, but you'll be their audio source. Two practical points: streaming platforms commonly normalise loudness to a target (broadly in the −14 to −16 LUFS integrated range for most major platforms, though the exact figure varies by platform and changes over time — check the current spec rather than assuming), so wildly over-driving your feed just gets turned down again by the platform rather than sounding louder; and stream delay means a presenter watching stream comments will always be seconds behind the room, which occasionally causes confusing crosstalk on comms if nobody accounts for it.</p>
+</section>
+
+<section class="s" id="s14-7"><h3><span class="n">14.7</span> Setting up a multitrack recording — start to finish</h3>
+<p>The concepts are in <a href="#s14-2">§14.2</a>; this is the actual sequence to follow on the day.</p>
+<ol class="seq">
+<li><strong>Check storage first.</strong> Confirm the drive is formatted correctly for that console, and work out roughly how much space the set needs at your sample rate and bit depth (<a href="#s14-4">§14.4</a>) — a full drive fails the recording silently on some desks rather than warning you.</li>
+<li><strong>Name the session properly</strong> before you arm anything — date and event, not the console's default name. Nobody finds "Session 4" useful in six months.</li>
+<li><strong>Arm the recording and do an actual test</strong> — a minute of real signal, not silence — then stop and play it back. Confirm you can hear it, on the right channels, at a sensible level.</li>
+<li><strong>Check your gain staging</strong> one more time specifically for recording (<a href="#s14-2">§14.2</a>) — there's no fader to rescue a clipped multitrack later.</li>
+<li><strong>Start the real recording</strong> in good time before the actual show starts, not at the last second — you want margin to notice if something's gone wrong.</li>
+<li><strong>Check in on it during the show</strong> — glance at the recording meters a few minutes in and periodically after, confirming levels are still moving.</li>
+<li><strong>Stop, safely eject the drive, and back it up</strong> before you leave site if at all possible — see <a href="#s14-10">§14.10</a>.</li>
+</ol>
+</section>
+
+<section class="s" id="s14-8"><h3><span class="n">14.8</span> Building a broadcast submix — start to finish</h3>
+<p>The relationship and level of care needed is in <a href="#s14-5">§14.5</a>; here's the actual build sequence for a simple TX/broadcast mix.</p>
+<ol class="seq">
+<li><strong>Confirm what they actually want</strong> at the advance stage (<a href="#s1-7">§1.7</a>) — a full isolated split of individual channels, or one submix bus.</li>
+<li><strong>Build the submix on a spare bus or matrix</strong>, routed from the same channels as your PA mix but with its own fader and processing — never just tap your main mix, which moves every time you adjust the room sound.</li>
+<li><strong>Dial it drier and more controlled</strong> than your PA mix — less reverb, tighter dynamics — since the broadcast audience isn't in the room and doesn't get the benefit of the room's own natural sound.</li>
+<li><strong>Isolate the physical feed</strong> — an isolation transformer or a properly isolated digital feed (<a href="#s10-5">§10.5</a>), never a bare parallel tap.</li>
+<li><strong>Test the actual feed with the broadcast team</strong> before doors, not just in soundcheck with the band silent — confirm level, polarity and that they're getting what you think you're sending.</li>
+<li><strong>Keep it running and stable through the show</strong> — big PA-mix moves (effects swells, big fader rides) don't need to follow through to the broadcast mix, and often shouldn't.</li>
+</ol>
+</section>
+
+<section class="s" id="s14-9"><h3><span class="n">14.9</span> Simple stand-alone recordings</h3>
+<p>Not every recording request is a full multitrack off a big digital console — plenty are much smaller: a two-mic podcast recording, a single-camera interview needing clean audio, a small meeting room capture. Worth knowing this world exists as its own smaller category rather than assuming every recording ask needs the full <a href="#s14-2">§14.2</a> treatment.</p>
+<dl class="kv">
+<dt>Typical setup</dt><dd>A small audio interface (Focusrite Scarlett and similar are the common cheap standard) feeding a laptop running a DAW or dedicated recording software, or a standalone field recorder (Zoom, Tascam) for something fully portable.</dd>
+<dt>What still applies</dt><dd>Every fundamental from earlier in the book — gain staging (<a href="#s2-5">§2.5</a>), phantom power for a condenser mic (<a href="#s2-6">§2.6</a>), a proper test before the real take. Small setups fail for exactly the same reasons big ones do.</dd>
+<dt>What's different</dt><dd>Usually far less redundancy — one mic, one cable, no spare channel to fall back on if something's wrong. Check everything twice before a take you can't easily redo, especially an interview that won't happen again.</dd>
+</dl>
+</section>
+
+<section class="s" id="s14-10"><h3><span class="n">14.10</span> Backing up &amp; handing over recordings</h3>
+<p>A recording nobody can find afterwards might as well not exist.</p>
+<ul>
+<li><strong>Copy it off the recording drive before you leave site</strong> wherever possible — drives fail, get lost, or get reused for the next job before anyone remembers to pull the files.</li>
+<li><strong>Keep two copies in two places</strong> until you know it's safely landed with whoever asked for it — a laptop and a cloud upload, or two separate drives.</li>
+<li><strong>Hand it over with basic context</strong> — event name, date, what's on each track if it's multitrack, anything that went wrong (a dropped channel, a late start). A silent file dump makes someone else redo work you've already done.</li>
+</ul>
+</section>
+
+<section class="s" id="s14-11"><h3><span class="n">14.11</span> Rights, consent &amp; who's actually allowed to record</h3>
+<p>Being technically capable of recording or streaming a show isn't the same as being allowed to. This sits above your pay grade to resolve, but it's worth being aware of so you flag it rather than assume someone else already has.</p>
+<dl class="kv">
+<dt>Performer consent</dt><dd>Artists and their management usually need to agree to being recorded, streamed or archived — sometimes it's in the contract rider, sometimes it isn't and needs asking. Don't assume "we're recording tonight" has automatically been cleared with the act.</dd>
+<dt>Music licensing</dt><dd>Recording or streaming copyrighted music (a covers band, a DJ set) can need separate permission from the performance licence a venue already holds — PRS for Music and PPL cover public performance, but recording, streaming and later distribution are often a different licensing question entirely.</dd>
+<dt>Audience</dt><dd>A stream or broadcast that shows the crowd is capturing identifiable people, which has its own privacy considerations — most events handle this with signage or terms at the door, arranged by the organiser, not by you.</dd>
+</dl>
+<div class="note deep"><span class="lab">Go deeper</span><p>None of this is something to solve yourself on the day — if you're ever asked to record or stream something and nobody's mentioned rights or consent at all, it's a reasonable question to raise at the advance stage (<a href="#s1-7">§1.7</a>) rather than something to assume is already handled.</p></div>
+</section>
+
+<section class="s" id="s14-12"><h3><span class="n">14.12</span> Backup recording — not relying on one capture</h3>
+<p>A multitrack recording off the main console is usually your best-quality capture, but it's also a single point of failure — one full drive, one crashed session, one setting left wrong, and a non-repeatable show is gone. Worth thinking about for anything that genuinely can't be redone.</p>
+<ul>
+<li><strong>A simple stereo backup costs little</strong> — a small field recorder (<a href="#s14-9">§14.9</a>) fed from a spare matrix or aux output, running independently of the main console's recording path, catches the whole show even if the multitrack fails.</li>
+<li><strong>Keep it genuinely independent</strong> — a backup that shares the same drive, same power, or same software as the primary recording isn't really a backup, it's the same single point of failure twice.</li>
+<li><strong>Weigh the effort against what's actually at stake.</strong> A regular support slot probably doesn't need this; a one-off festival headline set, a once-only broadcast, or anything explicitly billed as "the archive recording" usually does.</li>
+</ul>
+</section>
+
+<section class="s" id="s14-13"><h3><span class="n">14.13</span> Preparing files before handoff</h3>
+<p><a href="#s14-10">§14.10</a> covers getting the recording safely off site and to the right person; this is about what actually makes those files usable once they land, rather than just present.</p>
+<dl class="kv">
+<dt>Trim the dead air</dt><dd>If you started recording well before doors and stopped well after (sensibly, per <a href="#s14-7">§14.7</a>), the recipient doesn't want twenty minutes of silence at the head and tail of every file. Trim it, or at minimum tell them where the useful audio actually starts.</dd>
+<dt>Leave the levels alone</dt><dd>Don't normalise, compress or otherwise process the handed-over files "to make them sound better" unless you've been specifically asked to mix them. Someone downstream may want the raw signal — processing it first just removes options you don't know they need.</dd>
+<dt>Note what went wrong, with a timestamp</dt><dd>A dropped channel at 9:47, a clipped input on song four, a late start — write it down against the actual file, not from memory a week later when someone asks why track 12 is silent for two minutes.</dd>
+<dt>Check the names travel with the files</dt><dd>Track/channel names set at the desk (<a href="#s7-4">§7.4</a>) don't always survive an export to plain WAV files — confirm the exported filenames are still readable as channel names, not just "Track_001.wav", before you hand them over.</dd>
+</dl>
+</section>
+
+<section class="s" id="s14-14"><h3><span class="n">14.14</span> Stream audio — a quick start</h3>
+<ol class="seq">
+<li><strong>A separate mix</strong> for the stream — more vocals and speech, room/audience mics for atmosphere; the PA mix is wrong for headphones and laptops (§14.8).</li>
+<li><strong>Loudness, not just peaks:</strong> agree a target with the stream team. Online platforms normalise playback; many streams aim around −16 to −14 LUFS integrated. Use a loudness meter.</li>
+<li><strong>A limiter</strong> on the stream output so a shout or a dropped mic can't clip it.</li>
+<li><strong>Lip sync:</strong> video processing delays the picture — any delay goes on the <em>stream audio</em>, agreed with the video team, never on the PA (§9.13).</li>
+<li><strong>Remote guests:</strong> a mix-minus so they don't hear themselves back (§10.8).</li>
+<li><strong>Listen to the actual stream</strong> on a separate device — what leaves the building is what counts.</li>
+</ol>
+<div class="note deep"><span class="lab">Go deeper</span><p>Broadcast loudness standards (EBU R128 at −23 LUFS) and platform targets are in §18.17.</p></div>
+</section>
+
+</div></div>

@@ -1,0 +1,218 @@
+<div class="part" id="p3">
+<div class="part-head"><div class="col"><span class="part-num">PART 3</span><div><h2>Connections, cables &amp; power</h2><p>The everyday physical layer of the job—and where a large share of faults begin.</p></div></div></div>
+<div class="col">
+
+<section class="s" id="s3-1"><h3><span class="n">3.1</span> XLR — the workhorse</h3>
+<p>Three-pin, latching, balanced, and the connector that carries almost all mic and line audio in live sound.</p>
+<dl class="kv">
+<dt>Pin 1</dt><dd>Screen / earth / shield</dd>
+<dt>Pin 2</dt><dd>Hot (+), in-phase signal</dd>
+<dt>Pin 3</dt><dd>Cold (−), inverted signal</dd>
+</dl>
+<p>Brands you'll handle: <strong>Neutrik</strong> (the good stuff — the X-series with the coloured ring, and the chunky NC3 range), <strong>Amphenol</strong>, <strong>Switchcraft</strong>, and various no-brand ones that are why the cable failed. Neutrik connectors are worth learning to strip and solder; it's the single most useful practical skill you can pick up in a warehouse.</p>
+<div class="note std"><span class="lab">Standard</span><p>Cable lengths in most UK hire stock are colour-coded or ring-coded by length — commonly 1 m, 3 m, 5 m, 10 m, 20 m, 30 m. Learn your company's system on day one; grabbing the right length first time is a superpower on a build.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>Five-pin XLR is used for DMX lighting control (<a href="#s9-7">§9.7</a>) and for some dual-channel headset/intercom applications. Four-pin XLR is standard for single-ear intercom headsets. Three-pin DMX exists on cheap fixtures and is a constant source of "why won't this talk to that" — you'll need turnarounds.</p></div>
+<div class="note warn"><span class="lab">Watch it</span><p>Never use a mic cable for DMX or DMX cable for audio as a matter of habit. DMX is impedance-matched at 120 Ω; mic cable isn't built as a matched transmission line at all, and while swapping them usually works over short runs, it causes flickering fixtures and intermittent faults over long ones. The fact that the connector fits doesn't mean the cable is right.</p></div>
+</section>
+
+<section class="s" id="s3-2"><h3><span class="n">3.2</span> Jacks — TS, TRS, TRRS</h3>
+<div class="tw"><table>
+<thead><tr><th>Type</th><th>Contacts</th><th>Carries</th><th>You'll see it on</th></tr></thead>
+<tbody>
+<tr><td><strong>TS</strong> (mono jack)</td><td>Tip, Sleeve</td><td>One unbalanced signal</td><td>Guitar leads, instrument cables, some speaker cables (legacy)</td></tr>
+<tr><td><strong>TRS</strong> (stereo jack)</td><td>Tip, Ring, Sleeve</td><td>Either one balanced signal <em>or</em> two unbalanced (L/R)</td><td>Balanced line I/O, headphones, insert points</td></tr>
+<tr><td><strong>TRRS</strong></td><td>Tip, Ring, Ring, Sleeve</td><td>Stereo + mic (headset)</td><td>Phones, laptops, consumer headsets</td></tr>
+</tbody></table></div>
+<p>The ambiguity of TRS is the thing to internalise: <strong>the same connector means two completely different things depending on the socket.</strong> A TRS in a headphone socket is stereo unbalanced. A TRS in a console line input is mono balanced. An "insert cable" is TRS at one end splitting to two TS — send and return — for patching an outboard processor into a channel.</p>
+<div class="note warn"><span class="lab">Watch it</span><p>3.5 mm minijack is the most fragile connector you'll deal with and it will be the thing feeding the client's laptop into your system on a corporate job. Always use a <strong>DI box</strong> rather than a long minijack-to-XLR lead, always tape the connector to the laptop or table so a knocked cable doesn't yank the socket out, and always carry spares. Consider it a consumable.</p></div>
+</section>
+
+<section class="s" id="s3-3"><h3><span class="n">3.3</span> speakON — and why speaker cable is different</h3>
+<p>Neutrik speakON is the standard for connecting amplifiers to passive speakers. It twists to lock, the contacts are shrouded so you can't touch live terminals, and it handles serious current.</p>
+<dl class="kv">
+<dt>NL2</dt><dd>Two poles (+1/−1). One channel.</dd>
+<dt>NL4</dt><dd>Four poles (+1/−1/+2/−2). Two channels down one cable — used for bi-amped boxes, or for a top and a sub, or to link through. Part numbers, NLT4 (STX), testing and faults: <a href="#s3-12">§3.12</a>.</dd>
+<dt>NL8</dt><dd>Eight poles. Multi-way, mostly on line array and larger systems.</dd>
+</dl>
+<p><strong>Speaker cable is not signal cable.</strong> It's unshielded, heavy-gauge (typically 2.5 mm² or 4 mm² for long runs) because it's carrying real current. Using thin cable on a long run loses power and damping — the bass goes soft. Using signal cable will, at best, sound bad; at worst it melts.</p>
+<p class="calc-pointer"><a href="#calcCableLoss">Open the speaker cable loss estimator →</a> <span>Is this run thin enough over this distance to matter.</span></p>
+<div class="note warn"><span class="lab">Watch it</span><p>An NL4 will physically plug into an NL8 socket and vice versa in some combinations, and a two-pole cable in a four-pole socket may give you nothing, or may give you the wrong driver. If a top is silent but the sub works, check you haven't got a cable wired on 2+/2− going into a box expecting 1+/1−. Label your speaker cables by pinout, not just length.</p></div>
+
+</section>
+
+<section class="s" id="s3-4"><h3><span class="n">3.4</span> The consumer connectors you'll be handed</h3>
+<ul>
+<li><strong>RCA / phono</strong> — unbalanced, colour-coded red (right) and white or black (left). DJ mixers, CDJs, domestic gear. Short runs only, into a DI.</li>
+<li><strong>3.5 mm minijack</strong> — laptops, phones. See the warning above.</li>
+<li><strong>USB-C / Lightning</strong> — increasingly the only audio output on a modern laptop or phone. Carry adapters; carry spares of the adapters.</li>
+<li><strong>HDMI</strong> — carries audio as well as video. On corporate jobs the client's audio often arrives embedded in HDMI and has to be de-embedded. Know who owns that box.</li>
+<li><strong>Bluetooth</strong> — will be requested. It's laggy, lossy and drops out. Fine for background music before doors, never for anything that matters.</li>
+</ul>
+<div class="note std"><span class="lab">Standard</span><p>On any corporate or conference job, build a "presenter's kit" that lives in a small case: 3.5 mm to XLR DI, USB-C and Lightning adapters, HDMI de-embedder if you have one, gaffa, and a couple of spare leads. You will use it on every single job.</p></div>
+</section>
+
+<section class="s" id="s3-5"><h3><span class="n">3.5</span> Multicores, looms, stageboxes</h3>
+<p>Rather than run 32 individual XLRs from stage to FOH, you run one thick cable containing all of them.</p>
+<dl class="kv">
+<dt>Multicore / snake</dt><dd>The cable itself. UK tends to say "multicore", US says "snake".</dd>
+<dt>Stagebox</dt><dd>The metal box at the stage end with all the sockets in it, numbered.</dd>
+<dt>Fan-out / tails</dt><dd>The bunch of individual connectors at the other end.</dd>
+<dt>Sends and returns</dt><dd>A multicore usually carries inputs one way and a few outputs (for wedges, or a feed to the stage) the other. Described as e.g. "32/8" — 32 in, 8 out.</dd>
+<dt>Digital stagebox</dt><dd>The modern version: converters at the stage end, one Cat5e or fibre run back to the console. Far lighter and higher channel count. See <a href="#s3-7">§3.7</a>.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>Always run the multicore first, before anything else is cabled, and always run it where it won't be walked on, driven over or need to be moved. Once it's down and taped, it stays down. Leave a service loop at both ends so you can reposition the console a metre without repulling the whole run.</p></div>
+</section>
+
+<section class="s" id="s3-6"><h3><span class="n">3.6</span> Network cable — now core audio infrastructure</h3>
+<p>A huge amount of modern live audio travels over ordinary-looking network cable, which means network faults are now audio faults.</p>
+<ul>
+<li><strong>Cat5e</strong> is adequate for most audio networking; <strong>Cat6</strong> and <strong>Cat6a</strong> give more margin. Use shielded (STP/FTP) for touring — the electrical environment is hostile.</li>
+<li><strong>etherCON</strong> is Neutrik's ruggedised housing around a standard RJ45. It latches, it survives being trodden on, and it's what you should use on site. A bare RJ45 on a floor is a fault waiting to happen.</li>
+<li><strong>100 m is the hard limit</strong> for copper Ethernet, per hop. Beyond that you need a switch in the middle or fibre.</li>
+<li><strong>Fibre</strong> (usually with opticalCON connectors) for long runs, and it's immune to electrical interference. Treat it gently — the minimum bend radius is real and a kinked fibre is a dead fibre.</li>
+</ul>
+<div class="note warn"><span class="lab">Watch it</span><p>Network cable does not like being coiled tightly, crushed by a case wheel, or kinked. It'll often still pass a link light while dropping packets — which sounds like intermittent clicks and dropouts and is a nightmare to trace. If you suspect a Cat5 run, swap it before you spend an hour in software.</p></div>
+</section>
+
+<section class="s" id="s3-7"><h3><span class="n">3.7</span> Digital audio transports — the alphabet soup</h3>
+<div class="tw"><table>
+<thead><tr><th>Name</th><th>Who</th><th>Runs on</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><strong>Dante</strong></td><td>Audinate</td><td>Standard Ethernet</td><td>The dominant standard. Routes freely between any devices on the network. Learn this one properly — <a href="#s8-2">§8.2</a>.</td></tr>
+<tr><td><strong>AES50</strong></td><td>Klark Teknik / Behringer / Midas</td><td>Cat5e, point to point</td><td>What X32/M32/Wing use for their stageboxes. Simple, fixed, cheap. Not a routable network.</td></tr>
+<tr><td><strong>MADI</strong></td><td>AES standard</td><td>Coax or optical</td><td>64 channels, point to point, very well established. Common as a link between big systems and recording rigs.</td></tr>
+<tr><td><strong>AES3 / AES-EBU</strong></td><td>AES standard</td><td>XLR (110 Ω)</td><td>Two channels of digital audio down one XLR. Looks like an audio cable, isn't.</td></tr>
+<tr><td><strong>AVB / Milan</strong></td><td>IEEE / Avnu</td><td>Special AVB switches</td><td>Used by Avid, d&amp;b, L-Acoustics, Meyer. Deterministic and robust; needs compatible switches.</td></tr>
+<tr><td><strong>ADAT</strong></td><td>Alesis</td><td>Optical "lightpipe"</td><td>8 channels at 48 kHz. Legacy but still all over studios and small rigs.</td></tr>
+<tr><td><strong>Optocore / SoundGrid / A-Net</strong></td><td>Various</td><td>Fibre / Ethernet</td><td>Manufacturer-specific. You'll meet them on specific rigs and read specific manuals.</td></tr>
+</tbody></table></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>Audinate run free online Dante certification (Levels 1–3). Level 1 takes an afternoon and is genuinely the best-value qualification in live audio right now — it's free, it's recognised, and it directly makes you more employable. Do it. Link in <a href="#s18-3">§18.3</a>.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p><strong>PoE (Power over Ethernet)</strong> carries power down the same cable as the network data, so a switch or an inline injector can run a device — a small stagebox, an access point, a networked speaker or a control panel — without a separate mains lead. Convenient for small, remote or awkward-to-power devices; not something you'd rely on for anything drawing serious current. Check a device's PoE class before assuming a given switch port can actually supply enough of it.</p></div>
+</section>
+
+<section class="s" id="s3-8"><h3><span class="n">3.8</span> Power</h3>
+<p>You will not be wiring distros as a junior, but you must understand what you're plugging into.</p>
+<dl class="kv">
+<dt>13 A</dt><dd>Standard UK three-pin plug. Fine for consoles, small racks, active speakers.</dd>
+<dt>16 A ceeform</dt><dd>Blue round industrial connector. The event-industry standard for single-phase distribution.</dd>
+<dt>32 A ceeform</dt><dd>Bigger blue one. Feeds distros and bigger amp racks.</dd>
+<dt>Three-phase (63 A / 125 A)</dt><dd>Red ceeform. Feeds the whole event. Three live legs — and balancing loads across them is a skilled job. Not yours yet.</dd>
+<dt>IEC</dt><dd>The kettle-lead connector on the back of nearly everything. C13/C14 is standard; C19/C20 is the bigger high-current version on amps.</dd>
+<dt>powerCON / powerCON TRUE1</dt><dd>Neutrik locking mains connectors. TRUE1 is the one you can safely connect and disconnect under load. Blue in, white out — the convention is input is grey/blue, output is white.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Never remove or defeat an earth pin</strong> to solve a hum problem. Ever. It's the thing that stops a fault killing someone. If you have an earth loop, fix it properly with a DI box's ground lift or an isolating transformer — <a href="#s12-3">§12.3</a>. There is no situation in which lifting mains earth is acceptable, and anyone who tells you otherwise is dangerous.</p></div>
+<div class="note std"><span class="lab">Standard</span><p>Get all audio on the same power source where possible — same distro, same phase. Sharing a supply with lighting dimmers, LED walls or motors is the most common cause of buzz on a job. If you must share, ask for a separate audio supply early, before the power is committed.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>PAT — Portable Appliance Testing — is a routine warehouse task and an easy qualification to pick up. If your company does it in-house, ask to be trained. It makes you more useful immediately and it's a genuine line on a CV. The distribution itself — generators, distros, RCD protection, cable runs — is designed and signed off against <strong>BS 7909</strong>, the industry code of practice for temporary electrical systems at events. You won't be the one designing it, but knowing the name means you understand why a distro on a job looks the way it does, and why an electrician can point at a specific requirement rather than just "that's how we do it". See <a href="#s18-8">§18.8</a>.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>Increasingly, generators run on <strong>HVO</strong> — hydrotreated vegetable oil — instead of red diesel. It's a drop-in fuel for most modern diesel generators (no engine modification), burns with substantially lower net carbon and particulate output, and is turning up more often on festival and touring power specs as production companies chase sustainability targets. You'll just be told to fuel from whichever drum you're handed, but it's worth knowing why it might not smell like ordinary diesel. Events chasing that reputation may be seeking or holding certification from <strong>A Greener Future</strong> (formerly A Greener Festival), which audits events against environmental standards — generator fuel and power efficiency is one of the things it looks at.</p></div>
+</section>
+
+<section class="s" id="s3-9"><h3><span class="n">3.9</span> DI boxes</h3>
+<p>A DI (Direct Injection) box does three jobs: converts unbalanced to balanced, converts high impedance to low impedance, and often provides a ground lift to break earth loops. It's the universal adapter of live sound.</p>
+<div class="tw"><table>
+<thead><tr><th>Type</th><th>Powered?</th><th>Best for</th><th>Common models</th></tr></thead>
+<tbody>
+<tr><td><strong>Passive</strong></td><td>No</td><td>Hot sources — active basses, keyboards, line outputs</td><td>Radial ProDI, Radial JDI, Behringer DI400P</td></tr>
+<tr><td><strong>Active</strong></td><td>Phantom or battery</td><td>Weak sources — passive basses, acoustic guitar pickups</td><td>BSS AR-133, Klark Teknik DN100, Radial J48, Countryman Type 85</td></tr>
+<tr><td><strong>Stereo</strong></td><td>Either</td><td>Laptops, keyboards, playback</td><td>Radial ProD2, Behringer DI20</td></tr>
+<tr><td><strong>Media / AV DI</strong></td><td>Usually active</td><td>3.5 mm and RCA sources on corporate jobs</td><td>Radial ProAV2, Radial StageBug</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>Ground lift <em>off</em> by default; flip it <em>on</em> only if you have a hum. It's a fault-finding tool, not a setting. And check what the DI's "thru" socket is for — it passes the unbalanced signal on to the performer's amp so they can use their own rig as well as feeding your system.</p></div>
+</section>
+
+<section class="s" id="s3-10"><h3><span class="n">3.10</span> Cable care — coiling, labelling, storage</h3>
+<p>You already do a lot of this, so this is mostly the <em>why</em>.</p>
+<h4>Over-under coiling</h4>
+<p>The correct way to coil any cable: alternate loops, one twisted one way and the next the other. The cable stores with no net twist and pays out flat with a straight pull. The wrong way — winding it all the same direction round your elbow — builds a twist into the cable every single coil, which over months breaks the conductors inside and turns a good cable into an intermittent one.</p>
+<div class="note std"><span class="lab">Standard</span><p>Over-under, every time, and coil in the cable's natural loop size. Tie with the cable's own velcro or a proper cable tie — never a knot in the cable itself, and never a tight zip tie which crushes the jacket.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>Some people figure-of-eight long runs instead, and some theatre departments coil onto drums for permanent installs. Both are fine. What's <em>not</em> fine is elbow-winding, and you'll see people do it constantly.</p></div>
+<h4>Other habits</h4>
+<ul>
+<li><strong>Pull from the connector's cable, never the connector.</strong> The strain relief exists but it's not infinite.</li>
+<li><strong>Never pull a cable round a sharp corner under tension.</strong></li>
+<li><strong>Label both ends</strong> if it's part of a system. Numbered heatshrink or a wrap of LTC (paper tape) with a Sharpie.</li>
+<li><strong>Don't run cable over doorways at head height</strong>, don't tape it across fire exits, and get it out of walkways or under a ramp.</li>
+<li><strong>Store coiled and hung</strong>, not in a heap in the bottom of a case where the weight crushes the ones underneath.</li>
+</ul>
+</section>
+
+<section class="s" id="s3-11"><h3><span class="n">3.11</span> How cables actually fail</h3>
+<div class="tw"><table>
+<thead><tr><th>Symptom</th><th>Likely cause</th><th>Test</th></tr></thead>
+<tbody>
+<tr><td>Dead silent</td><td>Broken conductor, usually at the connector</td><td>Cable tester, or swap</td></tr>
+<tr><td>Intermittent — cuts in and out</td><td>Cracked solder joint or fatigued conductor at the strain relief</td><td>Wiggle test at each end while it's live</td></tr>
+<tr><td>Quiet and hummy</td><td>One leg down — pin 2 or 3 broken, so the balance is gone</td><td>Cable tester will show it; ear will suspect it</td></tr>
+<tr><td>Buzz that changes when you touch it</td><td>Broken screen (pin 1)</td><td>Cable tester</td></tr>
+<tr><td>Crackling when moved</td><td>Dirty or loose contacts</td><td>Contact cleaner, or bin it</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>A cable tester (Behringer CT100, Rolls, Whirlwind Tester) is cheap and pays for itself in one avoided show. But the <strong>wiggle test</strong> catches things a static tester misses — plug it in, pass signal, and flex the cable hard at both connectors. Intermittents live in that last 50 mm.</p></div>
+</section>
+
+<section class="s" id="s3-12"><h3><span class="n">3.12</span> NL4 &amp; NLT4 speaker cables — the full picture</h3>
+<p>On the shelf, "an NL4" and "an NLT4" usually mean the same thing: a <strong>four-pole speakON speaker cable</strong>. The letters are Neutrik part numbers for the connector on the end, and once you can read them you know what a cable will and won't do before you've uncoiled it.</p>
+<h4>Reading the part numbers</h4>
+<div class="tw"><table>
+<thead><tr><th>Part</th><th>What it is</th><th>Where you'll see it</th></tr></thead>
+<tbody>
+<tr><td class="mono">NL4MP / NL4MPR</td><td>Chassis socket — the square-flanged one fixed to a panel</td><td>Amp outputs, speaker input and link sockets</td></tr>
+<tr><td class="mono">NL4FX / NL4FC</td><td>Standard cable connector, plastic body. Plugs into a chassis socket</td><td>The end of most install and older hire cables</td></tr>
+<tr><td class="mono">NLT4FX / NLT4FXX-BAG</td><td>The <strong>STX</strong> heavy-duty, all-metal version of the same cable connector. Same four pins, same socket, tougher and higher-rated</td><td>Touring and rental stock — this is what "NLT4" on a label means</td></tr>
+<tr><td class="mono">NLT4MX / NLT4MXX</td><td>STX <em>male</em> cable connector. Lets one cable plug straight into another</td><td>Extension cables (NLT4 female one end, NLT4 male the other)</td></tr>
+<tr><td class="mono">NL4MMX</td><td>Inline coupler — joins two ordinary NL4FX cable ends</td><td>Fault kit, for lengthening a run</td></tr>
+<tr><td class="mono">NL2FX</td><td>Two-pole cable connector. Fits a four-pole socket but only connects pins 1+/1−</td><td>Older cables — and a classic trap</td></tr>
+</tbody></table></div>
+<h4>What the four poles carry</h4>
+<div class="tw"><table>
+<thead><tr><th>Pins</th><th>General use</th><th>On d&amp;b systems (see <a href="#s6-17">§6.17</a>)</th></tr></thead>
+<tbody>
+<tr><td class="mono">1+ / 1−</td><td>The first (or only) channel</td><td>Tops and full-range boxes · the LF in 2-way active · channel A or C</td></tr>
+<tr><td class="mono">2+ / 2−</td><td>A second channel, or a link through to the next box</td><td>Subs in Mix TOP/SUB · the HF in 2-way active · channel B or D</td></tr>
+</tbody></table></div>
+<p>So a four-core NL4 can carry <strong>two separate amp channels</strong> down one cable — which is exactly how a d&amp;b amp feeds a top and a sub, or the two halves of an actively driven box, from one connector. A two-core cable on NL4 ends carries only pins 1, and anything that needed pins 2 goes silent.</p>
+<h4>How to connect and release one</h4>
+<ol class="seq">
+<li><strong>Mute first.</strong> Mute the amp channel (or have it in standby) before you plug or unplug. Speaker level is real voltage and current — breaking it under load arcs across the contacts and pits them, and can pop a driver.</li>
+<li><strong>Line up the key</strong> — the connector only goes in one way. Push it fully home; don't force it.</li>
+<li><strong>Twist clockwise</strong> about a quarter turn until it latches with a click. If there was no click, it isn't locked.</li>
+<li><strong>Tug-test gently</strong> on the connector body, not the cable. A locked speakON doesn't move.</li>
+<li><strong>To release:</strong> pull back the latch (the sliding tab on the connector), twist anticlockwise, then pull the body straight out. Never yank the cable.</li>
+</ol>
+<h4>Checking and testing</h4>
+<ul>
+<li><strong>Look before every job:</strong> strain relief (the chuck at the back) tight, no copper or inner insulation showing, latch springs back, body not cracked, pins straight, nothing rattling inside.</li>
+<li><strong>Test, don't trust:</strong> put every speaker cable through a speakON-capable cable tester at prep. You want all four poles continuous end to end and <em>no</em> shorts between any of them — a short across a speaker line is a dead short on the amp.</li>
+<li><strong>With only a meter:</strong> each core end-to-end should read a fraction of an ohm on a normal-length cable; between any two different cores it should read open (no continuity).</li>
+<li><strong>Label by type, not just length:</strong> "4-core 2.5 mm² 20 m" tells the next person whether this cable will carry a sub on pins 2. Many companies colour-code 2-core vs 4-core — learn yours.</li>
+</ul>
+<dl class="kv">
+<dt>4 × 2.5 mm²</dt><dd>The everyday four-core speaker cable.</dd>
+<dt>4 × 4 mm²</dt><dd>For longer runs, where thin cable would lose level and control of the bass (the <a href="#calcCableLoss">cable loss estimator</a> shows when it starts to matter).</dd>
+<dt>8-core + NL8</dt><dd>Multicore runs to arrays — four channels on one cable, broken out to NL4s at the far end with a breakout box or fan.</dd>
+</dl>
+<div class="tw"><table>
+<thead><tr><th>Symptom</th><th>Likely cause</th><th>Test</th></tr></thead>
+<tbody>
+<tr><td>Box dead silent</td><td>Connector not latched, broken core, or a 2-core cable where pins 2 were needed</td><td>Re-seat and lock, then swap for a known-good 4-core</td></tr>
+<tr><td>Cuts in and out, crackles when moved</td><td>Connector a quarter-turn short of locked, worn contacts, conductor broken at the strain relief</td><td>Lock it; wiggle the cable at each end with low-level signal; swap</td></tr>
+<tr><td>Sub silent, top fine (or the reverse)</td><td>Cable only carries pins 1, or the box is on the wrong amp connector for the mode</td><td>Check the cable is 4-core and on the right output — <a href="#s6-19">§6.19</a></td></tr>
+<tr><td>Amp channel trips or protects as soon as signal arrives</td><td>Short circuit in cable or connector</td><td>Unplug the cable at the box; if the fault stays, it's the cable — quarantine it</td></tr>
+<tr><td>Contacts look burnt or blackened</td><td>Plugged or unplugged under load, or a loose connection running hot</td><td>Take it out of service (<a href="#s11-5">§11.5</a>)</td></tr>
+</tbody></table></div>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Don't re-terminate speakON on site</strong> unless you're trained, authorised and have the right parts. A wrongly wired NL4 — pins 1 and 2 swapped, or a core shorted — can send a sub feed into a top's HF section, or put a dead short across an amp channel. Swap in a known-good cable, label the bad one, and repair it properly back at base.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>Older German and touring stock sometimes uses <strong>EP5</strong> (or EP4/EP6) connectors instead of speakON, and some d&amp;b amps came in EP5 versions. They aren't interchangeable with NL4 without an adapter, and the pin numbering is different — check the amp's label before using one.</p></div>
+</section>
+
+<section class="s" id="s3-13"><h3><span class="n">3.13</span> Testing cables properly — step by step</h3>
+<ol class="seq">
+<li><strong>Look first:</strong> strain relief intact, no cuts or crush marks, pins straight, locking tabs work, label readable.</li>
+<li><strong>Cable tester:</strong> plug both ends in and step through every pin. Each pin should light only with its partner — not with any other pin, not with the shell. (On XLR: 1, 2, 3; on NL4: 1+, 1−, 2+, 2−.)</li>
+<li><strong>Wiggle test:</strong> while the tester is connected, flex the cable near each connector. A light that flickers is an intermittent fault — the most common kind.</li>
+<li><strong>Speaker cables:</strong> test all four poles of a 4-core NL4/NLT4, even if today's job only uses pins 1 — the next job may need pins 2 (§3.12).</li>
+<li><strong>Network cables:</strong> a network cable tester checks all 8 cores in order; a cable that passes a laptop link test can still fail at gigabit speed.</li>
+<li><strong>Multimeter</strong> (continuity mode) for anything the tester can't take — a beep means connected.</li>
+<li><strong>Fail?</strong> Tape it, label it with the fault, quarantine it (§11.5). Never coil a failed cable back into stock.</li>
+</ol>
+<div class="note std"><span class="lab">Standard</span><p>Test at prep, not on site. A cable that's been tested in the warehouse is a cable you don't have to think about at 6 pm.</p></div>
+</section>
+
+</div></div>

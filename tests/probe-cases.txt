@@ -1,0 +1,55 @@
+# Probe set: harder, in-depth questions the answer bank wasn't written for.
+# One per line:   [topic] question  =>  any of these | separated by |  !!  none of these | either
+# A reply is "good" when the bot's messages contain at least one wanted text and
+# none of the forbidden ones (case-insensitive). Chips don't count.
+# Run:  node tests/check-probes.js         (add --list to see every reply)
+[d&b] why would one top in my E8 pair sound quieter than the other => setup | level | driver !! workhorse of a lot of hire stock
+[d&b] how do I time align a front fill to the main PA => delay
+[d&b] what's the difference between arc and line setup on a Y8 => curved
+[d&b] how should I set CUT and HFA on E12 tops with E15X subs in a conference => high-pass | CUT
+[d&b] my D20 shows green signal but there's no sound from the box => muted | speakON | cable
+[d&b] how many E8 can I run off one D20 channel => per amp channel | per channel !! Want me to add
+[d&b] can I run a V-SUB in mix top/sub with a V7P => TOP/SUB | pins 2 !! Want me to add
+[d&b] explain LoadMatch and when to use it => cable
+[d&b] how do I take a System check reference => reference
+[d&b] should I use a 2-core or 4-core cable for an E8 => Dual Channel | pins 2 | pins 1 !! Want me to add
+[d&b] what does a red light on the D80 mean during the show => muted | overload !! long-standing touring standard
+[d&b] the amp keeps going into protect when the sub hits => short | load | too many | limit
+[d&b] difference between D40 and D90 for a festival => D90
+[d&b] what is ArrayProcessing and should I turn it on => ArrayCalc
+[d&b] my E15X-SUB sounds distorted at low volume => driver | rattle | distort
+[d&b] how do I ground stack Y-SUBs cardioid => cardioid
+[d&b] which setup do I choose for an E12 used as a wedge => setup list | plan | monitor !! workhorse of a lot of hire stock
+[d&b] the venue has an installed d&b system on 10D amps, can I plug my console in => install | venue | owner !! Look at the meters
+[d&b] what do I need to check in R1 before doors => R1
+[d&b] how do I set up a breakout room with a T10 and a QL1 => T10 | point source | breakout
+[d&b] what's the difference between dual channel and mix top/sub => Dual Channel
+[d&b] what does GR mean on a d&b amp => limiter
+[d&b] can a D20 drive M2 wedges => No
+[d&b] what is the d&b system check for => reference | impedance
+[system] how loud can I go in a hotel ballroom with a limiter set at 95 dB => limiter | noise limit | dB
+[system] the sub sounds boomy at the back of the room but weak at the front => room | mode | standing
+[system] what is power alley and how do I avoid it with two sub stacks => power alley
+[system] how do I explain to a client why the room is echoey => reverb | reflect
+[system] how do I set delay for a delay tower 40 m away => ms
+[system] what is comb filtering => comb
+[system] how do I check polarity without a polarity tester => polarity
+[system] what's a good level for speech at a conference => dB
+[desk] what's the best way to set gain on a DM7 for a lectern mic => gain
+[desk] lectern mic feeding back around 2.5k how do I fix it => feedback | notch | ring
+[desk] presenter sounds muffled through the PA => muffled | position | EQ | lectern
+[desk] how do I connect the client's laptop to the DM7 without hum => DI | ground | isolat
+[desk] dante clock errors on the DM7 => clock
+[desk] how do I make a show file template for corporate events => show file
+[desk] how do I stop projector fan noise getting into the lectern mic => high-pass | HPF | gate | position
+[rf] the CEO's headset mic keeps cutting out => battery | antenna | RF | dropout
+[rf] what licence do I need for 8 radio mics in London => Ofcom
+[rf] how far apart should my two diversity antennas be => wavelength | apart | spacing
+[rf] why is my wireless mic picking up interference from the LED wall => interference | scan | frequenc
+[safety] what should go in a RAMS for a small conference => risk
+[safety] what do I do if an RCD trips mid show => RCD
+[safety] how do I safely run cables across a fire exit => exit
+[career] how do I become a system tech => skill | Pathway | technician !! Which part of the d&b setup
+[career] how do I hand over the system to the engineer => hand
+[basics] difference between dBu and dBV and why it matters for a laptop input => dBV
+[basics] how do I know if a speakON is locked => click
