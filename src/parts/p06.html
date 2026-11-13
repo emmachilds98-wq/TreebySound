@@ -271,8 +271,8 @@
 <tbody>
 <tr><td><strong>Green — ISP / OSP</strong></td><td>Input Signal Present (and, on touchscreen amps, Output Signal Present in brighter green). Signal is reaching the channel.</td><td>No green with the source playing → the problem is upstream of the amp, or in its input routing.</td></tr>
 <tr><td><strong>Yellow — GR</strong></td><td>Gain Reduction: the channel's limiter is working (more than about 3 dB). Not a fault — the box has reached its limits.</td><td>Ease off at the console. If it lights at modest level, check the setup is right for the box.</td></tr>
-<tr><td><strong>Red — OVL / mute</strong></td><td>On D6/D12, overload: input too hot or heavy limiting. On the touchscreen amps the channel strip also shows red when a channel is muted. The screen says which.</td><td>Reduce the input level, or find out who muted it and why before you unmute.</td></tr>
-<tr><td><strong>Error / warning text</strong></td><td>Over-temperature, mains, output or hardware faults, reported on the screen and in R1.</td><td>Write the exact text down, tell the system owner. Don't keep power-cycling it.</td></tr>
+<tr><td><strong>Red — OVL</strong></td><td>Overload. On the D20 and D80: a signal in the channel above –2 dBFS, a limiter pulling 12 dB or more, or the output being limited to stop peak-current overload. A muted channel shows on its mute button instead, and a channel fault puts an exclamation mark there with the message on the channel view.</td><td>Reduce the input level. For a mute, find out who muted it and why before you unmute.</td></tr>
+<tr><td><strong>Error / warning text</strong></td><td>Over-temperature, mains, output or hardware faults, reported on the screen and in R1. Every message and what to do: <a href="#s6-24">§6.24</a>.</td><td>Write the exact text down, tell the system owner. Don't keep power-cycling it.</td></tr>
 </tbody></table></div>
 <h4>The channel settings you'll see</h4>
 <p>On each channel: <strong>setup</strong> (the box), <strong>level</strong>, <strong>delay</strong>, <strong>mute</strong>, user EQ, and a handful of switchable functions that depend on the box — for example <strong>CUT</strong> (a high-pass that takes the low end out of a top when it's running with subs), <strong>HFA</strong> (gentle high-frequency roll-off for nearby listeners), <strong>CPL</strong> (compensates for boxes coupling together at low frequencies) and cardioid or <strong>INFRA</strong> options on some subs. Which ones are switched on is a design decision: copy them from the plan, don't improvise.</p>
@@ -433,6 +433,64 @@
 <div class="note warn"><span class="lab">Watch it</span><p><strong>Self-powered means mains up the stack.</strong> Every Meyer box has its own power supply, so power distribution to a hang or a sub stack is part of the system — planned by the power tech and the system tech, with loop-through limits respected. Don't add boxes to a power loop, and don't unplug mains to a box that's running.</p></div>
 <div class="note std"><span class="lab">Standard</span><p>As with d&amp;b: the optimisation (DISPLAY on Martin Audio, GALAXY settings on Meyer) is the system tech's design — don't "tweak it to see". Your checks are the same: every box powered and passing signal, no faults in VU-NET or Nebra, one box at a time at low level.</p></div>
 <div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Martin Audio DISPLAY 3 release (Sept 2026) and Wavefront Precision user guides; Meyer Sound operating instructions for PANTHER and LEOPARD and Nebra documentation. Model ranges change — check what the hire stock actually holds.</p></div>
+</section>
+
+<section class="s" id="s6-24"><h3><span class="n">6.24</span> d&amp;b boxes per amp channel and amp messages — from the manuals</h3>
+<p>Two things you'll be asked on a d&amp;b job: <em>how many of these can go on one channel?</em> and <em>what does that message on the amp mean?</em> Both answers below come from d&amp;b's own manuals. The plan (ArrayCalc) and the amp's own setup list still have the final word.</p>
+<h4>How many boxes on one amp channel</h4>
+<p>The general rule from the D20 and D80 manuals goes by the box's nominal impedance, with a minimum of 4 Ω per channel: <strong>4 Ω → 1 box, 8 Ω → 2, 12 Ω → 3, 16 Ω → 4, 20 Ω → 5</strong>. A box's own manual can allow more on the bigger amps — the E8 is 12 Ω, but four can go on a D80 channel.</p>
+<div class="tw"><table class="db-perch">
+<thead><tr><th>Box</th><th>Setup</th><th>Boxes per channel</th><th>Notes</th></tr></thead>
+<tbody>
+<tr data-models="E4,E5"><td><strong>E4, E5</strong></td><td>E4 · E5</td><td>4</td><td>16 Ω. D80, D20, D12, D6, 10D, 30D.</td></tr>
+<tr data-models="E6"><td><strong>E6</strong></td><td>E6</td><td>5</td><td>20 Ω.</td></tr>
+<tr data-models="E8"><td><strong>E8</strong></td><td>E8</td><td>4 on D6, D12, D40, D80, 40D · <strong>3 on D20</strong>, 10D, 30D</td><td>12 Ω. Passive with an E12X-SUB on one channel: E8-X setup, one pair per channel.</td></tr>
+<tr data-models="E12,E12-D"><td><strong>E12, E12-D</strong></td><td>E12 · E12-D</td><td>2</td><td>8 Ω. D80, D20, D12, D6, 10D, 30D. Passive with an E15X-SUB on one channel: E12-X / E12-DX setup, one pair per channel.</td></tr>
+<tr data-models="E15X-SUB"><td><strong>E15X-SUB</strong></td><td>E15-SUB</td><td>2</td><td>8 Ω. D80, D20, D12, D6, 10D, 30D.</td></tr>
+<tr data-models="8S"><td><strong>8S</strong></td><td>8S</td><td>4 on 40D, D6, D12, D40, D80 · <strong>3 on D20</strong>, 10D, 30D</td><td>12 Ω.</td></tr>
+<tr data-models="10S,10S-D"><td><strong>10S, 10S-D</strong></td><td>10S/A · 10S/A-D</td><td>3</td><td>12 Ω. Installation amps (40D, 30D, 10D, 5D).</td></tr>
+<tr data-models="12S,12S-D"><td><strong>12S, 12S-D</strong></td><td>12S · 12S-D</td><td>2</td><td>8 Ω. 10D, 30D, D6, D12, D20, D80.</td></tr>
+<tr data-models="24S,24S-D"><td><strong>24S, 24S-D</strong></td><td>24S · 24S-D</td><td>1</td><td>4 Ω.</td></tr>
+<tr data-models="44S"><td><strong>44S</strong></td><td>44S</td><td>4</td><td>16 Ω.</td></tr>
+<tr data-models="T10"><td><strong>T10</strong></td><td>T10 Arc · T10 Line · T10 PS</td><td>4</td><td>16 Ω. D80, D40, D12, D20, D6.</td></tr>
+<tr data-models="T-SUB"><td><strong>T-SUB</strong></td><td>T-SUB</td><td>2</td><td>8 Ω.</td></tr>
+<tr data-models="Y7P,Y10P"><td><strong>Y7P, Y10P</strong></td><td>Y7P · Y10P</td><td>2</td><td>8 Ω. D80, D40, D12, D20, D6. (The manual's table lists the Y7P; the Y10P is also 8 Ω, which the amp rule makes 2.)</td></tr>
+<tr data-models="Y8,Y12"><td><strong>Y8, Y12</strong></td><td>Arc · Line</td><td>2</td><td>8 Ω. D80, D40, D12, D20, D6.</td></tr>
+<tr data-models="Y-SUB"><td><strong>Y-SUB</strong></td><td>Y-SUB</td><td>2</td><td>8 Ω.</td></tr>
+<tr data-models="B4-SUB"><td><strong>B4-SUB</strong></td><td>B4-SUB</td><td>2</td><td>6 Ω. D80, D20, D12, D6, 10D, 30D.</td></tr>
+<tr data-models="B6-SUB"><td><strong>B6-SUB</strong></td><td>B6-SUB · B6-INF (D80, D20, 30D)</td><td>2</td><td>8 Ω. D80, D20, D12, D6, 10D, 30D.</td></tr>
+<tr data-models="V7P,V10P"><td><strong>V7P, V10P</strong></td><td>V7P · V10P</td><td>2</td><td>8 Ω. D80, D40, D20, D12.</td></tr>
+<tr data-models="V8,V12"><td><strong>V8, V12</strong></td><td>Line · Arc · AP</td><td>2 (AP setup: 1)</td><td>8 Ω. D80, D40, D20, D12.</td></tr>
+<tr data-models="V-SUB"><td><strong>V-SUB</strong></td><td>V-SUB · V-SUB AP</td><td>2 (AP setup: 1)</td><td>8 Ω. On a D40 or 40D at full output, d&amp;b recommend <strong>one per channel</strong>; two only where less output is needed.</td></tr>
+<tr data-models="AL60,AL90"><td><strong>AL60, AL90</strong></td><td>PS · Out · In · AP</td><td>2 (AP setup: 1)</td><td>8 Ω.</td></tr>
+<tr data-models="CCL8,CCL12"><td><strong>CCL8, CCL12</strong></td><td>Line · Arc · AP</td><td>2 (AP setup: 1)</td><td>10 Ω. So up to eight boxes on a four-channel amp.</td></tr>
+<tr data-models="KSL8,KSL12"><td><strong>KSL8, KSL12</strong></td><td>Line · Arc · AP</td><td>2 per <strong>pair</strong> of channels (AP setup: 1)</td><td>Two channels drive each box: one for the front LF, one for the rest.</td></tr>
+<tr data-models="M4,M6"><td><strong>M4, M6</strong></td><td>M4 · M6</td><td>2 per channel passive · 2 per pair of channels active</td><td>8 Ω. Wedges.</td></tr>
+<tr data-models="MAX2"><td><strong>MAX2</strong></td><td>MAX2</td><td>2</td><td>8 Ω. D80, D40, D20, D12, D6, 10D, 30D, 40D.</td></tr>
+</tbody></table></div>
+<div class="note warn"><span class="lab">Watch it</span><p>More boxes than this on one channel and the amp limits hard or protects, and the sound changes. Two boxes on one channel also share one level, delay and EQ — the plan may give each box its own channel for a reason.</p></div>
+<h4>What the message on the amp means (D20, D80)</h4>
+<p>The display text, what d&amp;b say it means, and what to do. Anything not here: write the exact text down and tell the system owner.</p>
+<div class="tw"><table class="db-msgs">
+<thead><tr><th>On the screen</th><th>Means</th><th>What to do</th></tr></thead>
+<tbody>
+<tr data-match="temp warn|temperature warning|getting hot|running hot|amp hot|amp is hot|amps hot|too hot|hot amp"><td><strong>Amp. temp warn</strong></td><td>The amp is getting hot. Cause in the manual: poor cooling.</td><td>Open rack doors and the back of the rack, clear the vents, get it out of the sun, and ease the level. Tell the system owner. Act now — the next steps are over-temperature and a temperature mute.</td></tr>
+<tr data-match="overtemp|over temp|over temperature|overheat|over heat"><td><strong>Amp. overtemp</strong></td><td>Over temperature on a channel. Cause: poor cooling.</td><td>Same as a temperature warning, but urgent: airflow first, level down, tell the system owner. Don't power-cycle it to clear the message.</td></tr>
+<tr data-match="temp mute|temperature mute|muted because hot|temperature shutdown|thermal mute|thermal shutdown"><td><strong>Amp temp. mute</strong></td><td>The channel has muted itself to protect it from heat.</td><td>Sound stops on that channel until it cools. Fix the airflow, bring the level down, tell the system owner — on a show, decide with them whether to move the boxes to another channel.</td></tr>
+<tr data-match="low temperature|too cold|cold amp"><td><strong>Amp. low temperature</strong></td><td>The amp is below its working temperature (a cold outdoor morning), or a sensor fault.</td><td>Let it warm up powered on before you push it. If it persists in a warm room, tell the system owner.</td></tr>
+<tr data-match="amp protection|amp protect|protect mode|protection mode|goes into protect|going into protect|in protect"><td><strong>Amp. protection</strong></td><td>The channel has protected itself. Causes in the manual: the cabling or an amp defect.</td><td>Mute it, then check the speaker cable (a short or a crushed cable) by swapping it. Check the number of boxes on that channel against §6.24. If it follows the channel, not the cable or box, it's the amp.</td></tr>
+<tr data-match="imp fault|impedance fault|speaker imp|load monitoring|impedance error"><td><strong>Speaker imp. fault</strong></td><td>Load monitoring found the wrong impedance: a speaker or cable defect.</td><td>Cable first (locked? swap it), then the box. A missing box, a dead driver or a damaged cable all change the impedance.</td></tr>
+<tr data-match="overvoltage|over voltage|mains too high"><td><strong>Mains overvoltage</strong></td><td>The mains voltage is (or was) too high.</td><td>Tell the power tech or venue at once — don't keep running on a bad supply.</td></tr>
+<tr data-match="undervoltage|under voltage|mains too low|brown out|brownout"><td><strong>Mains undervoltage</strong></td><td>The mains voltage is (or was) too low.</td><td>Tell the power tech: an overloaded or long supply, a loose connection, or a generator problem.</td></tr>
+<tr data-match="smps|power supply temp"><td><strong>SMPS temp err</strong></td><td>The amp's internal power supply is too hot.</td><td>Treat as over-temperature: airflow, level, tell the system owner.</td></tr>
+<tr data-match="input monitoring|input monitor"><td><strong>Input monitoring fault</strong></td><td>An input monitored by the amp has dropped below its threshold: a cabling or source fault.</td><td>Check the input cable and that the source (console, processor, network) is sending.</td></tr>
+<tr data-match="input fallback|fallback"><td><strong>Input fallback</strong></td><td>The amp has switched to its fallback input because the main one was lost.</td><td>Sound continues from the backup — find out why the main input dropped (cable, Dante, console) before the show relies on it.</td></tr>
+<tr data-match="can error|can warning|canbus|can bus|dbcan|remote id"><td><strong>CAN error · CAN warning</strong></td><td>CAN remote network trouble: cabling, or two amps with the same Remote ID.</td><td>Check the CAN cable and terminations, and that every amp has a different ID (Wink in R1 finds which is which).</td></tr>
+<tr data-match="ethernet overload"><td><strong>Ethernet overload</strong></td><td>Too much traffic on the control network; the amp is throttling it.</td><td>Tell the system tech — usually a network set-up problem, not the amp.</td></tr>
+<tr data-match="system error|program error|comm\. error|comm error|supply fault|firmware mismatch|firmware is too old|invalid|dsp boot"><td><strong>System, program, communication, supply or firmware errors</strong></td><td>An internal fault in the amp (software or hardware).</td><td>Write the exact text and number down, take the amp out of service and swap it. Tell the system owner. Not something to fix on site.</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>Messages are also kept in the amp's event log and shown in R1, with the channel letter. Note the time and the channel — a temperature warning that comes back every evening at the same level is a rack-airflow problem, not bad luck.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>d&amp;b audiotechnik manuals from dbaudio.com: D20 Manual 1.9 (loudspeaker types, channel strip indicators, error messages), D80 Manual 1.14 (the same), and the loudspeaker manuals for E4/E5 1.4, E6 1.2, E8 2.4 (2025), E12/E12-D 2.2, E15X-SUB 2.2, 8S 1.5, 10S/10S-D 1.4, 12S/12S-D 1.4, 24S/24S-D 1.3, 44S 1.3, T10 1.1, T-SUB 1.2, Y7P/Y10P 1.3, Y8/Y12 1.3, Y-SUB 1.3, B4-SUB 1.2, B6-SUB 1.2, V7P/V10P 1.4, V8/V12 1.8, V-SUB 1.5, AL60/AL90 1.5, CCL8/CCL12 1.5, KSL8/KSL12 1.4, M4 2.4, M6 1.3, MAX2 1.2. Boxes not listed: see the box's manual or the d&amp;b product page.</p></div>
 </section>
 
 

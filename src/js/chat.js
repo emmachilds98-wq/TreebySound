@@ -370,6 +370,52 @@
     if(/^Practically any d&b amp/i.test(driven) && /^(D20|D25|D40|D90)$/.test(a)) return {ok:true, why:spk.row.range + ': ' + driven};
     return {ok:null, why:'I can\'t confirm that from the table. ' + spk.row.range + ' is driven by: ' + driven + ' Check whether the setup is in the ' + a + '\'s list (amp screen or R1).'};
   }
+  /* §6.24 tables, read from the page: boxes per amp channel and amp messages. */
+  function perChannel(spk, amp){
+    var keys = (spk.range ? spk.row.names : [spk.name]).map(function(k){ return k.toUpperCase(); });
+    var tr = null;
+    Array.prototype.some.call(document.querySelectorAll('table.db-perch tbody tr[data-models]'), function(row){
+      var names = row.getAttribute('data-models').toUpperCase().split(',');
+      if(keys.some(function(k){ return names.indexOf(k) > -1; })){ tr = row; return true; }
+      return false;
+    });
+    if(!tr) return null;
+    var td = tr.querySelectorAll('td'), count = cellText(td[2]), notes = cellText(td[3]);
+    var a = amp ? amp.name.toUpperCase() : '', lead = '';
+    if(a){
+      var part = count.split('·').filter(function(x){ return new RegExp('\\b' + a + '\\b').test(x); })[0];
+      var n = part ? /^\s*(\d+)/.exec(part) : (!/\bon\b/.test(count) ? /^\s*(\d+)/.exec(count) : null);
+      if(n){
+        var asked = /\b(\d+)\b/.exec(String(g.lastQ || '').replace(/\b(d|\d+d)\d*\b/gi, '').replace(/[a-z]+\d+[a-z-]*/gi, ''));
+        var verdict = asked && +asked[1] > 0 ? (+asked[1] <= +n[1] ? 'Yes — ' : 'No — ') : '';
+        lead = '<p><strong>' + verdict + n[1] + ' ' + esc(spk.name) + ' per channel on a ' + esc(a) + '.</strong></p>';
+      }
+    }
+    return {html: lead + '<p><strong>' + esc(cellText(td[0])) + '</strong> — boxes per amp channel: <strong>' + esc(count) + '</strong> (setup: ' + esc(cellText(td[1])) + ').</p>' + (notes ? '<p>' + esc(notes) + '</p>' : '') + '<p class="note-line">From d&amp;b\'s manual. The plan and the amp\'s setup list have the final word — too many on one channel and it limits hard or protects.</p>'};
+  }
+  var AMP_CONTEXT = /\b(amps?|amplifiers?|d6|d12|d20|d40|d80|d90|10d|30d|40d|r1|d&b)\b|imp\.? fault|temp\.? warn|temp\.? mute|overtemp|smps|input fallback|input monitoring|load monitoring|\bcan (error|warning)\b|ethernet overload/i;
+  var MSG_WORDS = /\b(says?|saying|shows?|showing|message|warning|warn|error|fault|screen|display|reads|flashing|mean|means|meaning)\b|imp\.? fault|temp\.? mute|overtemp|smps|input fallback|ethernet overload/i;
+  function msgRows(){
+    return Array.prototype.map.call(document.querySelectorAll('table.db-msgs tbody tr[data-match]'), function(tr){
+      return {re: new RegExp('\\b(' + tr.getAttribute('data-match') + ')', 'i'), td: tr.querySelectorAll('td')};
+    });
+  }
+  function msgAnswer(text){
+    var t = norm(text);
+    if(!AMP_CONTEXT.test(text) && !AMP_CONTEXT.test(t)) return false;
+    /* only when it's about what the amp shows; "keeps going into protect" as a
+       symptom is better served by the answers and fault routes */
+    if(!MSG_WORDS.test(text)) return false;
+    var hits = msgRows().filter(function(r){ return r.re.test(text) || r.re.test(t); });
+    if(!hits.length) return false;
+    var h = hits.slice(0, 2).map(function(r){
+      return '<p><strong>' + esc(cellText(r.td[0])) + '</strong> — ' + esc(cellText(r.td[1])) + '</p><p>' + esc(cellText(r.td[2])) + '</p>';
+    }).join('');
+    var m = addMsg('bot', h + '<p class="note-line">From the d&amp;b D20/D80 manuals. Write down the exact text and channel, and tell the system owner.</p>');
+    addLinks(m, [['#s6-24','6.24 Amp messages'], ['#s6-19','6.19 d&amp;b fault-finding']]);
+    g.lastAnswer = {see: ['s6-24']};
+    return true;
+  }
   var COMPAT_Q = /\b(can|could|will|does|do|would)\b[^?]*\b(run|drive|power|work|handle|use|support|take)|\bcompatib|\bon an? (d\d|\d+d)\b|\bwith an? (d\d|\d+d)\b/i;
   var WHICH_AMP_Q = /\b(what|which)\b[^?]*\bamps?\b|\bdriven by\b|\bwhat drives\b|\bamp (does|do) (it|they|that|these|this)\b|\bwhat amp\b/i;
   var COMPARE_Q = /\b(vs\.?|versus|compare|comparison|difference|differ|better|or)\b/i;
@@ -406,8 +452,9 @@
     var links = [['#s6-20','6.20 d&amp;b models']];
 
     if(PER_CHANNEL_Q.test(t) && spks.length){
-      var mm = addMsg('bot', '<p>The maximum number of ' + esc(spks[0].name) + ' per amp channel is in its manual, and ArrayCalc won\'t let a plan exceed it — it can differ from amp to amp. Too many on one channel and it limits hard or protects.</p>' + (/^CCL/i.test(speakerKey(spks[0])) ? '<p>For CCL, d&amp;b quote up to eight boxes per amp.</p>' : '') + '<p>Go by the plan; if it isn\'t to hand, ask.</p>');
-      addLinks(mm, links);
+      var pc = perChannel(spks[0], amps[0]);
+      var mm = addMsg('bot', pc ? pc.html : '<p>The maximum number of ' + esc(spks[0].name) + ' per amp channel is in its manual, and ArrayCalc won\'t let a plan exceed it. As a rule (D20 and D80 manuals), it goes by the box\'s impedance: 4 Ω → 1, 8 Ω → 2, 12 Ω → 3, 16 Ω → 4 per channel. Too many on one channel and it limits hard or protects.</p><p>Go by the plan; if it isn\'t to hand, ask.</p>');
+      addLinks(mm, [['#s6-24','6.24 Boxes per channel']].concat(links));
       modelChips(spks[0], amps[0]);
       return true;
     }
@@ -1541,6 +1588,7 @@
   function guidedText(text){
     if(/^(tell me more|more|go on|more detail|more please|explain more|why\??|and\??)$/i.test(text.trim()) && g.lastAnswer && g.lastAnswer.see[0] && SECTION_LINK.test('#' + g.lastAnswer.see[0])){ peek(g.lastAnswer.see[0]); return; }
     if(calcAnswer(text)) return;
+    if(msgAnswer(text)) return;
     if(MISSED_Q.test(text)){ showMissed(); return; }
     if(TEST_Q.test(text)){ startTest(); return; }
     if(KIT_Q.test(text) && !findModels(text).some(function(e){ return !inKit(e); })){ kitCheck(); return; }
