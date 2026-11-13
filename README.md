@@ -27,7 +27,7 @@ hours (`saveSoon()` / `restoreLog()`). In order, it tries:
 3. **d&b model questions** — answered from the tables in §6.20 (`buildModels()`), so the book and the chat never disagree.
 4. **The answer bank** — `var ANSWERS = [` — direct written answers to common questions.
 5. **Guided routes** — `var FLOWS = [` — step-by-step fault-finding and set-up conversations.
-6. **The book** — glossary (§20.1) and a ranked search of every section (`searchBook()`, BM25).
+6. **The book** — glossary (§20.1) and a ranked search of every section (`searchBook()`, BM25). Two- and three-letter abbreviations (TX, LX) only match the glossary in short questions.
 
 Typos, synonyms ("cab" → speaker) and word endings are handled the same way
 everywhere (`SYNONYMS`, `norm()`, `terms()`, `stem()`). Links to sections from the
@@ -55,6 +55,8 @@ here"). Several phrasings make it easier to match.
 node format), and add its id to `FIX_STARTERS`, `ADV_STARTERS` or
 `SETUP_STARTERS` if it should appear as a starter button.
 
+**A glossary term** — add `<div><dt>Term</dt><dd>Meaning. <a href="#s6-24">§6.24</a></dd></div>` in alphabetical order in §20.1. §20.2 picks it up from its first link. If it's an abbreviation, add `data-abbr="cue|input|rf|power|net|measure|db|work"` to the `<div>` and it appears in §20.3 too. Avoid a bare common word in brackets in the term ("Book (the)") — every part of the name becomes something the chat matches on.
+
 ## Checking a change
 
 There's no CI. Before merging, run the chat test set — real questions, each
@@ -72,7 +74,7 @@ sections, checklists without a reset link):
 node tests/check-content.js
 ```
 
-Every way each written answer can be asked (about 1,250 phrasings) — how many get exactly that answer; `--list` shows the misses:
+Every way each written answer can be asked (about 1,450 phrasings) — how many get exactly that answer; `--list` shows the misses:
 
 ```bash
 node tests/check-answers.js
