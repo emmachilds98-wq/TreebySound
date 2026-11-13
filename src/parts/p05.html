@@ -1,0 +1,169 @@
+<div class="part" id="p5">
+<div class="part-head"><div class="col"><span class="part-num">PART 5</span><div><h2>Wireless &amp; RF</h2><p>Its own discipline, its own vocabulary, and the thing most likely to make you look bad in front of an audience.</p></div></div></div>
+<div class="col">
+
+<section class="s" id="s5-1"><h3><span class="n">5.1</span> Why RF gets its own part</h3>
+<p>Everything else in this book is a chain you can trace with your hands. RF is invisible, shared with everyone else in the building and the surrounding area, legally regulated, and fails in ways that are hard to diagnose while a presenter is mid-sentence. It's also the area where a bit of knowledge makes you disproportionately valuable — a lot of technicians never get past "put a battery in it and hope".</p>
+<p>The good news: 90% of RF reliability comes from about six habits, and they're all in <a href="#s5-9">§5.9</a>.</p>
+</section>
+
+<section class="s" id="s5-2"><h3><span class="n">5.2</span> Systems you'll meet</h3>
+<div class="tw"><table>
+<thead><tr><th>Family</th><th>Tier</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><strong>Shure BLX / SLX-D</strong></td><td>Entry / mid</td><td>SLX-D is digital, solid, very common in corporate hire stock.</td></tr>
+<tr><td><strong>Shure QLX-D</strong></td><td>Mid</td><td>Digital, encryptable, good spectral efficiency. Workhorse.</td></tr>
+<tr><td><strong>Shure ULX-D</strong></td><td>Upper mid</td><td>High channel density, excellent audio. Very widely hired.</td></tr>
+<tr><td><strong>Shure Axient Digital</strong></td><td>Top</td><td>Touring/broadcast. Frequency diversity, remote control, interference detection.</td></tr>
+<tr><td><strong>Sennheiser EW 100 G4 / EW-D</strong></td><td>Entry / mid</td><td>G4 is analogue and everywhere. EW-D is the digital replacement.</td></tr>
+<tr><td><strong>Sennheiser EW-DX</strong></td><td>Mid / upper</td><td>Current digital workhorse range.</td></tr>
+<tr><td><strong>Sennheiser 6000 / Digital 6000</strong></td><td>Top</td><td>Theatre and broadcast standard.</td></tr>
+<tr><td><strong>Sony DWX</strong></td><td>Top</td><td>Broadcast favourite, very low latency.</td></tr>
+<tr><td><strong>Audio-Technica 3000/5000</strong></td><td>Mid / upper</td><td>Good value, less common in UK hire.</td></tr>
+</tbody></table></div>
+<p>Regardless of brand, a system is: a <strong>transmitter</strong> (handheld, bodypack, or plug-on), a <strong>receiver</strong>, and <strong>antennas</strong>. Everything else is refinement.</p>
+<dl class="kv">
+<dt>Handheld</dt><dd>Mic and transmitter in one. Capsules are often interchangeable — a Shure handheld body can take an SM58, Beta 58, KSM9 head. Check what capsule is fitted at prep; clients specify it.</dd>
+<dt>Bodypack</dt><dd>Belt pack feeding a lav, headset, or instrument cable. Connector type is brand-specific and a classic prep trap.</dd>
+<dt>Plug-on</dt><dd>Transmitter that clips onto the back of a normal XLR mic. Turns any wired mic wireless. Great for roving reporter mics and awkward positions; many supply phantom.</dd>
+</dl>
+</section>
+
+<section class="s" id="s5-3"><h3><span class="n">5.3</span> Antennas</h3>
+<div class="tw"><table>
+<thead><tr><th>Type</th><th>Pattern</th><th>Use</th></tr></thead>
+<tbody>
+<tr><td><strong>1/2-wave whip</strong></td><td>Omnidirectional</td><td>The rubber aerial on the back of the receiver. Fine for short distances in the same room.</td></tr>
+<tr><td><strong>Paddle / LPDA</strong></td><td>Directional, ~90°</td><td>The flat triangular ones. More gain in one direction, rejects interference from behind. The standard upgrade.</td></tr>
+<tr><td><strong>Helical</strong></td><td>Directional, circular polarisation</td><td>Less sensitive to transmitter orientation. Good where performers move and tumble.</td></tr>
+<tr><td><strong>Active antenna</strong></td><td>Any</td><td>Has an amplifier built in to overcome cable loss on long runs.</td></tr>
+</tbody></table></div>
+<h4>Diversity</h4>
+<p>Almost all professional receivers are <strong>true diversity</strong>: two antennas, two receiver sections, and the unit continuously picks whichever is getting the better signal. This defeats "dropouts" caused by multipath — the same signal arriving via two paths and cancelling itself at one point in space. Two antennas, spaced apart, are very unlikely to both be in a null at once.</p>
+<div class="note std"><span class="lab">Standard</span><p>Space diversity antennas roughly a wavelength apart (about 0.5 m at UHF) — or more — and angle them outwards at about 45° from each other. Get them <strong>above head height</strong> and with line of sight to the performers. Bodies are mostly water and water absorbs UHF; an antenna behind a crowd is an antenna in a swamp.</p></div>
+<div class="note warn"><span class="lab">Watch it</span><p>Coax loses signal, and thin coax loses a lot. A long run of cheap RG-58 to a paddle can lose more than the paddle gains, making things <em>worse</em>. Use proper low-loss coax for long runs, keep runs as short as you can, and use an active antenna or in-line amplifier if you genuinely need distance.</p></div>
+<h4>Antenna distribution</h4>
+<p>Running more than about four receivers? Don't give each one its own pair of whips — they interfere with each other and it's a forest of aerials. Use an <strong>antenna distro</strong>: one pair of good antennas feeds a splitter which feeds all the receivers, and it usually passes DC to power active antennas and daisy-chains power to the receivers too. Cleaner, more reliable, less cable.</p>
+</section>
+
+<section class="s" id="s5-4"><h3><span class="n">5.4</span> UK spectrum — the legal bit</h3>
+<div class="note warn"><span class="lab">Watch it</span><p>Spectrum rules genuinely change — bands get sold off, boundaries shift, and what was legal five years ago may not be now. <strong>Check the current Ofcom PMSE position before you rely on anything in this section</strong>, and check the rules for the country you're in if you travel. Kit bought abroad may be illegal to transmit on here. Ofcom periodically runs a <strong>Sector Spectrum Review</strong> consultation covering PMSE alongside other spectrum users — these consultations are exactly the kind of thing that quietly reshapes which bands wireless mics and IEMs can legally use a few years out, so it's worth a search for the current one every so often rather than assuming today's bands are permanent.</p></div>
+<div class="tw"><table>
+<thead><tr><th class="mono">Band</th><th>Status in the UK</th><th>Practical meaning</th></tr></thead>
+<tbody>
+<tr><td class="mono">Channel 38<br>606.5–613.5 MHz</td><td>Licensed — UK-wide shared access</td><td>Common everyday hire-stock band. It is shared and non-protected, so a scan and a retune plan still matter.</td></tr>
+<tr><td class="mono">470–694 MHz</td><td>Licensed, coordinated per site/date where available</td><td>Used where channel count, venue and local spectrum conditions justify coordinated assignments. Do not assume a frequency is available just because a receiver tunes to it.</td></tr>
+<tr><td class="mono">Channel 70<br>863–865 MHz</td><td>Licence-exempt</td><td>Free to use, no paperwork — but tiny (2 MHz), crowded, and shared with consumer gear. Fine for a couple of channels, hopeless for a show.</td></tr>
+<tr><td class="mono">821.5–832 MHz<br>1785–1805 MHz</td><td>Being made licence-exempt — Ofcom has decided this and expects to bring it in during 2026. <strong>Until Ofcom confirms it is in force, treat these as licensed.</strong></td><td>Useful extra options on compliant systems once exempt, but still not “set and forget”: check the exact equipment, interface requirements and local RF situation.</td></tr>
+<tr><td class="mono">2.4 GHz</td><td>Licence-exempt</td><td>Shares with every WiFi network and Bluetooth device on the planet. Convenient, unpredictable in a crowd.</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>The realistic professional position: the company or RF lead owns the licence and coordination decision. For routine shared-band work, confirm which frequencies are authorised; for high channel counts or busy sites, use coordinated assignments. If hired equipment is supplied under someone else’s UK Wireless Microphone Licence, make sure the required written permit is in the job pack. If you're unsure, <strong>ask before the day</strong> — not on site.</p></div>
+<div class="note alt"><span class="lab">Current check</span><p>UK PMSE spectrum has been actively changing. These bands were re-checked against Ofcom's published guidance in November 2026, when the exemption for 821.5–832 MHz and 1785–1805 MHz was still described as expected during 2026 rather than in force; always use the current <a href="https://www.ofcom.org.uk/spectrum/radio-equipment/pmse" target="_blank" rel="noopener">Ofcom PMSE guidance</a> for the exact job, equipment and date.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>Ofcom's PMSE pages explain licence types and how to apply. If RF interests you, this is a specialism worth chasing — RF techs are in demand and it's a genuinely skilled niche. See <a href="#s18-5">§18.5</a>.</p></div>
+</section>
+
+<section class="s" id="s5-5"><h3><span class="n">5.5</span> Coordination &amp; intermodulation</h3>
+<p>You can't just pick frequencies at random. Two transmitters don't only occupy their own frequencies — they mix together in the front end of receivers and produce <strong>intermodulation products</strong> at predictable mathematical relationships (the classic being 2×f1 − f2). Those products can land squarely on a third channel you're using, and that channel will be noisy or drop out even though nothing is obviously "on" its frequency.</p>
+<p>This is why manufacturers supply <strong>coordination groups</strong> — pre-calculated sets of frequencies that are intermod-clean with each other. Use them.</p>
+<ol class="seq">
+<li><strong>Scan</strong> the spectrum on site to find what's already in use — TV transmissions, other companies' kit, the venue's own systems.</li>
+<li><strong>Coordinate</strong> — pick a clean group, either using the receiver's built-in group/channel scheme or software.</li>
+<li><strong>Deploy</strong> the frequencies to the transmitters, usually by IR sync from the receiver.</li>
+<li><strong>Document</strong> what's on what. Write it down. You will need it.</li>
+</ol>
+<div class="note std"><span class="lab">Standard</span><p>Always scan <strong>on site, on the day, with the venue's own systems and the other departments' kit switched on.</strong> A scan done in an empty hall at 8am is a different spectrum from the one you'll have at 8pm. On multi-company events there is usually a designated RF coordinator — find them and get your frequencies from them rather than grabbing your own.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>Shure <strong>Wireless Workbench</strong> and Sennheiser <strong>WSM</strong> are both free and both do proper coordination and monitoring. Learning one of them is a big, visible step up in capability. Links in <a href="#s18-5">§18.5</a>.</p></div>
+</section>
+
+<section class="s" id="s5-6"><h3><span class="n">5.6</span> Batteries</h3>
+<p>The most common cause of a wireless failure is a flat battery, and it's completely preventable.</p>
+<ul>
+<li><strong>Fresh batteries for every show</strong>, not every day, not "it looked fine". <span class="chip std">Standard</span></li>
+<li>Good alkalines (Duracell Procell, Energizer Industrial) if you're on disposables. Cheap alkalines have wildly variable capacity and dump their voltage suddenly.</li>
+<li><strong>Never use zinc-carbon</strong> and be careful with generic rechargeable NiMH in analogue systems — their lower nominal voltage (1.2 V vs 1.5 V) means the receiver's battery meter reads wrong and you get much less warning.</li>
+<li>Proper rechargeable systems (Shure SB900 series, Sennheiser BA series) report accurate remaining time in <em>hours and minutes</em> and are far better. If your company has them, use them and learn the charging discipline.</li>
+<li><strong>Battery contacts</strong> get corroded and bent. Clean them; check the pack door closes firmly. A pack that cuts out when the performer moves is often a mechanical contact problem, not RF.</li>
+</ul>
+<div class="note std"><span class="lab">Standard</span><p>Build a battery routine: new cells go in at a fixed point (e.g. at the top of soundcheck), used-but-good cells go in a separate labelled box for rehearsals and testing, and dead ones go straight in the recycling tub. Never let used and fresh mix in the same bag — that's how a "fresh" battery dies in Act Two.</p></div>
+</section>
+
+<section class="s" id="s5-7"><h3><span class="n">5.7</span> In-ear monitors (IEMs)</h3>
+<p>Same RF principles, opposite direction: the transmitter is in the rack and the receiver is on the performer.</p>
+<dl class="kv">
+<dt>Common systems</dt><dd>Shure PSM 300 / PSM 900 / PSM 1000, Sennheiser EW IEM G4 and 2000 series, Lectrosonics.</dd>
+<dt>Mono vs stereo</dt><dd>Most systems can run true stereo, or "MixMode" where one ear is the band and the other is vocals, blended with the pack's balance control.</dd>
+<dt>Combiner</dt><dd>Multiple IEM transmitters into one antenna. Essential above two or three channels — otherwise the transmitters desensitise each other.</dd>
+<dt>Moulds vs universals</dt><dd>Custom-moulded earpieces isolate far better and sound better. Generic tips are what you'll hire out. Hygiene matters — new tips per user.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p>Keep <strong>IEM transmit antennas physically separated from mic receive antennas</strong> — different ends of the stage if you can, and at minimum a couple of metres apart. A transmitter next to a receiver's antenna will swamp its front end. This is the single most common cause of "the radio mics were fine until we added in-ears".</p></div>
+<div class="note warn"><span class="lab">Watch it</span><p>IEMs sit directly in someone's ear canal. A feedback squeal, a dropped mic, or a mis-patch at full level can cause real hearing injury. Build the habit of <strong>bringing IEM levels up from zero</strong>, always limiting the IEM outputs, and never soloing something into a live IEM mix.</p></div>
+</section>
+
+<section class="s" id="s5-8"><h3><span class="n">5.8</span> Setting up and proving a wireless system</h3>
+<ol class="seq">
+<li><strong>Position antennas first</strong> — line of sight, above head height, away from metal, away from LED walls and lighting racks (both are RF-noisy).</li>
+<li><strong>Power up receivers only</strong>, all transmitters off, and <strong>scan</strong>. This shows you the noise floor and anything already occupying the band.</li>
+<li><strong>Assign frequencies</strong> from a clean coordinated group.</li>
+<li><strong>Sync each transmitter</strong> to its receiver (usually IR). Label the transmitter with the channel name — gaffa and a Sharpie, or proper channel tape.</li>
+<li><strong>Set transmitter gain</strong> so that the loudest expected input peaks near but not into the transmitter's limiter. This is set <em>on the pack</em>, and getting it wrong here cannot be fixed at the desk — too low is noisy, too high is distorted.</li>
+<li><strong>Check RF and AF meters</strong> on the receiver. Strong steady RF, healthy audio.</li>
+<li><strong>Walk test.</strong> Walk the entire performance area — stage, wings, backstage route, into the crowd if they go there — talking into the mic while someone watches the meters and listens. Find the dead spots before the show does.</li>
+<li><strong>Set squelch</strong> as low as reliably possible. Too high and you get dropouts on weak signal; too low and you get noise bursts when the transmitter is off.</li>
+<li><strong>Document</strong> the frequencies, the pack assignments and the gain settings.</li>
+</ol>
+<div class="note std"><span class="lab">Standard</span><p>Do the walk test with the <strong>show conditions in place</strong> as far as possible — audience is the thing you can't replicate, so bias your margin generously. A system that's marginal in an empty room will fail in a full one.</p></div>
+</section>
+
+<section class="s" id="s5-9"><h3><span class="n">5.9</span> Diagnosing RF problems</h3>
+<div class="tw"><table>
+<thead><tr><th>Symptom</th><th>Most likely cause</th><th>Check</th></tr></thead>
+<tbody>
+<tr><td>Dropouts in one specific spot</td><td>Multipath null</td><td>Move/re-angle antennas; check diversity is working</td></tr>
+<tr><td>Dropouts everywhere, worsening with distance</td><td>Weak signal — antenna placement or cable loss</td><td>Antenna line of sight, coax length/quality, active antenna</td></tr>
+<tr><td>Sudden total loss</td><td>Battery, or transmitter muted/switched off</td><td>Battery, mute switch, pack door</td></tr>
+<tr><td>Noise bursts / hiss</td><td>Squelch too low, or interference</td><td>Rescan, raise squelch slightly, find the interferer</td></tr>
+<tr><td>Distorted audio, RF meter strong</td><td>Transmitter gain too high</td><td>Turn down gain <em>on the pack</em></td></tr>
+<tr><td>Thin/noisy audio, RF strong</td><td>Transmitter gain too low</td><td>Turn up gain on the pack</td></tr>
+<tr><td>Worked at 10am, fails at 7pm</td><td>Spectrum changed — other users arrived</td><td>Rescan and recoordinate</td></tr>
+<tr><td>Crackle when performer moves</td><td>Mic cable or connector at the pack</td><td>Wiggle the capsule cable; swap the mic element</td></tr>
+<tr><td>Started when IEMs went in</td><td>Transmit antenna too close to receive antenna</td><td>Separate them — see <a href="#s5-7">§5.7</a></td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>Carry spares as a matter of course: a spare pack, a spare capsule, a spare lav, and a wired handheld with a long cable. The wired mic is the ultimate fallback — when RF has genuinely failed mid-show, a 20 m XLR and an SM58 saves the day and nobody in the audience knows anything happened.</p></div>
+</section>
+
+<section class="s" id="s5-10"><h3><span class="n">5.10</span> RF exposure &amp; EMF safety</h3>
+<p>Genuinely low on the list of things to worry about day to day, but worth actually knowing about rather than never hearing of it until someone asks you a question you can't answer. In the UK, the <strong>Control of Electromagnetic Fields at Work Regulations 2016</strong> require employers to assess workplace exposure to electromagnetic fields — including RF — against exposure limits based on international (ICNIRP) guidance, and to control it where a real risk exists.</p>
+<div class="note std"><span class="lab">Standard</span><p>At the power levels and distances you'll actually work with — a handheld transmitter a performer is holding, a bodypack against their skin, a wedge-mounted receive antenna — this is not a realistic hazard. The situation actually worth knowing about is <strong>higher-power multi-channel IEM transmit combiners and antenna racks</strong>, where several transmitters' output is combined into one feed at meaningfully higher total power. Manufacturers of that class of kit publish a minimum safe working distance from the transmit antenna for exactly this reason — check the manual for anything you're not personally familiar with, and don't lean against or work for extended periods pressed right up against a live high-power transmit antenna.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>You are far more likely to be asked about this by a venue's own health and safety officer doing due diligence than to encounter an actual problem. Being able to say "our transmit power and distances are well within manufacturer guidance" is the correct answer, not a shrug.</p></div>
+</section>
+
+<section class="s" id="s5-11"><h3><span class="n">5.11</span> Shure and Sennheiser systems — step by step</h3>
+<p>Most premium hire stock is Shure (Axient Digital, ULX-D, SLX-D) or Sennheiser (Digital 6000, EW-DX). The steps are the same shape on every system.</p>
+<ol class="seq">
+<li><strong>Antennas on, receivers powered,</strong> outputs into the desk or stage box. With several receivers, use an antenna distribution system and remote paddles, not a forest of whips.</li>
+<li><strong>Turn on everything that will be on during the show</strong> — LED walls, video, other radio — then scan.</li>
+<li><strong>Coordinate.</strong> Shure: <em>Wireless Workbench</em> (free) — scan, add your devices' frequencies from the inventory, Analyze, Calculate, then Assign and Deploy to the networked receivers. Sennheiser: <em>Wireless Systems Manager</em> or <em>Sennheiser Control Cockpit</em> do the same job. On a single small system, the receiver's own group scan is fine.</li>
+<li><strong>Stay inside your licence</strong> — Channel 38, Channel 70, or the frequencies on your site licence (§5.12).</li>
+<li><strong>Batteries in</strong> (fresh AAs or the system's rechargeable packs, e.g. Shure SB900-series), transmitter on.</li>
+<li><strong>Sync</strong> each transmitter to its receiver channel (IR sync — hold the pack's window to the receiver's sync window).</li>
+<li><strong>Set transmitter gain/sensitivity</strong> so the loudest talker or singer doesn't clip, then label the pack and receiver channel with the person's name.</li>
+<li><strong>Walk test</strong> every mic (§11.6) and keep backups: spare mics already coordinated and synced.</li>
+</ol>
+<div class="note alt"><span class="lab">Also seen</span><p>Sennheiser <strong>Spectera</strong> and other new "wideband" (WMAS) systems carry many mics and IEMs in one wide channel. They're coordinated differently — follow the system owner's setup rather than the steps above.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Shure Wireless Workbench quick start and ULX-D user guide (v6.8, 2026); Sennheiser product documentation. Menu names vary by model and firmware.</p></div>
+</section>
+
+<section class="s" id="s5-12"><h3><span class="n">5.12</span> UK licences in practice — what to buy and when</h3>
+<div class="tw"><table>
+<thead><tr><th>Route</th><th>Frequencies</th><th>Cost (Nov 2026)</th><th>Use it for</th></tr></thead>
+<tbody>
+<tr><td>Licence-exempt</td><td>UHF Channel 70: 863.1–864.9 MHz · VHF 173.7–175.1 MHz · 2.4 GHz below 10 mW</td><td>Free</td><td>A handful of low-power mics; crowded, so expect to share</td></tr>
+<tr><td>UK Wireless Microphone Licence (shared)</td><td>UHF Channel 38: 606.5–613.5 MHz (about 10–12 mics) · or 15 VHF spot frequencies</td><td>£75 a year or £135 for two years bought on Ofcom's website (£85 / £155 otherwise)</td><td>Everyday hire stock. Shared and unprotected — still scan</td></tr>
+<tr><td>Coordinated (standard) licence</td><td>Ofcom assigns frequencies for a site and date</td><td>Varies with how many and how long</td><td>Bigger shows, more channels, protected frequencies. Apply well in advance</td></tr>
+</tbody></table></div>
+<p>Whoever owns the radio kit usually holds the licence — the hire company or the production. Your job is to know <strong>which licence the job is using</strong> and keep every transmitter (mics <em>and</em> IEMs) inside it. Using frequencies you aren't licensed for is a criminal offence under the Wireless Telegraphy Act 2006, and on mobile-network frequencies it interferes with phones.</p>
+<div class="note warn"><span class="lab">Watch it</span><p>Cheap imported radio mics often transmit on frequencies that are illegal in the UK. If a client or band brings their own, check the frequency range before it goes on.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Ofcom, PMSE licence information (fees and frequencies, checked Nov 2026); Ofcom PMSE sector review call for input (2026). Ofcom fees and bands change — check ofcom.org.uk before buying.</p></div>
+</section>
+
+</div></div>

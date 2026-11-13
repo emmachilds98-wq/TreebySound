@@ -1,0 +1,223 @@
+<div class="part" id="p7">
+<div class="part-head"><div class="col"><span class="part-num">PART 7</span><div><h2>Mixing desks &amp; show files</h2><p>The brain of the system. Different on every job; recognisably the same underneath.</p></div></div></div>
+<div class="col">
+
+<section class="s" id="s7-1"><h3><span class="n">7.1</span> The channel strip — the unit of everything</h3>
+<p>Whatever the desk, whatever the decade, a channel does the same things in the same order. Learn this once and every console makes sense.</p>
+<div class="flow" tabindex="0" role="region" aria-label="Signal flow">INPUT  →  GAIN/PAD  →  PHANTOM  →  POLARITY  →  HIGH-PASS  →  GATE
+                                                                  ↓
+                                            FADER  ←  PAN  ←  COMPRESSOR  ←  EQ
+                                              ↓
+                                    ROUTING → mix bus / groups / matrix
+                                              ↓
+                                     AUX SENDS (pre- or post-fade)</div>
+<dl class="kv">
+<dt>Pad</dt><dd>A fixed attenuator (usually −20 dB) for very hot sources, before the preamp.</dd>
+<dt>High-pass filter (HPF)</dt><dd>Removes everything below a set frequency. Use it constantly — <a href="#s4-3">§4.3</a>.</dd>
+<dt>Gate</dt><dd>Mutes the channel when the signal drops below a threshold. Cleans up drum bleed and open mics.</dd>
+<dt>EQ</dt><dd>Tonal shaping. Typically 4-band parametric on a decent desk.</dd>
+<dt>Compressor</dt><dd>Reduces dynamic range — quiet bits up relative to loud bits. See <a href="#s16-4">§16.4</a>.</dd>
+<dt>Pan</dt><dd>Position in the stereo image.</dd>
+<dt>Fader</dt><dd>Level into the main mix.</dd>
+<dt>Aux send</dt><dd>A separate feed to somewhere else — a wedge, an IEM, a reverb, a recording. <strong>Pre-fade</strong> ignores the fader (monitors); <strong>post-fade</strong> follows it (effects).</dd>
+<dt>PFL / AFL</dt><dd>Pre/After Fade Listen — soloing a channel to your headphones without affecting the mix.</dd>
+<dt>Mute</dt><dd>Off. The most under-used control in live sound — anything not in use should be muted.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>Pre-fade for monitors, post-fade for effects. Nearly universal, and the reasoning is simple: the band's wedge mix shouldn't change when FOH pulls a fader, but a vocal's reverb <em>should</em> get quieter when the vocal does.</p></div>
+</section>
+
+<section class="s" id="s7-2"><h3><span class="n">7.2</span> Consoles you'll meet</h3>
+<div class="tw"><table>
+<thead><tr><th>Console</th><th>Tier</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><strong>Behringer X32 / Midas M32</strong></td><td>Entry / mid</td><td>Same platform, different preamps and finish. Absolutely everywhere. If you learn one desk properly, arguably make it this — the free offline editor runs on any laptop.</td></tr>
+<tr><td><strong>Behringer Wing</strong></td><td>Mid</td><td>The X32's bigger sibling. Much more flexible.</td></tr>
+<tr><td><strong>Allen &amp; Heath Qu series</strong></td><td>Entry / mid</td><td>Very common in UK venues and hire stock. Simple and reliable.</td></tr>
+<tr><td><strong>Allen &amp; Heath SQ / Avantis</strong></td><td>Mid / upper</td><td>Excellent value, great sound, growing fast in UK hire.</td></tr>
+<tr><td><strong>Allen &amp; Heath dLive</strong></td><td>Upper / touring</td><td>A&amp;H's flagship. Very capable.</td></tr>
+<tr><td><strong>Yamaha TF / QL / CL</strong></td><td>Mid / upper</td><td>CL/QL are the corporate and theatre standard in a lot of the UK. Extremely reliable, slightly idiosyncratic workflow.</td></tr>
+<tr><td><strong>Yamaha DM7 / Rivage PM</strong></td><td>Upper / flagship</td><td>Current top of the Yamaha range.</td></tr>
+<tr><td><strong>DiGiCo SD / Quantum</strong></td><td>Touring flagship</td><td>The UK touring default. If you want to work in live music at scale, learn DiGiCo.</td></tr>
+<tr><td><strong>Avid VENUE S6L</strong></td><td>Touring flagship</td><td>Big in touring and anywhere Pro Tools integration matters.</td></tr>
+<tr><td><strong>Soundcraft Vi / Si</strong></td><td>Mid / upper</td><td>Still widely installed.</td></tr>
+<tr><td><strong>SSL Live</strong></td><td>Flagship</td><td>Beautiful, less common.</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>Nobody knows every desk. What experienced techs actually have is a <em>mental checklist</em> they apply to an unfamiliar console: where's the gain, where's the patching, where's the phantom, how do I save, how do I get a wedge send, how do I recall a scene. Find those six things and you can work on anything. Give yourself twenty minutes with the manual before you need it.</p></div>
+</section>
+
+<section class="s" id="s7-3"><h3><span class="n">7.3</span> Digital console concepts</h3>
+<dl class="kv">
+<dt>Layers / banks</dt><dd>A desk with 16 physical faders and 64 channels shows you them 16 at a time. The fader you're moving is not necessarily the channel you think — <strong>always check the layer.</strong></dd>
+<dt>Channel vs socket</dt><dd>The physical input socket and the console channel are separate things, connected by a <strong>patch</strong>. Socket 12 does not have to be channel 12. This is powerful and it's also the single biggest source of confusion for people coming from analogue.</dd>
+<dt>DCA / VCA</dt><dd>A master fader that controls a group of channels' faders remotely, without the audio passing through it. Perfect for "all drums", "all vocals".</dd>
+<dt>Group / subgroup</dt><dd>An actual audio bus that channels are routed into, so you can process them together (e.g. compress the whole drum kit).</dd>
+<dt>Matrix</dt><dd>A mixer of mixes — takes your main mix and other buses and creates additional outputs. Used for delay stacks, fills, broadcast feeds, recording feeds, the foyer.</dd>
+<dt>Scene / snapshot / cue</dt><dd>A stored state of the console you can recall. Essential in theatre and corporate; used more sparingly in live music.</dd>
+<dt>Safe / recall scope</dt><dd>Settings excluded from scene recall, so recalling a scene doesn't undo your gain changes. Learn this before you use scenes in anger.</dd>
+<dt>Show file</dt><dd>The whole console state, saved to internal storage or USB.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Loading a show file changes the output patch.</strong> If you load an unfamiliar show while the PA is on, you can send a full-range signal to an HF driver, unmute something into a live IEM, or dump 0 dB of pink noise into a full room. Habit: <strong>mute the outputs / turn the amps down before you load anything</strong>, then bring it back up and check. Every time.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>[2026] Some newer digital consoles and standalone products (Waves eMotion LV1 with its automixer, among others) offer AI-assisted automixing — automatically adjusting gain-sharing between open mics to reduce bleed and rider fatigue on multi-mic speech jobs. Genuinely useful on the right corporate/panel job with a competent operator supervising it. It is not yet, and shouldn't be treated as, a substitute for understanding gain structure and bleed control yourself — you still need to recognise when it's getting it wrong.</p></div>
+</section>
+
+<section class="s" id="s7-4"><h3><span class="n">7.4</span> Show file discipline</h3>
+<ol class="seq">
+<li><strong>Save early, save often, save under a new name.</strong> Not <code>show.scn</code> repeatedly — <code>ClientName_2026-08-25_v3.scn</code>.</li>
+<li><strong>Back up to USB</strong> at the end of every build and before any big change. Console internal storage fails.</li>
+<li><strong>Take your own copy</strong> at the end of the job if it's yours to keep. Rebuilding a show from scratch because the file was on the hire desk that went out again is a bad afternoon.</li>
+<li><strong>Start from a known base.</strong> Keep a clean template show for your common console — inputs named sensibly, HPFs in, standard routing, monitors on pre-fade. Loading that takes 30 seconds and saves 40 minutes.</li>
+<li><strong>Name your channels.</strong> Not optional. An unnamed desk at line check is chaos, and if you get pulled away someone else has to be able to take over.</li>
+</ol>
+<div class="note std"><span class="lab">Standard</span><p>Naming convention that works: source first, position second. <code>Vox Lead</code>, <code>Vox BV SL</code>, <code>Gtr Amp SR</code>, <code>Kick In</code>, <code>Laptop L</code>. Keep it short enough to read in the console's tiny scribble strip.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>On bigger or higher-stakes shows, the show file discipline above is only half the protection — the other half is <strong>console redundancy</strong>: a second, identical console mirroring the primary in real time (most modern digital desks support this natively) so a hardware failure on the main console is a seamless changeover rather than a dead PA. A cut-down version of the same idea, within reach on smaller shows, is a <strong>hot-spare</strong> — a second console loaded with the same show file, powered and patched, ready to swap to manually if the primary dies. Neither replaces the habit of saving and backing up; the show file is what a spare console actually runs.</p></div>
+</section>
+
+<section class="s" id="s7-5"><h3><span class="n">7.5</span> Dynamics &amp; EQ on the desk</h3>
+<dl class="kv">
+<dt>Gate</dt><dd><strong>Threshold</strong> (level to open), <strong>range/depth</strong> (how much it attenuates when closed), <strong>attack</strong> (how fast it opens), <strong>hold</strong> and <strong>release</strong> (how it closes). Used on toms and to control bleed.</dd>
+<dt>Compressor</dt><dd><strong>Threshold</strong> (where it starts working), <strong>ratio</strong> (how hard), <strong>attack</strong> (how fast it grabs), <strong>release</strong> (how fast it lets go), <strong>knee</strong> (how gradually it engages), <strong>makeup gain</strong> (to restore level).</dd>
+<dt>Limiter</dt><dd>A compressor with a very high ratio, used to stop signals exceeding a ceiling. On outputs, protective. On IEMs, essential.</dd>
+<dt>Parametric EQ (PEQ)</dt><dd>Choose frequency, gain and <strong>Q</strong> (bandwidth). Surgical. Your main tool.</dd>
+<dt>Graphic EQ (GEQ)</dt><dd>Fixed bands, usually 31. Fast and visual. Traditional on monitors and system outputs.</dd>
+<dt>Shelf</dt><dd>Boosts or cuts everything above (high shelf) or below (low shelf) a point.</dd>
+<dt>RTA</dt><dd>Real Time Analyser — shows you the frequency content. Useful for identifying feedback frequencies fast. Not a substitute for ears.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>Starting compressor settings for a live vocal: ratio around 3:1, medium attack, medium-fast release, threshold set so you're seeing 3–6 dB of gain reduction on the loudest phrases and none on the quiet ones. Then adjust by ear. Compression on live vocals is mostly about consistency, not effect.</p></div>
+</section>
+
+<section class="s" id="s7-6"><h3><span class="n">7.6</span> Talkback, tone and solo</h3>
+<ul>
+<li><strong>Talkback</strong> — a mic at the desk that can be routed to monitors, comms, or the stage. Check where yours is routed before you press it. <span class="chip warn">Watch it</span> Talkback accidentally routed to the main PA is a classic and very public mistake.</li>
+<li><strong>Oscillator / pink noise generator</strong> — built-in test signal. Invaluable for proving outputs. Sine wave for finding a specific driver, pink noise for general checks.</li>
+<li><strong>Solo modes</strong> — PFL (pre-fade, hear it regardless of fader position, standard for line checking), AFL (after fade), and <strong>Solo In Place</strong> (SIP), which mutes everything else <em>in the actual mix</em>.</li>
+</ul>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Solo In Place silences the PA for everyone.</strong> On desks where it's available, it should be disabled or locked during a show. If you press it by accident in front of an audience, everything except one channel vanishes. Know where that button is so you can avoid it.</p></div>
+</section>
+
+<section class="s" id="s7-7"><h3><span class="n">7.7</span> Console gotchas — the greatest hits</h3>
+<div class="tw"><table>
+<thead><tr><th>"It's not working"</th><th>Check</th></tr></thead>
+<tbody>
+<tr><td>No signal on a channel</td><td>Muted? Fader down? Wrong layer? Gain at zero? Phantom needed? Patched to the right socket?</td></tr>
+<tr><td>Signal on the meter, nothing in the room</td><td>Routing to the main bus, main fader, output patch, output mute, amps on</td></tr>
+<tr><td>Signal in headphones only</td><td>Something is soloed. Clear all solos.</td></tr>
+<tr><td>Whole desk sounds thin/quiet</td><td>Something's soloed, or a group/DCA is down, or the main is in mono/mute</td></tr>
+<tr><td>Channel distorted at low fader</td><td>Gain too high — clipping at the input</td></tr>
+<tr><td>Wedge has nothing</td><td>Aux send is post-fade with the fader down, or the aux master is down, or the output patch is wrong</td></tr>
+<tr><td>Everything changed unexpectedly</td><td>A scene got recalled. Check recall safes.</td></tr>
+<tr><td>One side of the PA missing</td><td>Pan, output patch, or a cable — check the meters to see whether it's the desk or downstream</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>Work the chain in order and check the meters at each stage — that tells you instantly whether the problem is upstream or downstream of where you're looking. See <a href="#p12">Part 12</a>.</p></div>
+</section>
+
+<section class="s" id="s7-8"><h3><span class="n">7.8</span> Yamaha DM7 — the desk, the layout, the words</h3>
+<p>The <strong>DM7</strong> is Yamaha's current mid-size touring and install console, and the one you're most likely to meet on premium hire jobs alongside CL/QL and RIVAGE. If you've used a CL or QL, most of it will feel familiar; it's faster, has more touch screens, and runs at 96 kHz.</p>
+<div class="tw"><table>
+<thead><tr><th><span class="sr-only">Item</span></th><th>DM7</th><th>DM7 Compact</th></tr></thead>
+<tbody>
+<tr><td>Input channels</td><td>120</td><td>72</td></tr>
+<tr><td>Mixes</td><td>48 mix + 12 matrix + 2 stereo</td><td>Same bus structure, fewer inputs</td></tr>
+<tr><td>Local I/O</td><td>32 mic/line in, 16 out</td><td>16 in, 16 out</td></tr>
+<tr><td>Dante</td><td colspan="2">Built in, 144 in / 144 out, primary + secondary ports, up to 96 kHz</td></tr>
+<tr><td>Surface</td><td>Two bays, 28 motorised touch-sensitive faders, two 12.1" touch screens + one 7"</td><td>One bay, one 12.1" screen + one 7"</td></tr>
+<tr><td>Expansion</td><td colspan="2">One PY card slot (Dante with sample-rate conversion, MADI, Waves SoundGrid, AES/EBU and more); optional CTL-DM7 extra control surface</td></tr>
+<tr><td>Scenes</td><td colspan="2">500, with Recall Safe, Focus Recall and selective load/save</td></tr>
+<tr><td>Power</td><td colspan="2">Internal dual (redundant) power supplies on the DM7</td></tr>
+</tbody></table></div>
+<h4>The words you'll hear on a DM7</h4>
+<dl class="glossary">
+<div><dt>Rio / Tio stage boxes</dt><dd>Yamaha's Dante stage boxes. The DM7 works with first- and second-generation R-series Rio boxes and controls their preamps (<em>HA remote</em>) over Dante. Other Dante devices can be "mounted" so their inputs show up for patching.</dd></div>
+<div><dt>HA</dt><dd>Head amp — the preamp gain. On a Rio it's the stage box's gain, controlled from the desk.</dd></div>
+<div><dt>Selected channel</dt><dd>Press a channel's SEL key and its whole strip opens on the screen above that bay. On the full DM7 each bay can have its own selected channel (unlink the SEL keys in Setup → User Setup → Surface) — most engineers prefer that.</dd></div>
+<div><dt>Sends on Fader (SoF)</dt><dd>Flips the faders to show every channel's send to one mix — the quickest way to build a monitor mix.</dd></div>
+<div><dt>User Defined Keys (UDK)</dt><dd>Four banks of twelve touch keys on the 7" screen, set up for whatever the engineer wants one press away: talkback, mute groups, a mix, a scene.</dd></div>
+<div><dt>Recall Safe / Focus Recall</dt><dd>Recall Safe protects chosen channels or parameters from <em>every</em> scene recall. Focus Recall sets, per scene, what that scene is allowed to change. Both explain most "a scene changed my channel" surprises.</dd></div>
+<div><dt>Assist</dt><dd>Built-in helpers that suggest head-amp gains, channel names and a starting fader balance from what they hear. A starting point — the engineer still decides.</dd></div>
+<div><dt>Split mode</dt><dd>Splits the full DM7 into two independent consoles (for example FOH and monitors, or two rooms) in one frame.</dd></div>
+<div><dt>Dugan automixer</dt><dd>Built-in automatic mixing for speech mics — invaluable on panels and conferences (§10.11).</dd></div>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p>On a shared Dante network a DM7 can see and control other people's Rio preamps. <strong>Never change HA gain, phantom or patching on a stage box you don't own</strong> — on a shared FOH/monitor system, one person's gain change moves everyone's levels. Ask who owns the preamps before the job.</p></div>
+<div class="note std"><span class="lab">Standard</span><p>Keep the console on current firmware (Yamaha publishes updates and release notes on its DM7 support pages), and check the show file was made on the same or older firmware before you load it. Learn it for free on the <strong>DM7 Editor</strong> (§8.1) and Yamaha's DM7 training videos.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Yamaha DM7 specifications and DM7 Series training videos (Yamaha); FOH magazine DM7 road test (2025); TPi and Light Sound Journal DM7 features. Firmware-dependent details (menu names, feature lists) change between versions — check the manual for the version on the desk.</p></div>
+</section>
+
+<section class="s" id="s7-9"><h3><span class="n">7.9</span> DM7 — setting up a show, start to finish</h3>
+<p>The order below works whether you're building a show from scratch or loading an engineer's file. If the engineer is bringing their own file, your job is steps 1–4 and 9–11; theirs is the mix.</p>
+<ol class="seq">
+<li><strong>Power and network first.</strong> Desk and stage boxes powered; Dante primary cables connected (secondary only to a separate secondary network, never to the primary switch — §8.9).</li>
+<li><strong>Save what's on the desk before you touch anything.</strong> Store the current show file to USB with the date and job in its name.</li>
+<li><strong>Load or initialise.</strong> Load the show file for this job (check firmware compatibility), or start from the initial data if you're building from scratch.</li>
+<li><strong>Check Dante.</strong> In the Dante setup screen, confirm the desk sees every Rio or Dante device it should, the sample rate matches (48 or 96 kHz everywhere), and the clock leader is the one the design expects.</li>
+<li><strong>Patch inputs.</strong> Input patch from the Rio (or local) inputs to channels, following the patch list. Name and colour each channel as you go.</li>
+<li><strong>Patch outputs.</strong> Mixes, matrices and stereo to the right Dante or local outputs — PA feeds, sub feed, fills, monitors, recording, broadcast.</li>
+<li><strong>Set up mixes.</strong> Monitor mixes pre-fade; effects sends post-fade (§7.1). Use Sends on Fader to build them quickly.</li>
+<li><strong>Protect what must not change.</strong> Recall Safe on anything a scene must never touch (talkback, PA feeds, broadcast feed); Focus Recall on scenes that should only change some things.</li>
+<li><strong>Line check</strong> every input (§11.3) and send tone or pink noise to every output at low level to prove the patch.</li>
+<li><strong>Store a scene</strong> once the line check is clean, and save the show file to USB again.</li>
+<li><strong>Write down</strong> anything that differs from the plan, for the engineer and for the derig.</li>
+</ol>
+<div class="tw"><table>
+<thead><tr><th>DM7 symptom</th><th>Check first</th></tr></thead>
+<tbody>
+<tr><td>Channel meters move, nothing out</td><td>Channel on and assigned to the mix/stereo bus · DCA or mute group · output patch · output muted or in a mute group</td></tr>
+<tr><td>No input at all from a Rio</td><td>Dante device present and synced · sample rate matches · input patch · HA gain and phantom (if it's yours to set)</td></tr>
+<tr><td>"Scene changed my channel"</td><td>Recall Safe and Focus Recall for that channel and scene</td></tr>
+<tr><td>Can't edit two channels at once on the two screens</td><td>SEL keys are linked — unlink in User Setup → Surface</td></tr>
+<tr><td>Dante errors or clicks</td><td>Two clock leaders, mismatched sample rate, or EEE/Green Ethernet on a switch (§12.14)</td></tr>
+<tr><td>Recording only gets 18 channels</td><td>USB is 18×18 — use Dante Virtual Soundcard for multitrack (up to 64 channels at 48 kHz)</td></tr>
+</tbody></table></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Yamaha DM7 user guide and training videos (Dante setup, preferences, recording); engineer reports from first use of the DM7. Always follow the job's own patch list and the engineer's instructions over a generic order.</p></div>
+</section>
+
+<section class="s" id="s7-10"><h3><span class="n">7.10</span> Other premium desks — what's different about each</h3>
+<p>The channel strip (§7.1) is the same everywhere; what changes is the words, where things live, and how scenes work. Learn each one on its free offline editor before the job.</p>
+<div class="tw"><table>
+<thead><tr><th>Family</th><th>You'll meet</th><th>The words</th><th>Watch for</th></tr></thead>
+<tbody>
+<tr><td>Yamaha</td><td>DM7, CL/QL, RIVAGE PM</td><td>Scene, Recall Safe, Focus, Rio, HA, Selected Channel</td><td>Shared Rio preamps between FOH and monitors (gain compensation on CL/RIVAGE)</td></tr>
+<tr><td>DiGiCo</td><td>SD9/10/12, Quantum 225/338/7</td><td>Session, snapshot, recall scope, macros, engine</td><td>Snapshot recall scope — a snapshot only changes what's in its scope; check the session was made on a compatible software version</td></tr>
+<tr><td>Allen &amp; Heath</td><td>dLive, Avantis, SQ</td><td>Show, scene, recall filter, safes, MixRack, I/O port</td><td>dLive's processing is in the MixRack, not the surface; scene recall filters and global safes</td></tr>
+<tr><td>Midas / Behringer</td><td>HD96, PRO series, M32/X32, Wing</td><td>Show, scene, safes, AES50 / stage box</td><td>AES50 links are point-to-point — a stage box goes into a specific port</td></tr>
+</tbody></table></div>
+<p>Quick starts: <a href="#s7-11">DiGiCo (§7.11)</a> · <a href="#s7-12">Allen &amp; Heath dLive/Avantis (§7.12)</a> · <a href="#s7-9">Yamaha DM7 (§7.9)</a>.</p>
+<div class="note std"><span class="lab">Standard</span><p>On any desk you don't know: save the show file first, find the solo-clear and the main mute, find where scenes live and what protects channels from them, and ask the engineer before changing anything you didn't build.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Manufacturer offline editors and user guides (Yamaha, DiGiCo, Allen &amp; Heath, Midas). Model ranges change — check what's actually in the hire stock.</p></div>
+</section>
+
+<section class="s" id="s7-11"><h3><span class="n">7.11</span> DiGiCo — quick start for a first time on one</h3>
+<p>DiGiCo (SD9, SD10, SD12, Quantum 225/338/7) works differently from Yamaha and Allen &amp; Heath, so do your homework on the free <strong>offline software</strong> before the job.</p>
+<dl class="glossary">
+<div><dt>Session</dt><dd>The whole show: channels, I/O, routing, console setup. Think “one band”. Loading a session replaces everything — save the current one first.</dd></div>
+<div><dt>Snapshot</dt><dd>Changes <em>values</em> within the session — think “one song”. It can't add channels or change the console's structure; that's a session's job.</dd></div>
+<div><dt>Recall scope</dt><dd>What each snapshot is allowed to change. The classic trap: something isn't in the scope (head-amp gains, for example), so it doesn't change when you expect — or something is, and it changes when you don't. Check the scope before trusting a snapshot.</dd></div>
+<div><dt>Macros</dt><dd>One-button actions the engineer sets up — save session, tap delay, mute groups. Ask before running one you didn't make.</dd></div>
+</dl>
+<ol class="seq">
+<li>Save the current session (with the date) before you touch anything.</li>
+<li>Load the job's session; check the I/O (stage racks, MADI/Optocore/Dante) is seen and synced.</li>
+<li>Patch inputs and outputs from the input list; name and colour channels.</li>
+<li>Line check, then save the session again.</li>
+<li>If you're using snapshots, keep them simple: one complete snapshot per band, and check the recall scope on each.</li>
+</ol>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>DiGiCo offline software tutorials and digico.tv training; engineer guidance on sessions, snapshots and recall scope (Sound Design Live; r/livesound, 2025–26). Menus vary by console and software version.</p></div>
+</section>
+
+<section class="s" id="s7-12"><h3><span class="n">7.12</span> Allen &amp; Heath dLive and Avantis — quick start</h3>
+<p><strong>dLive</strong> splits the system in two: the <strong>MixRack</strong> holds the processing and most of the I/O; the <strong>Surface</strong> is the control desk. <strong>Avantis</strong> is a single self-contained desk that takes the same family of stage boxes. Both have free offline software (<strong>dLive Director</strong>, Avantis Director).</p>
+<dl class="glossary">
+<div><dt>Socket names</dt><dd>R-nn = a MixRack socket, S-nn = a Surface socket, DX = an expander, P = an I/O Port card (Dante, MADI…), USB, FX, SigGen. Any socket can patch to any channel.</dd></div>
+<div><dt>Scenes &amp; Recall Filters</dt><dd>A <strong>Recall Filter</strong> stops a scene changing chosen channels or parameters — it belongs to that one scene. <strong>Global filters / safes</strong> protect things from every scene.</dd></div>
+<div><dt>Show files</dt><dd>Saved to USB from the Surface (on dLive surfaces the data USB port, not the recording one).</dd></div>
+<div><dt>SLink / DX / I/O Port</dt><dd>How stage boxes and network cards connect: SLink to GX, DX, AB and AR expanders; I/O Port cards for Dante, MADI and others.</dd></div>
+</dl>
+<ol class="seq">
+<li>Save the current show file to USB first.</li>
+<li>Recall the job's show; check every expander and I/O card is connected and synced.</li>
+<li>Patch sockets to channels (I/O screen), set preamp gain, pad and 48V — only on preamps that are yours.</li>
+<li>Patch mixes to outputs; set recall filters and safes so scenes can't change what they shouldn't.</li>
+<li>Line check, store a scene, save the show to USB again.</li>
+</ol>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Allen &amp; Heath dLive Firmware Reference Guide, dLive Surface and DM MixRack getting started guides (2026), Avantis Getting Started Guide (2026), dLive Director quick start. Feature names change with firmware.</p></div>
+</section>
+
+</div></div>

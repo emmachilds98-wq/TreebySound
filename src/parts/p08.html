@@ -1,0 +1,201 @@
+<div class="part" id="p8">
+<div class="part-head"><div class="col"><span class="part-num">PART 8</span><div><h2>Software, Dante &amp; networks</h2><p>Increasingly part of every job. Start with the tools your workplace actually uses.</p></div></div></div>
+<div class="col">
+
+<section class="s" id="s8-1"><h3><span class="n">8.1</span> Offline editors — learn a desk without the desk</h3>
+<p>Nearly every digital console has a free PC/Mac application that mirrors the console's software. You can build show files, learn the layout, and practise workflows on your laptop at home, then load the file onto the real desk.</p>
+<dl class="kv">
+<dt>X32-Edit / M32-Edit</dt><dd>Free from Behringer/Midas. Full desk emulation. Also runs as an iPad app for remote control.</dd>
+<dt>A&amp;H Qu-Pad, SQ / Avantis / dLive Director</dt><dd>Free from Allen &amp; Heath. Director runs the whole desk offline.</dd>
+<dt>Yamaha CL/QL Editor, TF Editor, DM7 Editor</dt><dd>Free from Yamaha's pro audio site.</dd>
+<dt>DiGiCo Offline Software</dt><dd>Free download per console range. The best way to get familiar before you ever touch one.</dd>
+<dt>Soundcraft ViSi / Vi Offline</dt><dd>Same idea.</dd>
+</dl>
+<div class="note deep"><span class="lab">Go deeper</span><p>This is the single highest-value thing you can do with a free evening. Download the offline editor for whatever console your company uses most, and build a show file for a fictional five-piece band from an input list. Do it three times and you'll be faster than half the people on site. Links in <a href="#s18-2">§18.2</a>.</p></div>
+</section>
+
+<section class="s" id="s8-2"><h3><span class="n">8.2</span> Dante — the one to actually learn</h3>
+<p>Dante moves audio over standard networks. If you understand it, you're immediately useful on a huge range of jobs.</p>
+<h4>The three applications</h4>
+<dl class="kv">
+<dt>Dante Controller</dt><dd>Free. The routing and management tool. You use it to see every Dante device on the network and connect outputs to inputs.</dd>
+<dt>Dante Virtual Soundcard (DVS)</dt><dd>Paid, cheap. Turns a laptop into a Dante device — record multitrack, play back, run virtual soundcheck.</dd>
+<dt>Dante Via</dt><dd>Paid. Routes any application's audio onto the network. Handy for corporate playback and conferencing.</dd>
+</dl>
+<h4>Core concepts</h4>
+<dl class="kv">
+<dt>Transmitter / Receiver</dt><dd>Dante calls outputs "transmit channels" and inputs "receive channels". A <strong>subscription</strong> is a connection between them, made in the grid in Dante Controller.</dd>
+<dt>Device names</dt><dd>Rename everything meaningfully on day one — <code>Console-Main</code>, <code>Stagebox-SL</code>, not <code>DLI-a1b2c3</code>. Future you will be grateful.</dd>
+<dt>Clock</dt><dd>One device is the leader. Dante mostly sorts this automatically, but you can and sometimes should set a preferred leader. A green tick in Clock Status is what you want.</dd>
+<dt>Latency</dt><dd>Set per device, typically 0.25–5 ms. Higher settings tolerate more switches and worse networks. If you get dropouts, raising latency is a legitimate fix.</dd>
+<dt>Sample rate</dt><dd><strong>Every device must match.</strong> A device at 44.1 kHz will simply not connect to one at 48 kHz — it'll show as unavailable and you'll waste twenty minutes.</dd>
+<dt>Device Lock</dt><dd>Password-protects a device's config so nobody can change your routing. Useful; also a great way to lock yourself out. Note the password.</dd>
+<dt>Unicast vs multicast</dt><dd>Unicast sends a separate stream per receiver; multicast sends one stream to many. Use multicast when several devices need the same channels — it saves bandwidth.</dd>
+<dt>Redundancy</dt><dd>Many Dante devices have primary and secondary ports for a fully duplicated network. Two physically separate switches, two cable runs. Standard on anything that matters.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Never connect the Dante network to the venue's WiFi/office network or to a router handing out addresses</strong>, unless you know exactly what you're doing. Rogue DHCP servers, IGMP snooping misconfiguration, and general internet traffic will break audio in confusing ways. Audio networks are dedicated networks with dumb-but-configured switches, kept separate. Green cable for Dante, clearly labelled, is a habit worth adopting.</p></div>
+<h4>Dante isn't the only network audio ecosystem</h4>
+<p>It's the one to learn because it's by far the most common in hire stock, but you will meet the others, and it's worth knowing they're not just "other versions of Dante" — they're separate, generally non-interoperable ecosystems.</p>
+<dl class="kv">
+<dt>Milan (AVB)</dt><dd>An open standard built on the IEEE AVB/TSN networking layer, used natively by d&b, L-Acoustics and Meyer among others. It needs AVB-compatible switches (not just any network switch, unlike Dante) and doesn't talk to Dante directly. If you turn up to a d&b or L-Acoustics rig and Dante Controller can't see the PA, this is usually why — it's not broken, it's a different network.</dd>
+<dt>AES67</dt><dd>Not a competing product but an interoperability standard — a common language that lets Dante, and other AES67-capable systems, exchange audio directly without a converter, most often seen at the boundary with broadcast infrastructure (<a href="#s14-5">§14.5</a>). Recent Dante devices generally support AES67 mode alongside native Dante.</dd>
+<dt>MADI</dt><dd>Older and simpler than either — a fixed 56 or 64 channels down one coax or fibre link, no network configuration at all. Still common as a straightforward point-to-point link between a console and a stagebox or recording rig, precisely because there's nothing to configure.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>If a PA or console you're patching into "isn't showing up" in Dante Controller, check what network ecosystem it actually uses before assuming a fault — a Milan-native rig simply isn't going to appear there, and that's normal, not broken.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>Do the free <strong>Dante Certification Level 1</strong> today. It's a couple of hours online, it's free, and it's a recognised credential. Level 2 is also free and covers switch configuration and redundancy. Level 3 is classroom-based. <a href="#s18-3">§18.3</a>.</p></div>
+</section>
+
+<section class="s" id="s8-3"><h3><span class="n">8.3</span> Measurement software</h3>
+<dl class="kv">
+<dt>Smaart (Rational Acoustics)</dt><dd>The industry standard for live system measurement. Paid, and the training is genuinely worth doing. Dual-channel FFT — compares what you sent with what you measured.</dd>
+<dt>Open Sound Meter</dt><dd><strong>Free and open source.</strong> Does transfer function measurement, RTA, spectrogram. Astonishingly good for the price. Start here.</dd>
+<dt>Room EQ Wizard (REW)</dt><dd>Free. Aimed at rooms and studios but hugely capable. Excellent for learning what measurements mean.</dd>
+<dt>SysTune, ARTA, EASERA</dt><dd>Other options in the same space.</dd>
+<dt>Measurement mic</dt><dd>You need one — an omni condenser with a known flat response. Behringer ECM8000 is the cheap standard; Earthworks M23 and iSEMcon are the proper ones. An individually-calibrated mic with a cal file is much better than an uncalibrated cheap one.</dd>
+</dl>
+<div class="note alt"><span class="lab">Also seen</span><p>SPL meter apps on a phone are everywhere and they are <em>indicative only</em> — the phone mic is not calibrated, compresses at high levels, and rolls off the bass. Fine for "is this roughly 95 or roughly 105". Useless for anything you have to certify. If noise limits are contractual, use a proper Class 1 or Class 2 meter.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>Reading a <strong>spectrogram</strong> — frequency up the side, time along the bottom, level as brightness — is a skill that pays off twice. It's how you spot a ringing frequency or a noise floor here, and it's exactly how wildlife recordings are analysed in bioacoustics, where the same plot is used to identify a species by the shape of its call. Same tool, same eye, different subject. See <a href="#s18-15">§18.15</a>.</p></div>
+</section>
+
+<section class="s" id="s8-4"><h3><span class="n">8.4</span> Playback</h3>
+<dl class="kv">
+<dt>QLab (Mac)</dt><dd>The theatre and events standard for cue-based playback — audio, video, lighting cues, all triggered in sequence with a spacebar. Free to learn, paid for advanced features. Learn this if you touch theatre or corporate at all.</dd>
+<dt>Show Cue System / Multiplay (Windows)</dt><dd>Windows alternatives to QLab. SCS is the serious one.</dd>
+<dt>Ableton Live</dt><dd>Backing tracks, click, and playback for bands. Very common on tours — you'll meet a band with a laptop running Ableton and a multi-output interface.</dd>
+<dt>Reaper</dt><dd>Cheap, extremely capable DAW. Popular for virtual soundcheck and multitrack recording of shows.</dd>
+<dt>Pro Tools</dt><dd>Studio standard; used live where Avid consoles are involved.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Streaming services are not a playback system.</strong> Spotify/Apple Music will drop out, play ads, lose connection, autoplay something unexpected, and normalise your levels. For anything that matters, use local files on a machine with notifications off, WiFi off, sleep off, and auto-updates off. And always have the files on a second device.</p></div>
+<div class="note std"><span class="lab">Standard</span><p>Any playback machine going to a show: notifications off, screen sleep off, auto-update off, volume at a fixed known level (usually 100% with level set downstream), and a physical copy of the files on a USB stick in your pocket.</p></div>
+</section>
+
+<section class="s" id="s8-5"><h3><span class="n">8.5</span> Comms</h3>
+<p>Intercom is how the crew talks during a show, and on bigger jobs you'll be responsible for building it.</p>
+<dl class="kv">
+<dt>Wired party-line</dt><dd>Clear-Com and Tecpro — belt packs on a single cable loop, everyone hears everyone. Simple and bulletproof.</dd>
+<dt>Digital matrix</dt><dd>Riedel, Clear-Com Eclipse. Big shows, routed channels, individual keys.</dd>
+<dt>Wireless comms</dt><dd>Clear-Com FreeSpeak, Riedel Bolero, Green-Go. Full duplex, roaming.</dd>
+<dt>Green-Go</dt><dd>Network-based (runs over Ethernet/PoE). Increasingly common and good value.</dd>
+<dt>Unity Intercom</dt><dd>Runs on phones over WiFi. Cheap and cheerful; depends on the WiFi being good, which it never is.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>Comms discipline: identify yourself and your target ("Sound to Stage"), wait for acknowledgement, be brief, and get off. And remember that everything you say on the ring is heard by everyone including the client's production team.</p></div>
+</section>
+
+<section class="s" id="s8-6"><h3><span class="n">8.6</span> Networking you actually need</h3>
+<p>You don't need to be a network engineer. You do need these:</p>
+<dl class="kv">
+<dt>IP address</dt><dd>Four numbers, e.g. <code>192.168.1.50</code>. Every device on a network needs a unique one.</dd>
+<dt>Subnet mask</dt><dd>Usually <code>255.255.255.0</code>. Devices can only talk directly to others in the same subnet — so <code>192.168.1.x</code> devices talk to each other but not to <code>192.168.2.x</code>.</dd>
+<dt>Static vs DHCP</dt><dd>Static = you set the address manually. DHCP = a server hands them out. Audio networks are usually static or link-local so addresses don't change between days.</dd>
+<dt>Link-local</dt><dd><code>169.254.x.x</code>. What devices give themselves when there's no DHCP. Dante uses this happily by default.</dd>
+<dt>Ping</dt><dd>The basic "can I reach it" test. <code>ping 192.168.1.50</code> from a command prompt.</dd>
+<dt>Switch</dt><dd>The box everything plugs into. <em>Unmanaged</em> = plug and play. <em>Managed</em> = configurable, needed for bigger Dante networks (QoS, IGMP snooping).</dd>
+<dt>VLAN</dt><dd>Splitting one physical switch into separate logical networks. Used to keep audio, lighting and control apart on shared infrastructure.</dd>
+<dt>OSC (Open Sound Control)</dt><dd>A lightweight, open messaging protocol sent over the same IP network as everything else — used to trigger cues and remote-control parameters between completely different systems (a lighting console firing a QLab cue, a show-control system nudging a mixer's scene, a tablet driving a console's channel faders). Not an audio-transport protocol like Dante — it carries commands and values, not sound. See <a href="#s8-4">§8.4</a> and <a href="#s10-4">§10.4</a> for QLab, and <a href="#s9-8">§9.8</a> for Titan, which can both send and receive it.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>Keep a laptop with a known static IP config saved as a profile, plus a USB-to-Ethernet adapter in your bag. Half of "the network is broken" calls are actually "the laptop is on the wrong subnet". Free tools like <strong>Fing</strong> or <strong>Angry IP Scanner</strong> show you everything on the network in seconds and are worth having installed.</p></div>
+<div class="note warn"><span class="lab">Watch it</span><p>A production audio network is not the internet, and it should stay that way. Never bridge a Dante or other audio switch into a venue's guest WiFi or public network — one careless patch cable turns your isolated, low-latency audio network into something anyone in the building can see and potentially interfere with. If a job genuinely needs internet access for something (a streaming feed, remote monitoring), keep it on a clearly separate, dedicated connection or VLAN rather than the same switch your audio lives on, and ask before plugging anything unfamiliar — a guest's laptop, an unknown access point — into a switch that's carrying your show.</p></div>
+</section>
+
+<section class="s" id="s8-7"><h3><span class="n">8.7</span> Rental management software</h3>
+<p>This is your current world, and it's worth understanding properly because it makes you visible to the people who do the hiring.</p>
+<dl class="kv">
+<dt>Rentman</dt><dd>Very widely used in European/UK event hire. Equipment, crew, planning, quotes.</dd>
+<dt>Current RMS</dt><dd>Cloud-based, big in the UK.</dd>
+<dt>HireHop</dt><dd>UK, popular with smaller and mid-size companies.</dd>
+<dt>inspHire</dt><dd>Broader plant/equipment hire, used by some AV companies.</dd>
+<dt>Flex / R2</dt><dd>Used by larger production companies.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>The thing that makes warehouse staff indispensable is <strong>data integrity</strong> — the system saying what's actually on the shelf. Scanning honestly, flagging discrepancies, and quarantining faulty kit in the system as well as physically is unglamorous and enormously valuable. It also means when you say "we haven't got four of those", people believe you.</p></div>
+</section>
+
+<section class="s" id="s8-8"><h3><span class="n">8.8</span> Reading &amp; producing system drawings</h3>
+<p>The stage plan and input list (<a href="#s1-5">§1.5</a>) are the documents you'll use daily; this is the software behind the more formal drawings — a full sound or lighting system design — that a system tech, designer or production manager works from.</p>
+<dl class="kv">
+<dt>Vectorworks</dt><dd>The industry-standard CAD package for live events specifically — stage plans, rigging plots, lighting plots and full system drawings, with a plugin ecosystem (Spotlight) built around exactly this kind of work.</dd>
+<dt>AutoCAD</dt><dd>The general-purpose CAD standard, more common on the venue-architecture and permanent-install side (<a href="#s10-6">§10.6</a>) than on touring production drawings.</dd>
+<dt>What's actually yours to do early on</dt><dd>Reading a drawing accurately — knowing your position on the stage plan, checking a rigging plot against what's actually flown, spotting when the drawing and the room disagree — matters far more day to day than producing one. Producing them is a specialism worth picking up later if system design or production management (<a href="#s17-1">§17.1</a>, <a href="#s21-7">§21.7</a>) is a direction that appeals.</dd>
+</dl>
+</section>
+
+<section class="s" id="s8-9"><h3><span class="n">8.9</span> Dante Controller — step by step</h3>
+<ol class="seq">
+<li><strong>Join the right network.</strong> Laptop on the audio network by cable, Wi-Fi off. Open Dante Controller and choose the network interface you're plugged into.</li>
+<li><strong>Check every device appears</strong> in the Routing view. A missing device is a cable, switch port, wrong network or IP problem (§12.14).</li>
+<li><strong>Clock.</strong> In Clock Status, exactly one device is Leader and the rest Follower. It should be the device the design names (often the desk). Set "Preferred Leader" on that one device only.</li>
+<li><strong>Sample rate</strong> matches on every device (Device Info). A device on the wrong rate shows but won't pass audio to the others.</li>
+<li><strong>Route.</strong> Transmitters along the top, receivers down the side: expand both, click where a transmit channel meets a receive channel. A green tick means subscribed and working.</li>
+<li><strong>Name things.</strong> Rename devices and channels to what they are (FOH-DM7, Rio-SR) — renaming a device breaks its existing subscriptions, so do it before routing.</li>
+<li><strong>Check for warnings</strong> — red or amber symbols, errors in the Network view, latency warnings.</li>
+<li><strong>Save a preset</strong> of the routing (File → Save Preset) with the job name, so it can be reloaded in seconds.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Redundancy:</strong> primary ports go to the primary switch; secondary ports go to a completely separate secondary switch, never linked to the primary. No secondary network? Leave secondary ports empty. Linking the two can take the whole system down.</p></div>
+<div class="note std"><span class="lab">Standard</span><p>Switch rules for Dante: gigabit managed switches, <strong>EEE / Green Ethernet off</strong>, QoS set for Dante (clock highest), and no other traffic you don't control. Audinate's free Level 1–3 certification covers all of this properly (§18.3).</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Audinate Dante Controller user guide and Dante certification material; Yamaha DM7 Dante setup training. Menu names vary slightly between Dante Controller versions.</p></div>
+</section>
+
+<section class="s" id="s8-10"><h3><span class="n">8.10</span> Milan and AVB — how it differs from Dante</h3>
+<p><strong>Milan</strong> is network audio built on AVB, an IEEE standard where the <em>switches themselves</em> keep time and reserve bandwidth for each audio stream. d&amp;b (D40 and D90 amps), L-Acoustics and Meyer Sound support it, so you'll meet it on premium PA systems.</p>
+<div class="tw"><table>
+<thead><tr><th><span class="sr-only">Item</span></th><th>Dante</th><th>Milan / AVB</th></tr></thead>
+<tbody>
+<tr><td>Switches</td><td>Ordinary managed switches, set up correctly (QoS, EEE off)</td><td>Must be AVB/Milan-capable (ideally Avnu-certified) — an ordinary switch won't pass it</td></tr>
+<tr><td>Switch setup</td><td>QoS, IGMP, VLANs matter</td><td>No QoS or IGMP setup — the switches reserve bandwidth automatically</td></tr>
+<tr><td>Clock</td><td>One Dante leader on the network</td><td>gPTP timing run by the switches; all devices exchanging audio share one media clock domain</td></tr>
+<tr><td>Redundancy</td><td>Primary and secondary networks</td><td>Two physically separate networks (separate VLANs on one switch don't count)</td></tr>
+<tr><td>Software</td><td>Dante Controller</td><td>A Milan controller (e.g. Hive, or d&amp;b's Milan Manager) and R1</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>Don't mix a Milan network and a Dante network on the same switches unless the system design says so. If the PA is Milan and the desk is Dante, there will be a defined bridge (a converter or a device that speaks both) — find out where it is during the advance.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>d&amp;b audiotechnik TI 370 (Milan) and Milan Manager announcement (2025); AVB Academy user guides; L-Acoustics AVB paper (2023).</p></div>
+</section>
+
+<section class="s" id="s8-11"><h3><span class="n">8.11</span> Open Sound Meter — measure a system for free</h3>
+<p><strong>Open Sound Meter</strong> is free, cross-platform measurement software built to be simple for younger engineers. It does the same core job as Smaart: comparing what goes into the system with what a measurement mic hears.</p>
+<ol class="seq">
+<li><strong>Kit:</strong> laptop, an audio interface with at least two inputs, a measurement mic (omni, needs phantom), a mic stand.</li>
+<li><strong>Two inputs:</strong> input 1 is the <em>measurement</em> (the mic); input 2 is the <em>reference</em> — the pink noise you're sending, looped straight back into the interface.</li>
+<li><strong>Send pink noise</strong> to the system at a sensible level (warn people first).</li>
+<li><strong>Find the delay.</strong> Use the delay finder to line up the reference with the mic — it estimates the time it takes sound to reach the mic.</li>
+<li><strong>Read the transfer function:</strong> magnitude (the tonal balance), phase, and coherence (how trustworthy the reading is — low coherence means reflections or noise).</li>
+<li><strong>Store a trace</strong> before you change anything, so you can compare.</li>
+</ol>
+<div class="note std"><span class="lab">Standard</span><p>Measuring is a great way to learn; <strong>changing</strong> a system's EQ or delays is the system tech's call. Use it to understand and to show them what you found.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Open Sound Meter manual (v1.1) and release notes; Open Sound Meter fundamentals tutorials.</p></div>
+</section>
+
+<section class="s" id="s8-12"><h3><span class="n">8.12</span> Comms — setting up and checking intercom</h3>
+<p>You'll meet three kinds of comms, often joined together:</p>
+<div class="tw"><table>
+<thead><tr><th>Kind</th><th>Examples</th><th>How it connects</th></tr></thead>
+<tbody>
+<tr><td>Wired party-line (analogue 2-wire)</td><td>Clear-Com Encore, RTS</td><td>A main station powers the line down ordinary 3-pin XLR cable; belt packs daisy-chain along it; headsets plug into a 4-pin XLR on the pack</td></tr>
+<tr><td>Digital / network</td><td>Clear-Com HelixNet, Green-GO</td><td>Over network or digital party-line cable; channels and users set in software</td></tr>
+<tr><td>Wireless (DECT-based)</td><td>Clear-Com FreeSpeak, Riedel Bolero, Green-GO wireless</td><td>Belt packs register to antennas or a base; battery packs</td></tr>
+</tbody></table></div>
+<ol class="seq">
+<li><strong>Know who owns comms</strong> — usually production or the stage manager. Get the channel plan: which channel is production, sound, lighting, stage.</li>
+<li><strong>Wired:</strong> main station on, line(s) out, packs daisy-chained. Comms cable looks like mic cable — label it so it isn't borrowed for a mic. Clear-Com and RTS wiring differ; they only join through an interface.</li>
+<li><strong>Wireless:</strong> charged batteries, packs registered to the base, antennas placed for the whole area including backstage.</li>
+<li><strong>Check every pack</strong> before doors: talk and listen on each channel, call light works, headset mic and ear both fine (§11.8).</li>
+<li><strong>Interfaces:</strong> if comms joins a camera system, radio or another comms brand, it goes through an interface (2-wire/4-wire). Leave the levels and nulling on those to whoever set them up.</li>
+</ol>
+<div class="note std"><span class="lab">Standard</span><p>Keep talk buttons off when you're not speaking, never chat on the production channel during a show, and say your role when you call (“Sound for stage manager”).</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Clear-Com partyline guides and PL-Pro manual; Green-GO 2-wire integration guide (2026); handbook §8.5 and §11.8.</p></div>
+</section>
+
+<section class="s" id="s8-13"><h3><span class="n">8.13</span> Reliable laptop playback — set it up so it can't embarrass you</h3>
+<ol class="seq">
+<li><strong>Mains power</strong> in, battery charged anyway.</li>
+<li><strong>Stop everything that can interrupt:</strong> Wi-Fi and Bluetooth off (or airplane mode), notifications and Focus/Do Not Disturb on, sleep and screen saver off, automatic updates paused, other apps closed.</li>
+<li><strong>Audio out through a proper interface or DI</strong> — not the headphone socket into a long unbalanced cable. Check the computer's output device is that interface, not HDMI or its own speakers.</li>
+<li><strong>Sample rate</strong> on the interface matches the desk (if digital).</li>
+<li><strong>Player volume and system volume</strong> set and left alone; set the level at the desk.</li>
+<li><strong>Files local</strong>, not streamed — downloaded, checked, in the running order. Cue software (QLab) for anything with more than a few cues.</li>
+<li><strong>Backup:</strong> a second machine or a phone/player with the same files on a second desk channel, ready to go.</li>
+<li><strong>Rehearse</strong> every cue at show level with the person calling them.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p>Hum the moment a laptop is plugged in is a ground loop — use a DI with ground lift (§12.3). Never cut a mains earth to fix it.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Handbook §8.4, §12.3 and §10.11; QLab documentation.</p></div>
+</section>
+
+</div></div>

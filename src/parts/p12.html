@@ -1,0 +1,217 @@
+<div class="part" id="p12">
+<div class="part-head"><div class="col"><span class="part-num">PART 12</span><div><h2>Diagnose &amp; fix faults</h2><p>One calm method beats twenty guesses. Follow the route, know your boundaries, and escalate with useful information.</p></div></div></div>
+<div class="col">
+
+<section class="s" id="s12-1"><h3><span class="n">12.1</span> The method</h3>
+<p>Back in <a href="#s2-1">§2.1</a>: every fault is the same question — <em>where along the chain did the signal stop, or start sounding wrong?</em> The method is <strong>divide and conquer</strong>: pick a point roughly in the middle of the suspect chain, check if the signal is correct there, and that tells you which half the fault is in. Repeat inside that half. Each check should eliminate roughly half of what's left.</p>
+<div class="flow" tabindex="0" role="region" aria-label="Signal flow">Mic → Cable → Stagebox → Snake/network → Console input → Processing → Output patch → Amp → Speaker
+                              ↑
+                    "Is it good HERE?" — splits the chain in two, repeat inside the faulty half</div>
+<div class="note std"><span class="lab">Standard</span><p>Say what you're testing and why, even just to yourself: "if I get signal at the stagebox, the fault's in the console or beyond; if I don't, it's the mic or the cable." Fault-finding out loud, even alone, keeps you from randomly retrying the same thing.</p></div>
+</section>
+
+<section class="s" id="s12-2"><h3><span class="n">12.2</span> The universal fault-finding kit</h3>
+<p>Half of fault-finding is having the right five things in your pocket so you can test without walking back to the truck.</p>
+<dl class="kv">
+<dt>Known-good cable</dt><dd>A short XLR you trust completely. Swap it in — if the fault follows the cable, it was the cable.</dd>
+<dt>Known-good mic or DI</dt><dd>Same logic at the source end.</dd>
+<dt>Headphones</dt><dd>To listen at intermediate points in the chain without needing the PA or a whole channel of the desk.</dd>
+<dt>Multimeter</dt><dd>Continuity testing on a cable in seconds — beats guessing by ear every time. <a href="#s12-4">§12.4</a>.</dd>
+<dt>Torch, small screwdriver set, gaffer tape, spare fuses, cable ties</dt><dd>The unglamorous stuff that solves 80% of physical faults. Tickable version of the whole personal bag at <a href="#s19-17">§19.17</a>.</dd>
+</dl>
+</section>
+
+<section class="s" id="s12-3"><h3><span class="n">12.3</span> Ground loops &amp; hum — the practical fix</h3>
+<p>Referenced from <a href="#s3-8">§3.8</a>: hum, usually at mains frequency (50 Hz) or a multiple of it, most often caused by two pieces of equipment referencing mains earth at two physically different points, creating a loop that picks up interference.</p>
+<ol class="seq">
+<li><strong>Confirm it's actually a ground loop</strong> — it's typically a low, steady hum that changes when you touch a chassis or connect/disconnect another earthed device, not a hiss or crackle.</li>
+<li><strong>Get everything onto one power source</strong> where possible (<a href="#s3-8">§3.8</a>) — often fixes it outright.</li>
+<li><strong>If that's not possible, use a DI box's ground lift switch</strong> on the offending line — it disconnects pin 1 from the DI's output side while keeping the safety earth on the mains plug fully intact. This is the correct, safe way to break a loop.</li>
+<li><strong>For a more permanent or larger-scale fix, use an isolation transformer</strong> in the signal path, which breaks the electrical connection between two pieces of gear while still passing audio.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p>The ground lift on a DI box lifts the <em>audio shield</em>, not the mains safety earth — the equipment's plug is still properly earthed for safety at all times. This is completely different from pulling the earth pin out of a mains plug, which is never acceptable (<a href="#s3-8">§3.8</a>) and is actually dangerous rather than a fix.</p></div>
+</section>
+
+<section class="s" id="s12-4"><h3><span class="n">12.4</span> Substitution &amp; isolation</h3>
+<p>The two techniques that solve almost everything:</p>
+<dl class="kv">
+<dt>Substitution</dt><dd>Swap the suspect part for one you know is good. If the fault goes away, the swapped part was faulty (or was fine, and something downstream changed — check both).</dd>
+<dt>Isolation</dt><dd>Remove everything from the chain except the minimum needed to test one link — a mic straight into a known-good channel on a different console, bypassing everything else, to prove the mic itself works.</dd>
+</dl>
+<p>A multimeter earns its place here: continuity mode (usually a beep) confirms a cable's cores are connected end to end and not shorted to each other or the shield — the fastest way to clear or confirm a suspect cable without needing a whole signal chain to test it in.</p>
+</section>
+
+<section class="s" id="s12-5"><h3><span class="n">12.5</span> Intermittent faults</h3>
+<p>The hardest category, because the thing you're trying to catch isn't there when you look at it.</p>
+<ul>
+<li><strong>Reproduce it deliberately.</strong> Wiggle the cable at each connector, one at a time, while listening — a fault that appears when you flex a connector specifically is almost always a dry joint or a damaged core right there.</li>
+<li><strong>Note the pattern.</strong> Only when someone moves? Only when it's warm? Only on that one channel regardless of what's plugged in? Patterns point at causes.</li>
+<li><strong>Don't declare it fixed after one clean test.</strong> Intermittent faults often "fix themselves" for ten minutes. Test longer and harder than feels necessary before you trust it.</li>
+</ul>
+<div class="note alt"><span class="lab">Also seen</span><p>A genuinely stubborn intermittent fault sometimes just gets swapped out wholesale — cable, DI, whatever — rather than fully diagnosed, because a show can't wait. That's a legitimate call under time pressure. Just make sure the suspect item gets properly fault-found later rather than quietly going back into general stock (<a href="#s11-5">§11.5</a>).</p></div>
+</section>
+
+<section class="s" id="s12-6"><h3><span class="n">12.6</span> Common patterns — quick reference</h3>
+<div class="tw"><table>
+<thead><tr><th>Symptom</th><th>Most likely</th></tr></thead>
+<tbody>
+<tr><td>Total silence on one channel</td><td>Mute, fader, gain at zero, patch mismatch, dead cable — check the chain in order (<a href="#s7-7">§7.7</a> for the console-specific version)</td></tr>
+<tr><td>Crackle when a cable's touched</td><td>Dry joint or damaged core at that connector</td></tr>
+<tr><td>Steady low hum</td><td>Ground loop — <a href="#s12-3">§12.3</a></td></tr>
+<tr><td>High-pitched whine that changes with a dimmer or screen</td><td>Electrical interference from lighting/video — <a href="#s9-2">§9.2</a></td></tr>
+<tr><td>Distorted at low fader, clean at high</td><td>Gain too hot at the input — the damage already happened before the fader</td></tr>
+<tr><td>Thin, weedy sound from an instrument DI'd</td><td>Impedance mismatch or a faulty/wrong DI — <a href="#s2-7">§2.7</a></td></tr>
+<tr><td>Works, then randomly drops for a second</td><td>RF interference or a network/Dante issue if digital — <a href="#s5-9">§5.9</a> or <a href="#s8-2">§8.2</a></td></tr>
+<tr><td>Fine alone, thin/hollow together with another mic</td><td>Phase, not polarity — check mic distances, not the Ø button — <a href="#s2-8">§2.8</a></td></tr>
+</tbody></table></div>
+</section>
+
+<section class="s" id="s12-7"><h3><span class="n">12.7</span> When to stop and ask for help</h3>
+<p>There's no shame threshold here, only a time one. If you've worked the method for a few minutes and you're not narrowing it down — you're just trying things — stop and get a second pair of eyes, or hand it to whoever's more senior, especially against a clock before doors. Explaining exactly what you've already ruled out ("it's not the mic, not the cable, definitely getting signal to the stagebox") makes you look competent, not incapable, and saves the next person from repeating your steps.</p>
+</section>
+
+<section class="s" id="s12-8"><h3><span class="n">12.8</span> The first sixty seconds — a script, not a feeling</h3>
+<p>Everything from here to <a href="#s12-16">§12.16</a> is written so you can follow it as an actual procedure, step by step, without needing to already have a feel for what's wrong. That feel comes later, from doing this enough times — for now, the procedure is the substitute for it, and it works just as well under pressure.</p>
+<ol class="seq">
+<li><strong>Is it one thing, or everything?</strong> One dead channel is a completely different problem from the whole system being silent. Establish which you've got before doing anything else — it decides which section below you need.</li>
+<li><strong>What changed right before it broke?</strong> Someone plugged something in, a scene got recalled, a cable got moved or trodden on, a setting got bumped. Faults very often correlate with the last thing that changed — ask, even if the answer is "nothing that I know of".</li>
+<li><strong>Check the cheap, obvious things before the exotic ones</strong> — mute, fader position, gain, a connector not fully seated, a power switch — in that order. It feels unglamorous. It's also where most faults actually are, and ruling them out in ten seconds each is much faster than fault-finding something that was never actually broken.</li>
+<li><strong>Then follow the chain</strong> (<a href="#s12-1">§12.1</a>) for whatever's left, using the specific walkthroughs below for the part of the system that's misbehaving.</li>
+<li><strong>Narrate it, even just in your head.</strong> "Signal's fine at the stagebox, so it's not the mic or the cable — the fault's between there and the desk." Saying the logic out loud is what stops you re-testing the same thing three times.</li>
+</ol>
+<div class="note std"><span class="lab">Standard</span><p>Print or screenshot this section and the table in <a href="#s12-9">§12.9</a> onward, or bookmark them — the goal isn't to memorise everything below, it's to know it exists and where to find it fast when you actually need it.</p></div>
+</section>
+
+<section class="s" id="s12-9"><h3><span class="n">12.9</span> Microphone &amp; cable faults</h3>
+<div class="tw"><table>
+<thead><tr><th>Symptom</th><th>Check, in order</th></tr></thead>
+<tbody>
+<tr><td>Total silence on that channel</td><td>Channel muted? Fader down? Correct channel selected on the desk? Phantom on if it's a condenser (<a href="#s2-6">§2.6</a>)? Cable fully seated at both ends?</td></tr>
+<tr><td>Crackling or cutting out</td><td>Wiggle the cable gently at each connector while listening — if it changes, that connector or the core near it is faulty. Swap the cable for a known-good one (<a href="#s12-2">§12.2</a>) to confirm before assuming the mic itself.</td></tr>
+<tr><td>Very quiet, hissy</td><td>Gain too low — turn it up (<a href="#s2-4">§2.4</a>). If it's still weak after that, suspect the mic or a bad cable core.</td></tr>
+<tr><td>Distorted, breaking up on loud passages</td><td>Gain too high — turn it down. This is at the input, so the fader won't fix it (<a href="#s2-4">§2.4</a>).</td></tr>
+<tr><td>Thin, weak, oddly quiet on a condenser specifically</td><td>Phantom power missing — check it's switched on for that channel and, on desks with a shared rack-wide switch, that it's on for the right rack.</td></tr>
+<tr><td>Loud hum, mains-frequency</td><td>Ground loop — go to <a href="#s12-3">§12.3</a>, don't just live with it.</td></tr>
+<tr><td>Works fine, then dies the moment someone moves</td><td>Almost always a damaged core or dry joint at the connector nearest the movement — same fix as "crackling" above.</td></tr>
+</tbody></table></div>
+<ol class="seq">
+<li>Swap the cable first — it's the fastest, cheapest thing to rule in or out, and cables fail more often than mics do.</li>
+<li>If swapping the cable doesn't fix it, swap the mic itself for a known-good one on the same channel.</li>
+<li>If the fault follows whichever part you swapped, you've found it. If it doesn't move at all, the problem is downstream — the stagebox socket, the multicore, or the channel on the desk (<a href="#s12-4">§12.4</a>).</li>
+</ol>
+</section>
+
+<section class="s" id="s12-10"><h3><span class="n">12.10</span> DI &amp; instrument faults</h3>
+<div class="tw"><table>
+<thead><tr><th>Symptom</th><th>Likely cause</th></tr></thead>
+<tbody>
+<tr><td>Silent</td><td>Instrument's own volume knob down, jack not fully inserted at the instrument, DI powered but not passing signal — try a known-good DI and cable</td></tr>
+<tr><td>Thin, weak, no low end</td><td>Passive DI needing phantom-powered active circuitry it doesn't have, or a genuinely faulty unit — swap for a known-good DI</td></tr>
+<tr><td>Buzzing that changes when the player touches the strings/metal parts</td><td>Grounding issue in the instrument or a cheap cable — try a different instrument cable first, it's the more common culprit</td></tr>
+<tr><td>Buzzing tied to the venue's dimmers or the mains generally</td><td>Ground loop — use the DI's ground lift switch (<a href="#s12-3">§12.3</a>)</td></tr>
+<tr><td>Fine on its own, disappears when the amp mic is also up</td><td>Not actually a fault — check for a polarity issue between the DI and the amp mic (<a href="#s2-8">§2.8</a>) rather than assuming something's broken</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="s" id="s12-11"><h3><span class="n">12.11</span> Wireless &amp; RF faults</h3>
+<p>The fuller diagnostic table lives in <a href="#s5-9">§5.9</a> — this is the beginner-friendly walk-through version, in the order to actually try things.</p>
+<ol class="seq">
+<li><strong>Check the obvious first</strong>: is the pack switched on, is it on the right frequency/group-and-channel, is the battery actually fresh (not just "not flashing red yet")?</li>
+<li><strong>Look at the RF meter</strong> on the receiver. No bars at all points at the transmitter, the antenna, or being out of range — not the audio path. Strong bars but bad audio points at a gain or audio-chain problem instead, not RF.</li>
+<li><strong>Check antenna basics</strong>: connected, not damaged, not coiled up inside a rack, positioned with reasonable line of sight to the pack. See <a href="#s5-3">§5.3</a>.</li>
+<li><strong>Move the performer through the space</strong> the pack will actually be used in while watching the meter — a dropout at one specific spot points at a dead zone or reflection, not a broken pack.</li>
+<li><strong>Swap the pack for a known-good spare</strong> to isolate whether it's the transmitter, receiver, or something environmental.</li>
+<li><strong>If it worked earlier today and doesn't now</strong>, suspect the spectrum has changed — other RF users have arrived nearby. Rescan (<a href="#s5-5">§5.5</a>) rather than assuming your own kit has failed.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p>Never try to fault-find RF mid-performance beyond a fast pack swap. Diagnose properly afterwards — a wired backup mic (<a href="#s5-9">§5.9</a>) is the correct answer in the moment, not troubleshooting live.</p></div>
+</section>
+
+<section class="s" id="s12-12"><h3><span class="n">12.12</span> Console faults</h3>
+<p>The quick-reference table is in <a href="#s7-7">§7.7</a>. As a beginner, work these in order rather than jumping around — most console "faults" turn out to be one of the first three.</p>
+<ol class="seq">
+<li><strong>Mute and fader</strong> — is the channel actually unmuted and the fader actually up? Check the physical position, not just what you remember setting it to.</li>
+<li><strong>Layer/bank</strong> — on a digital desk with multiple channel layers or banks, are you looking at (and adjusting) the layer the channel actually lives on?</li>
+<li><strong>Routing</strong> — is the channel routed to the bus or main output that's actually live? A channel can look perfectly healthy and simply not be going anywhere useful.</li>
+<li><strong>Solo</strong> — is something else soloed, silencing everything except one channel? Clear all solos and check again.</li>
+<li><strong>Scene/recall safes</strong> — did a scene just get recalled that changed something without you noticing? Check recall history if the desk has one.</li>
+<li><strong>Gain and processing</strong> — only once the above are all ruled out, look at gain, EQ, dynamics and inserts on that specific channel.</li>
+</ol>
+</section>
+
+<section class="s" id="s12-13"><h3><span class="n">12.13</span> Loudspeaker &amp; amplifier faults</h3>
+<div class="tw"><table>
+<thead><tr><th>Symptom</th><th>Check, in order</th></tr></thead>
+<tbody>
+<tr><td>One box completely silent, rest of the system fine</td><td>Power to that box/amp channel, speakON cable fully locked in at both ends, output patch on the amp or console actually routed to that box</td></tr>
+<tr><td>Whole system silent</td><td>Main output mute or fader, amp power/standby, output patch at the console, and — before anything else — is the console's own output actually reaching anything downstream at all (<a href="#s2-1">§2.1</a>)</td></tr>
+<tr><td>Crackling or cutting from one box</td><td>speakON connector not fully locked (a quarter-turn short of home is a classic), damaged speaker cable — swap the cable to isolate</td></tr>
+<tr><td>Distorted, harsh sound from one box under load</td><td>Amp channel clipping or driven too hard for that box, or a genuinely damaged driver — reduce level and see if it clears; if it doesn't, the driver may be damaged</td></tr>
+<tr><td>Amp showing a fault light / limiting constantly</td><td>Overheating, overloaded (too low an impedance load, <a href="#s2-7">§2.7</a>), or a genuine fault — reduce load/level first, and don't just keep pushing through a limiter light</td></tr>
+<tr><td>Uneven coverage — loud in one area, dead in another</td><td>Not usually a fault at all — check aiming and coverage first (<a href="#s6-6">§6.6</a>) before assuming a box has failed</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>On a d&amp;b system, the amp's output mode and the speaker cable's pins decide which box hears what — see <a href="#s6-19">§6.19</a> for the d&amp;b-specific checks, and <a href="#s3-12">§3.12</a> for NL4 / NLT4 cables. Or describe it to the <a href="#ask">fault finder</a>.</p></div>
+</section>
+
+<section class="s" id="s12-14"><h3><span class="n">12.14</span> Digital audio &amp; Dante network faults</h3>
+<ol class="seq">
+<li><strong>Check the physical layer first</strong> — network cable fully seated, link light on at both ends of the run. A dead link light means the fault is that cable or that port, not the audio settings.</li>
+<li><strong>Open Dante Controller</strong> (or the equivalent) and check the device actually appears on the network. If it's missing entirely, it's a network/power problem, not a routing one.</li>
+<li><strong>Check sample rate matches</strong> across every device (<a href="#s2-9">§2.9</a>). A mismatched device simply won't connect — it'll show as unavailable rather than giving an obvious error.</li>
+<li><strong>Check the subscription/routing</strong> is actually made in the grid — a device being visible on the network doesn't mean its channels are patched anywhere.</li>
+<li><strong>Check clock status</strong> — you want to see a clear, single leader with everything else following it, not multiple devices disagreeing.</li>
+<li><strong>Clicks, pops or dropouts with everything otherwise routed correctly</strong> usually mean a clock problem (<a href="#s2-9">§2.9</a>) or, on a bigger network, congestion — try raising the device's latency setting a step (<a href="#s8-2">§8.2</a>) before assuming a hardware fault.</li>
+</ol>
+</section>
+
+<section class="s" id="s12-15"><h3><span class="n">12.15</span> Power &amp; electrical faults — what's yours to check</h3>
+<p>This is the one category where the boundary matters as much as the diagnosis. As a non-electrician, there's a real, useful amount you can safely check — and a clear line past which the answer is always "get someone qualified", not "have a go".</p>
+<dl class="kv">
+<dt>Safe to check yourself</dt><dd>Is the socket/distro actually switched on. Is a fuse or breaker tripped, and if so, does it trip again immediately on reset (if it does, stop — that's a real fault, not a nuisance trip). Is a cable visibly damaged. Is a device actually plugged in properly. Is the right circuit/phase being used.</dd>
+<dt>Not yours to open up or bypass</dt><dd>Anything inside a distro, a suspect mains lead you're tempted to "just tape up", a breaker that keeps re-tripping, any earth-related fault. This is exactly the boundary <a href="#s13-2">§13.2</a> and <a href="#s3-8">§3.8</a> describe — competence and the law both stop at the same point.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p>A breaker or RCD that trips repeatedly is protecting someone from something real. Don't reset it more than once without investigating what caused it, and never defeat a protective device to "get through the show" — that's the exact scenario the Electricity at Work Regulations exist to prevent (<a href="#s13-2">§13.2</a>).</p></div>
+</section>
+
+<section class="s" id="s12-16"><h3><span class="n">12.16</span> DMX &amp; lighting-adjacent faults you'll get blamed for anyway</h3>
+<p>You'll sometimes get asked about a lighting fault simply because you're technical and standing nearby — worth being able to do a first pass rather than just saying "not my department", especially now you've got some grounding in <a href="#s9-8">§9.8 onward</a>.</p>
+<div class="tw"><table>
+<thead><tr><th>Symptom</th><th>Check</th></tr></thead>
+<tbody>
+<tr><td>One fixture completely dead</td><td>Power to that fixture, DMX cable in and out at that unit, is it actually patched/addressed in the show file (<a href="#s9-10">§9.10</a>)</td></tr>
+<tr><td>Fixture flickers or behaves erratically</td><td>Missing termination at the end of the DMX chain, or a damaged link in the daisy chain — check the 120 Ω terminator is actually fitted (<a href="#s9-7">§9.7</a>)</td></tr>
+<tr><td>Whole chain from one point onward is dead</td><td>Break in the daisy chain at that point — DMX is a chain, not a star, so everything downstream of a break goes dark together</td></tr>
+<tr><td>Fixture responds to the wrong controls, or two fixtures fight each other</td><td>Addressing clash — two fixtures patched to overlapping DMX addresses (<a href="#s9-10">§9.10</a>)</td></tr>
+</tbody></table></div>
+<p>Beyond this table, hand it to the LX department — this is enough to sound informed and occasionally fix something quick, not enough to replace someone who actually programmes lighting for a living.</p>
+</section>
+
+<section class="s" id="s12-17"><h3><span class="n">12.17</span> Keeping a fault log</h3>
+<p>The fastest route from "following a script" to "just knowing" is deliberately recording what actually went wrong and what actually fixed it, every time, even for a minute. Doesn't need to be formal — a running note in your phone: date, symptom, what it turned out to be. Patterns show up after a surprisingly small number of entries — the same three or four faults account for most of what actually goes wrong, and once you've written them down a few times you'll start recognising them before you've even finished testing.</p>
+<div class="note alt"><span class="lab">Also seen</span><p>Experienced engineers do this instinctively without calling it anything — it's just "oh, this always happens when X". Writing it down deliberately for your first year or two just gets you there faster than waiting for it to happen by accident.</p></div>
+</section>
+
+<section class="s" id="s12-18"><h3><span class="n">12.18</span> Feedback — the immediate response</h3>
+<p>Prevention is <a href="#s15-8">§15.8</a>. This is what to actually do when a mic starts ringing or howling live, because the instinctive reaction — reaching for EQ — is usually the wrong first move.</p>
+<ol class="seq">
+<li><strong>Pull the fader first, not the EQ.</strong> The fastest way to stop feedback is to reduce the gain in the loop — bring the offending channel down (or all the way out) before you do anything else. You can't identify or fix anything sensibly while it's still howling.</li>
+<li><strong>Work out which channel it actually is.</strong> On a busy stage with several open mics this isn't always obvious — mute channels one at a time if you have to, starting with whichever mic just moved or whoever just walked closer to a monitor.</li>
+<li><strong>Once it's quiet, find the frequency</strong> — by ear, or with an RTA if the desk has one — and apply a narrow cut there, not a broad one that dulls the whole channel.</li>
+<li><strong>Bring the fader back up slowly</strong>, listening for the same ring returning. If it comes back at a lower level than before, you've genuinely bought headroom; if it's still right on the edge, the room or the mic technique is the real problem, not the EQ.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p>Feedback through an open IEM channel is a hearing-safety issue, not just an embarrassing noise — see the warning in <a href="#s5-7">§5.7</a>. Pull the level immediately rather than trying to EQ your way out of it in-ear.</p></div>
+</section>
+
+<section class="s" id="s12-19"><h3><span class="n">12.19</span> Following the signal with test tone — the universal method</h3>
+<p>Works on any brand, any desk, any network: send a known signal and follow it until it disappears.</p>
+<ol class="seq">
+<li><strong>Warn people</strong>, then send <strong>pink noise at low level</strong> from the desk's oscillator to one output (or one amp's built-in generator for the far end).</li>
+<li><strong>Desk output meter</strong> moving? If not, it's the desk: routing, output patch, mute (§7.7).</li>
+<li><strong>Network or link:</strong> Dante subscription green, AES lock, analogue cable — is the signal arriving at the amp's input indicator? If not, it's the link (§12.14).</li>
+<li><strong>Amp:</strong> input present but no output? Channel muted, wrong routing, or a fault on the amp (§6.17).</li>
+<li><strong>Cable and box:</strong> output present but silent box — speakON locked, right socket for the mode, 4-core where needed, then swap the cable (§6.19).</li>
+<li>The <strong>first place it disappears</strong> is the fault. Fix there, retest end to end.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p>Start tone <strong>low</strong> and bring it up — pink noise at full level through a big PA is painful and can damage drivers. Never send tone to IEMs or headphones people are wearing.</p></div>
+</section>
+
+</div></div>

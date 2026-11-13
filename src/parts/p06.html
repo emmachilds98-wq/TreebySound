@@ -1,0 +1,439 @@
+<div class="part" id="p6">
+<div class="part-head"><div class="col"><span class="part-num">PART 6</span><div><h2>PA &amp; sound systems</h2><p>The output end: what the boxes are, how they go together and how a system serves a room safely.</p></div></div></div>
+<div class="col">
+
+<section class="s" id="s6-1"><h3><span class="n">6.1</span> Anatomy of a loudspeaker</h3>
+<dl class="kv">
+<dt>Driver</dt><dd>The moving part. A <em>cone</em> driver (woofer) for low and mid; a <em>compression driver</em> on a horn for high.</dd>
+<dt>Horn / waveguide</dt><dd>The flare in front of the HF driver. It controls where the high frequencies go — the "dispersion pattern", quoted as e.g. 90° × 60° (horizontal × vertical).</dd>
+<dt>Crossover</dt><dd>Splits the signal so each driver only gets the frequencies it can handle.</dd>
+<dt>Passive</dt><dd>Crossover is inside the box, after the amplifier. One amp channel feeds the whole box. Simple, needs external amps.</dd>
+<dt>Active / powered</dt><dd>Amplifier and DSP built into the box. Plug in mains and a signal. Dominant now for small and mid-scale work.</dd>
+<dt>Bi-amp / tri-amp</dt><dd>Separate amp channels per driver, crossover done before the amps in DSP. More control, better performance, more cabling.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p>A passive box wired to an amp with the <em>wrong preset</em>, or a bi-amp box fed a full-range signal on both inputs, will destroy the HF driver in seconds. Compression drivers handle a few watts; a woofer handles hundreds. If you're ever unsure whether a box is passive, active or bi-amp, <strong>find out before you send it signal.</strong></p></div>
+</section>
+
+<section class="s" id="s6-2"><h3><span class="n">6.2</span> Types of box and what they're for</h3>
+<div class="tw"><table>
+<thead><tr><th>Type</th><th>What it is</th><th>Used for</th></tr></thead>
+<tbody>
+<tr><td><strong>Point source</strong></td><td>A single conventional box</td><td>Small to mid rooms, fills, monitors. Simple and predictable.</td></tr>
+<tr><td><strong>Line array</strong></td><td>Many small boxes hung in a vertical line, coupling together</td><td>Long throw, large audiences, even coverage front to back</td></tr>
+<tr><td><strong>Column array</strong></td><td>Slim vertical column, often ground-standing</td><td>Reverberant rooms, speech, churches, discreet installs</td></tr>
+<tr><td><strong>Subwoofer</strong></td><td>Low frequencies only, typically below 80–120 Hz</td><td>Weight and impact. Almost always ground-stacked.</td></tr>
+<tr><td><strong>Wedge / floor monitor</strong></td><td>Angled box pointing up at a performer</td><td>Stage monitoring</td></tr>
+<tr><td><strong>Sidefill</strong></td><td>Larger boxes at the sides of the stage facing across</td><td>General stage level</td></tr>
+<tr><td><strong>Drum fill</strong></td><td>Sub + top behind or beside the drummer</td><td>Drummer's monitoring</td></tr>
+<tr><td><strong>Front fill</strong></td><td>Small boxes along the stage lip</td><td>The first few rows, who are under the main system's coverage</td></tr>
+<tr><td><strong>Out fill / side fill (FOH)</strong></td><td>Additional hangs covering the edges</td><td>Wide rooms the mains don't reach</td></tr>
+<tr><td><strong>Delay stack</strong></td><td>Speakers further back in the audience, time-delayed</td><td>Long rooms/fields where the main system runs out of level</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="s" id="s6-3"><h3><span class="n">6.3</span> Brands and ranges you'll handle</h3>
+<div class="tw"><table>
+<thead><tr><th>Tier</th><th>Typical brands / ranges</th></tr></thead>
+<tbody>
+<tr><td><strong>Portable active</strong></td><td>RCF ART series, QSC K.2 / CP, Yamaha DXR / DZR, JBL EON, Electro-Voice ELX / ZLX, Turbosound iQ</td></tr>
+<tr><td><strong>Mid-scale / small arrays</strong></td><td>RCF HDL, JBL VRX / SRX, Martin Audio Blackline X / Wavefront, Nexo ID / PS, EV EKX</td></tr>
+<tr><td><strong>Pro touring</strong></td><td>d&amp;b audiotechnik (E, xS, A, T, Y, V, CCL, KSL, XSL, GSL, plus the discontinued J and Q — every model in <a href="#s6-20">§6.20</a>), L-Acoustics (X, A, Kara, K2/K3, K1, Syva), Meyer Sound (UPJ, LEO, LYON, PANTHER), Martin Audio MLA / Wavefront Precision, Adamson (S, E), Nexo STM/GEO</td></tr>
+<tr><td><strong>Install / discreet</strong></td><td>Bose, Tannoy, Community, K-array, d&amp;b xS series</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>Learn <em>your company's</em> stock properly rather than trying to learn all of it. Know for each box: is it active or passive, what amp preset it needs, what it weighs, how it flies, what it draws, and what its dispersion is. That's the knowledge that makes you useful on site.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>Two more numbers on a loudspeaker's datasheet, alongside dispersion: <strong>sensitivity</strong> (the SPL it produces at 1 W of input, measured at 1 m — how efficiently it turns power into level) and <strong>maximum SPL</strong> (the loudest it can go before distortion or damage, at a stated distance). Neither is something you'll need to calculate as a junior, but recognise them for what they are when comparing two boxes or reading a spec sheet — a box with lower sensitivity just needs more amplifier power to reach the same level as one with higher sensitivity.</p></div>
+</section>
+
+<section class="s" id="s6-4"><h3><span class="n">6.4</span> Amplifiers &amp; processing</h3>
+<p>For passive systems, the amplifier is not a generic box — it's part of the loudspeaker system. Modern touring amps are really <strong>amplified DSP controllers</strong>: they contain the crossover, EQ, limiting and delay that make a specific box model behave correctly.</p>
+<dl class="kv">
+<dt>d&amp;b D20 / D40 / D80</dt><dd>Amps for d&amp;b systems. You <em>must</em> select the correct loudspeaker preset (d&amp;b call it the <em>setup</em>) for the boxes connected. The whole d&amp;b system — amps, output modes, setup and faults — is in <a href="#s6-16">§6.16–6.19</a>.</dd>
+<dt>L-Acoustics LA4X / LA12X</dt><dd>Same principle for L-Acoustics.</dd>
+<dt>Lab.gruppen, Powersoft, Camco, Crown, QSC</dt><dd>General-purpose touring amplification, usually with configurable DSP.</dd>
+<dt>Outboard processor</dt><dd>Where DSP isn't in the amp: BSS Soundweb / Blu, dbx DriveRack, Xilica, Symetrix. Sits between console and amps.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>The amp preset must match the box.</strong> Loading a preset for a different model — or worse, a "full range" preset onto a bi-amped enclosure — is the most expensive mistake in this part of the job. Check it every time, and check it again after anyone else has touched the rack. On a lot of systems this is a locked, password-protected setting for exactly this reason.</p></div>
+</section>
+
+<section class="s" id="s6-5"><h3><span class="n">6.5</span> Rigging &amp; flying — the honest version</h3>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Rigging is a qualified discipline and this section will not teach it to you.</strong> Flown loudspeakers weigh hundreds of kilos and hang over people. Do not attach, adjust, or sign off flown audio unless you are trained, competent and authorised to do so — and even then, under supervision until you're signed off. What follows is so you understand what's happening around you and can be a useful pair of hands, not so you can do it yourself.</p></div>
+<dl class="kv">
+<dt>Ground stack</dt><dd>Boxes stacked on the floor or on subs, often on a frame. Simpler, no rigging, but sightlines and coverage suffer.</dd>
+<dt>Flown</dt><dd>Hung from the venue's structure via motors or fixed points. Better coverage, better sightlines, more skill and paperwork.</dd>
+<dt>Bumper / fly frame</dt><dd>The top piece an array hangs from.</dd>
+<dt>Pull-back</dt><dd>A second line pulling the bottom of an array backwards to set its angle.</dd>
+<dt>SWL / WLL</dt><dd>Safe Working Load / Working Load Limit — the rated maximum. Never exceeded, never guessed.</dd>
+<dt>Secondary / safety</dt><dd>A backup attachment that catches the load if the primary fails.</dd>
+<dt>LOLER / PUWER</dt><dd>The UK regulations covering lifting equipment and its inspection. See <a href="#s13-3">§13.3</a>.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>Universal rule on any site: <strong>nobody stands under a suspended load.</strong> Not "briefly", not "just to plug this in". If a motor is moving, the area below it is clear. Learn to notice this and step out of the way without being told — people notice.</p></div>
+</section>
+
+<section class="s" id="s6-6"><h3><span class="n">6.6</span> Coverage, aiming and subs</h3>
+<p>The job of system design is getting roughly the same experience everywhere in the audience. That means aiming boxes at people, not at walls, and accepting that the front will always be louder than the back.</p>
+<h4>Point source aiming</h4>
+<p>Aim the box so its <em>on-axis</em> line points at the <strong>furthest</strong> listeners, not the nearest. The near listeners are already close (loads of level from proximity) and are covered by the off-axis spill. Aiming at the front row wastes your throw and deafens them.</p>
+<h4>Sub configurations</h4>
+<div class="tw"><table>
+<thead><tr><th>Arrangement</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><strong>Left/right stacks</strong></td><td>Simple, but creates a "power alley" of coupling down the centre and cancellation at the sides.</td></tr>
+<tr><td><strong>Centre cluster / mono subs</strong></td><td>All subs together in the middle. Even coverage, no power alley. Very common now.</td></tr>
+<tr><td><strong>Cardioid subs</strong></td><td>One or more subs reversed and processed so the energy behind the stack cancels. Keeps bass off the stage and out of the neighbours' windows.</td></tr>
+<tr><td><strong>End-fire</strong></td><td>Subs in a line front-to-back, each delayed, so energy adds forwards and cancels backwards. Needs depth but works beautifully.</td></tr>
+<tr><td><strong>Sub arc / gradient</strong></td><td>Curved or delay-shaded lines to widen or shape the low-frequency coverage.</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>Cardioid or end-fire subs are worth understanding early, because they solve two problems at once: they clean up the stage (happier musicians, less low-end mud in the mics) and they cut the noise complaint risk from behind the stage. On a lot of jobs they're the difference between passing and failing the noise conditions.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>At the top end of touring and festival work you'll increasingly meet <strong>immersive or object-based audio</strong> — systems like L-Acoustics L-ISA or d&b Soundscape, which use many individually-controlled boxes across the width of a room (rather than one stereo pair) to place sounds precisely and move them around the space, plus ambisonic approaches for fully surrounding a room. It's a specialism of its own, well beyond what this book covers — worth knowing it exists so a job spec mentioning it doesn't come as a surprise, not something you're expected to already understand.</p></div>
+</section>
+
+<section class="s" id="s6-7"><h3><span class="n">6.7</span> Prediction software</h3>
+<p>Before a system is built, it's modelled. Every major manufacturer supplies free software that predicts coverage and SPL for their own boxes in a given room.</p>
+<dl class="kv">
+<dt>d&amp;b ArrayCalc</dt><dd>For d&amp;b systems. Pairs with R1 for control.</dd>
+<dt>L-Acoustics Soundvision</dt><dd>For L-Acoustics. Pairs with LA Network Manager.</dd>
+<dt>Meyer MAPP</dt><dd>Meyer's prediction tool.</dd>
+<dt>Martin Audio DISPLAY</dt><dd>For Martin systems, especially MLA.</dd>
+<dt>Nexo NS-1</dt><dd>Nexo's version.</dd>
+<dt>EASE / EASE Focus</dt><dd>Cross-manufacturer. EASE Focus is free and covers many brands — a great one to learn on.</dd>
+</dl>
+<div class="note deep"><span class="lab">Go deeper</span><p>Download <strong>EASE Focus</strong> and model a room you know — your local venue, your workplace. Being able to say "that hang will hit the back wall hard, we should steer it down" with a picture to back it up is a genuinely senior skill and you can start learning it tonight for free.</p></div>
+</section>
+
+<section class="s" id="s6-8"><h3><span class="n">6.8</span> System tuning — what's actually happening</h3>
+<p>You won't be tuning systems yet, but knowing what the systems tech is doing means you can help rather than hover.</p>
+<ol class="seq">
+<li><strong>Verification</strong> — prove every box works, is on the right preset, and is polarity-correct. Boring, essential, and often the bit you'll be doing.</li>
+<li><strong>Level matching</strong> — get all the subsystems (mains, fills, delays) to comparable levels.</li>
+<li><strong>Time alignment</strong> — delay the nearer subsystem so its sound arrives at the same moment as the further one. A delay stack 30 m back needs roughly 87 ms of delay (sound travels about 344 m/s, so ~2.9 ms per metre).</li>
+<li><strong>Crossover alignment</strong> — get the subs and tops working together at the crossover point rather than cancelling.</li>
+<li><strong>EQ</strong> — correct broad tonal problems in the system's response. Not fixing the room; you cannot EQ a room (<a href="#s6-15">§6.15</a>).</li>
+<li><strong>Listen</strong> — with known reference material, from several places in the room. Measurement gets you to sensible; ears get you to good.</li>
+</ol>
+<div class="note alt"><span class="lab">Also seen</span><p>There's a real philosophical split here. One camp measures extensively with Smaart or similar and tunes to a target curve. Another camp tunes almost entirely by ear with familiar tracks. Most good engineers do both — measure to find and fix real problems, then listen to make it sound right. Be suspicious of anyone who says one method is the only method.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>This is the deepest rabbit hole in live audio and it's genuinely fascinating. Rational Acoustics (Smaart) run training; the Bob McCarthy book <em>Sound Systems: Design and Optimization</em> is the standard text. See <a href="#s18-6">§18.6</a> and <a href="#s18-7">§18.7</a>.</p></div>
+</section>
+
+<section class="s" id="s6-9"><h3><span class="n">6.9</span> Monitor world</h3>
+<p>Stage monitoring is a separate craft from FOH and arguably harder — you're building six to sixteen different mixes simultaneously for people who can't tell you what's wrong except by pointing.</p>
+<dl class="kv">
+<dt>Wedges</dt><dd>Angled floor boxes. Aimed at the performer's head, positioned so the vocal mic's null faces them.</dd>
+<dt>Mix count</dt><dd>How many independent monitor mixes you're providing. Every performer wanting their own is expensive in outputs and time.</dd>
+<dt>Pre-fade sends</dt><dd>Monitor sends are <strong>pre-fade</strong> so FOH fader moves don't change what the band hears. This is close to universal and getting it wrong is very obvious.</dd>
+<dt>Ringing out</dt><dd>Deliberately pushing a monitor until it feeds back, identifying the frequency, and cutting it — repeated a few times to raise gain before feedback.</dd>
+<dt>Graphic EQ</dt><dd>Traditionally a 31-band GEQ per wedge. Still the standard on many desks.</dd>
+</dl>
+<div class="note alt"><span class="lab">Also seen</span><p>Ringing out a wedge with a graphic before soundcheck is the traditional approach and still widely done. Others prefer to leave the monitor flat and only cut narrow parametric notches reactively when something actually rings, arguing that pre-emptive ringing out just makes everything sound worse for a problem that might not occur. Both are legitimate; the second is increasingly common with modern boxes and good mic technique.</p></div>
+<div class="note warn"><span class="lab">Watch it</span><p>Never point a wedge at the back of a vocal mic, never let someone stand between the wedge and their own mic, and never turn a monitor up "just to check" while someone's face is next to it. Feedback at wedge level is painful and can damage hearing.</p></div>
+</section>
+
+<section class="s" id="s6-10"><h3><span class="n">6.10</span> Loudness, limits and the law</h3>
+<dl class="kv">
+<dt>dBA</dt><dd>A-weighted — approximates human sensitivity, discounts bass heavily. What most noise conditions are written in.</dd>
+<dt>dBC</dt><dd>C-weighted — much flatter, includes the low end. Better for measuring what actually annoys neighbours.</dd>
+<dt>Leq</dt><dd>Equivalent continuous level — an average over a period, e.g. "Leq 15 min". This is how limits are usually written, not as an instantaneous peak.</dd>
+<dt>Venue noise limiter</dt><dd>A device that cuts the power to the stage if the level exceeds a threshold. Common in function rooms and hotels. Find out if there is one, where it is and what it's set to <em>before</em> you build.</dd>
+<dt>Licence conditions</dt><dd>Many events have legally binding noise limits and curfews as conditions of the premises licence (or, for smaller one-off events, a Temporary Event Notice) granted under the <strong>Licensing Act 2003</strong>. For bigger or higher-risk events, a Safety Advisory Group — the local authority, police, fire and other agencies working together — reviews the event and can set or tighten these conditions, often drawing on the guidance in the Purple Guide. That matters practically: a limit breach isn't just "the neighbours are annoyed", it's a breach of a legal condition the promoter's licence depends on, which is why the SAG or an environmental health officer can shut a show down over it. Breaching them has consequences for the promoter, not just embarrassment.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Protect your hearing from day one.</strong> Hearing damage is cumulative, permanent and completely invisible until it's done. The UK Control of Noise at Work Regulations 2005 set action levels at 80 dB(A) and 85 dB(A) daily exposure — a loud gig blows past both. Carry decent filtered earplugs (Alpine, Etymotic, EarPeace — around £20 and they don't muffle) and get custom moulds when you can afford them (£150–200, last years). Every experienced engineer you meet either wears them or wishes they had.</p></div>
+</section>
+
+<section class="s" id="s6-11"><h3><span class="n">6.11</span> Assistive listening &amp; hearing loops</h3>
+<p>Not part of the PA, but genuinely part of the job — audio techs are very often the ones who end up responsible for these, simply because they're the closest thing to "audio" on site.</p>
+<dl class="kv">
+<dt>What it is</dt><dd>A hearing/induction loop is a wire run around a room (or a smaller area, sometimes called a counter loop) driven by a dedicated <strong>loop driver</strong> amplifier. It creates a magnetic field carrying the audio, which a hearing aid's built-in <strong>T-coil</strong> picks up directly — bypassing the room's background noise entirely, rather than just amplifying it along with everything else.</dd>
+<dt>The legal side</dt><dd>Under the Equality Act 2010, venues are expected to make reasonable adjustments for disabled customers, which in practice includes providing a working induction loop. Building Regulations Part M requires hearing enhancement systems in new or altered buildings at reception points, performance areas and meeting spaces — marked with the standard blue "ear and T" symbol.</dd>
+<dt>Feeding it</dt><dd>The loop driver wants a dedicated mono line-level feed of the primary programme audio — usually a matrix or aux send from the console — not a stray mic picking up the room. A room mic gives loop users the room's echo and noise along with the speech; a proper feed gives them exactly what everyone else is hearing, cleanly.</dd>
+<dt>The standard</dt><dd>IEC 60118-4 sets the technical requirements — field strength, frequency response and signal-to-noise ratio — that a compliant loop has to meet. You're not expected to certify a system yourself, but knowing the standard exists is enough to recognise when a "we've got a loop" claim needs an actual test, not just a knowing nod.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>If a venue tells you they have an induction loop, ask when it was last tested and who feeds it — a genuinely surprising number of installed loops are silently unplugged, mis-patched, or fed from the wrong source. If you're asked to feed one yourself, a dedicated send from the console, checked with a level that's neither buried nor distorted, is the whole job.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>Ampetronic and Contacta both publish clear, freely available technical guides on loop systems aimed at installers rather than end users — genuinely useful if you end up dealing with these regularly. See <a href="#s18-11">§18.11</a>.</p></div>
+</section>
+
+<section class="s" id="s6-12"><h3><span class="n">6.12</span> Interpretation &amp; conference systems</h3>
+<p>The conference-world cousin of the hearing loop — and the same pattern applies: audio techs very often end up owning it, again simply because it's the closest thing to "audio" on site, even though it's really its own small discipline.</p>
+<dl class="kv">
+<dt>What it is</dt><dd>Simultaneous interpretation lets a speaker be heard live in another language — an interpreter in a soundproofed booth listens on headphones and speaks the translation into a mic, which is transmitted to delegates on wireless IR or RF receivers with earpieces, channel-selectable if there's more than one target language.</dd>
+<dt>Your part in it</dt><dd>Almost always just the feed — the interpreters need a clean, dedicated feed of the source language audio (the same discipline as a broadcast submix, <a href="#s14-8">§14.8</a>), and their translated output needs to be received back into the system correctly if it's being mixed into a recording or a specific zone. You are not expected to manage the booths or receivers themselves — that's normally a specialist interpretation-equipment supplier's job.</dd>
+<dt>What to check</dt><dd>Which channel is which language, that the interpreter feed is live and clean before delegates arrive, and — if it's your job to supply it — that the receiver count matches the expected audience, with spares. A silent interpretation channel five minutes into a conference is a much bigger problem than a silent audio channel, because there's no way for that portion of the audience to follow anything until it's fixed.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>Treat the interpreter feed with the same care as a broadcast feed — test it properly before doors with the interpreters actually present, not just by yourself. They'll tell you immediately if the level or source is wrong, and they're the only people in the building who can.</p></div>
+</section>
+
+<section class="s" id="s6-13"><h3><span class="n">6.13</span> Audio description</h3>
+<p>The theatre-world accessibility service that's easy to miss entirely if nobody's ever pointed it out to you — a describer narrates the visual action (movement, expressions, set changes) into the gaps between dialogue, for blind and partially-sighted audience members listening on a headset. In the UK, specialist providers like VocalEyes train describers and often run the service itself; the venue's job, and by extension yours, is mostly making sure the infrastructure works.</p>
+<dl class="kv">
+<dt>What you're actually asked for</dt><dd>A clean feed of the show mix to the describer's booth or position (so they can hear what the audience hears while they narrate), and a transmission system — usually the same IR or RF infrastructure as an interpretation system (<a href="#s6-12">§6.12</a>) — carrying the describer's voice out to headset receivers in the audience.</dd>
+<dt>Touch tours</dt><dd>Many venues offer a pre-show "touch tour" letting blind patrons handle set pieces, props and sometimes costumes to build a mental picture before the performance. Not really an audio job, but you'll sometimes be asked to support it with a portable PA or just a quiet, working comms channel.</dd>
+<dt>What to check</dt><dd>Same discipline as the interpreter feed — test it live, with the describer present, before doors. A describer who can't hear the show clearly can't do their job at all.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>Tickable version of all of the above, covering audio description alongside interpretation and hearing loops together, at <a href="#s19-15">§19.15, the access services checklist</a>.</p></div>
+</section>
+
+<section class="s" id="s6-14"><h3><span class="n">6.14</span> Outdoor &amp; weather-exposed work</h3>
+<p>Everything above assumes a roof. A genuinely large share of UK live audio doesn't have one — festivals, outdoor corporate, marquees with open sides — and weather causes its own specific category of problems worth knowing before you meet them for the first time.</p>
+<dl class="kv">
+<dt>IP ratings</dt><dd>The two-digit code on outdoor-rated boxes (IP54, IP55, IP65…) — first digit is protection against solid objects/dust, second is against water. IP54 (dust-protected, splash-resistant) is a common minimum for touring outdoor boxes; IP55 adds stronger jet protection; IP65 (fully dust-tight, low-pressure jet resistant) is typical for permanent outdoor install. A box with no IP rating at all almost certainly isn't meant to get rained on, whatever it looks like.</dd>
+<dt>Electronics in the wet</dt><dd>Consoles, racks and anything with an unsealed connector are the actual risk, not the speakers — rain covers (fitted covers, gazebos, or simply a tarp rigged with a run-off slope so water doesn't pool) over FOH and any exposed patch bays are standard on any outdoor job, wired or not.</dd>
+<dt>Wind</dt><dd>Rumbles and thumps on open mics, especially outdoor vocal or speech mics — a foam windshield helps a little, a proper wind muff ("dead cat") helps a lot more. Wind also physically moves line array elements and lightweight boxes on stands, which is a rigging and PUWER concern (<a href="#s13-3">§13.3</a>) as much as an audio one.</dd>
+<dt>Temperature</dt><dd>Cold weather drains batteries faster and makes wireless receivers slightly less predictable at the margins of range — carry more spares than you think you need on a cold outdoor day. Direct sun on a black console or amp rack for hours can push internal temperatures high enough to matter; shade it if you can.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p>Never work on live electrical connections in the rain, and if lightning is genuinely close, that's a stop-the-show safety call for the Event Safety Officer or Production Manager, not something to quietly push through. Outdoor events should have a written severe weather plan — ask to see it if one job feels like it might need it.</p></div>
+<div class="note std"><span class="lab">Standard</span><p>Tickable version of all of the above at <a href="#s19-14">§19.14, the outdoor &amp; weather-exposed job checklist</a>.</p></div>
+</section>
+
+<section class="s" id="s6-15"><h3><span class="n">6.15</span> The room is part of the system</h3>
+<p>Everything up to here has been about the boxes. But the audience never hears the boxes on their own — they hear the boxes plus the room, and in a difficult building the room is the louder partner. This is the bit that explains why the same PA can sound superb in one venue and like a swimming pool in the next, and why <a href="#s6-8">§6.8</a> insists you can't EQ a room.</p>
+<dl class="kv">
+<dt>Direct sound</dt><dd>What arrives straight from the loudspeaker, first. It carries the intelligibility — the consonants that let someone understand a word rather than just hear a noise.</dd>
+<dt>Reflections</dt><dd>The same sound arriving later, having bounced off a wall, the ceiling or the floor. Early reflections (within roughly 30&nbsp;ms) mostly reinforce the direct sound. Later ones smear it.</dd>
+<dt>Reverberation</dt><dd>What's left once the reflections are too many and too close together to hear individually — a decaying wash. Measured as <strong>reverberation time (RT60)</strong>: how long it takes to decay by 60&nbsp;dB after the source stops.</dd>
+<dt>Room modes / standing waves</dt><dd>At low frequencies, wavelengths are comparable to the room's dimensions, so the room resonates at particular frequencies. That's why bass can be overwhelming in one seat and almost missing three metres away, with nothing wrong with the system.</dd>
+<dt>Absorption</dt><dd>Soft things — curtains, carpet, seating, and above all <em>people</em> — turn sound energy into a tiny amount of heat instead of reflecting it. This is why a room measured empty is not the room you'll be mixing in.</dd>
+</dl>
+<p>Rough expectations, so you know what you're walking into: a well-treated studio or a small meeting room might be a few tenths of a second of RT60; a decent theatre around a second; a big church, atrium or sports hall three seconds or more. Above roughly two seconds, speech intelligibility is genuinely hard to achieve and the system design has to fight for it.</p>
+<div class="note std"><span class="lab">Standard</span><p>You can't remove reverberation, so you avoid feeding it. That means <strong>directivity</strong> — using boxes whose pattern puts energy on people and not on walls and ceilings (<a href="#s6-6">§6.6</a>), getting sources closer to listeners with fills or delays rather than turning the mains up, and choosing column arrays or tight-pattern boxes in reverberant rooms (<a href="#s6-2">§6.2</a>). Turning it up in a live room makes the reverberation louder too, so it makes things worse, not better.</p></div>
+<div class="note warn"><span class="lab">Watch it</span><p>An empty room and a full room are different acoustic spaces. A few hundred people are a large amount of absorption, mostly in the mid and high frequencies — so the room gets drier and slightly duller once doors open. A system tuned to sound perfect in an empty hall at 3pm will usually want a little more top end at 8pm. Don't panic-EQ during the first song; expect the change and leave yourself somewhere to go.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>You'll hear people talk about the <strong>critical distance</strong> — the point where the reverberant field is as loud as the direct sound. Closer than that and intelligibility is mostly fine; further away and it drops off fast however loud you go. It's a useful mental model for why a delay speaker halfway back fixes a problem that another 3&nbsp;dB at the front never will.</p></div>
+<div class="note warn"><span class="lab">Watch it</span><p>Acoustic treatment is not your call to make. Hanging drapes, moving absorbers or altering a listed building's surfaces belongs to the venue and the production designer. What you can reasonably do is <em>point out</em> that a hard, reflective room will limit what the system can achieve, early enough for someone to decide about drapes — and that conversation lands far better at the advance stage (<a href="#s1-7">§1.7</a>) than at soundcheck.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>Room acoustics is a full discipline and this is deliberately only the working tech's share of it. If it grabs you, it's the natural companion to system tuning (<a href="#s6-8">§6.8</a>) — the Bob McCarthy book in <a href="#s18-7">§18.7</a> covers the interaction between systems and rooms properly, and modelling a familiar room in EASE Focus (<a href="#s6-7">§6.7</a>) makes the effect visible rather than theoretical.</p></div>
+</section>
+
+<section class="s" id="s6-16"><h3><span class="n">6.16</span> d&amp;b audiotechnik — how the system fits together</h3>
+<p>d&amp;b is one of the brands you're most likely to meet on UK touring, theatre and corporate work, and it works differently from a rack of generic amps and passive boxes. The thing to understand first: <strong>d&amp;b sell a system, not separate parts.</strong> Almost every d&amp;b loudspeaker is passive, and is designed to be driven only by a d&amp;b amplifier running the matching <em>loudspeaker setup</em> for that exact box. The setup holds the crossover, EQ and — most importantly — the protection that keeps that model's drivers alive.</p>
+<dl class="kv">
+<dt>Loudspeaker</dt><dd>The box. Passive, with NL4 input and link sockets (some older or install models differ). Its model name is the setup you'll need.</dd>
+<dt>Amplifier</dt><dd>A d&amp;b amp, four channels on current models, with DSP inside. Each channel is told which box it's driving.</dd>
+<dt>Setup</dt><dd>The loudspeaker preset — d&amp;b's word for it. Chosen per channel. Wrong setup, wrong sound at best, damaged drivers at worst.</dd>
+<dt>Cable</dt><dd>NL4 (or NL8 multicore). Part of the system — the amp can even correct for its length (LoadMatch, below).</dd>
+<dt>Software</dt><dd>ArrayCalc to design it, R1 to control and monitor it.</dd>
+</dl>
+<h4>The amplifiers you'll meet</h4>
+<div class="tw"><table>
+<thead><tr><th>Amp</th><th>What to know</th></tr></thead>
+<tbody>
+<tr><td><strong>D6 / D12</strong></td><td>Older two-channel amps, still in plenty of hire stock. Small LCD and buttons; remote control over CAN bus rather than Ethernet. Pinouts differ slightly from the current amps — read the label above the outputs.</td></tr>
+<tr><td><strong>D20</strong></td><td>Four-channel, 2U, touchscreen. Now discontinued but still the everyday workhorse in a lot of stock, for E, Y, V, T, A and xS boxes. Four analogue (XLR) and two AES digital inputs, four individual NL4 outputs, two centre NL4s for paired modes, and an NL8. Not for J-Series, M2 or SL-Series.</td></tr>
+<tr><td><strong>D80</strong></td><td>Four-channel high-power touring amp — runs the larger systems the D20 can't. Same touchscreen logic, outputs as NL4 (or EP5 on some versions) plus NL8.</td></tr>
+<tr><td><strong>D25</strong></td><td>The newest (2025): a four-channel amp for smaller, high-efficiency mobile systems, with Milan networking like the D40/D90.</td></tr>
+<tr><td><strong>D40 / D90</strong></td><td>The newer generation. Milan (AVB) networking built in alongside analogue and AES, plus a built-in web interface as well as R1 control. The D90 drives the highest-power systems.</td></tr>
+<tr><td><strong>5D / 10D / 30D / 40D</strong></td><td>Installation amps. You'll find them in venues rather than in hire stock — usually somebody else's system, so look but don't change.</td></tr>
+</tbody></table></div>
+<h4>The loudspeaker ranges</h4>
+<div class="tw"><table>
+<thead><tr><th>Range</th><th>Typical use</th></tr></thead>
+<tbody>
+<tr><td><strong>E-Series</strong> (E6, E8, E12…), <strong>Q-Series</strong></td><td>Older but very common: small point source, fills, delays, corporate. Q is a compact line/point system still in many stocks.</td></tr>
+<tr><td><strong>xS-Series</strong> (5S, 8S, 10S…), <strong>A-Series</strong></td><td>Current point source and augmented arrays — fills, small rooms, theatre, corporate.</td></tr>
+<tr><td><strong>T-Series</strong></td><td>Compact box that switches between line-array and point-source use. Small arrays, theatres, corporate.</td></tr>
+<tr><td><strong>Y-Series</strong>, <strong>V-Series</strong></td><td>Mid-to-large line arrays with matching point-source boxes and subs. Touring and festivals.</td></tr>
+<tr><td><strong>CL-Series</strong> (CCL)</td><td>Compact cardioid line array (2025) on a single amp channel per box. Small to mid-size venues and tours.</td></tr>
+<tr><td><strong>J-Series</strong>, <strong>SL-Series</strong> (KSL, GSL, XSL)</td><td>Large-format touring arrays. SL boxes are cardioid by design — they control their own low end behind the array.</td></tr>
+<tr><td><strong>M-Series</strong> (M4, M2…)</td><td>Stage monitors / wedges.</td></tr>
+<tr><td><strong>…-SUB</strong> and <strong>B-Series</strong></td><td>Subwoofers. Several are designed to be run in cardioid arrangements (<a href="#s6-6">§6.6</a>).</td></tr>
+</tbody></table></div>
+<p class="calc-pointer"><a href="#s6-20">Every model, and which amp drives it — §6.20 →</a> <span>Amps, loudspeakers, the naming, and what's discontinued.</span></p>
+<h4>The software around it</h4>
+<dl class="kv">
+<dt>ArrayCalc</dt><dd>d&amp;b's free design software (<a href="#s6-7">§6.7</a>). The system tech models the room and the boxes, and ArrayCalc works out angles, rigging loads, delays — and which amp channel drives which box with which setup. It exports a project for R1.</dd>
+<dt>ArrayProcessing</dt><dd>An ArrayCalc option that calculates individual filters for every box in a line array to shape its coverage and tonal balance front to back. Applied through the amps; never "tweak it" by hand.</dd>
+<dt>R1 Remote control</dt><dd>The laptop software that shows and controls every amp on the network: setups, levels, mutes, delays, EQ, and live meters. Current amps connect over Ethernet (OCA / AES70); D6/D12-era amps need a CAN interface.</dd>
+<dt>LoadMatch</dt><dd>On current amps, compensates electrically for the speaker cable — so a box at the end of a long run sounds like one on a short run (d&amp;b quote up to 70 m). It needs the real cable length and cross-section entered, so note them as you run cable.</dd>
+<dt>System check</dt><dd>On current amps, measures each connected loudspeaker against a reference taken when the system was known to be good, and flags a missing box, a dead driver or a bad cable. Most useful when the reference was taken at prep.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>Every d&amp;b job has a <strong>plan</strong>: an ArrayCalc file, an R1 project, or at minimum a patch sheet from the system tech — box, amp, channel, mode, setup. Work from it, and if you're handed a d&amp;b system with no plan, ask for one before you configure anything.</p></div>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Never drive a d&amp;b box from a generic amp</strong>, or from a d&amp;b amp in "linear" mode, unless the system owner has specifically said to. Without its setup the box has no protection at all — the HF driver is the first thing to go.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>d&amp;b publish free video tutorials for each amp (overview, input modes, output modes, channel setup), and run in-person workshops — in the UK at Nailsworth — including <strong>d&amp;basics</strong> (loudspeakers, amps and choosing the right system) and <strong>Software &amp; System Fundamentals</strong> (ArrayCalc and R1, from data entry to simulation and output). Dates, places and costs are on <a href="https://www.dbaudio.com/global/en/education/workshops/" target="_blank" rel="noopener">d&amp;b's workshops page</a>. ArrayCalc and R1 are both free downloads, and R1 can open a project offline, so you can learn the screens on your own laptop before you're ever near a live rack.</p></div>
+</section>
+
+<section class="s" id="s6-17"><h3><span class="n">6.17</span> d&amp;b amps — output modes, connectors and the front panel</h3>
+<p>The single most important thing on a d&amp;b amp is the <strong>output mode</strong>, because it decides which socket a speaker cable goes into and which pins carry what. Get the mode and the socket to agree and almost everything else follows. The table below is how the current four-channel amps (D20, D80 and their successors) work: channels pair up as A/B and C/D, and each pair has its own mode.</p>
+<div class="tw"><table>
+<thead><tr><th>Output mode</th><th>Used for</th><th>Plug into</th><th>NL4 pins</th></tr></thead>
+<tbody>
+<tr><td><strong>Dual Channel</strong></td><td>Passive full-range boxes and subs, one channel each. Each channel's setup chosen independently (top or sub).</td><td>The individual outputs <strong>A, B, C, D</strong></td><td>1± and 2± both carry that one channel (wired in parallel) — any box will work on any 2- or 4-core cable</td></tr>
+<tr><td><strong>Mix TOP/SUB</strong></td><td>A passive top and a sub on one cable. Channel A (C) runs the top setup, channel B (D) the sub setup.</td><td>The centre <strong>A/B</strong> (or <strong>C/D</strong>) output</td><td>1± = top (A or C) · 2± = sub (B or D). Needs a <strong>4-core</strong> cable</td></tr>
+<tr><td><strong>2-Way Active</strong></td><td>d&amp;b boxes driven actively — a separate amp channel for low and high frequencies.</td><td>The centre <strong>A/B</strong> (or <strong>C/D</strong>) output</td><td>1± = LF (A or C) · 2± = MF/HF (B or D). Needs a <strong>4-core</strong> cable</td></tr>
+<tr><td><strong>NL8 output</strong></td><td>Four channels down one 8-core multicore</td><td>The NL8</td><td>1± = A · 2± = B · 3± = C · 4± = D</td></tr>
+</tbody></table></div>
+<p>That's why d&amp;b boxes are built the way they are: on d&amp;b's usual convention a <strong>top listens on pins 1</strong> and a <strong>sub listens on pins 2</strong>, and the link socket on each box passes all four poles through. So a single 4-core cable from the centre A/B output can go to a sub and link on to a top, and each hears only its own channel. Every d&amp;b cabinet has its pin use printed beside its connectors — read it when you're unsure.</p>
+<div class="note warn"><span class="lab">Watch it</span><p>Older amps (D6, D12) and EP5-fitted amps don't follow exactly this layout. <strong>Always read the label above the outputs</strong> — it states the mode and pins for each socket — and check the amp's manual if anything doesn't match the table.</p></div>
+<h4>Inputs</h4>
+<dl class="kv">
+<dt>Analogue</dt><dd>XLR inputs (A1–A4 on a D20), with XLR link outputs to feed the next amp.</dd>
+<dt>Digital (AES3)</dt><dd>XLR inputs carrying two channels each (D1/2, D3/4), with a digital link out. The amp must lock to the sample rate (48 or 96 kHz).</dd>
+<dt>Network</dt><dd>D40/D90: Milan (AVB) built in. D20/D80: Dante arrives through a bridge (such as d&amp;b's DS10) converting to AES.</dd>
+<dt>Input mode / routing</dt><dd>Each amp has an input mode (analogue, digital, network), and each channel is routed from one or more inputs. Current amps can also <em>fall back</em> to a second input if the first one is lost — handy, and also a reason a channel can be playing from somewhere unexpected.</dd>
+</dl>
+<h4>Reading the front panel</h4>
+<div class="tw"><table>
+<thead><tr><th>Indicator</th><th>Means</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td><strong>Green — ISP / OSP</strong></td><td>Input Signal Present (and, on touchscreen amps, Output Signal Present in brighter green). Signal is reaching the channel.</td><td>No green with the source playing → the problem is upstream of the amp, or in its input routing.</td></tr>
+<tr><td><strong>Yellow — GR</strong></td><td>Gain Reduction: the channel's limiter is working (more than about 3 dB). Not a fault — the box has reached its limits.</td><td>Ease off at the console. If it lights at modest level, check the setup is right for the box.</td></tr>
+<tr><td><strong>Red — OVL / mute</strong></td><td>On D6/D12, overload: input too hot or heavy limiting. On the touchscreen amps the channel strip also shows red when a channel is muted. The screen says which.</td><td>Reduce the input level, or find out who muted it and why before you unmute.</td></tr>
+<tr><td><strong>Error / warning text</strong></td><td>Over-temperature, mains, output or hardware faults, reported on the screen and in R1.</td><td>Write the exact text down, tell the system owner. Don't keep power-cycling it.</td></tr>
+</tbody></table></div>
+<h4>The channel settings you'll see</h4>
+<p>On each channel: <strong>setup</strong> (the box), <strong>level</strong>, <strong>delay</strong>, <strong>mute</strong>, user EQ, and a handful of switchable functions that depend on the box — for example <strong>CUT</strong> (a high-pass that takes the low end out of a top when it's running with subs), <strong>HFA</strong> (gentle high-frequency roll-off for nearby listeners), <strong>CPL</strong> (compensates for boxes coupling together at low frequencies) and cardioid or <strong>INFRA</strong> options on some subs. Which ones are switched on is a design decision: copy them from the plan, don't improvise.</p>
+<div class="note std"><span class="lab">Standard</span><p>Current d&amp;b amps have a built-in pink-noise and sine generator per channel. Combined with mutes it's the quickest way to prove one box at a time without needing anyone at the console — but agree it with the system tech first, and start with the level down.</p></div>
+</section>
+
+<section class="s" id="s6-18"><h3><span class="n">6.18</span> Setting up a d&amp;b system, start to finish</h3>
+<p>The sequence for a typical ground-stacked or simple flown d&amp;b system, as the person doing the physical work and the first checks. On a big system a system tech drives the software — this is so you can do your part properly and know what comes next. Rigging stays with the people qualified for it (<a href="#s6-5">§6.5</a>).</p>
+<ol class="seq">
+<li><strong>Get the plan.</strong> ArrayCalc file, R1 project or patch sheet: which box, which amp and channel, which output mode, which setup, which functions (CUT etc.), delays and levels. No plan, ask.</li>
+<li><strong>Prep it in the warehouse.</strong> Count boxes, amps, speaker cables (4-core where the plan uses Mix TOP/SUB or 2-Way Active), NL8 multicores and breakouts, plus spares. Test every speaker cable (<a href="#s3-12">§3.12</a>). Power each amp up, check it boots without errors and has the setups needed. If the amps support System check, this is the moment to take a known-good reference.</li>
+<li><strong>Position amps close to the boxes they drive</strong> — short speaker runs are better than long ones. Mains in through powerCON from the agreed distro, locked. Leave racks room to breathe front and back.</li>
+<li><strong>Run the speaker cables.</strong> Right connector for the mode (individual outputs for Dual Channel, centre A/B or C/D for paired modes). Lock every speakON at both ends, label both ends with amp and channel, and note the length if LoadMatch is in use.</li>
+<li><strong>Run signal to the amps</strong> — analogue, AES or network — and feed the link outputs on to the next amp as the plan says.</li>
+<li><strong>Power up in order:</strong> console and processing first, amps last — with amp channels muted. (Power down in reverse: amps first.)</li>
+<li><strong>Configure each amp,</strong> either by loading the R1 project or at the front panel: input mode and routing, output mode per channel pair, setup per channel, functions, level, delay, EQ, LoadMatch cable data. Check each channel against the plan. Lock the front panels if that's the house rule.</li>
+<li><strong>Connect R1.</strong> Laptop on the control network; every amp has a unique Remote ID / address; match the devices to the project and go online. Every amp should appear with no warnings.</li>
+<li><strong>Run System check</strong> if the amps support it, and look into anything it flags before going further.</li>
+<li><strong>Prove it box by box.</strong> Low-level pink noise or a known track to one channel at a time; everything else muted. Walk to each box: right box answering, every driver working, nothing rattling, sub and top on the right channels. Then check polarity with the system tech's method.</li>
+<li><strong>Then the whole system</strong> — level balance between sections, sub-to-top alignment, delays, tuning (<a href="#s6-8">§6.8</a>). This is the system tech's call; your job is to be useful and keep the area clear.</li>
+<li><strong>Save and write it down.</strong> Save the R1 project with the date, and note anything that changed from the plan and why. That note is what makes the derig and the next job easy.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p>Two things to never skip, however short the turnaround: <strong>check the setup on every channel</strong> against the box it's actually driving (it's the most expensive mistake on a d&amp;b rig), and <strong>mute before you plug or unplug</strong> any speaker cable.</p></div>
+<div class="note std"><span class="lab">Standard</span><p>Derig is the same list backwards: mute, power amps down, unplug and coil speaker cables (checking each for damage as you go), then signal and mains. Anything that misbehaved on the job gets labelled and reported, not packed (<a href="#s11-5">§11.5</a>).</p></div>
+</section>
+
+<section class="s" id="s6-19"><h3><span class="n">6.19</span> d&amp;b &amp; speakON fault-finding</h3>
+<p>Start with the general method (<a href="#s12-1">§12.1</a>) and the first sixty seconds (<a href="#s12-8">§12.8</a>), then use this table. Work left to right through the checks, one change at a time, and read the amp's channel indicators first — they tell you which half of the system the fault is in.</p>
+<div class="tw"><table>
+<thead><tr><th>Symptom</th><th>Check, in order</th></tr></thead>
+<tbody>
+<tr><td>One box silent, its amp channel shows green (signal present)</td><td>Channel muted? → speakON locked at both ends? → cable on the right output for the mode? → 4-core if the box needs pins 2? → swap in a known-good cable → try the box on a known-good channel. If the fault follows the box, quarantine it.</td></tr>
+<tr><td>Channel shows no input signal</td><td>Source actually playing and unmuted at the console? → amp input mode (analogue vs digital vs network) → that channel's input routing → the signal cable or AES link → digital lock / sample rate → Dante bridge or Milan stream.</td></tr>
+<tr><td>Sub silent, tops fine (Mix TOP/SUB)</td><td>Cable only 2-core, or an NL2 somewhere in the run → cable in an individual output instead of the centre A/B → channel B (D) not running a sub setup, or muted.</td></tr>
+<tr><td>Top silent, sub fine</td><td>Channel A (C) muted or wrong setup → link cable between sub and top faulty or not locked → top plugged into a socket the mode doesn't feed.</td></tr>
+<tr><td>Box sounds dull / no top end</td><td>2-Way Active run with a cable missing pins 2 → HFA switched on where the plan doesn't want it → wrong setup → damaged HF driver (listen close at low level; quarantine if confirmed).</td></tr>
+<tr><td>Thin / no bass from a top that should have it</td><td>CUT switched on with no subs running → wrong setup.</td></tr>
+<tr><td>Yellow GR on constantly</td><td>Not a fault: the box is at its limit. Turn down at the console. If it happens at modest level, check the setup matches the box and that the input isn't hugely over-driven.</td></tr>
+<tr><td>Red on a channel</td><td>Read the screen: muted (find out who and why) or overloaded (reduce the level feeding the amp).</td></tr>
+<tr><td>Crackle, cutting out, worse when the cable moves</td><td>speakON a quarter-turn short of locked → worn connector → damaged cable. Swap the cable to isolate it (<a href="#s3-12">§3.12</a>).</td></tr>
+<tr><td>Amp protects or mutes the moment signal arrives</td><td>Short in the cable or connector — unplug at the box end and test the cable → a damaged box → too many boxes on one channel (load too low).</td></tr>
+<tr><td>Amp shows over-temperature</td><td>Blocked ventilation (rack doors, cases, sun) → reduce level → tell the system owner. Don't keep restarting it.</td></tr>
+<tr><td>Amp won't power on, or keeps rebooting</td><td>powerCON locked? → mains present at the distro (ask an electrician — <a href="#s12-15">§12.15</a>) → try one known-good amp on the same feed → swap the amp.</td></tr>
+<tr><td>Amp not showing in R1</td><td>Ethernet cable and switch → laptop on the right network adapter and address range → duplicate Remote ID or IP → firewall on the laptop → for D6/D12, the CAN interface. D40/D90 Milan streams are a separate network from Dante (<a href="#s8-2">§8.2</a>).</td></tr>
+<tr><td>Wrong box answers when you solo a channel</td><td>Patch doesn't match the labels. Stop, trace each cable, fix the labels before anything else.</td></tr>
+<tr><td>System check flags a box</td><td>Cable first (lock, swap) → then the box. A missing box, a dead driver or a damaged cable all look like an impedance change.</td></tr>
+<tr><td>Rattle or buzz at certain notes only</td><td>Usually mechanical: loose grille, rigging hardware, a stand or something resting on the box. Not an amp fault.</td></tr>
+</tbody></table></div>
+<div class="note warn"><span class="lab">Watch it</span><p>Don't change a setup, an output mode or an ArrayProcessing setting to "see if it helps" — on someone else's system that's not your call, and the wrong change can damage drivers. Gather the facts above and hand them over. Don't open amps or boxes; that's for the service department.</p></div>
+<div class="note std"><span class="lab">Standard</span><p>The <a href="#ask">fault finder in Support</a> walks through these same checks as a conversation, and builds the "symptom, what changed, what I've checked, what I need" message for you at the end.</p></div>
+</section>
+
+<section class="s" id="s6-20"><h3><span class="n">6.20</span> d&amp;b models — which box, which amp</h3>
+<p>A field reference to the d&amp;b amplifiers and loudspeakers you're likely to meet in UK hire stock and venues — current models, and the discontinued ones (d&amp;b call them "heritage") that are still out working every week. Use it to work out what a box is, what drives it and what to watch for. The fault finder in Support reads these tables too, so you can ask it "what amp does a V8 need?" or "can a D20 run KSL?". Kit you've added to <a href="#hub-workspace">My equipment reference</a> is marked <span class="kit-badge">My kit</span> below.</p>
+<div class="note std"><span class="lab">Standard</span><p><strong>The one rule that settles it on site:</strong> if the box's setup isn't in the amp's setup list (on its screen or in R1), that amp can't drive it. Firmware updates add setups over time, so an older amp that hasn't been updated may be missing a newer box. And with line arrays, the plan will say which setup each box gets.</p></div>
+
+<h4>Reading the names</h4>
+<dl class="kv">
+<dt>8 / 12 in a line array</dt><dd>The horizontal coverage: 8 = 80°, 12 = 120° (V8/V12, Y8/Y12, KSL8/KSL12, CCL8/CCL12, J8/J12). Same height and rigging, so the two can mix in one hang.</dd>
+<dt>P</dt><dd>A point-source box from a line-array family (V7P, V10P, Y7P, Y10P).</dd>
+<dt>-SUB / -GSUB</dt><dd>Subwoofer. GSUB is the ground-stack-only version; SUB versions can usually be flown with the array.</dd>
+<dt>-D</dt><dd>A wider-dispersion version of the same box (E12-D, 10S-D, 12S-D, 24S-D).</dd>
+<dt>i (Yi8, KSLi12, ALi60…)</dt><dd>The installation version: same sound, different cabinet finish and fixings. Venue kit, not hire stock.</dd>
+<dt>Arc / Line / AP / PS</dt><dd>Setup variants for array boxes: <strong>Arc</strong> for boxes in the curved part of a hang, <strong>Line</strong> for the straight part, <strong>AP</strong> when the array runs ArrayProcessing, <strong>PS</strong> for a box used on its own as a point source. Take them from the plan, box by box.</dd>
+</dl>
+
+<h4>Amplifiers</h4>
+<div class="tw"><table class="db-models" data-kind="amp">
+<thead><tr><th>Amp</th><th>Status</th><th>Channels &amp; power</th><th>Inputs</th><th>Drives</th></tr></thead>
+<tbody>
+<tr data-models="D6"><td><strong>D6</strong></td><td>Discontinued</td><td>2 ch, 2 × 600 W into 4 Ω</td><td>Analogue</td><td>Smaller and older boxes. Remote over CAN, not Ethernet.</td></tr>
+<tr data-models="D12"><td><strong>D12</strong></td><td>Discontinued</td><td>2 ch, 2 × 1200 W into 4 Ω</td><td>Analogue (AES on some)</td><td>Was the touring amp of the Q- and J-Series era. Remote over CAN. Its own output pin layout — read the label.</td></tr>
+<tr data-models="D20"><td><strong>D20</strong></td><td>Discontinued, very common</td><td>4 ch, 4 × 1600 W into 4 Ω</td><td>4 analogue, 2 AES pairs</td><td>Everything current <em>except</em> J-Series, M2 and the SL-Series. The everyday rack amp for E, xS, T, Y, V and A.</td></tr>
+<tr data-models="D25"><td><strong>D25</strong></td><td>Current (2025)</td><td>4 ch, 4 × 1800 / 900 W into 4 / 8 Ω</td><td>4 analogue, 4 AES, 8 Milan</td><td>Smaller, high-efficiency mobile systems. Check the setup list before pairing it with large-format boxes.</td></tr>
+<tr data-models="D40"><td><strong>D40</strong></td><td>Current</td><td>4 ch, 4 × 2400 / 2000 W into 4 / 8 Ω</td><td>4 analogue, 4 AES, 8 Milan</td><td>Everything current <em>except</em> GSL, SL-SUB, J-Series and M2. Named by d&amp;b for KSL, V, Y and T.</td></tr>
+<tr data-models="D80"><td><strong>D80</strong></td><td>Current</td><td>4 ch, up to 4 × 4000 W into 4 Ω</td><td>4 analogue, 2 AES pairs</td><td>All d&amp;b loudspeaker setups, plus linear. The long-standing touring standard. Remote over CAN or Ethernet.</td></tr>
+<tr data-models="D90"><td><strong>D90</strong></td><td>Current</td><td>4 ch, 4 × 2700 / 5400 W into 8 / 4 Ω</td><td>4 analogue, 4 AES, 8 Milan (redundant)</td><td>The largest systems — d&amp;b's high-voltage amp for SL-Series and everything else. Has a Fallback input structure (manual or automatic).</td></tr>
+<tr data-models="5D,5DM,10D,25D,30D,40D"><td><strong>5D, 10D, 25D, 30D, 40D</strong></td><td>Installation (30D discontinued)</td><td>4 ch each, from small (5D) to the most powerful install amp (40D)</td><td>Varies by model</td><td>Venue systems. If you find one, it's somebody else's installed system — look, don't change.</td></tr>
+<tr data-models="E-PAC,EPAC,P1200A,A1"><td><strong>E-PAC, P1200A, A1</strong></td><td>Old, discontinued</td><td>E-PAC: 1 ch, 300 W into 8 Ω</td><td>Analogue</td><td>Older small systems. Still turn up in village halls and old stock.</td></tr>
+</tbody></table></div>
+
+<h4>Loudspeakers</h4>
+<div class="tw"><table class="db-models" data-kind="speaker">
+<thead><tr><th>Range</th><th>Models</th><th>What they are</th><th>Driven by</th></tr></thead>
+<tbody>
+<tr data-models="E4,E5,E6,E8,E12,E12-D,E12X-SUB,E15X-SUB,E0,E3,E9,E12-SUB,E15-SUB,E18-SUB" data-range="E-Series"><td><strong>E-Series</strong></td><td>E4, E5, E6, E8, E12, E12-D, E12X-SUB, E15X-SUB (older: E0, E3, E9, E12-SUB, E15-SUB, E18-SUB)</td><td>Compact two-way point source and small subs — fills, delays, corporate, small rooms. The workhorse of a lot of hire stock.</td><td>Practically any d&amp;b amp. On an old D6/D12, check the setup list for the newest boxes (E4, E5).</td></tr>
+<tr data-models="4S,5S,8S,10S,10S-D,12S,12S-D,24S,24S-D,42S,44S,16C,24C,24C-E,12S-SUB,18S-SUB,21S-SUB,27S-SUB" data-range="xS-Series"><td><strong>xS-Series</strong></td><td>4S, 5S, 8S, 10S, 10S-D, 12S, 12S-D, 24S, 24S-D, 42S, 44S; columns 16C, 24C, 24C-E; subs 12S-SUB, 18S-SUB, 21S-SUB, 27S-SUB</td><td>Current point source (mostly coaxial), slim and column models for speech and reverberant rooms, and matching subs.</td><td>D20, D40, D80, D90 and the install amps (D25: check its setup list).</td></tr>
+<tr data-models="AL60,AL90,ALi60,ALi90" data-range="A-Series"><td><strong>A-Series</strong></td><td>AL60, AL90</td><td>"Augmented arrays": a few boxes with adjustable splay, between a point source and a line array. 60° or 90° wide.</td><td>D20, D40, D80, D90.</td></tr>
+<tr data-models="T10,T-SUB,Ti10L,Ti10P" data-range="T-Series"><td><strong>T-Series</strong></td><td>T10, T-SUB</td><td>Compact box that works as a point source or a small line array — the setup (PS, Arc, Line) tells the amp which.</td><td>D20, D40, D80, D90.</td></tr>
+<tr data-models="Y7P,Y10P,Y8,Y12,Y-SUB,B6-SUB" data-range="Y-Series"><td><strong>Y-Series</strong></td><td>Y7P, Y10P (point source), Y8, Y12 (line array), Y-SUB, with B6-SUB</td><td>Mid-size touring and theatre. B6-SUB is a single 18" sub for the point-source boxes.</td><td>D20, D40, D80, D90.</td></tr>
+<tr data-models="V7P,V10P,V8,V12,V-SUB,V-GSUB" data-range="V-Series"><td><strong>V-Series</strong></td><td>V7P, V10P (point source), V8, V12 (line array), V-SUB (flyable), V-GSUB (ground stack)</td><td>Larger touring and festival system. V-SUB and V-GSUB are cardioid.</td><td>D20, D40, D80, D90. d&amp;b recommend the D80 for V-GSUB, and one V-SUB per channel on a D40 for maximum output.</td></tr>
+<tr data-models="CCL8,CCL12,CCL-SUB,CCLi8,CCLi12,CCLi-SUB" data-range="CL-Series"><td><strong>CL-Series</strong></td><td>CCL8, CCL12, CCL-SUB</td><td>Compact cardioid line array (2025): cardioid at low frequencies from a passive box on a single amp channel.</td><td>D40, D80, D90 (and 40D in installs) — up to eight boxes per amp.</td></tr>
+<tr data-models="KSL8,KSL12,KSL-SUB,KSL-GSUB,KSLi8,KSLi12" data-range="SL-Series (KSL)"><td><strong>SL-Series — KSL</strong></td><td>KSL8, KSL12, KSL-SUB, KSL-GSUB</td><td>Large touring line array, cardioid by design across most of its range.</td><td>D40, D80, D90 — not D20.</td></tr>
+<tr data-models="XSL8,XSL12,XSL-SUB,XSL-GSUB,XSLi8,XSLi12" data-range="SL-Series (XSL)"><td><strong>SL-Series — XSL</strong></td><td>XSL8, XSL12, XSL-SUB, XSL-GSUB</td><td>The smallest SL system — the same cardioid control in a smaller box.</td><td>D80 (firmware with XSL setups), D90 — not D20. Check the setup list on anything else.</td></tr>
+<tr data-models="GSL8,GSL12,SL-SUB,SL-GSUB" data-range="SL-Series (GSL)"><td><strong>SL-Series — GSL</strong></td><td>GSL8, GSL12, SL-SUB, SL-GSUB</td><td>d&amp;b's biggest touring system. SL-GSUB is ground-stack only.</td><td>D80, D90 — not D20 or D40.</td></tr>
+<tr data-models="J8,J12,J-SUB,J-INFRA" data-range="J-Series"><td><strong>J-Series</strong></td><td>J8, J12, J-SUB, J-INFRA</td><td>Discontinued large-format three-way line array, still in plenty of touring stock. J-SUB (3 × 18") and J-INFRA (3 × 21") are cardioid.</td><td>D80 (originally D12) — not D20 or D40. On a D90, check the setup list.</td></tr>
+<tr data-models="Q1,Q7,Q10,Q-SUB,Qi1,Qi7,Qi10,Qi-SUB" data-range="Q-Series"><td><strong>Q-Series</strong></td><td>Q1 (line array), Q7, Q10, Q-SUB</td><td>Discontinued compact system, still common: Q1 hangs as a small array, Q7/Q10 are point source.</td><td>D6, D12, D20, D80. On newer amps, check the setup list.</td></tr>
+<tr data-models="M2,M4,M6,MAX2,MAX,MAX12" data-range="M-Series"><td><strong>M-Series</strong></td><td>M2, M4, M6, MAX2 (older: MAX, MAX12)</td><td>Stage monitors. M4 and M6 have both active and passive setups; MAX2 is the low-profile wedge.</td><td>M4, M6, MAX2: most d&amp;b amps. <strong>M2: D80 or D90 only</strong> — not D20 or D40.</td></tr>
+<tr data-models="B4-SUB,B6-SUB,B8-SUB,B10-SUB,B10N-SUB,B12-SUB,B22-SUB,B1-SUB,B2-SUB" data-range="B-Series subs"><td><strong>B-Series subs</strong></td><td>B4, B6, B8, B10, B10N, B12, B22-SUB (older: B1, B2)</td><td>Subwoofers to go with the point-source ranges. Several can be set up cardioid.</td><td>Most d&amp;b amps — check the setup list for the larger ones.</td></tr>
+<tr data-models="C4-TOP,C4-SUB,C6,C7-TOP,C7-SUB,C690,Ci45,Ci60,Ci80,Ci90" data-range="C-Series"><td><strong>C-Series, Ci</strong></td><td>C4, C6, C7 and the Ci install boxes</td><td>Old discontinued ranges. Still found in venues and older stock.</td><td>Check the amp's setup list; older installs often run D6/D12 or E-PAC.</td></tr>
+</tbody></table></div>
+<div class="note warn"><span class="lab">Watch it</span><p>"Not D20" means exactly that: the setup isn't in the amp, and running the box on a linear or wrong setup leaves it unprotected. If the plan pairs a box with an amp this table says can't drive it, stop and ask before you rack it up — the plan, or the stock list, may be wrong.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>Alongside the amps you'll meet d&amp;b's network and processing boxes: <strong>DS10</strong> (Dante to AES bridge), <strong>DS20</strong> (Dante to Milan), <strong>DS100</strong> (the Soundscape processor), plus <strong>R90</strong> touchscreen remotes in installs. And installation-only loudspeaker ranges — U-Series and the "i" versions above — that you'll see in venues rather than on the shelf.</p></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>Each product page on dbaudio.com has the manual and datasheet, and the amp firmware release notes carry the full list of setups each amp supports. When this table and a current d&amp;b document disagree, the d&amp;b document wins — and tell whoever looks after this pack.</p></div>
+</section>
+
+<section class="s" id="s6-21"><h3><span class="n">6.21</span> L-Acoustics — the same ideas, different names</h3>
+<p>If you know d&amp;b, you already understand L-Acoustics: amps with built-in processing, loudspeaker-specific settings, prediction software and a remote-control app. The names change.</p>
+<div class="tw"><table>
+<thead><tr><th>Job</th><th>d&amp;b</th><th>L-Acoustics</th></tr></thead>
+<tbody>
+<tr><td>Amps with processing</td><td>D20, D40, D80, D90</td><td>Amplified controllers: LA4X, LA12X, LA7.16, LA2Xi</td></tr>
+<tr><td>Speaker-specific settings</td><td>Setup (per channel)</td><td>Preset — loaded from the amp's preset library</td></tr>
+<tr><td>Remote control &amp; monitoring</td><td>R1</td><td>LA Network Manager</td></tr>
+<tr><td>Prediction</td><td>ArrayCalc</td><td>Soundvision</td></tr>
+<tr><td>Network audio</td><td>Milan (D40/D90), Dante via card on some</td><td>Milan / AVB on current controllers, plus AES and analogue</td></tr>
+<tr><td>Speaker cable</td><td>NL4 / NL8</td><td>NL4 / NL8 (check the pin use for each enclosure)</td></tr>
+</tbody></table></div>
+<h4>Reading a preset name</h4>
+<ul>
+<li>The plain name (e.g. <em>KARA II 90</em>) is the main FOH preset — the number is the horizontal coverage set by the box's adjustable fins.</li>
+<li><strong>_FI</strong> — the box used as a fill (with a high-pass filter).</li>
+<li><strong>_MO</strong> — the box used as a stage monitor (low latency).</li>
+<li>Other suffixes adapt a box to sit with a particular main system — use what the Soundvision file specifies.</li>
+</ul>
+<div class="note warn"><span class="lab">Watch it</span><p>As on d&amp;b: <strong>never change a preset, fin setting or controller group on someone else's system</strong> to "see if it helps", and match each box to the preset the design specifies. A wrong preset can sound fine at low level and damage drivers at show level.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>L-Acoustics amplified controller manuals and preset library guides; LA Network Manager product pages. Model names and preset lists change with firmware — the preset guide for the controller's firmware is the reference.</p></div>
+</section>
+
+<section class="s" id="s6-22"><h3><span class="n">6.22</span> d&amp;b R1 — connecting and working, step by step</h3>
+<p><strong>R1</strong> is the laptop software that shows and controls every d&amp;b amp: setups, levels, mutes, delays, EQ and live meters. Current amps (D20, D25, D40, D80, D90 and the install amps) connect over <strong>Ethernet</strong>; older D6/D12-era amps over <strong>CAN-Bus</strong> with a USB-to-CAN interface. It can also work offline, so a project can be prepared before the job.</p>
+<ol class="seq">
+<li><strong>Get the project.</strong> The system tech's R1 project (usually generated from the ArrayCalc file) is the plan. Open that — don't build your own on someone else's system.</li>
+<li><strong>Join the control network</strong> by cable, Wi-Fi off, with the laptop on the same IP range as the amps (the system drawing or tech will say). R1 can't connect to amps whose addresses don't match the laptop's settings.</li>
+<li><strong>Connect.</strong> Each amp needs a unique Remote ID (on CAN-Bus, a unique dbCAN-ID). Two amps with the same ID cause errors; the <strong>Wink</strong> function flashes an amp's display so you can find which is which in the rack.</li>
+<li><strong>Synchronise carefully.</strong> When R1 goes online it may ask which way to synchronise — from the amps into the project, or from the project into the amps. Sending the project overwrites what's in the amps. <strong>If you're not sure, don't send — ask the system tech.</strong> (Wording varies between R1 versions.)</li>
+<li><strong>Check every channel against the plan:</strong> setup, mode, functions (CUT, HFA, CPL), level, delay, mute — and that each channel shows signal when it should.</li>
+<li><strong>Use groups</strong> for muting and level of whole zones (mains, subs, fills) rather than one channel at a time — the project usually has them built.</li>
+<li><strong>System check</strong> (where the project has it) measures each box against a reference to catch a dead driver or wrong cable. The system tech sets the reference; you can run the check and report what it flags.</li>
+<li><strong>Save</strong> the project with the job name and date when you're done.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Don't update amp firmware on a show day</strong>, even if R1 offers it, and don't change setups, ArrayProcessing or LoadMatch settings on someone else's system. R1 makes every change instant on every amp — that's its strength and its danger.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>d&amp;b R1 Remote control software V3 release notes (v3.48.1, Oct 2026) and product page; R1 quick system setup tutorial (d&amp;b, 2025); d&amp;b TI 391 (dbCAN IDs); handbook §6.16–6.18. Exact menu wording changes between R1 versions.</p></div>
+</section>
+
+<section class="s" id="s6-23"><h3><span class="n">6.23</span> Martin Audio and Meyer Sound — two more premium PA systems</h3>
+<p>Both are common on UK premium hire and touring. Map them onto what you know from d&amp;b (§6.16) and the job is the same: the right box on the right processing, the plan from the prediction software, and remote monitoring.</p>
+<div class="tw"><table>
+<thead><tr><th>Job</th><th>Martin Audio</th><th>Meyer Sound</th></tr></thead>
+<tbody>
+<tr><td>Main ranges you'll meet</td><td>Wavefront Precision line arrays (WPC, WPS, WPM, WPL); CDD and TORUS point-source and constant-curvature boxes</td><td>PANTHER, LEOPARD, LYON line arrays; ULTRA-X and UP-series point source; 1100-LFC / 900-LFC subs</td></tr>
+<tr><td>Where the amps are</td><td>Separate amps (iKON series) in racks, like d&amp;b</td><td><strong>Self-powered</strong> — amp and processing inside every box</td></tr>
+<tr><td>What each box needs</td><td>A speaker cable from the amp rack</td><td><strong>Mains power and a signal</strong> to every box (powerCON and XLR, or a network on newer models)</td></tr>
+<tr><td>Prediction</td><td>DISPLAY (DISPLAY 3, 2026) — designs and <em>optimises</em> Wavefront Precision arrays, including per-box DSP</td><td>MAPP 3D</td></tr>
+<tr><td>Control &amp; monitoring</td><td>VU-NET</td><td>Nebra (box status: amp voltage, limiting, temperature, drivers); Compass for GALAXY processors</td></tr>
+<tr><td>System processing</td><td>Optimisation filters loaded into the amps from DISPLAY</td><td>GALAXY processors for routing, alignment and EQ of the array</td></tr>
+</tbody></table></div>
+<div class="note warn"><span class="lab">Watch it</span><p><strong>Self-powered means mains up the stack.</strong> Every Meyer box has its own power supply, so power distribution to a hang or a sub stack is part of the system — planned by the power tech and the system tech, with loop-through limits respected. Don't add boxes to a power loop, and don't unplug mains to a box that's running.</p></div>
+<div class="note std"><span class="lab">Standard</span><p>As with d&amp;b: the optimisation (DISPLAY on Martin Audio, GALAXY settings on Meyer) is the system tech's design — don't "tweak it to see". Your checks are the same: every box powered and passing signal, no faults in VU-NET or Nebra, one box at a time at low level.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Martin Audio DISPLAY 3 release (Sept 2026) and Wavefront Precision user guides; Meyer Sound operating instructions for PANTHER and LEOPARD and Nebra documentation. Model ranges change — check what the hire stock actually holds.</p></div>
+</section>
+
+
+</div></div>

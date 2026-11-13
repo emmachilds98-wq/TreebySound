@@ -1,0 +1,125 @@
+<section class="hub screen" id="hub" aria-label="Home">
+
+  <div class="hub-intro home-intro">
+    <p class="eyebrow" id="homeEyebrow">Your workday companion</p>
+    <form class="home-ask" id="homeAsk" role="search" aria-label="Ask the fault finder">
+      <label for="homeAskInput">What do you need?</label>
+      <div class="home-ask-row">
+        <input id="homeAskInput" type="text" placeholder="e.g. sub silent on amp 2" autocomplete="off" enterkeyhint="send">
+        <button type="submit">Ask</button>
+      </div>
+      <div class="home-ask-hints" aria-label="Examples">
+        <button type="button" data-ask="Test the system before doors">Test before doors</button>
+        <button type="button" data-ask="Set up the d&amp;b rack">Set up the d&amp;b rack</button>
+        <button type="button" data-ask="One speaker silent">Speaker silent</button>
+        <button type="button" data-ask="Amp showing red">Amp light on</button>
+        <button type="button" data-ask="What is Mix TOP/SUB?">What's Mix TOP/SUB?</button>
+      </div>
+    </form>
+    <div class="first-run" id="firstRun" hidden>
+      <div class="first-run-head"><p class="eyebrow">First time here?</p><button type="button" class="first-run-hide" id="firstRunHide">Hide</button></div>
+      <p class="first-run-lead">Three things, five minutes — then it's ready for your next job.</p>
+      <ol class="first-run-steps">
+        <li data-step="install"><strong>Put it on your home screen.</strong> In Safari: Share → <em>Add to Home Screen</em>. It then opens like an app and works with no signal.</li>
+        <li data-step="ask"><strong>Ask it one real question.</strong> Something you've wondered on a job. <button type="button" class="first-run-try" data-ask="What does Mix TOP/SUB mean?">Try one</button></li>
+        <li data-step="tick"><strong>Tick one skill you can already do</strong> on the <a href="#path-tech">Pathway</a> — it then suggests what to learn next.</li>
+      </ol>
+    </div>
+    <h2>Everything from your first shift to specialist skills</h2>
+    <p>The job itself, the fix when something breaks, the route through the learning, and the whole handbook underneath it — in one place, on this device, offline.</p>
+    <div class="home-actions">
+      <button class="hub-button" id="hubOpenLibrary" type="button">Search the library</button>
+      <a class="hub-button" href="#p0">How to use this app</a>
+    </div>
+  </div>
+
+  <a class="home-continue" id="homeContinue" href="#p0" hidden>
+    <span class="home-continue-lab">Pick up where you left off</span>
+    <strong id="homeContinueTitle">Part 0 — How to use this thing</strong>
+    <span class="arrow" aria-hidden="true">→</span>
+  </a>
+
+  <section class="hub-section" id="home-go">
+    <h3>Four places, four jobs</h3>
+    <p class="hub-lead">Everything in TreebySound lives in one of these. Pick the one that matches what you are doing right now — the navigation bar holds the same four, plus the library.</p>
+    <div class="dest-grid">
+
+      <a class="dest-card dest-job" href="#job">
+        <span class="dest-icon" aria-hidden="true">◉</span>
+        <span class="dest-title">Job Hub</span>
+        <span class="dest-sub">Before, during and after a job</span>
+        <span class="dest-body">Prep and pack lists, the shape of a build, the people around you and who owns what, and a private job workspace for documents, contacts and unfamiliar kit.</span>
+        <span class="dest-links"><em>Next job</em><em>On a job</em><em>Job workspace</em><em>People</em></span>
+      </a>
+
+      <a class="dest-card dest-support" href="#support">
+        <span class="dest-icon" aria-hidden="true">⚡</span>
+        <span class="dest-title">Support</span>
+        <span class="dest-sub">On the spot, right now</span>
+        <span class="dest-body">Make it safe, the first sixty seconds, fault-finding by subsystem, six working calculators, the pocket reference and the words to use when you need help.</span>
+        <span class="dest-links"><em>Emergency</em><em>Fault finder</em><em>Faults</em><em>Calculators</em><em>Look it up</em></span>
+      </a>
+
+      <a class="dest-card dest-path" href="#path">
+        <span class="dest-icon" aria-hidden="true">↗</span>
+        <span class="dest-title">Learning pathway</span>
+        <span class="dest-sub">What to read, in what order</span>
+        <span class="dest-body">Five stages from safe hands to a chosen specialism — each one telling you exactly which sections to read, what to practise on a real job, and which free training fits at that point.</span>
+        <span class="dest-links"><em>Stages 1–5</em><em>Free training</em><em>Career</em><em>Outside work</em></span>
+      </a>
+
+      <a class="dest-card dest-lib" href="#library">
+        <span class="dest-icon" aria-hidden="true">▤</span>
+        <span class="dest-title">Library</span>
+        <span class="dest-sub">The whole handbook, 21 parts</span>
+        <span class="dest-body">The reference underneath all of the above: audio essentials, cables, mics, RF, PA, consoles, networks, safety, mixing, checklists and a full glossary. Search reaches every word of it.</span>
+        <span class="dest-links"><em>Search</em><em>Checklists</em><em>Glossary</em><em>How-to index</em></span>
+      </a>
+
+    </div>
+  </section>
+
+  <section class="hub-section" id="home-now">
+    <h3>Straight to it</h3>
+    <p class="hub-lead">The handful of pages that get opened most, without going through a menu first.</p>
+    <div class="hub-shelf">
+      <a href="#support-now"><strong>Make it safe</strong>Stop, mute, isolate — then tell the right person.</a>
+      <a href="#s12-8"><strong>First sixty seconds</strong>The fault script, not a feeling.</a>
+      <a href="#s19-5"><strong>Line check sheet</strong>Prove every input, one at a time.</a>
+      <a href="#s19-13"><strong>Pocket reference</strong>Numbers and scripts, one page.</a>
+      <a href="#support-calc"><strong>Calculators</strong>Level, delay, cable, SPL, RF.</a>
+      <a href="#s19-1"><strong>All checklists</strong>Every stage of a job, tickable.</a>
+      <a href="#s20-1"><strong>Glossary</strong>Every term, A–Z and by area.</a>
+      <a href="#hub-workspace"><strong>Job workspace</strong>This job's pack, saved on this device.</a>
+    </div>
+  </section>
+
+  <section class="hub-section" id="home-progress">
+    <h3>Where you are</h3>
+    <p class="hub-lead">Jobs come up now and then rather than every week, so this counts what you have actually done — not how long it has taken.</p>
+    <div class="hub-card progress-summary" id="progressSummary">
+      <p class="kicker">Development markers</p>
+      <div class="progress-summary-row">
+        <div class="progress-meter" role="img" aria-labelledby="progressSummaryText"><span id="progressMeterFill"></span></div>
+        <p class="progress-summary-text" id="progressSummaryText" aria-live="polite"></p>
+      </div>
+      <p class="progress-summary-note">Counted from the getting-started and building-on-it lists in <a href="#hub-today">Job Hub</a> and the quarterly review in the <a href="#hub-me">learning pathway</a>. Nothing here is a deadline — it is just a way of seeing progress that is otherwise easy to forget you have made.</p>
+    </div>
+    <div class="hub-grid two" style="margin-top:14px">
+      <article class="hub-card hub-action"><div><p class="kicker">Next job coming up</p><h4>Run the prep, then arrive ready</h4><p>Kit list, schedule, input list, stage plan — and one question written down before you leave the house.</p></div><a href="#hub-today">Open Job Hub →</a></article>
+      <article class="hub-card hub-action"><div><p class="kicker">Nothing booked</p><h4>Move one stage forward</h4><p>The pathway tells you what to read next and what to ask for on the job after this one.</p></div><a href="#path-stages">Open the pathway →</a></article>
+    </div>
+  </section>
+
+  <section class="hub-section" id="home-about">
+    <h3>How this app is put together</h3>
+    <p class="hub-lead">Same material as ever, arranged so the navigation actually means something.</p>
+    <div class="hub-grid">
+      <article class="hub-card"><p class="kicker">The four screens</p><h4>Task first, not chapter first</h4><p><strong>Job Hub</strong> is the run-up to a job and the job itself. <strong>Support</strong> is for the moment something is wrong or you need a number. The <strong>pathway</strong> is the long game. The <strong>library</strong> is everything, in order, underneath.</p></article>
+      <article class="hub-card"><p class="kicker">Everything is searchable</p><h4>One index, all 21 parts</h4><p>Search reaches every word of the handbook and every one of these screens. Open it from <strong>Library</strong> in the bottom bar, or press <kbd>/</kbd> on a keyboard.</p></article>
+      <article class="hub-card"><p class="kicker">It is yours</p><h4>Notes, ticks and themes stay on this device</h4><p>Section notes, checklists, the job workspace and your chosen colours are saved only in this browser and never sent anywhere. Export a backup now and then from <strong>Appearance</strong>.</p></article>
+    </div>
+    <article class="hub-card" style="margin-top:14px"><p class="kicker">What's in this pack</p><h4>The full contents, in one sentence</h4><p>Running a job and the people around you, core audio fundamentals, RF, PA and networked systems, working across different departments and event types, d&amp;b systems and speakON cabling, fault-finding and working safely, recording and mixing craft, and career, learning and field reference — checklists, glossary and calculators, all in one place.</p></article>
+  </section>
+
+</section>

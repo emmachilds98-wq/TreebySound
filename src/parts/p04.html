@@ -1,0 +1,173 @@
+<div class="part" id="p4">
+<div class="part-head"><div class="col"><span class="part-num">PART 4</span><div><h2>Microphones &amp; stage capture</h2><p>What you will handle most often, how it behaves, and how to place and protect it.</p></div></div></div>
+<div class="col">
+
+<section class="s" id="s4-1"><h3><span class="n">4.1</span> The three types</h3>
+<div class="tw"><table>
+<thead><tr><th>Type</th><th>How it works</th><th>Character</th><th>Phantom?</th><th>Live use</th></tr></thead>
+<tbody>
+<tr><td><strong>Dynamic</strong></td><td>Coil on a diaphragm moves in a magnetic field</td><td>Robust, handles huge SPL, slightly softer top end</td><td>No</td><td>Vocals, snare, guitar cabs, kick — anything loud or likely to get hit</td></tr>
+<tr><td><strong>Condenser</strong></td><td>Charged diaphragm and backplate act as a capacitor</td><td>Detailed, extended top end, more sensitive</td><td>Yes</td><td>Overheads, acoustic instruments, choirs, speech, anything needing detail</td></tr>
+<tr><td><strong>Ribbon</strong></td><td>Thin metal ribbon suspended in a magnetic field</td><td>Smooth, warm, naturally rolled-off top</td><td>Usually not — can be damaging</td><td>Rare live. Brass, guitar cabs in studio-ish contexts. Fragile.</td></tr>
+</tbody></table></div>
+<p>Also worth knowing: <strong>large-diaphragm</strong> condensers (fuller, more flattering, more prone to handling noise) vs <strong>small-diaphragm</strong> or "pencil" condensers (more accurate, better off-axis behaviour, the standard for overheads and acoustic sources live).</p>
+<div class="note warn"><span class="lab">Watch it</span><p>Ribbons are genuinely delicate. Don't blow into them, don't wave them around, don't send phantom to one unless the manufacturer explicitly says it's fine, and never plug one in with phantom already live. In a hire warehouse they should be in dedicated cases and handled as fragile stock.</p></div>
+</section>
+
+<section class="s" id="s4-2"><h3><span class="n">4.2</span> Polar patterns</h3>
+<p>The pattern describes which directions a mic hears from. It's the most practically important spec on the box, because it determines both how much bleed you get and how much level you can get before feedback.</p>
+<div class="tw"><table>
+<thead><tr><th>Pattern</th><th>Picks up</th><th>Rejects</th><th>Use for</th></tr></thead>
+<tbody>
+<tr><td><strong>Cardioid</strong></td><td>Front, heart-shaped</td><td>Directly behind</td><td>The live default. Vocals, most close mic'ing.</td></tr>
+<tr><td><strong>Supercardioid</strong></td><td>Front, narrower</td><td>Sides strongly; small rear lobe</td><td>Loud stages, tight rejection. Null is ~126° off axis.</td></tr>
+<tr><td><strong>Hypercardioid</strong></td><td>Front, narrowest</td><td>Sides very strongly; bigger rear lobe</td><td>Maximum isolation. Null ~110°.</td></tr>
+<tr><td><strong>Omni</strong></td><td>Everything, equally</td><td>Nothing</td><td>Lavs, measurement mics, room mics. No proximity effect.</td></tr>
+<tr><td><strong>Figure-8</strong></td><td>Front and back</td><td>Sides completely</td><td>M/S recording, two people facing each other, clever rejection tricks.</td></tr>
+<tr><td><strong>Shotgun</strong></td><td>Narrow forward lobe</td><td>Sides (via interference tube)</td><td>Distance pickup, broadcast, drama, corporate reinforcement of a stage.</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>The practical use of a polar pattern is <strong>aiming the null, not just the front.</strong> With a wedge on stage, you want the mic's dead spot pointing at the wedge. For a cardioid that's straight behind the mic — so wedges go directly in front of the singer. For a super/hypercardioid the null is off to the sides at the back, so wedges go in a pair at roughly 45°. Getting this right is worth more gain before feedback than any amount of EQ.</p></div>
+</section>
+
+<section class="s" id="s4-3"><h3><span class="n">4.3</span> Proximity effect &amp; other physical realities</h3>
+<dl class="kv">
+<dt>Proximity effect</dt><dd>All directional mics boost low frequencies as the source gets closer. A singer eating the mic gets a big warm boom; backing off two inches thins it out. Vocalists use this deliberately. You compensate with the high-pass filter.</dd>
+<dt>Off-axis colouration</dt><dd>Sound arriving from the side isn't just quieter, it's <em>differently</em> coloured — usually duller. Good mics have smooth off-axis response; cheap ones sound honky when the singer turns their head.</dd>
+<dt>Plosives</dt><dd>"P" and "B" sounds fire a blast of air at the diaphragm, producing a low thump. Fixed with a pop shield, a foam windshield, slight off-axis positioning, and a high-pass filter.</dd>
+<dt>Handling noise</dt><dd>Vibration through the body of the mic. Worse on condensers and on mics without internal shockmounting. Shockmounts and stand isolation help.</dd>
+<dt>Wind</dt><dd>Outdoors, a foam windshield is not enough. You need a proper furry ("dead cat", "windjammer"). Wind noise is huge, low-frequency, and eats your headroom.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>Engage the <strong>high-pass filter</strong> on almost every channel that isn't kick, bass or a full-range source. Somewhere around 80–100 Hz on vocals, 100–120 Hz on most other things. It removes rumble, handling noise, stage vibration and plosive energy that contributes nothing but eats headroom. This is genuinely one of the highest-value habits in live sound.</p></div>
+</section>
+
+<section class="s" id="s4-4"><h3><span class="n">4.4</span> The stock — what you'll actually handle</h3>
+<h4>Vocal, handheld</h4>
+<div class="tw"><table>
+<thead><tr><th>Mic</th><th>Type</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><strong>Shure SM58</strong></td><td>Dynamic cardioid</td><td>The industry default. Indestructible, forgiving, universally understood. If in doubt, this.</td></tr>
+<tr><td><strong>Shure Beta 58A</strong></td><td>Dynamic supercardioid</td><td>Brighter, hotter, tighter pattern. More gain before feedback on a loud stage.</td></tr>
+<tr><td><strong>Sennheiser e835 / e845</strong></td><td>Dynamic cardioid / super</td><td>Common alternative to the 58. Slightly more open sounding.</td></tr>
+<tr><td><strong>Sennheiser e935 / e945</strong></td><td>Dynamic cardioid / super</td><td>Step up. Many engineers prefer these to Betas.</td></tr>
+<tr><td><strong>Shure Beta 87A / 87C</strong></td><td>Condenser super / cardioid</td><td>Detailed handheld condenser. Great on good singers, unforgiving on loud stages.</td></tr>
+<tr><td><strong>Neumann KMS 104 / 105</strong></td><td>Condenser</td><td>Premium handheld. Beautiful, expensive, treat with care.</td></tr>
+<tr><td><strong>Electro-Voice RE20 / RE50</strong></td><td>Dynamic</td><td>RE20 for broadcast/announce; RE50 is the classic omni reporter's handheld.</td></tr>
+</tbody></table></div>
+<h4>Drums</h4>
+<div class="tw"><table>
+<thead><tr><th>Source</th><th>Usual choices</th></tr></thead>
+<tbody>
+<tr><td><strong>Kick</strong></td><td>Shure Beta 52A, AKG D112, Audix D6, Sennheiser e902, Shure Beta 91A (inside, boundary)</td></tr>
+<tr><td><strong>Snare</strong></td><td>Shure SM57 (the default), Beta 57A, Audix i5, Telefunken M80</td></tr>
+<tr><td><strong>Hi-hat</strong></td><td>Shure SM81, AKG C451, Rode NT5 — small-diaphragm condenser</td></tr>
+<tr><td><strong>Toms</strong></td><td>Sennheiser e604 / e904 (clip-on), Audix D2/D4, SM57</td></tr>
+<tr><td><strong>Overheads</strong></td><td>Rode NT5, AKG C414, Neumann KM184, Shure SM81, Oktava MK-012</td></tr>
+</tbody></table></div>
+<h4>Instruments &amp; general</h4>
+<div class="tw"><table>
+<thead><tr><th>Source</th><th>Usual choices</th></tr></thead>
+<tbody>
+<tr><td><strong>Guitar cab</strong></td><td>SM57 (default), Sennheiser e906, Audix i5, Royer R-121 (ribbon, studio-ish)</td></tr>
+<tr><td><strong>Bass</strong></td><td>DI box, usually. Plus Beta 52A or D112 on the cab if wanted.</td></tr>
+<tr><td><strong>Acoustic guitar</strong></td><td>DI from the pickup, and/or SM81/KM184/DPA 4099</td></tr>
+<tr><td><strong>Brass / strings / woodwind</strong></td><td>DPA 4099 clip-on (the standard for live orchestral), SM57, e906</td></tr>
+<tr><td><strong>Piano</strong></td><td>Pair of condensers inside the lid, or DPA 4099P clip system</td></tr>
+<tr><td><strong>Choir / ensemble</strong></td><td>Hanging condensers, or SM81/KM184 on tall stands</td></tr>
+<tr><td><strong>Lectern</strong></td><td>Gooseneck condenser, e.g. Shure MX418, Sennheiser MEG range</td></tr>
+<tr><td><strong>Boundary / stage floor</strong></td><td>Crown PCC-160, Shure Beta 91A</td></tr>
+<tr><td><strong>Distance / drama</strong></td><td>Sennheiser MKH 416, Rode NTG series (shotguns)</td></tr>
+</tbody></table></div>
+<h4>Worn mics</h4>
+<div class="tw"><table>
+<thead><tr><th>Mic</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td><strong>DPA 4060 / 4061</strong></td><td>Premium omni lav. The theatre standard for a reason.</td></tr>
+<tr><td><strong>DPA 4066 / 4088</strong></td><td>Headset — omni (4066) and directional (4088). Excellent, expensive, fragile.</td></tr>
+<tr><td><strong>Countryman B3 / E6</strong></td><td>B3 lav, E6 earset. Robust, discreet, very common on corporate.</td></tr>
+<tr><td><strong>Sennheiser MKE 1 / MKE 2</strong></td><td>Broadcast and theatre lavs.</td></tr>
+<tr><td><strong>Shure MX150 / TwinPlex</strong></td><td>TwinPlex is Shure's premium range, increasingly common.</td></tr>
+</tbody></table></div>
+<div class="note warn"><span class="lab">Watch it</span><p>Worn mics are the most expensive-per-gram and most abused items in the warehouse. Cables fail at the connector and at the capsule, sweat kills them, and they get yanked off. Check the <strong>termination</strong> matches the transmitter brand — a DPA with a Sennheiser 3.5 mm locking jack will not work on a Shure TA4F pack. Getting the wrong terminations on a job is a classic and totally avoidable prep failure.</p></div>
+</section>
+
+<section class="s" id="s4-5"><h3><span class="n">4.5</span> Placement crib sheet</h3>
+<p>Starting points, not laws. Move the mic, listen, move it again — that's the entire skill.</p>
+<div class="tw"><table>
+<thead><tr><th>Source</th><th>Starting position</th><th>Then adjust for…</th></tr></thead>
+<tbody>
+<tr><td><strong>Lead vocal</strong></td><td>Grille roughly at the lips, on axis</td><td>Proximity boom (back off), sibilance (slightly off axis)</td></tr>
+<tr><td><strong>Kick</strong></td><td>Inside the port, 100–150 mm from the beater, aimed at the beater</td><td>More click (closer to beater), more boom (further out / nearer the shell)</td></tr>
+<tr><td><strong>Snare top</strong></td><td>25–50 mm above the rim, aimed at the centre, angled ~45°</td><td>Hi-hat bleed (aim the null at the hat), body vs crack</td></tr>
+<tr><td><strong>Snare bottom</strong></td><td>Underneath aimed at the snares. <strong>Flip polarity.</strong></td><td>Wire rattle vs body</td></tr>
+<tr><td><strong>Toms</strong></td><td>25–50 mm above the head, just inside the rim, angled in</td><td>Cymbal bleed, attack vs tone</td></tr>
+<tr><td><strong>Hi-hat</strong></td><td>100–150 mm above the edge, aimed down, away from the snare</td><td>Snare bleed, "chick" vs wash</td></tr>
+<tr><td><strong>Overheads</strong></td><td>Equal distance from the snare, ~1.2 m above the kit</td><td>Cymbal balance; measure with a cable to keep them equidistant</td></tr>
+<tr><td><strong>Guitar cab</strong></td><td>On the grille, aimed at the edge of the dust cap</td><td>Centre = bright and harsh; edge = warmer. Move a few cm at a time.</td></tr>
+<tr><td><strong>Acoustic guitar</strong></td><td>150–200 mm out, aimed at the 12th fret — <em>not</em> the soundhole</td><td>Boom (soundhole = too much), string noise</td></tr>
+<tr><td><strong>Grand piano</strong></td><td>Pair over the strings, ~200 mm above, one over bass one over treble</td><td>Lid position, bleed from the rest of the stage</td></tr>
+<tr><td><strong>Brass</strong></td><td>Slightly off the bell axis, 150–300 mm out</td><td>Directly on axis is brutally bright and loud</td></tr>
+<tr><td><strong>Lectern</strong></td><td>Gooseneck at ~200 mm from the mouth, aimed up at the face</td><td>Presenters who lean away; consider two mics or a headset</td></tr>
+<tr><td><strong>Panel / top table</strong></td><td>One mic per two people max, ideally one each</td><td>Feedback — see the 3:1 rule below</td></tr>
+</tbody></table></div>
+<div class="note alt"><span class="lab">Also seen</span><p>There's a whole school of thought that says minimal mic'ing beats close mic'ing — two overheads and a kick mic on a jazz kit, a single pair on a string section. In small rooms and acoustic contexts this often sounds far better than 12 close mics. Don't assume more inputs is better.</p></div>
+</section>
+
+<section class="s" id="s4-6"><h3><span class="n">4.6</span> The 3:1 rule, and stereo techniques</h3>
+<p><strong>The 3:1 rule:</strong> when using multiple mics on one source or in one space, the distance between mics should be at least three times the distance from each mic to its source. This makes the bleed at least ~10 dB down, which keeps comb filtering from being audible. It's why panel discussions with a mic each sound fine and a badly-spaced pair of lectern mics sounds hollow.</p>
+<div class="tw"><table>
+<thead><tr><th>Technique</th><th>Setup</th><th>Character</th></tr></thead>
+<tbody>
+<tr><td><strong>XY</strong></td><td>Two cardioids, capsules coincident, 90°</td><td>Perfectly mono-compatible, narrow image. Safe choice.</td></tr>
+<tr><td><strong>ORTF</strong></td><td>Two cardioids, 170 mm apart, 110°</td><td>Natural, wide, good for ensembles and room capture.</td></tr>
+<tr><td><strong>Spaced pair (A/B)</strong></td><td>Two omnis, 0.5–3 m apart</td><td>Big and spacious; mono compatibility suffers.</td></tr>
+<tr><td><strong>Mid/Side (M/S)</strong></td><td>Cardioid forward + figure-8 sideways, matrixed</td><td>Adjustable width after the fact; perfect mono fold-down. Broadcast favourite.</td></tr>
+<tr><td><strong>Decca tree</strong></td><td>Three omnis on a T frame</td><td>Orchestral. Big rig, big sound, rarely your problem.</td></tr>
+</tbody></table></div>
+</section>
+
+<section class="s" id="s4-7"><h3><span class="n">4.7</span> Stands and accessories</h3>
+<dl class="kv">
+<dt>Tall boom</dt><dd>The standard vocal/overhead stand. Heavy round base or tripod.</dd>
+<dt>Short boom</dt><dd>Snare, toms, guitar cabs, kick. You need far more of these than people ever pack.</dd>
+<dt>Straight stand</dt><dd>Simple, stable, no boom arm. Common for backing vocals and speech.</dd>
+<dt>Desk / table stand</dt><dd>Top tables, panels, podium.</dd>
+<dt>Round base vs tripod</dt><dd>Round base is more stable and tidier on stage (theatre and TV prefer them); tripod is lighter and cheaper, but the legs trip people and get in the way of a drum kit.</dd>
+<dt>Clip / clamp</dt><dd>Every mic model has its own. They go missing constantly. Count them at prep.</dd>
+<dt>Shockmount</dt><dd>Elastic cradle isolating the mic from stand vibration. For condensers.</dd>
+<dt>Pop shield</dt><dd>Mesh or foam screen against plosives.</dd>
+<dt>Windshield / dead cat</dt><dd>Foam for indoors, fur for outdoors.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p>Two stand failures cause most on-stage incidents: a <strong>boom arm not tightened</strong>, which slowly droops through the show until the mic is at the singer's chest; and a <strong>tall boom with too much counterweight-free extension</strong>, which topples. Tighten every clutch properly, and set the base so the weight of the boom sits over a leg, not between them.</p></div>
+</section>
+
+<section class="s" id="s4-8"><h3><span class="n">4.8</span> Handling &amp; care</h3>
+<ul>
+<li><strong>Don't blow into a mic to test it.</strong> It's crude, it tells you almost nothing, and on a condenser or ribbon it can genuinely cause damage. Speak into it, or scratch the grille gently.</li>
+<li><strong>Don't tap the grille</strong> of a condenser either — it's a big impulse straight into a sensitive diaphragm.</li>
+<li><strong>Condensation kills condensers.</strong> Bringing a cold mic from a van into a warm room causes moisture on the diaphragm — you get crackling and low output. Let it acclimatise; don't panic and bin it.</li>
+<li><strong>Store in their cases/pouches</strong>, not loose in a drawer. Foam-lined mic cases exist for a reason.</li>
+<li><strong>Silica gel</strong> in mic cases is worth doing for expensive condensers and worn mics.</li>
+<li><strong>Clean grilles.</strong> Vocal mics get genuinely disgusting. Most unscrew — wash the grille and the foam in warm soapy water, dry completely before reassembling. This is a proper warehouse task and it matters for both sound and hygiene.</li>
+<li><strong>Handle by the body, not the grille.</strong> Grip oils and dents both cause problems.</li>
+</ul>
+<div class="note std"><span class="lab">Standard</span><p>Clean and check every vocal mic on return, not at the next prep. It's five minutes when it's part of the check-in routine and it's a crisis when you discover it at 8am with a van to load.</p></div>
+</section>
+
+<section class="s" id="s4-9"><h3><span class="n">4.9</span> Which mic for which source — a cheat sheet</h3>
+<p>Starting points, not rules — use what's on the kit list and listen.</p>
+<div class="tw"><table>
+<thead><tr><th>Source</th><th>Usual choice</th><th>Notes</th></tr></thead>
+<tbody>
+<tr><td>Lead vocal (loud stage)</td><td>Dynamic or handheld condenser, cardioid/supercardioid</td><td>Rejection matters more than detail. Wedge in the dead zone.</td></tr>
+<tr><td>Speech at a lectern</td><td>Gooseneck condenser</td><td>20–40 cm, high-pass on, rung out (§4.4).</td></tr>
+<tr><td>Presenter who walks</td><td>Headset or lavalier radio mic</td><td>Headset for quiet talkers and movers (§10.11).</td></tr>
+<tr><td>Kick drum</td><td>Large-diaphragm dynamic made for kick</td><td>Inside the port for attack, outside for weight.</td></tr>
+<tr><td>Snare, toms, guitar cab</td><td>Dynamic instrument mic</td><td>Close and angled; watch spill.</td></tr>
+<tr><td>Overheads, acoustic guitar, choir, strings</td><td>Small-diaphragm condensers</td><td>Need phantom; mind feedback on quiet sources.</td></tr>
+<tr><td>Bass guitar, keys, laptop</td><td>DI (often bass also gets a mic)</td><td>Ground lift for hum (§3.9).</td></tr>
+<tr><td>Brass and wind</td><td>Dynamic, or clip-on condenser</td><td>Clip-ons let players move.</td></tr>
+<tr><td>Audience/ambience</td><td>Pair of condensers</td><td>For IEM mixes and recordings, not the PA (§15.4).</td></tr>
+</tbody></table></div>
+</section>
+
+</div></div>

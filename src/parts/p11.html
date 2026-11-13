@@ -1,0 +1,161 @@
+<div class="part" id="p11">
+<div class="part-head"><div class="col"><span class="part-num">PART 11</span><div><h2>Test before doors</h2><p>System check, line check and sign-off: the sequence that decides whether the show is calm or a scramble.</p></div></div></div>
+<div class="col">
+
+<section class="s" id="s11-1"><h3><span class="n">11.1</span> System check vs line check — the difference</h3>
+<dl class="kv">
+<dt>System check</dt><dd>Proving the PA itself works — every box making sound, correct polarity, sensible level, no buzzes or rattles. Usually the systems tech's job, done before anyone's plugged an input in. Covered from the speaker end in <a href="#s6-8">§6.8</a>.</dd>
+<dt>Line check</dt><dd>Proving every <em>input</em> — every mic, DI and line source — arrives cleanly at the console, on the correct channel, with sensible gain. This is very often your job, and it's what this part is mostly about.</dd>
+</dl>
+<p>Do the system check first. There's no point proving forty inputs sound correct through a PA you haven't confirmed is working. When there's no systems tech and the system check is yours, <a href="#s11-9">§11.9</a> is the full test.</p>
+</section>
+
+<section class="s" id="s11-2"><h3><span class="n">11.2</span> Before you start: setting up channels, from equipment to patch</h3>
+<p>A line check only tells you the truth about what's already built. Before <a href="#s11-3">§11.3</a> makes any sense, every channel needs to actually exist as a patched, gained, named path from source to console. Do this properly and the line check becomes a formality; skip steps here and the line check turns into fault-finding with an audience.</p>
+<figure class="diagram">
+<svg viewBox="0 0 320 336" width="320" height="336" role="img" aria-labelledby="setupDgTitle setupDgDesc">
+<title id="setupDgTitle">Setting up one channel, source to console</title>
+<desc id="setupDgDesc">Five stages connected by arrows: source, a mic or DI at the stand; into the stage box, on the socket matching the patch list; along the snake or network to the console; patched to the correct channel, gained and named; then ready for line check</desc>
+<defs><marker id="dgArrowSetup" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="dg-arrow"/></marker></defs>
+<g font-size="12.5">
+<rect x="60" y="6" width="200" height="42" rx="5" class="dg-box"/><text x="160" y="27" text-anchor="middle" class="dg-lab">SOURCE</text><text x="160" y="42" text-anchor="middle" class="dg-mono" font-size="10.5">mic or DI, at the stand</text>
+<line x1="160" y1="48" x2="160" y2="70" class="dg-line" marker-end="url(#dgArrowSetup)"/>
+<rect x="60" y="72" width="200" height="42" rx="5" class="dg-box2"/><text x="160" y="93" text-anchor="middle" class="dg-lab">STAGE BOX</text><text x="160" y="108" text-anchor="middle" class="dg-mono" font-size="10.5">socket matches the patch list</text>
+<line x1="160" y1="114" x2="160" y2="136" class="dg-line" marker-end="url(#dgArrowSetup)"/>
+<rect x="60" y="138" width="200" height="42" rx="5" class="dg-box2"/><text x="160" y="159" text-anchor="middle" class="dg-lab">SNAKE / NETWORK</text><text x="160" y="174" text-anchor="middle" class="dg-mono" font-size="10.5">multicore, or Dante/AVB</text>
+<line x1="160" y1="180" x2="160" y2="202" class="dg-line" marker-end="url(#dgArrowSetup)"/>
+<rect x="60" y="204" width="200" height="48" rx="5" class="dg-box2"/><text x="160" y="225" text-anchor="middle" class="dg-lab">CONSOLE CHANNEL</text><text x="160" y="241" text-anchor="middle" class="dg-mono" font-size="10.5">patched · gained · named</text>
+<line x1="160" y1="252" x2="160" y2="274" class="dg-line" marker-end="url(#dgArrowSetup)"/>
+<rect x="60" y="276" width="200" height="46" rx="5" class="dg-pass"/><text x="160" y="298" text-anchor="middle" class="dg-lab">READY FOR LINE CHECK</text><text x="160" y="313" text-anchor="middle" class="dg-mono" font-size="10.5">now go to §11.3</text>
+</g>
+</svg>
+<figcaption>Every channel goes through the same five stages before it's ready to test. If a channel misbehaves later, this is the order to trace back through.</figcaption>
+</figure>
+<ol class="seq">
+<li><strong>Get the input list and patch list</strong> (<a href="#s1-5">§1.5</a>) and actually read them before you touch a cable — you need to know what's supposed to be where, on which socket and which channel, before you can build it correctly the first time.</li>
+<li><strong>Position and cable every source</strong> against the stage plan — mic or DI at the stand, cable run tidy, taped down or out of the walkway, with enough slack to survive a mic being nudged (<a href="#s1-5">§1.5</a>).</li>
+<li><strong>Land each cable on the correct stage box socket</strong> — the one the patch list says, not the next free hole. A source on the wrong socket is invisible until someone specifically goes looking for it.</li>
+<li><strong>Confirm the run to the console is actually up</strong> — an analogue multicore is either connected or it isn't, but a digital stage box over a network needs to actually be showing in the console's device list before you patch anything to it. Don't assume; check (<a href="#s7-3">§7.3</a>; <a href="#s8-2">§8.2</a> covers clocking on a Dante network).</li>
+<li><strong>Patch each socket to its console channel</strong> to match the patch list. Socket 12 does not have to be channel 12 — that's the entire point of a patch (<a href="#s7-3">§7.3</a>) — but if you deviate from the paperwork for a good reason, say so out loud and update the sheet, or the next person to look at it will trust a patch list that's now wrong.</li>
+<li><strong>Set phantom power only where the input list says it's needed</strong> — condenser mics and some DIs need it, dynamic mics and ribbons generally don't want it (<a href="#s2-6">§2.6</a>).</li>
+<li><strong>Set an initial gain on every channel</strong> — this doesn't need to be perfect yet, just safe: enough that you can hear it, nowhere near clipping. Proper gain structure is <a href="#s2-5">§2.5</a>; the fast version is bring it up while the source makes a normal-level sound, and stop once the meter's comfortably in the green.</li>
+<li><strong>Name every channel as you patch it</strong>, not afterwards — an unnamed desk at line check is chaos, and colour-coding by section (drums, vocals, band, playback) if your desk supports it makes the whole show easier to read at a glance (<a href="#s7-4">§7.4</a>).</li>
+<li><strong>Do one rough pass for "is anything obviously dead"</strong> as you finish each area — not a full line check, just enough to catch a dead cable or a mispatch while you're still standing next to it with spares in reach, rather than discovering it later with everyone waiting.</li>
+<li><strong>Save the show file</strong> before you move on to formal testing (<a href="#s7-4">§7.4</a>) — a build's worth of patching, gain and naming is exactly the kind of work you don't want to redo from a crash.</li>
+</ol>
+<div class="note std"><span class="lab">Standard</span><p>Build in batches, not one channel start-to-finish at a time: cable every source first, then patch the whole stage box, then gain and name the whole desk. It's faster, and problems tend to cluster by area — one bad multicore pair, one dodgy DI box — which is much easier to spot when you're looking at ten channels at once instead of one.</p></div>
+<div class="note warn"><span class="lab">Watch it</span><p>The rough "is it alive" pass above is not the line check. It's tempting to treat a channel that clearly made a sound as done — but wrong polarity, bleed from the wrong mic, or a gain that's technically working but badly set all sound "fine" on a rough pass and only get caught by properly working through <a href="#s11-3">§11.3</a>.</p></div>
+<p>Once every channel is patched, gained and named, you're ready to test properly:</p>
+<ul>
+<li>Agree a method with whoever's helping — either you're at the stage end and someone's on the desk confirming, or you're doing both yourself with talkback into your own ears on a smaller job.</li>
+<li>Have a line check sheet ready, on paper or the one in <a href="#p19">Part 19</a>, to tick off as you go — trying to hold forty channels in your head is how things get missed.</li>
+</ul>
+<p>Then move to <a href="#s11-3">§11.3</a> and prove every channel, one at a time, in patch order.</p>
+</section>
+
+<section class="s" id="s11-3"><h3><span class="n">11.3</span> Running a line check, start to finish</h3>
+<ol class="seq">
+<li><strong>Work in patch order, not the order that's convenient.</strong> Starting at channel 1 and moving up means nothing gets skipped and nothing gets checked twice.</li>
+<li><strong>Announce the channel before you make noise on it.</strong> "Checking one, kick in" over talkback, or a hand signal in a no-talkback situation, so the person at the desk knows what they're listening for.</li>
+<li><strong>Make a real sound, not a tap.</strong> Speak or sing into a vocal mic at a normal working level; tap a drum properly, don't just brush the mic capsule with a finger — a tap tells you the mic is connected, not that it sounds right or is positioned correctly.</li>
+<li><strong>Confirm from the desk end</strong> — signal present, correct channel, sensible gain (not clipping, not buried), and that it's actually the source you expect and not bleed from something else.</li>
+<li><strong>Check polarity where it matters</strong> — kick in/out, snare top/bottom, DI vs mic on the same source (<a href="#s2-8">§2.8</a>).</li>
+<li><strong>Tick it off</strong> and move to the next one. Don't trust memory over forty-plus channels.</li>
+<li><strong>Re-check anything that was touched after</strong> — a mic repositioned, a cable re-routed, a connector reseated. If it moved, it needs proving again.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p>A channel that was fine an hour ago isn't guaranteed to still be fine now — cables get kicked, connectors get knocked during other work, gain gets bumped by an elbow. A line check the moment before doors, even a quick one, catches the handful of things that changed since the real check.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>None of this replaces a proper mix soundcheck with the band on stage, but on a job where the band's own multitrack already exists — a returning tour, a rehearsal recording — some engineers set gain and rough EQ against a <strong>virtual soundcheck</strong> (<a href="#s14-3">§14.3</a>) played back through the desk first, so less of that work has to happen live with the performers standing there.</p></div>
+</section>
+
+<section class="s" id="s11-4"><h3><span class="n">11.4</span> Line checking without talkback</h3>
+<p>Not every job has comms between stage and desk. In theatre especially, or on a small corporate with no radios to spare, you'll line check with hand signals and eye contact instead.</p>
+<ul>
+<li>Agree the signal set before you start: thumbs up for "good", flat hand rocking for "borderline", a cut-throat gesture for "nothing there".</li>
+<li>Work slowly enough that the desk end can actually see and respond — rushing this defeats the point.</li>
+<li>If you genuinely can't get eye contact or a clear sightline, a phone call or a runner beats guessing.</li>
+</ul>
+</section>
+
+<section class="s" id="s11-5"><h3><span class="n">11.5</span> Quarantining faulty kit</h3>
+<p>Something will fail a line check. What you do next matters as much as catching it.</p>
+<ol class="seq">
+<li>Swap it immediately for a spare rather than trying to fault-find mid-build — that's what <a href="#p12">Part 12</a> is for, later, with time to actually think.</li>
+<li>Physically separate the faulty item from the good stock — a different case, a labelled box, anything that stops it accidentally going back out.</li>
+<li>Tag it: what's wrong, who found it, when. "Noisy, crackles when cable's wiggled, found at line check 14/03" is worth more than a bare "faulty" sticker.</li>
+<li>Log it in whatever system your company uses (<a href="#s8-7">§8.7</a>) so it doesn't quietly reappear on a shelf next week.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p>This is the practical version of the warning in <a href="#s1-2">§1.2</a>: kit that goes back on the shelf "probably fine" becomes someone else's emergency later. Quarantine anything you're not sure about — the five extra minutes now is cheaper than a dead channel on someone else's show.</p></div>
+</section>
+
+<section class="s" id="s11-6"><h3><span class="n">11.6</span> Wireless proving</h3>
+<p>Wireless systems get their own pass within the line check — not just "does it make sound" but "is it clean, and will it stay clean". Walk every performer's likely path on stage while checking their pack, watch the RF meter for dropouts, and confirm IEM mixes are actually reaching the performer at a sensible level. Full detail in <a href="#s5-8">§5.8</a>.</p>
+</section>
+
+<section class="s" id="s11-7"><h3><span class="n">11.7</span> Signing it off</h3>
+<p>"Done" means every input has been individually proved, not that you pressed play on a song and it generally sounded fine. A line check that skips inputs because "that one's always fine" is the one that bites you — the input that's always fine is exactly the one nobody double-checks when it stops being fine.</p>
+<div class="note std"><span class="lab">Standard</span><p>Tell whoever's running the show explicitly when line check is complete, and flag anything still outstanding by name — "everything's good except channel 22, we're waiting on a replacement DI" — rather than a vague "mostly done".</p></div>
+</section>
+
+<section class="s" id="s11-8"><h3><span class="n">11.8</span> Comms check</h3>
+<p>Line check proves your audio inputs. Before doors, prove the crew's own communication path too — it's easy to skip because it doesn't make a sound out front, but a dead comms channel mid-show is its own kind of emergency.</p>
+<ul>
+<li>Every beltpack or headset that'll be used tonight actually powers on, holds charge, and is on the correct channel or group (<a href="#s8-5">§8.5</a> for the intercom hardware itself).</li>
+<li>Everyone who needs to talk to everyone else actually can — stage, FOH, monitor world, backstage — not just that the desk end works.</li>
+<li>Spare batteries or a spare beltpack are actually in reach, not back in a case in the van.</li>
+</ul>
+<div class="note alt"><span class="lab">Also seen</span><p>On a small job this is one sentence: "can you hear me, over" into a single radio. On a bigger multi-department show with a wired party-line it's worth its own five minutes before doors, the same way the PA gets a system check before the line check runs.</p></div>
+</section>
+
+<section class="s" id="s11-9"><h3><span class="n">11.9</span> Proving a d&amp;b system on your own — the pre-event test</h3>
+<p>More and more often the person who builds the system is also the person who has to say it's ready — with no system tech coming in before doors. That's fine for a system you know, built to a plan, inside what you're authorised to do. This section is how to do it properly and leave a record that shows you did. The <a href="#hub-systest">System test</a> in the Job Hub walks the same steps with you, ticks them off and writes the record; the <a href="#ask">fault finder</a> can run it as a conversation.</p>
+
+<h4>What's yours to do alone — and what isn't</h4>
+<div class="tw"><table>
+<thead><tr><th>Yours, once you're trained and authorised for it</th><th>Not yours alone — get the right person</th></tr></thead>
+<tbody>
+<tr><td>Placing and ground-stacking boxes to the plan, securely</td><td>Anything flown: hanging, trims, angles, sign-off of rigging (<a href="#s6-5">§6.5</a>)</td></tr>
+<tr><td>Plugging amps into the supply you were given; locking powerCONs</td><td>Mains distribution itself: connecting distros, three-phase, generators, resetting tripped RCDs (<a href="#s12-15">§12.15</a>)</td></tr>
+<tr><td>Running and locking speaker cables to the right sockets</td><td>Re-terminating or repairing cables on site</td></tr>
+<tr><td>Choosing setups, output modes and functions <em>that the plan specifies</em></td><td>Designing the system, or changing a design someone else made: new setups, ArrayProcessing, delays, EQ beyond what you've been told</td></tr>
+<tr><td>Proving each box, polarity, levels, and recording the result</td><td>Deciding a known fault is "fine for tonight" on somebody else's system</td></tr>
+</tbody></table></div>
+<div class="note warn"><span class="lab">Watch it</span><p>"No technician before the event" never means "no plan" or "no one to call". Before you're on your own, agree with whoever owns the system: the plan you'll build to, what you may change, and who answers the phone if something fails the test.</p></div>
+
+<h4>The test, in order</h4>
+<ol class="seq">
+<li><strong>Plan in hand.</strong> Box, amp, channel, output mode and setup for every channel — the ArrayCalc printout, R1 project or patch sheet.</li>
+<li><strong>Safe before powered.</strong> Ground stacks stable and secured, anything flown signed off by the rigger, cables routed and taped, nothing blocking exits or amp ventilation.</li>
+<li><strong>Power.</strong> Amps on the supply you were given, powerCONs locked, nothing else sharing it that shouldn't.</li>
+<li><strong>Speaker cables.</strong> Right socket for each output mode, 4-core where pins 2 are needed, locked at both ends, labelled (<a href="#s6-17">§6.17</a>, <a href="#s3-12">§3.12</a>).</li>
+<li><strong>Power up muted.</strong> Console and processing first, amps last, channels muted. Every amp boots with no error on screen.</li>
+<li><strong>Channel settings against the plan.</strong> Setup matches the box, output mode, functions (CUT and the rest), level, delay. Read every one — don't assume.</li>
+<li><strong>Remote and System check.</strong> R1 online with every amp present and no warnings; run System check if the amps have it, against the reference taken at prep.</li>
+<li><strong>Signal to every amp.</strong> Input mode and routing right, green signal on every channel, digital lock if it's AES or network, fallback set the way the plan says.</li>
+<li><strong>Every box, one at a time.</strong> Low-level pink noise or a known track, everything else muted: right box answering, every driver working, no rattles or distortion.</li>
+<li><strong>Polarity.</strong> Box against box, or with a polarity checker — a reversed box shows up as a hole in the sound where two overlap.</li>
+<li><strong>The whole system.</strong> Subs and tops together, fills and delays doing what the plan says, no phasey patches where systems overlap (<a href="#s6-8">§6.8</a>).</li>
+<li><strong>Level and limits.</strong> Show level at the mix position without the amps living in yellow GR, and inside any venue noise limit or licence condition (<a href="#s6-10">§6.10</a>).</li>
+<li><strong>Inputs.</strong> Line check every mic, DI and playback source (<a href="#s11-3">§11.3</a>), and radio mics proved (<a href="#s11-6">§11.6</a>).</li>
+<li><strong>Show stop.</strong> You can mute everything in one move — console master or a mute group in R1 — and you know how to reach whoever you'd call.</li>
+<li><strong>Save and record.</strong> Console show file and R1 project saved; anything that changed from the plan written down; known issues named; handed over to whoever runs the show.</li>
+</ol>
+
+<h4>Why the record matters</h4>
+<p>A dated test record — what was checked, what passed, what didn't and who did it — is what lets you run events without a technician coming in first. It shows the system was proven, it gives whoever comes next the facts if something changes after doors, and over time it's the evidence of what you can do on your own. Keep them; they belong with your learning log (<a href="#path-tech">technician skills</a>).</p>
+<div class="note std"><span class="lab">Standard</span><p>If any step fails and you can't fix it inside what you're allowed to do, the test hasn't passed. Say so plainly, with the facts — "box 3 stage left has no HF, cable swapped, fault follows the box" — and let the person who owns the system decide.</p></div>
+</section>
+
+<section class="s" id="s11-10"><h3><span class="n">11.10</span> Handing over to the engineer</h3>
+<p>When the engineer or system tech arrives to a system you've built and checked, the first two minutes decide whether they trust it. Give them, briefly and in this order:</p>
+<ol class="seq">
+<li><strong>What's built:</strong> the system as built, and anything different from the plan (a swapped box, a different cable route).</li>
+<li><strong>What's proved:</strong> system test done (§11.9), line check done (§11.7) — with the record if they want it.</li>
+<li><strong>What's outstanding:</strong> by name — “channel 22 waiting on a cable”, “fill amp shows a warning, here's the text”.</li>
+<li><strong>What's been changed:</strong> any setting you touched, and why.</li>
+<li><strong>Where things are:</strong> spares, fault kit, show file on USB, comms pack for them.</li>
+</ol>
+<div class="note std"><span class="lab">Standard</span><p>Then step back and stay close. Answer questions, don't hover — and never change anything on the system once they've taken it over without asking.</p></div>
+</section>
+
+
+</div></div>

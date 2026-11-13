@@ -1,0 +1,125 @@
+<div class="part" id="p16">
+<div class="part-head"><div class="col"><span class="part-num">PART 16</span><div><h2>Make it sound good</h2><p>EQ, dynamics and effects: the listening decisions behind the console controls.</p></div></div></div>
+<div class="col">
+
+<section class="s" id="s16-1"><h3><span class="n">16.1</span> Subtractive vs additive EQ</h3>
+<p>Two philosophies, both correct in different moments.</p>
+<dl class="kv">
+<dt>Subtractive</dt><dd>Cut what's wrong rather than boost what's missing. Find a harsh, boxy or muddy frequency and pull it down. Generally the safer, more transparent default — cuts rarely sound "processed" the way boosts can.</dd>
+<dt>Additive</dt><dd>Boost a frequency to bring out a wanted character — air on a vocal, punch on a kick. Useful and often necessary, but easier to overdo, and every boost eats into your headroom (<a href="#s2-5">§2.5</a>).</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>A reasonable default sequence: sweep a narrow boost across the spectrum to find problem frequencies, cut those, then use gentle, wide boosts if something still needs character on top. Cut narrow, boost wide is a decent rule of thumb.</p></div>
+</section>
+
+<section class="s" id="s16-2"><h3><span class="n">16.2</span> Frequency by ear — practical training</h3>
+<p>The skill that separates engineers who can find a problem frequency in seconds from those who sweep for a minute. It's trainable, not innate.</p>
+<div class="tw"><table>
+<thead><tr><th>Range</th><th>Character when excessive</th><th>Common culprits</th></tr></thead>
+<tbody>
+<tr><td class="mono">60–120 Hz</td><td>Boomy, muddy</td><td>Kick, bass, room rumble, stage low-end buildup</td></tr>
+<tr><td class="mono">200–500 Hz</td><td>Boxy, congested</td><td>Vocals, guitar cabs, most sources in a busy mix</td></tr>
+<tr><td class="mono">500 Hz–2 kHz</td><td>Honky, nasal</td><td>Vocals, snare, brass</td></tr>
+<tr><td class="mono">2–5 kHz</td><td>Harsh, fatiguing, where most vocal intelligibility lives</td><td>Vocals, cymbals, overdriven guitar</td></tr>
+<tr><td class="mono">5–10 kHz</td><td>Sibilant, sharp</td><td>Vocal "s" sounds, cymbals</td></tr>
+<tr><td class="mono">10 kHz+</td><td>Airy when right, brittle/hissy when excessive</td><td>Overheads, vocal "air", noise floor</td></tr>
+</tbody></table></div>
+<div class="note deep"><span class="lab">Go deeper</span><p>Ear-training apps and plugins (Quiztones and similar) that play a boosted frequency and ask you to identify it are a genuinely fast way to build this skill — twenty minutes a day for a few weeks makes a real, measurable difference. See <a href="#p18">Part 18</a>.</p></div>
+</section>
+
+<section class="s" id="s16-3"><h3><span class="n">16.3</span> Gates &amp; expanders in practice</h3>
+<p>A gate mutes a channel below a threshold; an expander turns it down more gently rather than cutting it off entirely — a softer version of the same idea. Live, the classic use is drum bleed: a snare mic picks up the whole kit, and a gate keyed to open only when the snare itself hits keeps the channel clean between hits.</p>
+<dl class="kv">
+<dt>Threshold</dt><dd>The level below which the gate closes. Set too high and it chops the start of quiet hits; too low and it doesn't help with bleed at all.</dd>
+<dt>Attack</dt><dd>How fast it opens once triggered. Too slow and you lose the transient — the "click" of the hit.</dd>
+<dt>Hold &amp; release</dt><dd>How long it stays open and how it fades closed. Too short and it chatters or cuts a note off unnaturally; too long and the bleed it was meant to remove comes back through.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p>An aggressively gated channel can sound fine solo'd and completely wrong in the full mix, because the gate is reacting to everything else happening on stage too. Always judge gate settings with the whole band playing, not solo'd.</p></div>
+</section>
+
+<section class="s" id="s16-4"><h3><span class="n">16.4</span> Compressors in practice</h3>
+<p>A compressor turns down anything above a threshold, by a ratio, reducing the gap between the quietest and loudest moments of a signal — useful because live sources are unpredictable and a vocal that's controlled sits in a mix far more consistently than one that swings wildly between whisper and shout.</p>
+<dl class="kv">
+<dt>Threshold</dt><dd>The level above which compression kicks in.</dd>
+<dt>Ratio</dt><dd>How hard it compresses above threshold. 2:1 is gentle; 8:1 and beyond starts to sound like limiting.</dd>
+<dt>Attack</dt><dd>How fast it starts reducing gain once triggered. Fast attack tames transients hard (can dull the punch); slower attack lets the initial transient through before clamping down.</dd>
+<dt>Release</dt><dd>How fast it lets go afterwards. Too fast can sound pumpy or breathy; too slow can leave it clamped down through the next quiet passage.</dd>
+<dt>Makeup gain</dt><dd>Turns the whole signal back up after compression to compensate for the level lost — this is how compression can make something sound both more controlled <em>and</em> louder.</dd>
+</dl>
+<p>A workable starting point for a lead vocal live: moderate threshold so it's engaging on louder phrases, ratio around 3:1–4:1, medium attack, medium release, then adjust entirely by ear against the actual performance — printed numbers are a starting point, never a destination.</p>
+<div class="note alt"><span class="lab">Also seen</span><p>Some engineers barely touch channel compression live and instead control dynamics mostly with the fader, riding it constantly — "the best compressor is your hand on the fader" is a genuinely common opinion. Both approaches produce good mixes in the right hands; neither is more "correct".</p></div>
+</section>
+
+<section class="s" id="s16-5"><h3><span class="n">16.5</span> Reverb &amp; effects sends</h3>
+<p>Live reverb is used far more sparingly than in a studio — too much and a mix loses definition and becomes hard to hear clearly in a room that likely already has its own natural reverberation. Typically routed as an aux send to a shared effects return rather than inserted per-channel, so several sources can share one reverb and sit in a common sense of space.</p>
+<dl class="kv">
+<dt>Send level</dt><dd>How much of each channel goes to the effect — usually modest for most sources, more for a lead vocal wanting some lift.</dd>
+<dt>Pre vs post-fade send</dt><dd>Post-fade (the effect follows the channel's fader) is standard for reverb, so the effect fades with the source rather than being left hanging at a fixed level.</dd>
+<dt>Decay time</dt><dd>Longer decay for ballad-paced or spacious material; shorter for busy, fast material where a long tail muddies things.</dd>
+</dl>
+</section>
+
+<section class="s" id="s16-6"><h3><span class="n">16.6</span> Building a mix from silence</h3>
+<p>A practical sequence for approaching a mix from nothing, useful whether it's a full soundcheck or a quick line check turned straight into a show:</p>
+<ol class="seq">
+<li><strong>Drums up first</strong> (if present) — kick and snare roughly balanced, then the rest of the kit around them, then overheads to glue it together.</li>
+<li><strong>Bass in</strong>, balanced against the kick so they sit together rather than fighting for the same low-end space.</li>
+<li><strong>Other instruments</strong>, one at a time, each brought in against what's already there rather than judged solo.</li>
+<li><strong>Lead vocal on top</strong>, set clearly above the band — it's usually the thing the audience most needs to hear and understand.</li>
+<li><strong>Backing vocals and extras</strong> woven in around the lead without competing with it.</li>
+<li><strong>Step back and listen from a few places in the room</strong>, not just at the desk — the mix that's right at FOH can be quite different ten metres to the side.</li>
+</ol>
+</section>
+
+<section class="s" id="s16-7"><h3><span class="n">16.7</span> Why the mix changes with volume</h3>
+<p>Your ears are not equally sensitive across the spectrum, and — crucially — the shape of that sensitivity <em>changes with level</em>. At quiet levels we hear much less bass and slightly less extreme top; as things get louder the response flattens out. This is measured by the <strong>equal-loudness contours</strong>, and it has a very practical consequence: a mix built at one volume will not sound the same at another.</p>
+<dl class="kv">
+<dt>Built quiet, played loud</dt><dd>You compensated for ears that weren't hearing bass, so you added low end. Turn it up and it's boomy and thick.</dd>
+<dt>Built loud, played quiet</dt><dd>The reverse. It sounds thin, gutless and oddly mid-heavy at background level — a common surprise on a corporate job where the "walk-in music" mix was set during a loud soundcheck.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>Build the mix at roughly the level the show will actually run at, and check it at a couple of others before you commit. If the same material has to work at two very different levels — a conference that plays quiet beds and loud stings — expect to need a slightly different balance for each, rather than one mix that's a compromise at both.</p></div>
+<div class="note alt"><span class="lab">Also seen</span><p>This is also why mixing loud all afternoon is a bad idea beyond the hearing-damage argument in <a href="#s13-5">§13.5</a>: your ears fatigue, your judgement of top end drifts, and you tend to keep creeping the level up to chase the excitement you had an hour ago. Taking the level down for a few minutes resets your reference more reliably than trusting your ears at hour six.</p></div>
+</section>
+
+<section class="s" id="s16-8"><h3><span class="n">16.8</span> Delay as an effect</h3>
+<p>Distinct from the reverb send in <a href="#s16-5">§16.5</a> — a delay repeats the signal as one or more discrete echoes rather than a wash of reflections, and it's routed and used the same way, as an aux send to a shared return.</p>
+<dl class="kv">
+<dt>Slapback</dt><dd>A single short repeat (tens of milliseconds), used to thicken a vocal or add a bit of vintage character without an obvious "echo" being audible.</dd>
+<dt>Tempo-synced delay</dt><dd>A longer, clearly audible repeat set to a musical subdivision of the song's tempo (a quarter note, a dotted eighth) rather than a fixed time — sounds intentional and musical rather than like a mistake or a room problem.</dd>
+<dt>Feedback (the delay parameter, not acoustic feedback)</dt><dd>How many times the signal repeats before dying away — confusingly named the same as the acoustic problem in <a href="#s15-8">§15.8</a>, but a completely different thing here: it's a control on the delay effect itself.</dd>
+</dl>
+<div class="note std"><span class="lab">Standard</span><p>Getting a tempo-synced delay right by ear means tapping the tempo in live if the console supports it, or setting a time in milliseconds calculated from the song's BPM — either works, but an un-synced delay sitting slightly off the beat is more distracting than no delay at all.</p></div>
+</section>
+
+<section class="s" id="s16-9"><h3><span class="n">16.9</span> De-essing — controlling sibilance</h3>
+<p>Sharp "s", "sh" and "t" sounds sit in the same 5–10 kHz range that gives a vocal its clarity and air (<a href="#s16-2">§16.2</a>), which is exactly why they're awkward to fix with a static EQ cut — pull that range down enough to tame the esses and the vocal loses its presence everywhere else too. A <strong>de-esser</strong> is a compressor that only engages in that narrow band, and only when a sibilant sound actually happens, leaving the rest of the vocal untouched.</p>
+<dl class="kv">
+<dt>What triggers it</dt><dd>Its own threshold, watching only the sibilant frequency band — not the whole signal like a normal compressor. When that band gets loud (an "s"), it ducks; the rest of the time it does nothing.</dd>
+<dt>Split-band vs broadband</dt><dd>A split-band de-esser reduces only the offending frequency range when it triggers; a broadband one ducks the whole signal briefly instead, which is cruder but sometimes all an older console offers.</dd>
+<dt>Why it's live-specific</dt><dd>A bright condenser vocal mic close-mic'd on a sibilant singer is the classic case — the closer and brighter the mic, the more esses bite, and it's rarely practical to ask a performer to change their diction mid-show.</dd>
+</dl>
+<div class="note warn"><span class="lab">Watch it</span><p>Over-de-essed vocals develop a noticeable lisp — the "s" sounds vanish rather than just soften. If it's audibly changing the words, back the amount off; a slightly sibilant vocal is far less distracting than one that sounds like it's had a stroke.</p></div>
+</section>
+
+<section class="s" id="s16-10"><h3><span class="n">16.10</span> Processing order, busses &amp; sidechains</h3>
+<p>Everything above happens in a specific order on a channel strip, and that order matters — gate before EQ, or EQ before gate, gives a genuinely different result, not just a different-sounding one.</p>
+<dl class="kv">
+<dt>A typical order</dt><dd>Gate/expander → EQ → compressor → de-esser, then the fader and pan. Gate first so it's triggered by the raw signal rather than one already reshaped by EQ; de-esser last so it reacts to the tone you've actually settled on. Some engineers put compression before EQ instead, so the compressor reacts to the untouched signal — both are legitimate, and which order a desk uses by default usually isn't something you get to freely rearrange.</dd>
+<dt>Insert point</dt><dd>A patch point in that chain — physical on an analogue channel, a menu option on a digital one — where an external processor (an outboard unit, or a plugin on a digital console that offers them) can be dropped in instead of, or alongside, the built-in EQ and dynamics. With nothing plugged into it, the signal just passes straight through.</dd>
+<dt>Bus / mix bus</dt><dd>A shared signal path that more than one channel is summed into — an aux bus (<a href="#s16-5">§16.5</a>'s effects sends), a group or DCA and the matrix (<a href="#s7-3">§7.3</a>), and the main mix bus itself that everything ultimately reaches. Routing a channel "to a bus" just means adding its signal into that shared path rather than sending it straight to the main mix.</dd>
+<dt>Sidechain</dt><dd>Using one signal's level to control processing applied to a different signal, rather than to itself. The live example is a gate on a talkback mic keyed from the console's own output, so it only opens when there's genuinely something to duck for; the studio example is "ducking" a music bed under a voiceover. You won't build these often as a junior tech, but recognising the word — and that it means "controlled by something other than itself" — saves confusion the first time you meet it on a desk.</dd>
+</dl>
+</section>
+
+<section class="s" id="s16-11"><h3><span class="n">16.11</span> Mixing speech — clear, natural, no feedback</h3>
+<ol class="seq">
+<li><strong>Gain</strong> set with the person speaking at their real presentation level — not “check, check” (§2.5).</li>
+<li><strong>High-pass</strong> around 100–150 Hz for most voices: removes rumble, handling noise and boom.</li>
+<li><strong>EQ</strong> to cut, not boost: mud around 200–400 Hz if needed, harshness around 2–4 kHz if a voice is sharp. A small lift for clarity only if the voice is dull.</li>
+<li><strong>Compression</strong> gentle (around 3:1, a few dB on loud words) to keep quiet and loud speakers even.</li>
+<li><strong>Gain before feedback:</strong> mics close to the mouth, behind the PA, as few open as possible — an automixer for panels (§7.8). Ring out first (§15.8).</li>
+<li><strong>Level:</strong> comfortably above the room noise everywhere, not loud. Walk the room.</li>
+</ol>
+<div class="note warn"><span class="lab">Watch it</span><p>Turning a quiet presenter up is where feedback starts. Get the mic closer (or switch to a headset) before reaching for the fader.</p></div>
+</section>
+
+</div></div>
