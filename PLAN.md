@@ -224,3 +224,28 @@ additions was *function and placement*, so targeted changes:
   claiming specific questions (input list, stage plot, measurement mic,
   Avantis/DiGiCo snapshot, stream mix, other careers).
 - Chat cases 81, all passing.
+
+### Round 9 log (2026-11-13) — more d&b, more Ask, every abbreviation
+
+- Three new researched d&b sections (sources checked Nov 2026): §6.24 amp
+  features behind the screens (CUT/HFA/HFC/CPL/CSA/HCD/INFRA/LINEAR, Standby
+  vs Mute, AutoStandby, Input monitoring, Fallback/Override, AmpPresets, Remote
+  ID, Web Remote, D80 power), §6.25 networking, bridges and software (DS10,
+  DS20, 2026 Milan kit DS22/DS1/DN2/5DM, R70/R60, OCA, Array verification,
+  ArrayCalc Viewer, NoizCalc/SDE, ArrayProcessing Power/Glory and AP slots,
+  Soundscape, U-Series), §6.26 subs — cardioid boxes, CSA step by step, sub
+  settings. §6.20: U-Series row added, 5DM added, DS20 corrected (it's Milan
+  to AES3, not Dante to Milan).
+- Glossary 287 → 454 terms, including the obscure shorthand (TX/RX, LX, SX,
+  VX, OP/PS, the half, VOG, IFB, N-1, PGM/PVW, D8/D8+/C1, Socapex, Powerlock,
+  PME, LEP,d, LCpeak, STIPA, input-list shorthand, IR35, UTR…). New §20.3
+  Abbreviations & shorthand, built automatically from A–Z entries marked
+  `data-abbr` (add the attribute to a glossary entry to list it there).
+- Chat: 52 new answers (369 total); a two- or three-letter abbreviation only
+  counts as a glossary hit in a short question; "(d&b)" in a term name is no
+  longer a match word; a near-exact written answer beats the model card when a
+  question names a model ("how many D80s on a 16 A?").
+- Phones: term/definition lists stack on narrow screens — Part 6 used to
+  scroll sideways (pre-existing, from §6.4).
+- Chat cases 100, all passing; 86% of 1,446 phrasings get exactly their
+  answer; content check clean; axe 0 violations.
