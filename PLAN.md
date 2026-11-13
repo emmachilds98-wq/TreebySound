@@ -258,7 +258,7 @@ don't wait for the kit list.
       warnings attached to a passage always travel with it; one clarifying
       question when unsure; honest "not sure" below a confidence floor.
       Target: probe ≥ 30/40.
-- [~] 3. (job calculators done; d&b facts still to do) d&b facts as data (setups, functions, boxes per channel per amp,
+- [x] 3. d&b facts as data (setups, functions, boxes per channel per amp,
       lights and messages per amp — from d&b manuals) + job calculators (amps per
       16/32 A supply, voltage drop, fill/delay from positions, cardioid/end-fire
       spacing, headroom against a noise limit).
@@ -321,5 +321,31 @@ don't wait for the kit list.
   instead of answering ("D80 over temperature"), conference speaker height,
   sub placement in long rooms, qualifications. Also weak passages that the
   lenient grader still counts (ear protection → theatre, impedance → invoicing).
-- Next: step 3 (d&b facts as data from the manuals), step 4 (per-section
-  gap finder), then playbooks (breakout room, long room subs, speaker height).
+- 2026-11-13 — d&b facts from d&b's own manuals (downloaded from dbaudio.com):
+  new §6.24 with boxes per amp channel for 25 box families (E4/E5, E6, E8,
+  E12, E15X-SUB, 8S, 10S, 12S, 24S, 44S, T10, T-SUB, Y7P/Y10P, Y8/Y12, Y-SUB,
+  B4/B6-SUB, V7P/V10P, V8/V12, V-SUB, AL60/AL90, CCL, KSL, M4/M6, MAX2), the
+  amps' impedance rule (4 Ω → 1 … 20 Ω → 5) and every D20/D80 screen message
+  with what to do. The chat reads both tables from the page: "how many E8 on
+  a D20 channel" → 3 (4 on a D80), "can I put 4 E12 on a D80 channel" → No, 2;
+  "the amp says Speaker imp. fault" / "D80 over temperature warning" → the
+  message, its cause and the steps. §6.17's red-light row corrected to the
+  manual (OVL = over –2 dBFS, 12 dB+ limiting or current limiting).
+- Results: probe 45/50; held-out 23/30 (the D80 over-temperature question now
+  passes through the messages table — written from the manual for every
+  message, not for that question); chat cases 103/103; phrasings 93%.
+- 2026-11-13 — "How do I set up talkback on the DM7?" answers the talkback part
+  (from an answer or the book) and offers the DM7 walkthrough as a chip, instead
+  of starting the whole route. §6.6 gains speaker height on stands for speech
+  and subs in a long, narrow room. New answers: one box quieter than its pair;
+  what qualifications an audio technician needs (no longer caught by the
+  coaching reply). The §6.24 tables only count for amp questions.
+- Held-out rotation: the three held-out questions whose topics were then
+  written into the book (speaker height, long-room subs, qualifications) moved
+  to the tuned set; three fresh ones written before seeing any answer (mains
+  cable under carpet, radio mic battery dies mid-speech, two Dante clock
+  leaders). Do this every time a held-out topic gets written up.
+- Results: tuned probe 49/54; held-out 25/30; chat cases 104/104; phrasings
+  92% (1212/1310); 0 accessibility violations.
+- Next: step 4 (per-section gap finder), then playbooks (conference on
+  E-Series + D20, awards dinner on DM7) and job-aware answers.

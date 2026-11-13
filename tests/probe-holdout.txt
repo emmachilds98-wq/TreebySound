@@ -10,8 +10,6 @@
 [d&b] why does R1 say the amp is offline => network | ethernet | IP | offline
 [d&b] which socket do I use for a top and sub on one cable => centre | A/B | TOP/SUB
 [d&b] what does CPL do => coupling | CPL
-[system] how high should I put the speakers on stands for a conference => head | height | above
-[system] where should the subs go in a long narrow room => sub | centre | room
 [system] should I aim speakers at the back wall => aim | audience | back
 [system] why does the PA sound different when the room is full => absorb | people | full
 [desk] how do I set up a monitor mix on the DM7 => mix | aux | monitor
@@ -28,7 +26,9 @@
 [safety] do I need a PAT test on my own laptop charger => PAT | test
 [safety] how much can I lift on my own => lift | manual handling
 [safety] what ear protection should I wear at a gig => ear | hearing | plug
-[career] what qualifications do I need to be an audio technician => qualif | certif | course | train
 [career] how do I get more responsibility at work => skill | ask | responsib
 [basics] what's the difference between balanced and unbalanced => balanced
 [basics] what is impedance in simple terms => impedance | resistance | ohm
+[safety] can I run a mains cable under a carpet at a venue => cable | heat | trip | cover
+[rf] what do I do if a radio mic battery dies in the middle of a speech => spare | swap | battery | handheld
+[network] what happens if two devices are both set as clock leader in Dante => clock | leader | one
