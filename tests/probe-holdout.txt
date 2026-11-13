@@ -1,0 +1,34 @@
+# Held-out probe set: fresh questions NOT used to tune the chat. Never write
+# answers or routes just to pass these — they measure how well the chat
+# generalises. Same format as probe-cases.txt.
+# Run:  node tests/check-probes.js --file probe-holdout.txt
+[d&b] what happens if I put a top on the sub setup by mistake => setup | driver | protect
+[d&b] my D80 shows an over temperature warning => temperature | ventilation | vent
+[d&b] how do I link two E8s off one amp channel => link | channel | parallel
+[d&b] what is HFA for => high-frequency | HFA
+[d&b] can I daisy chain amps with the AES link => link | AES
+[d&b] why does R1 say the amp is offline => network | ethernet | IP | offline
+[d&b] which socket do I use for a top and sub on one cable => centre | A/B | TOP/SUB
+[d&b] what does CPL do => coupling | CPL
+[system] how high should I put the speakers on stands for a conference => head | height | above
+[system] where should the subs go in a long narrow room => sub | centre | room
+[system] should I aim speakers at the back wall => aim | audience | back
+[system] why does the PA sound different when the room is full => absorb | people | full
+[desk] how do I set up a monitor mix on the DM7 => mix | aux | monitor
+[desk] what's the difference between pre and post fade => pre-fade | post-fade | pre fade
+[desk] how do I save a scene on the DM7 => scene | store | save
+[desk] how do I stop a radio mic popping => pop | position | windshield | foam
+[desk] how do I mic a podium with two goosenecks => gooseneck | comb | 3:1 | one
+[rf] how do I scan for frequencies => scan
+[rf] what should I do if two radio mics interfere with each other => frequenc | coordinat | intermod
+[rf] how long do AA batteries last in a beltpack => battery | batteries | hours
+[network] how do I set the clock leader in Dante => clock | leader
+[network] can I put Dante on the venue wifi network => network | dedicated | switch
+[network] what is AES67 => AES67
+[safety] do I need a PAT test on my own laptop charger => PAT | test
+[safety] how much can I lift on my own => lift | manual handling
+[safety] what ear protection should I wear at a gig => ear | hearing | plug
+[career] what qualifications do I need to be an audio technician => qualif | certif | course | train
+[career] how do I get more responsibility at work => skill | ask | responsib
+[basics] what's the difference between balanced and unbalanced => balanced
+[basics] what is impedance in simple terms => impedance | resistance | ohm

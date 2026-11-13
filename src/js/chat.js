@@ -39,7 +39,9 @@
   var INFO_HINTS = ['What amp does a V8 need?','Can a D20 run KSL?','D40 vs D80','What is Mix TOP/SUB?','What does GR mean?','NL4 vs NLT4'];
   var INFO_INTENT = /^(what|whats|what's|which|who|why|when|where|explain|define|definition|meaning|tell me|difference|is there|is it|are|does|do i need|can i|should i|how much|how many|how long|how loud)\b|\b(mean|means|stand for|stands for|difference between|vs|versus|cost|price|fee|legal|checklist|check list|tips|guide)\b|^(is|are|can|could)\b.*\b(dangerous|safe|legal|ok|okay|allowed|necessary|needed|required|normal|bad)\b|\?$/i;
   var SETUP_INTENT = /\b(set ?up|setting up|configure|configuring|install|connect(ing)?|how (do|to|should) i|how to|walk me through|step by step|get .* working|patch)\b/i;
-  var DANGER = /\b(smoke|smoking|burning|burnt smell|fire(?! (exit|exits|door|doors|escape|route|routes|alarm test|marshal|marshals|extinguisher|extinguishers|safety|risk|regs|regulations|order|assessment|strategy|plan))|flames?|sparks?|sparking|shock(ed)?|electrocut\w*|injur\w*|hurt|bleeding|falling|fell|collapsed?|swaying)\b/i;
+  var DANGER_RE = /\b(smoke|smoking|burning|burnt smell|fire(?! (exit|exits|door|doors|escape|route|routes|alarm test|marshal|marshals|extinguisher|extinguishers|safety|risk|regs|regulations|order|assessment|strategy|plan))|flames?|sparks?|sparking|shock(ed)?|electrocut\w*|injur\w*|hurt|bleeding|falling|fell|collapsed?|swaying)\b/i;
+  /* "End-fire" subs are a sub arrangement, not a fire. */
+  var DANGER = {test: function(t){ return DANGER_RE.test(String(t).replace(/\bend[\s-]?fire\b/gi, 'endfire')); }};
 
   /* ---- conversation window ---- */
   /* Scroll on the next frame: measuring the log straight away forced a layout
@@ -693,7 +695,7 @@
       {label:'Something\'s wrong', go:function(){ addMsg('me', 'Something\'s wrong'); addMsg('bot', '<p>Which is closest? Or describe it — "sub silent on amp 2", "crackle from stage left".</p>'); setChips(starterChips(FIX_STARTERS).concat([{label:'Comms, playback, loops, recording…', quiet:true, go:function(){ addMsg('me', 'Comms, playback, loops, recording'); setChips(starterChips(OTHER_STARTERS).concat([BACK])); }}, {label:'More advanced…', quiet:true, go:function(){ addMsg('me', 'More advanced'); setChips(starterChips(ADV_STARTERS).concat([BACK])); }}, BACK])); }},
       {label:'Test before doors', go:function(){ addMsg('me', 'Test before doors'); startTest(); }},
       {label:'Look something up', go:function(){ addMsg('me', 'Look something up'); addMsg('bot', '<p>Type a word or a question — a term, a connector, a setting, a light. A few to try:</p>'); setChips(INFO_HINTS.map(function(h){ return {label:h, quiet:true, go:function(){ addMsg('me', esc(h)); answerInfo(h); }}; }).concat([BACK])); }}
-    ]);
+    ].concat(missedList().length ? [{label:'Questions I couldn\'t answer (' + missedList().length + ')', quiet:true, go:function(){ addMsg('me', 'Questions I couldn\'t answer'); showMissed(); }}] : []));
   }
   function myKitSafe(){
     try{ return myKit().map(function(e){ return e.name; }).join(', '); }catch(e){ return ''; }
@@ -770,7 +772,7 @@
     var auto = AUTO[f.id + ':' + id];
     var known = auto && auto(g.slots);
     var pick = known && node.opts.filter(function(o){ return o[0] === known; })[0];
-    if(pick){ setChips([]); setTimeout(function(){ take(pick, true); }, 250); return; }
+    if(pick){ var conv = g; setChips([]); setTimeout(function(){ if(g === conv) take(pick, true); }, 250); return; }
     var extra = [];
     if(g.trail.length > 1) extra.push({label:'\u2190 Back a step', quiet:true, go: stepBack});
     extra.push({label:'Start again', quiet:true, go: reset});
@@ -1019,6 +1021,29 @@
     return pidx;
   }
 
+  /* Which part of the book a question is about. Passages from that part get a
+     lift; passages about lighting, video or careers are played down unless
+     the question is about them — "link" in an amp question is a speaker link,
+     not a DMX chain. */
+  var TOPICS = [
+    {q:/\b(d&b|d ?& ?b|amps?|amplifier|setup|output mode|r1|loadmatch|speakon|nl4|nlt4|top|tops|subs?|speakers?|boxes?|line array|hang|e\d{1,2}|[vytjq]\d{1,2}|ksl|gsl|xsl|ccl)\b/i, ids:/^s(6-|3-12|3-3)/},
+    {q:/\b(radio|wireless|rf|antenna|beltpack|transmitter|receiver|lav|headset|iem|scan)\b/i, ids:/^s(5-|4-|15-)/},
+    {q:/\b(dante|milan|avb|aes67|network|switch|wifi|wi-fi|clock|ethernet)\b/i, ids:/^s(8-|12-14|3-6|3-7)/},
+    {q:/\b(desk|console|dm7|ql|cl|digico|dlive|avantis|x32|m32|scene|show file|aux|mix)\b/i, ids:/^s(7-|16-|15-)/},
+    {q:/\b(safe|safety|hearing|ear|earplugs?|lift|lifting|ppe|rams|risk|pat|rcd|fire|law|legal|hours)\b/i, ids:/^s(13-|6-10)/},
+    {q:/\b(career|job|qualification|qualifications|course|courses|training|apprentice|cv|freelance)\b/i, ids:/^s(17-|18-)/}
+  ];
+  var OFF_TOPIC = [
+    {ids:/^s(9-|12-16)/, unless:/\b(dmx|lighting|lights?|fixtures?|video|led wall|projector|stage manager|staging|comms|intercom|clear-?com)\b/i},
+    {ids:/^s21-/, unless:/\b(career|other jobs|beyond|studio|post|broadcast|theatre)\b/i},
+    {ids:/^s1(7|8)-/, unless:/\b(career|job|qualification|course|training|learn|freelance|apprentice|cv)\b/i}
+  ];
+  function topicFactor(text, id){
+    var f = 1;
+    TOPICS.forEach(function(tp){ if(tp.q.test(text) && tp.ids.test(id)) f *= 1.35; });
+    OFF_TOPIC.forEach(function(o){ if(o.ids.test(id) && !o.unless.test(text)) f *= 0.55; });
+    return f;
+  }
   function questionType(text){
     var t = text.toLowerCase().trim();
     if(/\b(difference|differ|vs\.?|versus|compare|compared|better)\b/.test(t)) return 'diff';
@@ -1056,6 +1081,7 @@
       if(!s) return;
       s *= (1 + hits / q.length);
       if(secs[d.id]) s *= 1 + secs[d.id] * 0.12;
+      s *= topicFactor(text, d.id);
       if(qtype === 'how' && d.kind === 'step') s *= 1.25;
       if((qtype === 'what' || qtype === 'diff' || qtype === 'other') && (d.kind === 'term' || d.kind === 'row')) s *= 1.2;
       if(qtype === 'why' && (/\b(because|so that|which is why|otherwise|that's why|so the)\b/i.test(d.text) || d.kind === 'note-warn')) s *= 1.2;
@@ -1086,6 +1112,7 @@
   function passageAnswer(text, opts){
     opts = opts || {};
     var r = rankPassages(text);
+    if(opts.onlyId) r.list = r.list.filter(function(x){ return x.d.id === opts.onlyId; });
     if(!r.list.length) return false;
     var top = r.list[0];
     if(!opts.force && r.cover < CONFIDENT) return false;
@@ -1126,7 +1153,7 @@
     if(warn) html.push(passageHTML(warn.d));
 
     var sure = r.cover >= CONFIDENT && top.s > 2;
-    var head = '<p class="chat-from">' + (sure ? 'From' : 'Closest I have, from') + ' <strong>' + esc(top.d.title) + '</strong>' + (top.d.h4 ? ' · ' + esc(top.d.h4) : '') + ':</p>';
+    var head = '<p class="chat-from">' + (sure ? 'From' : 'Closest I have, from') + ' <strong>' + esc(sectionLabel(top.d.id)) + '</strong>' + (top.d.h4 ? ' · ' + esc(top.d.h4) : '') + ':</p>';
     var m = addMsg('bot', head + html.join(''));
     var secIds = [top.d.id];
     r.list.slice(1, 12).forEach(function(x){ if(secIds.indexOf(x.d.id) < 0 && secIds.length < 3 && x.s > top.s * 0.5) secIds.push(x.d.id); });
@@ -1152,7 +1179,7 @@
     var more = L.r.list.filter(function(x){ return L.shown.indexOf(x.d) < 0 && (x.d.id === L.id || x.s > L.r.list[0].s * 0.5); }).slice(0, 3);
     if(!more.length){ peek(L.id); return; }
     more.forEach(function(x){ L.shown.push(x.d); });
-    var m = addMsg('bot', more.map(function(x){ return (x.d.id !== L.id ? '<p class="chat-from">From <strong>' + esc(x.d.title) + '</strong>:</p>' : '') + passageHTML(x.d); }).join(''));
+    var m = addMsg('bot', more.map(function(x){ return (x.d.id !== L.id ? '<p class="chat-from">From <strong>' + esc(sectionLabel(x.d.id)) + '</strong>:</p>' : '') + passageHTML(x.d); }).join(''));
     addLinks(m, [['#' + L.id, esc(sectionLabel(L.id))]]);
     setChips([{label:'Go deeper', go: function(){ addMsg('me', 'Go deeper'); deeper(); }}, {label:'Read the whole section', quiet:true, go: function(){ addMsg('me', 'Read the whole section'); peek(L.id); }}, BACK]);
   }
@@ -1179,6 +1206,35 @@
       storeSet(MISS_KEY, JSON.stringify(l.slice(0, 150)));
     }catch(e){}
   }
+  /* One clarifying question instead of a guess: when the best matches come
+     from different parts of the book with similar scores, offer those topics. */
+  function clarify(text, r){
+    var top = r.list[0], ids = [];
+    r.list.slice(0, 15).forEach(function(x){ if(ids.indexOf(x.d.id) < 0 && x.s >= top.s * 0.7) ids.push(x.d.id); });
+    if(ids.length < 2) return false;
+    addMsg('bot', '<p>I want to get this right — which is it closest to?</p>');
+    setChips(ids.slice(0, 3).map(function(id){
+      return {label: sectionLabel(id).replace(/^\d+\.\d+\s*/, ''), go: function(){ addMsg('me', esc(sectionLabel(id))); passageAnswer(text, {force:true, onlyId:id}); }};
+    }).concat([{label:'None of these', quiet:true, go: function(){ addMsg('me', 'None of these'); notWhatIAsked(text); }}]));
+    return true;
+  }
+  /* The questions kept on this phone, to copy and send for the next update. */
+  function missedList(){
+    try{ return JSON.parse(storeGet(MISS_KEY) || '[]'); }catch(e){ return []; }
+  }
+  function showMissed(){
+    var l = missedList();
+    if(!l.length){ addMsg('bot', '<p>No unanswered questions saved — everything asked so far had an answer.</p>'); menu(); return; }
+    var text = l.map(function(x){ return x.at + ' · ' + x.q; }).join('\n');
+    var m = addMsg('bot', '<p>' + l.length + ' question' + (l.length === 1 ? '' : 's') + ' I couldn\'t answer well. Send them to whoever updates this pack and they\'ll be answered in the next update:</p>');
+    var pre = document.createElement('div'); pre.className = 'chat-report'; pre.textContent = text; m.appendChild(pre);
+    var row = [];
+    if(navigator.clipboard) row.push({label:'Copy the list', go:function(){ navigator.clipboard.writeText('TreebySound — questions to answer\n' + text).then(function(){ addMsg('bot', 'Copied.', 'note'); }, function(){}); setChips(row); }});
+    row.push({label:'Clear the list', quiet:true, go:function(){ storeRemove(MISS_KEY); addMsg('me', 'Clear the list'); addMsg('bot', 'Cleared.', 'note'); menu(); }});
+    row.push(BACK);
+    setChips(row);
+  }
+  var MISSED_Q = /\b(missed questions|unanswered|questions? (you|it) (couldn'?t|could not|didn'?t) answer|couldn'?t answer)\b/i;
   function bookAnswer(text){
     var defs = questionType(text) === 'what' ? findGlossary(text) : [];
     if(defs.length){
@@ -1319,20 +1375,7 @@
     hits.sort(function(a, b){ return b.s - a.s; });
     return hits.slice(0, 2).map(function(h){ return h.e; });
   }
-  function snippet(id, text){
-    var sec = document.getElementById(id);
-    if(!sec) return '';
-    var words = text.toLowerCase().split(/[^a-z0-9&]+/).filter(function(w){ return w.length > 2; });
-    var best = '', bestScore = 0;
-    Array.prototype.forEach.call(sec.querySelectorAll('p, li, dd, td'), function(el){
-      if(el.closest('.notefield')) return;
-      var t = (el.textContent || '').replace(/\s+/g, ' ').trim();
-      var lt = t.toLowerCase(), s = 0;
-      words.forEach(function(w){ if(lt.indexOf(w) > -1) s++; });
-      if(s > bestScore && t.length > 30){ bestScore = s; best = t; }
-    });
-    return best.length > 320 ? best.slice(0, 317).replace(/\s+\S*$/, '') + '…' : best;
-  }
+
   function answerInfo(text, noBank){
     var hit = !noBank && bestAnswer(text);
     if(hit){ showAnswer(hit, text); return; }
@@ -1347,7 +1390,12 @@
     }
     if(passageAnswer(text)) return;
     var weak = rankPassages(text);
-    if(weak.list.length && weak.cover >= 0.34 && !weak.unknown.length){ logMiss(text); passageAnswer(text, {force:true}); return; }
+    if(weak.list.length && weak.cover >= 0.34 && !weak.unknown.length){
+      logMiss(text);
+      if(clarify(text, weak)) return;
+      passageAnswer(text, {force:true});
+      return;
+    }
     var found = searchBook(text, 3);
     if(!defs.length && !found.length){
       logMiss(text, 'nothing found');
@@ -1360,11 +1408,10 @@
       m.classList.add('def');
     });
     if(found.length){
-      var top = found[0];
-      var snip = defs.length ? '' : snippet(top.id, text);
-      var m2 = addMsg('bot', snip
-        ? '<p>From <strong>' + esc(sectionLabel(top.id)) + '</strong>:</p><p>' + esc(snip) + '</p><p>More on this in:</p>'
-        : '<p>' + (defs.length ? 'Read more in:' : 'These sections cover it:') + '</p>');
+      /* Nothing in the book answers it closely enough to quote. Say so,
+         point to the nearest sections, and keep the question. */
+      if(!defs.length) logMiss(text);
+      var m2 = addMsg('bot', '<p>' + (defs.length ? 'Read more in:' : 'I don\'t have a direct answer to that, so I\'ve kept the question for the next update. The closest sections:') + '</p>');
       addLinks(m2, found.map(function(e){ return ['#' + e.id, esc(sectionLabel(e.id))]; }));
     }
     var f = scoreFlows(text);
@@ -1387,7 +1434,57 @@
   function calcAnswer(text){
     var t = String(text).toLowerCase().replace(/metres|meters|metre|meter/g, 'm').replace(/\s+/g, ' ');
     var m, out = null, links = [['#support-calc','Calculators']];
-    if((m = /(\d+(?:[.,]\d+)?) ?(m|ft|feet|foot)\b/.exec(t)) && /\b(delay|ms|millisec|time|align)/.test(t) && !/\bms\b.*\b(how far|distance)/.test(t)){
+    var dists = []; var dre = /(\d+(?:[.,]\d+)?) ?m\b/g, dm;
+    while((dm = dre.exec(t))) dists.push(num(dm[1]));
+    /* ---- job sums (round 9) ---- */
+    /* Fill or delay speaker from two distances: the listener's distance to the
+       mains and to the fill. The fill waits for the mains to arrive. */
+    if(dists.length >= 2 && /\b(mains?|main pa|the pa)\b/.test(t) && /\b(fill|fills|delay|tower|out ?fill|front ?fill)\b/.test(t)){
+      var far = Math.max(dists[0], dists[1]), near = Math.min(dists[0], dists[1]);
+      var dl = (far - near) / C * 1000;
+      out = '<p><strong>About ' + round(dl, 1) + ' ms</strong> on the fill — mains ' + far + ' m from the listener, fill ' + near + ' m: the fill waits ' + round(far - near, 1) + ' m of travel (' + round(far - near, 1) + ' ÷ 344 m/s).</p><p>Many techs add a few milliseconds more so the mains are heard first and the sound seems to come from the stage. Measure from the listening position the fill covers, then confirm by ear or with a measurement mic.</p>';
+      links.unshift(['#s6-8','6.8 Time alignment']);
+    }
+    /* End-fire subs: each row in front is delayed by its spacing. */
+    else if(/\bend ?-?fire\b/.test(t) && dists.length){
+      var sp = dists[0], rows = parseInt((/(\d+) ?rows?\b/.exec(t) || [0, 3])[1], 10), per = sp / C * 1000, list = [];
+      for(var i = 0; i < Math.min(rows, 6); i++) list.push('row ' + (i + 1) + (i === 0 ? ' (back)' : '') + ': ' + round(per * (rows - 1 - i), 1) + ' ms');
+      out = '<p>End-fire, rows ' + sp + ' m apart: each row is delayed by <strong>' + round(per, 1) + ' ms</strong> per row behind it, so the front row waits for the back row\'s sound to arrive.</p><p>' + list.reverse().join(' · ') + '</p><p>All rows in polarity. Energy adds forwards and cancels behind. Check positions with a tape, and the delays against the plan.</p>';
+      links.unshift(['#s6-6','6.6 Sub configurations']);
+    }
+    /* Cardioid with a reversed sub: delay = the spacing front to back, and polarity inverted. */
+    else if(/\b(cardioid|csa|reversed sub|rear sub|backwards sub)\b/.test(t) && dists.length){
+      var dd = dists[0];
+      out = '<p>Reversed (rear-facing) sub, ' + dd + ' m between the front faces: delay it by about <strong>' + round(dd / C * 1000, 1) + ' ms</strong> and invert its polarity, so it cancels the front sub\'s sound behind the stack and adds in front.</p><p>That\'s the starting point; the real settings depend on the boxes. d&amp;b cardioid subs have their own cardioid setups — use the plan\'s setup rather than building your own.</p>';
+      links.unshift(['#s6-6','6.6 Sub configurations']);
+    }
+    /* Voltage drop on a single-phase run (BS 7671 mV/A/m, two-core cable at 70 °C). */
+    else if(/\bvolt(age)? ?drop\b/.test(t) && dists.length && (m = /(\d+(?:[.,]\d+)?) ?(?:mm2|mm²|mm|sq)\b/.exec(t))){
+      var MVAM = {'1.5':29, '2.5':18, '4':11, '6':7.3, '10':4.4, '16':2.8};
+      var csa = String(num(m[1])), amps = num((/(\d+(?:[.,]\d+)?) ?(?:a|amps?)\b/.exec(t) || [0, 16])[1]), len = dists.filter(function(x){ return x !== num(m[1]); })[0] || dists[0];
+      if(MVAM[csa]){
+        var vd = MVAM[csa] * amps * len / 1000, pct = vd / 230 * 100;
+        out = '<p><strong>About ' + round(vd, 1) + ' V drop (' + round(pct, 1) + '%)</strong> — ' + len + ' m of ' + csa + ' mm² two-core at ' + amps + ' A (BS 7671 figure ' + MVAM[csa] + ' mV/A/m).</p><p>' + (pct > 5 ? 'That\'s over the 5% usually allowed for power circuits — a heavier cable or a shorter run. ' : 'Within the 5% usually allowed for power circuits. ') + 'A guide only: temporary power is the electrician\'s call (BS 7909), and real loads and cable temperatures vary.</p>';
+        links.unshift(['#s12-15','12.15 Power']);
+      }
+    }
+    /* Speaker cable loss: round-trip copper resistance against the load. */
+    else if(/\b(speaker cable|cable loss|loss in the cable|long speaker run)\b/.test(t) && dists.length && (m = /(\d+(?:[.,]\d+)?) ?(?:mm2|mm²|mm)\b/.exec(t))){
+      var OHM = {'1.5':0.0224, '2.5':0.0134, '4':0.0084, '6':0.0056};
+      var g2 = String(num(m[1])), ln = dists.filter(function(x){ return x !== num(m[1]); })[0] || dists[0], load = num((/(\d+(?:[.,]\d+)?) ?(?:ohms?|Ω)/.exec(t) || [0, 8])[1]);
+      if(OHM[g2]){
+        var rc = OHM[g2] * ln, loss = -20 * Math.log10(load / (load + rc));
+        out = '<p><strong>About ' + round(loss, 1) + ' dB lost</strong> in ' + ln + ' m of ' + g2 + ' mm² into ' + load + ' Ω (' + round(rc, 2) + ' Ω of cable, there and back).</p><p>Under about 0.5 dB rarely matters; above 1 dB the bass loses control — use a heavier cable or shorter run. On current d&amp;b amps, LoadMatch can compensate when the cable length and size are entered.</p>';
+        links.unshift(['#s3-12','3.12 NL4 cables']);
+      }
+    }
+    /* Headroom against a noise limit. */
+    else if(/\b(limit|limiter|licen[cs]e|noise limit)\b/.test(t) && (m = /(\d{2,3}(?:[.,]\d+)?) ?db[a-z]*\b.*?(\d{2,3}(?:[.,]\d+)?) ?db[a-z]*\b/.exec(t))){
+      var a = num(m[1]), b = num(m[2]), hi = Math.max(a, b), lo = Math.min(a, b);
+      out = '<p><strong>' + round(hi - lo, 1) + ' dB</strong> between ' + lo + ' and ' + hi + ' dB.</p><p>If ' + hi + ' dB is the limit, that\'s your headroom. Measure where the limit is measured (the licence or the venue says where) and with the same weighting and time period — dB(A) Leq over 15 minutes isn\'t the same as a peak.</p>';
+      links.unshift(['#s6-10','6.10 Loudness and limits']);
+    }
+    else if((m = /(\d+(?:[.,]\d+)?) ?(m|ft|feet|foot)\b/.exec(t)) && /\b(delay|ms|millisec|time|align)/.test(t) && !/\bms\b.*\b(how far|distance)/.test(t)){
       var d = num(m[1]); if(/ft|feet|foot/.test(m[2])) d = d * 0.3048;
       out = '<p><strong>' + round(d / C * 1000, 1) + ' ms</strong> for ' + round(d, 1) + ' m.</p><p>Sound travels about 344 m/s, so roughly 2.9 ms per metre. For a delay speaker, add a few milliseconds on top so the main PA is still heard first — and set it with the system tech.</p>';
       links.unshift(['#s6-8','6.8 System tuning']);
@@ -1444,6 +1541,7 @@
   function guidedText(text){
     if(/^(tell me more|more|go on|more detail|more please|explain more|why\??|and\??)$/i.test(text.trim()) && g.lastAnswer && g.lastAnswer.see[0] && SECTION_LINK.test('#' + g.lastAnswer.see[0])){ peek(g.lastAnswer.see[0]); return; }
     if(calcAnswer(text)) return;
+    if(MISSED_Q.test(text)){ showMissed(); return; }
     if(TEST_Q.test(text)){ startTest(); return; }
     if(KIT_Q.test(text) && !findModels(text).some(function(e){ return !inKit(e); })){ kitCheck(); return; }
     if(COACH_Q.test(text)){ coach(); return; }
