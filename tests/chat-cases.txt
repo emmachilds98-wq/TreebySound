@@ -103,3 +103,4 @@ how many T10 on one channel => boxes per amp channel: 4
 the amp says Speaker imp. fault => Load monitoring
 D20 showing amp temp warn => poor cooling
 what does input fallback mean on the amp => fallback input
+how do I set up talkback on the DM7 => talkback

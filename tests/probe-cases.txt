@@ -53,3 +53,8 @@
 [career] how do I hand over the system to the engineer => hand
 [basics] difference between dBu and dBV and why it matters for a laptop input => dBV
 [basics] how do I know if a speakON is locked => click
+# moved from the held-out set once their topics were written into the book (2026-11-13)
+[system] how high should I put the speakers on stands for a conference => head | height | above
+[system] where should the subs go in a long narrow room => sub | centre | room
+[career] what qualifications do I need to be an audio technician => qualif | certif | course | train
+[desk] how do I set up talkback on the DM7 => talkback !! Which part of the DM7 setup

@@ -1083,7 +1083,9 @@
   var OFF_TOPIC = [
     {ids:/^s(9-|12-16)/, unless:/\b(dmx|lighting|lights?|fixtures?|video|led wall|projector|stage manager|staging|comms|intercom|clear-?com)\b/i},
     {ids:/^s21-/, unless:/\b(career|other jobs|beyond|studio|post|broadcast|theatre)\b/i},
-    {ids:/^s1(7|8)-/, unless:/\b(career|job|qualification|course|training|learn|freelance|apprentice|cv)\b/i}
+    {ids:/^s1(7|8)-/, unless:/\b(career|job|qualifications?|certifications?|courses?|training|learn|freelance|apprentice|cv)\b/i},
+    /* the d&b boxes-per-channel and amp-message tables: only about amps */
+    {ids:/^s6-24$/, unless:/\b(amps?|amplifiers?|d\d+|\d+d|r1|d&b|channels?|boxes|box|cabinets?)\b/i}
   ];
   function topicFactor(text, id){
     var f = 1;
@@ -1585,6 +1587,15 @@
     return true;
   }
 
+  /* Words in a set-up question that the route itself doesn't cover —
+     "talkback" in "how do I set up talkback on the DM7". */
+  var SETUP_GENERIC = {setup:1, connect:1, configur:1, configure:1, install:1, walk:1, through:1, step:1, properly:1, right:1, correctly:1, way:1, best:1, new:1, first:1, show:1, event:1, gig:1, job:1, use:1};
+  function specificTerms(text, f){
+    var rw = {};
+    (f.nwords || []).forEach(function(w){ terms(w).forEach(function(t){ rw[t] = 1; }); });
+    terms(f.title || '').forEach(function(t){ rw[t] = 1; });
+    return terms(text).filter(function(t){ return t.length > 2 && !rw[t] && !SETUP_GENERIC[t] && !findModels(t).length; });
+  }
   function guidedText(text){
     if(/^(tell me more|more|go on|more detail|more please|explain more|why\??|and\??)$/i.test(text.trim()) && g.lastAnswer && g.lastAnswer.see[0] && SECTION_LINK.test('#' + g.lastAnswer.see[0])){ peek(g.lastAnswer.see[0]); return; }
     if(calcAnswer(text)) return;
@@ -1592,7 +1603,7 @@
     if(MISSED_Q.test(text)){ showMissed(); return; }
     if(TEST_Q.test(text)){ startTest(); return; }
     if(KIT_Q.test(text) && !findModels(text).some(function(e){ return !inKit(e); })){ kitCheck(); return; }
-    if(COACH_Q.test(text)){ coach(); return; }
+    if(COACH_Q.test(text) && !/\b(qualif\w*|certif\w*|courses?|training|degree|college|university)\b/i.test(text)){ coach(); return; }
     if(offerKitFromText(text)) return;
     mergeSlots(text);
     var setupAsk = SETUP_INTENT.test(text);
@@ -1630,6 +1641,26 @@
        was clearly asked for, or a route matches strongly. */
     var knowledgeQ = !fixAsk && (info || /^(how|why|what|which|when|where|can|could|should|is|are|does|do|will|would)\b/i.test(text.trim()) || /\?\s*$/.test(text) || /\b(can|could|should) (i|we)\b/i.test(text));
     var routeAsked = f && f.kind === 'setup' && /\b(set ?up|setting up|configure|install|connect|walk me through)\b/i.test(text) && ranked[0].s >= 1;
+    /* "How do I set up talkback on the DM7?" asks about one thing inside a
+       broad set-up route. If it has words the route doesn't, and a written
+       answer or the book covers them, answer that — and offer the route. */
+    if(routeAsked && !fixAsk){
+      var extra = specificTerms(text, f);
+      if(extra.length){
+        var offer = {label:'Walk me through: ' + f.title, go: function(){ addMsg('me', esc(f.title)); startFlow(f, text); }};
+        var hitTerms = hit ? terms(hit.e.q + ' ' + hit.e.a.replace(/<[^>]+>/g, ' ')) : [];
+        if(hit && hit.score >= 0.75 && extra.every(function(x){ return hitTerms.indexOf(x) > -1; })){
+          showAnswer(hit, text);
+          if(!currentChips.some(function(c){ return /^Walk me through/.test(c.label); })) setChips([offer].concat(currentChips));
+          return;
+        }
+        var rp = rankPassages(text);
+        if(rp.list.length && rp.cover >= CONFIDENT && !rp.unknown.length && extra.every(function(x){ return rp.list[0].d.tf[x]; }) && passageAnswer(text)){
+          setChips([offer].concat(currentChips));
+          return;
+        }
+      }
+    }
     if(knowledgeQ && !routeAsked){
       /* A close written answer first; a loose one only if the book has
          nothing better. */

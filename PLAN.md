@@ -334,5 +334,18 @@ don't wait for the kit list.
 - Results: probe 45/50; held-out 23/30 (the D80 over-temperature question now
   passes through the messages table — written from the manual for every
   message, not for that question); chat cases 103/103; phrasings 93%.
-- Next: step 4 (per-section gap finder), then playbooks (breakout room, long
-  room subs, speaker height) and job-aware answers.
+- 2026-11-13 — "How do I set up talkback on the DM7?" answers the talkback part
+  (from an answer or the book) and offers the DM7 walkthrough as a chip, instead
+  of starting the whole route. §6.6 gains speaker height on stands for speech
+  and subs in a long, narrow room. New answers: one box quieter than its pair;
+  what qualifications an audio technician needs (no longer caught by the
+  coaching reply). The §6.24 tables only count for amp questions.
+- Held-out rotation: the three held-out questions whose topics were then
+  written into the book (speaker height, long-room subs, qualifications) moved
+  to the tuned set; three fresh ones written before seeing any answer (mains
+  cable under carpet, radio mic battery dies mid-speech, two Dante clock
+  leaders). Do this every time a held-out topic gets written up.
+- Results: tuned probe 49/54; held-out 25/30; chat cases 104/104; phrasings
+  92% (1212/1310); 0 accessibility violations.
+- Next: step 4 (per-section gap finder), then playbooks (conference on
+  E-Series + D20, awards dinner on DM7) and job-aware answers.
