@@ -251,14 +251,14 @@ don't wait for the kit list.
       Fix: kit offer only for statements; narrow the set-up route's words; a
       model card only when the model is the topic. Target: probe ≥ 20/40 good,
       existing tests stay green.
-- [~] 2. Answers built from passages (engine, question types, warnings, depth, honest "closest" done; clarifying question still to do). Passage index (paragraphs, steps, term
+- [x] 2. Answers built from passages. Passage index (paragraphs, steps, term
       lines, table rows with their headings, notes) built on first question.
       Question types: what is / how do I / difference / why / how many / can I.
       Reply = best 2–4 passages with § citations; "Go deeper" and "Why?";
       warnings attached to a passage always travel with it; one clarifying
       question when unsure; honest "not sure" below a confidence floor.
       Target: probe ≥ 30/40.
-- [ ] 3. d&b facts as data (setups, functions, boxes per channel per amp,
+- [~] 3. (job calculators done; d&b facts still to do) d&b facts as data (setups, functions, boxes per channel per amp,
       lights and messages per amp — from d&b manuals) + job calculators (amps per
       16/32 A supply, voltage drop, fill/delay from positions, cardioid/end-fire
       spacing, headroom against a noise limit).
@@ -297,7 +297,29 @@ don't wait for the kit list.
 - Results: probe 21 → 41/50; answer phrasings 85% → 93% exact; chat cases
   90/90; content check clean; axe 0 violations; first answer ≤ 0.9 s on a 4×
   slowed CPU if asked straight after opening (index then built), later ~10 ms.
-- Next: clarifying question when unsure (step 2), then step 3 (d&b facts as
-  data + job calculators). Remaining probe misses are mostly content gaps
-  (breakout room playbook, sub coverage front-to-back, amp protect on sub
-  hits) and route ties.
+- 2026-11-13 — Job sums in the chat: fill/delay time from two distances,
+  end-fire per-row delay, cardioid reversed-sub delay and polarity, voltage
+  drop on a cable run (BS 7671 mV/A/m, 5% guide), speaker-cable loss and
+  headroom under a noise limit. Unsure answers now ask "which is it closest
+  to?" with up to three sections. Off-topic chapters (lighting, video,
+  career) are down-weighted unless the question is about them. Low-confidence
+  replies no longer show a guessed snippet: they say so, keep the question
+  and link the closest sections. "Questions I couldn't answer (n)" chip in the
+  menu shows the kept list with Copy / Clear. 4 new answers (amp protect on
+  sub hits, boomy sub at the back, sub distorted at low level, breakout room
+  with a T10 and a QL1). Fixed a route's delayed auto-answer firing after the
+  chat was reset.
+- Held-out set `tests/probe-holdout.txt` (30 questions, run with
+  `--file probe-holdout.txt`). **Never tune answers to these** — they check
+  the chat on questions nobody wrote answers for. Fix the engine or the book,
+  then re-run.
+- Results: probe 43/50; held-out 22/30 (was 23 — "subs in a long narrow room"
+  previously passed on a guessed snippet that now honestly says it has no
+  direct answer); phrasings 93%; chat cases 97/97.
+  Held-out misses point at engine/content gaps, not answers to write:
+  setup-route ties for "how do I…" on DM7/RF, fault route asking a question
+  instead of answering ("D80 over temperature"), conference speaker height,
+  sub placement in long rooms, qualifications. Also weak passages that the
+  lenient grader still counts (ear protection → theatre, impedance → invoicing).
+- Next: step 3 (d&b facts as data from the manuals), step 4 (per-section
+  gap finder), then playbooks (breakout room, long room subs, speaker height).

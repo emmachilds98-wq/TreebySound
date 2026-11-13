@@ -1,6 +1,6 @@
 /* Scores the chat on the probe set (tests/probe-cases.txt): harder questions the
    answer bank wasn't written for. Reports good answers by topic.
-   Usage: node tests/check-probes.js [--list] [--min N]
+   Usage: node tests/check-probes.js [--file probe-holdout.txt] [--list] [--min N]
    --list   print every question with the start of its reply
    --min N  exit 1 if fewer than N are good (for use before merging) */
 const { chromium } = require('playwright');
@@ -10,7 +10,9 @@ const page = 'file://' + path.resolve(__dirname, '..', 'index.html') + '#ask';
 const list = process.argv.includes('--list');
 const minArg = process.argv.indexOf('--min');
 const min = minArg > -1 ? parseInt(process.argv[minArg + 1], 10) : 0;
-const cases = fs.readFileSync(path.join(__dirname, 'probe-cases.txt'), 'utf8')
+const fileArg = process.argv.indexOf('--file');
+const file = fileArg > -1 ? process.argv[fileArg + 1] : 'probe-cases.txt';
+const cases = fs.readFileSync(path.join(__dirname, file), 'utf8')
   .split('\n').filter(l => l.trim() && !l.startsWith('#'))
   .map(l => {
     const m = /^\[([^\]]+)\]\s*(.*?)\s*=>\s*(.*)$/.exec(l);
