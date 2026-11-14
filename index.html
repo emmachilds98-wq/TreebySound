@@ -10344,7 +10344,7 @@ if(quickfabBtn && quickfabMenu){
       var seen = {};
       ps.forEach(function(p){ p.forEach(function(t){ seen[t] = true; }); });
       Object.keys(seen).forEach(function(t){ df[t] = (df[t] || 0) + 1; });
-      return {ps:ps, all:Object.keys(seen), a:a[1], see:(a[2] || '').split(' ').filter(Boolean), q:a[0].split('|')[0]};
+      return {ps:ps, all:Object.keys(seen), a:a[1], see:(a[2] || '').split(' ').filter(Boolean), q:a[0].split('|')[0], raw:a[0]};
     });
     bank = {entries:entries, df:df, n:entries.length};
     return bank;
@@ -10604,6 +10604,57 @@ if(quickfabBtn && quickfabMenu){
     return true;
   }
 
+  /* "What is a show file?" — when the thing asked about is a term the book
+     defines (the glossary, or a term line in a section), give the definition
+     rather than a written answer that only uses the words. */
+  var WHAT_TERM = /^(?:what(?:'s| is| are)|whats|define|definition of|meaning of)\s+(?:an?\s+|the\s+)?(.+?)\s*\??$/i;
+  function termKey(t){ return spaced(String(t).replace(/\s*\(.*?\)\s*/g, ' ')).trim().replace(/(\w{3,})s$/, '$1'); }
+  var termIndex = null;
+  function buildTermIndex(){
+    if(termIndex) return termIndex;
+    termIndex = {};
+    function add(name, dd, id){
+      name.split(/\s+\/\s+|\s+—\s+/).forEach(function(part){
+        var k = termKey(part);
+        if(k.length < 3) return;
+        (termIndex[k] = termIndex[k] || []).push({name:name, dd:dd, id:id});
+      });
+    }
+    glossaryEntries().forEach(function(e){ if(e.dd) add(e.name, e.dd, 's20-1'); });
+    Array.prototype.forEach.call(document.querySelectorAll('section.s[id^="s"] dl dt'), function(dt){
+      var sec = dt.closest('section.s');
+      if(!sec || /^s20-/.test(sec.id)) return;
+      var dd = dt.nextElementSibling;
+      if(dd && dd.tagName === 'DD') add(dt.textContent.trim(), dd, sec.id);
+    });
+    return termIndex;
+  }
+  function termAnswer(text, hit){
+    var m = WHAT_TERM.exec(text.trim());
+    if(!m) return false;
+    var asked = m[1].replace(/\s+(mean|stand for|for|do)$/i, '');
+    var key = termKey(asked);
+    var defs = buildTermIndex()[key];
+    if(!defs || !defs.length) return false;
+    /* a written answer that is itself about this term stays first */
+    if(hit && hit.score >= 0.75 && hit.e.raw.split('|').some(function(p){ var k = termKey(p.replace(/^(what is|what are|what's|whats|define|meaning of)\s+(an?\s+|the\s+)?/i, '')); return k === key; })) return false;
+    var seen = {}, shown = 0, html = '';
+    defs.forEach(function(d){
+      var txt = d.dd.textContent.trim();
+      if(shown >= 2 || seen[d.id] || seen[txt]) return;
+      seen[d.id] = seen[txt] = 1; shown++;
+      html += '<p><strong>' + esc(d.name) + '</strong> — ' + d.dd.innerHTML + '</p>' + (d.id !== 's20-1' ? '<p class="chat-from">From ' + esc(sectionLabel(d.id)) + '</p>' : '');
+    });
+    var msg = addMsg('bot', html);
+    msg.classList.add('def');
+    addLinks(msg, defs.filter(function(d){ return d.id !== 's20-1'; }).slice(0, 2).map(function(d){ return ['#' + d.id, esc(sectionLabel(d.id))]; }));
+    var next = [];
+    if(hit) next.push({label:'Also: ' + hit.e.q, quiet:true, go: function(){ addMsg('me', esc(hit.e.q)); showAnswer(hit, hit.e.q); }});
+    next.push({label:'Not what I asked', quiet:true, go: function(){ addMsg('me', 'Not what I asked'); notWhatIAsked(text); }});
+    setChips(next.concat([BACK]));
+    g.lastAnswer = {see: defs.map(function(d){ return d.id; }).filter(function(id){ return id !== 's20-1'; })};
+    return true;
+  }
   /* Words in a set-up question that the route itself doesn't cover —
      "talkback" in "how do I set up talkback on the DM7". */
   var SETUP_GENERIC = {setup:1, connect:1, configur:1, configure:1, install:1, walk:1, through:1, step:1, properly:1, right:1, correctly:1, way:1, best:1, new:1, first:1, show:1, event:1, gig:1, job:1, use:1};
@@ -10640,6 +10691,7 @@ if(quickfabBtn && quickfabMenu){
     /* A question with a written answer gets it straight away — unless it's
        really a fault report, which goes to the step-by-step route. */
     var hit = bestAnswer(text);
+    if(!faultish && termAnswer(text, hit)) return;
     /* A near-exact written answer wins unless a route matches strongly. */
     if(hit && hit.score >= 0.9 && (!f || ranked[0].s <= 2) && !(setupAsk && f && f.kind === 'setup')){ showAnswer(hit, text); return; }
     var routeTie = ranked.length > 1 && ranked[1].s === ranked[0].s;
