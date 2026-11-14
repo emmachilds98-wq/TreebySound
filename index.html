@@ -2985,6 +2985,10 @@ EARS            the only part of the system that actually matters</div>
 <p>The job of system design is getting roughly the same experience everywhere in the audience. That means aiming boxes at people, not at walls, and accepting that the front will always be louder than the back.</p>
 <h4>Point source aiming</h4>
 <p>Aim the box so its <em>on-axis</em> line points at the <strong>furthest</strong> listeners, not the nearest. The near listeners are already close (loads of level from proximity) and are covered by the off-axis spill. Aiming at the front row wastes your throw and deafens them.</p>
+<h4>Height on stands — conference and speech</h4>
+<p>Get the box <strong>above the audience's heads</strong>, so the sound reaches the back rows over the front rows instead of through them. For a seated audience that usually means the bottom of the box at about standing head height — around 2 m — and higher for a standing crowd. Then tilt it (a tilting pole mount or the stand's angle) so it points at the back rows' heads, as above.</p>
+<p>Too low and the front rows soak up the high frequencies: the back hears it dull and you turn up to compensate, which deafens the front. Too high with no tilt and the sound goes over the audience onto the back wall and ceiling — more echo, less clarity.</p>
+<div class="note warn"><span class="lab">Watch it</span><p>Use a stand rated for the box's weight, legs fully spread on level floor, locking pin in, and never above the stand's maximum height or load. Keep stands out of walkways and away from where people will lean or brush past, and dress the cable down the leg so nobody catches it.</p></div>
 <h4>Sub configurations</h4>
 <div class="tw"><table>
 <thead><tr><th>Arrangement</th><th>What it does</th></tr></thead>
@@ -2995,6 +2999,9 @@ EARS            the only part of the system that actually matters</div>
 <tr><td><strong>End-fire</strong></td><td>Subs in a line front-to-back, each delayed, so energy adds forwards and cancels backwards. Needs depth but works beautifully.</td></tr>
 <tr><td><strong>Sub arc / gradient</strong></td><td>Curved or delay-shaded lines to widen or shape the low-frequency coverage.</td></tr>
 </tbody></table></div>
+<h4>Subs in a long, narrow room</h4>
+<p>Keep the subs <strong>together in one block</strong> — centre, or one side of the stage if centre isn't possible — rather than split left and right. In a narrow room split stacks make a strong power alley down the middle and thin spots near the side walls. On the floor against the front wall they couple to the boundaries and gain low end for nothing.</p>
+<p>Expect more bass at the back than you'd guess: the back wall reflects it and room modes build up (§6.15). Walk the whole room with the same track before setting the sub level from the desk — what sounds right at the front can be boomy at the back. If it's boomy at the back and weak at the front, that's the room: move the sub block or change the level balance, rather than piling on EQ boosts.</p>
 <div class="note std"><span class="lab">Standard</span><p>Cardioid or end-fire subs are worth understanding early, because they solve two problems at once: they clean up the stage (happier musicians, less low-end mud in the mics) and they cut the noise complaint risk from behind the stage. On a lot of jobs they're the difference between passing and failing the noise conditions.</p></div>
 <div class="note alt"><span class="lab">Also seen</span><p>At the top end of touring and festival work you'll increasingly meet <strong>immersive or object-based audio</strong> — systems like L-Acoustics L-ISA or d&b Soundscape, which use many individually-controlled boxes across the width of a room (rather than one stereo pair) to place sounds precisely and move them around the space, plus ambisonic approaches for fully surrounding a room. It's a specialism of its own, well beyond what this book covers — worth knowing it exists so a job spec mentioning it doesn't come as a surprise, not something you're expected to already understand.</p></div>
 </section>
@@ -3183,8 +3190,8 @@ EARS            the only part of the system that actually matters</div>
 <tbody>
 <tr><td><strong>Green — ISP / OSP</strong></td><td>Input Signal Present (and, on touchscreen amps, Output Signal Present in brighter green). Signal is reaching the channel.</td><td>No green with the source playing → the problem is upstream of the amp, or in its input routing.</td></tr>
 <tr><td><strong>Yellow — GR</strong></td><td>Gain Reduction: the channel's limiter is working (more than about 3 dB). Not a fault — the box has reached its limits.</td><td>Ease off at the console. If it lights at modest level, check the setup is right for the box.</td></tr>
-<tr><td><strong>Red — OVL / mute</strong></td><td>On D6/D12, overload: input too hot or heavy limiting. On the touchscreen amps the channel strip also shows red when a channel is muted. The screen says which.</td><td>Reduce the input level, or find out who muted it and why before you unmute.</td></tr>
-<tr><td><strong>Error / warning text</strong></td><td>Over-temperature, mains, output or hardware faults, reported on the screen and in R1.</td><td>Write the exact text down, tell the system owner. Don't keep power-cycling it.</td></tr>
+<tr><td><strong>Red — OVL</strong></td><td>Overload. On the D20 and D80: a signal in the channel above –2 dBFS, a limiter pulling 12 dB or more, or the output being limited to stop peak-current overload. A muted channel shows on its mute button instead, and a channel fault puts an exclamation mark there with the message on the channel view.</td><td>Reduce the input level. For a mute, find out who muted it and why before you unmute.</td></tr>
+<tr><td><strong>Error / warning text</strong></td><td>Over-temperature, mains, output or hardware faults, reported on the screen and in R1. Every message and what to do: <a href="#s6-24">§6.24</a>.</td><td>Write the exact text down, tell the system owner. Don't keep power-cycling it.</td></tr>
 </tbody></table></div>
 <h4>The channel settings you'll see</h4>
 <p>On each channel: <strong>setup</strong> (the box), <strong>level</strong>, <strong>delay</strong>, <strong>mute</strong>, user EQ, and a handful of switchable functions that depend on the box — for example <strong>CUT</strong> (a high-pass that takes the low end out of a top when it's running with subs), <strong>HFA</strong> (gentle high-frequency roll-off for nearby listeners), <strong>CPL</strong> (compensates for boxes coupling together at low frequencies) and cardioid or <strong>INFRA</strong> options on some subs. Which ones are switched on is a design decision: copy them from the plan, don't improvise.</p>
@@ -3345,6 +3352,64 @@ EARS            the only part of the system that actually matters</div>
 <div class="note warn"><span class="lab">Watch it</span><p><strong>Self-powered means mains up the stack.</strong> Every Meyer box has its own power supply, so power distribution to a hang or a sub stack is part of the system — planned by the power tech and the system tech, with loop-through limits respected. Don't add boxes to a power loop, and don't unplug mains to a box that's running.</p></div>
 <div class="note std"><span class="lab">Standard</span><p>As with d&amp;b: the optimisation (DISPLAY on Martin Audio, GALAXY settings on Meyer) is the system tech's design — don't "tweak it to see". Your checks are the same: every box powered and passing signal, no faults in VU-NET or Nebra, one box at a time at low level.</p></div>
 <div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>Martin Audio DISPLAY 3 release (Sept 2026) and Wavefront Precision user guides; Meyer Sound operating instructions for PANTHER and LEOPARD and Nebra documentation. Model ranges change — check what the hire stock actually holds.</p></div>
+</section>
+
+<section class="s" id="s6-24"><h3><span class="n">6.24</span> d&amp;b boxes per amp channel and amp messages — from the manuals</h3>
+<p>Two things you'll be asked on a d&amp;b job: <em>how many of these can go on one channel?</em> and <em>what does that message on the amp mean?</em> Both answers below come from d&amp;b's own manuals. The plan (ArrayCalc) and the amp's own setup list still have the final word.</p>
+<h4>How many boxes on one amp channel</h4>
+<p>The general rule from the D20 and D80 manuals goes by the box's nominal impedance, with a minimum of 4 Ω per channel: <strong>4 Ω → 1 box, 8 Ω → 2, 12 Ω → 3, 16 Ω → 4, 20 Ω → 5</strong>. A box's own manual can allow more on the bigger amps — the E8 is 12 Ω, but four can go on a D80 channel.</p>
+<div class="tw"><table class="db-perch">
+<thead><tr><th>Box</th><th>Setup</th><th>Boxes per channel</th><th>Notes</th></tr></thead>
+<tbody>
+<tr data-models="E4,E5"><td><strong>E4, E5</strong></td><td>E4 · E5</td><td>4</td><td>16 Ω. D80, D20, D12, D6, 10D, 30D.</td></tr>
+<tr data-models="E6"><td><strong>E6</strong></td><td>E6</td><td>5</td><td>20 Ω.</td></tr>
+<tr data-models="E8"><td><strong>E8</strong></td><td>E8</td><td>4 on D6, D12, D40, D80, 40D · <strong>3 on D20</strong>, 10D, 30D</td><td>12 Ω. Passive with an E12X-SUB on one channel: E8-X setup, one pair per channel.</td></tr>
+<tr data-models="E12,E12-D"><td><strong>E12, E12-D</strong></td><td>E12 · E12-D</td><td>2</td><td>8 Ω. D80, D20, D12, D6, 10D, 30D. Passive with an E15X-SUB on one channel: E12-X / E12-DX setup, one pair per channel.</td></tr>
+<tr data-models="E15X-SUB"><td><strong>E15X-SUB</strong></td><td>E15-SUB</td><td>2</td><td>8 Ω. D80, D20, D12, D6, 10D, 30D.</td></tr>
+<tr data-models="8S"><td><strong>8S</strong></td><td>8S</td><td>4 on 40D, D6, D12, D40, D80 · <strong>3 on D20</strong>, 10D, 30D</td><td>12 Ω.</td></tr>
+<tr data-models="10S,10S-D"><td><strong>10S, 10S-D</strong></td><td>10S/A · 10S/A-D</td><td>3</td><td>12 Ω. Installation amps (40D, 30D, 10D, 5D).</td></tr>
+<tr data-models="12S,12S-D"><td><strong>12S, 12S-D</strong></td><td>12S · 12S-D</td><td>2</td><td>8 Ω. 10D, 30D, D6, D12, D20, D80.</td></tr>
+<tr data-models="24S,24S-D"><td><strong>24S, 24S-D</strong></td><td>24S · 24S-D</td><td>1</td><td>4 Ω.</td></tr>
+<tr data-models="44S"><td><strong>44S</strong></td><td>44S</td><td>4</td><td>16 Ω.</td></tr>
+<tr data-models="T10"><td><strong>T10</strong></td><td>T10 Arc · T10 Line · T10 PS</td><td>4</td><td>16 Ω. D80, D40, D12, D20, D6.</td></tr>
+<tr data-models="T-SUB"><td><strong>T-SUB</strong></td><td>T-SUB</td><td>2</td><td>8 Ω.</td></tr>
+<tr data-models="Y7P,Y10P"><td><strong>Y7P, Y10P</strong></td><td>Y7P · Y10P</td><td>2</td><td>8 Ω. D80, D40, D12, D20, D6. (The manual's table lists the Y7P; the Y10P is also 8 Ω, which the amp rule makes 2.)</td></tr>
+<tr data-models="Y8,Y12"><td><strong>Y8, Y12</strong></td><td>Arc · Line</td><td>2</td><td>8 Ω. D80, D40, D12, D20, D6.</td></tr>
+<tr data-models="Y-SUB"><td><strong>Y-SUB</strong></td><td>Y-SUB</td><td>2</td><td>8 Ω.</td></tr>
+<tr data-models="B4-SUB"><td><strong>B4-SUB</strong></td><td>B4-SUB</td><td>2</td><td>6 Ω. D80, D20, D12, D6, 10D, 30D.</td></tr>
+<tr data-models="B6-SUB"><td><strong>B6-SUB</strong></td><td>B6-SUB · B6-INF (D80, D20, 30D)</td><td>2</td><td>8 Ω. D80, D20, D12, D6, 10D, 30D.</td></tr>
+<tr data-models="V7P,V10P"><td><strong>V7P, V10P</strong></td><td>V7P · V10P</td><td>2</td><td>8 Ω. D80, D40, D20, D12.</td></tr>
+<tr data-models="V8,V12"><td><strong>V8, V12</strong></td><td>Line · Arc · AP</td><td>2 (AP setup: 1)</td><td>8 Ω. D80, D40, D20, D12.</td></tr>
+<tr data-models="V-SUB"><td><strong>V-SUB</strong></td><td>V-SUB · V-SUB AP</td><td>2 (AP setup: 1)</td><td>8 Ω. On a D40 or 40D at full output, d&amp;b recommend <strong>one per channel</strong>; two only where less output is needed.</td></tr>
+<tr data-models="AL60,AL90"><td><strong>AL60, AL90</strong></td><td>PS · Out · In · AP</td><td>2 (AP setup: 1)</td><td>8 Ω.</td></tr>
+<tr data-models="CCL8,CCL12"><td><strong>CCL8, CCL12</strong></td><td>Line · Arc · AP</td><td>2 (AP setup: 1)</td><td>10 Ω. So up to eight boxes on a four-channel amp.</td></tr>
+<tr data-models="KSL8,KSL12"><td><strong>KSL8, KSL12</strong></td><td>Line · Arc · AP</td><td>2 per <strong>pair</strong> of channels (AP setup: 1)</td><td>Two channels drive each box: one for the front LF, one for the rest.</td></tr>
+<tr data-models="M4,M6"><td><strong>M4, M6</strong></td><td>M4 · M6</td><td>2 per channel passive · 2 per pair of channels active</td><td>8 Ω. Wedges.</td></tr>
+<tr data-models="MAX2"><td><strong>MAX2</strong></td><td>MAX2</td><td>2</td><td>8 Ω. D80, D40, D20, D12, D6, 10D, 30D, 40D.</td></tr>
+</tbody></table></div>
+<div class="note warn"><span class="lab">Watch it</span><p>More boxes than this on one channel and the amp limits hard or protects, and the sound changes. Two boxes on one channel also share one level, delay and EQ — the plan may give each box its own channel for a reason.</p></div>
+<h4>What the message on the amp means (D20, D80)</h4>
+<p>The display text, what d&amp;b say it means, and what to do. Anything not here: write the exact text down and tell the system owner.</p>
+<div class="tw"><table class="db-msgs">
+<thead><tr><th>On the screen</th><th>Means</th><th>What to do</th></tr></thead>
+<tbody>
+<tr data-match="temp warn|temperature warning|getting hot|running hot|amp hot|amp is hot|amps hot|too hot|hot amp"><td><strong>Amp. temp warn</strong></td><td>The amp is getting hot. Cause in the manual: poor cooling.</td><td>Open rack doors and the back of the rack, clear the vents, get it out of the sun, and ease the level. Tell the system owner. Act now — the next steps are over-temperature and a temperature mute.</td></tr>
+<tr data-match="overtemp|over temp|over temperature|overheat|over heat"><td><strong>Amp. overtemp</strong></td><td>Over temperature on a channel. Cause: poor cooling.</td><td>Same as a temperature warning, but urgent: airflow first, level down, tell the system owner. Don't power-cycle it to clear the message.</td></tr>
+<tr data-match="temp mute|temperature mute|muted because hot|temperature shutdown|thermal mute|thermal shutdown"><td><strong>Amp temp. mute</strong></td><td>The channel has muted itself to protect it from heat.</td><td>Sound stops on that channel until it cools. Fix the airflow, bring the level down, tell the system owner — on a show, decide with them whether to move the boxes to another channel.</td></tr>
+<tr data-match="low temperature|too cold|cold amp"><td><strong>Amp. low temperature</strong></td><td>The amp is below its working temperature (a cold outdoor morning), or a sensor fault.</td><td>Let it warm up powered on before you push it. If it persists in a warm room, tell the system owner.</td></tr>
+<tr data-match="amp protection|amp protect|protect mode|protection mode|goes into protect|going into protect|in protect"><td><strong>Amp. protection</strong></td><td>The channel has protected itself. Causes in the manual: the cabling or an amp defect.</td><td>Mute it, then check the speaker cable (a short or a crushed cable) by swapping it. Check the number of boxes on that channel against §6.24. If it follows the channel, not the cable or box, it's the amp.</td></tr>
+<tr data-match="imp fault|impedance fault|speaker imp|load monitoring|impedance error"><td><strong>Speaker imp. fault</strong></td><td>Load monitoring found the wrong impedance: a speaker or cable defect.</td><td>Cable first (locked? swap it), then the box. A missing box, a dead driver or a damaged cable all change the impedance.</td></tr>
+<tr data-match="overvoltage|over voltage|mains too high"><td><strong>Mains overvoltage</strong></td><td>The mains voltage is (or was) too high.</td><td>Tell the power tech or venue at once — don't keep running on a bad supply.</td></tr>
+<tr data-match="undervoltage|under voltage|mains too low|brown out|brownout"><td><strong>Mains undervoltage</strong></td><td>The mains voltage is (or was) too low.</td><td>Tell the power tech: an overloaded or long supply, a loose connection, or a generator problem.</td></tr>
+<tr data-match="smps|power supply temp"><td><strong>SMPS temp err</strong></td><td>The amp's internal power supply is too hot.</td><td>Treat as over-temperature: airflow, level, tell the system owner.</td></tr>
+<tr data-match="input monitoring|input monitor"><td><strong>Input monitoring fault</strong></td><td>An input monitored by the amp has dropped below its threshold: a cabling or source fault.</td><td>Check the input cable and that the source (console, processor, network) is sending.</td></tr>
+<tr data-match="input fallback|fallback"><td><strong>Input fallback</strong></td><td>The amp has switched to its fallback input because the main one was lost.</td><td>Sound continues from the backup — find out why the main input dropped (cable, Dante, console) before the show relies on it.</td></tr>
+<tr data-match="can error|can warning|canbus|can bus|dbcan|remote id"><td><strong>CAN error · CAN warning</strong></td><td>CAN remote network trouble: cabling, or two amps with the same Remote ID.</td><td>Check the CAN cable and terminations, and that every amp has a different ID (Wink in R1 finds which is which).</td></tr>
+<tr data-match="ethernet overload"><td><strong>Ethernet overload</strong></td><td>Too much traffic on the control network; the amp is throttling it.</td><td>Tell the system tech — usually a network set-up problem, not the amp.</td></tr>
+<tr data-match="system error|program error|comm\. error|comm error|supply fault|firmware mismatch|firmware is too old|invalid|dsp boot"><td><strong>System, program, communication, supply or firmware errors</strong></td><td>An internal fault in the amp (software or hardware).</td><td>Write the exact text and number down, take the amp out of service and swap it. Tell the system owner. Not something to fix on site.</td></tr>
+</tbody></table></div>
+<div class="note std"><span class="lab">Standard</span><p>Messages are also kept in the amp's event log and shown in R1, with the channel letter. Note the time and the channel — a temperature warning that comes back every evening at the same level is a rack-airflow problem, not bad luck.</p></div>
+<div class="note deep"><span class="lab">Sources · checked Nov 2026</span><p>d&amp;b audiotechnik manuals from dbaudio.com: D20 Manual 1.9 (loudspeaker types, channel strip indicators, error messages), D80 Manual 1.14 (the same), and the loudspeaker manuals for E4/E5 1.4, E6 1.2, E8 2.4 (2025), E12/E12-D 2.2, E15X-SUB 2.2, 8S 1.5, 10S/10S-D 1.4, 12S/12S-D 1.4, 24S/24S-D 1.3, 44S 1.3, T10 1.1, T-SUB 1.2, Y7P/Y10P 1.3, Y8/Y12 1.3, Y-SUB 1.3, B4-SUB 1.2, B6-SUB 1.2, V7P/V10P 1.4, V8/V12 1.8, V-SUB 1.5, AL60/AL90 1.5, CCL8/CCL12 1.5, KSL8/KSL12 1.4, M4 2.4, M6 1.3, MAX2 1.2. Boxes not listed: see the box's manual or the d&amp;b product page.</p></div>
 </section>
 
 
@@ -8938,6 +9003,52 @@ if(quickfabBtn && quickfabMenu){
     if(/^Practically any d&b amp/i.test(driven) && /^(D20|D25|D40|D90)$/.test(a)) return {ok:true, why:spk.row.range + ': ' + driven};
     return {ok:null, why:'I can\'t confirm that from the table. ' + spk.row.range + ' is driven by: ' + driven + ' Check whether the setup is in the ' + a + '\'s list (amp screen or R1).'};
   }
+  /* §6.24 tables, read from the page: boxes per amp channel and amp messages. */
+  function perChannel(spk, amp){
+    var keys = (spk.range ? spk.row.names : [spk.name]).map(function(k){ return k.toUpperCase(); });
+    var tr = null;
+    Array.prototype.some.call(document.querySelectorAll('table.db-perch tbody tr[data-models]'), function(row){
+      var names = row.getAttribute('data-models').toUpperCase().split(',');
+      if(keys.some(function(k){ return names.indexOf(k) > -1; })){ tr = row; return true; }
+      return false;
+    });
+    if(!tr) return null;
+    var td = tr.querySelectorAll('td'), count = cellText(td[2]), notes = cellText(td[3]);
+    var a = amp ? amp.name.toUpperCase() : '', lead = '';
+    if(a){
+      var part = count.split('·').filter(function(x){ return new RegExp('\\b' + a + '\\b').test(x); })[0];
+      var n = part ? /^\s*(\d+)/.exec(part) : (!/\bon\b/.test(count) ? /^\s*(\d+)/.exec(count) : null);
+      if(n){
+        var asked = /\b(\d+)\b/.exec(String(g.lastQ || '').replace(/\b(d|\d+d)\d*\b/gi, '').replace(/[a-z]+\d+[a-z-]*/gi, ''));
+        var verdict = asked && +asked[1] > 0 ? (+asked[1] <= +n[1] ? 'Yes — ' : 'No — ') : '';
+        lead = '<p><strong>' + verdict + n[1] + ' ' + esc(spk.name) + ' per channel on a ' + esc(a) + '.</strong></p>';
+      }
+    }
+    return {html: lead + '<p><strong>' + esc(cellText(td[0])) + '</strong> — boxes per amp channel: <strong>' + esc(count) + '</strong> (setup: ' + esc(cellText(td[1])) + ').</p>' + (notes ? '<p>' + esc(notes) + '</p>' : '') + '<p class="note-line">From d&amp;b\'s manual. The plan and the amp\'s setup list have the final word — too many on one channel and it limits hard or protects.</p>'};
+  }
+  var AMP_CONTEXT = /\b(amps?|amplifiers?|d6|d12|d20|d40|d80|d90|10d|30d|40d|r1|d&b)\b|imp\.? fault|temp\.? warn|temp\.? mute|overtemp|smps|input fallback|input monitoring|load monitoring|\bcan (error|warning)\b|ethernet overload/i;
+  var MSG_WORDS = /\b(says?|saying|shows?|showing|message|warning|warn|error|fault|screen|display|reads|flashing|mean|means|meaning)\b|imp\.? fault|temp\.? mute|overtemp|smps|input fallback|ethernet overload/i;
+  function msgRows(){
+    return Array.prototype.map.call(document.querySelectorAll('table.db-msgs tbody tr[data-match]'), function(tr){
+      return {re: new RegExp('\\b(' + tr.getAttribute('data-match') + ')', 'i'), td: tr.querySelectorAll('td')};
+    });
+  }
+  function msgAnswer(text){
+    var t = norm(text);
+    if(!AMP_CONTEXT.test(text) && !AMP_CONTEXT.test(t)) return false;
+    /* only when it's about what the amp shows; "keeps going into protect" as a
+       symptom is better served by the answers and fault routes */
+    if(!MSG_WORDS.test(text)) return false;
+    var hits = msgRows().filter(function(r){ return r.re.test(text) || r.re.test(t); });
+    if(!hits.length) return false;
+    var h = hits.slice(0, 2).map(function(r){
+      return '<p><strong>' + esc(cellText(r.td[0])) + '</strong> — ' + esc(cellText(r.td[1])) + '</p><p>' + esc(cellText(r.td[2])) + '</p>';
+    }).join('');
+    var m = addMsg('bot', h + '<p class="note-line">From the d&amp;b D20/D80 manuals. Write down the exact text and channel, and tell the system owner.</p>');
+    addLinks(m, [['#s6-24','6.24 Amp messages'], ['#s6-19','6.19 d&amp;b fault-finding']]);
+    g.lastAnswer = {see: ['s6-24']};
+    return true;
+  }
   var COMPAT_Q = /\b(can|could|will|does|do|would)\b[^?]*\b(run|drive|power|work|handle|use|support|take)|\bcompatib|\bon an? (d\d|\d+d)\b|\bwith an? (d\d|\d+d)\b/i;
   var WHICH_AMP_Q = /\b(what|which)\b[^?]*\bamps?\b|\bdriven by\b|\bwhat drives\b|\bamp (does|do) (it|they|that|these|this)\b|\bwhat amp\b/i;
   var COMPARE_Q = /\b(vs\.?|versus|compare|comparison|difference|differ|better|or)\b/i;
@@ -8974,8 +9085,9 @@ if(quickfabBtn && quickfabMenu){
     var links = [['#s6-20','6.20 d&amp;b models']];
 
     if(PER_CHANNEL_Q.test(t) && spks.length){
-      var mm = addMsg('bot', '<p>The maximum number of ' + esc(spks[0].name) + ' per amp channel is in its manual, and ArrayCalc won\'t let a plan exceed it — it can differ from amp to amp. Too many on one channel and it limits hard or protects.</p>' + (/^CCL/i.test(speakerKey(spks[0])) ? '<p>For CCL, d&amp;b quote up to eight boxes per amp.</p>' : '') + '<p>Go by the plan; if it isn\'t to hand, ask.</p>');
-      addLinks(mm, links);
+      var pc = perChannel(spks[0], amps[0]);
+      var mm = addMsg('bot', pc ? pc.html : '<p>The maximum number of ' + esc(spks[0].name) + ' per amp channel is in its manual, and ArrayCalc won\'t let a plan exceed it. As a rule (D20 and D80 manuals), it goes by the box\'s impedance: 4 Ω → 1, 8 Ω → 2, 12 Ω → 3, 16 Ω → 4 per channel. Too many on one channel and it limits hard or protects.</p><p>Go by the plan; if it isn\'t to hand, ask.</p>');
+      addLinks(mm, [['#s6-24','6.24 Boxes per channel']].concat(links));
       modelChips(spks[0], amps[0]);
       return true;
     }
@@ -9604,7 +9716,9 @@ if(quickfabBtn && quickfabMenu){
   var OFF_TOPIC = [
     {ids:/^s(9-|12-16)/, unless:/\b(dmx|lighting|lights?|fixtures?|video|led wall|projector|stage manager|staging|comms|intercom|clear-?com)\b/i},
     {ids:/^s21-/, unless:/\b(career|other jobs|beyond|studio|post|broadcast|theatre)\b/i},
-    {ids:/^s1(7|8)-/, unless:/\b(career|job|qualification|course|training|learn|freelance|apprentice|cv)\b/i}
+    {ids:/^s1(7|8)-/, unless:/\b(career|job|qualifications?|certifications?|courses?|training|learn|freelance|apprentice|cv)\b/i},
+    /* the d&b boxes-per-channel and amp-message tables: only about amps */
+    {ids:/^s6-24$/, unless:/\b(amps?|amplifiers?|d\d+|\d+d|r1|d&b|channels?|boxes|box|cabinets?)\b/i}
   ];
   function topicFactor(text, id){
     var f = 1;
@@ -9832,7 +9946,9 @@ if(quickfabBtn && quickfabMenu){
      more, and most of what was asked has to be covered by one phrasing. */
   var ANSWERS = [
     /* round 9: in-depth questions the probe set found missing */
-    ["amp keeps going into protect when the sub hits|amp protects on loud bass|d&b amp protect on sub|amp cuts out on kick drum|amp shuts down on bass", "<p>An amp that protects on big low-frequency hits is usually telling you about the load or a fault, not just level:</p><ol><li><strong>Too many boxes on one channel</strong> — the load is too low. Check the boxes-per-channel limit for that sub and amp (the box's manual; ArrayCalc won't exceed it).</li><li><strong>A short or damaged cable</strong> — unplug at the sub end and test the cable (§3.12).</li><li><strong>A damaged box</strong> — move it to a known-good channel; if the fault follows the box, quarantine it.</li><li><strong>Driven too hard</strong> — constant yellow GR then red: bring the level down at the console.</li><li><strong>Too hot</strong> — over-temperature on screen: clear the rack's ventilation.</li></ol><p>Note any screen message and tell the system owner; don't keep resetting it.</p>", "s6-19 s2-7 s3-12"],
+    ["one top quieter than the other|one speaker quieter than its pair|one box quieter than the other|left and right sound different|one side of the pa is quieter|one speaker sounds different from the other", "<p>Two of the same box should sound the same. Check, in this order:</p><ol><li><strong>The amp channel</strong> — same setup, same functions (CUT, HFA, CPL), same level and EQ on both channels? Compare them side by side on the amp or in R1.</li><li><strong>A driver</strong> — play pink noise to each box on its own (the amp's generator, §6.17) and listen close: dull means a dead or damaged HF driver, thin means the LF.</li><li><strong>The cable</strong> — swap the two boxes' cables. If the problem moves, it's the cable; a 4-core wired or patched wrong can also put the box on the wrong channel or setup.</li><li><strong>Too many boxes</strong> on that channel, or a different box on it than the plan — check against §6.24.</li><li><strong>Position</strong> — one box lower, blocked by a banner or set, or aimed differently.</li></ol><p>R1's System check will flag a box whose impedance has changed — a quick way to find a dead driver.</p>", "s6-19 s6-17 s6-24"],
+    ["what qualifications do i need to be an audio technician|do i need a degree for live sound|what certificates should a sound tech have|what courses should i do for audio|training for audio technician", "<p>No qualification is legally required — employers mostly hire on reliability and what you can show you've done. The ones worth having:</p><ul><li><strong>Dante Certification</strong> — free and online, Levels 1–3 (§18.3).</li><li><strong>Manufacturer training</strong> on what your company uses — d&amp;b, Yamaha, Shure and others run free or low-cost courses.</li><li><strong>IOSH Working Safely</strong> and <strong>First Aid at Work</strong> — general site credentials.</li><li><strong>PLASA NELT</strong> — the entry point to lifting and rigging.</li><li>The <strong>PSA competency card</strong> and the <strong>Live Event Technician Apprenticeship</strong> — built around the crew role itself.</li></ul><p>A college or degree course helps but isn't required. Keep a record of jobs and what you did on them (§17.7) — that's what gets you the next step.</p>", "s17-4 s18-3 s17-7"],
+    ["amp keeps going into protect when the sub hits|amp protects on loud bass|d&b amp protect on sub|amp cuts out on kick drum|amp shuts down on bass", "<p>An amp that protects on big low-frequency hits is usually telling you about the load or a fault, not just level:</p><ol><li><strong>Too many boxes on one channel</strong> — the load is too low. Check the boxes-per-channel limit for that sub and amp (§6.24, from d&amp;b's manuals — e.g. two E15X-SUB or two V-SUB per channel).</li><li><strong>A short or damaged cable</strong> — unplug at the sub end and test the cable (§3.12).</li><li><strong>A damaged box</strong> — move it to a known-good channel; if the fault follows the box, quarantine it.</li><li><strong>Driven too hard</strong> — constant yellow GR then red: bring the level down at the console.</li><li><strong>Too hot</strong> — over-temperature on screen: clear the rack's ventilation.</li></ol><p>Note any screen message (what each means: §6.24) and tell the system owner; don't keep resetting it.</p>", "s6-19 s6-24 s2-7 s3-12"],
     ["sub sounds boomy at the back of the room but weak at the front|bass louder at the back|bass builds up at the back wall|uneven bass across the room|sub weak at the front", "<p>That's the room more than the subs. Low frequencies build up against hard back walls and corners and cancel in other places (room modes), so the back booms while the front is thin.</p><ul><li>Walk the room with a known track before blaming the system.</li><li>Sub placement and arrangement change it most — subs together in the centre, or a cardioid or end-fire arrangement, give more even coverage than a stack each side (§6.6).</li><li>EQ can't fix a room: cutting the boom at the back also cuts it where it was right.</li></ul><p>Moving subs or changing their arrangement is the system owner's call — report where it's boomy and where it's weak.</p>", "s6-15 s6-6"],
     ["sub sounds distorted at low volume|e15x-sub distorted at low level|sub rattles|buzzing from the sub at low level|sub farting out", "<p>Distortion at <em>low</em> volume is usually mechanical or upstream, not the amp running out of power:</p><ol><li><strong>Rattle</strong> — a loose grille, handle, rigging part, or something resting on or against the box. Touch-test while it plays.</li><li><strong>Upstream</strong> — is the signal already clipping at the desk or a playback device? Check the meters.</li><li><strong>The setup</strong> — make sure the amp channel runs the sub's own setup.</li><li><strong>The driver</strong> — a scraping or buzzing sound on a clean low tone, even quietly, points to a damaged driver: quarantine the box.</li></ol>", "s6-19 s11-5"],
     ["how do i set up a breakout room|breakout room with a t10 and a ql1|small conference room pa setup|set up a breakout with two tops and a desk", "<p>A typical small breakout, for example two T10s on stands with a Yamaha QL1:</p><ol><li><strong>Plan</strong>: which amp channel drives which box, and the setup for each — a T10 used on its own on a stand runs its point-source (PS) setup.</li><li><strong>Place</strong> the tops a little in front of the presenter's position, aimed at the audience, high enough to clear heads; stands secured.</li><li><strong>Amp</strong>: Dual Channel, one channel per box, speakON locked both ends. With no subs, leave CUT off so the tops keep their low end.</li><li><strong>Signal</strong>: the desk's outputs to the amp inputs — analogue XLR (on a QL, from the OMNI outs) unless the plan uses a network.</li><li><strong>Inputs</strong>: lectern and radio mics, laptop through a DI, line check each one (§11.3).</li><li><strong>Prove it</strong>: the system test (§11.9), then ring out the mics, save the show file.</li></ol>", "s6-18 s6-17 s10-11 s11-9"],
@@ -9849,7 +9965,7 @@ if(quickfabBtn && quickfabMenu){
     ["mic level vs line level|what is line level|what are signal levels|speaker level|instrument level|dbu vs dbv", "<p>There are four worlds of signal level:</p><ul><li><strong>Mic level</strong> — tiny, needs lots of preamp gain.</li><li><strong>Instrument level</strong> — guitars and basses; high impedance, needs a DI.</li><li><strong>Line level</strong> — desks, players, processors. Pro gear runs around +4 dBu, consumer gear around −10 dBV.</li><li><strong>Speaker level</strong> — the amp output: real voltage and current. Never plug it into anything else.</li></ul><p>Mixing worlds up gives you either distortion (too hot) or noise (too quiet).</p>", "s2-2"],
     ["balanced vs unbalanced|what is a balanced cable|why are xlr cables balanced|why does balanced reject noise", "<p>A <strong>balanced</strong> line carries the signal twice — once normal, once polarity-flipped — plus a screen. At the far end one copy is flipped back and the two are added: the signal doubles and any interference picked up equally on both wires cancels out.</p><p>That's why XLR and TRS runs can go long distances quietly, while unbalanced (TS jack, RCA phono) should be kept short.</p>", "s2-3"],
     ["what is phantom power|what is 48v|do dynamic mics need phantom|can phantom damage a mic|ribbon mic phantom", "<p><strong>Phantom power</strong> is +48 V DC sent up a balanced mic cable (on pins 2 and 3) to power condenser mics and active DI boxes.</p><ul><li>Dynamic mics don't need it and a correctly wired balanced dynamic isn't harmed by it.</li><li>Mute the channel (or the PA) before switching it on or off, and before plugging — the pop can be huge.</li><li>Be careful with ribbon mics and anything unbalanced or faulty: ask before applying it.</li></ul>", "s2-6"],
-    ["what is impedance|does impedance matter|ohms speaker impedance|what does 8 ohm mean", "<p><strong>Impedance</strong> is how much a device resists the signal flowing into it. For mics and line gear you mostly don't need to think about it — pro gear is designed to match.</p><p>Where it bites: instrument pickups (high impedance — use a DI), and loudspeakers, where too many boxes in parallel on one amp channel drops the load too low and the amp complains. On d&amp;b systems, check the boxes-per-channel limits in §6.20.</p>", "s2-7 s6-20"],
+    ["what is impedance|does impedance matter|ohms speaker impedance|what does 8 ohm mean", "<p><strong>Impedance</strong> is how much a device resists the signal flowing into it. For mics and line gear you mostly don't need to think about it — pro gear is designed to match.</p><p>Where it bites: instrument pickups (high impedance — use a DI), and loudspeakers, where too many boxes in parallel on one amp channel drops the load too low and the amp complains. On d&amp;b, the amp manuals' rule is 4 Ω → 1 box per channel, 8 Ω → 2, 12 Ω → 3, 16 Ω → 4 — each box's limit is in §6.24.</p>", "s2-7 s6-24"],
     ["polarity vs phase|what is polarity|what is phase|polarity flip|phase button", "<p><strong>Polarity</strong> is simply which way up the waveform is — the desk's Ø button flips it, instantly, at every frequency. <strong>Phase</strong> is about timing: a delay shifts different frequencies by different amounts.</p><p>Two mics on one source, or two speakers covering one seat, that are out of polarity or misaligned in time will cancel — thin, hollow sound. Flip polarity to check; fix timing with delay.</p>", "s2-8"],
     ["what is word clock|what is clocking|why does digital audio need a clock|sample rate mismatch|clicks digital", "<p>Every digital device samples audio at a fixed rate (usually 48 or 96 kHz). When devices pass digital audio between them, they must all agree on exactly when each sample happens — one is the <strong>clock leader</strong>, the rest follow.</p><p>Two leaders, or mismatched sample rates, give clicks, pops, dropouts or silence. On Dante the network elects a leader automatically, but check it's the one the system design expects.</p>", "s2-9 s8-2"],
     ["what is a decibel|what is db|how much louder is 6db|what is 3db|10db louder", "<p>A <strong>decibel</strong> is a ratio, not a fixed amount. Useful rules of thumb:</p><ul><li><strong>+3 dB</strong> — double the power; a just-noticeable change.</li><li><strong>+6 dB</strong> — double the voltage (or SPL pressure); clearly louder.</li><li><strong>+10 dB</strong> — sounds roughly twice as loud.</li><li>Every doubling of distance from a small source: about <strong>−6 dB</strong> outdoors.</li></ul><p>The calculators in Support do the maths for you.</p>", "s2-10 support-calc"],
@@ -10029,7 +10145,7 @@ if(quickfabBtn && quickfabMenu){
     ["amp error message|over temperature|amp warning|amp keeps shutting down", "<p>Write down the <strong>exact</strong> error text from the amp screen or R1 and tell the system owner. Check the obvious — vents not blocked, rack not in direct sun, fans running — but don't keep power-cycling it; repeated restarts can hide the cause or make it worse.</p>", "s6-17 s12-13"],
     ["amp input mode|analogue or digital input d&b|fallback input|amp input routing", "<p>Each d&amp;b amp has an <strong>input mode</strong> (analogue, digital AES, or network) and each channel is routed from one or more inputs. Current amps can <strong>fall back</strong> to a second input if the first is lost — useful, but it's also why a channel can be playing from somewhere unexpected. Check routing against the plan.</p>", "s6-17"],
     ["d&b test generator|pink noise from amp|prove one box at a time|amp oscillator", "<p>Current d&amp;b amps have a built-in pink-noise and sine generator per channel. With mutes, it's the quickest way to prove one box at a time without anyone at the desk — agree it with the system tech first, start low, and warn people before sending noise.</p>", "s6-17 s11-9"],
-    ["how many boxes per amp channel|boxes per channel|can i put 3 tops on one channel|parallel boxes d&b", "<p>Every d&amp;b box has a <strong>maximum number per amp channel</strong> — it depends on the box and the amp. The limits are in the §6.20 tables (and the d&amp;b manuals). Going over drops the load too low: the amp limits, sounds bad, or protects itself. Say “how many boxes per amp channel” and I'll walk you through it.</p>", "s6-20"],
+    ["how many boxes per amp channel|boxes per channel|can i put 3 tops on one channel|parallel boxes d&b", "<p>Every d&amp;b box has a <strong>maximum number per amp channel</strong> — it depends on the box and sometimes the amp (E8: four on a D80, three on a D20). The rule of thumb from the amp manuals goes by impedance: 4 Ω → 1, 8 Ω → 2, 12 Ω → 3, 16 Ω → 4. Every box's figure is in §6.24. Going over drops the load too low: the amp limits, sounds bad, or protects itself. Ask “how many E12 on a D20 channel” for a straight answer.</p>", "s6-24 s6-20"],
     ["d&b nl8|nl8 output d20|amp nl8", "<p>The amp's <strong>NL8</strong> output carries all four channels on one 8-core multicore: pins 1± = A, 2± = B, 3± = C, 4± = D. A breakout at the other end splits it back to NL4s.</p>", "s6-17 s3-12"],
     ["d&b link socket|speaker link out|why do d&b boxes have two sockets", "<p>Each d&amp;b box has an input and a <strong>link</strong> socket wired straight through on all four poles. So one 4-core cable can feed a sub and link on to a top, and each box only listens to its own pins (tops pins 1, subs pins 2 on d&amp;b's usual convention). The pin use is printed beside every cabinet's connectors.</p>", "s6-17 s3-12"],
     ["ksl|gsl|sl series|cardioid line array|what is sl series", "<p>The <strong>SL-Series</strong> (KSL, GSL, XSL) are d&amp;b's large-format touring line arrays. They're cardioid by design — they control their own low end behind the array — and need the higher-power amps (D40, D80, D90, not D20). The §6.20 tables have the pairings.</p>", "s6-16 s6-20"],
@@ -10488,13 +10604,23 @@ if(quickfabBtn && quickfabMenu){
     return true;
   }
 
+  /* Words in a set-up question that the route itself doesn't cover —
+     "talkback" in "how do I set up talkback on the DM7". */
+  var SETUP_GENERIC = {setup:1, connect:1, configur:1, configure:1, install:1, walk:1, through:1, step:1, properly:1, right:1, correctly:1, way:1, best:1, new:1, first:1, show:1, event:1, gig:1, job:1, use:1};
+  function specificTerms(text, f){
+    var rw = {};
+    (f.nwords || []).forEach(function(w){ terms(w).forEach(function(t){ rw[t] = 1; }); });
+    terms(f.title || '').forEach(function(t){ rw[t] = 1; });
+    return terms(text).filter(function(t){ return t.length > 2 && !rw[t] && !SETUP_GENERIC[t] && !findModels(t).length; });
+  }
   function guidedText(text){
     if(/^(tell me more|more|go on|more detail|more please|explain more|why\??|and\??)$/i.test(text.trim()) && g.lastAnswer && g.lastAnswer.see[0] && SECTION_LINK.test('#' + g.lastAnswer.see[0])){ peek(g.lastAnswer.see[0]); return; }
     if(calcAnswer(text)) return;
+    if(msgAnswer(text)) return;
     if(MISSED_Q.test(text)){ showMissed(); return; }
     if(TEST_Q.test(text)){ startTest(); return; }
     if(KIT_Q.test(text) && !findModels(text).some(function(e){ return !inKit(e); })){ kitCheck(); return; }
-    if(COACH_Q.test(text)){ coach(); return; }
+    if(COACH_Q.test(text) && !/\b(qualif\w*|certif\w*|courses?|training|degree|college|university)\b/i.test(text)){ coach(); return; }
     if(offerKitFromText(text)) return;
     mergeSlots(text);
     var setupAsk = SETUP_INTENT.test(text);
@@ -10532,6 +10658,26 @@ if(quickfabBtn && quickfabMenu){
        was clearly asked for, or a route matches strongly. */
     var knowledgeQ = !fixAsk && (info || /^(how|why|what|which|when|where|can|could|should|is|are|does|do|will|would)\b/i.test(text.trim()) || /\?\s*$/.test(text) || /\b(can|could|should) (i|we)\b/i.test(text));
     var routeAsked = f && f.kind === 'setup' && /\b(set ?up|setting up|configure|install|connect|walk me through)\b/i.test(text) && ranked[0].s >= 1;
+    /* "How do I set up talkback on the DM7?" asks about one thing inside a
+       broad set-up route. If it has words the route doesn't, and a written
+       answer or the book covers them, answer that — and offer the route. */
+    if(routeAsked && !fixAsk){
+      var extra = specificTerms(text, f);
+      if(extra.length){
+        var offer = {label:'Walk me through: ' + f.title, go: function(){ addMsg('me', esc(f.title)); startFlow(f, text); }};
+        var hitTerms = hit ? terms(hit.e.q + ' ' + hit.e.a.replace(/<[^>]+>/g, ' ')) : [];
+        if(hit && hit.score >= 0.75 && extra.every(function(x){ return hitTerms.indexOf(x) > -1; })){
+          showAnswer(hit, text);
+          if(!currentChips.some(function(c){ return /^Walk me through/.test(c.label); })) setChips([offer].concat(currentChips));
+          return;
+        }
+        var rp = rankPassages(text);
+        if(rp.list.length && rp.cover >= CONFIDENT && !rp.unknown.length && extra.every(function(x){ return rp.list[0].d.tf[x]; }) && passageAnswer(text)){
+          setChips([offer].concat(currentChips));
+          return;
+        }
+      }
+    }
     if(knowledgeQ && !routeAsked){
       /* A close written answer first; a loose one only if the book has
          nothing better. */

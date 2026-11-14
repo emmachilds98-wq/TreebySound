@@ -370,6 +370,52 @@
     if(/^Practically any d&b amp/i.test(driven) && /^(D20|D25|D40|D90)$/.test(a)) return {ok:true, why:spk.row.range + ': ' + driven};
     return {ok:null, why:'I can\'t confirm that from the table. ' + spk.row.range + ' is driven by: ' + driven + ' Check whether the setup is in the ' + a + '\'s list (amp screen or R1).'};
   }
+  /* §6.24 tables, read from the page: boxes per amp channel and amp messages. */
+  function perChannel(spk, amp){
+    var keys = (spk.range ? spk.row.names : [spk.name]).map(function(k){ return k.toUpperCase(); });
+    var tr = null;
+    Array.prototype.some.call(document.querySelectorAll('table.db-perch tbody tr[data-models]'), function(row){
+      var names = row.getAttribute('data-models').toUpperCase().split(',');
+      if(keys.some(function(k){ return names.indexOf(k) > -1; })){ tr = row; return true; }
+      return false;
+    });
+    if(!tr) return null;
+    var td = tr.querySelectorAll('td'), count = cellText(td[2]), notes = cellText(td[3]);
+    var a = amp ? amp.name.toUpperCase() : '', lead = '';
+    if(a){
+      var part = count.split('·').filter(function(x){ return new RegExp('\\b' + a + '\\b').test(x); })[0];
+      var n = part ? /^\s*(\d+)/.exec(part) : (!/\bon\b/.test(count) ? /^\s*(\d+)/.exec(count) : null);
+      if(n){
+        var asked = /\b(\d+)\b/.exec(String(g.lastQ || '').replace(/\b(d|\d+d)\d*\b/gi, '').replace(/[a-z]+\d+[a-z-]*/gi, ''));
+        var verdict = asked && +asked[1] > 0 ? (+asked[1] <= +n[1] ? 'Yes — ' : 'No — ') : '';
+        lead = '<p><strong>' + verdict + n[1] + ' ' + esc(spk.name) + ' per channel on a ' + esc(a) + '.</strong></p>';
+      }
+    }
+    return {html: lead + '<p><strong>' + esc(cellText(td[0])) + '</strong> — boxes per amp channel: <strong>' + esc(count) + '</strong> (setup: ' + esc(cellText(td[1])) + ').</p>' + (notes ? '<p>' + esc(notes) + '</p>' : '') + '<p class="note-line">From d&amp;b\'s manual. The plan and the amp\'s setup list have the final word — too many on one channel and it limits hard or protects.</p>'};
+  }
+  var AMP_CONTEXT = /\b(amps?|amplifiers?|d6|d12|d20|d40|d80|d90|10d|30d|40d|r1|d&b)\b|imp\.? fault|temp\.? warn|temp\.? mute|overtemp|smps|input fallback|input monitoring|load monitoring|\bcan (error|warning)\b|ethernet overload/i;
+  var MSG_WORDS = /\b(says?|saying|shows?|showing|message|warning|warn|error|fault|screen|display|reads|flashing|mean|means|meaning)\b|imp\.? fault|temp\.? mute|overtemp|smps|input fallback|ethernet overload/i;
+  function msgRows(){
+    return Array.prototype.map.call(document.querySelectorAll('table.db-msgs tbody tr[data-match]'), function(tr){
+      return {re: new RegExp('\\b(' + tr.getAttribute('data-match') + ')', 'i'), td: tr.querySelectorAll('td')};
+    });
+  }
+  function msgAnswer(text){
+    var t = norm(text);
+    if(!AMP_CONTEXT.test(text) && !AMP_CONTEXT.test(t)) return false;
+    /* only when it's about what the amp shows; "keeps going into protect" as a
+       symptom is better served by the answers and fault routes */
+    if(!MSG_WORDS.test(text)) return false;
+    var hits = msgRows().filter(function(r){ return r.re.test(text) || r.re.test(t); });
+    if(!hits.length) return false;
+    var h = hits.slice(0, 2).map(function(r){
+      return '<p><strong>' + esc(cellText(r.td[0])) + '</strong> — ' + esc(cellText(r.td[1])) + '</p><p>' + esc(cellText(r.td[2])) + '</p>';
+    }).join('');
+    var m = addMsg('bot', h + '<p class="note-line">From the d&amp;b D20/D80 manuals. Write down the exact text and channel, and tell the system owner.</p>');
+    addLinks(m, [['#s6-24','6.24 Amp messages'], ['#s6-19','6.19 d&amp;b fault-finding']]);
+    g.lastAnswer = {see: ['s6-24']};
+    return true;
+  }
   var COMPAT_Q = /\b(can|could|will|does|do|would)\b[^?]*\b(run|drive|power|work|handle|use|support|take)|\bcompatib|\bon an? (d\d|\d+d)\b|\bwith an? (d\d|\d+d)\b/i;
   var WHICH_AMP_Q = /\b(what|which)\b[^?]*\bamps?\b|\bdriven by\b|\bwhat drives\b|\bamp (does|do) (it|they|that|these|this)\b|\bwhat amp\b/i;
   var COMPARE_Q = /\b(vs\.?|versus|compare|comparison|difference|differ|better|or)\b/i;
@@ -406,8 +452,9 @@
     var links = [['#s6-20','6.20 d&amp;b models']];
 
     if(PER_CHANNEL_Q.test(t) && spks.length){
-      var mm = addMsg('bot', '<p>The maximum number of ' + esc(spks[0].name) + ' per amp channel is in its manual, and ArrayCalc won\'t let a plan exceed it — it can differ from amp to amp. Too many on one channel and it limits hard or protects.</p>' + (/^CCL/i.test(speakerKey(spks[0])) ? '<p>For CCL, d&amp;b quote up to eight boxes per amp.</p>' : '') + '<p>Go by the plan; if it isn\'t to hand, ask.</p>');
-      addLinks(mm, links);
+      var pc = perChannel(spks[0], amps[0]);
+      var mm = addMsg('bot', pc ? pc.html : '<p>The maximum number of ' + esc(spks[0].name) + ' per amp channel is in its manual, and ArrayCalc won\'t let a plan exceed it. As a rule (D20 and D80 manuals), it goes by the box\'s impedance: 4 Ω → 1, 8 Ω → 2, 12 Ω → 3, 16 Ω → 4 per channel. Too many on one channel and it limits hard or protects.</p><p>Go by the plan; if it isn\'t to hand, ask.</p>');
+      addLinks(mm, [['#s6-24','6.24 Boxes per channel']].concat(links));
       modelChips(spks[0], amps[0]);
       return true;
     }
@@ -1036,7 +1083,9 @@
   var OFF_TOPIC = [
     {ids:/^s(9-|12-16)/, unless:/\b(dmx|lighting|lights?|fixtures?|video|led wall|projector|stage manager|staging|comms|intercom|clear-?com)\b/i},
     {ids:/^s21-/, unless:/\b(career|other jobs|beyond|studio|post|broadcast|theatre)\b/i},
-    {ids:/^s1(7|8)-/, unless:/\b(career|job|qualification|course|training|learn|freelance|apprentice|cv)\b/i}
+    {ids:/^s1(7|8)-/, unless:/\b(career|job|qualifications?|certifications?|courses?|training|learn|freelance|apprentice|cv)\b/i},
+    /* the d&b boxes-per-channel and amp-message tables: only about amps */
+    {ids:/^s6-24$/, unless:/\b(amps?|amplifiers?|d\d+|\d+d|r1|d&b|channels?|boxes|box|cabinets?)\b/i}
   ];
   function topicFactor(text, id){
     var f = 1;
@@ -1538,13 +1587,23 @@
     return true;
   }
 
+  /* Words in a set-up question that the route itself doesn't cover —
+     "talkback" in "how do I set up talkback on the DM7". */
+  var SETUP_GENERIC = {setup:1, connect:1, configur:1, configure:1, install:1, walk:1, through:1, step:1, properly:1, right:1, correctly:1, way:1, best:1, new:1, first:1, show:1, event:1, gig:1, job:1, use:1};
+  function specificTerms(text, f){
+    var rw = {};
+    (f.nwords || []).forEach(function(w){ terms(w).forEach(function(t){ rw[t] = 1; }); });
+    terms(f.title || '').forEach(function(t){ rw[t] = 1; });
+    return terms(text).filter(function(t){ return t.length > 2 && !rw[t] && !SETUP_GENERIC[t] && !findModels(t).length; });
+  }
   function guidedText(text){
     if(/^(tell me more|more|go on|more detail|more please|explain more|why\??|and\??)$/i.test(text.trim()) && g.lastAnswer && g.lastAnswer.see[0] && SECTION_LINK.test('#' + g.lastAnswer.see[0])){ peek(g.lastAnswer.see[0]); return; }
     if(calcAnswer(text)) return;
+    if(msgAnswer(text)) return;
     if(MISSED_Q.test(text)){ showMissed(); return; }
     if(TEST_Q.test(text)){ startTest(); return; }
     if(KIT_Q.test(text) && !findModels(text).some(function(e){ return !inKit(e); })){ kitCheck(); return; }
-    if(COACH_Q.test(text)){ coach(); return; }
+    if(COACH_Q.test(text) && !/\b(qualif\w*|certif\w*|courses?|training|degree|college|university)\b/i.test(text)){ coach(); return; }
     if(offerKitFromText(text)) return;
     mergeSlots(text);
     var setupAsk = SETUP_INTENT.test(text);
@@ -1582,6 +1641,26 @@
        was clearly asked for, or a route matches strongly. */
     var knowledgeQ = !fixAsk && (info || /^(how|why|what|which|when|where|can|could|should|is|are|does|do|will|would)\b/i.test(text.trim()) || /\?\s*$/.test(text) || /\b(can|could|should) (i|we)\b/i.test(text));
     var routeAsked = f && f.kind === 'setup' && /\b(set ?up|setting up|configure|install|connect|walk me through)\b/i.test(text) && ranked[0].s >= 1;
+    /* "How do I set up talkback on the DM7?" asks about one thing inside a
+       broad set-up route. If it has words the route doesn't, and a written
+       answer or the book covers them, answer that — and offer the route. */
+    if(routeAsked && !fixAsk){
+      var extra = specificTerms(text, f);
+      if(extra.length){
+        var offer = {label:'Walk me through: ' + f.title, go: function(){ addMsg('me', esc(f.title)); startFlow(f, text); }};
+        var hitTerms = hit ? terms(hit.e.q + ' ' + hit.e.a.replace(/<[^>]+>/g, ' ')) : [];
+        if(hit && hit.score >= 0.75 && extra.every(function(x){ return hitTerms.indexOf(x) > -1; })){
+          showAnswer(hit, text);
+          if(!currentChips.some(function(c){ return /^Walk me through/.test(c.label); })) setChips([offer].concat(currentChips));
+          return;
+        }
+        var rp = rankPassages(text);
+        if(rp.list.length && rp.cover >= CONFIDENT && !rp.unknown.length && extra.every(function(x){ return rp.list[0].d.tf[x]; }) && passageAnswer(text)){
+          setChips([offer].concat(currentChips));
+          return;
+        }
+      }
+    }
     if(knowledgeQ && !routeAsked){
       /* A close written answer first; a loose one only if the book has
          nothing better. */
