@@ -262,10 +262,10 @@ don't wait for the kit list.
       lights and messages per amp — from d&b manuals) + job calculators (amps per
       16/32 A supply, voltage drop, fill/delay from positions, cardioid/end-fire
       spacing, headroom against a noise limit).
-- [ ] 4. Learn from misses: "Not what I asked" and low-confidence questions
+- [x] 4. Learn from misses: "Not what I asked" and low-confidence questions
       saved on the phone with a "send these" button; per-section likely-question
       gap finder.
-- [ ] 5. Worked playbooks (conference on E-Series + D20, breakout T10 + desk,
+- [~] 5. (playbooks done; diagrams and job-aware answers to do) Worked playbooks (conference on E-Series + D20, breakout T10 + desk,
       awards dinner on DM7, small outdoor stage) and diagrams shown in chat;
       job-aware answers ("what next?", "test plan for tomorrow").
 - [ ] 6. Quiz me (spaced repetition on unticked Pathway skills); voice (dictation
@@ -347,5 +347,17 @@ don't wait for the kit list.
   leaders). Do this every time a held-out topic gets written up.
 - Results: tuned probe 49/54; held-out 25/30; chat cases 104/104; phrasings
   92% (1212/1310); 0 accessibility violations.
-- Next: step 4 (per-section gap finder), then playbooks (conference on
-  E-Series + D20, awards dinner on DM7) and job-aware answers.
+- 2026-11-14 — Gap finder `tests/check-gaps.js`: asks the chat each section's
+  likely questions (what is <term> for its term lines, each sub-heading) and
+  lists the sections it can't find. Book-wide 85% → 96% after "what is X"
+  learned to give the book's own definition (glossary or a section's term
+  line) ahead of a written answer that only shares the words. The remaining
+  misses are bare sub-headings ("Reading the front panel").
+- 2026-11-14 — §10.12 Four jobs, worked through: conference on E12/E15X-SUB/D20
+  (Mix TOP/SUB channel plan), breakout T10 + QL1, awards dinner on a DM7,
+  small outdoor stage. Chat answers for each.
+- Results: tuned probe 49/54; held-out 25/30; chat cases 108/108; phrasings
+  92% (1223/1326); 0 accessibility violations.
+- Next: diagrams in chat answers (signal flow, Mix TOP/SUB wiring) and
+  job-aware answers ("what's next", "test plan for tomorrow" from the Job
+  Hub); then step 6 (quiz, voice).

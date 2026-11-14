@@ -97,6 +97,18 @@ Harder questions the answer bank wasn't written for (`tests/probe-cases.txt`) �
 node tests/check-probes.js
 ```
 
+The held-out set (`tests/probe-holdout.txt`) is the honest score: questions nobody wrote answers for. Never write answers to pass it; when one of its topics gets written into the book, move that question to the tuned set and add a fresh one:
+
+```bash
+node tests/check-probes.js --file probe-holdout.txt
+```
+
+Gap finder — asks each section's likely questions (its terms, its sub-headings) and lists the sections the chat can't find its way to. A to-do list, not a pass/fail test; `--part 6` for one part, `--list` for every reply:
+
+```bash
+node tests/check-gaps.js
+```
+
 Accessibility (axe-core, every screen and part) — install axe once, then run:
 
 ```bash
