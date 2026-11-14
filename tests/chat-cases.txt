@@ -104,3 +104,7 @@ the amp says Speaker imp. fault => Load monitoring
 D20 showing amp temp warn => poor cooling
 what does input fallback mean on the amp => fallback input
 how do I set up talkback on the DM7 => talkback
+how do I set up a conference pa with d&b => Mix TOP/SUB
+awards dinner on the dm7 => walk-up
+small outdoor stage => power, weather and noise first
+what is a show file => saved snapshot
